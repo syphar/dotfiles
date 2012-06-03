@@ -11,10 +11,12 @@
 [difftool]
 	prompt = false
 [diff]
-	tool = Kaleidoscope
+	tool = vimdiff
 [color]
 	branch = auto
 	diff = auto
 	interactive = auto
 	status = auto
 	ui = true
+[alias]
+	d = difftool
