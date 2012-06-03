@@ -1,1 +1,3 @@
 set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
+let g:ackprg="/usr/local/bin/ack -H --nocolor --nogroup --column"
+
