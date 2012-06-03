@@ -23,3 +23,5 @@ map! <D-9> <C-O>:tabn 9
 
 
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
+
+set spelllang=de
