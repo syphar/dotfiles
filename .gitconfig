@@ -1,0 +1,20 @@
+[user]
+	name = Denis Cornehl
+	email = denis.cornehl@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = mate
+	quotepath = false
+	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = true
