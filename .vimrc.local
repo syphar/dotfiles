@@ -20,3 +20,6 @@ map! <D-6> <C-O>:tabn 6
 map! <D-7> <C-O>:tabn 7
 map! <D-8> <C-O>:tabn 8
 map! <D-9> <C-O>:tabn 9
+
+
+set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
