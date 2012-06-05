@@ -1,1 +1,4 @@
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'vim-scripts/pydoc.vim'
+
