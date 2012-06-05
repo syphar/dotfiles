@@ -3,7 +3,7 @@
 	email = denis.cornehl@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = mate
+	editor = vim
 	quotepath = false
 	trustExitCode = true
 [difftool "Kaleidoscope"]

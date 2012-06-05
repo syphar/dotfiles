@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 PATH=/usr/local/bin:/usr/local/share/python:$PATH
 export PATH
 
-export EDITOR="/usr/local/bin/mate -w"
+export EDITOR="vim"
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
