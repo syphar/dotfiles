@@ -1,4 +1,4 @@
-set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
+set guifont=Andale\ Mono\ Regular:h14,Menlo\ Regular:h14,Consolas\ Regular:h14,Courier\ New\ Regular:h14
 ""let g:ackprg="/usr/local/bin/ack -H --nocolor --nogroup --column"
 
 map <D-1> :tabn 1
@@ -29,4 +29,7 @@ set spelllang=de
 
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[Env: %n]'
+
+
+let g:pymode_lint_checker = "pyflakes,pep8"
 
