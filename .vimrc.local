@@ -24,12 +24,12 @@ map! <D-9> <C-O>:tabn 9
 
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
 
-set spelllang=de
-
 
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[Env: %n]'
 
 
 let g:pymode_lint_checker = "pyflakes,pep8"
+
+let g:Tex_ViewRule_pdf = 'Preview'
 
