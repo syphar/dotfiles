@@ -10,8 +10,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="wezm"
 
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -51,5 +51,5 @@ export EC2_URL="https://ec2.eu-west-1.amazonaws.com"
 
 source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=~/src/
-export PIP_REQUIRE_VIRTUALENV=true
+#export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME

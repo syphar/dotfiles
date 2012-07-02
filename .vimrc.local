@@ -28,8 +28,12 @@ set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[Env: %n]'
 
+"show errorlist when there are errors
+let g:syntastic_auto_loc_list = 1
 
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint = 0
+let g:pymode_lint_checker = ""
+let g:pymode_folding = 0
 
 let g:Tex_ViewRule_pdf = 'Preview'
 
