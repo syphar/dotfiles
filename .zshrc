@@ -51,5 +51,8 @@ export EC2_URL="https://ec2.eu-west-1.amazonaws.com"
 
 source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=~/src/
-export PIP_REQUIRE_VIRTUALENV=true
+#export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
+
+
+alias cca="cctrlapp"
