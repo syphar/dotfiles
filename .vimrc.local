@@ -37,6 +37,7 @@ let g:pymode_lint_checker = ""
 let g:pymode_folding = 0
 
 let g:Tex_ViewRule_pdf = 'Preview'
+alias cca="cctrlapp"
 
 
 " Filetype-specific tabs and spaces"
