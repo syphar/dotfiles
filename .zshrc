@@ -17,7 +17,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -31,7 +31,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(django python git fabric osx brew pip textmate)
+plugins=(django python git fabric osx brew pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,18 +41,10 @@ export PATH
 
 export EDITOR="vim"
 
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.3/jars"
-export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
-
-export EC2_URL="https://ec2.eu-west-1.amazonaws.com"
-
 source /usr/local/bin/virtualenvwrapper.sh
 export PROJECT_HOME=~/src/
 #export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-
 alias cca="cctrlapp"
+alias ccu="cctrluser"
