@@ -1,1 +1,2 @@
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'vim-scripts/LargeFile'
