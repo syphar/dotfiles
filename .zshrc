@@ -48,3 +48,5 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 alias cca="cctrlapp"
 alias ccu="cctrluser"
+
+export BYOBU_PREFIX=$(brew --prefix)
