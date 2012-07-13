@@ -22,6 +22,13 @@ map! <D-8> <C-O>:tabn 8<CR>
 map! <D-9> <C-O>:tabn 9<CR>
 
 
+" moving between windows like in iterm
+map <M-D-Down> <C-W>j<C-W>_
+map <M-D-Up> <C-W>k<C-W>_
+map <M-D-Right> <C-W>l<C-W>_
+map <M-D-Left> <C-W>h<C-W>_
+
+
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
 
 
@@ -41,3 +48,7 @@ let g:Tex_ViewRule_pdf = 'Preview'
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
+
+
+
+set nospell
