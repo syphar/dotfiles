@@ -28,6 +28,21 @@ map <M-D-Up> <C-W>k<C-W>_
 map <M-D-Right> <C-W>l<C-W>_
 map <M-D-Left> <C-W>h<C-W>_
 
+if has('gui_running')
+    " switch buffers with swiping
+    nmap <SwipeUp> :bN<CR>
+    nmap <SwipeDown> :bn<CR>
+    nnoremap <SwipeLeft> gT
+    nnoremap <SwipeRight> gt
+endif
+
+"tags for current buffer
+nmap <leader>m :CtrlPBufTag<CR>
+nmap <leader>n :CtrlPTag<CR>
+
+"ignore tags in nerdtree
+let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+
 
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
 

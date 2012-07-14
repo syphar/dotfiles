@@ -1,2 +1,21 @@
+" exclude bufexplorer (group general)
+let g:spf13_bundle_groups=['programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'spf13/vim-colors'
+Bundle 'tpope/vim-surround'
+Bundle 'AutoClose'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/sessionman.vim'
+Bundle 'matchit.zip'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'godlygeek/csapprox'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'flazz/vim-colorschemes'
+
+
+"own bundles
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'vim-scripts/LargeFile'
+Bundle 'AutoTag'
