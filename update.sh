@@ -18,4 +18,4 @@ vim +BundleInstall! +BundleClean +qa
 
 echo PIP global
 cd /tmp
-pip freeze --local | cut -d = -f 1  | xargs pip install -U
+pip freeze --local | cut -d = -f 1  | grep -v git-remote-helpers | xargs pip install -U
