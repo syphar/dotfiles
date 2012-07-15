@@ -65,15 +65,3 @@ let g:Tex_ViewRule_pdf = 'Preview'
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
 
 set nospell
-
-
- "Bubble single lines
-"nmap <C-Up> [e
-"nmap <C-Down> ]e
- "Bubble multiple lines
-"vmap <C-Up> [egv
-"vmap <C-Down> ]egv
-
- "Visually select the text that was last edited/pasted
-"nmap gV `[v`]
-
