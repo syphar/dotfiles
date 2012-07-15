@@ -13,9 +13,11 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'godlygeek/csapprox'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'flazz/vim-colorschemes'
+"Bundle 'corntrace/bufexplorer'
 
 
 "own bundles
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'AutoTag'
+Bundle 'TaskList.vim'
