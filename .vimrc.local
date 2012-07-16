@@ -40,6 +40,10 @@ endif
 nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>n :CtrlPTag<CR>
 
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$|\.pyc' }
+ 
 "ignore tags in nerdtree
 let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 
@@ -63,6 +67,7 @@ let g:Tex_ViewRule_pdf = 'Preview'
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 
 " auto clean fugitive-buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
