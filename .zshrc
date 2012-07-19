@@ -50,3 +50,4 @@ alias cca="cctrlapp"
 alias ccu="cctrluser"
 
 export BYOBU_PREFIX=$(brew --prefix)
+export NODE_PATH="/usr/local/lib/node"
