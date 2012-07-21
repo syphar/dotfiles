@@ -9,3 +9,6 @@ find . -type d -empty -delete
 
 # update ctags for project
 ctags -R
+
+# clear ctrlp-cache (currently all caches)
+rm -f ~/.cache/ctrlp/*.txt
