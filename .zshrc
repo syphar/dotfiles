@@ -41,7 +41,13 @@ export PATH
 
 export EDITOR="vim"
 
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]
+then
+    source /usr/local/bin/virtualenvwrapper.sh
+else
+    source /usr/local/share/python/virtualenvwrapper.sh
+fi
+
 export PROJECT_HOME=~/src/
 #export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -50,4 +56,4 @@ alias cca="cctrlapp"
 alias ccu="cctrluser"
 
 export BYOBU_PREFIX=$(brew --prefix)
-export NODE_PATH="/usr/local/lib/node"
+export NODE_PATH=/usr/local/lib/node_modules

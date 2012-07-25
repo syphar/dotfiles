@@ -1,10 +1,13 @@
-#!/bin/sh
-# start from the repository root.
+#!/usr/bin/env bash
+# Start from the repository root.
 cd ./$(git rev-parse --show-cdup)
 
 # Delete .pyc files and empty directories.
 find . -name "*.pyc" -delete
 find . -type d -empty -delete
 
-# update tags
+# update ctags for project
 ctags -R
+
+# clear ctrlp-cache (currently all caches)
+rm -f ~/.cache/ctrlp/*.txt
