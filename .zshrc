@@ -36,7 +36,7 @@ plugins=(django python git fabric osx brew pip)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-PATH=/usr/local/bin:/usr/local/share/python:$PATH
+PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python:$PATH
 export PATH
 
 export EDITOR="vim"
