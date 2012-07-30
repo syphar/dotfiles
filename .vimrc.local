@@ -1,6 +1,8 @@
 set guifont=Andale\ Mono\ Regular:h14,Menlo\ Regular:h14,Consolas\ Regular:h14,Courier\ New\ Regular:h14
 ""let g:ackprg="/usr/local/bin/ack -H --nocolor --nogroup --column"
 
+colorscheme tomorrow-night
+
 map <D-1> :tabn 1<CR>
 map <D-2> :tabn 2<CR>
 map <D-3> :tabn 3<CR>
