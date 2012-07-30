@@ -1,7 +1,4 @@
-*~
-tags
-
-# from https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+# https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store
 
 # Thumbnails
@@ -10,3 +7,20 @@ tags
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+
+
+# https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
+# Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+!tags/
+ 
+
+
+# https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+.*.sw[a-z]
+*.un~
+Session.vim
+
