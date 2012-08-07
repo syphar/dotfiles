@@ -48,6 +48,7 @@ let g:ctrlp_custom_ignore = {
  
 "ignore tags in nerdtree
 let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeShowHidden=0
 
 set nolist
 set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
