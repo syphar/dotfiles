@@ -1,5 +1,6 @@
 " exclude bufexplorer (group general)
-let g:spf13_bundle_groups=['programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+let g:spf13_bundle_groups=['php', 'ruby', 'python', 'javascript', 'html', 'misc']
+"group general
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spf13/vim-colors'
@@ -15,6 +16,19 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'flazz/vim-colorschemes'
 "Bundle 'corntrace/bufexplorer'
 
+"group programming
+Bundle 'scrooloose/syntastic'
+Bundle 'garbas/vim-snipmate'
+Bundle 'spf13/snipmate-snippets'
+source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+Bundle 'Shougo/neocomplcache'
+
+
 
 "own bundles
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
@@ -23,3 +37,4 @@ Bundle 'AutoTag'
 Bundle 'TaskList.vim'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'Shougo/neocomplcache-snippets-complete'
