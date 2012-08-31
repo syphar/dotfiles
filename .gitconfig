@@ -11,7 +11,7 @@
 [difftool]
 	prompt = false
 [diff]
-	tool = vimdiff
+	tool = Kaleidoscope
 [color]
 	branch = auto
 	diff = auto
