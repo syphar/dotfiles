@@ -41,8 +41,12 @@ def update_spf13():
 def update_pip():
     print(green('update_pip'))
 
-    for dist in pip.get_installed_distributions():
-        local('pip install -U {}'.format(dist.project_name))
+    packages = [
+        dist.project_name
+        for dist in pip.get_installed_distributions()
+        if dist.project_name not in ['git-remote-helpers']
+    ]
+    local('pip install -U {}'.format(' '.join(packages)))
 
 
 @task(default=True)
