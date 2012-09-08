@@ -61,6 +61,7 @@ let g:virtualenv_stl_format = '[Env: %n]'
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checker_args='--ignore=E501'
 
+let g:pymode_rope = 0
 let g:pymode_lint = 0
 let g:pymode_lint_checker = ""
 let g:pymode_folding = 0
