@@ -1,26 +1,23 @@
 #!/usr/bin/env python
 # −*− coding: UTF−8 −*−
 
-from fabric.api import local, lcd, execute, task
+from fabric.api import local, lcd, execute, task, prefix
 from fabric.colors import green
 
 import pip
 
 
-@task
 def self_update():
     print(green('self_update'))
     local('git pull')
 
 
-@task
 def update_homebrew():
     print(green('update_homebrew'))
     local('brew update')
     local('brew upgrade')
 
 
-@task
 def update_zsh():
     print(green('update_zsh'))
     with lcd('~/.oh-my-zsh/'):
@@ -28,7 +25,6 @@ def update_zsh():
         local('git pull')
 
 
-@task
 def update_spf13():
     print(green('update_spf13'))
     with lcd('~/.spf13-vim-3/'):
@@ -38,6 +34,13 @@ def update_spf13():
 
 
 @task
+def update_pypi_cache():
+    print(green('update_pypi_cache'))
+
+    with prefix('workon pep381'):
+        local('pep381run ~/data/pypi_cache/')
+
+
 def update_pip():
     print(green('update_pip'))
 
@@ -56,3 +59,4 @@ def update():
     execute(update_zsh)
     execute(update_spf13)
     execute(update_pip)
+    execute(update_pypi_cache)
