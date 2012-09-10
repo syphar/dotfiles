@@ -16,6 +16,7 @@ def update_homebrew():
     print(green('update_homebrew'))
     local('brew update')
     local('brew upgrade')
+    local('brew linkapps')
 
 
 def update_zsh():
