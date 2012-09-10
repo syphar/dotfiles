@@ -33,11 +33,10 @@ def update_spf13():
         local('vim +BundleInstall! +BundleClean +qa')
 
 
-@task
 def update_pypi_cache():
     print(green('update_pypi_cache'))
 
-    with prefix('workon pep381'):
+    with prefix('/bin/bash -c "workon pep381"'):
         local('pep381run ~/data/pypi_cache/')
 
 
@@ -59,4 +58,3 @@ def update():
     execute(update_zsh)
     execute(update_spf13)
     execute(update_pip)
-    execute(update_pypi_cache)
