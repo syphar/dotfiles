@@ -31,7 +31,7 @@ def update_spf13():
     with lcd('~/.spf13-vim-3/'):
         local('git checkout 3.0')
         local('git pull')
-        local('vim +BundleInstall! +BundleClean +qa')
+        local('vim +BundleInstall! +BundleClean! +qa')
 
 
 def update_pypi_cache():
