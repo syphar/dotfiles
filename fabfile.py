@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # −*− coding: UTF−8 −*−
 
-from fabric.api import local, lcd, execute, task, prefix
-from fabric.colors import green
+import os
+
+from fabric.api import local, lcd, execute, task, prefix, settings
+from fabric.colors import green, blue, magenta, red
 
 import pip
 
@@ -52,6 +54,33 @@ def update_pip():
     local('pip install -U {}'.format(' '.join(packages)))
 
 
+@task
+def update_repos():
+    src_folder = os.path.join(os.path.expanduser('~'), 'src')
+
+    for folder in os.listdir(src_folder):
+        project = os.path.join(src_folder, folder)
+        if not os.path.isdir(project):
+            continue
+
+        with lcd(project):
+            print(blue('updating {}...'.format(folder)))
+
+            with settings(warn_only=True):
+                if os.path.exists(os.path.join(project, '.git')):
+                    if len(local('git remote', capture=True)):
+                        local('git fetch')
+                        local('git fetch --tags')
+                    else:
+                        print(magenta('\tno remote configured'))
+
+                elif os.path.exists(os.path.join(project, '.hg')):
+                    local('hg pull')
+
+                else:
+                    print(red('\tno repo!'))
+
+
 @task(default=True)
 def update():
     execute(self_update)
@@ -59,3 +88,4 @@ def update():
     execute(update_zsh)
     execute(update_spf13)
     execute(update_pip)
+    execute(update_repos)
