@@ -54,6 +54,40 @@ def update_pip():
     local('pip install -U {}'.format(' '.join(packages)))
 
 
+def git_update_hooks(repo):
+    git_dir = os.path.join(repo, '.git')
+
+    if not os.path.exists(git_dir):
+        return
+
+    hook_dir = os.path.join(git_dir, 'hooks')
+
+    if not os.path.exists(hook_dir):
+        os.mkdir(hook_dir)
+
+    local_hooks = os.path.join(os.path.dirname(__file__), 'git-hooks')
+
+    for hook in os.listdir(local_hooks):
+        print('{}-hook'.format(hook))
+
+        hook_source = os.path.join(local_hooks, hook)
+        hook_dest = os.path.join(hook_dir, hook)
+
+        if os.path.lexists(hook_dest):
+            os.remove(hook_dest)
+
+        os.symlink(hook_source, hook_dest)
+
+
+def git_fetch(repo):
+    with lcd(repo):
+        if len(local('git remote', capture=True)):
+            local('git fetch --all --recurse-submodules=yes --prune')
+            local('git fetch --all --recurse-submodules=yes --prune --tags')
+        else:
+            print(magenta('\tno remote configured'))
+
+
 @task
 def update_repos():
     src_folder = os.path.join(os.path.expanduser('~'), 'src')
@@ -68,11 +102,8 @@ def update_repos():
 
             with settings(warn_only=True):
                 if os.path.exists(os.path.join(project, '.git')):
-                    if len(local('git remote', capture=True)):
-                        local('git fetch --all --recurse-submodules=yes --prune')
-                        local('git fetch --all --recurse-submodules=yes --prune --tags')
-                    else:
-                        print(magenta('\tno remote configured'))
+                    git_fetch(project)
+                    git_update_hooks(project)
 
                 elif os.path.exists(os.path.join(project, '.hg')):
                     local('hg pull')
