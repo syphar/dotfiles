@@ -81,6 +81,11 @@ def git_fetch(repo):
             print(magenta('\tno remote configured'))
 
 
+def hg_pull(repo):
+    with lcd(repo):
+        local('hg pull')
+
+
 @task
 def update_repos():
     src_folder = os.path.join(os.path.expanduser('~'), 'src')
@@ -90,19 +95,18 @@ def update_repos():
         if not os.path.isdir(project):
             continue
 
-        with lcd(project):
-            print(blue('updating {}...'.format(folder)))
+        print(blue('updating {}...'.format(folder)))
 
-            with settings(warn_only=True):
-                if os.path.exists(os.path.join(project, '.git')):
-                    git_fetch(project)
-                    git_update_hooks(project)
+        with settings(warn_only=True):
+            if os.path.exists(os.path.join(project, '.git')):
+                git_fetch(project)
+                git_update_hooks(project)
 
-                elif os.path.exists(os.path.join(project, '.hg')):
-                    local('hg pull')
+            elif os.path.exists(os.path.join(project, '.hg')):
+                hg_pull(project)
 
-                else:
-                    print(red('\tno repo!'))
+            else:
+                print(red('\tno repo!'))
 
 
 @task(default=True)
