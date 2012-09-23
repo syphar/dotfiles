@@ -86,6 +86,11 @@ def hg_pull(repo):
         local('hg pull')
 
 
+def svn_up(repo):
+    with lcd(repo):
+        local('svn update')
+
+
 @task
 def update_repos():
     src_folder = os.path.join(os.path.expanduser('~'), 'src')
@@ -104,6 +109,9 @@ def update_repos():
 
             elif os.path.exists(os.path.join(project, '.hg')):
                 hg_pull(project)
+
+            elif os.path.exists(os.path.join(project, '.svn')):
+                svn_up(project)
 
             else:
                 print(red('\tno repo!'))
