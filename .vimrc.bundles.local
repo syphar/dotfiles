@@ -26,7 +26,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-"Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache'
 
 
 
