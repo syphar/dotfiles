@@ -69,8 +69,8 @@ def update_repos():
             with settings(warn_only=True):
                 if os.path.exists(os.path.join(project, '.git')):
                     if len(local('git remote', capture=True)):
-                        local('git fetch --all --prune')
-                        local('git fetch --all --prune --tags')
+                        local('git fetch --all --recurse-submodules=yes --prune')
+                        local('git fetch --all --recurse-submodules=yes --prune --tags')
                     else:
                         print(magenta('\tno remote configured'))
 
