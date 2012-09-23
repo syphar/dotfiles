@@ -3,7 +3,7 @@
 
 import os
 
-from fabric.api import local, lcd, execute, task, prefix, settings
+from fabric.api import local, lcd, execute, task, settings
 from fabric.colors import green, blue, magenta, red
 
 import pip
@@ -34,13 +34,6 @@ def update_spf13():
         local('git checkout 3.0')
         local('git pull')
         local('vim +BundleInstall! +BundleClean! +qa')
-
-
-def update_pypi_cache():
-    print(green('update_pypi_cache'))
-
-    with prefix('/bin/bash -c "workon pep381"'):
-        local('pep381run ~/data/pypi_cache/')
 
 
 def update_pip():
