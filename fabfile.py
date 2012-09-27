@@ -18,6 +18,8 @@ def update_homebrew():
     print(green('update_homebrew'))
     local('brew update')
     local('brew upgrade')
+
+    local('rm -f ~/Applications/*')
     local('brew linkapps')
 
 
