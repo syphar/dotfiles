@@ -84,3 +84,5 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 
 set nospell
+
+let g:Tex_ViewRule_pdf = 'Preview'
