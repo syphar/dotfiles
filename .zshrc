@@ -54,6 +54,7 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 alias cca="cctrlapp"
 alias ccu="cctrluser"
+alias gur="git remote update -p"
 
 export BYOBU_PREFIX=$(brew --prefix)
 export NODE_PATH=/usr/local/lib/node_modules

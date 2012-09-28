@@ -4,7 +4,7 @@
 import os
 
 from fabric.api import local, lcd, execute, task, settings
-from fabric.colors import green, blue, magenta, red
+from fabric.colors import green, blue, red
 
 import pip
 
@@ -76,11 +76,7 @@ def git_update_hooks(repo):
 
 def git_fetch(repo):
     with lcd(repo):
-        if len(local('git remote', capture=True)):
-            local('git fetch --all --recurse-submodules=yes --prune')
-            local('git fetch --all --recurse-submodules=yes --prune --tags')
-        else:
-            print(magenta('\tno remote configured'))
+        local('git remote update -p')
 
 
 def hg_pull(repo):
