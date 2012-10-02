@@ -1,5 +1,7 @@
-"remove groups, general defined below, ruby & scala removed
-let g:spf13_bundle_groups=['neocomplcache', 'programming', 'php', 'python', 'javascript', 'html', 'misc']
+"remove groups, general defined below, ruby & scala removed, programming
+"defined below
+"
+let g:spf13_bundle_groups=['neocomplcache', 'php', 'python', 'javascript', 'html', 'misc']
 "
 " exclude bufexplorer (group general)
 Bundle 'scrooloose/nerdtree'
@@ -19,6 +21,16 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'mbbill/undotree'
 Bundle 'myusuf3/numbers.vim'
 
+"programming, change scooloose/syntastic to fork
+Bundle 'nwertzberger/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+if executable('ctags')
+    Bundle 'majutsushi/tagbar'
+endif
 
 "own bundles
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'

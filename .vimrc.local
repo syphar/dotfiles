@@ -44,10 +44,10 @@ nmap <leader>n :CtrlPTag<CR>
 
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$|\.pyc' }
+    \ 'file': '\.exe$\|\.so$\|\.dll$|\.pyc$|\.class$' }
  
 "ignore tags in nerdtree
-let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.class$']
 let NERDTreeShowHidden=0
 
 set nolist
@@ -60,6 +60,8 @@ let g:virtualenv_stl_format = '[Env: %n]'
 "show errorlist when there are errors
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checker_args='--ignore=E501'
+
+let g:syntastic_java_javac_autoload_maven_classpath = 1
 
 let g:pymode_rope = 0
 let g:pymode_lint = 0
@@ -86,3 +88,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 set nospell
 
 let g:Tex_ViewRule_pdf = 'Preview'
+
+"ignore whitespace in vimdiff
+set diffopt+=iwhite
