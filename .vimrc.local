@@ -43,8 +43,11 @@ nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>n :CtrlPTag<CR>
 
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$|\.pyc$|\.class$' }
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|pyc|class)$',
+  \ }
+
+set wildignore+=*/target/*
  
 "ignore tags in nerdtree
 let NERDTreeIgnore=['.DS_Store', '^tags$', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.class$']
