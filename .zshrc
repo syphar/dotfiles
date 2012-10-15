@@ -34,6 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(django python git fabric osx brew pip mercurial supervisor per-directory-history)
 
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 # Customize to your needs...
 PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python:$PATH
