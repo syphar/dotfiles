@@ -1,36 +1,5 @@
-"remove groups, general defined below, ruby & scala removed, programming
-"defined below
-"
-let g:spf13_bundle_groups=['neocomplcache', 'php', 'python', 'javascript', 'html', 'misc']
-"
-" exclude bufexplorer (group general)
-Bundle 'scrooloose/nerdtree'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'spf13/vim-colors'
-Bundle 'tpope/vim-surround'
-Bundle 'AutoClose'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/sessionman.vim'
-Bundle 'matchit.zip'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'godlygeek/csapprox'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'flazz/vim-colorschemes'
-"Bundle 'corntrace/bufexplorer'
-Bundle 'mbbill/undotree'
-Bundle 'myusuf3/numbers.vim'
-
-"programming, change scooloose/syntastic to fork
-Bundle 'nwertzberger/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-if executable('ctags')
-    Bundle 'majutsushi/tagbar'
-endif
+" before: exclude bufexplorer 
+" before, change to nwertzberger/syntastic for java"
 
 "own bundles
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
@@ -39,4 +8,3 @@ Bundle 'AutoTag'
 Bundle 'TaskList.vim'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'Shougo/neocomplcache-snippets-complete'
