@@ -1,4 +1,24 @@
-" before: exclude bufexplorer 
+let g:spf13_bundle_groups=['neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'scala']
+" exclude bufexplorer from group general
+Bundle 'scrooloose/nerdtree'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'spf13/vim-colors'
+Bundle 'tpope/vim-surround'
+Bundle 'AutoClose'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/sessionman.vim'
+Bundle 'matchit.zip'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'godlygeek/csapprox'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'flazz/vim-colorschemes'
+"Bundle 'corntrace/bufexplorer'
+Bundle 'mbbill/undotree'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+
 " before, change to nwertzberger/syntastic for java"
 
 "own bundles
