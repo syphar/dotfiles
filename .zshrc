@@ -5,8 +5,6 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-#juanghurtado zweizeilig
 ZSH_THEME="wezm"
 
 # Example aliases
@@ -31,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(django python git fabric osx brew pip mercurial supervisor per-directory-history)
+plugins=(django python git fabric osx brew pip mercurial supervisor per-directory-history history-substring-search virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
@@ -42,13 +40,6 @@ export PATH
 
 export EDITOR="vim"
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]
-then
-    source /usr/local/bin/virtualenvwrapper.sh
-else
-    source /usr/local/share/python/virtualenvwrapper.sh
-fi
-
 export PROJECT_HOME=~/src/
 #export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -56,6 +47,8 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 alias cca="cctrlapp"
 alias ccu="cctrluser"
 alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune"
+
+alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 
 export BYOBU_PREFIX=$(brew --prefix)
 export NODE_PATH=/usr/local/lib/node_modules
