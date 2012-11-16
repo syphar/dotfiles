@@ -5,7 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="wezm"
+#ZSH_THEME="wezm"
+ZSH_THEME="random"
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
@@ -44,8 +45,12 @@ export PROJECT_HOME=~/src/
 #export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-alias cca="cctrlapp"
-alias ccu="cctrluser"
+alias cca="export CCTRL_API_URL=https://api.devcctrl.com && export SSH_FORWARDER=sshdevcctrl.cloudcontrolled.net && export CCTRL_TOKEN_FILE=dev.json && /usr/local/share/python/cctrlapp"
+alias cctrlapp="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH_FORWARDER=ssh.cloudcontrolled.net && export CCTRL_TOKEN_FILE=live.json && /usr/local/share/python/cctrlapp"
+
+alias ccu="export CCTRL_API_URL=https://api.devcctrl.com && export SSH_FORWARDER=sshdevcctrl.cloudcontrolled.net && export CCTRL_TOKEN_FILE=dev.json && /usr/local/share/python/cctrluser"
+alias cctrluser="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH_FORWARDER=ssh.cloudcontrolled.net && export CCTRL_TOKEN_FILE=live.json && /usr/local/share/python/cctrluser"
+
 alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune"
 
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
