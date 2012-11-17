@@ -27,7 +27,9 @@ def update_zsh():
     print(green('update_zsh'))
     with lcd('~/.oh-my-zsh/'):
         local('git checkout master')
-        local('git pull')
+        local('git pull origin master')
+        local('git pull upstream master')
+        local('git push origin master')
 
 
 def update_spf13():

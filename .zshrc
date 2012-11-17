@@ -28,6 +28,9 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
+PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python:$PATH
+export PATH
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -35,10 +38,6 @@ plugins=(django python git fabric osx brew pip mercurial per-directory-history h
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
-
-# Customize to your needs...
-PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python:$PATH
-export PATH
 
 export EDITOR="vim"
 
