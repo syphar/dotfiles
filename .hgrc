@@ -1,0 +1,7 @@
+[extensions]
+hgext.extdiff =
+prompt = ~/src/dotfiles/hg-prompt/prompt.py
+
+[extdiff]
+cmd.ksdiff = /usr/local/bin/ksdiff-wrapper
+opts.ksdiff = hg
