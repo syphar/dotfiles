@@ -3,10 +3,20 @@
 
 import os
 
+import fabric
 from fabric.api import local, lcd, execute, task, settings
 from fabric.colors import green, blue, red, magenta
+from fabric.context_managers import shell_env
 
 import pip
+
+fabric.state.output.status = True
+fabric.state.output.aborts = True
+fabric.state.output.warnings = False
+fabric.state.output.running = False
+fabric.state.output.stdout = False
+fabric.state.output.stderr = False
+fabric.state.output.user = True
 
 
 def self_update():
@@ -48,7 +58,9 @@ def update_pip():
         for dist in pip.get_installed_distributions()
         if dist.project_name not in ['git-remote-helpers']
     ]
-    local('pip install -U {}'.format(' '.join(packages)))
+
+    with shell_env(PIP_REQUIRE_VIRTUALENV="false"):
+        local('pip install -U {}'.format(' '.join(packages)))
 
 
 def git_update_hooks(repo):
