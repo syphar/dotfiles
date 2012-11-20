@@ -7,7 +7,7 @@
 	quotepath = false
 	trustExitCode = true
 [difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
 	prompt = false
 [diff]
@@ -57,6 +57,11 @@
 
 [mergetool]
 	keepBackup = true
+	prompt = false
 
 
 
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[merge]
+	tool = Kaleidoscope
