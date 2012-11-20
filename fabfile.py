@@ -14,7 +14,7 @@ fabric.state.output.status = True
 fabric.state.output.aborts = True
 fabric.state.output.warnings = False
 fabric.state.output.running = False
-fabric.state.output.stdout = False
+fabric.state.output.stdout = True
 fabric.state.output.stderr = False
 fabric.state.output.user = True
 
