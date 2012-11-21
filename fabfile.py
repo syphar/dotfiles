@@ -101,28 +101,31 @@ def git_merge_ff(repo, branch, commit):
     """Merge a branch without checking it out"""
     with lcd(repo):
         branch_ref = 'refs/heads/{0}'.format(branch)
-        branch_orig_hash = local('git show-ref -s --verify {0}'.format(branch_ref))
-        commit_orig_hash = local('git rev-parse --verify {0}'.format(commit))
+        branch_orig_hash = local('git show-ref -s --verify {0}'.format(branch_ref), capture=True)
+        commit_orig_hash = local('git rev-parse --verify {0}'.format(commit), capture=True)
 
         if local('git symbolic-ref HEAD', capture=True) == branch_ref:
             local('git merge --ff-only "{0}"'.format(commit))
 
         else:
-            if local('git merge-base {0} {1}'.format(branch_orig_hash, commit_orig_hash), capture=True) != branch_orig_hash:
+            if local("git merge-base {}  {}".format(branch_orig_hash, commit_orig_hash), capture=True) != branch_orig_hash:
                 print(red('merging {0} into {1} would not be a fast-forward'.format(commit, branch)))
 
             else:
-                print(green("Updating ${branch_orig_hash:0:7}..${commit_orig_hash:0:7}".format(branch_orig_hash[:7], commit_orig_hash[:7])))
+                print(green("Updating {}..{}".format(branch, commit)))
 
                 local('git update-ref -m "merge {0}: Fast forward" "{1}" "{2}" "{3}"'.format(commit, branch_ref, commit_orig_hash, branch_orig_hash))
-                local('git diff --stat "{0}@\{1\}" "{0}"'.format(branch))
-
+                with settings(warn_only=True):
+                    local('git diff --shortstat "{0}@{{1}}" "{0}"'.format(branch))
 
 
 def git_rebase_branches(repo):
     with lcd(repo):
-        current_branch = local('git rev-parse --abbrev-ref HEAD', capture=True)
-        print current_branch
+        remotes = set(b[20:] for b in local("git for-each-ref --format='%(refname)' refs/remotes/origin/", capture=True).split('\n'))
+        for ref in local("git for-each-ref --format='%(refname)' refs/heads/", capture=True).split('\n'):
+            branch = ref[11:]
+            if branch in remotes:
+                git_merge_ff(repo, branch, "origin/{}".format(branch))
 
 
 def hg_pull(repo):
@@ -150,6 +153,7 @@ def update_repos():
             if os.path.exists(os.path.join(project, '.git')):
                 git_fetch(project)
                 git_update_hooks(project)
+                git_rebase_branches(project)
 
             elif os.path.exists(os.path.join(project, '.hg')):
                 hg_pull(project)
