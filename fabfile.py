@@ -97,6 +97,34 @@ def git_fetch(repo):
             print(magenta('\tno remote configured'))
 
 
+def git_merge_ff(repo, branch, commit):
+    """Merge a branch without checking it out"""
+    with lcd(repo):
+        branch_ref = 'refs/heads/{0}'.format(branch)
+        branch_orig_hash = local('git show-ref -s --verify {0}'.format(branch_ref))
+        commit_orig_hash = local('git rev-parse --verify {0}'.format(commit))
+
+        if local('git symbolic-ref HEAD', capture=True) == branch_ref:
+            local('git merge --ff-only "{0}"'.format(commit))
+
+        else:
+            if local('git merge-base {0} {1}'.format(branch_orig_hash, commit_orig_hash), capture=True) != branch_orig_hash:
+                print(red('merging {0} into {1} would not be a fast-forward'.format(commit, branch)))
+
+            else:
+                print(green("Updating ${branch_orig_hash:0:7}..${commit_orig_hash:0:7}".format(branch_orig_hash[:7], commit_orig_hash[:7])))
+
+                local('git update-ref -m "merge {0}: Fast forward" "{1}" "{2}" "{3}"'.format(commit, branch_ref, commit_orig_hash, branch_orig_hash))
+                local('git diff --stat "{0}@\{1\}" "{0}"'.format(branch))
+
+
+
+def git_rebase_branches(repo):
+    with lcd(repo):
+        current_branch = local('git rev-parse --abbrev-ref HEAD', capture=True)
+        print current_branch
+
+
 def hg_pull(repo):
     with lcd(repo):
         local('hg pull')
