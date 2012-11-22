@@ -25,9 +25,11 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 alias cca="export CCTRL_API_URL=https://api.devcctrl.com && export SSH_FORWARDER=sshdevcctrl.cloudcontrolled.net && export CCTRL_TOKEN_FILE=dev.json && /usr/local/share/python/cctrlapp"
+alias lcca="export CCTRL_API_URL=http://localhost:8000 && export CCTRL_TOKEN_FILE=local.json && /usr/local/share/python/cctrlapp"
 alias cctrlapp="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH_FORWARDER=ssh.cloudcontrolled.net && export CCTRL_TOKEN_FILE=live.json && /usr/local/share/python/cctrlapp"
 
 alias ccu="export CCTRL_API_URL=https://api.devcctrl.com && export SSH_FORWARDER=sshdevcctrl.cloudcontrolled.net && export CCTRL_TOKEN_FILE=dev.json && /usr/local/share/python/cctrluser"
+alias lccu="export CCTRL_API_URL=http://localhost:8000 && export CCTRL_TOKEN_FILE=local.json && /usr/local/share/python/cctrluser"
 alias cctrluser="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH_FORWARDER=ssh.cloudcontrolled.net && export CCTRL_TOKEN_FILE=live.json && /usr/local/share/python/cctrluser"
 
 alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune"
