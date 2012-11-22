@@ -93,8 +93,10 @@ def git_fetch(repo):
         if len(local('git remote', capture=True)):
             local('git fetch --all --recurse-submodules=yes --prune')
             local('git fetch --all --recurse-submodules=yes --prune --tags')
+            return True
         else:
             print(magenta('\tno remote configured'))
+            return False
 
 
 def git_merge_ff(repo, branch, commit):
@@ -121,7 +123,7 @@ def git_merge_ff(repo, branch, commit):
 
 def git_rebase_branches(repo):
     with lcd(repo):
-        remotes = set(b[20:] for b in local("git for-each-ref --format='%(refname)' refs/remotes/origin/", capture=True).split('\n'))
+        remotes = set(b[20:] for b in local("git for-each-ref --format='%(refname)' refs/remotes/origin/", capture=True).split('\n') if len(b) > 21)
         for ref in local("git for-each-ref --format='%(refname)' refs/heads/", capture=True).split('\n'):
             branch = ref[11:]
             if branch in remotes:
@@ -151,9 +153,9 @@ def update_repos():
 
         with settings(warn_only=True):
             if os.path.exists(os.path.join(project, '.git')):
-                git_fetch(project)
+                if git_fetch(project):
+                    git_rebase_branches(project)
                 git_update_hooks(project)
-                git_rebase_branches(project)
 
             elif os.path.exists(os.path.join(project, '.hg')):
                 hg_pull(project)
