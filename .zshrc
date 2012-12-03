@@ -12,7 +12,25 @@ BAT_CHARGE="$HOME/src/dotfiles/batcharge.py"
 PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python:$PATH
 export PATH
 
-plugins=(django python git fabric osx brew pip mercurial per-directory-history history-substring-search virtualenvwrapper)
+plugins=(
+    brew 
+    dircycle 
+    django
+    fabric 
+    gem 
+    git 
+    history-substring-search 
+    knife 
+    last-working-dir 
+    mercurial 
+    mvn 
+    osx 
+    per-directory-history 
+    pip 
+    python 
+    svn
+    virtualenvwrapper
+)
 
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
