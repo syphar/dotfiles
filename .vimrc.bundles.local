@@ -1,4 +1,4 @@
-let g:spf13_bundle_groups=['neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc', 'scala']
+let g:spf13_bundle_groups=['neocomplcache', 'programming', 'ruby', 'python', 'javascript', 'html', 'misc']
 " exclude bufexplorer from group general
 Bundle 'scrooloose/nerdtree'
 Bundle 'altercation/vim-colors-solarized'
@@ -25,6 +25,5 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'AutoTag'
-Bundle 'TaskList.vim'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
