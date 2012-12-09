@@ -6,6 +6,8 @@
 	editor = vim
 	quotepath = false
 	trustExitCode = true
+	pager = 
+
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]

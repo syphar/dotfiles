@@ -33,7 +33,5 @@ pretty_git_log() {
         # Replace (2 years, 5 months) with (2 years)
         sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?)/\1)/' |
         # Line columns up based on } delimiter
-        column -s '}' -t |
-        # Page only if we need to
-        less -FXRS
+        column -s '}' -t 
 }
