@@ -37,7 +37,8 @@ unsetopt correct_all
 
 export EDITOR="vim"
 
-#export PROJECT_HOME=~/src/
+export PROJECT_HOME="$HOME/src"
+export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
