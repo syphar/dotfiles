@@ -107,3 +107,7 @@ if has('gui_running')
 
     set fu
 endif
+
+
+"completely disable folding
+set nofoldenable
