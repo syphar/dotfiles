@@ -101,3 +101,9 @@ set guioptions-=r
 " no tabline even if there are tabs
 set showtabline=0
 
+" always set fullscreen"
+if has('gui_running')
+    set fuopt+=maxhorz                      " grow to maximum horizontal width on entering fullscreen mode
+
+    set fu
+endif
