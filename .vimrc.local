@@ -90,3 +90,14 @@ let g:Tex_ViewRule_pdf = 'Preview'
 
 "ignore whitespace in vimdiff
 set diffopt+=iwhite
+
+
+" no scrollbars
+set guioptions-=L
+set guioptions-=l
+set guioptions-=R
+set guioptions-=r
+
+" no tabline even if there are tabs
+set showtabline=0
+
