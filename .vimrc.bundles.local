@@ -1,5 +1,41 @@
-" removed 'scala'
-let g:spf13_bundle_groups=['general', 'neocomplcache', 'programming', 'php', 'ruby', 'python', 'javascript', 'html', 'misc']
+let g:override_spf13_bundles = 1
+
+" General"
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'mbbill/undotree'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" Programming "
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+
+"snippets "
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
+"" Source support_function.vim to support snipmate-snippets.
+"if filereadable(expand("~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim"))
+"source ~/.vim/bundle/snipmate-snippets/snippets/support_functions.vim
+"endif
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet'
+Bundle 'honza/snipmate-snippets'
+
+" Python
+Bundle 'klen/python-mode'
+Bundle 'python.vim'
+Bundle 'python_match.vim'
+Bundle 'pythoncomplete'
+
+" Misc
+Bundle 'tpope/vim-markdown'
+Bundle 'spf13/vim-preview'
 
 " for java-dev, change to nwertzberger/syntastic for java or check if
 " POM-discovery is in the master already
