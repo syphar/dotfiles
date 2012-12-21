@@ -8,12 +8,6 @@
 	trustExitCode = true
 	pager = 
 
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
-[diff]
-	tool = Kaleidoscope
 [color]
 	branch = auto
 	diff = auto
@@ -57,13 +51,16 @@
     # show different commits between branches
     branchdiff = log --graph --left-right --cherry-pick --oneline
 
-[mergetool]
-	keepBackup = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
 	prompt = false
-
-
-
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
 [merge]
 	tool = Kaleidoscope
