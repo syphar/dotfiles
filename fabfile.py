@@ -50,6 +50,11 @@ def update_spf13():
         local('vim +BundleInstall! +BundleClean! +qa')
 
 
+def update_brew_list():
+    print(green('update_brew_list'))
+    local('brew list > ~/src/dotfiles/brew_list.txt')
+
+
 def update_pip():
     print(green('update_pip'))
 
@@ -169,6 +174,7 @@ def update_repos():
 
 @task(default=True)
 def update():
+    execute(update_brew_list)
     execute(self_update)
     execute(update_homebrew)
     execute(update_zsh)
