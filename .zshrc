@@ -30,6 +30,7 @@ plugins=(
     python 
     svn
     virtualenvwrapper
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
