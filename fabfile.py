@@ -26,6 +26,13 @@ def self_update():
 
 def update_homebrew():
     print(green('update_homebrew'))
+
+    installed = set(local('brew list', capture=True).split())
+    with open(os.path.join(os.path.expanduser('~'), 'src', 'dotfiles', 'brew_list.txt')) as brew_list:
+        for brew in [b.strip() for b in brew_list]:
+            if brew not in installed:
+                local('brew install {}'.format(brew))
+
     local('brew update')
     local('brew upgrade')
 
@@ -53,6 +60,10 @@ def update_spf13():
 def update_brew_list():
     print(green('update_brew_list'))
     local('brew list > ~/src/dotfiles/brew_list.txt')
+    with lcd('~/src/dotfiles/'):
+        with settings(warn_only=True):
+            local('git add brew_list.txt')
+            local("git commit -m 'new brews'")
 
 
 def update_pip():
@@ -174,10 +185,10 @@ def update_repos():
 
 @task(default=True)
 def update():
-    execute(update_brew_list)
     execute(self_update)
     execute(update_homebrew)
     execute(update_zsh)
     execute(update_spf13)
     execute(update_pip)
     execute(update_repos)
+    execute(update_brew_list)
