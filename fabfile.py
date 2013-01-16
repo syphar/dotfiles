@@ -60,7 +60,11 @@ def update_spf13():
 
 def update_brew_list():
     print(green('update_brew_list'))
-    local('brew list > ~/src/dotfiles/brew_list.txt')
+    listfile = os.path.expanduser('~/src/dotfiles/brew_list.txt')
+    local('brew list >> {}'.format(listfile))
+    local('sort {0} | uniq > {0}.tmp'.format(listfile))
+    os.remove(listfile)
+    os.rename('{}.tmp'.format(listfile), listfile)
     with lcd('~/src/dotfiles/'):
         with settings(warn_only=True):
             local('git add brew_list.txt')
@@ -186,10 +190,10 @@ def update_repos():
 
 @task(default=True)
 def update():
-    execute(self_update)
-    execute(update_homebrew)
-    execute(update_zsh)
-    execute(update_spf13)
-    execute(update_pip)
-    execute(update_repos)
+    #execute(self_update)
+    #execute(update_homebrew)
+    #execute(update_zsh)
+    #execute(update_spf13)
+    #execute(update_pip)
+    #execute(update_repos)
     execute(update_brew_list)
