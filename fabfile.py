@@ -31,7 +31,8 @@ def update_homebrew():
     with open(os.path.join(os.path.expanduser('~'), 'src', 'dotfiles', 'brew_list.txt')) as brew_list:
         for brew in [b.strip() for b in brew_list]:
             if brew not in installed:
-                local('brew install {}'.format(brew))
+                with settings(warn_only=True):
+                    local('brew install {}'.format(brew))
 
     local('brew update')
     local('brew upgrade')
