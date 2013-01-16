@@ -190,10 +190,10 @@ def update_repos():
 
 @task(default=True)
 def update():
-    #execute(self_update)
-    #execute(update_homebrew)
-    #execute(update_zsh)
-    #execute(update_spf13)
-    #execute(update_pip)
-    #execute(update_repos)
+    execute(self_update)
+    execute(update_homebrew)
+    execute(update_zsh)
+    execute(update_spf13)
+    execute(update_pip)
+    execute(update_repos)
     execute(update_brew_list)
