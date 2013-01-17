@@ -17,20 +17,17 @@ plugins=(
     dircycle 
     django
     fabric 
-    gem 
     git 
     history-substring-search 
     knife 
     last-working-dir 
     mercurial 
-    mvn 
     osx 
     per-directory-history 
     pip 
     python 
     svn
     virtualenvwrapper
-    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
