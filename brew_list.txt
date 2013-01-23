@@ -11,6 +11,8 @@ coreutils
 ctags
 ddrescue
 erlang
+fontconfig
+freetype
 gd
 gdbm
 gettext
