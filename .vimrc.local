@@ -1,4 +1,4 @@
-set guifont=Source\ Code\ Pro:h13,Monaco:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
+set guifont=Source\ Code\ Pro:h12,Monaco:h12,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
 ""let g:ackprg="/usr/local/bin/ack -H --nocolor --nogroup --column"
 
 colorscheme tomorrow-night
