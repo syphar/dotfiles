@@ -25,7 +25,9 @@ gnu-sed
 gnuplot
 gnutls
 grep
+harfbuzz
 httperf
+icu4c
 jpeg
 less
 lftp
