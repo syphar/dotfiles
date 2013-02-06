@@ -17,6 +17,11 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 
+Bundle 'scrooloose/syntastic'
+if has ('gui')
+    Bundle 'Valloric/YouCompleteMe'
+endif
+
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 
 filetype plugin indent on     
@@ -300,11 +305,6 @@ let g:syntastic_python_checker = "flake8"
 let g:syntastic_python_checker_args = "--ignore=E501"
 
 let g:syntastic_java_javac_autoload_maven_classpath = 1
-
-let g:pymode_rope = 0
-let g:pymode_lint = 0
-let g:pymode_lint_checker = ""
-let g:pymode_folding = 0
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
