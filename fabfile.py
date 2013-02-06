@@ -50,12 +50,10 @@ def update_zsh():
         local('git push origin master')
 
 
-def update_spf13():
-    print(green('update_spf13'))
-    with lcd('~/.spf13-vim-3/'):
-        local('git checkout 3.0')
-        local('git pull')
-        local('vim +BundleInstall! +BundleClean! +qa')
+@task
+def update_vim():
+    print(green('update_vim'))
+    local('vim +BundleInstall! +BundleClean! +qa')
 
 
 def update_brew_list():
