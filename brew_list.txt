@@ -45,7 +45,6 @@ little-cms
 lua
 luajit
 lynx
-macvim
 maven
 mcrypt
 memcached
