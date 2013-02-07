@@ -30,6 +30,10 @@ Bundle 'python.vim'
 
 Bundle 'tpope/vim-markdown'
 
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'vim-scripts/LargeFile'
+Bundle 'AutoTag'
+
 
 filetype plugin indent on     
 syntax on                   " Syntax highlighting
