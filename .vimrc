@@ -21,8 +21,15 @@ Bundle 'scrooloose/syntastic'
 if has ('gui')
     Bundle 'Valloric/YouCompleteMe'
 endif
+Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+
+Bundle 'klen/python-mode'
+Bundle 'python.vim'
+
+Bundle 'tpope/vim-markdown'
+
 
 filetype plugin indent on     
 syntax on                   " Syntax highlighting
@@ -298,13 +305,20 @@ let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[Env: %n]'
 
 "show errorlist when there are errors
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
-let g:syntastic_python_checker = "flake8"
-let g:syntastic_python_checker_args = "--ignore=E501"
+let g:syntastic_python_checker="flake8"
+let g:syntastic_python_checker_args="--ignore=E501"
 
 let g:syntastic_java_javac_autoload_maven_classpath = 1
+
+let g:pymode_lint = 0
+let g:pymode_lint_checker = "pyflakes"
+let g:pymode_utils_whitespaces = 0
+let g:pymode_rope = 1
+let g:pymode_folding = 0
+let g:pymode_virtualenv = 0
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
