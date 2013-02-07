@@ -191,7 +191,7 @@ def update():
     execute(self_update)
     execute(update_homebrew)
     execute(update_zsh)
-    execute(update_spf13)
+    execute(update_vim)
     execute(update_pip)
     execute(update_repos)
     execute(update_brew_list)
