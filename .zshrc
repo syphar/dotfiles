@@ -49,7 +49,7 @@ alias ccu="export CCTRL_API_URL=https://api.devcctrl.com && export SSH_FORWARDER
 alias lccu="export CCTRL_API_URL=http://localhost:8000 && export CCTRL_TOKEN_FILE=local.json && /usr/local/share/python/cctrluser"
 alias cctrluser="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH_FORWARDER=ssh.cloudcontrolled.net && export CCTRL_TOKEN_FILE=live.json && /usr/local/share/python/cctrluser"
 
-alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune"
+alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune --tags"
 
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 
