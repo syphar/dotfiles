@@ -89,7 +89,6 @@ tmux
 tokyo-cabinet
 tor
 v8
-vim
 watch
 wget
 xz
