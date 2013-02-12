@@ -18,9 +18,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 
 Bundle 'scrooloose/syntastic'
-if has ('gui')
-    Bundle 'Valloric/YouCompleteMe'
-endif
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
