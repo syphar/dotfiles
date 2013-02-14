@@ -17,7 +17,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -307,18 +307,18 @@ let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '[Env: %n]'
 
 "show errorlist when there are errors
-let g:syntastic_auto_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_python_checker="flake8"
-let g:syntastic_python_checker_args="--ignore=E501"
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_error_symbol='✗'
+"let g:syntastic_warning_symbol='⚠'
+"let g:syntastic_python_checker="flake8"
+"let g:syntastic_python_checker_args="--ignore=E501"
+"let g:syntastic_java_javac_autoload_maven_classpath=1
 
-let g:syntastic_java_javac_autoload_maven_classpath = 1
-
-let g:pymode_lint = 0
-let g:pymode_lint_checker = "pyflakes"
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_ignore = "E501"
 let g:pymode_utils_whitespaces = 0
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
 
