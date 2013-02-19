@@ -55,6 +55,9 @@ def update_vim():
     print(green('update_vim'))
     local('vim +BundleInstall! +BundleClean! +qa')
 
+    with lcd('~/.vim/bundle/YouCompleteMe'):
+        local('./install.sh')
+
 
 def update_brew_list():
     print(green('update_brew_list'))
