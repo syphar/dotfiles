@@ -324,6 +324,8 @@ let g:pymode_rope = 0
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
 
+let g:pymode_breakpoint_cmd = "from pudb import set_trace; set_trace() ### XXX BREAKPOINT"
+
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType rst setlocal ts=2 sts=2 sw=2 noexpandtab textwidth=78 spell spelllang=de_de
