@@ -54,6 +54,7 @@ alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all -
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 
 alias sourcetree='open -a SourceTree'
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 export BYOBU_PREFIX=$(brew --prefix)
 export NODE_PATH=/usr/local/lib/node_modules

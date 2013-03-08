@@ -33,6 +33,7 @@ Bundle 'vim-scripts/LargeFile'
 Bundle 'AutoTag'
 
 Bundle 'mileszs/ack.vim'
+Bundle 'airblade/vim-gitgutter'
 
 
 filetype plugin indent on     
@@ -323,8 +324,6 @@ let g:pymode_utils_whitespaces = 0
 let g:pymode_rope = 0
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
-
-let g:pymode_breakpoint_cmd = "from pudb import set_trace; set_trace() ### XXX BREAKPOINT"
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
