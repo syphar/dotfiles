@@ -2,9 +2,6 @@ ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="dcn"
 
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 BAT_CHARGE="$HOME/src/dotfiles/batcharge.py"
@@ -33,8 +30,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
-export EDITOR="vim"
-
 export PROJECT_HOME="$HOME/src"
 export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTUAL_ENV_DISABLE_PROMPT=true
@@ -55,6 +50,9 @@ alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 
 alias sourcetree='open -a SourceTree'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+
+export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 export BYOBU_PREFIX=$(brew --prefix)
 export NODE_PATH=/usr/local/lib/node_modules
