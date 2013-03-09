@@ -47,6 +47,7 @@ alias cctrluser="export CCTRL_API_URL=https://api.cloudcontrol.com && export SSH
 alias gur="git fetch --all --recurse-submodules=yes --prune && git fetch --all --recurse-submodules=yes --prune --tags"
 
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
+alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip install -U"
 
 alias sourcetree='open -a SourceTree'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
