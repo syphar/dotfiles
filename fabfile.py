@@ -53,7 +53,7 @@ def update_zsh():
 @task
 def update_vim():
     print(green('update_vim'))
-    local('vim +BundleInstall! +BundleClean! +qa')
+    local('/Applications/MacVim.app/Contents/MacOS/Vim +BundleInstall! +BundleClean! +qa')
 
     with lcd('~/.vim/bundle/YouCompleteMe'):
         with shell_env(PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin'):
