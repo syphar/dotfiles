@@ -36,6 +36,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/syntastic'
 
+Bundle 'gitv'
+
 
 filetype plugin indent on     
 syntax on                   " Syntax highlighting
@@ -336,6 +338,12 @@ match OverLength /\%>80v.\+/
 
 " auto clean fugitive-buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" mappings for gitv
+nmap <leader>gv :Gitv --all<cr>
+nmap <leader>gV :Gitv! --all<cr>
+vmap <leader>gV :Gitv! --all<cr>
+
 
 set nospell
 
