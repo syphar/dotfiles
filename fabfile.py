@@ -46,7 +46,7 @@ def update_homebrew():
 @task
 def update_zsh():
     print(green('update_zsh'))
-    with lcd('~/.oh-my-zsh/'):
+    with lcd('~/.zprezto/'):
         local('git checkout master')
         local('git pull origin master')
         local('git pull upstream master')
