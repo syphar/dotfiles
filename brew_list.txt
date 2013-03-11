@@ -27,6 +27,7 @@ gnuplot
 gnutls
 grep
 harfbuzz
+htop-osx
 httperf
 icu4c
 jpeg
