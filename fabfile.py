@@ -19,11 +19,13 @@ fabric.state.output.stderr = False
 fabric.state.output.user = True
 
 
+@task
 def self_update():
     print(green('self_update'))
     local('git pull')
 
 
+@task
 def update_homebrew():
     print(green('update_homebrew'))
 
@@ -41,6 +43,7 @@ def update_homebrew():
     local('brew linkapps')
 
 
+@task
 def update_zsh():
     print(green('update_zsh'))
     with lcd('~/.oh-my-zsh/'):
@@ -73,6 +76,7 @@ def update_brew_list():
             local("git commit -m 'new brews'")
 
 
+@task
 def update_pip():
     print(green('update_pip'))
 
