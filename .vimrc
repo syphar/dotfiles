@@ -36,6 +36,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/syntastic'
 
+Bundle 'delimitMate.vim'
 Bundle 'gitv'
 
 
