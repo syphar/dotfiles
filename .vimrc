@@ -7,6 +7,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
@@ -17,7 +18,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 
-"Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 
@@ -345,6 +345,11 @@ nmap <leader>gv :Gitv --all<cr>
 nmap <leader>gV :Gitv! --all<cr>
 vmap <leader>gV :Gitv! --all<cr>
 
+" ultisnip 
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsListSnippets="<leader><c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><c-k>"
 
 set nospell
 
