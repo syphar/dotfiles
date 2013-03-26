@@ -348,7 +348,7 @@ vmap <leader>gV :Gitv! --all<cr>
 " ultisnip 
 let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsListSnippets="<leader><c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><c-j>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 let g:UltiSnipsJumpBackwardTrigger="<leader><c-k>"
 
 set nospell
