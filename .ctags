@@ -4,3 +4,4 @@
 --regex-markdown=/^##[ \t]+(.*)/\1/h,heading2/
 --regex-markdown=/^###[ \t]+(.*)/\1/h,heading3/
 
+--python-kinds=-iv
