@@ -6,7 +6,6 @@
 	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 	quotepath = false
 	trustExitCode = true
-	pager = 
 
 [color]
 	branch = auto
