@@ -1,6 +1,7 @@
 ack
 astyle
 autoconf
+autojump
 automake
 bazaar
 byobu
