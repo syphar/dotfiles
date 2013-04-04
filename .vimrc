@@ -38,6 +38,7 @@ Bundle 'scrooloose/syntastic'
 
 Bundle 'delimitMate.vim'
 Bundle 'gitv'
+Bundle 'godlygeek/tabular'
 
 
 filetype plugin indent on     
