@@ -15,7 +15,7 @@
 	ui = auto
 [alias]
 	d = difftool
-    st = status
+    st = status -sb
     ci = commit
     co = checkout
     di = diff
@@ -30,6 +30,12 @@
     b = branch
     ds = diff --stat=160,120
     dh1 = diff HEAD~1
+
+    # new aliases based on http://code.joejag.com/2013/everyday-git-aliases/
+    purr = pull ––rebase
+    ready = rebase -i @{u}
+    wipe = reset -–hard HEAD
+    ignored = ls-files –others -i –exclude-standard
 
     # Fancy logging.
     #   h = head
