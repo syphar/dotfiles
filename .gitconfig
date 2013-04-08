@@ -34,7 +34,7 @@
     # new aliases based on http://code.joejag.com/2013/everyday-git-aliases/
     purr = pull ––rebase
     ready = rebase -i @{u}
-    wipe = reset -–hard HEAD
+    wipe = reset --hard HEAD
     ignored = ls-files –others -i –exclude-standard
 
     # Fancy logging.
