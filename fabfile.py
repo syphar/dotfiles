@@ -52,6 +52,10 @@ def update_zsh():
         local('git pull upstream master')
         local('git push origin master')
 
+    with lcd('~/.liquidprompt/'):
+        local('git checkout master')
+        local('git pull origin master')
+
 
 @task
 def update_vim():
