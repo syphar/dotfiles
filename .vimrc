@@ -7,7 +7,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'SirVer/ultisnips'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
@@ -349,12 +348,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nmap <leader>gv :Gitv --all<cr>
 nmap <leader>gV :Gitv! --all<cr>
 vmap <leader>gV :Gitv! --all<cr>
-
-" ultisnip 
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsListSnippets="<leader><c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><c-k>"
 
 set nospell
 
