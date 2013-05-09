@@ -91,7 +91,7 @@ def update_pip():
     ]
 
     with shell_env(PIP_REQUIRE_VIRTUALENV="false"):
-        local('pip-accel install --use-mirrors -U {}'.format(' '.join(packages)))
+        local('pip install --use-mirrors -U {}'.format(' '.join(packages)))
 
 
 def git_update_hooks(repo):
