@@ -89,6 +89,7 @@ s-lang
 scons
 siege
 sqlite
+tig
 tmux
 tokyo-cabinet
 tor
