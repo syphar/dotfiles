@@ -257,7 +257,7 @@ function! StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 
-set guifont=Source\ Code\ Pro\ Light:h11,Monaco:h11,Andale\ Mono\ Regular:h11,Menlo\ Regular:h11,Consolas\ Regular:h11,Courier\ New\ Regular:h11
+set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
 
 colorscheme tomorrow-night
 
