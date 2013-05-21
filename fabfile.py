@@ -54,7 +54,8 @@ def update_zsh():
 
     with lcd('~/.liquidprompt/'):
         local('git checkout master')
-        local('git pull origin master')
+        local('git fetch origin')
+        local('git reset origin/master')
 
 
 @task
