@@ -4,6 +4,7 @@ autoconf
 autojump
 automake
 bazaar
+boost
 byobu
 cairo
 cassandra
@@ -20,12 +21,15 @@ gettext
 git
 git-flow
 git-ftp
+glew
 glib
+glm
 gmp
 gnu-sed
 gnupg
 gnuplot
 gnutls
+gource
 grep
 harfbuzz
 htop-osx
@@ -87,6 +91,8 @@ riak
 rsnapshot
 s-lang
 scons
+sdl
+sdl_image
 siege
 sqlite
 tig
