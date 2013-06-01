@@ -322,6 +322,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 "let g:syntastic_python_checker="flake8,pyflakes,pylint,python"
+let g:syntastic_python_checkers=['flake8','py3kwarn','python']
 let g:syntastic_python_flake8_args="--ignore=E501"
 let g:syntastic_java_javac_autoload_maven_classpath=1
 
