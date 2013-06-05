@@ -339,8 +339,6 @@ autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType markdown setlocal textwidth=78 spell spelllang=de_de
 
 set colorcolumn=80
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%>80v.\+/
 
 " auto clean fugitive-buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
