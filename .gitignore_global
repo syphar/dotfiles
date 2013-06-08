@@ -26,3 +26,5 @@ tags
 *.un~
 Session.vim
 
+
+.idea
