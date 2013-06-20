@@ -96,6 +96,7 @@ sdl_image
 siege
 sqlite
 tig
+tmate
 tmux
 tokyo-cabinet
 tor
