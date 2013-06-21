@@ -44,6 +44,23 @@ def update_homebrew():
 
 
 @task
+def cleanup_homebrew():
+    cache_folder = local('brew --cache', capture=True)
+    local('rm -rf ' + cache_folder + "/*")
+
+    local('brew cleanup --force')
+    local('brew prune')
+
+    for l in local('brew missing', capture=True).split('\n'):
+        if not l:
+            continue
+
+        _, pkgs = l.strip().split(':')
+        for p in pkgs.split():
+            local('brew install ' + p)
+
+
+@task
 def update_zsh():
     print(green('update_zsh'))
     with lcd('~/.zprezto/'):
@@ -203,6 +220,7 @@ def update_repos():
 def update():
     execute(self_update)
     execute(update_homebrew)
+    execute(cleanup_homebrew)
     execute(update_zsh)
     execute(update_vim)
     execute(update_pip)
