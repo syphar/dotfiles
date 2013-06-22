@@ -60,6 +60,7 @@ midnight-commander
 mutt
 mysql
 nettle
+newt
 ngrep
 nmap
 node
@@ -73,6 +74,7 @@ pidof
 pil
 pixman
 pkg-config
+popt
 postgresql
 pstree
 pypy
