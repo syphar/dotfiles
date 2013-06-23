@@ -45,6 +45,8 @@ def update_homebrew():
 
 @task
 def cleanup_homebrew():
+    print(green('cleanup_homebrew'))
+
     cache_folder = local('brew --cache', capture=True)
     local('rm -rf ' + cache_folder + "/*")
 
