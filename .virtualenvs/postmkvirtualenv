@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# create project dir if not exist
+proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
+proj_dir=$PROJECT_HOME/$proj_name
+
+mkdir $proj_dir
+cd $proj_dir
+
+
+# install default packages
+pip install pip-accel
+
+# install requirements if there are some
+if [ -f requirements.txt ]; then
+    pip-accel install -r requirements.txt || pip install -r requirements.txt
+fi
