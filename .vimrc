@@ -296,8 +296,8 @@ if has('gui_running')
     nnoremap <SwipeRight> gt
 
     " mac fullscreen
-    set fuopt+=maxhorz
-    set fu
+    " set fuopt+=maxhorz
+    " set fu
 endif
 
 "tags for current buffer
