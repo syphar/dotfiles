@@ -1,3 +1,6 @@
+[ui]
+username = Denis Cornehl <denis.cornehl@gmail.com>
+
 [extensions]
 hgext.extdiff =
 
