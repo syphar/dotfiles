@@ -52,6 +52,7 @@ little-cms
 lua
 luajit
 lynx
+lzo
 maven
 mcrypt
 memcached
@@ -97,6 +98,7 @@ sdl
 sdl_image
 siege
 sqlite
+squashfs
 tig
 tmate
 tmux
