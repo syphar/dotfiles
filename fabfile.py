@@ -222,7 +222,7 @@ def update_repos():
 def update():
     execute(self_update)
     execute(update_homebrew)
-    execute(cleanup_homebrew)
+    # execute(cleanup_homebrew)
     execute(update_zsh)
     execute(update_vim)
     execute(update_pip)
