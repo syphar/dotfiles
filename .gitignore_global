@@ -28,4 +28,4 @@ Session.vim
 
 
 .idea
-.iml
+*.iml
