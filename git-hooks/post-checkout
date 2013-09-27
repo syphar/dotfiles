@@ -16,16 +16,3 @@ ctags -R 2> /dev/null > /dev/null
 
 # clear ctrlp-cache (currently all caches)
 rm -f ~/.cache/ctrlp/*.txt
-
-# check virtualenv-requirements
-if [ -n $VIRTUAL_ENV ]; then
-    if [ -a ./requirements.txt ]; then
-        echo "checking requirements.txt"
-        pip install -q -r ./requirements.txt
-    fi
-
-    if [ -a ./requirements_dev.txt ]; then
-        echo "checking requirements_dev.txt"
-        pip install -q -r ./requirements_dev.txt
-    fi
-fi
