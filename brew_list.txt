@@ -1,4 +1,5 @@
 ack
+asciidoc
 astyle
 autoconf
 autojump
@@ -12,6 +13,8 @@ cmake
 coreutils
 ctags
 ddrescue
+docbook
+docbook-xsl
 erlang
 fontconfig
 freetype
@@ -25,6 +28,7 @@ glew
 glib
 glm
 gmp
+gnu-getopt
 gnu-sed
 gnupg
 gnuplot
@@ -107,5 +111,6 @@ tor
 v8
 watch
 wget
+xmlto
 xz
 zsh
