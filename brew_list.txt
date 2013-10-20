@@ -48,6 +48,7 @@ libgcrypt
 libgpg-error
 libmemcached
 libpng
+libssh2
 libtasn1
 libtiff
 libtool
