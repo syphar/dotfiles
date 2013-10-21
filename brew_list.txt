@@ -85,6 +85,7 @@ postgresql
 pstree
 pypy
 python
+python24
 python26
 python3
 python31
