@@ -52,6 +52,7 @@ libssh2
 libtasn1
 libtiff
 libtool
+libyaml
 lighttpd
 little-cms
 lua
@@ -72,6 +73,7 @@ nmap
 node
 offline-imap
 oniguruma
+openssl
 ossp-uuid
 p11-kit
 pango
@@ -96,6 +98,7 @@ redis
 rhino
 riak
 rsnapshot
+ruby
 s-lang
 scons
 sdl
