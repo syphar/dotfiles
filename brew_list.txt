@@ -100,6 +100,8 @@ riak
 rsnapshot
 ruby
 s-lang
+sbt
+scala
 scons
 sdl
 sdl_image
