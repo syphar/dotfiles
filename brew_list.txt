@@ -46,6 +46,7 @@ libevent
 libffi
 libgcrypt
 libgpg-error
+libiconv
 libmemcached
 libpng
 libssh2
@@ -113,6 +114,7 @@ tmate
 tmux
 tokyo-cabinet
 tor
+unixodbc
 v8
 watch
 wget
