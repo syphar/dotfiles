@@ -104,13 +104,22 @@ def update_pip():
     print(green('update_pip'))
 
     packages = [
-        dist.project_name
-        for dist in pip.get_installed_distributions()
-        if dist.project_name not in ['git-remote-helpers']
+        pkg.split('=', 1)[0]
+        for pkg in local(
+            '/usr/local/bin/pip freeze',
+            capture=True
+        ).splitlines()
+        if 'git-remote-helpers' not in pkg
     ]
 
     with shell_env(PIP_REQUIRE_VIRTUALENV="false"):
-        local('pip install --use-mirrors -U {}'.format(' '.join(packages)))
+        external = ' '.join('--allow-external {}'.format(p) for p in packages)
+        insecure = ' '.join('--allow-insecure {}'.format(p) for p in packages)
+        local('pip install --use-mirrors -U {} {} {}'.format(
+            ' '.join(packages),
+            external,
+            insecure,
+        ))
 
 
 def git_update_hooks(repo):
