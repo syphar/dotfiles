@@ -17,6 +17,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
