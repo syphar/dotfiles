@@ -11,6 +11,7 @@ cairo
 cassandra
 cmake
 coreutils
+cscope
 ctags
 ddrescue
 docbook
@@ -60,11 +61,13 @@ lua
 luajit
 lynx
 lzo
+macvim
 maven
 mcrypt
 memcached
 mercurial
 midnight-commander
+mongodb
 mutt
 mysql
 nettle

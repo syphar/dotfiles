@@ -83,8 +83,7 @@ def update_vim():
     local('/Applications/MacVim.app/Contents/MacOS/Vim +BundleInstall! +BundleClean! +qa')
 
     with lcd('~/.vim/bundle/YouCompleteMe'):
-        with shell_env(PATH='/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/texbin'):
-            local('./install.sh')
+        local('./install.sh')
 
 
 def update_brew_list():
