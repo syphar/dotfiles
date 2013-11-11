@@ -36,7 +36,6 @@ gnuplot
 gnutls
 gource
 grep
-harfbuzz
 htop-osx
 httperf
 icu4c
@@ -80,7 +79,6 @@ oniguruma
 openssl
 ossp-uuid
 p11-kit
-pango
 pcre
 pidof
 pil
