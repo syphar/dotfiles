@@ -40,6 +40,7 @@ htop-osx
 httperf
 icu4c
 jpeg
+leiningen
 less
 lftp
 libevent
