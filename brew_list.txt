@@ -35,10 +35,12 @@ gnupg
 gnuplot
 gnutls
 gource
+grails
 grep
 htop-osx
 httperf
 icu4c
+ivy
 jpeg
 leiningen
 less
@@ -85,6 +87,7 @@ pidof
 pil
 pixman
 pkg-config
+play12
 popt
 postgresql
 pstree
