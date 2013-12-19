@@ -123,6 +123,7 @@ tor
 unixodbc
 v8
 watch
+webp
 wget
 xmlto
 xz
