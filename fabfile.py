@@ -72,9 +72,9 @@ def update_zsh():
         local('git push origin master')
 
     with lcd('~/.liquidprompt/'):
-        local('git checkout master')
+        local('git checkout develop')
         local('git fetch origin')
-        local('git reset origin/master')
+        local('git reset origin/develop')
 
 
 @task
