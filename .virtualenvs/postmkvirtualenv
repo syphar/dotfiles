@@ -1,8 +1,2 @@
 #!/usr/bin/env bash
 
-# create project dir if not exist
-proj_name=$(echo $VIRTUAL_ENV|awk -F'/' '{print $NF}')
-proj_dir=$PROJECT_HOME/$proj_name
-
-mkdir $proj_dir
-cd $proj_dir
