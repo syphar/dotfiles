@@ -37,6 +37,7 @@ gnutls
 gource
 grails
 grep
+hr
 htop-osx
 httperf
 icu4c
