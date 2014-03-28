@@ -99,28 +99,6 @@ def update_brew_list():
             local("git commit -m 'new brews'")
 
 
-@task
-def update_pip():
-    print(green('update_pip'))
-
-    packages = [
-        pkg.split('=', 1)[0]
-        for pkg in local(
-            '/usr/local/bin/pip freeze',
-            capture=True
-        ).splitlines()
-        if 'git-remote-helpers' not in pkg
-    ]
-
-    with shell_env(PIP_REQUIRE_VIRTUALENV="false"):
-        external = ' '.join('--allow-external {}'.format(p) for p in packages)
-        insecure = ' '.join('--allow-insecure {}'.format(p) for p in packages)
-        local('pip install --use-mirrors -U {} {} {}'.format(
-            ' '.join(packages),
-            external,
-            insecure,
-        ))
-
 
 def git_update_hooks(repo):
     git_dir = os.path.join(repo, '.git')
@@ -230,9 +208,7 @@ def update_repos():
 def update():
     execute(self_update)
     execute(update_homebrew)
-    # execute(cleanup_homebrew)
     execute(update_zsh)
     execute(update_vim)
-    execute(update_pip)
     execute(update_repos)
     execute(update_brew_list)
