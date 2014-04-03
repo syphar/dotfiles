@@ -27,7 +27,7 @@ def self_update():
 @task
 def sync_omnifocus():
     print(green('update omnifocus github'))
-    local('omnifocus')
+    local('of sync')
 
 @task
 def update_homebrew():
