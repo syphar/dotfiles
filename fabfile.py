@@ -24,6 +24,10 @@ def self_update():
     print(green('self_update'))
     local('git pull')
 
+@task
+def sync_omnifocus():
+    print(green('update omnifocus github'))
+    local('omnifocus')
 
 @task
 def update_homebrew():
@@ -207,6 +211,7 @@ def update_repos():
 @task(default=True)
 def update():
     execute(self_update)
+    execute(sync_omnifocus)
     execute(update_homebrew)
     execute(update_zsh)
     execute(update_vim)
