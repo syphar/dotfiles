@@ -5,6 +5,7 @@ autoconf
 autojump
 automake
 bazaar
+bison27
 boost
 byobu
 cairo
@@ -17,6 +18,7 @@ ddrescue
 docbook
 docbook-xsl
 erlang
+flex
 fontconfig
 freetype
 gd
@@ -70,6 +72,7 @@ maven
 mcrypt
 memcached
 mercurial
+mhash
 midnight-commander
 mongodb
 mutt
@@ -85,6 +88,7 @@ openssl
 ossp-uuid
 p11-kit
 pcre
+php53
 pidof
 pil
 pixman
@@ -101,6 +105,7 @@ python3
 python31
 python32
 rabbitmq
+re2c
 readline
 redis
 rhino
@@ -128,4 +133,5 @@ webp
 wget
 xmlto
 xz
+zlib
 zsh
