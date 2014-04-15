@@ -117,6 +117,8 @@ sbt
 scala
 scons
 sdl
+sdl2
+sdl2_image
 sdl_image
 siege
 sqlite
