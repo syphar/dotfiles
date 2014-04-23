@@ -21,9 +21,12 @@ erlang
 flex
 fontconfig
 freetype
+freexl
 gd
 gdbm
+geos
 gettext
+giflib
 git
 git-flow
 git-ftp
@@ -37,6 +40,7 @@ gnupg
 gnuplot
 gnutls
 gource
+gpp
 grails
 grep
 hr
@@ -45,12 +49,14 @@ httperf
 icu4c
 ivy
 jpeg
+json-c
 leiningen
 less
 lftp
 libevent
 libffi
 libgcrypt
+libgeotiff
 libgpg-error
 libiconv
 libmemcached
@@ -66,6 +72,7 @@ lua
 luajit
 lynx
 lzip
+lzlib
 lzo
 macvim
 maven
@@ -96,6 +103,7 @@ pkg-config
 play12
 popt
 postgresql
+proj
 pstree
 pypy
 python
