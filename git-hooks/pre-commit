@@ -15,6 +15,8 @@ import tempfile
 select_codes = []
 ignore_codes = ['W601']
 
+additional_args = ['--exclude=migrations']
+
 
 def system(*args, **kwargs):
     kwargs.setdefault('stdout', subprocess.PIPE)
@@ -42,9 +44,9 @@ def main():
         print "Error: select and ignore codes are mutually exclusive"
         sys.exit(1)
     elif select_codes:
-        output = system('pep8', '--select', ','.join(select_codes), '.', cwd=tempdir)
+        output = system('pep8', '--select', ','.join(select_codes), '.', *additional_args, cwd=tempdir)
     elif ignore_codes:
-        output = system('pep8', '--ignore', ','.join(ignore_codes), '.', cwd=tempdir)
+        output = system('pep8', '--ignore', ','.join(ignore_codes), '.', *additional_args, cwd=tempdir)
     else:
         output = system('pep8', '.', cwd=tempdir)
     shutil.rmtree(tempdir)
