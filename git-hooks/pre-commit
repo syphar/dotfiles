@@ -13,7 +13,7 @@ import tempfile
 
 # don't fill in both of these
 select_codes = []
-ignore_codes = ['W601']
+ignore_codes = ['W601', 'E501']
 
 additional_args = ['--exclude=migrations']
 
@@ -41,7 +41,7 @@ def main():
             system('git', 'show', ':' + name, stdout=f)
 
     if select_codes and ignore_codes:
-        print "Error: select and ignore codes are mutually exclusive"
+        print("Error: select and ignore codes are mutually exclusive")
         sys.exit(1)
     elif select_codes:
         output = system('pep8', '--select', ','.join(select_codes), '.', *additional_args, cwd=tempdir)
@@ -51,9 +51,9 @@ def main():
         output = system('pep8', '.', cwd=tempdir)
     shutil.rmtree(tempdir)
     if output:
-        print 'PEP8 style violations have been detected. Please fix them\n' \
-'or force the commit with "git commit --no-verify".\n'
-        print output,
+        print('PEP8 style violations have been detected. Please fix them\n'
+              'or force the commit with "git commit --no-verify".\n')
+        print(output)
         sys.exit(1)
 
 
