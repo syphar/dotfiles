@@ -1,4 +1,5 @@
 ack
+archey
 asciidoc
 astyle
 autoconf
@@ -7,6 +8,7 @@ automake
 bazaar
 bison27
 boost
+boot2docker
 byobu
 cairo
 cassandra
@@ -17,6 +19,7 @@ ctags
 ddrescue
 docbook
 docbook-xsl
+docker
 erlang
 flex
 fontconfig
