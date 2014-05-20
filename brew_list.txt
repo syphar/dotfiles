@@ -3,6 +3,7 @@ archey
 asciidoc
 astyle
 autoconf
+autoenv
 autojump
 automake
 bazaar
