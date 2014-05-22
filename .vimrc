@@ -337,9 +337,10 @@ let g:pymode_virtualenv = 0
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType rst setlocal ts=2 sts=2 sw=2 noexpandtab textwidth=78 spell spelllang=de_de
+autocmd FileType rst setlocal ts=2 sts=2 sw=2 noexpandtab textwidth=78 spell 
 autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType markdown setlocal textwidth=78 spell spelllang=de_de
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType markdown setlocal textwidth=78 spell 
 
 set colorcolumn=80
 
