@@ -29,3 +29,9 @@ Session.vim
 
 .idea
 *.iml
+
+# virtualenvs 
+venv
+
+# autoenv
+.env
