@@ -39,6 +39,7 @@ Bundle 'delimitMate.vim'
 Bundle 'gitv'
 Bundle 'godlygeek/tabular'
 Bundle 'django.vim'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 
 
 filetype plugin indent on     
