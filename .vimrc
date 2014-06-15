@@ -40,6 +40,7 @@ Bundle 'gitv'
 Bundle 'godlygeek/tabular'
 Bundle 'django.vim'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Bundle 'laktek/distraction-free-writing-vim'
 
 
 filetype plugin indent on     
@@ -233,6 +234,24 @@ nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+    \ }
+
+let g:tagbar_type_mkd = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+    \ }
+
 let g:indent_guides_auto_colors = 1
 set ts=4 sw=4 et
 let g:indent_guides_start_level = 2
@@ -263,6 +282,12 @@ endfunction
 set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
 
 colorscheme tomorrow-night
+
+let g:fullscreen_colorscheme = "iawriter"
+let g:fullscreen_font = "Source\ Code\ Pro\ Light:h14,Monaco:h14,Andale\ Mono\ Regular:h14,Menlo\ Regular:h14,Consolas\ Regular:h14,Courier\ New\ Regular:h14"
+"let g:normal_colorscheme = g:colors_name"tomorrow-night"
+let g:normal_colorscheme = g:colors_name
+let g:normal_font = &guifont
 
 map <D-1> :tabn 1<CR>
 map <D-2> :tabn 2<CR>
