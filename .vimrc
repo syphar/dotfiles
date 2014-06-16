@@ -283,10 +283,10 @@ set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Me
 
 colorscheme tomorrow-night
 
-let g:fullscreen_colorscheme = "iawriter"
+let g:fullscreen_colorscheme = "tomorrow"
 let g:fullscreen_font = "Source\ Code\ Pro\ Light:h14,Monaco:h14,Andale\ Mono\ Regular:h14,Menlo\ Regular:h14,Consolas\ Regular:h14,Courier\ New\ Regular:h14"
 "let g:normal_colorscheme = g:colors_name"tomorrow-night"
-let g:normal_colorscheme = g:colors_name
+let g:normal_colorscheme = "tomorrow-night"
 let g:normal_font = &guifont
 
 map <D-1> :tabn 1<CR>
