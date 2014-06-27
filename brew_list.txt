@@ -18,6 +18,7 @@ coreutils
 cscope
 ctags
 ddrescue
+diff-pdf
 docbook
 docbook-xsl
 docker
@@ -43,6 +44,7 @@ gnu-sed
 gnupg
 gnuplot
 gnutls
+gobject-introspection
 gource
 gpp
 grails
@@ -50,6 +52,7 @@ grep
 hr
 htop-osx
 httperf
+hub
 icu4c
 ivy
 jpeg
@@ -72,6 +75,7 @@ libtool
 libyaml
 lighttpd
 little-cms
+little-cms2
 lua
 luajit
 lynx
@@ -95,6 +99,7 @@ nmap
 node
 offline-imap
 oniguruma
+openjpeg
 openssl
 ossp-uuid
 p11-kit
@@ -105,6 +110,7 @@ pil
 pixman
 pkg-config
 play12
+poppler
 popt
 postgresql
 proj
