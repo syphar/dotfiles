@@ -12,7 +12,6 @@ boost
 boot2docker
 byobu
 cairo
-cassandra
 cmake
 coreutils
 cscope
