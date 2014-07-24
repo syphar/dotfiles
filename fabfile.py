@@ -6,9 +6,6 @@ import os
 import fabric
 from fabric.api import local, lcd, execute, task, settings
 from fabric.colors import green, blue, red, magenta
-from fabric.context_managers import shell_env
-
-import pip
 
 fabric.state.output.status = True
 fabric.state.output.aborts = True
@@ -24,10 +21,12 @@ def self_update():
     print(green('self_update'))
     local('git pull')
 
+
 @task
 def sync_omnifocus():
     print(green('update omnifocus github'))
     local('of sync')
+
 
 @task
 def update_homebrew():
@@ -101,7 +100,6 @@ def update_brew_list():
         with settings(warn_only=True):
             local('git add brew_list.txt')
             local("git commit -m 'new brews'")
-
 
 
 def git_update_hooks(repo):
@@ -181,31 +179,36 @@ def svn_up(repo):
         local('svn update')
 
 
-@task
-def update_repos():
-    src_folder = os.path.join(os.path.expanduser('~'), 'src')
-
+def update_repos_in_folder(src_folder):
     for folder in os.listdir(src_folder):
         project = os.path.join(src_folder, folder)
         if not os.path.isdir(project):
             continue
 
-        print(blue('updating {}...'.format(folder)))
-
         with settings(warn_only=True):
             if os.path.exists(os.path.join(project, '.git')):
+                print(blue('updating {}...'.format(project)))
                 if git_fetch(project):
                     git_rebase_branches(project)
                 git_update_hooks(project)
 
             elif os.path.exists(os.path.join(project, '.hg')):
+                print(blue('updating {}...'.format(project)))
                 hg_pull(project)
 
             elif os.path.exists(os.path.join(project, '.svn')):
+                print(blue('updating {}...'.format(project)))
                 svn_up(project)
 
             else:
-                print(red('\tno repo!'))
+                update_repos_in_folder(project)
+
+
+@task
+def update_repos():
+    update_repos_in_folder(
+        os.path.join(os.path.expanduser('~'), 'src')
+    )
 
 
 @task(default=True)
