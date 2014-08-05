@@ -141,6 +141,7 @@ sdl_image
 siege
 sqlite
 squashfs
+the_silver_searcher
 tig
 tmate
 tmux
