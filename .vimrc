@@ -31,7 +31,7 @@ Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'AutoTag'
 
-Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/syntastic'
 
