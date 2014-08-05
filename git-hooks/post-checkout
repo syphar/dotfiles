@@ -12,7 +12,7 @@ find . -type d -empty -delete
 rm -f .syntastic_classpath
 
 # update ctags for project
-ctags -R 2> /dev/null > /dev/null
+git ls-files . --cached --exclude-standard --others | ctags -L -
 
 # clear ctrlp-cache (currently all caches)
 rm -f ~/.cache/ctrlp/*.txt
