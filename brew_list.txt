@@ -49,6 +49,7 @@ gource
 gpp
 grails
 grep
+highlight
 hr
 htop-osx
 httperf
