@@ -355,8 +355,8 @@ let g:syntastic_python_flake8_args="--ignore=E501"
 let g:syntastic_java_javac_autoload_maven_classpath=0
 
 let g:pymode_lint = 0
-let g:pymode_utils_whitespaces = 0
-let g:pymode_rope = 0
+let g:pymode_utils_whitespaces = 1
+let g:pymode_rope = 1
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
 
