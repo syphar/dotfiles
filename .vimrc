@@ -360,6 +360,8 @@ let g:pymode_rope = 1
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
 let g:pymode_doc = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 
 " Filetype-specific tabs and spaces"
 autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
