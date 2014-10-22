@@ -41,6 +41,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'django.vim'
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 Bundle 'laktek/distraction-free-writing-vim'
+Bundle 'terryma/vim-expand-region'
 
 
 filetype plugin indent on     
@@ -186,6 +187,10 @@ map <leader>et :tabe %%
 " Adjust viewports to the same size
 map <Leader>= <C-w>=
 
+" vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 " Map <Leader>ff to display all lines with keyword under cursor
 " and ask which one to jump to
 nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
@@ -219,11 +224,12 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_user_command = {
     \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+    \ 1: ['.git', 'cd %s && git ls-files . -co --exclude-standard'],
 	\ 2: ['.hg', 'hg --cwd %s locate -I .'],
     \ },
     \ 'fallback': 'find %s -type f'
 \ }
+let g:ctrlp_use_caching = 0
 
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
 
@@ -398,3 +404,14 @@ set showtabline=0
 
 "completely disable folding
 set nofoldenable
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
