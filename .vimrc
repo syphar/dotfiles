@@ -95,20 +95,6 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'django.vim'
 
-NeoBundleLazy 'klen/python-mode', {
-          \ 'autoload' : {
-          \   'filetypes' : 'python',
-          \ }}
-let g:pymode_lint = 0
-let g:pymode_utils_whitespaces = 1
-let g:pymode_rope = 1
-let g:pymode_folding = 0
-let g:pymode_virtualenv = 0
-let g:pymode_doc = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-
-
 set tags=./tags;/,~/.vimtags
 
 set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
