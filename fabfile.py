@@ -80,15 +80,6 @@ def update_zsh():
         local('git reset origin/develop')
 
 
-@task
-def update_vim():
-    print(green('update_vim'))
-    local('/Applications/MacVim.app/Contents/MacOS/Vim +BundleInstall! +BundleClean! +qa')
-
-    with lcd('~/.vim/bundle/YouCompleteMe'):
-        local('./install.sh')
-
-
 def update_brew_list():
     print(green('update_brew_list'))
     listfile = os.path.expanduser('~/src/dotfiles/brew_list.txt')
@@ -217,6 +208,5 @@ def update():
     execute(sync_omnifocus)
     execute(update_homebrew)
     execute(update_zsh)
-    execute(update_vim)
     execute(update_repos)
     execute(update_brew_list)
