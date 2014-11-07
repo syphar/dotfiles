@@ -101,13 +101,15 @@ NeoBundleLazy 'klen/python-mode', {
           \ }}
 let g:pymode_lint = 0
 let g:pymode_utils_whitespaces = 1
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_folding = 0
 let g:pymode_virtualenv = 0
 let g:pymode_doc = 0
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 
+" Load plugins
+call vimrc#after()
 
 set tags=./tags;/,~/.vimtags
 
@@ -157,8 +159,6 @@ map <M-D-Left> <C-W>h<C-W>_
 vnoremap < <gv
 vnoremap > >gv
 
-" Load plugins
-call vimrc#after()
 
 " Define maps for your plugins
 nnoremap <Leader>o :CtrlP<CR>
