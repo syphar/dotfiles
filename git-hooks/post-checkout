@@ -2,17 +2,5 @@
 # Start from the repository root.
 cd ./$(git rev-parse --show-cdup)
 
-# Delete .pyc files and empty directories.
-find . -name "*.pyc" -delete
-find . -name "*.pyo" -delete
-find . -name "*.class" -delete
-find . -type d -empty -delete
-
-# delete classpath-files for java-projects
-rm -f .syntastic_classpath
-
 # update ctags for project
 git ls-files . --cached --exclude-standard --others | ctags -L - 2> /dev/null > /dev/null
-
-# clear ctrlp-cache (currently all caches)
-rm -f ~/.cache/ctrlp/*.txt
