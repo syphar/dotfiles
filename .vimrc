@@ -4,6 +4,7 @@
 " Select your Leader key
 let mapleader = ","
 
+
 " Load sensible defaults and setup NeoBundle
 call vimrc#before()
 
@@ -90,6 +91,9 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 NeoBundle 'ywjno/vim-tomorrow-theme'
+set background=dark
+colorscheme tomorrow-night
+
 NeoBundle 'AutoTag'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'airblade/vim-gitgutter'
@@ -114,8 +118,6 @@ call vimrc#after()
 set tags=./tags;/,~/.vimtags
 
 set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
-
-colorscheme tomorrow-night
 
 set colorcolumn=80
 
@@ -159,6 +161,6 @@ map <M-D-Left> <C-W>h<C-W>_
 vnoremap < <gv
 vnoremap > >gv
 
-
 " Define maps for your plugins
 nnoremap <Leader>o :CtrlP<CR>
+
