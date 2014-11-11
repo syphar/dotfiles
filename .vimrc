@@ -23,9 +23,10 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-stand
 let g:ctrlp_working_path_mode = 2
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
-"tags for current buffer
 nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>n :CtrlPTag<CR>
+nmap <leader>r :CtrlPMRU<CR>
+nmap <leader>t :CtrlP<CR>
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll|pyc|class)$',
