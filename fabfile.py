@@ -160,6 +160,11 @@ def git_rebase_branches(repo):
                 git_merge_ff(repo, branch, "origin/{}".format(branch))
 
 
+def git_cleanup(repo):
+    with lcd(repo):
+        local('git gc --aggressive')
+
+
 def hg_pull(repo):
     with lcd(repo):
         local('hg pull')
@@ -182,6 +187,7 @@ def update_repos_in_folder(src_folder):
                 if git_fetch(project):
                     git_rebase_branches(project)
                 git_update_hooks(project)
+                git_cleanup(project)
 
             elif os.path.exists(os.path.join(project, '.hg')):
                 print(blue('updating {}...'.format(project)))
