@@ -120,6 +120,15 @@ let g:pymode_run = 0
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 
+" Vim plugin that displays tags in a window, ordered by class etc.
+NeoBundle "majutsushi/tagbar", {
+  \ 'lazy': 1,
+  \ 'autoload' : {'commands': 'TagbarToggle'}} 
+    
+let g:tagbar_width = 30
+let g:tagbar_foldlevel = 1
+nnoremap <silent> <F3> :TagbarToggle<CR>
+
 " Load plugins
 call vimrc#after()
 
