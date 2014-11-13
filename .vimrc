@@ -18,6 +18,8 @@ NeoBundle 'Shougo/vimproc.vim', {
       \    },
       \ }
 
+NeoBundle 'vim-scripts/LargeFile'
+
 NeoBundle 'kien/ctrlp.vim'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -119,6 +121,13 @@ let g:pymode_doc = 0
 let g:pymode_run = 0
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
+
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' :
+        \   { 'filetypes' : [ 'tex'
+                          \ , 'latex'
+                          \ ]
+        \   }
+        \ }
 
 " Vim plugin that displays tags in a window, ordered by class etc.
 NeoBundle "majutsushi/tagbar", {
