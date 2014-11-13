@@ -162,7 +162,7 @@ def git_rebase_branches(repo):
 
 def git_cleanup(repo):
     with lcd(repo):
-        local('git gc --aggressive')
+        local('git gc --auto')
 
 
 def hg_pull(repo):
