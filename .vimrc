@@ -4,6 +4,9 @@
 " Select your Leader key
 let mapleader = ","
 
+if has ('gui') 
+  set clipboard=unnamed
+endif
 
 " Load sensible defaults and setup NeoBundle
 call vimrc#before()
