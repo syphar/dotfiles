@@ -6,6 +6,7 @@ let mapleader = ","
 
 if has ('gui') 
   set clipboard=unnamed
+  set autoread
 endif
 
 " Load sensible defaults and setup NeoBundle
