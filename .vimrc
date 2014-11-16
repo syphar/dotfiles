@@ -142,6 +142,9 @@ let g:tagbar_width = 30
 let g:tagbar_foldlevel = 1
 nnoremap <silent> <F3> :TagbarToggle<CR>
 
+NeoBundle 'rizzatti/dash.vim'
+nmap <silent> <leader>d <Plug>DashSearch
+
 " Load plugins
 call vimrc#after()
 
