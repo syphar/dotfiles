@@ -7,6 +7,8 @@ import fabric
 from fabric.api import local, lcd, execute, task, settings
 from fabric.colors import green, blue, red, magenta
 
+from projects import SRC_DIR, yield_repos_in_folder
+
 fabric.state.output.status = True
 fabric.state.output.aborts = True
 fabric.state.output.warnings = False
@@ -175,37 +177,28 @@ def svn_up(repo):
         local('svn update')
 
 
-def update_repos_in_folder(src_folder):
-    for folder in os.listdir(src_folder):
-        project = os.path.join(src_folder, folder)
-        if not os.path.isdir(project):
-            continue
+def update_repo(project, kind):
+    with settings(warn_only=True):
+        if kind == 'git':
+            print(blue('updating {}...'.format(project)))
+            if git_fetch(project):
+                git_rebase_branches(project)
+            git_update_hooks(project)
+            git_cleanup(project)
 
-        with settings(warn_only=True):
-            if os.path.exists(os.path.join(project, '.git')):
-                print(blue('updating {}...'.format(project)))
-                if git_fetch(project):
-                    git_rebase_branches(project)
-                git_update_hooks(project)
-                git_cleanup(project)
+        elif kind == 'hg':
+            print(blue('updating {}...'.format(project)))
+            hg_pull(project)
 
-            elif os.path.exists(os.path.join(project, '.hg')):
-                print(blue('updating {}...'.format(project)))
-                hg_pull(project)
-
-            elif os.path.exists(os.path.join(project, '.svn')):
-                print(blue('updating {}...'.format(project)))
-                svn_up(project)
-
-            else:
-                update_repos_in_folder(project)
+        elif kind == 'svn':
+            print(blue('updating {}...'.format(project)))
+            svn_up(project)
 
 
 @task
 def update_repos():
-    update_repos_in_folder(
-        os.path.join(os.path.expanduser('~'), 'src')
-    )
+    for repo, kind in yield_repos_in_folder(SRC_DIR):
+        update_repo(repo, kind)
 
 
 @task(default=True)
