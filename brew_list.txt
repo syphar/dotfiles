@@ -140,6 +140,7 @@ sdl
 sdl2
 sdl2_image
 sdl_image
+selecta
 siege
 sqlite
 squashfs
