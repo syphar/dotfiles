@@ -3,6 +3,7 @@
 import os
 
 SRC_DIR = os.path.join(os.path.expanduser('~'), 'src')
+REPO_CACHE = os.path.join(os.path.expanduser("~"), '.cache', '.project_list')
 
 
 def yield_repos_in_folder(src_folder):
@@ -21,8 +22,24 @@ def yield_repos_in_folder(src_folder):
 
 
 def print_repos():
-    for repo, kind in yield_repos_in_folder(SRC_DIR):
-        print(repo)
+    if not os.path.exists(REPO_CACHE):
+        update_repo_cache()
+
+    with open(REPO_CACHE) as f:
+        print(f.read())
+
+
+def update_repo_cache():
+    content = '\n'.join(
+        repo
+        for repo, kind in yield_repos_in_folder(SRC_DIR)
+    )
+
+    if os.path.exists(REPO_CACHE):
+        os.remove(REPO_CACHE)
+
+    with open(REPO_CACHE, 'w') as f:
+        f.write(content)
 
 
 if __name__ == '__main__':

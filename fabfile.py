@@ -7,7 +7,7 @@ import fabric
 from fabric.api import local, lcd, execute, task, settings
 from fabric.colors import green, blue, red, magenta
 
-from projects import SRC_DIR, yield_repos_in_folder
+from projects import SRC_DIR, yield_repos_in_folder, update_repo_cache
 
 fabric.state.output.status = True
 fabric.state.output.aborts = True
@@ -207,5 +207,6 @@ def update():
     execute(sync_omnifocus)
     execute(update_homebrew)
     execute(update_zsh)
+    execute(update_repo_cache)
     execute(update_repos)
     execute(update_brew_list)
