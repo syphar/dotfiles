@@ -2,3 +2,4 @@
 .hg
 .pip/cache
 .pip/*.log
+venv
