@@ -89,7 +89,7 @@ map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '.ropeproject', '.idea']
 let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
