@@ -125,6 +125,7 @@ let g:pymode_doc = 0
 let g:pymode_run = 0
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_options_colorcolumn = 0
 
 NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' :
         \   { 'filetypes' : [ 'tex'
@@ -152,8 +153,6 @@ set tags=./tags;/,~/.vimtags
 
 set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
 
-set colorcolumn=80
-
 " no scrollbars
 set guioptions-=L
 set guioptions-=l
@@ -163,38 +162,16 @@ set guioptions-=r
 " no tabline even if there are tabs
 set showtabline=0
 
-" move between tabs with cmd+number
-map <D-1> :tabn 1<CR>
-map <D-2> :tabn 2<CR>
-map <D-3> :tabn 3<CR>
-map <D-4> :tabn 4<CR>
-map <D-5> :tabn 5<CR>
-map <D-6> :tabn 6<CR>
-map <D-7> :tabn 7<CR>
-map <D-8> :tabn 8<CR>
-map <D-9> :tabn 9<CR>
-
-map! <D-1> <C-O>:tabn 1<CR>
-map! <D-2> <C-O>:tabn 2<CR>
-map! <D-3> <C-O>:tabn 3<CR>
-map! <D-4> <C-O>:tabn 4<CR>
-map! <D-5> <C-O>:tabn 5<CR>
-map! <D-6> <C-O>:tabn 6<CR>
-map! <D-7> <C-O>:tabn 7<CR>
-map! <D-8> <C-O>:tabn 8<CR>
-map! <D-9> <C-O>:tabn 9<CR>
-
-" moving between windows like in iterm
-map <M-D-Down> <C-W>j<C-W>_
-map <M-D-Up> <C-W>k<C-W>_
-map <M-D-Right> <C-W>l<C-W>_
-map <M-D-Left> <C-W>h<C-W>_
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
 
-" Define maps for your plugins
 nnoremap <Leader>o :CtrlP<CR>
 
 " common typos .. (Wq WQ)
@@ -210,3 +187,6 @@ if has("user_commands")
     command! -bang Qa qa<bang>
 endif
 
+" highlight characters over 80 line length
+highlight OverLength ctermbg=88 ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
