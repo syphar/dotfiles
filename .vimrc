@@ -134,6 +134,8 @@ NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' :
         \   }
         \ }
 
+NeoBundle "editorconfig/editorconfig-vim"
+
 " Vim plugin that displays tags in a window, ordered by class etc.
 NeoBundle "majutsushi/tagbar", {
   \ 'lazy': 1,
