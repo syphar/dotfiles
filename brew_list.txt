@@ -13,6 +13,7 @@ boost
 boot2docker
 byobu
 cairo
+cloc
 cmake
 coreutils
 cscope
