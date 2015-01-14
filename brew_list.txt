@@ -95,7 +95,6 @@ midnight-commander
 mongodb
 mutt
 mysql
-neovim
 nettle
 newt
 ngrep
@@ -108,9 +107,7 @@ openssl
 ossp-uuid
 p11-kit
 pcre
-php53
 pidof
-pil
 pixman
 pkg-config
 play12
@@ -121,11 +118,7 @@ proj
 pstree
 pypy
 python
-python24
-python26
 python3
-python31
-python32
 rabbitmq
 re2c
 readline
