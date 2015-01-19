@@ -95,6 +95,7 @@ midnight-commander
 mongodb
 mutt
 mysql
+neovim
 nettle
 newt
 ngrep
