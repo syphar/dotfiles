@@ -108,6 +108,7 @@ openssl
 ossp-uuid
 p11-kit
 pcre
+php53
 pidof
 pixman
 pkg-config
@@ -119,7 +120,11 @@ proj
 pstree
 pypy
 python
+python24
+python26
 python3
+python31
+python32
 rabbitmq
 re2c
 readline
