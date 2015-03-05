@@ -1,12 +1,14 @@
 ack
 archey
 asciidoc
+aspell
 astyle
 autoconf
 autoenv
 autojump
 automake
 bazaar
+bdw-gc
 bison
 bison27
 boost
@@ -18,6 +20,7 @@ cmake
 coreutils
 cscope
 ctags
+curl
 ddrescue
 diff-pdf
 docbook
@@ -32,6 +35,7 @@ gd
 gdbm
 geos
 gettext
+ghi
 giflib
 git
 git-flow
@@ -50,6 +54,7 @@ gource
 gpp
 grails
 grep
+guile
 highlight
 hr
 htop-osx
@@ -75,6 +80,7 @@ libssh2
 libtasn1
 libtiff
 libtool
+libunistring
 libyaml
 lighttpd
 little-cms
@@ -149,6 +155,7 @@ unixodbc
 v8
 watch
 webp
+weechat
 wget
 wxmac
 xmlto
