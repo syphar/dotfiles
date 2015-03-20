@@ -36,6 +36,7 @@ gdbm
 geos
 gettext
 ghi
+ghostscript
 giflib
 git
 git-flow
@@ -62,6 +63,7 @@ httperf
 hub
 icu4c
 ivy
+jbig2dec
 jpeg
 jq
 json-c
