@@ -13,6 +13,7 @@ bison
 bison27
 boost
 boot2docker
+brew-cask
 byobu
 cairo
 cloc
@@ -26,6 +27,7 @@ diff-pdf
 docbook
 docbook-xsl
 docker
+elasticsearch
 erlang
 flex
 fontconfig
