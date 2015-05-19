@@ -42,9 +42,9 @@ def update_homebrew():
                     local('brew install {}'.format(brew))
 
     local('brew update')
-    local('brew upgrade')
+    local('brew upgrade --all')
 
-    local('rm -f ~/Applications/*')
+    local('rm -rf ~/Applications/*')
     local('brew linkapps')
     local('brew reinstall --HEAD neovim')
 
