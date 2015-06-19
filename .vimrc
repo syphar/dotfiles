@@ -57,7 +57,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-sourround'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/gitignore'
 
 NeoBundle 'Valloric/YouCompleteMe', {
