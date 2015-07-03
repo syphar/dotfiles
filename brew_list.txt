@@ -56,6 +56,7 @@ gobject-introspection
 gource
 gpp
 grails
+graphviz
 grep
 guile
 highlight
