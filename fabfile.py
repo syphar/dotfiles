@@ -78,9 +78,9 @@ def update_zsh():
         local('git push origin master')
 
     with lcd('~/.liquidprompt/'):
-        local('git checkout develop')
+        local('git checkout master')
         local('git fetch origin')
-        local('git reset origin/develop')
+        local('git reset origin/master')
 
 
 def update_brew_list():
