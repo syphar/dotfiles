@@ -202,6 +202,12 @@ def update_repos():
         update_repo(repo, kind)
 
 
+@task
+def update_vim():
+    print(green('update_vim'))
+    local('vim +NeoBundleUpdate +NeoBundleClean! +qa')
+
+
 @task(default=True)
 def update():
     execute(self_update)
@@ -211,3 +217,4 @@ def update():
     execute(update_repo_cache)
     execute(update_repos)
     execute(update_brew_list)
+    execute(update_vim)
