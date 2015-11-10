@@ -55,9 +55,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/gitignore'
 
 NeoBundle 'Valloric/YouCompleteMe', {
