@@ -205,7 +205,7 @@ def update_repos():
 @task
 def update_vim():
     print(green('update_vim'))
-    local('vim +NeoBundleUpdate +NeoBundleClean! +qa')
+    local('nvim +NeoBundleUpdate +NeoBundleClean +qa')
 
 
 @task(default=True)
