@@ -36,6 +36,7 @@ venv3
 
 # autoenv
 .env
+.env2
 
 # rope-project
 .ropeproject
