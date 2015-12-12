@@ -52,6 +52,7 @@ gnu-sed
 gnupg
 gnuplot
 gnutls
+go
 gobject-introspection
 gource
 gpp
