@@ -82,6 +82,7 @@ libgpg-error
 libiconv
 libmemcached
 libpng
+libssh
 libssh2
 libtasn1
 libtiff
@@ -105,6 +106,7 @@ mercurial
 mhash
 midnight-commander
 mongodb
+msgpack
 mutt
 mysql
 neovim
@@ -114,6 +116,7 @@ ngrep
 nmap
 node
 offline-imap
+offlineimap
 oniguruma
 openjpeg
 openssl
