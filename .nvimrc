@@ -59,7 +59,7 @@ NeoBundle 'vim-scripts/gitignore'
 
 NeoBundle 'Valloric/YouCompleteMe', {
       \ 'build' : {
-      \     'mac' : './install.sh',
+      \     'mac' : './install.py',
       \    },
       \ }
 
