@@ -9,22 +9,16 @@ if has ('gui')
   set autoread
 endif
 
-" Load sensible defaults and setup NeoBundle
-call vimrc#before()
+" Load sensible defaults and setup Plug
+call plug#begin()
 
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make',
-      \     'unix' : 'gmake',
-      \    },
-      \ }
+Plug 'sheerun/vimrc'
 
-NeoBundle 'vim-scripts/LargeFile'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-NeoBundle 'kien/ctrlp.vim'
+Plug 'vim-scripts/LargeFile'
+
+Plug 'kien/ctrlp.vim'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
@@ -49,28 +43,25 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
 
-NeoBundle 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'vim-scripts/gitignore'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/gitignore'
 
-NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'build' : {
-      \     'mac' : './install.py',
-      \    },
-      \ }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 
-NeoBundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
-NeoBundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_enable_balloons = 0
@@ -82,7 +73,7 @@ let g:syntastic_python_checkers=['flake8', 'python']
 let g:syntastic_python_flake8_args="--ignore=E501"
 
 
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 let g:NERDShutUp=1
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
@@ -97,25 +88,21 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-NeoBundle 'ywjno/vim-tomorrow-theme'
-set background=dark
-colorscheme tomorrow-night
+Plug 'ywjno/vim-tomorrow-theme'
 
-NeoBundle 'AutoTag'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'django.vim'
+Plug 'AutoTag'
+Plug 'rking/ag.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'django.vim'
 
-NeoBundleLazy 'klen/python-mode', {
-          \ 'autoload' : {
-          \   'filetypes' : 'python',
-          \ }}
+Plug 'klen/python-mode', { 'for' : 'python' }
+
 let g:pymode_lint = 0
 let g:pymode_utils_whitespaces = 1
 let g:pymode_rope = 0
@@ -127,29 +114,25 @@ let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_options_colorcolumn = 0
 
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' :
-        \   { 'filetypes' : [ 'tex'
-                          \ , 'latex'
-                          \ ]
-        \   }
-        \ }
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': [ 'tex', 'latex' ] }
 
-NeoBundle "editorconfig/editorconfig-vim"
+Plug 'editorconfig/editorconfig-vim'
 
 " Vim plugin that displays tags in a window, ordered by class etc.
-NeoBundle "majutsushi/tagbar", {
-  \ 'lazy': 1,
-  \ 'autoload' : {'commands': 'TagbarToggle'}} 
+Plug 'majutsushi/tagbar'
     
 let g:tagbar_width = 30
 let g:tagbar_foldlevel = 1
 nnoremap <silent> <F3> :TagbarToggle<CR>
 
-NeoBundle 'rizzatti/dash.vim'
+Plug 'rizzatti/dash.vim'
 nmap <silent> <leader>d <Plug>DashSearch
 
 " Load plugins
-call vimrc#after()
+call plug#end()
+
+set background=dark
+colorscheme Tomorrow-Night
 
 set tags=./tags;/,~/.vimtags
 
