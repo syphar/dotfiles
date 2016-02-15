@@ -28,6 +28,7 @@ docbook
 docbook-xsl
 docker
 elasticsearch
+enchant
 erlang
 flex
 fontconfig
