@@ -16,6 +16,7 @@ boot2docker
 brew-cask
 byobu
 cairo
+cgal
 cloc
 cmake
 coreutils
@@ -23,6 +24,7 @@ cscope
 ctags
 curl
 ddrescue
+dfu-util
 diff-pdf
 docbook
 docbook-xsl
@@ -35,7 +37,9 @@ fontconfig
 freetype
 freexl
 gd
+gdal
 gdbm
+geoip
 geos
 gettext
 ghi
@@ -81,14 +85,18 @@ libgcrypt
 libgeotiff
 libgpg-error
 libiconv
+liblwgeom
 libmemcached
 libpng
+libspatialite
 libssh
 libssh2
 libtasn1
 libtiff
 libtool
 libunistring
+libusb
+libxml2
 libyaml
 lighttpd
 little-cms
@@ -107,6 +115,7 @@ mercurial
 mhash
 midnight-commander
 mongodb
+mpfr
 msgpack
 mutt
 mysql
@@ -130,6 +139,7 @@ pkg-config
 play12
 poppler
 popt
+postgis
 postgresql
 proj
 pstree
@@ -152,6 +162,7 @@ sdl2
 sdl2_image
 sdl_image
 selecta
+sfcgal
 siege
 sqlite
 squashfs
