@@ -3,6 +3,7 @@ archey
 asciidoc
 aspell
 astyle
+atk
 autoconf
 autoenv
 autojump
@@ -12,10 +13,12 @@ bdw-gc
 bison
 bison27
 boost
+boost-python
 boot2docker
 brew-cask
 byobu
 cairo
+cairomm
 cgal
 cloc
 cmake
@@ -36,9 +39,11 @@ flex
 fontconfig
 freetype
 freexl
+gcc
 gd
 gdal
 gdbm
+gdk-pixbuf
 geoip
 geos
 gettext
@@ -52,6 +57,7 @@ glew
 glib
 glm
 gmp
+gnome-icon-theme
 gnu-getopt
 gnu-sed
 gnupg
@@ -59,18 +65,25 @@ gnuplot
 gnutls
 go
 gobject-introspection
+google-sparsehash
 gource
 gpp
 grails
+graph-tool
 graphviz
 grep
+gsettings-desktop-schemas
+gtk+3
 guile
+harfbuzz
+hicolor-icon-theme
 highlight
 hr
 htop-osx
 httperf
 hub
 icu4c
+isl
 ivy
 jbig2dec
 jpeg
@@ -79,6 +92,8 @@ json-c
 leiningen
 less
 lftp
+libcroco
+libepoxy
 libevent
 libffi
 libgcrypt
@@ -87,7 +102,10 @@ libgpg-error
 libiconv
 liblwgeom
 libmemcached
+libmpc
 libpng
+librsvg
+libsigc++
 libspatialite
 libssh
 libssh2
@@ -108,6 +126,7 @@ lzip
 lzlib
 lzo
 macvim
+matplotlib
 maven
 mcrypt
 memcached
@@ -125,6 +144,7 @@ newt
 ngrep
 nmap
 node
+numpy
 offline-imap
 offlineimap
 oniguruma
@@ -132,6 +152,7 @@ openjpeg
 openssl
 ossp-uuid
 p11-kit
+pango
 pcre
 pidof
 pixman
@@ -143,6 +164,9 @@ postgis
 postgresql
 proj
 pstree
+py2cairo
+py3cairo
+pygobject3
 pypy
 python
 python3
@@ -156,6 +180,7 @@ rsnapshot
 s-lang
 sbt
 scala
+scipy
 scons
 sdl
 sdl2
@@ -166,6 +191,7 @@ sfcgal
 siege
 sqlite
 squashfs
+swig
 the_silver_searcher
 tig
 tmate
