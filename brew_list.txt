@@ -83,6 +83,7 @@ htop-osx
 httperf
 hub
 icu4c
+imapsync
 isl
 ivy
 jbig2dec
