@@ -40,7 +40,6 @@ def update_homebrew():
 
     local('rm -rf ~/Applications/*')
     local('brew linkapps')
-    local('DEBUG=false && brew reinstall --HEAD neovim')
 
 
 @task
