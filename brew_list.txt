@@ -35,6 +35,7 @@ docker
 elasticsearch
 enchant
 erlang
+ffmpeg
 flex
 fontconfig
 freetype
@@ -90,6 +91,7 @@ jbig2dec
 jpeg
 jq
 json-c
+lame
 leiningen
 less
 lftp
@@ -161,6 +163,7 @@ pkg-config
 play12
 poppler
 popt
+portaudio
 postgis
 postgresql
 proj
@@ -206,7 +209,9 @@ webp
 weechat
 wget
 wxmac
+x264
 xmlto
+xvid
 xz
 zlib
 zsh
