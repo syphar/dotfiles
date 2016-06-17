@@ -91,6 +91,7 @@ jbig2dec
 jpeg
 jq
 json-c
+keybase
 lame
 leiningen
 less
