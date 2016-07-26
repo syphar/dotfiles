@@ -70,7 +70,6 @@ google-sparsehash
 gource
 gpp
 grails
-graph-tool
 graphviz
 grep
 gsettings-desktop-schemas
