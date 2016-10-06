@@ -192,6 +192,7 @@ sdl2_image
 sdl_image
 selecta
 sfcgal
+shared-mime-info
 siege
 sqlite
 squashfs
