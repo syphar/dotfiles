@@ -1,4 +1,5 @@
 ack
+adns
 archey
 asciidoc
 aspell
@@ -12,6 +13,7 @@ bazaar
 bdw-gc
 bison
 bison27
+bison@2.7
 boost
 boost-python
 boot2docker
@@ -70,6 +72,7 @@ google-sparsehash
 gource
 gpp
 grails
+graph-tool
 graphviz
 grep
 gsettings-desktop-schemas
@@ -87,6 +90,7 @@ imapsync
 isl
 ivy
 jbig2dec
+jemalloc
 jpeg
 jq
 json-c
@@ -95,6 +99,7 @@ lame
 leiningen
 less
 lftp
+libassuan
 libcroco
 libepoxy
 libevent
@@ -103,6 +108,8 @@ libgcrypt
 libgeotiff
 libgpg-error
 libiconv
+libidn
+libksba
 liblwgeom
 libmemcached
 libmpc
@@ -113,10 +120,13 @@ libspatialite
 libssh
 libssh2
 libtasn1
+libtermkey
 libtiff
 libtool
 libunistring
 libusb
+libuv
+libvterm
 libxml2
 libyaml
 lighttpd
@@ -148,6 +158,7 @@ newt
 ngrep
 nmap
 node
+npth
 numpy
 offline-imap
 offlineimap
@@ -159,6 +170,7 @@ p11-kit
 pango
 pcre
 pidof
+pinentry
 pixman
 pkg-config
 play12
@@ -173,6 +185,7 @@ py2cairo
 py3cairo
 pygobject3
 pypy
+pypy3
 python
 python3
 rabbitmq
@@ -204,6 +217,7 @@ tmate
 tmux
 tokyo-cabinet
 tor
+unibilium
 unixodbc
 utf8proc
 v8
