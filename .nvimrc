@@ -96,10 +96,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 Plug 'ywjno/vim-tomorrow-theme'
 
-Plug 'AutoTag'
+Plug 'craigemery/vim-autotag'
 Plug 'rking/ag.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'django.vim'
 
 Plug 'klen/python-mode', { 'for' : 'python' }
 
