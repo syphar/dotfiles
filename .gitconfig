@@ -3,7 +3,7 @@
 	email = denis.cornehl@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = /Applications/MacVim.app/Contents/MacOS/Vim
+	editor = nvim
 	quotepath = false
 	trustExitCode = true
 	autocrlf = input

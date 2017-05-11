@@ -204,9 +204,9 @@ def update_vim():
 @task(default=True)
 def update():
     execute(self_update)
-    execute(update_homebrew)
+    # execute(update_homebrew)
     execute(update_zsh)
     execute(update_repo_cache)
     execute(update_repos)
-    execute(update_brew_list)
+    # execute(update_brew_list)
     execute(update_vim)
