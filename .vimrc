@@ -1,30 +1,73 @@
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/Users/syphar/.cache/dein')
+  call dein#begin('/Users/syphar/.cache/dein')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('vim-scripts/LargeFile')
+  call dein#add('kien/ctrlp.vim')
+  call dein#add('terryma/vim-expand-region')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-commentary')
+  call dein#add('vim-scripts/gitignore')
+  call dein#add('bling/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('scrooloose/syntastic')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('nathanaelkane/vim-indent-guides')
+  call dein#add('ywjno/vim-tomorrow-theme')
+  call dein#add('vim-scripts/AutoTag')
+  call dein#add('rking/ag.vim')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('vim-scripts/django.vim')
+  call dein#add('klen/python-mode')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('majutsushi/tagbar')
+
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
+
 " built with inspiration from
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 
 " Select your Leader key
 let mapleader = ","
 
-if has ('gui') 
+if has ('gui')
   set clipboard=unnamed
   set autoread
 endif
 
-" Load sensible defaults and setup NeoBundle
-call vimrc#before()
-
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make',
-      \     'unix' : 'gmake',
-      \    },
-      \ }
-
-NeoBundle 'vim-scripts/LargeFile'
-
-NeoBundle 'kien/ctrlp.vim'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
@@ -49,28 +92,14 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
 
-NeoBundle 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'vim-scripts/gitignore'
-
-NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'build' : {
-      \     'mac' : './install.py',
-      \    },
-      \ }
-
-
-NeoBundle 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
 
-NeoBundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_enable_balloons = 0
@@ -81,8 +110,6 @@ let g:syntastic_aggregate_errors=1
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:syntastic_python_flake8_args="--ignore=E501"
 
-
-NeoBundle 'scrooloose/nerdtree'
 let g:NERDShutUp=1
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
@@ -97,25 +124,14 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_auto_colors = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
-NeoBundle 'ywjno/vim-tomorrow-theme'
 set background=dark
 colorscheme tomorrow-night
 
-NeoBundle 'AutoTag'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'django.vim'
-
-NeoBundleLazy 'klen/python-mode', {
-          \ 'autoload' : {
-          \   'filetypes' : 'python',
-          \ }}
 let g:pymode_lint = 0
 let g:pymode_utils_whitespaces = 1
 let g:pymode_rope = 0
@@ -127,29 +143,9 @@ let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_options_colorcolumn = 0
 
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' :
-        \   { 'filetypes' : [ 'tex'
-                          \ , 'latex'
-                          \ ]
-        \   }
-        \ }
-
-NeoBundle "editorconfig/editorconfig-vim"
-
-" Vim plugin that displays tags in a window, ordered by class etc.
-NeoBundle "majutsushi/tagbar", {
-  \ 'lazy': 1,
-  \ 'autoload' : {'commands': 'TagbarToggle'}} 
-    
 let g:tagbar_width = 30
 let g:tagbar_foldlevel = 1
 nnoremap <silent> <F3> :TagbarToggle<CR>
-
-NeoBundle 'rizzatti/dash.vim'
-nmap <silent> <leader>d <Plug>DashSearch
-
-" Load plugins
-call vimrc#after()
 
 set tags=./tags;/,~/.vimtags
 
