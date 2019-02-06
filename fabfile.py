@@ -65,15 +65,13 @@ def cleanup_homebrew():
 def update_zsh():
     print(green('update_zsh'))
     with lcd('~/.zprezto/'):
-        local('git checkout master')
-        local('git pull origin master')
-        local('git pull upstream master')
-        local('git push origin master')
+        local('git pull')
+        local('git submodule update --init --recursive')
 
     with lcd('~/.liquidprompt/'):
-        local('git checkout develop')
+        local('git checkout master')
         local('git fetch origin')
-        local('git reset origin/develop')
+        local('git reset origin/master')
 
 
 def update_brew_list():
@@ -198,13 +196,13 @@ def update_repos():
 @task
 def update_vim():
     print(green('update_vim'))
-    local('nvim +PlugUpdate +PlugClean +qa')
+    local('vim "+call dein#update()" +qa')
 
 
 @task(default=True)
 def update():
     execute(self_update)
-    # execute(update_homebrew)
+    execute(update_homebrew)
     execute(update_zsh)
     execute(update_repo_cache)
     execute(update_repos)

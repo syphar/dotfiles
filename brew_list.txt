@@ -138,11 +138,9 @@ lynx
 lzip
 lzlib
 lzo
-macvim
 matplotlib
 maven
 mcrypt
-md5sha1sum
 memcached
 mercurial
 mhash
