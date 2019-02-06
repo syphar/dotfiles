@@ -199,6 +199,12 @@ def update_vim():
     local('vim "+call dein#update()" +qa')
 
 
+@task
+def new_repo_cache():
+    print(green('clean local project cache'))
+    local('rm -rf ~/.cache/.project_list')
+
+
 @task(default=True)
 def update():
     execute(self_update)
@@ -208,3 +214,4 @@ def update():
     execute(update_repos)
     # execute(update_brew_list)
     execute(update_vim)
+    execute(new_repo_cache)
