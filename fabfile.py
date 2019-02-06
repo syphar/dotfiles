@@ -38,8 +38,8 @@ def update_homebrew():
     local('brew update')
     local('brew upgrade --all')
 
-    local('rm -rf ~/Applications/*')
-    local('brew linkapps')
+    # local('rm -rf ~/Applications/*')
+    # local('brew linkapps')
 
 
 @task

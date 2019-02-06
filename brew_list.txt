@@ -17,7 +17,6 @@ bison@2.7
 boost
 boost-python
 boot2docker
-brew-cask
 byobu
 cairo
 cairomm
