@@ -3,3 +3,5 @@
 .pip/cache
 .pip/*.log
 venv
+.envrc
+.direnv
