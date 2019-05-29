@@ -36,7 +36,7 @@ def update_homebrew():
                     local('brew install {}'.format(brew))
 
     local('brew update')
-    local('brew upgrade --all')
+    local('brew upgrade')
 
     # local('rm -rf ~/Applications/*')
     # local('brew linkapps')

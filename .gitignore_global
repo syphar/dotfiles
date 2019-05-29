@@ -40,3 +40,7 @@ venv3
 
 # rope-project
 .ropeproject
+
+# direnv 
+.direnv 
+.envrc
