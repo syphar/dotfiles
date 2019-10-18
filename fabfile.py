@@ -205,13 +205,21 @@ def new_repo_cache():
     local('rm -rf ~/.cache/.project_list')
 
 
+@task
+def rustup():
+    print(green('update rustup'))
+    local('rustup update')
+
+
+
 @task(default=True)
 def update():
     execute(self_update)
     execute(update_homebrew)
     execute(update_zsh)
     execute(update_repo_cache)
+    execute(rustup)
     execute(update_repos)
-    # execute(update_brew_list)
+    execute(update_brew_list)
     execute(update_vim)
     execute(new_repo_cache)
