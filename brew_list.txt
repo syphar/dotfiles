@@ -176,7 +176,6 @@ lz4
 lzip
 lzlib
 lzo
-matplotlib
 maven
 mcrypt
 memcached
