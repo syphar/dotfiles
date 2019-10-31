@@ -38,6 +38,7 @@ direnv
 docbook
 docbook-xsl
 docker
+docker-compose
 docker-machine
 eigen
 elasticsearch
