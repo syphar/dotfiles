@@ -35,7 +35,9 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('klen/python-mode')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('majutsushi/tagbar')
-
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('deoplete-plugins/deoplete-jedi')
+  call dein#add('ervandew/supertab')
 
   " You can specify revision/branch/tag.
   " call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
@@ -143,6 +145,8 @@ let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_options_colorcolumn = 0
 let g:pymode_python = 'python3'
+" since we have deoplete-jedi
+let g:jedi#completions_enabled = 0
 
 let g:tagbar_width = 30
 let g:tagbar_foldlevel = 1
@@ -211,3 +215,7 @@ endif
 " highlight characters over 80 line length
 highlight OverLength ctermbg=88 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+
+" don't show docstring when completing 
+autocmd FileType python setlocal completeopt-=preview
