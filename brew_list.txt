@@ -236,6 +236,7 @@ protobuf-c
 pstree
 py2cairo
 py3cairo
+pyenv
 pygobject3
 pypy
 pypy3
