@@ -233,6 +233,7 @@ postgresql@10
 proj
 protobuf
 protobuf-c
+protobuf@3.7
 pstree
 py2cairo
 py3cairo
