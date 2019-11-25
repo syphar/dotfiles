@@ -18,6 +18,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('vim-scripts/LargeFile')
   call dein#add('kien/ctrlp.vim')
+  call dein#add('FelikZ/ctrlp-py-matcher')
   call dein#add('terryma/vim-expand-region')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-commentary')
@@ -26,6 +27,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('scrooloose/syntastic')
   call dein#add('scrooloose/nerdtree')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('ywjno/vim-tomorrow-theme')
   call dein#add('vim-scripts/AutoTag')
@@ -68,6 +70,9 @@ endif
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
+      \ --ignore .direnv
+      \ --ignore .pytest_cache
+      \ --ignore __pycache__
       \ --ignore .hg
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
@@ -80,13 +85,14 @@ nmap <leader>n :CtrlPTag<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>t :CtrlP<CR>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn|direnv|pytest_cache)$',
   \ 'file': '\v\.(exe|so|dll|pyc|class)$',
   \ }
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -95,13 +101,14 @@ let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_z=''
+let g:airline#extensions#tabline#enabled = 1
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_enable_balloons = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 0
-let g:syntastic_enable_signs = 0
+let g:syntastic_enable_signs = 1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:syntastic_python_flake8_args="--ignore=E501"
@@ -112,12 +119,14 @@ map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '.ropeproject', '.idea']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '.ropeproject', '.idea', '.direnv', '.pytest_cache', '__pycache__']
 let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 
 let g:indent_guides_auto_colors = 1
@@ -126,7 +135,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 set background=dark
-colorscheme tomorrow-night-bright
+colorscheme tomorrow-night
 
 let g:pymode_lint = 0
 let g:pymode_utils_whitespaces = 1
@@ -211,3 +220,6 @@ match OverLength /\%81v.\+/
 
 " don't show docstring when completing 
 autocmd FileType python setlocal completeopt-=preview
+
+
+set backspace=indent,eol,start
