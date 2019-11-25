@@ -132,7 +132,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 set background=dark
-colorscheme tomorrow-night
+colorscheme tomorrow-night-bright
 
 let g:pymode_lint = 0
 let g:pymode_utils_whitespaces = 1
