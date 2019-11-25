@@ -229,7 +229,6 @@ popt
 portaudio
 postgis
 postgresql
-postgresql@10
 proj
 protobuf
 protobuf-c
