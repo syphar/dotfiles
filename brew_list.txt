@@ -190,6 +190,7 @@ msgpack
 mutt
 mysql
 ncurses
+neovim
 netcdf
 netpbm
 nettle
