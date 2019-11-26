@@ -3,7 +3,7 @@
 cd ./$(git rev-parse --show-cdup)
 
 # Delete .pyc files and empty directories.
-find . -name "*.py?" -delete
+# find . -name "*.py?" -delete
 # find . -type d -empty -delete
 
 # update ctags for project
