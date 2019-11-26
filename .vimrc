@@ -5,6 +5,12 @@ endif
 " Required:
 set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
 
+if has('nvim')
+  let g:python2_host_prog = '/usr/local/bin/python'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+endif
+
+
 " Required:
 if dein#load_state('/Users/syphar/.cache/dein')
   call dein#begin('/Users/syphar/.cache/dein')
@@ -37,6 +43,14 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('klen/python-mode')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('majutsushi/tagbar')
+  call dein#add('direnv/direnv.vim') 
+
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  call dein#add('deoplete-plugins/deoplete-jedi')
 
   " Required:
   call dein#end()
@@ -48,12 +62,12 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+  call dein#install()
+endif
 
 "End dein Scripts-------------------------
-
+"
 
 " built with inspiration from
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
@@ -96,6 +110,14 @@ let g:ctrlp_prompt_mappings = {
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#enable_typeinfo = 1
+let g:deoplete#sources#jedi#show_docstring = 0
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 
 let g:airline_theme='powerlineish'
 let g:airline_left_sep=''
