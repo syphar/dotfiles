@@ -106,7 +106,7 @@ let g:ctrlp_use_caching = 1
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
   \ }
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -176,8 +176,6 @@ let g:tagbar_foldlevel = 1
 nnoremap <silent> <F3> :TagbarToggle<CR>
 
 set tags=./tags;/,~/.vimtags
-
-set guifont=Source\ Code\ Pro\ Light:h12,Monaco:h11,Andale\ Mono\ Regular:h12,Menlo\ Regular:h12,Consolas\ Regular:h12,Courier\ New\ Regular:h12
 
 " no scrollbars
 set guioptions-=L
