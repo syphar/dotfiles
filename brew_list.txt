@@ -274,6 +274,7 @@ sqlite
 squashfs
 swig
 szip
+tcl-tk
 tesseract
 the_silver_searcher
 theora
