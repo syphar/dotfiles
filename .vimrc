@@ -45,6 +45,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('majutsushi/tagbar')
   call dein#add('direnv/direnv.vim') 
 
+  call dein#add('davidhalter/jedi-vim')
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -111,6 +112,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+let g:jedi#completions_enabled = 0
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 1
 let g:deoplete#sources#jedi#show_docstring = 0
