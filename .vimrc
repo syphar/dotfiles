@@ -94,8 +94,8 @@ nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>n :CtrlPTag<CR>
-nmap <leader>r :CtrlPMRU<CR>
-nmap <leader>t :CtrlP<CR>
+nmap <leader>r :CtrlPBookmarkDir<CR>
+nmap <leader>t :CtrlPMixed<CR>
 let g:ctrlp_use_caching = 1
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
