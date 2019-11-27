@@ -36,7 +36,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('rking/ag.vim')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('vim-scripts/django.vim')
-  call dein#add('klen/python-mode')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('majutsushi/tagbar')
   call dein#add('direnv/direnv.vim') 
@@ -155,17 +154,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 set background=dark
 colorscheme tomorrow-night
 
-let g:pymode_lint = 0
-let g:pymode_utils_whitespaces = 1
-let g:pymode_rope = 0
-let g:pymode_folding = 0
-let g:pymode_virtualenv = 0
-let g:pymode_doc = 0
-let g:pymode_run = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_options_colorcolumn = 0
-let g:pymode_python = 'python3'
 
 let g:tagbar_width = 30
 let g:tagbar_foldlevel = 1
