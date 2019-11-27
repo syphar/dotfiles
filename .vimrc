@@ -20,8 +20,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
   call dein#add('vim-scripts/LargeFile')
   call dein#add('kien/ctrlp.vim')
   call dein#add('FelikZ/ctrlp-py-matcher')
@@ -33,8 +31,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('vim-airline/vim-airline-themes')
   call dein#add('scrooloose/syntastic')
   call dein#add('scrooloose/nerdtree')
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-  call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('ywjno/vim-tomorrow-theme')
   call dein#add('vim-scripts/AutoTag')
   call dein#add('rking/ag.vim')
@@ -80,6 +76,8 @@ if has ('gui')
   set clipboard=unnamed
   set autoread
 endif
+
+let g:gitgutter_enabled = 1
 
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
