@@ -64,10 +64,15 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('deoplete-plugins/deoplete-jedi', 
   	\{'on_i': 1, 'on_ft': ['python']})
 
+  call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' })
+
+
+
   " Required:
   call dein#end()
   call dein#save_state()
 endif
+
 
 " Required:
 filetype plugin indent on
@@ -125,6 +130,8 @@ let g:jedi#completions_enabled = 0
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 1
 let g:deoplete#sources#jedi#show_docstring = 0
+" call deoplete#custom#source('tabnine', 'rank', 100)
+
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
