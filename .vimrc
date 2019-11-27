@@ -26,27 +26,43 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('terryma/vim-expand-region')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-commentary')
-  call dein#add('vim-scripts/gitignore')
-  call dein#add('bling/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('scrooloose/syntastic')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('ywjno/vim-tomorrow-theme')
-  call dein#add('vim-scripts/AutoTag')
+  call dein#add('vim-scripts/gitignore')  " set wildignore from .gitignore
+  call dein#add('itchyny/lightline.vim')
+
+  call dein#add('scrooloose/syntastic',
+  	\{'on_cmd': 'SyntasticCheck'})
+
+  call dein#add('scrooloose/nerdtree',
+  	\{'on_cmd': 'NERDTreeToggle'})
+
+  call dein#add('chriskempson/base16-vim') 
+
+  call dein#add('vim-scripts/AutoTag', 
+  	\{'on_cmd': ['w']})  " actually not sure if this works
+  
   call dein#add('rking/ag.vim')
   call dein#add('airblade/vim-gitgutter')
-  call dein#add('vim-scripts/django.vim')
+  call dein#add('vim-scripts/django.vim', 
+  	\{'on_ft': ['html', 'htmldjango']})
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('majutsushi/tagbar')
   call dein#add('direnv/direnv.vim') 
 
-  call dein#add('davidhalter/jedi-vim')
-  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('davidhalter/jedi-vim', 
+  	\{'on_ft': ['python']})
+
+  call dein#add('Shougo/deoplete.nvim',
+  	\{'on_i': 1})  "lazy load on insert mode
+
   if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
+    call dein#add('roxma/nvim-yarp',
+  	\{'on_i': 1})
+    call dein#add('roxma/vim-hug-neovim-rpc',
+  	\{'on_i': 1})
   endif
-  call dein#add('deoplete-plugins/deoplete-jedi')
+
+  call dein#add('deoplete-plugins/deoplete-jedi', 
+  	\{'on_i': 1, 'on_ft': ['python']})
 
   " Required:
   call dein#end()
@@ -114,11 +130,17 @@ let g:deoplete#sources#jedi#show_docstring = 0
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 
-let g:airline_theme='powerlineish'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_z=''
-let g:airline#extensions#tabline#enabled = 1
+let g:lightline = {
+  \   'active': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ]
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
+
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
@@ -136,7 +158,7 @@ map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeRespectWildIgnore=1
-set wildignore+=*.pyc,.git,.hg,.svn,.idea,.direnv,.pytest_cache,__pycache__,.DS_Store,tags
+set wildignore+=.git,.hg,.svn,.idea,.direnv,.pytest_cache,__pycache__,.DS_Store,tags  "is partially already set through gitignore
 
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
@@ -154,7 +176,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 set background=dark
-colorscheme tomorrow-night
+colorscheme base16-tomorrow-night
 
 
 let g:tagbar_width = 30
