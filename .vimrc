@@ -99,10 +99,6 @@ nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>n :CtrlPTag<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>t :CtrlP<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|direnv|pytest_cache)$',
-  \ 'file': '\v\.(exe|so|dll|pyc|class)$',
-  \ }
 let g:ctrlp_use_caching = 1
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
