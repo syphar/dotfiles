@@ -136,7 +136,7 @@ map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
 let NERDTreeRespectWildIgnore=1
-set wildignore+=*.pyc,.git,.hg,.svn,.idea,.direnv,.pytest_cache,__pycache__
+set wildignore+=*.pyc,.git,.hg,.svn,.idea,.direnv,.pytest_cache,__pycache__,.DS_Store,tags
 
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
