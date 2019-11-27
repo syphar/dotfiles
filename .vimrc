@@ -135,8 +135,10 @@ map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeFind<CR>
 
+let NERDTreeRespectWildIgnore=1
+set wildignore+=*.pyc,.git,.hg,.svn,.idea,.direnv,.pytest_cache,__pycache__
+
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '.ropeproject', '.idea', '.direnv', '.pytest_cache', '__pycache__']
 let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
