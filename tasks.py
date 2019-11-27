@@ -190,8 +190,8 @@ def rustup(ctx):
     ctx.run('rustup update')
 
 
-@task 
-def update_nerdtree_bookmarks():
+@task
+def update_nerdtree_bookmarks(ctx):
     bookmark_file = Path('/Users/syphar/.NERDTreeBookmarks')
     if bookmark_file.exists():
         os.remove(bookmark_file)
@@ -212,7 +212,7 @@ def update(ctx):
     update_homebrew(ctx)
     update_zsh(ctx)
     update_repo_cache()
-    update_nerdtree_bookmarks()
+    update_nerdtree_bookmarks(ctx)
     rustup(ctx)
     update_repos(ctx)
     update_brew_list(ctx)
