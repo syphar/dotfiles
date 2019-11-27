@@ -42,5 +42,12 @@ def update_repo_cache():
         f.write(content)
 
 
+def get_all_repos():
+    return (
+        project 
+        for project, kind in yield_repos_in_folder(SRC_DIR)
+    )
+
+
 if __name__ == '__main__':
     print_repos()

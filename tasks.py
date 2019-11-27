@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 import os
+from pathlib import Path
 
 from invoke import task
 
-from projects import SRC_DIR, yield_repos_in_folder, update_repo_cache
+from projects import SRC_DIR, yield_repos_in_folder, update_repo_cache, get_all_repos
 
 
 @task
@@ -189,12 +190,29 @@ def rustup(ctx):
     ctx.run('rustup update')
 
 
+@task 
+def update_nerdtree_bookmarks():
+    bookmark_file = Path('/Users/syphar/.NERDTreeBookmarks')
+    if bookmark_file.exists():
+        os.remove(bookmark_file)
+
+    with open(bookmark_file, 'w') as f:
+        for p in get_all_repos():
+            path = Path(p)
+
+            f.write(
+                f"{path.parts[-1]} "
+                f"{path}\r\n"
+            )
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
     update_homebrew(ctx)
     update_zsh(ctx)
     update_repo_cache()
+    update_nerdtree_bookmarks()
     rustup(ctx)
     update_repos(ctx)
     update_brew_list(ctx)
