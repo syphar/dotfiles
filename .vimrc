@@ -198,8 +198,7 @@ set guioptions-=l
 set guioptions-=R
 set guioptions-=r
 
-" no tabline even if there are tabs
-set showtabline=0
+set showtabline=1
 
 " move between tabs with cmd+number
 map <D-1> :tabn 1<CR>
