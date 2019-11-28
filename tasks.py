@@ -176,6 +176,7 @@ def update_repos(ctx):
 def update_vim(ctx):
     print('update_vim')
     ctx.run('vim "+call dein#update()" +qa')
+    ctx.run('nvim "+call dein#update()" +qa')
 
 
 @task
