@@ -137,6 +137,13 @@ let g:deoplete#sources#jedi#show_docstring = 0
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+map <Leader>p :call InsertDebugLine()<CR>
+
+function! InsertDebugLine()
+  let trace = expand("import pdb; pdb.set_trace()")
+  execute "normal o".trace
+endfunction
+
 
 let g:lightline = {
   \   'active': {
