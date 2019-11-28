@@ -114,8 +114,9 @@ let g:ctrlp_working_path_mode = 2
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 nmap <leader>m :CtrlPBufTag<CR>
-nmap <leader>n :CtrlPTag<CR>
-nmap <leader>r :CtrlPBookmarkDir<CR>
+nmap <leader>k :CtrlPTag<CR>
+nmap <leader>b :CtrlPBookmarkDir<CR>
+nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>t :CtrlPMixed<CR>
 let g:ctrlp_use_caching = 1
 let g:ctrlp_prompt_mappings = {
