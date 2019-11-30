@@ -44,6 +44,10 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('vim-scripts/django.vim', 
   	\{'on_ft': ['html', 'htmldjango']})
+
+  call dein#add('klen/python-mode',
+  	\{'on_ft': ['python']})
+
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('majutsushi/tagbar')
   call dein#add('direnv/direnv.vim') 
@@ -115,7 +119,6 @@ nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 nmap <leader>m :CtrlPBufTag<CR>
 nmap <leader>k :CtrlPTag<CR>
-nmap <leader>b :CtrlPBookmarkDir<CR>
 nmap <leader>r :CtrlPMRU<CR>
 nmap <leader>t :CtrlPMixed<CR>
 let g:ctrlp_use_caching = 1
@@ -137,13 +140,6 @@ let g:deoplete#sources#jedi#show_docstring = 0
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-map <Leader>p :call InsertDebugLine()<CR>
-
-function! InsertDebugLine()
-  let trace = expand("import pdb; pdb.set_trace()")
-  execute "normal o".trace
-endfunction
-
 
 let g:lightline = {
   \   'active': {
@@ -155,6 +151,27 @@ let g:lightline = {
   \     'gitbranch': 'fugitive#head',
   \   }
   \ }
+
+let g:pymode_lint = 0
+let g:pymode_utils_whitespaces = 1
+let g:pymode_rope = 0
+let g:pymode_folding = 0
+let g:pymode_virtualenv = 1
+let g:pymode_doc = 0
+let g:pymode_run = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_options_colorcolumn = 1
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 99
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+let g:pymode_motion = 1
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_breakpoint_cmd = ''
+let g:pymode_syntax = 1
+let g:pymode_syntax_slow_sync = 0
 
 
 let g:syntastic_error_symbol='✗'
@@ -254,11 +271,6 @@ if has("user_commands")
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
 endif
-
-" highlight characters over 80 line length
-highlight OverLength ctermbg=88 ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
 
 " don't show docstring when completing 
 autocmd FileType python setlocal completeopt-=preview
