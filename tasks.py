@@ -11,6 +11,7 @@ from projects import SRC_DIR, yield_repos_in_folder, update_repo_cache, get_all_
 def self_update(ctx):
     print('self_update')
     ctx.run('git pull')
+    ctx.run('pip install --upgrade invoke')
 
 
 @task
@@ -206,7 +207,7 @@ def _update_bookmarks(filename, separator):
             )
 
 
-@task 
+@task
 def update_vim_bookmarks(ctx):
     _update_bookmarks('/Users/syphar/.NERDTreeBookmarks', ' ')
     _update_bookmarks('/Users/syphar/.cache/ctrlp/bkd/cache.txt', '\t')
