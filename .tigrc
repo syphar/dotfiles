@@ -1,7 +1,0 @@
-set commit-order = topo 
-set ignore-case = yes
-set ignore-space = at-eol
-set line-graphics = yes
-set show-changes = yes
-set status-untracked-dirs = yes
-set tab-size = 4
