@@ -243,4 +243,3 @@ def update(ctx):
     update_brew_list(ctx)
     update_vim(ctx)
     new_repo_cache(ctx)
-    mackup(ctx)
