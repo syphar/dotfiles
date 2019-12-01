@@ -4,89 +4,92 @@ from pathlib import Path
 
 from invoke import task
 
-from projects import SRC_DIR, yield_repos_in_folder, update_repo_cache, get_all_repos
+from projects import (SRC_DIR, get_all_repos, update_repo_cache,
+                      yield_repos_in_folder)
 
 
 @task
 def self_update(ctx):
-    print('self_update')
-    ctx.run('git pull')
-    ctx.run('pip install --upgrade invoke')
+    print("self_update")
+    ctx.run("git pull")
+    ctx.run("pip install --upgrade invoke")
 
 
 @task
 def update_homebrew(ctx):
-    print('update_homebrew')
+    print("update_homebrew")
 
-    installed = set(ctx.run('brew list', hide='out').stdout.split())
-    with open(os.path.join(os.path.expanduser('~'), 'src', 'dotfiles', 'brew_list.txt')) as brew_list:
+    installed = set(ctx.run("brew list", hide="out").stdout.split())
+    with open(
+        os.path.join(os.path.expanduser("~"), "src", "dotfiles", "brew_list.txt")
+    ) as brew_list:
         for brew in [b.strip() for b in brew_list]:
             if brew not in installed:
-                ctx.run('brew install {}'.format(brew), warn=True)
+                ctx.run("brew install {}".format(brew), warn=True)
 
-    ctx.run('brew update')
-    ctx.run('brew upgrade')
+    ctx.run("brew update")
+    ctx.run("brew upgrade")
 
 
 @task
 def cleanup_homebrew(ctx):
-    print('cleanup_homebrew')
+    print("cleanup_homebrew")
 
-    cache_folder = ctx.run('brew --cache').stdout
+    cache_folder = ctx.run("brew --cache").stdout
 
-    ctx.run('brew cleanup')
-    ctx.run('brew prune')
+    ctx.run("brew cleanup")
+    ctx.run("brew prune")
 
-    for l in ctx.run('brew missing').stdout.split('\n'):
+    for l in ctx.run("brew missing").stdout.split("\n"):
         if not l:
             continue
 
-        _, pkgs = l.strip().split(':')
+        _, pkgs = l.strip().split(":")
         for p in pkgs.split():
-            ctx.run('brew install ' + p)
+            ctx.run("brew install " + p)
 
 
 @task
 def update_zsh(ctx):
-    print('update_zsh')
-    with ctx.cd('~/.zprezto/'):
-        ctx.run('git pull')
-        ctx.run('git submodule update --init --recursive')
+    print("update_zsh")
+    with ctx.cd("~/.zprezto/"):
+        ctx.run("git pull")
+        ctx.run("git submodule update --init --recursive")
 
-    with ctx.cd('~/.liquidprompt/'):
-        ctx.run('git checkout master')
-        ctx.run('git fetch origin')
-        ctx.run('git reset origin/master')
+    with ctx.cd("~/.liquidprompt/"):
+        ctx.run("git checkout master")
+        ctx.run("git fetch origin")
+        ctx.run("git reset origin/master")
 
 
 @task
 def update_brew_list(ctx):
-    print('update_brew_list')
-    listfile = os.path.expanduser('~/src/dotfiles/brew_list.txt')
-    ctx.run('brew list >> {}'.format(listfile))
-    ctx.run('sort {0} | uniq > {0}.tmp'.format(listfile))
+    print("update_brew_list")
+    listfile = os.path.expanduser("~/src/dotfiles/brew_list.txt")
+    ctx.run("brew list >> {}".format(listfile))
+    ctx.run("sort {0} | uniq > {0}.tmp".format(listfile))
     os.remove(listfile)
-    os.rename('{}.tmp'.format(listfile), listfile)
-    with ctx.cd('~/src/dotfiles/'):
-        ctx.run('git add brew_list.txt', warn=True)
+    os.rename("{}.tmp".format(listfile), listfile)
+    with ctx.cd("~/src/dotfiles/"):
+        ctx.run("git add brew_list.txt", warn=True)
         ctx.run("git commit -m 'new brews'", warn=True)
 
 
 def git_update_hooks(ctx, repo):
-    git_dir = os.path.join(repo, '.git')
+    git_dir = os.path.join(repo, ".git")
 
     if not os.path.exists(git_dir):
         return
 
-    hook_dir = os.path.join(git_dir, 'hooks')
+    hook_dir = os.path.join(git_dir, "hooks")
 
     if not os.path.exists(hook_dir):
         os.mkdir(hook_dir)
 
-    local_hooks = os.path.join(os.path.dirname(__file__), 'git-hooks')
+    local_hooks = os.path.join(os.path.dirname(__file__), "git-hooks")
 
     for hook in os.listdir(local_hooks):
-        print('{}-hook'.format(hook))
+        print("{}-hook".format(hook))
 
         hook_source = os.path.join(local_hooks, hook)
         hook_dest = os.path.join(hook_dir, hook)
@@ -99,46 +102,67 @@ def git_update_hooks(ctx, repo):
 
 def git_fetch(ctx, repo):
     with ctx.cd(repo):
-        if len(ctx.run('git remote').stdout):
-            ctx.run('git fetch --all --recurse-submodules=yes --prune')
-            ctx.run('git fetch --all --recurse-submodules=yes --prune --tags')
+        if len(ctx.run("git remote").stdout):
+            ctx.run("git fetch --all --recurse-submodules=yes --prune")
+            ctx.run("git fetch --all --recurse-submodules=yes --prune --tags")
             return True
         else:
-            print('\tno remote configured')
+            print("\tno remote configured")
             return False
 
 
 def git_merge_ff(ctx, repo, branch, commit):
     """Merge a branch without checking it out"""
     with ctx.cd(repo):
-        branch_ref = 'refs/heads/{0}'.format(branch)
-        branch_orig_hash = ctx.run('git show-ref -s --verify {0}'.format(branch_ref)).stdout.strip()
-        commit_orig_hash = ctx.run('git rev-parse --verify {0}'.format(commit)).stdout.strip()
+        branch_ref = "refs/heads/{0}".format(branch)
+        branch_orig_hash = ctx.run(
+            "git show-ref -s --verify {0}".format(branch_ref)
+        ).stdout.strip()
+        commit_orig_hash = ctx.run(
+            "git rev-parse --verify {0}".format(commit)
+        ).stdout.strip()
 
-        if ctx.run('git symbolic-ref HEAD').stdout.strip() == branch_ref:
+        if ctx.run("git symbolic-ref HEAD").stdout.strip() == branch_ref:
             ctx.run('git merge --ff-only "{0}"'.format(commit))
 
         else:
-            if ctx.run("git merge-base {}  {}".format(branch_orig_hash, commit_orig_hash)).stdout != branch_orig_hash:
-                print('merging {0} into {1} would not be a fast-forward'.format(commit, branch))
+            if (
+                ctx.run(
+                    "git merge-base {}  {}".format(branch_orig_hash, commit_orig_hash)
+                ).stdout
+                != branch_orig_hash
+            ):
+                print(
+                    "merging {0} into {1} would not be a fast-forward".format(
+                        commit, branch
+                    )
+                )
 
             else:
                 print("Updating {}..{}".format(branch, commit))
 
-                ctx.run('git update-ref -m "merge {0}: Fast forward" "{1}" "{2}" "{3}"'.format(commit, branch_ref,
-                                                                                               commit_orig_hash,
-                                                                                               branch_orig_hash))
-                ctx.run('git diff --shortstat "{0}@{{1}}" "{0}"'.format(branch), warn=True)
+                ctx.run(
+                    'git update-ref -m "merge {0}: Fast forward" "{1}" "{2}" "{3}"'.format(
+                        commit, branch_ref, commit_orig_hash, branch_orig_hash
+                    )
+                )
+                ctx.run(
+                    'git diff --shortstat "{0}@{{1}}" "{0}"'.format(branch), warn=True
+                )
 
 
 def git_rebase_branches(ctx, repo):
     with ctx.cd(repo):
         remotes = set(
-            b[20:] for b in
-            ctx.run("git for-each-ref --format='%(refname)' refs/remotes/origin/").stdout.split('\n')
+            b[20:]
+            for b in ctx.run(
+                "git for-each-ref --format='%(refname)' refs/remotes/origin/"
+            ).stdout.split("\n")
             if len(b) > 21
         )
-        for ref in ctx.run("git for-each-ref --format='%(refname)' refs/heads/").stdout.split('\n'):
+        for ref in ctx.run(
+            "git for-each-ref --format='%(refname)' refs/heads/"
+        ).stdout.split("\n"):
             branch = ref[11:]
             if branch in remotes:
                 git_merge_ff(ctx, repo, branch, "origin/{}".format(branch))
@@ -146,21 +170,21 @@ def git_rebase_branches(ctx, repo):
 
 def git_cleanup(ctx, repo):
     with ctx.cd(repo):
-        ctx.run('git gc --auto')
+        ctx.run("git gc --auto")
 
 
 def update_repo(ctx, project, kind):
-    if kind == 'git':
-        print('updating {}...'.format(project))
+    if kind == "git":
+        print("updating {}...".format(project))
         if git_fetch(ctx, project):
             git_rebase_branches(ctx, project)
         git_update_hooks(ctx, project)
         git_cleanup(ctx, project)
 
-    elif kind == 'hg':
+    elif kind == "hg":
         pass
 
-    elif kind == 'svn':
+    elif kind == "svn":
         pass
 
 
@@ -172,21 +196,21 @@ def update_repos(ctx):
 
 @task
 def update_vim(ctx):
-    print('update_vim')
+    print("update_vim")
     ctx.run('vim "+call dein#update()" +qa')
     ctx.run('nvim "+call dein#update()" +qa')
 
 
 @task
 def new_repo_cache(ctx):
-    print('clean local project cache')
-    ctx.run('rm -rf ~/.cache/.project_list')
+    print("clean local project cache")
+    ctx.run("rm -rf ~/.cache/.project_list")
 
 
 @task
 def rustup(ctx):
-    print('update rustup')
-    ctx.run('rustup update')
+    print("update rustup")
+    ctx.run("rustup update")
 
 
 def _update_bookmarks(filename, separator):
@@ -194,26 +218,17 @@ def _update_bookmarks(filename, separator):
     if bookmark_file.exists():
         os.remove(bookmark_file)
 
-    with open(bookmark_file, 'w') as f:
+    with open(bookmark_file, "w") as f:
         for p in get_all_repos():
             path = Path(p)
 
-            f.write(
-                f"{path.parts[-1]}{separator}"
-                f"{path}\r\n"
-            )
+            f.write(f"{path.parts[-1]}{separator}" f"{path}\r\n")
 
 
 @task
 def update_vim_bookmarks(ctx):
-    _update_bookmarks('/Users/syphar/.NERDTreeBookmarks', ' ')
-    _update_bookmarks('/Users/syphar/.cache/ctrlp/bkd/cache.txt', '\t')
-
-
-@task
-def mackup(ctx):
-    ctx.run('mackup restore')
-    ctx.run('mackup backup')
+    _update_bookmarks("/Users/syphar/.NERDTreeBookmarks", " ")
+    _update_bookmarks("/Users/syphar/.cache/ctrlp/bkd/cache.txt", "\t")
 
 
 @task(default=True)
