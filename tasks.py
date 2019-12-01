@@ -50,11 +50,8 @@ def cleanup_homebrew(ctx):
 def update_zsh(ctx):
     print('update_zsh')
     with ctx.cd('~/.zprezto/'):
-        ctx.run('git fetch --all --prune')
-        ctx.run('git merge origin/master --ff-only', warn=True)
-        ctx.run('git merge upstream/master', warn=True)
+        ctx.run('git pull')
         ctx.run('git submodule update --init --recursive')
-        ctx.run('git push')
 
     with ctx.cd('~/.liquidprompt/'):
         ctx.run('git checkout master')
