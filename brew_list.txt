@@ -178,6 +178,7 @@ lz4
 lzip
 lzlib
 lzo
+mackup
 maven
 mcrypt
 memcached
