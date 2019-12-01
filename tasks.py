@@ -210,6 +210,12 @@ def update_vim_bookmarks(ctx):
     _update_bookmarks('/Users/syphar/.cache/ctrlp/bkd/cache.txt', '\t')
 
 
+@task
+def mackup(ctx):
+    ctx.run('mackup restore')
+    ctx.run('mackup backup')
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
