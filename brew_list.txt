@@ -221,6 +221,7 @@ pcre2
 perl
 pidof
 pinentry
+pipx
 pixman
 pkg-config
 play12
