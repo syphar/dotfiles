@@ -237,6 +237,11 @@ def mackup(ctx):
     ctx.run("mackup backup")
 
 
+@task
+def autocomplete_cache(ctx):
+    ctx.run("heroku autocomplete --refresh-cache")
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
@@ -250,3 +255,4 @@ def update(ctx):
     update_vim(ctx)
     new_repo_cache(ctx)
     mackup(ctx)
+    autocomplete_cache(ctx)
