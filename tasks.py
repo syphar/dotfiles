@@ -231,7 +231,6 @@ def update(ctx):
     self_update(ctx)
     update_homebrew(ctx)
     update_zsh(ctx)
-    update_repo_cache()
     update_vim_bookmarks(ctx)
     rustup(ctx)
     update_repos(ctx)
