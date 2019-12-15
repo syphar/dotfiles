@@ -4,8 +4,7 @@ from pathlib import Path
 
 from invoke import task
 
-from projects import (SRC_DIR, get_all_repos, update_repo_cache,
-                      yield_repos_in_folder)
+from projects import SRC_DIR, get_all_repos, yield_repos_in_folder
 
 
 @task
@@ -34,8 +33,6 @@ def update_homebrew(ctx):
 @task
 def cleanup_homebrew(ctx):
     print("cleanup_homebrew")
-
-    cache_folder = ctx.run("brew --cache").stdout
 
     ctx.run("brew cleanup")
     ctx.run("brew prune")
@@ -76,28 +73,22 @@ def update_brew_list(ctx):
 
 
 def git_update_hooks(ctx, repo):
-    git_dir = os.path.join(repo, ".git")
+    hook_dir = Path(repo) / ".git" / "hooks"
 
-    if not os.path.exists(git_dir):
-        return
+    if not hook_dir.exists():
+        hook_dir.mkdir()
 
-    hook_dir = os.path.join(git_dir, "hooks")
+    local_hooks = Path(__file__).parent / "git-hooks"
 
-    if not os.path.exists(hook_dir):
-        os.mkdir(hook_dir)
+    for hook_source in local_hooks.iterdir():
+        print(f"setting {hook_source.name}-hook")
 
-    local_hooks = os.path.join(os.path.dirname(__file__), "git-hooks")
-
-    for hook in os.listdir(local_hooks):
-        print("{}-hook".format(hook))
-
-        hook_source = os.path.join(local_hooks, hook)
-        hook_dest = os.path.join(hook_dir, hook)
+        hook_dest = hook_dir / hook_source.name
 
         if os.path.lexists(hook_dest):
-            os.remove(hook_dest)
+            hook_dest.unlink()
 
-        os.symlink(hook_source, hook_dest)
+        hook_dest.symlink_to(hook_source)
 
 
 def git_fetch(ctx, repo):
@@ -202,12 +193,6 @@ def update_vim(ctx):
 
 
 @task
-def new_repo_cache(ctx):
-    print("clean local project cache")
-    ctx.run("rm -rf ~/.cache/.project_list")
-
-
-@task
 def rustup(ctx):
     print("update rustup")
     ctx.run("rustup update")
@@ -253,6 +238,5 @@ def update(ctx):
     update_repos(ctx)
     update_brew_list(ctx)
     update_vim(ctx)
-    new_repo_cache(ctx)
     mackup(ctx)
     autocomplete_cache(ctx)

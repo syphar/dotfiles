@@ -2,52 +2,38 @@
 
 import os
 
-SRC_DIR = os.path.join(os.path.expanduser('~'), 'src')
-REPO_CACHE = os.path.join(os.path.expanduser("~"), '.cache', '.project_list')
+SRC_DIR = os.path.join(os.path.expanduser("~"), "src")
 
 
 def yield_repos_in_folder(src_folder):
-    for project, subdirs, _ in os.walk(src_folder):
-        if '.git' in subdirs:
-            yield project, 'git'
+    for project, subdirs, subfiles in os.walk(src_folder):
+        if ".git" in subdirs:
+            yield project, "git"
             del subdirs[:]
 
-        elif '.hg' in subdirs:
-            yield project, 'hg'
+        elif ".hg" in subdirs:
+            yield project, "hg"
             del subdirs[:]
 
-        elif '.svn' in subdirs:
-            yield project, 'svn'
+        elif ".svn" in subdirs:
+            yield project, "svn"
+            del subdirs[:]
+
+        elif ".envrc" in subfiles:
+            # elif ".direnv" in subdirs or ".envrc" in files:
+            # non-vcs project
+            yield project, ""
             del subdirs[:]
 
 
 def print_repos():
-    if not os.path.exists(REPO_CACHE):
-        update_repo_cache()
-
-    with open(REPO_CACHE) as f:
-        print(f.read())
-
-
-def update_repo_cache():
-    content = '\n'.join(
-        repo
-        for repo, kind in yield_repos_in_folder(SRC_DIR)
-    )
-
-    if os.path.exists(REPO_CACHE):
-        os.remove(REPO_CACHE)
-
-    with open(REPO_CACHE, 'w') as f:
-        f.write(content)
+    for project in get_all_repos():
+        print(project)
 
 
 def get_all_repos():
-    return (
-        project 
-        for project, kind in yield_repos_in_folder(SRC_DIR)
-    )
+    return (project for project, kind in yield_repos_in_folder(SRC_DIR))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print_repos()
