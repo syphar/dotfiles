@@ -1,0 +1,1 @@
+/Users/syphar/.config/nvim/init.vim
