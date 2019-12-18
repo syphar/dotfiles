@@ -31,6 +31,12 @@ def update_homebrew(ctx):
 
 
 @task
+def update_pipx(ctx):
+    print("update pipx")
+    ctx.run("pipx upgrade-all")
+
+
+@task
 def cleanup_homebrew(ctx):
     print("cleanup_homebrew")
 
@@ -224,6 +230,7 @@ def autocomplete_cache(ctx):
 def update(ctx):
     self_update(ctx)
     update_homebrew(ctx)
+    update_pipx(ctx)
     update_zsh(ctx)
     rustup(ctx)
     update_repos(ctx)
