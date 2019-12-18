@@ -33,6 +33,10 @@ def update_homebrew(ctx):
 @task
 def update_pipx(ctx):
     print("update pipx")
+    with open(Path(__file__).parent / "pipx_list.txt") as pipx_list:
+        for pkg in pipx_list:
+            ctx.run(f"pipx install {pkg}")
+
     ctx.run("pipx upgrade-all")
 
 
