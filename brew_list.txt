@@ -4,6 +4,7 @@ adwaita-icon-theme
 aom
 archey
 asciidoc
+asciiquarium
 aspell
 astyle
 atk
@@ -27,7 +28,9 @@ cfitsio
 cgal
 cloc
 cmake
+cmatrix
 coreutils
+cowsay
 cscope
 ctags
 curl
@@ -49,6 +52,7 @@ erlang@17
 erlang@20
 expat
 ffmpeg
+figlet
 flac
 flex
 fontconfig
@@ -61,6 +65,7 @@ gd
 gdal
 gdbm
 gdk-pixbuf
+genact
 geoip
 geos
 gettext
@@ -171,6 +176,7 @@ libyaml
 lighttpd
 little-cms
 little-cms2
+lolcat
 lua
 luajit
 lynx
@@ -269,6 +275,7 @@ selecta
 sfcgal
 shared-mime-info
 siege
+sl
 snappy
 source-highlight
 speex
@@ -279,6 +286,7 @@ szip
 tcl-tk
 tesseract
 the_silver_searcher
+thefuck
 theora
 tig
 tmate
