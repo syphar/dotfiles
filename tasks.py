@@ -268,11 +268,6 @@ def mackup_dotfiles(ctx):
             with ctx.cd(str(destination_folder)):
                 ctx.run(f"git add {file_}")
 
-                rc = ctx.run("git status --porcelain")
-                import pdb
-
-                pdb.set_trace()
-
 
 @task
 def autocomplete_cache(ctx):
@@ -292,3 +287,4 @@ def update(ctx):
     update_vim(ctx)
     mackup(ctx)
     autocomplete_cache(ctx)
+    mackup_dotfiles(ctx)
