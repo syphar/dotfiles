@@ -16,21 +16,22 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " Required:
   call dein#add('/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-  call dein#add('vim-scripts/LargeFile')
-  call dein#add('terryma/vim-expand-region')
-  call dein#add('tpope/vim-commentary')
+  " interface
+  call dein#add('chriskempson/base16-vim')
   call dein#add('itchyny/lightline.vim')
-  call dein#add('simnalamburt/vim-mundo') " visualize undo tree
 
-  " tpope/vim-obsession " save sessions including splits, files, ... ?
+  " general plugins
+  call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
+  call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
+  call dein#add('terryma/vim-expand-region')
+  call dein#add('simnalamburt/vim-mundo') " visualize undo tree
+  " TODO: tpope/vim-obsession " save sessions including splits, files, ... ?
 
   " file management / search
-  call dein#add('scrooloose/nerdtree',
-    	\{'on_cmd': 'NERDTreeToggle'})
+  call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'})
   call dein#add('tpope/vim-vinegar')
   call dein#add('Yggdroot/LeaderF', { 'build': './install.sh' })
   call dein#add('rking/ag.vim')
-
 
   " GIT integration
   call dein#add('tpope/vim-fugitive')
@@ -39,45 +40,26 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('airblade/vim-gitgutter')  " git status per line in file
 
   " specific file types
-  call dein#add('chrisbra/csv.vim',
-  	\{'on_ft': ['csv']})
-  call dein#add('vim-scripts/django.vim',
-  	\{'on_ft': ['html', 'htmldjango']})
-  call dein#add('cespare/vim-toml',
-  	\{'on_ft': ['toml']})
-
+  call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
+  call dein#add('vim-scripts/django.vim', {'on_ft': ['html', 'htmldjango']})
+  call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
 
   " generic software dev stuff
-  " call dein#add('wellle/context.vim')  " nice but not for python IMHO
-
-
-  call dein#add('dense-analysis/ale')
-
-  call dein#add('chriskempson/base16-vim')
-
-  call dein#add('editorconfig/editorconfig-vim')
-  call dein#add('majutsushi/tagbar')
+  call dein#add('dense-analysis/ale') " linting / fixing
+  call dein#add('tpope/vim-commentary')
+  call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
+  call dein#add('majutsushi/tagbar')  " tagbar and tag in statusline
   call dein#add('direnv/direnv.vim')
-  call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
 
-  call dein#add('davidhalter/jedi-vim',
-  	\{'on_ft': ['python']})
-
-  call dein#add('Shougo/deoplete.nvim',
-  	\{'on_i': 1})  "lazy load on insert mode
-
-  call dein#add('deoplete-plugins/deoplete-jedi',
-  	\{'on_i': 1, 'on_ft': ['python']})
-
+  call dein#add('Shougo/deoplete.nvim', {'on_i': 1})
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' })
 
   " python stuff
-  call dein#add('Vimjas/vim-python-pep8-indent',
-  	\{'on_i': 1, 'on_ft': ['python']})
-  call dein#add('jeetsukumaran/vim-pythonsense',
-  	\{'on_ft': ['python']})
-  call dein#add('numirias/semshi',
-  	\{'on_ft': ['python']})
+  call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
+  call dein#add('deoplete-plugins/deoplete-jedi', {'on_i': 1, 'on_ft': ['python']})
+  call dein#add('Vimjas/vim-python-pep8-indent', {'on_i': 1, 'on_ft': ['python']})
+  call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
+  call dein#add('numirias/semshi', {'on_ft': ['python']})
 
   " call dein#add('tmhedberg/SimpylFold',
   " 	\{'on_ft': ['python']})
@@ -179,6 +161,7 @@ function! LinterStatus() abort
         \)
 endfunction
 
+" get tag for current line, including parents, used in status-bar
 " adapted from https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/tagbar.vim
 let s:init=0
 let s:airline_tagbar_last_lookup_time = 0
@@ -215,13 +198,14 @@ let g:lightline = {
   \     'right': [
   \       [ 'lineinfo' ],
   \       [ 'percent' ],
+  \       [ 'fileformat', 'fileencoding', 'filetype' ],
   \       [ 'linterstatus' ]
   \     ]
   \   },
   \   'component_function': {
   \     'gitbranch': 'fugitive#head',
   \     'linterstatus': 'LinterStatus',
-  \     'currenttag': 'Tagbarcurrenttag',
+  \     'currenttag': 'Tagbarcurrenttag'
   \   }
   \ }
 
