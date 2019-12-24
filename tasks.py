@@ -220,6 +220,12 @@ def _update_bookmarks(filename, separator):
 
 
 @task
+def update_vim_bookmarks(ctx):
+    _update_bookmarks("/Users/syphar/.NERDTreeBookmarks", " ")
+    _update_bookmarks("/Users/syphar/.cache/ctrlp/bkd/cache.txt", "\t")
+
+
+@task
 def mackup(ctx):
     ctx.run("mackup restore")
     ctx.run("mackup backup")
@@ -236,6 +242,7 @@ def update(ctx):
     update_homebrew(ctx)
     update_pipx(ctx)
     update_zsh(ctx)
+    update_vim_bookmarks(ctx)
     rustup(ctx)
     update_repos(ctx)
     update_brew_list(ctx)
