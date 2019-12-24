@@ -232,6 +232,49 @@ def mackup(ctx):
 
 
 @task
+def mackup_dotfiles(ctx):
+    """public configuration files are copied to this dotfiles folder"""
+    app_list = (
+        "ctags",
+        "liquidprompt",
+        "neovim",
+        "prezto",
+        "zsh",
+    )
+
+    destination_folder = Path(__file__).parent
+
+    from mackup import utils, appsdb
+    from pprint import pprint
+
+    apps_db = appsdb.ApplicationsDatabase()
+    for app_name in app_list:
+        print(f"copy application config for {app_name}...")
+
+        files_ = apps_db.get_files(app_name)
+
+        for file_ in files_:
+            source = Path("~").expanduser() / file_
+            destination = destination_folder / file_
+
+            if not source.exists():
+                continue
+
+            if destination.exists():
+                utils.delete(str(destination))
+
+            utils.copy(str(source), str(destination))
+
+            with ctx.cd(str(destination_folder)):
+                ctx.run(f"git add {file_}")
+
+                rc = ctx.run("git status --porcelain")
+                import pdb
+
+                pdb.set_trace()
+
+
+@task
 def autocomplete_cache(ctx):
     ctx.run("heroku autocomplete --refresh-cache")
 
