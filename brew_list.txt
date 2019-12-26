@@ -12,6 +12,7 @@ autoconf
 autoenv
 autojump
 automake
+bat
 bazaar
 bdw-gc
 bison
@@ -60,6 +61,7 @@ freetype
 freexl
 frei0r
 fribidi
+fzf
 gcc
 gd
 gdal
