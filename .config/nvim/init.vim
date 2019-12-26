@@ -23,18 +23,18 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " general plugins
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
   call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
-  call dein#add('terryma/vim-expand-region')
+  call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
   call dein#add('simnalamburt/vim-mundo') " visualize undo tree
   " TODO: tpope/vim-obsession " save sessions including splits, files, ... ?
 
   " file management / search
-  call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'})
-  call dein#add('tpope/vim-vinegar')
-  call dein#add('Yggdroot/LeaderF', { 'build': './install.sh' })
-  call dein#add('rking/ag.vim')
+  call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'}) " left-side file explorer tree
+  call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
+  call dein#add('Yggdroot/LeaderF', { 'build': './install.sh' })  " fuzzy file and tag search
+  call dein#add('rking/ag.vim') " better grep
 
   " GIT integration
-  call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('junegunn/gv.vim')  " nice git log
   call dein#add('airblade/vim-gitgutter')  " git status per line in file
@@ -46,20 +46,28 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " generic software dev stuff
   call dein#add('dense-analysis/ale') " linting / fixing
-  call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('majutsushi/tagbar')  " tagbar and tag in statusline
-  call dein#add('direnv/direnv.vim')
+  call dein#add('direnv/direnv.vim') " read direnv for vim env
 
-  call dein#add('Shougo/deoplete.nvim', {'on_i': 1})
-  call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' })
+  call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
+  call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete
+
+  " not yet
+  " Plug 'autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "   \ 'do': 'bash install.sh',
+  "   \ }
+  " " (Optional) Multi-entry selection UI.
+  " Plug 'junegunn/fzf'
 
   " python stuff
   call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
   call dein#add('deoplete-plugins/deoplete-jedi', {'on_i': 1, 'on_ft': ['python']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_i': 1, 'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
-  call dein#add('numirias/semshi', {'on_ft': ['python']})
+  call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
 
   " call dein#add('tmhedberg/SimpylFold',
   " 	\{'on_ft': ['python']})
@@ -185,9 +193,6 @@ function! Tagbarcurrenttag()
   return s:airline_tagbar_last_lookup_val
 endfunction
 
-
-
-" unused right:   \       [ 'fileformat', 'fileencoding', 'filetype' ]
 
 let g:lightline = {
   \   'active': {
