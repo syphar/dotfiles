@@ -236,6 +236,7 @@ def mackup_dotfiles(ctx):
     """public configuration files are copied to this dotfiles folder"""
     app_list = (
         "ctags",
+        "git",
         "liquidprompt",
         "neovim",
         "prezto",

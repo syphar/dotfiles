@@ -32,8 +32,8 @@ cdp() {
   ) && cd $dir && clear
 }
 
-# open a file with vim
-vims() {
+# open a file from this projects with vim
+vv() {
   local file
 	file=$(
 	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
@@ -41,14 +41,15 @@ vims() {
   ) && nvim $file
 }
 
-# open a file with vimR
-vimrs() {
-  local file
-	file=$(
-	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
-    fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
-  ) && vimr $file
+# v - open files in ~/.viminfo
+v() {
+  local files
+  files=$(grep '^>' ~/.viminfo | cut -c3- |
+          while read line; do
+            [ -f "${line/\~/$HOME}" ] && echo "$line"
+          done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
 }
+
 
 # set HEROKU_APP environment based on the selected app
 # cache the app-list once per day
@@ -73,18 +74,49 @@ gcos() {
   ) && git checkout $branch
 }
 
+# fbr - checkout git branch (including remote branches), sorted by most recent commit
+# remote branches are checked out as a new local branch if they don't exist
+fco() {
+  local branches branch
+  branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") &&
+  branch=$(
+		echo "$branches" |
+    #fzf --preview="git --no-pager log -150 --pretty=format:%s '..{}'"
+    fzf --preview="git --no-pager branchdiff -150 '..{}'"
+  ) &&
+	git checkout $(echo "$branch" | sed "s/origin\///")
+}
+
+# fcoc - checkout git commit
+fcoc() {
+  local commits commit
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e) &&
+  git checkout $(echo "$commit" | sed "s/ .*//")
+}
+
+# fcs - get git commit sha
+# example usage: git rebase -i `fcs`
+fcs() {
+  local commits commit
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+  echo -n $(echo "$commit" | sed "s/ .*//")
+}
+
+
 # ftags - search ctags
 ftags() {
   local line
   [ -e tags ] &&
   line=$(
     awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
-    cut -c1-80 | fzf --nth=1,2
+    fzf --nth=1,2
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }
 
-# fkill - kill processes - list only the ones you can kill. Modified the earlier script.
+# fkill - kill processes
 fkill() {
     local pid
     if [ "$UID" != "0" ]; then
@@ -126,6 +158,8 @@ iterm2_print_user_vars() {
   iterm2_set_user_var herokuApp $HEROKU_APP
   iterm2_set_user_var virtualEnv ${VIRTUAL_ENV##*/}
 }
+
+source ~/src/dotfiles/forgit/forgit.plugin.zsh
 
 # uncomment for profiling
 # zprof
