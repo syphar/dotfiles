@@ -26,48 +26,51 @@ alias tigs='tig status'
 
 # cd in one of my projects
 cdp() {
-  cd $(~/src/dotfiles/projects.py | fzf --preview 'ls -1 {} | head -$LINES')
-  clear
+  local dir
+	dir=$(
+    ~/src/dotfiles/projects.py | fzf --preview 'ls -1 {} | head -$LINES'
+  ) && cd $dir && clear
 }
 
 # open a file with vim
 vims() {
-  nvim $(
-	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
-  )
+  local file
+	file=$(
+	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
+    fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
+  ) && nvim $file
 }
 
 # open a file with vimR
 vimrs() {
-  vimr $(
-	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | fzf --preview 'bat --style=numbers --color=always --decorations=always {} | head -$LINES'
-  )
+  local file
+	file=$(
+	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
+    fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
+  ) && vimr $file
 }
 
 # set HEROKU_APP environment based on the selected app
 # cache the app-list once per day
 setherokuapp() {
-  today=$(date +"%Y_%m_%d")
-  cache_filename=~/.cache/.heroku_apps_$today
-
-  # if [ ! -f $cache_filename ]; then
-  heroku apps --all --json | jq -r '. | map("\(.name)") | .[]' > $cache_filename
-  # fi
-
-  export HEROKU_APP=$(cat ${cache_filename} | fzf)
-  echo "did set HEROKU_APP to $HEROKU_APP"
+	local app
+	app=$(
+    heroku apps --all --json | jq -r '. | map("\(.name)") | .[]' |
+    fzf
+  ) && export HEROKU_APP=$app && echo "did set HEROKU_APP to $HEROKU_APP"
 }
 
 # checkout branches with fuzzy search, includes remote branches
 gcos() {
-  git checkout $(
+  local branch
+	branch=$(
 	  (
 		  # local branches
 		  git for-each-ref --format='%(refname)' refs/heads/ | cut -c 12-999;
 			# remote branches
 		  git for-each-ref --format='%(refname)' refs/remotes/origin/ | cut -c 21-999;
 	  ) | sort | uniq | fzf;
-  )
+  ) && git checkout $branch
 }
 
 # ftags - search ctags
