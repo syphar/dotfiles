@@ -24,22 +24,24 @@ alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip ins
 alias tiga='tig --all'
 alias tigs='tig status'
 
-alias pcat="pygmentize -f terminal256 -O style=native -g"
-
 # cd in one of my projects
 cdp() {
-  cd $(~/src/dotfiles/projects.py | selecta)
+  cd $(~/src/dotfiles/projects.py | fzf --preview 'ls -1 {} | head -$LINES')
   clear
 }
 
 # open a file with vim
 vims() {
-  nvim $(ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | selecta)
+  nvim $(
+	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
+  )
 }
 
 # open a file with vimR
 vimrs() {
-  vimr $(ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | selecta)
+  vimr $(
+	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" | fzf --preview 'bat --style=numbers --color=always --decorations=always {} | head -$LINES'
+  )
 }
 
 # set HEROKU_APP environment based on the selected app
@@ -52,7 +54,7 @@ setherokuapp() {
   heroku apps --all --json | jq -r '. | map("\(.name)") | .[]' > $cache_filename
   # fi
 
-  export HEROKU_APP=$(cat ${cache_filename} | selecta)
+  export HEROKU_APP=$(cat ${cache_filename} | fzf)
   echo "did set HEROKU_APP to $HEROKU_APP"
 }
 
@@ -64,9 +66,21 @@ gcos() {
 		  git for-each-ref --format='%(refname)' refs/heads/ | cut -c 12-999;
 			# remote branches
 		  git for-each-ref --format='%(refname)' refs/remotes/origin/ | cut -c 21-999;
-	  ) | sort | uniq | selecta;
+	  ) | sort | uniq | fzf;
   )
 }
+
+# ftags - search ctags
+ftags() {
+  local line
+  [ -e tags ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
+    cut -c1-80 | fzf --nth=1,2
+  ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}
+
 
 PATH=~/bin:/usr/local/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH

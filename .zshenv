@@ -102,6 +102,8 @@ export DOCKER_HOST=tcp://127.0.0.1:4243
 
 export PATH=$PATH:~/.local/bin
 
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
 
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
