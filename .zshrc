@@ -38,7 +38,7 @@ vv() {
 	file=$(
 	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
     fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
-  ) && nvim $file
+  ) && $EDITOR $file
 }
 
 # v - open files in ~/.viminfo
@@ -47,7 +47,7 @@ v() {
   files=$(grep '^>' ~/.viminfo | cut -c3- |
           while read line; do
             [ -f "${line/\~/$HOME}" ] && echo "$line"
-          done | fzf -d -m -q "$*" -1) && vim ${files//\~/$HOME}
+          done | fzf -d -m -q "$*" -1) && $EDITOR ${files//\~/$HOME}
 }
 
 
