@@ -293,6 +293,7 @@ def update(ctx):
     update_vim_bookmarks(ctx)
     rustup(ctx)
     update_repos(ctx)
+    update_zsh_plugin_repos(ctx)
     update_brew_list(ctx)
     update_vim(ctx)
     mackup(ctx)
