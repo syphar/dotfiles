@@ -230,6 +230,7 @@ def _update_bookmarks(filename, separator):
 def update_vim_bookmarks(ctx):
     _update_bookmarks("/Users/syphar/.NERDTreeBookmarks", " ")
     _update_bookmarks("/Users/syphar/.cache/ctrlp/bkd/cache.txt", "\t")
+    _update_bookmarks("/Users/syphar/.pathmarks", ": ")
 
 
 @task
