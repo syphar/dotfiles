@@ -213,6 +213,7 @@ npth
 nspr
 nss
 numpy
+nvm
 offline-imap
 offlineimap
 oniguruma
