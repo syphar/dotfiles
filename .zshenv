@@ -114,6 +114,7 @@ export KEYTIMEOUT=1
 # i do this myself in dotfiles/tasks.py
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+export NVM_DIR="$HOME/.nvm"
 
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
