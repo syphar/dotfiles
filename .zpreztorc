@@ -16,7 +16,7 @@
 zstyle ':prezto:*:*' color 'yes'
 
 # Add additional directories to load prezto modules from
-# zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
+zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
 
 # Set the Zsh modules to load (man zshmodules).
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
@@ -28,13 +28,18 @@ zstyle ':prezto:*:*' color 'yes'
 # The order matters.
 zstyle ':prezto:load' pmodule \
   'environment' \
+  'terminal' \
+  'editor' \
   'history' \
   'spectrum' \
   'utility' \
   'git' \
   'completion' \
+  'prompt' \
   'syntax-highlighting' \
-  'history-substring-search'
+  'history-substring-search' \
+  'forgit'
+  # 'formarks'
 
 #
 # Autosuggestions
@@ -112,7 +117,7 @@ zstyle ':prezto:module:editor' keymap 'vi'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'off' # I'm using liquidpromt
+zstyle ':prezto:module:prompt' theme 'powerlevel10k'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)

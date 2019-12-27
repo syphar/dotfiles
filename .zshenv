@@ -102,7 +102,17 @@ export DOCKER_HOST=tcp://127.0.0.1:4243
 
 export PATH=$PATH:~/.local/bin
 
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FD_OPTIONS="--hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS="--no-mouse --height 40% --layout=reverse --border"
+export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+
+# for working vi-mode
+export KEYTIMEOUT=1
+
+# i do this myself in dotfiles/tasks.py
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 
 # fix for neovim / virtualenv and direnv

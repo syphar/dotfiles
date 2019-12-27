@@ -248,7 +248,7 @@ def mackup_dotfiles(ctx):
         "git",
         "liquidprompt",
         "neovim",
-        "powerline10k",
+        "powerlevel10k",
         "prezto",
         "zsh",
     )

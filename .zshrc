@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 #
 # Executes commands at the start of an interactive session.
 #
@@ -36,8 +43,8 @@ cdp() {
 vv() {
   local file
 	file=$(
-	  ag . -i --nocolor --nogroup --hidden --ignore .git -g "" |
-    fzf --preview 'bat --style=numbers --color=always {} | head -$LINES'
+		eval $FZF_DEFAULT_COMMAND |
+    fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
 
@@ -50,7 +57,6 @@ v() {
           done | fzf -d -m -q "$*" -1) && $EDITOR ${files//\~/$HOME}
 }
 
-
 # set HEROKU_APP environment based on the selected app
 # cache the app-list once per day
 setherokuapp() {
@@ -61,27 +67,13 @@ setherokuapp() {
   ) && export HEROKU_APP=$app && echo "did set HEROKU_APP to $HEROKU_APP"
 }
 
-# checkout branches with fuzzy search, includes remote branches
-gcos() {
-  local branch
-	branch=$(
-	  (
-		  # local branches
-		  git for-each-ref --format='%(refname)' refs/heads/ | cut -c 12-999;
-			# remote branches
-		  git for-each-ref --format='%(refname)' refs/remotes/origin/ | cut -c 21-999;
-	  ) | sort | uniq | fzf;
-  ) && git checkout $branch
-}
-
-# fbr - checkout git branch (including remote branches), sorted by most recent commit
+# fco - checkout git branch (including remote branches), sorted by most recent commit
 # remote branches are checked out as a new local branch if they don't exist
 fco() {
   local branches branch
   branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") &&
   branch=$(
 		echo "$branches" |
-    #fzf --preview="git --no-pager log -150 --pretty=format:%s '..{}'"
     fzf --preview="git --no-pager branchdiff -150 '..{}'"
   ) &&
 	git checkout $(echo "$branch" | sed "s/origin\///")
@@ -116,29 +108,9 @@ ftags() {
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }
 
-# fkill - kill processes
-fkill() {
-    local pid
-    if [ "$UID" != "0" ]; then
-        pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
-    else
-        pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-    fi
-
-    if [ "x$pid" != "x" ]
-    then
-        echo $pid | xargs kill -${1:-9}
-    fi
-}
-
-
 
 PATH=~/bin:/usr/local/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH
-
-# very simple prompt, only folder name and %
-# rest is shown in iterm status bar
-export PROMPT="[%1~] %# "
 
 eval "$(direnv hook zsh)"
 
@@ -152,14 +124,17 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# working vi-mode for zsh
+bindkey -v
 
-iterm2_print_user_vars() {
-  iterm2_set_user_var herokuApp $HEROKU_APP
-  iterm2_set_user_var virtualEnv ${VIRTUAL_ENV##*/}
-}
 
-source ~/src/dotfiles/forgit/forgit.plugin.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source ~/.fzf.zsh
+
+# formarks ctrl-g
+# zle -N jump
+# bindkey '^g' jump
 
 # uncomment for profiling
 # zprof
