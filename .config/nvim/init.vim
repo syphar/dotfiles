@@ -18,7 +18,8 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " interface
   call dein#add('chriskempson/base16-vim')
-  call dein#add('itchyny/lightline.vim')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
   " general plugins
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
@@ -64,8 +65,8 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " python stuff
   call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
-  call dein#add('deoplete-plugins/deoplete-jedi', {'on_i': 1, 'on_ft': ['python']})
-  call dein#add('Vimjas/vim-python-pep8-indent', {'on_i': 1, 'on_ft': ['python']})
+  call dein#add('deoplete-plugins/deoplete-jedi', {'on_ft': ['python']})
+  call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
 
@@ -154,65 +155,19 @@ let g:deoplete#auto_complete_delay = 100  " needed for semshi
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1
+let g:airline_theme='base16_tomorrow' " need to set explicitly so VimR also uses it
 
-" Function: display errors from Ale in statusline
-function! LinterStatus() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-
-  return l:counts.total == 0 ? '✅' : printf(
-        \   '😞 %dW %dE',
-        \   all_non_errors,
-        \   all_errors
-        \)
-endfunction
-
-" get tag for current line, including parents, used in status-bar
-" adapted from https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/tagbar.vim
-let s:init=0
-let s:airline_tagbar_last_lookup_time = 0
-let s:airline_tagbar_last_lookup_val = ''
-function! Tagbarcurrenttag()
-  if !s:init
-    try
-      " try to load the plugin, if filetypes are disabled,
-      " this will cause an error, so try only once
-      let a=tagbar#currenttag('%', '', '')
-    catch
-    endtry
-    unlet! a
-    let s:init=1
-  endif
-  " format: s = longsig, f=fullpath, p=prototype
-  if s:airline_tagbar_last_lookup_time != localtime() && exists("*tagbar#currenttag")
-    let s:airline_tagbar_last_lookup_val = tagbar#currenttag('%s', '', 'f')
-    let s:airline_tagbar_last_lookup_time = localtime()
-  endif
-  return s:airline_tagbar_last_lookup_val
-endfunction
+" only works together
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#show_buffers = 0
 
 
-let g:lightline = {
-  \   'active': {
-  \     'left':[
-  \       [ 'mode', 'paste' ],
-  \       [ 'gitbranch', 'readonly', 'filename', 'modified', 'currenttag' ]
-  \     ],
-  \     'right': [
-  \       [ 'lineinfo' ],
-  \       [ 'percent' ],
-  \       [ 'fileformat', 'fileencoding', 'filetype' ],
-  \       [ 'linterstatus' ]
-  \     ]
-  \   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head',
-  \     'linterstatus': 'LinterStatus',
-  \     'currenttag': 'Tagbarcurrenttag'
-  \   }
-  \ }
+let g:airline#extensions#tagbar#flags='f' " current tag in statusbar should show class + method
+let g:airline#extensions#virtualenv#enabled = 0
+
 
 
 function! ToggleLocList()
