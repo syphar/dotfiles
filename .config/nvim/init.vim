@@ -118,6 +118,8 @@ let g:Lf_ExternalCommand = 'ag %s $VIRTUAL_ENV -i --nocolor --nogroup --hidden
        \ --ignore "*.pyc"
        \ -g ""'
 
+" TODO: separate command for current project vs including virtualenv
+
 nmap <leader>t :LeaderfBufTag<CR>
 nmap <leader>T :LeaderfTag<CR>
 nmap <leader>m :LeaderfMruCwd<CR>
@@ -158,7 +160,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
-let g:airline_theme='base16_tomorrow' " need to set explicitly so VimR also uses it
+let g:airline_theme='dark_minimal'
 
 " only works together
 let g:airline#extensions#tabline#tab_min_count = 2
@@ -166,7 +168,16 @@ let g:airline#extensions#tabline#show_buffers = 0
 
 
 let g:airline#extensions#tagbar#flags='f' " current tag in statusbar should show class + method
-let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#virtualenv#enabled = 0  " no need to show it
+
+" let g:airline_extensions = [
+"   \ "branch",
+"   \ "tagbar",
+"   \ "ale",
+"   \ "tabline",
+"   \ "fugitiveline"
+"   \ ]
+
 
 
 
