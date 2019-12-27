@@ -38,6 +38,7 @@ curl
 ddrescue
 dfu-util
 diff-pdf
+diff-so-fancy
 direnv
 docbook
 docbook-xsl
@@ -52,6 +53,7 @@ erlang
 erlang@17
 erlang@20
 expat
+fd
 ffmpeg
 figlet
 flac
