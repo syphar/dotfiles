@@ -196,6 +196,13 @@ def update_repos(ctx):
 
 
 @task
+def update_zsh_plugin_repos(ctx):
+    for path in Path("~/.zprezto-contrib/").expanduser().iterdir():
+        if path.is_dir() and (path / ".git").exists():
+            update_repo(ctx, str(path), "git")
+
+
+@task
 def update_vim(ctx):
     print("update_vim")
     ctx.run('nvim "+call dein#update()" +qa')
