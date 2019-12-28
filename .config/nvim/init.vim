@@ -18,8 +18,10 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " interface
   call dein#add('chriskempson/base16-vim')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
+
+  " for statusline
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('maximbaz/lightline-ale')
 
   " general plugins
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
@@ -49,7 +51,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('majutsushi/tagbar')  " tagbar and tag in statusline
+  call dein#add('majutsushi/tagbar')  " tag-sidebar and tag in statusline
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
@@ -157,27 +159,83 @@ let g:deoplete#auto_complete_delay = 100  " needed for semshi
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_highlighting_cache = 1
-let g:airline_theme='dark_minimal'
+set laststatus=2
+set noshowmode
 
-" only works together
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#show_buffers = 0
+let g:lightline = {}
+let g:lightline.separator = { 'left': "\ue0b8", 'right': "\ue0be" }
+let g:lightline.subseparator = { 'left': "\ue0b9", 'right': "\ue0b9" }
+let g:lightline.tabline_separator = { 'left': "\ue0bc", 'right': "\ue0ba" }
+let g:lightline.tabline_subseparator = { 'left': "\ue0bb", 'right': "\ue0bb" }
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf529"
+let g:lightline#ale#indicator_errors = "\uf00d"
+let g:lightline#ale#indicator_ok = "\uf00c"
 
+let g:lightline.active = {
+            \ 'left': [
+            \  [ 'mode', 'paste' ],
+            \  [ 'readonly', 'filename', 'modified', 'gitbranch' ],
+            \  [ 'tagbar' ]
+            \ ],
+            \ 'right': [
+            \   [ 'lineinfo' ],
+            \   [ 'filetype' ],
+            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+            \ ]
+            \ }
 
-let g:airline#extensions#tagbar#flags='f' " current tag in statusbar should show class + method
-let g:airline#extensions#virtualenv#enabled = 0  " no need to show it
+let g:lightline.inactive = {
+            \ 'left': [ [ 'filename' , 'modified' ]],
+            \ 'right': [
+            \   [ 'lineinfo' ],
+            \   [ 'fileformat' ],
+            \ ]
+            \ }
 
-" let g:airline_extensions = [
-"   \ "branch",
-"   \ "tagbar",
-"   \ "ale",
-"   \ "tabline",
-"   \ "fugitiveline"
-"   \ ]
+let g:lightline.tabline = {
+            \ 'left': [ [ 'tabs' ] ],
+            \ 'right': [ ]
+            \ }
 
+let g:lightline.tab = {
+            \ 'active': [ 'tabnum', 'filename', 'modified' ],
+            \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
+
+let g:lightline.component = {
+            \ 'lineinfo': '%2p%% %3l:%-2v',
+            \ 'tagbar': '%{tagbar#currenttag("%s", "", "f")}'
+            \ }
+
+let g:lightline.component_function = {
+            \ 'gitbranch': 'fugitive#head',
+            \ }
+
+let g:lightline.component_expand = {
+            \ 'linter_checking': 'lightline#ale#checking',
+            \ 'linter_warnings': 'lightline#ale#warnings',
+            \ 'linter_errors': 'lightline#ale#errors',
+            \ 'linter_ok': 'lightline#ale#ok',
+            \ }
+
+let g:lightline.component_type = {
+            \ 'linter_warnings': 'warning',
+            \ 'linter_errors': 'error'
+            \ }
+
+let g:lightline.mode_map = {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'VL',
+        \ "\<C-v>": 'VB',
+        \ 'c' : 'C',
+        \ 's' : 'S',
+        \ 'S' : 'SL',
+        \ "\<C-s>": 'SB',
+        \ 't': 'T',
+        \ }
 
 
 
