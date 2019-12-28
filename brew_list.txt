@@ -45,6 +45,7 @@ docbook-xsl
 docker
 docker-compose
 docker-machine
+docutils
 eigen
 elasticsearch
 enchant
@@ -119,6 +120,7 @@ icu4c
 imapsync
 isl
 ivy
+jansson
 jasper
 jbig2dec
 jemalloc
@@ -300,6 +302,7 @@ tokyo-cabinet
 tor
 unbound
 unibilium
+universal-ctags
 unixodbc
 utf8proc
 v8
