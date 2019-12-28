@@ -65,7 +65,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   "   \ 'do': 'bash install.sh',
   "   \ }
   " " (Optional) Multi-entry selection UI.
-  " Plug 'junegunn/fzf'
 
   " python stuff
   call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
@@ -180,7 +179,7 @@ let g:lightline.active = {
             \ 'left': [
             \  [ 'mode', 'paste' ],
             \  [ 'readonly', 'filename', 'modified', 'gitbranch' ],
-            \  [ 'tagbar' ]
+            \  [ 'currenttag' ]
             \ ],
             \ 'right': [
             \   [ 'lineinfo' ],
@@ -210,15 +209,20 @@ let g:lightline.tab = {
 let g:lightline.component = {
             \ 'lineinfo': '%2p%% %3l:%-2v',
             \ }
-            " \ 'tagbar': '%{tarbar#currenttag("%s", "", "f")}'
 
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
+function! NearestSymbol() abort
+  if !exists('t:vista')
+    return ''
+  endif
+  if get(b:, 'vista_nearest_method_or_function', '') == ''
+    return ''
+  endif
+  return vista#cursor#NearestSymbol()
 endfunction
 
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
-            \ 'tagbar': 'NearestMethodOrFunction',
+            \ 'currenttag': 'NearestSymbol',
             \ }
 
 let g:lightline.component_expand = {
