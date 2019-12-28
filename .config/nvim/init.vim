@@ -33,7 +33,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " file management / search
   call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'}) " left-side file explorer tree
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
-  call dein#add('Yggdroot/LeaderF', { 'build': './install.sh' })  " fuzzy file and tag search
   call dein#add('/usr/local/opt/fzf')
   call dein#add('junegunn/fzf.vim')
 
@@ -105,46 +104,16 @@ set autoread
 
 let g:gitgutter_enabled = 1
 
-let g:Lf_ShortcutF = '<C-P>'
-let g:Lf_ShortcutB = ''
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_PopupWidth = &columns * 3 / 4 " wider popup window
-let g:LfDiscardEmptyBuffer = 1
+map <C-P> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
+nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
-" use normal AG to find files, which respects .gitignore.
-" additionally add the virtualenv to the list of directories to search
-" in the venv, gitignores are not respected, so I add some additional ignores
-" here
-let g:Lf_ExternalCommand = 'ag %s $VIRTUAL_ENV -i --nocolor --nogroup --hidden
-       \ --ignore .git
-       \ --ignore "*.pyc"
-       \ -g ""'
-
-" TODO: separate command for current project vs including virtualenv
-
-nmap <leader>t :Vista finder<CR>
-" nmap <leader>T :LeaderfTag<CR>
-" nmap <leader>t :LeaderfBufTag<CR>
-" nmap <leader>T :LeaderfTag<CR>
-nmap <leader>m :LeaderfMruCwd<CR>
-nmap <leader>h :LeaderfHelp<CR>
+" let g:fzf_tags_command = 'ctags -R'
+nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
+nmap <leader>m :History<CR>
+nmap <leader>h :Helptags<CR>
 
 nnoremap <F5> :MundoToggle<CR>
-
-" for tag-search
-let g:Lf_PreviewCode=1
-let g:Lf_HideHelp=1
-let g:Lf_PreviewInPopup=1
-let g:Lf_PreviewHorizontalPosition = 'center'
-let g:Lf_PreviewResult = {
-    \ 'Tag': 1,
-    \ 'BufTag': 1,
-    \ 'Function': 1,
-    \ 'Line': 1,
-    \ 'Rg': 1,
-    \ 'Gtags': 1
-\ }
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)

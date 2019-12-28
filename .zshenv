@@ -104,7 +104,7 @@ export PATH=$PATH:~/.local/bin
 
 export FD_OPTIONS="--hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline"
-export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
+export FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
