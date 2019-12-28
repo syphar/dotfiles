@@ -35,7 +35,7 @@ alias tigs='tig status'
 cdp() {
   local dir
 	dir=$(
-    ~/src/dotfiles/projects.py | fzf --preview 'ls -1 {} | head -$LINES'
+    ~/src/dotfiles/projects.py | fzf
   ) && cd $dir && clear
 }
 
@@ -43,8 +43,7 @@ cdp() {
 vv() {
   local file
 	file=$(
-	  eval "fd --type f --type l $FD_OPTIONS" |
-    fzf --preview 'bat --color=always {} | head -$LINES'
+	  eval "fd --type f --type l $FD_OPTIONS" | fzf
   ) && $EDITOR $file
 }
 
