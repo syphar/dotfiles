@@ -297,5 +297,5 @@ def update(ctx):
     update_brew_list(ctx)
     update_vim(ctx)
     mackup(ctx)
-    autocomplete_cache(ctx)
     mackup_dotfiles(ctx)
+    autocomplete_cache(ctx)
