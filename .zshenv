@@ -121,3 +121,5 @@ export NVM_DIR="$HOME/.nvm"
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
+
+# vim: et ts=2 sts=2 sw=2

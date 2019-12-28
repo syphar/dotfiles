@@ -43,7 +43,7 @@ cdp() {
 vv() {
   local file
 	file=$(
-		eval $FZF_DEFAULT_COMMAND |
+	  eval "fd --type f --type l $FD_OPTIONS" |
     fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
@@ -137,4 +137,4 @@ source ~/.fzf.zsh
 # zprof
 #
 
-# vim: set tabstop=2:shiftwidth=2:expandtab
+# vim: et ts=2 sts=2 sw=2

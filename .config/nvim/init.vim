@@ -266,8 +266,6 @@ let NERDTreeDirArrows = 1
 
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor_strategy = 'floating_win'
-let g:vista_update_on_text_changed = 0  " perhaps?
-let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
