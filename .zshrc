@@ -129,8 +129,8 @@ bindkey -v
 source ~/.fzf.zsh
 
 # formarks ctrl-g
-# zle -N jump
-# bindkey '^g' jump
+zle -N cdp
+bindkey '^g' cdp
 
 # uncomment for profiling
 # zprof
