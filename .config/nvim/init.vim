@@ -34,7 +34,8 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'}) " left-side file explorer tree
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
   call dein#add('Yggdroot/LeaderF', { 'build': './install.sh' })  " fuzzy file and tag search
-  call dein#add('rking/ag.vim') " better grep
+  call dein#add('/usr/local/opt/fzf')
+  call dein#add('junegunn/fzf.vim')
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
@@ -51,7 +52,8 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('majutsushi/tagbar')  " tag-sidebar and tag in statusline
+  call dein#add('liuchengxu/vista.vim')
+
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
@@ -73,7 +75,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
 
   " call dein#add('tmhedberg/SimpylFold',
-  " 	\{'on_ft': ['python']})
+  "	\{'on_ft': ['python']})
 
   " Required:
   call dein#end()
@@ -122,8 +124,10 @@ let g:Lf_ExternalCommand = 'ag %s $VIRTUAL_ENV -i --nocolor --nogroup --hidden
 
 " TODO: separate command for current project vs including virtualenv
 
-nmap <leader>t :LeaderfBufTag<CR>
-nmap <leader>T :LeaderfTag<CR>
+nmap <leader>t :Vista finder<CR>
+" nmap <leader>T :LeaderfTag<CR>
+" nmap <leader>t :LeaderfBufTag<CR>
+" nmap <leader>T :LeaderfTag<CR>
 nmap <leader>m :LeaderfMruCwd<CR>
 nmap <leader>h :LeaderfHelp<CR>
 
@@ -202,13 +206,19 @@ let g:lightline.tab = {
             \ 'active': [ 'tabnum', 'filename', 'modified' ],
             \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
 
+
 let g:lightline.component = {
             \ 'lineinfo': '%2p%% %3l:%-2v',
-            \ 'tagbar': '%{tagbar#currenttag("%s", "", "f")}'
             \ }
+            " \ 'tagbar': '%{tarbar#currenttag("%s", "", "f")}'
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
 
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
+            \ 'tagbar': 'NearestMethodOrFunction',
             \ }
 
 let g:lightline.component_expand = {
@@ -281,12 +291,22 @@ let NERDTreeKeepTreeInNewTab=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" always open tagbar on BufEnter into supported files
-" autocmd BufEnter * nested :call tagbar#autoopen(0)
+let g:vista#renderer#enable_icon = 1
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_update_on_text_changed = 0  " perhaps?
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
-let g:tagbar_width = 30
-let g:tagbar_foldlevel = 1
-nnoremap <silent> <F3> :TagbarToggle<CR>
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+nnoremap <silent> <F3> :Vista!!<CR>
 
 set tags=./tags;/,~/.vimtags
 
@@ -363,3 +383,5 @@ if has("user_commands")
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
 endif
+
+" vim: et ts=2 sts=2 sw=2
