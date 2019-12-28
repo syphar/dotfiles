@@ -49,6 +49,16 @@ use_pyenv() {
   export PYENV_VERSION
 }
 
+use_pyenv_from_runtime_txt() {
+  if [[ ! -f runtime.txt ]]; then
+    log_error 'No runtime.txt found'
+    exit 2
+  fi
+
+  local version=$(cat runtime.txt | sed 's/python-//')
+  use_pyenv "$version"
+}
+
 use_nvm() {
   local node_version=$1
 
