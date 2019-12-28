@@ -256,7 +256,6 @@ def mackup_dotfiles(ctx):
     destination_folder = Path(__file__).parent
 
     from mackup import utils, appsdb
-    from pprint import pprint
 
     apps_db = appsdb.ApplicationsDatabase()
     for app_name in app_list:
