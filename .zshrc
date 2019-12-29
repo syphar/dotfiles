@@ -43,7 +43,7 @@ cdp() {
 vv() {
   local file
 	file=$(
-	  eval "fd --type f --type l $FD_OPTIONS" |
+	  eval "fd --type f --type l --no-ignore $FD_OPTIONS" |
     fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
