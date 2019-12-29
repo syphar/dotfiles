@@ -114,12 +114,10 @@ vmap <C-v> <Plug>(expand_region_shrink)
 set hidden
 
 let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
     \ }
-    " \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     " \ 'python': ['/usr/local/bin/pyls'],
-    " \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    " \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
