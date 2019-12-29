@@ -242,13 +242,13 @@ function! ToggleLocList()
     lopen
 endfunction
 
-nnoremap <F2> :call ToggleLocList()<CR>
+nnoremap <F4> :call ToggleLocList()<CR>
 
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
 
-let g:ale_linters = {'rust': ['cargo', 'rls']}  " there are duplicate messages, but clippy adds some nice ones
+let g:ale_linters = {'rust': ['cargo']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_rust_rls_executable = '/Users/syphar/.cargo/bin/rls'
 let g:ale_rust_rls_toolchain = 'stable'
@@ -352,6 +352,11 @@ autocmd FileType python setlocal completeopt-=preview
 
 set nofoldenable
 set backspace=indent,eol,start
+
+
+" mkview and loadview shouldn't do options (which includes keyboard mappings
+" etc)
+set viewoptions-=options
 
 
 " https://vi.stackexchange.com/questions/16148/slow-vim-escape-from-insert-mode
