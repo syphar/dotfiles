@@ -1,11 +1,12 @@
 " Required:
 set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
 
-let g:python2_host_prog = '/usr/local/bin/python2'
+let g:python_host_prog = '/usr/local/bin/python2'
 " tricky .. if python3-host is older than the virtualenv version, jedi-goto
 " is working fine. if python3-host version is never as the virtualenv, it
 " breaks
-let g:python3_host_prog = '/Users/syphar/.pyenv/versions/3.6.9/bin/python3'
+" let g:python3_host_prog = '/Users/syphar/.pyenv/versions/3.6.9/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 " Required:
@@ -62,8 +63,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
      \ })
 
   " python stuff
-  call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
-  call dein#add('deoplete-plugins/deoplete-jedi', {'on_ft': ['python']})
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
@@ -113,12 +112,12 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 set hidden
 
+" pyls only works when run in a venv with version smaller than the smallest
+" project python runtime
 let g:LanguageClient_serverCommands = {
+    \ 'python': ['~/src/pyls/venv/bin/pyls'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
     \ }
-    " \ 'python': ['/usr/local/bin/pyls'],
-    "
-    "
 
 function SetLSPShortcuts()
   nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -127,26 +126,15 @@ function SetLSPShortcuts()
   nnoremap <silent> n :call LanguageClient#textDocument_references()<CR>
 endfunction()
 
-function SetJediShortcuts()
-  let g:jedi#documentation_command = 'K'
-  let g:jedi#goto_command = '<leader>gd'
-  let g:jedi#rename_command = '<F2>'
-  let g:jedi#usages_command = '<leader>n'
-endfunction
-
 augroup LSP
   autocmd!
-  autocmd FileType rust call SetLSPShortcuts()
-  autocmd FileType python call SetJediShortcuts()
+  autocmd FileType rust,python call SetLSPShortcuts()
 augroup END
 
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 
-let g:jedi#completions_enabled = 0
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#enable_typeinfo = 1
-let g:deoplete#sources#jedi#show_docstring = 0
 " call deoplete#custom#source('tabnine', 'rank', 100)
 let g:deoplete#auto_complete_delay = 100  " needed for semshi
 " call deoplete#custom#source('LanguageClient',
@@ -300,7 +288,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 let g:vista_executive_for = {
-  \ 'rust': 'lcn'
+  \ 'rust': 'lcn',
+  \ 'python': 'lcn'
   \ }
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor_strategy = 'floating_win'
