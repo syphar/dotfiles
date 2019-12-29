@@ -258,6 +258,7 @@ pypy3
 python
 python3
 python@2
+python@3.8
 qt
 rabbitmq
 re2c
