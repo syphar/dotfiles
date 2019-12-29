@@ -58,12 +58,10 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete
 
-  " not yet
-  " Plug 'autozimu/LanguageClient-neovim', {
-  "   \ 'branch': 'next',
-  "   \ 'do': 'bash install.sh',
-  "   \ }
-  " " (Optional) Multi-entry selection UI.
+  call dein#add('autozimu/LanguageClient-neovim', {
+     \ 'rev': 'next',
+     \ 'build': 'bash install.sh',
+     \ })
 
   " python stuff
   call dein#add('davidhalter/jedi-vim', {'on_ft': ['python']})
@@ -71,9 +69,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
-
-  " call dein#add('tmhedberg/SimpylFold',
-  "	\{'on_ft': ['python']})
 
   " Required:
   call dein#end()
@@ -107,8 +102,8 @@ let g:gitgutter_enabled = 1
 map <C-P> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
-" let g:fzf_tags_command = 'ctags -R'
-nmap <leader>t :BTags<CR>
+" nmap <leader>t :BTags<CR>
+nmap <leader>t :Vista finder<CR>
 nmap <leader>T :Tags<CR>
 nmap <leader>m :History<CR>
 nmap <leader>h :Helptags<CR>
@@ -118,9 +113,23 @@ nnoremap <F5> :MundoToggle<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
+    \ }
+    " \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    " \ 'python': ['/usr/local/bin/pyls'],
+    " \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    " \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 
 let g:jedi#completions_enabled = 0
-
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 1
 let g:deoplete#sources#jedi#show_docstring = 0
@@ -238,9 +247,17 @@ nnoremap <F2> :call ToggleLocList()<CR>
 let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
+
+let g:ale_linters = {'rust': ['cargo', 'rls']}  " there are duplicate messages, but clippy adds some nice ones
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_executable = '/Users/syphar/.cargo/bin/rls'
+let g:ale_rust_rls_toolchain = 'stable'
+
+
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black', 'autopep8', 'yapf', 'isort']
+\   'python': ['black', 'autopep8', 'yapf', 'isort'],
+\   'rust': ['rustfmt']
 \}
 let g:ale_fix_on_save = 1
 
@@ -264,6 +281,9 @@ let NERDTreeKeepTreeInNewTab=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+let g:vista_executive_for = {
+  \ 'rust': 'lcn'
+  \ }
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista#renderer#icons = {
