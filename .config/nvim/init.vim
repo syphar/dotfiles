@@ -27,8 +27,6 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
   call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
   call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
-  call dein#add('simnalamburt/vim-mundo') " visualize undo tree
-  " TODO: tpope/vim-obsession " save sessions including splits, files, ... ?
 
   " file management / search
   call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'}) " left-side file explorer tree
@@ -248,7 +246,7 @@ let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
 
-let g:ale_linters = {'rust': ['cargo']}
+let g:ale_linters = {'rust': ['cargo', 'rls']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_rust_rls_executable = '/Users/syphar/.cargo/bin/rls'
 let g:ale_rust_rls_toolchain = 'stable'
@@ -348,7 +346,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " don't show docstring when completing
-autocmd FileType python setlocal completeopt-=preview
+set completeopt-=preview
 
 set nofoldenable
 set backspace=indent,eol,start
