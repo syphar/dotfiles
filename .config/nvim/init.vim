@@ -114,14 +114,32 @@ vmap <C-v> <Plug>(expand_region_shrink)
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
     \ }
     " \ 'python': ['/usr/local/bin/pyls'],
+    "
+    "
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+function SetLSPShortcuts()
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent> n :call LanguageClient#textDocument_references()<CR>
+endfunction()
+
+function SetJediShortcuts()
+  let g:jedi#documentation_command = 'K'
+  let g:jedi#goto_command = '<leader>gd'
+  let g:jedi#rename_command = '<F2>'
+  let g:jedi#usages_command = '<leader>n'
+endfunction
+
+augroup LSP
+  autocmd!
+  autocmd FileType rust call SetLSPShortcuts()
+  autocmd FileType python call SetJediShortcuts()
+augroup END
+
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 
@@ -131,6 +149,10 @@ let g:deoplete#sources#jedi#enable_typeinfo = 1
 let g:deoplete#sources#jedi#show_docstring = 0
 " call deoplete#custom#source('tabnine', 'rank', 100)
 let g:deoplete#auto_complete_delay = 100  " needed for semshi
+" call deoplete#custom#source('LanguageClient',
+"             \ 'min_pattern_length',
+"             \ 2)
+
 
 
 " deoplete tab-complete
