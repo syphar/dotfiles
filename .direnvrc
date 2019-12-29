@@ -68,3 +68,5 @@ use_nvm() {
     nvm use $node_version
   fi
 }
+
+# vim: et ts=2 sts=2 sw=2
