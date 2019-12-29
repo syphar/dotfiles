@@ -112,63 +112,6 @@ def git_fetch(ctx, repo):
             return False
 
 
-def git_merge_ff(ctx, repo, branch, commit):
-    """Merge a branch without checking it out"""
-    with ctx.cd(repo):
-        branch_ref = "refs/heads/{0}".format(branch)
-        branch_orig_hash = ctx.run(
-            "git show-ref -s --verify {0}".format(branch_ref)
-        ).stdout.strip()
-        commit_orig_hash = ctx.run(
-            "git rev-parse --verify {0}".format(commit)
-        ).stdout.strip()
-
-        if ctx.run("git symbolic-ref HEAD").stdout.strip() == branch_ref:
-            ctx.run('git merge --ff-only "{0}"'.format(commit))
-
-        else:
-            if (
-                ctx.run(
-                    "git merge-base {}  {}".format(branch_orig_hash, commit_orig_hash)
-                ).stdout
-                != branch_orig_hash
-            ):
-                print(
-                    "merging {0} into {1} would not be a fast-forward".format(
-                        commit, branch
-                    )
-                )
-
-            else:
-                print("Updating {}..{}".format(branch, commit))
-
-                ctx.run(
-                    'git update-ref -m "merge {0}: Fast forward" "{1}" "{2}" "{3}"'.format(
-                        commit, branch_ref, commit_orig_hash, branch_orig_hash
-                    )
-                )
-                ctx.run(
-                    'git diff --shortstat "{0}@{{1}}" "{0}"'.format(branch), warn=True
-                )
-
-
-def git_rebase_branches(ctx, repo):
-    with ctx.cd(repo):
-        remotes = set(
-            b[20:]
-            for b in ctx.run(
-                "git for-each-ref --format='%(refname)' refs/remotes/origin/"
-            ).stdout.split("\n")
-            if len(b) > 21
-        )
-        for ref in ctx.run(
-            "git for-each-ref --format='%(refname)' refs/heads/"
-        ).stdout.split("\n"):
-            branch = ref[11:]
-            if branch in remotes:
-                git_merge_ff(ctx, repo, branch, "origin/{}".format(branch))
-
-
 def git_cleanup(ctx, repo):
     with ctx.cd(repo):
         ctx.run("git gc --auto")
@@ -177,8 +120,7 @@ def git_cleanup(ctx, repo):
 def update_repo(ctx, project, kind):
     if kind == "git":
         print("updating {}...".format(project))
-        if git_fetch(ctx, project):
-            git_rebase_branches(ctx, project)
+        git_fetch(ctx, project)
         git_update_hooks(ctx, project)
         git_cleanup(ctx, project)
 
