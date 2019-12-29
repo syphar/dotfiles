@@ -289,7 +289,6 @@ let NERDTreeDirArrows = 1
 
 let g:vista_executive_for = {
   \ 'rust': 'lcn',
-  \ 'python': 'lcn'
   \ }
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor_strategy = 'floating_win'
