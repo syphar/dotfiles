@@ -189,7 +189,7 @@ def mackup_dotfiles(ctx):
         "direnv",
         "git",
         "liquidprompt",
-        "neovim",
+        "myneovim",
         "powerlevel10k",
         "prezto",
         "zsh",

@@ -5,3 +5,4 @@
 venv
 .envrc
 .direnv
+.config/nvim/.netrwhist
