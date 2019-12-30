@@ -1,6 +1,7 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import os
+from pathlib import Path
 
 SRC_DIR = os.path.join(os.path.expanduser("~"), "src")
 
@@ -30,6 +31,9 @@ def print_repos():
     for project in get_all_repos():
         print(project)
 
+    # some hardcoded projects 
+
+    print(Path("~/.config/nvim/").expanduser())
 
 def get_all_repos():
     return (project for project, kind in yield_repos_in_folder(SRC_DIR))
