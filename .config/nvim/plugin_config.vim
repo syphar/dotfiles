@@ -1,4 +1,4 @@
-" LANGUAGECLIENT_NEOVIM
+" LanguageClient_Neovim {{{
 " ______________________________________________________________________
 
 " pyls only works when run in a venv with version smaller than the smallest
@@ -10,8 +10,9 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 
+" }}}
 
-" DEOPLETE
+" Deoplete {{{
 " ______________________________________________________________________
 
 let g:deoplete#enable_at_startup = 1
@@ -21,8 +22,9 @@ let g:deoplete#auto_complete_delay = 100  " needed for semshi
 "             \ 'min_pattern_length',
 "             \ 2)
 
+" }}}
 
-" ALE
+" ALE {{{
 " ______________________________________________________________________
 
 let g:ale_set_loclist = 1
@@ -41,8 +43,9 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
+" }}}
 
-" NERDTREE
+" NerdTree {{{
 " ______________________________________________________________________
 let g:NERDShutUp=1
 let NERDTreeRespectWildIgnore=1
@@ -55,8 +58,9 @@ let NERDTreeKeepTreeInNewTab=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" }}}
 
-" VISTA
+" Vista {{{
 " ______________________________________________________________________
 
 let g:vista_executive_for = {
@@ -75,4 +79,6 @@ let g:vista#renderer#icons = {
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
-" vim: et ts=2 sts=2 sw=2
+" }}}
+
+" vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

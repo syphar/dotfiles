@@ -71,6 +71,7 @@ let g:lightline.component_type = {
             \ 'linter_errors': 'error'
             \ }
 
+" make mode only one character
 let g:lightline.mode_map = {
         \ 'n' : 'N',
         \ 'i' : 'I',

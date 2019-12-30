@@ -1,6 +1,10 @@
 let mapleader = ","
 
-map <C-P> :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<CR>
+" open/close folds with spacebar
+nnoremap <space> za
+vnoremap <space> zf
+
+map <C-P> :call fzf#vim#gitfiles('--cached --exclude-standard --others', fzf#vim#with_preview('right'))<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
 " nmap <leader>t :BTags<CR>
