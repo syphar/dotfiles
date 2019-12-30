@@ -44,5 +44,4 @@ set viewoptions-=options
 set timeoutlen=1000
 set ttimeoutlen=5
 
-
 " vim: et ts=2 sts=2 sw=2

@@ -81,4 +81,11 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " }}}
 
+" floaterm {{{
+
+let g:floaterm_position = 'topright'
+let g:floaterm_type = 'floating'
+
+" }}}
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

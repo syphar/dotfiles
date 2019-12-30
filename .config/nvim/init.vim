@@ -46,6 +46,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('liuchengxu/vista.vim') " tagbar
+  call dein#add('voldikss/vim-floaterm')  " floating terminal
 
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 

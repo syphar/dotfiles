@@ -11,6 +11,13 @@ onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
 
+" floaterm
+let g:floaterm_keymap_new = '<F7>'
+let g:floaterm_keymap_prev = '<F8>'
+let g:floaterm_keymap_next = '<F9>'
+let g:floaterm_keymap_toggle = '<F10>'
+
+" fzf
 map <C-P> :call fzf#vim#gitfiles('--cached --exclude-standard --others', fzf#vim#with_preview('right'))<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
