@@ -34,16 +34,16 @@ alias tigs='tig status'
 # cd in one of my projects
 cdp() {
   local dir
-	dir=$(
-    ~/src/dotfiles/projects.py | fzf --preview 'ls -1 {} | head -$LINES'
+  dir=$(
+    ~/src/dotfiles/projects.py | fzf
   ) && cd $dir && clear
 }
 
 # open a file from this projects with vim
 vv() {
   local file
-	file=$(
-	  eval "fd --type f --type l --no-ignore $FD_OPTIONS" |
+  file=$(
+    eval "fd --type f --type l --no-ignore $FD_OPTIONS" |
     fzf --preview 'bat --color=always {} | head -$LINES'
   ) && $EDITOR $file
 }
@@ -60,8 +60,8 @@ v() {
 # set HEROKU_APP environment based on the selected app
 # cache the app-list once per day
 setherokuapp() {
-	local app
-	app=$(
+  local app
+  app=$(
     heroku apps --all --json | jq -r '. | map("\(.name)") | .[]' |
     fzf
   ) && export HEROKU_APP=$app && echo "did set HEROKU_APP to $HEROKU_APP"
@@ -73,10 +73,10 @@ fco() {
   local branches branch
   branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") &&
   branch=$(
-		echo "$branches" |
+    echo "$branches" |
     fzf --preview="git --no-pager branchdiff -150 '..{}'"
   ) &&
-	git checkout $(echo "$branch" | sed "s/origin\///")
+  git checkout $(echo "$branch" | sed "s/origin\///")
 }
 
 # fcoc - checkout git commit

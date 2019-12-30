@@ -2,10 +2,6 @@
 set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
 
 let g:python_host_prog = '/usr/local/bin/python2'
-" tricky .. if python3-host is older than the virtualenv version, jedi-goto
-" is working fine. if python3-host version is never as the virtualenv, it
-" breaks
-" let g:python3_host_prog = '/Users/syphar/.pyenv/versions/3.6.9/bin/python3'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 
@@ -43,14 +39,13 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " specific file types
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
-  call dein#add('vim-scripts/django.vim', {'on_ft': ['html', 'htmldjango']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
 
   " generic software dev stuff
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('liuchengxu/vista.vim')
+  call dein#add('liuchengxu/vista.vim') " tagbar
 
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 
@@ -60,6 +55,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('autozimu/LanguageClient-neovim', {
      \ 'rev': 'next',
      \ 'build': 'bash install.sh',
+     \ 'on_ft': ['python', 'rust'],
      \ })
 
   " python stuff
@@ -104,8 +100,6 @@ nmap <leader>t :Vista finder<CR>
 nmap <leader>T :Tags<CR>
 nmap <leader>m :History<CR>
 nmap <leader>h :Helptags<CR>
-
-nnoremap <F5> :MundoToggle<CR>
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
