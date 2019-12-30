@@ -31,7 +31,8 @@ set equalalways
 " don't show docstring when completing
 set completeopt-=preview
 
-set nofoldenable
+" set nofoldenable
+set foldmethod=manual
 set backspace=indent,eol,start
 
 " mkview and loadview shouldn't do options (which includes keyboard mappings
