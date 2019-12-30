@@ -9,6 +9,7 @@ let g:lightline#ale#indicator_warnings = "\uf071"
 let g:lightline#ale#indicator_errors = "\uf05e"
 let g:lightline#ale#indicator_ok = "\uf00c"
 
+
 let g:lightline.active = {
             \ 'left': [
             \  [ 'mode', 'paste' ],
@@ -18,7 +19,7 @@ let g:lightline.active = {
             \ 'right': [
             \   [ 'lineinfo' ],
             \   [ 'filetype' ],
-            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
             \ ]
             \ }
 

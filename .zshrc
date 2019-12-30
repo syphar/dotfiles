@@ -32,7 +32,7 @@ alias tiga='tig --all'
 alias tigs='tig status'
 
 # cd in one of my projects
-cdp() {
+function cdp() {
   local dir
   dir=$(
     ~/src/dotfiles/projects.py | fzf
@@ -129,9 +129,14 @@ bindkey -v
 
 source ~/.fzf.zsh
 
-# formarks ctrl-g
+# ctrl-g
 zle -N cdp
 bindkey '^g' cdp
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+enable-fzf-tab
+
 
 # uncomment for profiling
 # zprof
