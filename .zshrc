@@ -129,14 +129,10 @@ bindkey -v
 
 source ~/.fzf.zsh
 
-# ctrl-g
-zle -N cdp
-bindkey '^g' cdp
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-enable-fzf-tab
 
+enable-fzf-tab
 
 # uncomment for profiling
 # zprof

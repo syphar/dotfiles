@@ -5,7 +5,9 @@
 " project python runtime
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls']
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'sh': ['/usr/local/bin/bash-language-server', 'start'],
+    \ 'zsh': ['/usr/local/bin/bash-language-server', 'start']
     \ }
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
@@ -63,8 +65,11 @@ let NERDTreeDirArrows = 1
 " Vista {{{
 " ______________________________________________________________________
 
+" python stays through ctags, looks better
 let g:vista_executive_for = {
   \ 'rust': 'lcn',
+  \ 'sh': 'lcn',
+  \ 'zsh': 'lcn',
   \ }
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor_strategy = 'floating_win'
@@ -86,6 +91,41 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:floaterm_position = 'topright'
 let g:floaterm_type = 'floating'
 
+" }}}
+
+" FZF {{{
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(&lines * 0.4) " 40% of screen
+  let width = float2nr(&columns * 0.7) " 70% of screen
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = float2nr(&lines * 0.1) " space to top: 10%
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'anchor': 'NW',
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+" }}}
+
+" Markdown {{{
+let g:markdown_syntax_conceal = 0
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'javascript', 'css']
+" }}}
+
+" Echodoc {{{
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
 " }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

@@ -1,10 +1,6 @@
 " Required:
 set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
 
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-
 " Required:
 if dein#load_state('/Users/syphar/.cache/dein')
   call dein#begin('/Users/syphar/.cache/dein')
@@ -24,29 +20,36 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
   call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
   call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
+  call dein#add('simnalamburt/vim-mundo')  " visual undo tree
 
   " file management / search
-  call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'}) " left-side file explorer tree
+  call dein#add('scrooloose/nerdtree', {'on_cmd': ['NERDTreeToggle', 'NERDTreeFind']}) " left-side file explorer tree
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
   call dein#add('/usr/local/opt/fzf')
   call dein#add('junegunn/fzf.vim')
+  call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('junegunn/gv.vim')  " nice git log
-  call dein#add('airblade/vim-gitgutter')  " git status per line in file
 
   " specific file types
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
+  call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
+  call dein#add('tpope/vim-markdown', { 'on_ft': ['md', 'markdown'] })
+  call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
+  call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
 
   " generic software dev stuff
+  call dein#add('Shougo/echodoc.vim') " Show signature
+  call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('liuchengxu/vista.vim') " tagbar
-  call dein#add('voldikss/vim-floaterm')  " floating terminal
+  call dein#add('voldikss/vim-floaterm', {'on_cmd': 'FloatermToggle'})  " floating terminal
 
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 
@@ -80,7 +83,7 @@ endif
 
 source ~/.config/nvim/vim_config.vim
 source ~/.config/nvim/plugin_config.vim
-source ~/.config/nvim/lightline.vim
+source ~/.config/nvim/statusline.vim
 source ~/.config/nvim/keyboard.vim
 
 " vim: et ts=2 sts=2 sw=2

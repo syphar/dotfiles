@@ -15,7 +15,10 @@ vnoremap <F9> zf
 let g:floaterm_keymap_new = '<F7>'
 let g:floaterm_keymap_prev = '<F8>'
 let g:floaterm_keymap_next = '<F9>'
-let g:floaterm_keymap_toggle = '<F10>'
+let g:floaterm_keymap_toggle = ''
+
+" explicit mapping so deferred plugin-loading works
+nnoremap <F10> :FloatermToggle<CR>
 
 " fzf
 map <C-P> :call fzf#vim#gitfiles('--cached --exclude-standard --others', fzf#vim#with_preview('right'))<CR>
@@ -57,6 +60,7 @@ function! ToggleLocList()
 endfunction
 
 nnoremap <F4> :call ToggleLocList()<CR>
+nnoremap <F5> :MundoToggle<CR>
 
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>

@@ -1,6 +1,10 @@
 filetype plugin indent on
 syntax enable
 
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+
 set clipboard=unnamed  " use system clipboard
 set autoread
 set hidden
@@ -43,5 +47,28 @@ set viewoptions-=options
 " https://vi.stackexchange.com/questions/16148/slow-vim-escape-from-insert-mode
 set timeoutlen=1000
 set ttimeoutlen=5
+
+" better backup, swap and undos storage
+set backup                        " make backup files
+set undofile                      " persistent undos - undo after you re-open the file
+set directory=~/.cache/vim/dirs/tmp     " directory to place swap files in
+set backupdir=~/.cache/vim/dirs/backups " where to put backup files
+set undodir=~/.cache/vim/dirs/undodir   " undo directory
+
+" Redraw only when essential
+set lazyredraw
+
+" Just sync some lines of a large file
+set synmaxcol=400
+syntax sync minlines=256
+
+" Highlight cursor line (slows down)
+set nocursorline
+
+" Set updatetime
+set updatetime=2000
+
+" When scrolling, keep cursor 5 lines away from screen border
+set scrolloff=5
 
 " vim: et ts=2 sts=2 sw=2
