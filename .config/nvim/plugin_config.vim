@@ -24,6 +24,16 @@ let g:deoplete#auto_complete_delay = 100  " needed for semshi
 "             \ 'min_pattern_length',
 "             \ 2)
 
+" disable some deoplete sources. (aka all default ones + ale)
+" _ = all file types, but more can be added per type
+"
+" all default sources
+" https://github.com/Shougo/deoplete.nvim/blob/840c46aed8033efe19c7a5a809713c809b4a6bb5/doc/deoplete.txt#L567-L703
+let g:deoplete#ignore_sources ={
+  \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
+  \ }
+
+
 " }}}
 
 " ALE {{{
