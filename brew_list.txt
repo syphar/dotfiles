@@ -321,4 +321,5 @@ xvid
 xz
 zlib
 zsh
+zsh-completions
 zstd
