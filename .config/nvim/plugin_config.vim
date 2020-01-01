@@ -140,7 +140,7 @@ endfunction
 " inspired by https://github.com/junegunn/fzf.vim/issues/800
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
-  \     'options': '--with-nth 1
+  \     'options': '--with-nth 1,2
   \                 --preview-window=down
   \                 --reverse
   \                 --preview "
@@ -151,7 +151,7 @@ command! -bang BTags
 
 command! -bang Tags
   \ call fzf#vim#tags('', {
-  \     'options': '--with-nth 1
+  \     'options': '--with-nth 1,2
   \                 --preview-window=down
   \                 --reverse
   \                 --preview "

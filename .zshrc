@@ -104,9 +104,8 @@ ftags() {
   line=$(
     awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
     fzf \
-      --nth=1,2 \
-      --with-nth=2 \
-      --preview-window="50%" \
+      --with-nth=2,3 \
+      --preview-window=down \
       --preview="bat {3} --color=always | tail -n +\$(echo {4} | tr -d \";\\\"\")"
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
@@ -120,6 +119,7 @@ eval "$(direnv hook zsh)"
 
 alias vim="nvim"
 alias vi="nvim"
+alias da="direnv allow"
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH

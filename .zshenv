@@ -116,6 +116,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 export NVM_DIR="$HOME/.nvm"
 
+export BAT_THEME="Nord"
+
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
