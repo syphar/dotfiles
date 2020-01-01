@@ -187,6 +187,7 @@ def mackup_dotfiles(ctx):
     app_list = (
         "ctags",
         "direnv",
+        "fd",
         "git",
         "liquidprompt",
         "myneovim",

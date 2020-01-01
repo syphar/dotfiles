@@ -102,7 +102,7 @@ export DOCKER_HOST=tcp://127.0.0.1:4243
 
 export PATH=$PATH:~/.local/bin
 
-export FD_OPTIONS="--hidden --follow --exclude .git"
+export FD_OPTIONS="--hidden --follow"
 export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline"
 export FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
