@@ -25,16 +25,17 @@ let g:lightline.active = {
             \  [ 'gitbranch', 'readonly', 'filename', 'modified', 'currenttag' ],
             \ ],
             \ 'right': [
-            \   [ 'lineinfo' ],
-            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype' ],
+            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype', 'lineinfo' ],
             \ ]
             \ }
 
 let g:lightline.inactive = {
-            \ 'left': [ [ 'filename' , 'modified' ]],
+            \ 'left': [
+            \  [ 'paste' ],
+            \  [ 'gitbranch', 'readonly', 'filename', 'modified', 'currenttag' ],
+            \ ],
             \ 'right': [
-            \   [ 'lineinfo' ],
-            \   [ 'fileformat' ],
+            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype', 'lineinfo' ],
             \ ]
             \ }
 
