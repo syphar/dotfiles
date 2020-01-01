@@ -72,6 +72,14 @@ let NERDTreeDirArrows = 1
 
 " }}}
 
+" FZF {{{
+
+" default fzf on the shell ignores based on gitignore, in vim I don't want
+" this. Fot the cases where I want this, I'll use git ls-files
+let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
+
+" }}}
+
 " Vista {{{
 " ______________________________________________________________________
 
@@ -88,6 +96,12 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " }}}
 
