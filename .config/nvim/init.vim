@@ -11,6 +11,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
 
   " interface
   call dein#add('chriskempson/base16-vim')
+  call dein#add('arcticicestudio/nord-vim')
 
   " for statusline
   call dein#add('itchyny/lightline.vim')
