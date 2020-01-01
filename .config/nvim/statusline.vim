@@ -32,10 +32,10 @@ let g:lightline.active = {
 let g:lightline.inactive = {
             \ 'left': [
             \  [ 'paste' ],
-            \  [ 'gitbranch', 'readonly', 'filename', 'modified', 'currenttag' ],
+            \  [ 'readonly', 'filename', 'modified' ],
             \ ],
             \ 'right': [
-            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype', 'lineinfo' ],
+            \   [ 'filetype', 'lineinfo' ],
             \ ]
             \ }
 
