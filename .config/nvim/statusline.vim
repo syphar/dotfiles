@@ -22,12 +22,11 @@ let g:lightline#ale#indicator_ok = "\uf00c"
 let g:lightline.active = {
             \ 'left': [
             \  [ 'paste' ],
-            \  [ 'readonly', 'filename', 'modified', 'gitbranch' ],
+            \  [ 'gitbranch', 'readonly', 'filename', 'modified', 'currenttag' ],
             \ ],
             \ 'right': [
             \   [ 'lineinfo' ],
-            \   [ 'filetype' ],
-            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype' ],
             \ ]
             \ }
 
@@ -53,8 +52,19 @@ let g:lightline.component = {
             \ 'lineinfo': '%2p%% %3l:%-2v',
             \ }
 
+function! NearestSymbol() abort
+  if !exists('t:vista')
+    return ''
+  endif
+  if get(b:, 'vista_nearest_method_or_function', '') == ''
+    return ''
+  endif
+  return vista#cursor#NearestSymbol()
+endfunction
+
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
+            \ 'currenttag': 'NearestSymbol',
             \ }
 
 let g:lightline.component_expand = {
