@@ -29,6 +29,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('/usr/local/opt/fzf')
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
+  call dein#add('meain/vim-automkdir')  " autocreate missing directories on save
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
