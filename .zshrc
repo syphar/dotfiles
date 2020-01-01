@@ -97,13 +97,17 @@ fcs() {
 }
 
 
-# ftags - search ctags
+# ftags - search ctags with preview
 ftags() {
   local line
   [ -e tags ] &&
   line=$(
     awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
-    fzf --nth=1,2
+    fzf \
+      --nth=1,2 \
+      --with-nth=2 \
+      --preview-window="50%" \
+      --preview="bat {3} --color=always | tail -n +\$(echo {4} | tr -d \";\\\"\")"
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }

@@ -1,1 +1,3 @@
 --python-kinds=-ivm
+--excmd=number
+--sort=yes

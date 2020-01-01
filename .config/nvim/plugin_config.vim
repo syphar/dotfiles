@@ -118,10 +118,10 @@ function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
   call setbufvar(buf, '&signcolumn', 'no')
 
-  let height = float2nr(&lines * 0.4) " 40% of screen
-  let width = float2nr(&columns * 0.7) " 70% of screen
+  let height = float2nr(&lines * 0.6) " 60% of screen
+  let width = float2nr(&columns * 0.8) " 80% of screen
   let horizontal = float2nr((&columns - width) / 2)
-  let vertical = float2nr(&lines * 0.1) " space to top: 10%
+  let vertical = float2nr(&lines * 0.2) " space to top: 20
 
   let opts = {
         \ 'relative': 'editor',
@@ -135,6 +135,32 @@ function! FloatingFZF()
 
   call nvim_open_win(buf, v:true, opts)
 endfunction
+
+" custom BTags and Tags to include preview
+" inspired by https://github.com/junegunn/fzf.vim/issues/800
+command! -bang BTags
+  \ call fzf#vim#buffer_tags('', {
+  \     'options': '--with-nth 1
+  \                 --preview-window=down
+  \                 --reverse
+  \                 --preview "
+  \                     bat {2} --color=always |
+  \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
+  \                     "'
+  \ })
+
+command! -bang Tags
+  \ call fzf#vim#tags('', {
+  \     'options': '--with-nth 1
+  \                 --preview-window=down
+  \                 --reverse
+  \                 --preview "
+  \                     bat {2} --color=always |
+  \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
+  \                     "'
+  \ })
+
+"
 " }}}
 
 " Markdown {{{
