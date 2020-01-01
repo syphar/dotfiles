@@ -173,4 +173,12 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'virtual'
 " }}}
 
+" indentline {{{
+let g:indentLine_char = '⎸'
+
+" no indent-guides for python
+autocmd FileType python IndentLinesDisable
+" }}}
+
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

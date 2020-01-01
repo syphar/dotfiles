@@ -44,6 +44,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
 
   " generic software dev stuff
+  call dein#add('Yggdroot/indentLine') " indent helper lines
   call dein#add('Shougo/echodoc.vim') " Show signature
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
   call dein#add('dense-analysis/ale') " linting / fixing
