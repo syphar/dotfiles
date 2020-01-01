@@ -1,16 +1,17 @@
 " TODO: nice custom statusline
 " https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/?utm_source=share&utm_medium=ios_app&utm_name=iossmf
 " https://raw.githubusercontent.com/ginkobab/dots/master/.config/nvim/statusline.vim
+"  
 
 let g:lightline = {}
 
 let g:lightline.colorscheme = 'nord'
 
-
 let g:lightline.separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 let g:lightline.tabline_separator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 let g:lightline.tabline_subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+"
 
 let g:lightline#ale#indicator_checking = "\uf110"
 let g:lightline#ale#indicator_warnings = "\uf071"

@@ -82,6 +82,7 @@ let g:vista_executive_for = {
   \ 'zsh': 'lcn',
   \ }
 let g:vista#renderer#enable_icon = 1
+let g:vista_fzf_preview = ['right:50%']
 let g:vista_echo_cursor_strategy = 'floating_win'
 let g:vista#renderer#icons = {
 \   "function": "\uf794",
