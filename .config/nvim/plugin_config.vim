@@ -6,8 +6,6 @@
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'sh': ['/usr/local/bin/bash-language-server', 'start'],
-    \ 'zsh': ['/usr/local/bin/bash-language-server', 'start']
     \ }
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
@@ -86,8 +84,6 @@ let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow
 " python stays through ctags, looks better
 let g:vista_executive_for = {
   \ 'rust': 'lcn',
-  \ 'sh': 'lcn',
-  \ 'zsh': 'lcn',
   \ }
 let g:vista#renderer#enable_icon = 1
 let g:vista_fzf_preview = ['right:50%']

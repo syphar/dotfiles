@@ -20,8 +20,9 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
 # unsetopt correct_all
+#
+#
 
 alias gur="git fetch --all --recurse-submodules=yes --prune"
 
@@ -109,6 +110,7 @@ ftags() {
       --preview="bat {3} --color=always | tail -n +\$(echo {4} | tr -d \";\\\"\")"
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
+
 }
 
 
