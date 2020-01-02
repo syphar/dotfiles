@@ -75,7 +75,9 @@ fco() {
   branches=$(git for-each-ref --sort=-committerdate refs/ --format="%(refname:short)") &&
   branch=$(
     echo "$branches" |
-    fzf --preview="git --no-pager branchdiff -150 '..{}'"
+    fzf \
+      --no-sort \
+      --preview="git --no-pager branchdiff -150 '..{}'"
   ) &&
   git checkout $(echo "$branch" | sed "s/origin\///")
 }
