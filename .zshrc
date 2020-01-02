@@ -86,7 +86,10 @@ fpr() {
   prs=$(hub pr list --format="%I|%t (%l)%n") &&
   pr=$(
     echo "$prs" |
-      fzf --delimiter="\|" --with-nth=2 --preview="hub pr show {1} --format='%i %t%n%l%nauthor:%au%nassigned:%as%nreview:%rs%n%n%b'"
+      fzf \
+        --delimiter="\|"  \
+        --with-nth=2 \
+        --preview="hub pr show {1} --format='%i %t%n%l%nauthor:%au%nassigned:%as%nreview:%rs%n%n%b'"
   )  &&
   hub pr checkout $(echo "$pr" | cut -d "|" -f 1)
 }
