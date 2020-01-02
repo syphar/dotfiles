@@ -185,6 +185,7 @@ def mackup(ctx):
 def mackup_dotfiles(ctx):
     """public configuration files are copied to this dotfiles folder"""
     app_list = (
+        "bat", 
         "ctags",
         "direnv",
         "fd",
