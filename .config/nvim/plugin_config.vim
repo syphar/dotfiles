@@ -31,6 +31,16 @@ let g:deoplete#ignore_sources ={
   \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
   \ }
 
+" call deoplete#custom#source('buffer', 'mark', '♐')
+" call deoplete#custom#source('tern', 'mark', '')
+" call deoplete#custom#source('omni', 'mark', '⌾')
+" call deoplete#custom#source('file', 'mark', '')
+" call deoplete#custom#source('jedi', 'mark', '')
+" call deoplete#custom#source('neosnippet', 'mark', '')
+" call deoplete#custom#source('LanguageClient', 'mark', '♚')
+" call deoplete#custom#source('tabnine', 'mark', '9')
+
+
 
 " }}}
 
@@ -43,8 +53,10 @@ let g:ale_virtualtext_cursor = 1
 
 let g:ale_linters = {'rust': ['cargo', 'rls']}
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rustfmt_options = '--edition 2018'
 let g:ale_rust_rls_executable = '/Users/syphar/.cargo/bin/rls'
 let g:ale_rust_rls_toolchain = 'stable'
+
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
