@@ -176,5 +176,4 @@ let g:indentLine_char = '⎸'
 autocmd FileType python IndentLinesDisable
 " }}}
 
-
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

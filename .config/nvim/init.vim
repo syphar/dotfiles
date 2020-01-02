@@ -68,7 +68,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
-  call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
+  " call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
 
   " Required:
   call dein#end()
