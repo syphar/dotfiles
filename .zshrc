@@ -91,7 +91,7 @@ fpr() {
       fzf \
         --delimiter="\|"  \
         --with-nth=2 \
-        --preview="hub pr show {1} --format='%i %t%n%l%nauthor:%au%nassigned:%as%nreview:%rs%n%n%b'"
+        --preview="hub pr show {1} --format='%i %t%nlabels: %L%ncreated: %cr%nbranch: %H%nauthor: %au%nassigned: %as%nreview: %rs%n%n%b'"
   )  &&
   hub pr checkout $(echo "$pr" | cut -d "|" -f 1)
 }
