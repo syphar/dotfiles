@@ -227,6 +227,11 @@ def autocomplete_cache(ctx):
     ctx.run("heroku autocomplete --refresh-cache")
 
 
+@task
+def bat_cache(ctx):
+    ctx.run("bat cache --build")
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
@@ -241,4 +246,5 @@ def update(ctx):
     update_vim(ctx)
     mackup(ctx)
     mackup_dotfiles(ctx)
+    bat_cache(ctx)
     autocomplete_cache(ctx)
