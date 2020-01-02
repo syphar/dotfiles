@@ -34,9 +34,7 @@ let g:lightline.inactive = {
             \  [ 'paste' ],
             \  [ 'readonly', 'filename', 'modified' ],
             \ ],
-            \ 'right': [
-            \   [ 'filetype', 'lineinfo' ],
-            \ ]
+            \ 'right': [ ]
             \ }
 
 let g:lightline.tabline = {
