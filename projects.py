@@ -21,8 +21,11 @@ def yield_repos_in_folder(src_folder):
             del subdirs[:]
 
         elif ".envrc" in subfiles:
-            # elif ".direnv" in subdirs or ".envrc" in files:
-            # non-vcs project
+            # non-vcs project with envrc
+            yield project, ""
+            del subdirs[:]
+        elif "venv" in subdirs:
+            # if venv in directory, assume non-vcs project
             yield project, ""
             del subdirs[:]
 
@@ -31,9 +34,10 @@ def print_repos():
     for project in get_all_repos():
         print(project)
 
-    # some hardcoded projects 
+    # some hardcoded projects
 
     print(Path("~/.config/nvim/").expanduser())
+
 
 def get_all_repos():
     return (project for project, kind in yield_repos_in_folder(SRC_DIR))
