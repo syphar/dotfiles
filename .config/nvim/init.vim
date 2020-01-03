@@ -8,6 +8,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " Let dein manage dein
   " Required:
   call dein#add('/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('haya14busa/dein-command.vim')
 
   " interface
   call dein#add('chriskempson/base16-vim')
