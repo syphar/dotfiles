@@ -223,11 +223,6 @@ def mackup_dotfiles(ctx):
 
 
 @task
-def autocomplete_cache(ctx):
-    ctx.run("heroku autocomplete --refresh-cache")
-
-
-@task
 def bat_cache(ctx):
     ctx.run("bat cache --build")
 
@@ -247,4 +242,3 @@ def update(ctx):
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
-    autocomplete_cache(ctx)
