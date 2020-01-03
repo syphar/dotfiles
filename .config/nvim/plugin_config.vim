@@ -5,8 +5,9 @@
 " project python runtime
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['~/src/rust-analyzer/target/release/ra_lsp_server'],
     \ }
+    " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 
