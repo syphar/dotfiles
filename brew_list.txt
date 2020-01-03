@@ -36,6 +36,7 @@ cscope
 ctags
 curl
 ddrescue
+dfc
 dfu-util
 diff-pdf
 diff-so-fancy
@@ -93,6 +94,7 @@ gnutls
 go
 gobject-introspection
 google-sparsehash
+googler
 gource
 gpgme
 gpp
@@ -111,6 +113,7 @@ heroku
 heroku-node
 hicolor-icon-theme
 highlight
+howdoi
 hr
 htop
 htop-osx
