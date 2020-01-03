@@ -103,7 +103,7 @@ export DOCKER_HOST=tcp://127.0.0.1:4243
 export PATH=$PATH:~/.local/bin
 
 export FD_OPTIONS="--hidden --follow"
-export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline"
+export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
@@ -115,6 +115,7 @@ export KEYTIMEOUT=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 export NVM_DIR="$HOME/.nvm"
+export BC_CACHE_DIR="$HOME/.cache/bc"
 
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
