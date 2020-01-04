@@ -63,11 +63,6 @@ def update_zsh(ctx):
         ctx.run("git pull")
         ctx.run("git submodule update --init --recursive")
 
-    with ctx.cd("~/.liquidprompt/"):
-        ctx.run("git checkout master")
-        ctx.run("git fetch origin")
-        ctx.run("git reset origin/master")
-
 
 @task
 def update_brew_list(ctx):
