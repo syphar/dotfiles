@@ -1,7 +1,7 @@
-# /Users/syphar/.config/tmuxinator/testing.yml
+# /Users/syphar/.config/tmuxinator/backend.yml
 
-name: testing
-root: ~/
+name: backend
+root: ~/src/thermondo/backend/
 
 # Optional tmux socket
 # socket_name: foo
@@ -47,6 +47,4 @@ windows:
       # synchronize: after
       panes:
         - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
+        -
