@@ -16,10 +16,7 @@ scrolling:
 # change the `it` value in terminfo when altering this setting.
 #tabspaces: 8
 
-  # MesloLGS NF Regular
-# Font configuration
 font:
-  # Normal (roman) font face
   normal:
     family: 'MesloLGS NF'
     style: Regular
@@ -127,6 +124,17 @@ key_bindings:
   - { key: Q,      mods: Command,         action: Quit             }
   - { key: W,      mods: Command,         action: Quit             }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+
+# switch windows with cmd+number
+  - { key: Key1,   mods: Command,         chars: "\x01\x30" }
+  - { key: Key2,   mods: Command,         chars: "\x01\x31" }
+  - { key: Key3,   mods: Command,         chars: "\x01\x32" }
+  - { key: Key4,   mods: Command,         chars: "\x01\x33" }
+  - { key: Key5,   mods: Command,         chars: "\x01\x34" }
+  - { key: Key6,   mods: Command,         chars: "\x01\x35" }
+  - { key: Key7,   mods: Command,         chars: "\x01\x36" }
+  - { key: Key8,   mods: Command,         chars: "\x01\x37" }
+  - { key: Key9,   mods: Command,         chars: "\x01\x38" }
 
   - { key: Paste,                    action: Paste                            }
   - { key: Copy,                     action: Copy                             }
