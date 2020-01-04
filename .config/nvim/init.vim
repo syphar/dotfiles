@@ -23,6 +23,9 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
   call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
   call dein#add('simnalamburt/vim-mundo')  " visual undo tree
+  call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
+  call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('benmills/vimux')
 
   " file management / search
   call dein#add('scrooloose/nerdtree', {'on_cmd': ['NERDTreeToggle', 'NERDTreeFind']}) " left-side file explorer tree
@@ -44,6 +47,8 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('tpope/vim-markdown', { 'on_ft': ['md', 'markdown'] })
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
+  call dein#add('tmux-plugins/vim-tmux') " tmux config filetype
+  call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
 
   " generic software dev stuff
   call dein#add('Yggdroot/indentLine') " indent helper lines

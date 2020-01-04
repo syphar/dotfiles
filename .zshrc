@@ -113,7 +113,6 @@ fcs() {
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
-
 # ftags - search ctags with preview
 ftags() {
   local line
@@ -129,7 +128,6 @@ ftags() {
 
 }
 
-
 PATH=~/bin:/usr/local/opt/ruby/bin:/usr/local/sbin:/usr/local/bin:$PATH
 export PATH
 
@@ -138,6 +136,8 @@ eval "$(direnv hook zsh)"
 alias vim="nvim"
 alias vi="nvim"
 alias da="direnv allow"
+alias mux="tmuxinator"
+
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
