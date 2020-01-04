@@ -30,10 +30,17 @@ nmap <leader>h :Helptags<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nmap <leader>gd :call LanguageClient#textDocument_definition()<CR>
-nmap <leader>n :call LanguageClient#textDocument_references()<CR>
+function SetLSPShortcuts()
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  nmap <leader>gd :call LanguageClient#textDocument_definition()<CR>
+  nmap <leader>n :call LanguageClient#textDocument_references()<CR>
+endfunction()
+
+augroup LSP
+  autocmd!
+  autocmd FileType rust,python call SetLSPShortcuts()
+augroup END
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
