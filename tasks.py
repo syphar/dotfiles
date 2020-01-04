@@ -190,6 +190,7 @@ def mackup_dotfiles(ctx):
         "direnv",
         "fd",
         "git",
+        "mackup",
         "myneovim",
         "powerlevel10k",
         "prezto",
