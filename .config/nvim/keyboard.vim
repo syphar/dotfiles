@@ -24,7 +24,7 @@ nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))
 nmap <leader>t :BTags<CR>
 nmap <leader>T :Tags<CR>
 nmap <leader>m :Buffers<CR>
-nmap <leader>n :History<CR>
+nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
 
 vmap v <Plug>(expand_region_expand)
