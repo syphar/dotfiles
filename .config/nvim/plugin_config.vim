@@ -145,6 +145,13 @@ function! FloatingFZF()
   call nvim_open_win(buf, v:true, opts)
 endfunction
 
+command! -bang GitFiles
+  \ call fzf#vim#gitfiles(
+  \   '--cached --exclude-standard --others',
+  \   fzf#vim#with_preview('down')
+  \ )
+
+
 " custom BTags and Tags to include preview
 " inspired by https://github.com/junegunn/fzf.vim/issues/800
 command! -bang BTags

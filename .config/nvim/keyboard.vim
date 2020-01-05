@@ -18,7 +18,7 @@ let g:floaterm_keymap_next = '<F9>'
 let g:floaterm_keymap_toggle = '<F10>'
 
 " fzf
-map <C-P> :call fzf#vim#gitfiles('--cached --exclude-standard --others', fzf#vim#with_preview('down'))<CR>
+map <C-P> :GitFiles<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
 
 nmap <leader>t :BTags<CR>
