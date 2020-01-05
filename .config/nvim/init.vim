@@ -49,6 +49,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('tmux-plugins/vim-tmux') " tmux config filetype
   call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
+  call dein#add('vim-scripts/applescript.vim', {'on_ft': ['applescript']})
 
   " generic software dev stuff
   call dein#add('Yggdroot/indentLine') " indent helper lines
