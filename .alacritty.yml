@@ -14,31 +14,22 @@ window:
 scrolling:
   history: 10000
 
-# Spaces per Tab (changes require restart)
-#
-# This setting defines the width of a tab in cells.
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab.
-# To prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-#tabspaces: 8
-
 font:
   normal:
-    family: 'MesloLGS NF'
-    style: Regular
+    family: 'Source Code Pro'
+    style: Light
 
   bold:
-    family: 'MesloLGS NF'
-    style: Bold
+    family: 'Source Code Pro'
+    style: Medium
 
   italic:
-    family: 'MesloLGS NF'
-    style: Italic
+    family: 'Source Code Pro'
+    style: LightItalic
 
   bold_italic:
-    family: 'MesloLGS NF'
-    style: Bold Italic
+    family: 'Source Code Pro'
+    style: MediumItalic
 
   # Point size
   size: 12.0
