@@ -136,7 +136,7 @@ eval "$(direnv hook zsh)"
 alias vim="nvim"
 alias vi="nvim"
 alias da="direnv allow"
-alias mux="tmuxinator"
+alias mux="teamocil"
 
 
 if type brew &>/dev/null; then

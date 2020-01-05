@@ -1,0 +1,15 @@
+windows:
+  - name: backend/vim
+    root: ~/src/thermondo/backend
+    layout: main-horizontal
+    panes:
+      - vim
+  - name: backend/shell
+    root: ~/src/thermondo/backend
+    layout: tiled
+    panes:
+      - make devserver
+      - psql hks_backend
+      - commands:
+          - git pull
+          - git ff
