@@ -122,8 +122,16 @@ key_bindings:
   - { key: C,      mods: Command,         action: Copy             }
   - { key: H,      mods: Command,         action: Hide             }
   - { key: Q,      mods: Command,         action: Quit             }
-  - { key: W,      mods: Command,         action: Quit             }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
+
+# simulate old iterm tab/split commands with tmux (the ones I used)
+  - { key: W,      mods: Command,         chars: "\x01\x26"      } # close window
+  - { key: T,      mods: Command,         chars: "\x01\x63"      } # new window
+  - { key: N,      mods: Command,         chars: "\x01\x6e"      } # next window
+  - { key: P,      mods: Command,         chars: "\x01\x70"      } # previous window
+  - { key: D,      mods: Command,         chars: "\x01\x7c"      } # split window horizontal
+  - { key: D,      mods: Command|Shift,   chars: "\x01\x2d"      } # split window vertical
+  - { key: Return, mods: Command|Shift,   chars: "\x01\x7a"      } # split window vertical
 
 # switch windows with cmd+number
   - { key: Key1,   mods: Command,         chars: "\x01\x30" }
