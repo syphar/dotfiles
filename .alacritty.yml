@@ -16,28 +16,28 @@ scrolling:
 
 font:
   normal:
-    family: 'Hasklug Nerd Font'
-    # family: 'MesloLGS NF'
-    # style: Regular
-    style: Light
+    # family: 'Hasklug Nerd Font'
+    # style: Light
+    family: 'MesloLGS NF'
+    style: Regular
 
   bold:
-    family: 'Hasklug Nerd Font'
-    # family: 'MesloLGS NF'
-    # style: Bold
-    style: Medium
+    # family: 'Hasklug Nerd Font'
+    # style: Medium
+    family: 'MesloLGS NF'
+    style: Bold
 
   italic:
-    family: 'Hasklug Nerd Font'
-    # family: 'MesloLGS NF'
-    # style: Italic
-    style: LightItalic
+    # family: 'Hasklug Nerd Font'
+    # style: LightItalic
+    family: 'MesloLGS NF'
+    style: Italic
 
   bold_italic:
-    family: 'Hasklug Nerd Font'
-    # family: 'MesloLGS NF'
-    # style: BoldItalic
-    style: MediumItalic
+    family: 'MesloLGS NF'
+    style: BoldItalic
+    # family: 'Hasklug Nerd Font'
+    # style: MediumItalic
 
   # Point size
   size: 12.0
