@@ -33,8 +33,11 @@ font:
 
   # Point size
   size: 12.0
+  offset:
+    x: 0
+    y: 5
 
-  use_thin_strokes: true
+  use_thin_strokes: false
 
 draw_bold_text_with_bright_colors: false
 
