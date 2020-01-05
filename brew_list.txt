@@ -304,6 +304,7 @@ theora
 tig
 tmate
 tmux
+tmuxinator
 tokyo-cabinet
 tor
 unbound
