@@ -1,8 +1,0 @@
-windows:
-  - name: sample-two-panes
-    root: ~/Code/sample/www
-    layout: even-horizontal
-    panes:
-      - git status
-      - rails server
-

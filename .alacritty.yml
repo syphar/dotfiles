@@ -16,28 +16,28 @@ scrolling:
 
 font:
   normal:
-    family: 'Source Code Pro'
-    style: Light
+    family: 'MesloLGS NF'
+    style: Regular
 
   bold:
-    family: 'Source Code Pro'
-    style: Medium
+    family: 'MesloLGS NF'
+    style: Bold
 
   italic:
-    family: 'Source Code Pro'
-    style: LightItalic
+    family: 'MesloLGS NF'
+    style: Italic
 
   bold_italic:
-    family: 'Source Code Pro'
-    style: MediumItalic
+    family: 'MesloLGS NF'
+    style: BoldItalic
 
   # Point size
   size: 12.0
   offset:
     x: 0
-    y: 5
+    y: 2
 
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
 
