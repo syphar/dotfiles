@@ -192,6 +192,7 @@ def mackup_dotfiles(ctx):
         "powerlevel10k",
         "prezto",
         "teamocil",
+        "tmate",
         "tmux",
         "tmuxinator",
         "zsh",
