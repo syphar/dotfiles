@@ -5,7 +5,7 @@ shell:
   program: /usr/local/bin/zsh
   args:
     - -c
-    - tmux attach -t base || tmux new -s base
+    - tmux attach || tmux new 
 
 
 window:
