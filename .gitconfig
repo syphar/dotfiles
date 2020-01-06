@@ -79,12 +79,15 @@
 [push]
 	default = current
 [merge]
-	tool = kdiff3
+	tool = vimdiff
+	tool = nvim
 [mergetool "kdiff3"]
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = false
 [diff]
 	guitool = kdiff3
+	tool = vimdiff
+	tool = nvim
 [difftool "kdiff3"]
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = false
@@ -93,3 +96,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[difftool]
+	prompt = true
