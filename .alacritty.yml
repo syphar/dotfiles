@@ -5,7 +5,7 @@ shell:
   program: /usr/local/bin/zsh
   args:
     - -c
-    - tmux attach || tmux new 
+    - tmux attach || tmux new
 
 
 window:
@@ -45,7 +45,7 @@ font:
     x: 0
     y: 2
 
-  use_thin_strokes: true
+  use_thin_strokes: false
 
 draw_bold_text_with_bright_colors: false
 
@@ -88,23 +88,12 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
 
-# Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
 
 cursor:
-  # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  style: Beam
+  style: Block
+  unfocused_hollow: true
 
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
-
-# Live config reload (changes require restart)
 live_config_reload: true
 
 alt_send_esc: true
