@@ -296,6 +296,7 @@ sqlite
 squashfs
 swig
 szip
+task
 tcl-tk
 tesseract
 the_silver_searcher
