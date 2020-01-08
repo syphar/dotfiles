@@ -1,3 +1,4 @@
+gcalcli
 poetry
 pipenv
 httpie
