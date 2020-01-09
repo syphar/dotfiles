@@ -1,3 +1,5 @@
-poetry
-pipenv
+gcalcli
 httpie
+pipenv
+poetry
+watchdog
