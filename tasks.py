@@ -101,6 +101,7 @@ def git_fetch(ctx, repo):
         if len(ctx.run("git remote").stdout):
             ctx.run("git fetch --all --recurse-submodules=yes --prune")
             ctx.run("git fetch --all --prune --tags")
+            ctx.run("git merge --ff-only")
             return True
         else:
             print("\tno remote configured")
@@ -132,11 +133,20 @@ def update_repos(ctx):
         update_repo(ctx, repo, kind)
 
 
-@task
-def update_zsh_plugin_repos(ctx):
-    for path in Path("~/.zprezto-contrib/").expanduser().iterdir():
+def update_repos_in_folder(ctx, folder):
+    for path in Path(folder).expanduser().iterdir():
         if path.is_dir() and (path / ".git").exists():
             update_repo(ctx, str(path), "git")
+
+
+@task
+def update_zsh_plugin_repos(ctx):
+    update_repos_in_folder(ctx, "~/.zprezto-contrib/")
+
+
+@task
+def update_tmux_plugins(ctx):
+    update_repos_in_folder(ctx, "~/.tmux/plugins/")
 
 
 @task
@@ -238,6 +248,7 @@ def update(ctx):
     rustup(ctx)
     update_repos(ctx)
     update_zsh_plugin_repos(ctx)
+    update_tmux_plugins(ctx)
     update_brew_list(ctx)
     update_vim(ctx)
     mackup(ctx)
