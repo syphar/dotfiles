@@ -84,6 +84,8 @@ colors:
     cyan: '0x8FBCBB'
     white: '0xECEFF4'
 
+# end of NORD colors
+
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
@@ -98,16 +100,12 @@ live_config_reload: true
 
 alt_send_esc: true
 
-# Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
-
 mouse:
   hide_when_typing: false
 
   url:
     launcher:
      program: open
-     # args: []
 
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
@@ -129,7 +127,7 @@ key_bindings:
   - { key: P,      mods: Command,         chars: "\x01\x70"      } # previous window
   - { key: D,      mods: Command,         chars: "\x01\x7c"      } # split window horizontal
   - { key: D,      mods: Command|Shift,   chars: "\x01\x2d"      } # split window vertical
-  - { key: Return, mods: Command|Shift,   chars: "\x01\x7a"      } # split window vertical
+  - { key: Return, mods: Command|Shift,   chars: "\x01\x7a"      } # zoom window
 
 # switch windows with cmd+number
   - { key: Key1,   mods: Command,         chars: "\x01\x30" }
