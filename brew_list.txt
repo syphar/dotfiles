@@ -254,6 +254,7 @@ protobuf@3.7
 pstree
 py2cairo
 py3cairo
+pybind11
 pyenv
 pygobject3
 pypy
