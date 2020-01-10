@@ -66,6 +66,7 @@ freexl
 frei0r
 fribidi
 fzf
+gawk
 gcc
 gd
 gdal
