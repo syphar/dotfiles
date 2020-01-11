@@ -272,6 +272,7 @@ readline
 redis
 rhino
 riak
+ripgrep
 rsnapshot
 rtmpdump
 rubberband
@@ -317,6 +318,7 @@ unixodbc
 utf8proc
 v8
 vim
+w3m
 watch
 webp
 weechat
