@@ -115,6 +115,8 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export NVM_DIR="$HOME/.nvm"
 export BC_CACHE_DIR="$HOME/.cache/bc"
 
+export CLICOLOR=1
+
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then

@@ -154,6 +154,9 @@ source ~/.fzf.zsh
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+# NORD for dircolors
+eval $(gdircolors ~/.dir_colors)
+
 
 enable-fzf-tab
 
