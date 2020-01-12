@@ -10,6 +10,9 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
+" notional
+nnoremap <silent> <c-s> :NV<CR>
+
 
 " fzf
 map <C-P> :GitFiles<CR>

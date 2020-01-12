@@ -18,7 +18,7 @@ let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm usin
 
 let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#source('tabnine', 'rank', 100)
-let g:deoplete#auto_complete_delay = 100  " needed for semshi
+" let g:deoplete#auto_complete_delay = 100  " needed for semshi
 " call deoplete#custom#source('LanguageClient',
 "             \ 'min_pattern_length',
 "             \ 2)
@@ -181,6 +181,14 @@ let g:indentLine_char = '⎸'
 
 " no indent-guides for python
 autocmd FileType python IndentLinesDisable
+" }}}
+
+" Notational {{{
+
+let g:nv_search_paths = ['~/Dropbox/notes/']
+let g:nv_create_note_window = 'horizontal split'
+
+
 " }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
