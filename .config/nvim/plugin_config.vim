@@ -108,13 +108,6 @@ let g:vista#renderer#icons = {
 
 " }}}
 
-" floaterm {{{
-
-let g:floaterm_position = 'topright'
-let g:floaterm_type = 'floating'
-
-" }}}
-
 " FZF {{{
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 function! FloatingFZF()
