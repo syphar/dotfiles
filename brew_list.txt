@@ -104,6 +104,7 @@ graph-tool
 graphite2
 graphviz
 grep
+grip
 gsettings-desktop-schemas
 gtk+3
 gts
