@@ -44,7 +44,9 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
-  call dein#add('tpope/vim-markdown', { 'on_ft': ['md', 'markdown'] })
+  call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
+  call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
+
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('tmux-plugins/vim-tmux') " tmux config filetype

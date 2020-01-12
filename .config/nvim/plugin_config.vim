@@ -191,4 +191,9 @@ let g:nv_create_note_window = 'split'
 
 " }}}
 
+
+" {{{ markdown
+let g:vim_markdown_conceal = 0
+" }}}
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
