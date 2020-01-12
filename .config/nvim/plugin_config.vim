@@ -186,7 +186,7 @@ autocmd FileType python IndentLinesDisable
 " Notational {{{
 
 let g:nv_search_paths = ['~/Dropbox/notes/']
-let g:nv_create_note_window = 'horizontal split'
+let g:nv_create_note_window = 'split'
 
 
 " }}}
