@@ -139,6 +139,8 @@ alias da="direnv allow"
 alias mux="teamocil"
 alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodeclined --nostarted --details end"
 alias tasks="watch --no-title --color --interval 1 task list"
+alias n='vim -c "NV"'
+
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH

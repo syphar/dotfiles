@@ -25,7 +25,7 @@ if dein#load_state('/Users/syphar/.cache/dein')
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
   call dein#add('benmills/vimux')
-  call dein#add('alok/notational-fzf-vim')  " fzf markdown notes
+  call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
 
   " file management / search
   call dein#add('scrooloose/nerdtree', {'on_cmd': ['NERDTreeToggle', 'NERDTreeFind']}) " left-side file explorer tree
