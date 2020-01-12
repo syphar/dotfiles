@@ -4,12 +4,18 @@ syntax enable
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+" global tab/spaces settings
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 set clipboard=unnamed  " use system clipboard
 set autoread
 set hidden
 set laststatus=2
 set noshowmode
+
 
 set background=dark
 colorscheme nord
