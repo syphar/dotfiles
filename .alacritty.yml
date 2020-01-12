@@ -11,7 +11,8 @@ window:
   startup_mode: Fullscreen
 
 scrolling:
-  history: 10000
+  history: 0  # disable history, since it's in tmux
+  auto_scroll: false
 
 font:
   normal:
@@ -44,9 +45,13 @@ font:
     x: 0
     y: 2
 
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
+
+debug:
+  render_timer: false
+  persistent_logging: false  # tmux does it
 
 # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
