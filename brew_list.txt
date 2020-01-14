@@ -270,6 +270,7 @@ rabbitmq
 ranger
 re2c
 readline
+reattach-to-user-namespace
 redis
 rhino
 riak
