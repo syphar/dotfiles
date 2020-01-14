@@ -16,6 +16,7 @@ set hidden
 set laststatus=2
 set noshowmode
 
+set conceallevel=2
 
 set background=dark
 colorscheme nord

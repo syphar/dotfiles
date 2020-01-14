@@ -180,7 +180,8 @@ let g:echodoc#type = 'virtual'
 let g:indentLine_char = '⎸'
 
 " no indent-guides for python
-autocmd FileType python IndentLinesDisable
+autocmd FileType python,markdown IndentLinesDisable
+
 " }}}
 
 " Notational {{{
@@ -193,7 +194,7 @@ let g:nv_create_note_window = 'split'
 
 
 " {{{ markdown
-let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled = 1
 " }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
