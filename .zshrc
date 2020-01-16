@@ -140,6 +140,7 @@ alias mux="teamocil"
 alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodeclined --nostarted --details end"
 alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
+alias h="heroku"
 
 
 if type brew &>/dev/null; then
