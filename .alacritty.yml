@@ -17,15 +17,15 @@ scrolling:
 font:
   normal:
     family: 'BlexMono NF'
-    style: ExtraLight
+    style: Light
 
   bold:
     family: 'BlexMono NF'
-    style: Regular
+    style: Medium
 
   italic:
     family: 'BlexMono NF'
-    style: ExtraLightItalic
+    style: LightItalic
 
   bold_italic:
     family: 'BlexMono NF'
