@@ -161,6 +161,14 @@ def rustup(ctx):
     ctx.run("rustup update")
 
 
+@task
+def update_rust_analyzer(ctx):
+    print("update rust-analyzer")
+    with ctx.cd("~/src/rust-analyzer/"):
+        ctx.run("git pull", echo=True)
+        ctx.run("cargo xtask install --server", echo=True, pty=True)
+
+
 def _update_bookmarks(filename, separator):
     bookmark_file = Path(filename)
     if bookmark_file.exists():
@@ -246,6 +254,7 @@ def update(ctx):
     update_zsh(ctx)
     update_vim_bookmarks(ctx)
     rustup(ctx)
+    update_rust_analzer(ctx)
     update_repos(ctx)
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
