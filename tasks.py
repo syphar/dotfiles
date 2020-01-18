@@ -254,7 +254,7 @@ def update(ctx):
     update_zsh(ctx)
     update_vim_bookmarks(ctx)
     rustup(ctx)
-    update_rust_analzer(ctx)
+    update_rust_analyzer(ctx)
     update_repos(ctx)
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
