@@ -61,6 +61,7 @@ figlet
 flac
 flex
 fontconfig
+fontforge
 freetype
 freexl
 frei0r
@@ -168,12 +169,14 @@ libsigc++@2
 libsndfile
 libsoxr
 libspatialite
+libspiro
 libssh
 libssh2
 libtasn1
 libtermkey
 libtiff
 libtool
+libuninameslist
 libunistring
 libusb
 libuv

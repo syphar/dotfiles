@@ -1,3 +1,4 @@
+awscli
 gcalcli
 httpie
 pipenv

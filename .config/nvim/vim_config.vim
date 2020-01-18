@@ -19,7 +19,8 @@ set noshowmode
 set conceallevel=2
 
 set background=dark
-colorscheme nord
+" colorscheme nord
+colorscheme base16-tomorrow-night
 
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
