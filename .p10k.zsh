@@ -48,7 +48,7 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
       # status                  # exit code of the last command
       command_execution_time  # duration of the last command
-      # background_jobs         # presence of background jobs
+      background_jobs         # presence of background jobs
       direnv                  # direnv status (https://direnv.net/)
       virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
       anaconda                # conda environment (https://conda.io/)
@@ -72,7 +72,7 @@
       # gcloud                # google cloud acccount and project (https://cloud.google.com/)
       context                 # user@hostname
       # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-      # ranger                  # ranger shell (https://github.com/ranger/ranger)
+      ranger                  # ranger shell (https://github.com/ranger/ranger)
       vim_shell               # vim shell indicator (:sh)
       # midnight_commander    # midnight commander shell (https://midnight-commander.org/)
       # vpn_ip                # virtual private network indicator
