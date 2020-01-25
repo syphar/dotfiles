@@ -259,7 +259,7 @@ def update(ctx):
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
-    update_vim(ctx)
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
+    update_vim(ctx)
