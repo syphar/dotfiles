@@ -1,13 +1,13 @@
 " Required:
-set runtimepath+=/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/syphar/.cache/dein')
-  call dein#begin('/Users/syphar/.cache/dein')
+if dein#load_state('$HOME/.cache/dein')
+  call dein#begin('$HOME/.cache/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/syphar/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('haya14busa/dein-command.vim')
 
   " interface
@@ -31,7 +31,11 @@ if dein#load_state('/Users/syphar/.cache/dein')
   " file management / search
   call dein#add('scrooloose/nerdtree', {'on_cmd': ['NERDTreeToggle', 'NERDTreeFind']}) " left-side file explorer tree
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
-  call dein#add('/usr/local/opt/fzf')
+
+  if isdirectory('/usr/local/opt/fzf')
+    call dein#add('/usr/local/opt/fzf')
+  end
+
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
   " call dein#add('meain/vim-automkdir')  " autocreate missing directories on save

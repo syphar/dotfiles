@@ -153,12 +153,15 @@ bindkey -v
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source ~/.fzf.zsh
+if [[ -s "/usr/share/fzf/key-bindings.zsh" ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+else
+  source ~/.fzf.zsh
+fi
+
 
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-# NORD for dircolors
-eval $(gdircolors ~/.dir_colors)
 
 
 enable-fzf-tab
