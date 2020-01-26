@@ -150,6 +150,10 @@ fi
 # working vi-mode for zsh
 bindkey -v
 
+# some jobs stuff
+# forground last job
+bindkey -s '^z' 'fg^M'
+alias j="jobs"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
