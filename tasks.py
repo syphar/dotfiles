@@ -28,6 +28,7 @@ def update_homebrew(ctx):
 
     ctx.run("brew update")
     ctx.run("brew upgrade")
+    ctx.run("brew cask upgrade")
 
 
 @task
