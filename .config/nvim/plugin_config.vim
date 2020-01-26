@@ -197,4 +197,11 @@ let g:nv_create_note_window = 'split'
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
+" floaterm {{{
+
+let g:floaterm_position = 'topright'
+let g:floaterm_type = 'floating'
+
+" }}}
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
