@@ -187,6 +187,7 @@ libvterm
 libxml2
 libxmlsec1
 libyaml
+libzip
 lighttpd
 little-cms
 little-cms2
@@ -311,6 +312,7 @@ the_silver_searcher
 thefuck
 theora
 tig
+tldr
 tmate
 tmux
 tmuxinator
