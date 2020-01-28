@@ -68,10 +68,6 @@ endfunction
 nnoremap <F4> :call ToggleLocList()<CR>
 nnoremap <F5> :MundoToggle<CR>
 
-map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <leader>e :NERDTreeFind<CR>
-nmap <leader>nt :NERDTreeFind<CR>
-
 nnoremap <silent> <F3> :Vista!!<CR>
 
 " move between tabs with cmd+number

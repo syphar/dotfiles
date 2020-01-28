@@ -68,21 +68,6 @@ let g:ale_fix_on_save = 1
 
 " }}}
 
-" NerdTree {{{
-" ______________________________________________________________________
-let g:NERDShutUp=1
-let NERDTreeRespectWildIgnore=1
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=2
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" }}}
-
 " FZF {{{
 
 " default fzf on the shell ignores based on gitignore, in vim I don't want

@@ -29,7 +29,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
 
   " file management / search
-  call dein#add('scrooloose/nerdtree', {'on_cmd': ['NERDTreeToggle', 'NERDTreeFind']}) " left-side file explorer tree
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
 
   if isdirectory('/usr/local/opt/fzf')
