@@ -5,19 +5,22 @@ nnoremap <space> za
 vnoremap <space> zf
 
 " manually create a fold with F9
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+" inoremap <F9> <C-O>za
+" nnoremap <F9> za
+" onoremap <F9> <C-C>za
+" vnoremap <F9> zf
 
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 
 " floaterm
-" let g:floaterm_keymap_new = '<F7>'
-" let g:floaterm_keymap_prev = '<F8>'
-" let g:floaterm_keymap_next = '<F9>'
-" let g:floaterm_keymap_toggle = '<F10>'
+let g:floaterm_keymap_new = '<F7>'
+let g:floaterm_keymap_prev = '<F8>'
+let g:floaterm_keymap_next = '<F9>'
+let g:floaterm_keymap_toggle = '<F10>'
+
+nnoremap  <silent> <F10> :FloatermToggle<CR>
+tnoremap <silent> <F10> <C-\><C-n>:FloatermToggle<CR>
 
 " fzf
 map <C-P> :GitFiles<CR>
@@ -89,10 +92,10 @@ map! <D-8> <C-O>:tabn 8<CR>
 map! <D-9> <C-O>:tabn 9<CR>
 
 " Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-l> <c-w>l
 
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
