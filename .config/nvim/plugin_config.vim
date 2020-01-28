@@ -74,26 +74,6 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
-" }}}
-
-" Vista {{{
-" ______________________________________________________________________
-
-" python stays through ctags, looks better
-let g:vista_executive_for = {
-  \ 'rust': 'lcn',
-  \ }
-let g:vista#renderer#enable_icon = 1
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_echo_cursor_strategy = 'floating_win'
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-
-" }}}
-
-" FZF {{{
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)

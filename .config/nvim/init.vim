@@ -64,8 +64,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
-  call dein#add('voldikss/vim-floaterm', {'on_cmd': ['FloatermToggle', 'FloatermNew', 'FloatermPrev', 'FloatermNext']})  " floating terminal
   call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen
 
   call dein#add('direnv/direnv.vim') " read direnv for vim env
