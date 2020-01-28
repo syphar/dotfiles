@@ -32,6 +32,10 @@ nmap <leader>m :Buffers<CR>
 nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
 
+" run Ag with word under cursor
+nmap <leader>ag "zyiw:exe "Ag ".@z.""<CR>
+
+
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
