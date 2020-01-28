@@ -138,6 +138,8 @@ command! -bang GitFiles
   \   fzf#vim#with_preview('down')
   \ )
 
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('down'))
+
 
 " custom BTags and Tags to include preview
 " inspired by https://github.com/junegunn/fzf.vim/issues/800
