@@ -161,7 +161,7 @@ let g:nv_create_note_window = 'split'
 
 " vim-test {{{
 let test#strategy = "vimux"
-let g:test#preserve_screen = 1
+let g:test#preserve_screen = 0
 let test#python#runner = 'pytest'
 "
 

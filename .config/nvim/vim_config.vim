@@ -22,6 +22,8 @@ set laststatus=2
 set noshowmode
 
 set conceallevel=2
+set concealcursor=""
+
 
 set background=dark
 colorscheme base16-tomorrow-night

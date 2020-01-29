@@ -9,18 +9,18 @@ nnoremap <silent> <c-s> :NV<CR>
 
 " vim-test
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
+nmap <leader>tg :TestVisit<CR>
 
 " fzf
 map <C-P> :GitFiles<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
 
-nmap <leader>t :BTags<CR>
-nmap <leader>T :Tags<CR>
+nmap <leader>f :BTags<CR>
+nmap <leader>F :Tags<CR>
 nmap <leader>m :Buffers<CR>
 nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
