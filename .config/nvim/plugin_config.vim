@@ -136,6 +136,7 @@ command! -bang Tags
 " Markdown {{{
 let g:markdown_syntax_conceal = 0
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'javascript', 'css']
+let g:vim_markdown_folding_disabled = 1
 " }}}
 
 " Echodoc {{{
@@ -156,19 +157,7 @@ autocmd FileType python,markdown IndentLinesDisable
 let g:nv_search_paths = ['~/Dropbox/notes/']
 let g:nv_create_note_window = 'split'
 
-
 " }}}
 
-
-" {{{ markdown
-let g:vim_markdown_folding_disabled = 1
-" }}}
-
-" floaterm {{{
-
-let g:floaterm_position = 'topright'
-let g:floaterm_type = 'floating'
-
-" }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

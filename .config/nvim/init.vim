@@ -65,7 +65,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen
-
   call dein#add('direnv/direnv.vim') " read direnv for vim env
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
