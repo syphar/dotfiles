@@ -12,7 +12,6 @@ if dein#load_state('$HOME/.cache/dein')
 
   " interface
   call dein#add('chriskempson/base16-vim')
-  call dein#add('arcticicestudio/nord-vim')
 
   " for statusline
   call dein#add('itchyny/lightline.vim')
@@ -25,7 +24,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('simnalamburt/vim-mundo')  " visual undo tree
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
-  call dein#add('benmills/vimux')
+  call dein#add('benmills/vimux') " run commands in other tmux pane
   call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
 
   " file management / search
@@ -54,7 +53,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('tmux-plugins/vim-tmux') " tmux config filetype
-  call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
   call dein#add('vim-scripts/applescript.vim', {'on_ft': ['applescript']})
 
   " generic software dev stuff
@@ -66,6 +64,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen
   call dein#add('direnv/direnv.vim') " read direnv for vim env
+  call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete

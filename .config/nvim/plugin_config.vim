@@ -159,5 +159,12 @@ let g:nv_create_note_window = 'split'
 
 " }}}
 
+" vim-test {{{
+let test#strategy = "vimux"
+let g:test#preserve_screen = 1
+let test#python#runner = 'pytest'
+"
+
+" }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
