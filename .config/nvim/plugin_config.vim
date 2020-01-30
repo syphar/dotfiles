@@ -167,4 +167,8 @@ let test#python#runner = 'pytest'
 
 " }}}
 
+" goyo / limelight {{{
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+" }}}
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

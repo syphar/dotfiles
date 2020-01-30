@@ -43,6 +43,10 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('junegunn/gv.vim')  " nice git log
 
+  " distraction free writing
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('junegunn/limelight.vim')
+
   " specific file types
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
