@@ -41,6 +41,7 @@ if dein#load_state('$HOME/.cache/dein')
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
+  call dein#add('mhinz/vim-signify')  " git changes in sign column
   call dein#add('junegunn/gv.vim')  " nice git log
 
   " distraction free writing
@@ -70,6 +71,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
   call dein#add('tpope/vim-projectionist', {'on_ft': ['python', 'rust']}) " :A alternate command to switch between tests and implementation
+  call dein#add('metakirby5/codi.vim', {'on_cmd': ["Codi", "Codi!", "Codi!!"]})
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete

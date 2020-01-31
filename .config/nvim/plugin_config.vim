@@ -167,8 +167,20 @@ let test#python#runner = 'pytest'
 
 " }}}
 
+
+" context {{{
+" default presenter (nvim-float) has rendering errors and adds flickering. try
+" again later
+let g:context_presenter = 'nvim-float' "preview
+" }}}
+
 " goyo / limelight {{{
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+" }}}
+
+" {{{ Codi
+let g:codi#width = "50%"
+let g:codi#rightalign = 0
 " }}}
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
