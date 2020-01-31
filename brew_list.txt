@@ -135,6 +135,7 @@ jq
 json-c
 keybase
 lame
+lazygit
 leiningen
 leptonica
 less
