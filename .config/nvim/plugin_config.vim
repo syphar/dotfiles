@@ -134,8 +134,9 @@ command! -bang Tags
 " }}}
 
 " Markdown {{{
-let g:markdown_syntax_conceal = 0
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'javascript', 'css']
+let g:vim_markdown_conceal = 1
+let g:vim_markdown_syntax_conceal = 0
+let g:vim_markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'javascript', 'css']
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
@@ -165,6 +166,10 @@ let g:test#preserve_screen = 0
 let test#python#runner = 'pytest'
 "
 
+" }}}
+
+" vimux {{{
+let g:VimuxUseNearest = 1
 " }}}
 
 
