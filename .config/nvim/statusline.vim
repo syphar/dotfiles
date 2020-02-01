@@ -18,7 +18,7 @@ let g:lightline#ale#indicator_ok = "\uf00c"
 let g:lightline.active = {
             \ 'left': [
             \  [ 'paste' ],
-            \  [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+            \  [ 'gitbranch', 'readonly', 'relativepath', 'modified' ],
             \ ],
             \ 'right': [
             \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'filetype', 'lineinfo' ],
@@ -28,7 +28,7 @@ let g:lightline.active = {
 let g:lightline.inactive = {
             \ 'left': [
             \  [ 'paste' ],
-            \  [ 'readonly', 'filename', 'modified' ],
+            \  [ 'readonly', 'relativepath', 'modified' ],
             \ ],
             \ 'right': [ ]
             \ }
