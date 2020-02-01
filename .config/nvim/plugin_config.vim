@@ -188,4 +188,8 @@ autocmd! User GoyoLeave Limelight!
 let g:codi#width = "50%"
 let g:codi#rightalign = 0
 " }}}
+
+" ranger {{{
+let g:ranger_map_keys = 0
+" ]}}
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
