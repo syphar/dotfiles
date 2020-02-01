@@ -37,19 +37,12 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
   " call dein#add('meain/vim-automkdir')  " autocreate missing directories on save
-  call dein#add('francoiscabrol/ranger.vim')
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('mhinz/vim-signify')  " git changes in sign column
   call dein#add('junegunn/gv.vim')  " nice git log
-  call dein#add('rhysd/git-messenger.vim', {
-            \   'lazy' : 1,
-            \   'on_cmd' : 'GitMessenger',
-            \   'on_map' : '<Plug>(git-messenger',
-            \ }) " show git message / diff for line
-
 
 
   " distraction free writing
