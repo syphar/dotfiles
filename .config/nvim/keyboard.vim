@@ -19,8 +19,8 @@ nmap <leader>tg :TestVisit<CR>
 map <C-P> :GitFiles<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
 
-nmap <leader>t :BTags<CR>
-nmap <leader>T :Tags<CR>
+nmap <leader>f :BTags<CR>
+nmap <leader>F :Tags<CR>
 nmap <leader>m :Buffers<CR>
 nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
