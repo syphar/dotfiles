@@ -49,6 +49,9 @@
       # status                  # exit code of the last command
       command_execution_time  # duration of the last command
       background_jobs         # presence of background jobs
+
+      heroku                  # custom: current heroku app
+
       direnv                  # direnv status (https://direnv.net/)
       virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
       anaconda                # conda environment (https://conda.io/)
@@ -83,8 +86,9 @@
       # proxy                 # system-wide http/https/ftp proxy
       # battery               # internal battery
       # example               # example user-defined segment (see prompt_example function below)
-      heroku                  # custom: current heroku app
   )
+  typeset -g POWERLEVEL9K_HEROKU_SHOW_ON_COMMAND='heroku'
+
 
   # Basic style options that define the overall look of your prompt. You probably don't want to
   # change them.
