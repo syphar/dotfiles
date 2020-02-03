@@ -74,6 +74,11 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
+" there is an open rendering issue with context.vim in combination with the
+" fzf-floating-window: https://github.com/wellle/context.vim/issues/36
+" this works around it.
+autocmd  FileType fzf ContextDisable
+
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
