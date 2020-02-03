@@ -80,6 +80,7 @@ let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow
 autocmd  FileType fzf ContextDisable
 
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
   call setbufvar(buf, '&signcolumn', 'no')
