@@ -319,6 +319,7 @@ tmux
 tmuxinator
 tokyo-cabinet
 tor
+travis
 unbound
 unibilium
 universal-ctags
