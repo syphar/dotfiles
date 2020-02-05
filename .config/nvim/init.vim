@@ -34,6 +34,7 @@ if dein#load_state('$HOME/.cache/dein')
     call dein#add('/usr/local/opt/fzf')
   end
 
+
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
   " call dein#add('meain/vim-automkdir')  " autocreate missing directories on save
@@ -55,6 +56,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
+  call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
 
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
