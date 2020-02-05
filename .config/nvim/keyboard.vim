@@ -9,7 +9,7 @@ nnoremap <silent> <c-s> :NV<CR>
 
 " fzf
 map <C-P> :GitFiles<CR>
-nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
+nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
 nmap <leader>t :BTags<CR>
 nmap <leader>T :Tags<CR>
@@ -67,10 +67,6 @@ map! <D-9> <C-O>:tabn 9<CR>
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
-
-" type ,p to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
-" (the github web gui doesn't display control characters, but it is there)
-nnoremap <leader>b oimport pdb;pdb.set_trace()
 
 " common typos .. (W, Wq WQ)
 if has("user_commands")
