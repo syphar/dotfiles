@@ -7,20 +7,12 @@ vnoremap <space> zf
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 
-" vim-test
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-nmap <leader>tn :TestNearest<CR>
-nmap <leader>tf :TestFile<CR>
-nmap <leader>ts :TestSuite<CR>
-nmap <leader>tl :TestLast<CR>
-nmap <leader>tg :TestVisit<CR>
-
 " fzf
 map <C-P> :GitFiles<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
 
-nmap <leader>f :BTags<CR>
-nmap <leader>F :Tags<CR>
+nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
 nmap <leader>m :Buffers<CR>
 nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
@@ -32,18 +24,6 @@ vnoremap <leader>ag "zy:exe "Ag ".@z.""<CR>
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-function SetLSPShortcuts()
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  nmap <leader>gd :call LanguageClient#textDocument_definition()<CR>
-  nmap <leader>n :call LanguageClient#textDocument_references()<CR>
-endfunction()
-
-augroup LSP
-  autocmd!
-  autocmd FileType rust,python call SetLSPShortcuts()
-augroup END
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"

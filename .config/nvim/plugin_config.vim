@@ -74,42 +74,16 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
-" there is an open rendering issue with context.vim in combination with the
-" fzf-floating-window: https://github.com/wellle/context.vim/issues/36
-" this works around it.
-autocmd  FileType fzf ContextDisable
-
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr(&lines * 0.6) " 60% of screen
-  let width = float2nr(&columns * 0.8) " 80% of screen
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = float2nr(&lines * 0.2) " space to top: 20
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'anchor': 'NW',
-        \ 'style': 'minimal'
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
+" this currently breaks together with context.vim
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 command! -bang GitFiles
   \ call fzf#vim#gitfiles(
   \   '--cached --exclude-standard --others',
-  \   fzf#vim#with_preview('down')
+  \   fzf#vim#with_preview('right')
   \ )
 
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('down'))
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'))
 
 
 " custom BTags and Tags to include preview
@@ -117,7 +91,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('down'
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
   \     'options': '--with-nth 1,2
-  \                 --preview-window=down
+  \                 --preview-window=right
   \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
@@ -128,7 +102,7 @@ command! -bang BTags
 command! -bang Tags
   \ call fzf#vim#tags('', {
   \     'options': '--with-nth 1,2
-  \                 --preview-window=down
+  \                 --preview-window=right
   \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
@@ -155,7 +129,7 @@ let g:echodoc#type = 'virtual'
 let g:indentLine_char = '⎸'
 
 " no indent-guides for python
-autocmd FileType python,markdown IndentLinesDisable
+autocmd FileType python,markdown,fzf IndentLinesDisable
 
 " }}}
 
@@ -184,6 +158,7 @@ let g:VimuxUseNearest = 1
 " again later
 let g:context_presenter = 'nvim-float' "preview
 let g:context_border_char = '–' " '▬'
+let g:context_enabled = 1
 
 " }}}
 
