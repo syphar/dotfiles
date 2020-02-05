@@ -40,7 +40,7 @@ function! ToggleLocList()
 endfunction
 
 nnoremap <F4> :call ToggleLocList()<CR>
-nnoremap <F5> :MundoToggle<CR>
+nnoremap <F6> :MundoToggle<CR>
 
 " move between tabs with cmd+number. Not used in tmux, only when running a gui
 " vim
