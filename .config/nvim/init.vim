@@ -70,6 +70,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
+  call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
   call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen. old: 'rev': '23-nvim-no-redraw',
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running

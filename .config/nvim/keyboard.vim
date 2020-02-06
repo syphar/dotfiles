@@ -39,6 +39,7 @@ function! ToggleLocList()
     lopen
 endfunction
 
+nnoremap <silent> <F3> :Vista!!<CR>
 nnoremap <F4> :call ToggleLocList()<CR>
 nnoremap <F6> :MundoToggle<CR>
 

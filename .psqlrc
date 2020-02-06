@@ -25,6 +25,7 @@
 -- typing them in lower case.
 \set COMP_KEYWORD_CASE upper
 
+-- nice border-style
 \pset linestyle unicode
 \pset border 2
 
