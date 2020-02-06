@@ -34,6 +34,7 @@ if dein#load_state('$HOME/.cache/dein')
     call dein#add('/usr/local/opt/fzf')
   end
 
+
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
   " call dein#add('meain/vim-automkdir')  " autocreate missing directories on save
@@ -55,6 +56,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
+  call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
 
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
@@ -72,7 +74,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
   call dein#add('tpope/vim-projectionist', {'on_ft': ['python', 'rust']}) " :A alternate command to switch between tests and implementation
-  call dein#add('metakirby5/codi.vim', {'on_cmd': ["Codi", "Codi!", "Codi!!"]})
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete
@@ -86,7 +87,6 @@ if dein#load_state('$HOME/.cache/dein')
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
-  " call dein#add('numirias/semshi', {'on_ft': ['python']}) " better python coloscheme
 
   " Required:
   call dein#end()

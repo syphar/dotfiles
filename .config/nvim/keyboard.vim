@@ -7,17 +7,9 @@ vnoremap <space> zf
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 
-" vim-test
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-nmap <leader>tn :TestNearest<CR>
-nmap <leader>tf :TestFile<CR>
-nmap <leader>ts :TestSuite<CR>
-nmap <leader>tl :TestLast<CR>
-nmap <leader>tg :TestVisit<CR>
-
 " fzf
 map <C-P> :GitFiles<CR>
-nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('down'))<CR>
+nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
 
 nmap <leader>f :BTags<CR>
 nmap <leader>F :Tags<CR>
@@ -32,18 +24,6 @@ vnoremap <leader>ag "zy:exe "Ag ".@z.""<CR>
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-function SetLSPShortcuts()
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  nmap <leader>gd :call LanguageClient#textDocument_definition()<CR>
-  nmap <leader>n :call LanguageClient#textDocument_references()<CR>
-endfunction()
-
-augroup LSP
-  autocmd!
-  autocmd FileType rust,python call SetLSPShortcuts()
-augroup END
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -60,7 +40,7 @@ function! ToggleLocList()
 endfunction
 
 nnoremap <F4> :call ToggleLocList()<CR>
-nnoremap <F5> :MundoToggle<CR>
+nnoremap <F6> :MundoToggle<CR>
 
 " move between tabs with cmd+number. Not used in tmux, only when running a gui
 " vim
@@ -87,10 +67,6 @@ map! <D-9> <C-O>:tabn 9<CR>
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
-
-" type ,p to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
-" (the github web gui doesn't display control characters, but it is there)
-nnoremap <leader>b oimport pdb;pdb.set_trace()
 
 " common typos .. (W, Wq WQ)
 if has("user_commands")

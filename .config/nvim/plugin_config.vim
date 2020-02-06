@@ -1,27 +1,8 @@
-" LanguageClient_Neovim {{{
-" ______________________________________________________________________
-
-" pyls only works when run in a venv with version smaller than the smallest
-" project python runtime
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['~/src/pyls/venv/bin/pyls'],
-    \ 'rust': ['~/src/rust-analyzer/target/release/ra_lsp_server'],
-    \ }
-    " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-
-let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
-
-" }}}
 
 " Deoplete {{{
 " ______________________________________________________________________
 
 let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#source('tabnine', 'rank', 100)
-" let g:deoplete#auto_complete_delay = 100  " needed for semshi
-" call deoplete#custom#source('LanguageClient',
-"             \ 'min_pattern_length',
-"             \ 2)
 
 " disable some deoplete sources. (aka all default ones + ale)
 " _ = all file types, but more can be added per type
@@ -32,17 +13,6 @@ let g:deoplete#ignore_sources ={
   \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
   \ }
 
-" call deoplete#custom#source('buffer', 'mark', '♐')
-" call deoplete#custom#source('tern', 'mark', '')
-" call deoplete#custom#source('omni', 'mark', '⌾')
-" call deoplete#custom#source('file', 'mark', '')
-" call deoplete#custom#source('jedi', 'mark', '')
-" call deoplete#custom#source('neosnippet', 'mark', '')
-" call deoplete#custom#source('LanguageClient', 'mark', '♚')
-" call deoplete#custom#source('tabnine', 'mark', '9')
-
-
-
 " }}}
 
 " ALE {{{
@@ -52,18 +22,8 @@ let g:ale_set_loclist = 1
 let g:ale_set_quickfix = 0
 let g:ale_virtualtext_cursor = 1
 
-let g:ale_linters = {'rust': ['cargo', 'rls']}
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-let g:ale_rust_rustfmt_options = '--edition 2018'
-let g:ale_rust_rls_executable = '/Users/syphar/.cargo/bin/rls'
-let g:ale_rust_rls_toolchain = 'stable'
-
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'python': ['black', 'autopep8', 'yapf', 'isort'],
-\   'rust': ['rustfmt']
-\}
+" filetype specific fixers and linters in ftplugin
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 
 " }}}
@@ -74,42 +34,16 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
-" there is an open rendering issue with context.vim in combination with the
-" fzf-floating-window: https://github.com/wellle/context.vim/issues/36
-" this works around it.
-autocmd  FileType fzf ContextDisable
-
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr(&lines * 0.6) " 60% of screen
-  let width = float2nr(&columns * 0.8) " 80% of screen
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = float2nr(&lines * 0.2) " space to top: 20
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'anchor': 'NW',
-        \ 'style': 'minimal'
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
+" this currently breaks together with context.vim
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 command! -bang GitFiles
   \ call fzf#vim#gitfiles(
   \   '--cached --exclude-standard --others',
-  \   fzf#vim#with_preview('down')
+  \   fzf#vim#with_preview('right')
   \ )
 
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('down'))
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'))
 
 
 " custom BTags and Tags to include preview
@@ -117,7 +51,7 @@ command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('down'
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
   \     'options': '--with-nth 1,2
-  \                 --preview-window=down
+  \                 --preview-window=right
   \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
@@ -128,7 +62,7 @@ command! -bang BTags
 command! -bang Tags
   \ call fzf#vim#tags('', {
   \     'options': '--with-nth 1,2
-  \                 --preview-window=down
+  \                 --preview-window=right
   \                 --reverse
   \                 --preview "
   \                     bat {2} --color=always |
@@ -139,13 +73,6 @@ command! -bang Tags
 "
 " }}}
 
-" Markdown {{{
-let g:vim_markdown_conceal = 1
-let g:vim_markdown_syntax_conceal = 0
-let g:vim_markdown_fenced_languages = ['html', 'python', 'bash=sh', 'json', 'javascript', 'css']
-let g:vim_markdown_folding_disabled = 1
-" }}}
-
 " Echodoc {{{
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'virtual'
@@ -153,10 +80,7 @@ let g:echodoc#type = 'virtual'
 
 " indentline {{{
 let g:indentLine_char = '⎸'
-
-" no indent-guides for python
-autocmd FileType python,markdown IndentLinesDisable
-
+let g:indentLine_enabled = 1
 " }}}
 
 " Notational {{{
@@ -167,9 +91,9 @@ let g:nv_create_note_window = 'split'
 " }}}
 
 " vim-test {{{
-let test#strategy = "vimux"
+let g:test#strategy = "vimux"
 let g:test#preserve_screen = 0
-let test#python#runner = 'pytest'
+let g:test#python#runner = 'pytest'
 "
 
 " }}}
@@ -184,6 +108,7 @@ let g:VimuxUseNearest = 1
 " again later
 let g:context_presenter = 'nvim-float' "preview
 let g:context_border_char = '–' " '▬'
+let g:context_enabled = 1
 
 " }}}
 
@@ -192,9 +117,10 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 " }}}
 
-" {{{ Codi
-let g:codi#width = "50%"
-let g:codi#rightalign = 0
+
+" vinegar / netwrk {{{
+" CTRL-6 should go back to the last file, not netrw/vinegar
+let g:netrw_altfile = 1
 " }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

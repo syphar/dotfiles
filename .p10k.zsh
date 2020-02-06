@@ -55,7 +55,7 @@
       direnv                  # direnv status (https://direnv.net/)
       virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
       anaconda                # conda environment (https://conda.io/)
-      pyenv                   # python environment (https://github.com/pyenv/pyenv)
+      # pyenv                   # python environment (https://github.com/pyenv/pyenv)
       # goenv                   # go environment (https://github.com/syndbg/goenv)
       nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
       nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
@@ -88,6 +88,11 @@
       # example               # example user-defined segment (see prompt_example function below)
   )
   typeset -g POWERLEVEL9K_HEROKU_SHOW_ON_COMMAND='heroku'
+
+  typeset -g POWERLEVEL9K_NODENV_SHOW_ON_COMMAND='node|nvm|npm'
+  typeset -g POWERLEVEL9K_NVM_SHOW_ON_COMMAND='node|nvm|npm'
+  typeset -g POWERLEVEL9K_NODEENV_SHOW_ON_COMMAND='node|nvm|npm'
+  typeset -g POWERLEVEL9K_NODE_VERSION_SHOW_ON_COMMAND='node|nvm|npm'
 
 
   # Basic style options that define the overall look of your prompt. You probably don't want to

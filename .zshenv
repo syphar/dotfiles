@@ -117,6 +117,8 @@ export BC_CACHE_DIR="$HOME/.cache/bc"
 
 export CLICOLOR=1
 
+# mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
