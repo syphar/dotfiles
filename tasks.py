@@ -208,6 +208,7 @@ def mackup_dotfiles(ctx):
         "mackup",
         "myneovim",
         "mytmuxinator",
+        "pgsql",
         "powerlevel10k",
         "prezto",
         "tmate",
