@@ -34,8 +34,11 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
+
 " this currently breaks together with context.vim
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+
+autocmd FileType fzf IndentLinesDisable
 
 command! -bang GitFiles
   \ call fzf#vim#gitfiles(
