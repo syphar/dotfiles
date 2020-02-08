@@ -244,15 +244,20 @@ def mackup_dotfiles(ctx):
 
 
 @task
-def update_virtualenv(ctx, path):
+def update_virtualenv(ctx, path, only_package):
     path = Path(path).expanduser()
     pip = path / "bin" / "pip"
 
-    ctx.run(
-        f"{str(pip)} freeze | grep = | cut -d = -f 1 | xargs {str(pip)} install -U",
-        echo=True,
-        pty=True,
-    )
+    if only_package:
+        ctx.run(
+            f"{str(pip)} install -U {only_package}", echo=True, pty=True,
+        )
+    else:
+        ctx.run(
+            f"{str(pip)} freeze | grep = | cut -d = -f 1 | xargs {str(pip)} install -U",
+            echo=True,
+            pty=True,
+        )
 
 
 @task
@@ -273,7 +278,7 @@ def update(ctx):
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
-    update_virtualenv(ctx, "~/src/pyls/venv")
+    update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server")
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
