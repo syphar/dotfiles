@@ -44,6 +44,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('mhinz/vim-signify')  " git changes in sign column
   call dein#add('junegunn/gv.vim')  " nice git log
+  call dein#add('rhysd/git-messenger.vim') " git blame for single line + history
 
 
   " distraction free writing
