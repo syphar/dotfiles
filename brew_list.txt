@@ -231,6 +231,7 @@ offlineimap
 oniguruma
 openblas
 opencore-amr
+openjdk
 openjpeg
 openldap
 openssl
