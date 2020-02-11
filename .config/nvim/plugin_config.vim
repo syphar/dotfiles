@@ -96,7 +96,7 @@ let g:echodoc#type = 'virtual'
 " }}}
 
 " indentline {{{
-let g:indentLine_char = '⎸'
+let g:indentLine_char = '│'
 let g:indentLine_enabled = 1
 " }}}
 
@@ -124,7 +124,7 @@ let g:VimuxUseNearest = 1
 " default presenter (nvim-float) has rendering errors and adds flickering. try
 " again later
 let g:context_presenter = 'nvim-float' "preview
-let g:context_border_char = '–' " '▬'
+let g:context_border_char = '─' " '▬'
 let g:context_enabled = 1
 
 " }}}
