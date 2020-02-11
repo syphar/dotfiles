@@ -130,8 +130,10 @@ let g:context_enabled = 1
 " }}}
 
 " goyo / limelight {{{
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
+let g:goyo_width=90  " default is 80, but 88 python lines should also fit
+
 " }}}
 
 
