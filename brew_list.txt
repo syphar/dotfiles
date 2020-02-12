@@ -22,6 +22,7 @@ boost
 boost-python
 boost-python3
 boot2docker
+boxes
 byobu
 cairo
 cairomm
