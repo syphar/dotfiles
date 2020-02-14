@@ -134,6 +134,7 @@ jpeg
 jq
 json-c
 keybase
+krb5
 lame
 lazygit
 leiningen
