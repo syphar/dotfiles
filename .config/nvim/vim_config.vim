@@ -31,6 +31,8 @@ set noshowmode
 set conceallevel=2
 set concealcursor=""
 
+" to get an incremental visual feedback when doing the substitude command.
+set inccommand=split
 
 set background=dark
 colorscheme base16-tomorrow-night
