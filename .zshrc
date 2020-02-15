@@ -141,6 +141,7 @@ alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodecline
 alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
 alias h="heroku"
+alias k9="kill -9"
 
 
 if type brew &>/dev/null; then
@@ -152,7 +153,7 @@ bindkey -v
 
 # some jobs stuff
 # forground last job
-bindkey -s '^z' 'fg^M'
+bindkey -s '^x' 'fg^M'
 alias j="jobs"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
