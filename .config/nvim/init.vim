@@ -13,10 +13,6 @@ if dein#load_state('$HOME/.cache/dein')
   " interface
   call dein#add('chriskempson/base16-vim')
 
-  " for statusline
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('maximbaz/lightline-ale')
-
   " general plugins
   call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
   call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
@@ -45,11 +41,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('mhinz/vim-signify')  " git changes in sign column
   call dein#add('junegunn/gv.vim')  " nice git log
   call dein#add('rhysd/git-messenger.vim') " git blame for single line + history
-
-
-  " distraction free writing
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('junegunn/limelight.vim')
 
   " specific file types
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
