@@ -3,7 +3,6 @@ import os
 from pathlib import Path
 
 from invoke import task
-
 from projects import SRC_DIR, get_all_repos, yield_repos_in_folder
 
 
@@ -250,7 +249,7 @@ def update_virtualenv(ctx, path, only_package):
 
     if only_package:
         ctx.run(
-            f"{str(pip)} install -U {only_package}", echo=True, pty=True,
+            f"{str(pip)} install -U '{only_package}'", echo=True, pty=True,
         )
     else:
         ctx.run(
@@ -278,7 +277,7 @@ def update(ctx):
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
-    update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server")
+    update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server[rope]")
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
