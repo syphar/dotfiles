@@ -21,9 +21,17 @@ function! SetModifiedSymbol(modified) " {{{
     return '●'
 endfunction
 
+function! SetGitBranch(gitbranch)
+  if a:gitbranch == ''
+      return 'ø'
+  else
+      return a:gitbranch
+  endif
+endfunction
+
 function! SetFiletype(filetype)
   if a:filetype == ''
-      return '-'
+      return 'ø'
   else
       return a:filetype
   endif
@@ -57,35 +65,35 @@ function! ActiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MyStatuslineFiletype#\ "
+  let statusline .= "%#MyStatuslineModeBody#\ %{toupper(mode())}%#MySeparator#\ "
 
   " git branch
-  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#\ %{fugitive#head()}%#MyStatuslineLineCol#"
+  let statusline .= "%#MySeparator#%#MyStatuslineGitBranchBody#\ %{SetGitBranch(fugitive#head())}%#MySeparator#"
 
-  let statusline .= "%#MyStatuslineAccent#\ "
-  " Modified statu"s
+  let statusline .= "%#MySeparator#\ "
+  " Modified status
   let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
   " Filename
   let statusline .= "%#MyStatuslineFilename#%f"
-  let statusline .= "%#MyStatuslineSeparator#\ "
+  let statusline .= "%#MySeparator#\ "
 
-  " Right side ite"ms
-  " =============="=========
+  " Right side items
+  " =======================
   let statusline .= "%="
   " Linter Status
-  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineFiletypeBody#%{LinterStatus()}%#MyStatuslineLineCol#"
+  let statusline .= "%#MySeparator#%#MyStatuslineLinterStatusBody#%{LinterStatus()}%#MySeparator#"
   " Padding
   let statusline .= "\ "
-  " Line and Colum"n
-  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#%2l\/%2c%#MyStatuslineLineCol#"
+  " Line and Column
+  let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
   " Padding
   let statusline .= "\ "
-  " Current scroll" percentage and total lines of the file
-  let statusline .= "%#MyStatuslinePercentage#%#MyStatuslinePercentageBody#%P\/\%L%#MyStatuslinePercentage#"
+  " Current scroll percentage and total lines of the file
+  let statusline .= "%#MySeparator#%#MyStatuslinePercentageBody#%P\/\%L%#MySeparator#"
   " Padding
   let statusline .= "\ "
   " Filetype
-  let statusline .= "%#MyStatuslineFiletype#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MyStatuslineFiletype#\ "
+  let statusline .= "%#MySeparator#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MySeparator#\ "
 
   return statusline
 endfunction
@@ -95,53 +103,46 @@ function! InactiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MyStatuslineFiletype#\ "
+  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MySeparator#\ "
 
-  let statusline .= "%#MyStatuslineAccent#\ "
+  let statusline .= "%#MySeparator#\ "
   " Modified status
   let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
   " Filename
   let statusline .= "%#MyStatuslineFilename#%f "
-  let statusline .= "%#MyStatuslineSeparator#\ "
+  let statusline .= "%#MySeparator#\ "
 
   " Right side items
-  " =============="=========
+  " =======================
   let statusline .= "%="
   " Line and Column
-  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#%2l\/%2c%#MyStatuslineLineCol#"
+  let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
   " Padding
   let statusline .= "\ "
   " Current scroll percentage and total lines of the file
-  let statusline .= "%#MyStatuslinePercentage#%#MyStatuslinePercentageBody#%P\/\%L%#MyStatuslinePercentage#"
+  let statusline .= "%#MySeparator#%#MyStatuslinePercentageBody#%P\/\%L%#MySeparator#"
   " Padding
   let statusline .= "\ "
   " Filetype
-  let statusline .= "%#MyStatuslineFiletype#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MyStatuslineFiletype#\ "
+  let statusline .= "%#MySeparator#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MySeparator#\ "
 
   return statusline
 endfunction
 
 
 " Setup the colors
-hi StatusLine          guifg=#282828 guibg=#98971a
-hi StatusLineNC        guifg=#282828 guibg=#98971a
+hi StatusLine          guifg=#bdae93 guibg=None
+hi StatusLineNC        guifg=#bdae93 guibg=None
 
-hi mystatuslineseparator guifg=#3c3836 guibg=None
-
-hi MyStatuslineModified guifg=#3c3836 guibg=None
-
-hi MyStatuslineFiletype guifg=#3c3836 guibg=None
-hi MyStatuslineFiletypeBody ctermfg=5 cterm=italic ctermbg=0  guifg=#689d6a guibg=#3c3836  gui=italic
-
-hi MyStatuslinePercentageBody guifg=#d65d0e guibg=#3c3836
-hi MyStatuslinePercentage guibg=None guifg=#3c3836
-
-hi MyStatuslineLineCol ctermfg=0 cterm=NONE ctermbg=NONE guifg=#3c3836 guibg=None
-hi MyStatuslineLineColBody ctermbg=0 cterm=none ctermfg=2  guifg=#458588 guibg=#3c3836
-
-hi MyStatuslineAccent  guifg=#3c3836 gui=bold
+hi MySeparator guifg=#3c3836 guibg=None
+hi MyStatuslineModeBody  guifg=#689d6a guibg=#3c3836
+hi MyStatuslineGitBranchBody  guifg=#458588 guibg=#3c3836
 hi MyStatuslineFilename guifg=#bdae93 guibg=#3c3836
-hi MyStatuslineAccentBody guifg=#bdae93  guibg=#3c3836
+
+hi MyStatuslineLinterStatusBody  guifg=#689d6a guibg=#3c3836
+hi MyStatuslineLineColBody  guifg=#458588 guibg=#3c3836
+hi MyStatuslinePercentageBody guifg=#d65d0e guibg=#3c3836
+hi MyStatuslineFiletypeBody  guifg=#689d6a guibg=#3c3836
 
 " Change statusline automatically
 augroup Statusline
