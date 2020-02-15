@@ -50,6 +50,8 @@ set guioptions-=r
 
 set showtabline=1
 
+set showmatch
+
 " auto-adjust splits when window is resized
 " https://vi.stackexchange.com/questions/201/make-panes-resize-when-host-window-is-resized
 autocmd VimResized * wincmd =
@@ -60,7 +62,10 @@ set equalalways
 set completeopt-=preview
 
 " set nofoldenable
-set foldmethod=manual
+" set foldmethod=manual
+set foldmethod=indent
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
 set backspace=indent,eol,start
 
 " mkview and loadview shouldn't do options (which includes keyboard mappings
@@ -94,5 +99,9 @@ set updatetime=2000
 
 " When scrolling, keep cursor 5 lines away from screen border
 set scrolloff=5
+
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+
 
 " vim: et ts=2 sts=2 sw=2

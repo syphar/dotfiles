@@ -1,5 +1,8 @@
 let mapleader = ","
 
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
 " open/close folds with spacebar
 nnoremap <space> za
 vnoremap <space> zf
