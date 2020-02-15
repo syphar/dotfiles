@@ -99,20 +99,20 @@ endfunction
 set statusline=%{RedrawModeColors(mode())}
 " Left side items
 " =======================
-set statusline+=%#MyStatuslineAccent#\ 
-set statusline+=%#MyStatuslineAccentBody#●\ 
-" Filename
-set statusline+=%#MyStatuslineFilename#%f
-set statusline+=%#MyStatuslineSeparator#\ 
+"
 " git branch
 set statusline+=%#MyStatuslineLineCol#
 set statusline+=%#MyStatuslineLineColBody#\ 
 set statusline+=%#MyStatuslineLineColBody#%{fugitive#head()}
 set statusline+=%#MyStatuslineLineCol#
+
+set statusline+=%#MyStatuslineAccent#\ 
 " Modified status
-" set statusline+=%#MyStatuslineModified#
-" set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}
-" set statusline+=%#MyStatuslineModified#
+set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ 
+" Filename
+set statusline+=%#MyStatuslineFilename#%f
+set statusline+=%#MyStatuslineSeparator#\ 
+
 " Right side items
 " =======================
 set statusline+=%=
@@ -157,3 +157,5 @@ hi MyStatuslinePercentage guibg=None guifg=#3c3836
 
 hi MyStatuslineLineCol ctermfg=0 cterm=NONE ctermbg=NONE guifg=#3c3836 guibg=None    
 hi MyStatuslineLineColBody ctermbg=0 cterm=none ctermfg=2  guifg=#458588 guibg=#3c3836   
+
+" vim: et ts=2 sts=2 sw=2
