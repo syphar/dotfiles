@@ -8,9 +8,13 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/src/rust-analyzer/target/release/ra_lsp_server'],
     \ }
 
+    " \ 'python': ['~/src/pyls/venv/bin/pyls', '--verbose', '--log-file', '/tmp/pyls-log.txt'],
     " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
+" let g:LanguageClient_loggingLevel='DEBUG'
+" let g:LanguageClient_loggingFile =  '/tmp/languageclient-neovim.log'
+
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
