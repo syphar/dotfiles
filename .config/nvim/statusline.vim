@@ -1,54 +1,17 @@
-" based on and inspired by: 
-" https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/ and 
+" based on and inspired by:
+" https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/ and
 " https://github.com/ginkobab/dots/blob/master/.config/nvim/statusline.vim
 " https://www.reddit.com/user/EmpressNoodle
-"
-" TODO adapt colors to colorscheme, perhaps just use colorscheme
-" highlight-groups
+" https://irrellia.github.io/blogs/vim-statusline/
 
-" Do not show mode under the statusline since the statusline itself changes
-" color depending on mode
+" don't show mode since we want it in the statusline
 set noshowmode
 
+" always show status
 set laststatus=2
-" ~~~~ Statusline configuration ~~~~
+
 " ':help statusline' is your friend!
-function! RedrawModeColors(mode) " {{{
-  " Normal mode
-  if a:mode == 'n'
-    hi MyStatuslineAccent  guifg=#3c3836 gui=bold
-    hi MyStatuslineFilename guifg=#bdae93 guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#bdae93  guibg=#3c3836     
-  " Insert mode
-  elseif a:mode == 'i'
-    hi MyStatuslineAccent  guifg=#3c3836 
-    hi MyStatuslineFilename guifg=#83a598 guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#83a598  guibg=#3c3836    
-  " Replace mode
-  elseif a:mode == 'R'
-    hi MyStatuslineAccent guifg=#3c3836 
-    hi MyStatuslineFilename guifg=#fb4934 guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#fb4934  guibg=#3c3836    
-  " Visual mode
-  elseif a:mode == 'v' || a:mode == 'V' || a:mode == '^V'
-    hi MyStatuslineAccent guifg=#3c3836 
-    hi MyStatuslineFilename guifg=#d65d0e guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#d65d0e  guibg=#3c3836    
-  " Command mode
-  elseif a:mode == 'c'
-    hi MyStatuslineAccent guifg=#3c3836 
-    hi MyStatuslineFilename guifg=#d79921 guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#d79921  guibg=#3c3836    
-  " Terminal mode
-  elseif a:mode == 't'
-    hi MyStatuslineAccent guifg=#3c3836 
-    hi MyStatuslineFilename guifg=#98971a guibg=#3c3836    
-    hi MyStatuslineAccentBody guifg=#98971a  guibg=#3c3836    
-  endif
-  " Return empty string so as not to display anything in the statusline
-  return ''
-endfunction
-" }}}
+
 function! SetModifiedSymbol(modified) " {{{
     if a:modified == 1
         hi MyStatuslineModifiedBody guifg=#d79921 guibg=#3c3836
@@ -57,25 +20,23 @@ function! SetModifiedSymbol(modified) " {{{
     endif
     return '●'
 endfunction
-" }}}
-function! SetFiletype(filetype) " {{{
+
+function! SetFiletype(filetype)
   if a:filetype == ''
       return '-'
   else
       return a:filetype
   endif
 endfunction
-" }}}
 
-"{{{ linter status
 function! LinterStatus() abort
-    if ale#engine#IsCheckingBuffer(bufnr('')) 
+    if ale#engine#IsCheckingBuffer(bufnr(''))
         return "\uf110"
     endif
 
     let l:counts = ale#statusline#Count(bufnr(''))
 
-    if l:counts.total == 0 
+    if l:counts.total == 0
         return "\uf00c"  " all ok, checkmark
     endif
 
@@ -88,75 +49,106 @@ function! LinterStatus() abort
     \   all_errors
     \)
 endfunction
-"}}} 
-
 
 " Statusbar items
 " ====================================================================
+function! ActiveLine()
+  let statusline=""
+  " Left side items
+  " =======================
+  " mode
+  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MyStatuslineFiletype#\ "
 
-" This will not be displayed, but the function RedrawModeColors will be
-" called every time the mode changes, thus updating the colors used for the
-" components.
-set statusline=%{RedrawModeColors(mode())}
-" Left side items
-" =======================
-"
-" git branch
-set statusline+=%#MyStatuslineLineCol#
-set statusline+=%#MyStatuslineLineColBody#\ 
-set statusline+=%#MyStatuslineLineColBody#%{fugitive#head()}
-set statusline+=%#MyStatuslineLineCol#
+  " git branch
+  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#\ %{fugitive#head()}%#MyStatuslineLineCol#"
 
-set statusline+=%#MyStatuslineAccent#\ 
-" Modified status
-set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ 
-" Filename
-set statusline+=%#MyStatuslineFilename#%f
-set statusline+=%#MyStatuslineSeparator#\ 
+  let statusline .= "%#MyStatuslineAccent#\ "
+  " Modified statu"s
+  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
+  " Filename
+  let statusline .= "%#MyStatuslineFilename#%f"
+  let statusline .= "%#MyStatuslineSeparator#\ "
 
-" Right side items
-" =======================
-set statusline+=%=
-" Linter Status
-set statusline+=%#MyStatuslineLineCol#
-set statusline+=%#MyStatuslineFiletypeBody#%{LinterStatus()}
-set statusline+=%#MyStatuslineLineCol#
-" Padding
-set statusline+=\ 
-" Line and Column
-set statusline+=%#MyStatuslineLineCol#
-set statusline+=%#MyStatuslineLineColBody#%2l
-set statusline+=\/%#MyStatuslineLineColBody#%2c
-set statusline+=%#MyStatuslineLineCol#
-" Padding
-set statusline+=\ 
-" Current scroll percentage and total lines of the file
-set statusline+=%#MyStatuslinePercentage#
-set statusline+=%#MyStatuslinePercentageBody#%P
-set statusline+=\/\%#MyStatuslinePercentageBody#%L
-set statusline+=%#MyStatuslinePercentage#
-" Padding
-set statusline+=\ 
-" Filetype
-set statusline+=%#MyStatuslineFiletype#
-set statusline+=%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}
-set statusline+=%#MyStatuslineFiletype#\ 
+  " Right side ite"ms
+  " =============="=========
+  let statusline .= "%="
+  " Linter Status
+  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineFiletypeBody#%{LinterStatus()}%#MyStatuslineLineCol#"
+  " Padding
+  let statusline .= "\ "
+  " Line and Colum"n
+  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#%2l\/%2c%#MyStatuslineLineCol#"
+  " Padding
+  let statusline .= "\ "
+  " Current scroll" percentage and total lines of the file
+  let statusline .= "%#MyStatuslinePercentage#%#MyStatuslinePercentageBody#%P\/\%L%#MyStatuslinePercentage#"
+  " Padding
+  let statusline .= "\ "
+  " Filetype
+  let statusline .= "%#MyStatuslineFiletype#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MyStatuslineFiletype#\ "
+
+  return statusline
+endfunction
+
+function! InactiveLine()
+  let statusline=""
+  " Left side items
+  " =======================
+  " mode
+  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MyStatuslineFiletype#\ "
+
+  let statusline .= "%#MyStatuslineAccent#\ "
+  " Modified status
+  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
+  " Filename
+  let statusline .= "%#MyStatuslineFilename#%f "
+  let statusline .= "%#MyStatuslineSeparator#\ "
+
+  " Right side items
+  " =============="=========
+  let statusline .= "%="
+  " Line and Column
+  let statusline .= "%#MyStatuslineLineCol#%#MyStatuslineLineColBody#%2l\/%2c%#MyStatuslineLineCol#"
+  " Padding
+  let statusline .= "\ "
+  " Current scroll percentage and total lines of the file
+  let statusline .= "%#MyStatuslinePercentage#%#MyStatuslinePercentageBody#%P\/\%L%#MyStatuslinePercentage#"
+  " Padding
+  let statusline .= "\ "
+  " Filetype
+  let statusline .= "%#MyStatuslineFiletype#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MyStatuslineFiletype#\ "
+
+  return statusline
+endfunction
+
 
 " Setup the colors
-hi StatusLine          guifg=#282828 guibg=#98971a 
+hi StatusLine          guifg=#282828 guibg=#98971a
 hi StatusLineNC        guifg=#282828 guibg=#98971a
 
-hi mystatuslineseparator guifg=#3c3836 guibg=None    
+hi mystatuslineseparator guifg=#3c3836 guibg=None
 
-hi MyStatuslineModified guifg=#3c3836 guibg=None    
+hi MyStatuslineModified guifg=#3c3836 guibg=None
 
-hi MyStatuslineFiletype guifg=#3c3836 guibg=None    
+hi MyStatuslineFiletype guifg=#3c3836 guibg=None
 hi MyStatuslineFiletypeBody ctermfg=5 cterm=italic ctermbg=0  guifg=#689d6a guibg=#3c3836  gui=italic
 
 hi MyStatuslinePercentageBody guifg=#d65d0e guibg=#3c3836
 hi MyStatuslinePercentage guibg=None guifg=#3c3836
 
-hi MyStatuslineLineCol ctermfg=0 cterm=NONE ctermbg=NONE guifg=#3c3836 guibg=None    
-hi MyStatuslineLineColBody ctermbg=0 cterm=none ctermfg=2  guifg=#458588 guibg=#3c3836   
+hi MyStatuslineLineCol ctermfg=0 cterm=NONE ctermbg=NONE guifg=#3c3836 guibg=None
+hi MyStatuslineLineColBody ctermbg=0 cterm=none ctermfg=2  guifg=#458588 guibg=#3c3836
+
+hi MyStatuslineAccent  guifg=#3c3836 gui=bold
+hi MyStatuslineFilename guifg=#bdae93 guibg=#3c3836
+hi MyStatuslineAccentBody guifg=#bdae93  guibg=#3c3836
+
+" Change statusline automatically
+augroup Statusline
+  autocmd!
+  autocmd WinEnter,BufEnter * setlocal statusline=%!ActiveLine()
+  autocmd WinLeave,BufLeave * setlocal statusline=%!InactiveLine()
+augroup END
+
 
 " vim: et ts=2 sts=2 sw=2

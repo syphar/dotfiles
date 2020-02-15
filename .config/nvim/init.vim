@@ -56,6 +56,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('vim-scripts/applescript.vim', {'on_ft': ['applescript']})
 
   " generic software dev stuff
+  call dein#add('chrisbra/Colorizer', {'on_cmd': ['ColorHighlight', 'ColorHighlight']}) " colorize colors in code
   call dein#add('Yggdroot/indentLine') " indent helper lines
   call dein#add('Shougo/echodoc.vim') " Show signature
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
