@@ -104,6 +104,11 @@ set statusline+=%#MyStatuslineAccentBody#●\
 " Filename
 set statusline+=%#MyStatuslineFilename#%f
 set statusline+=%#MyStatuslineSeparator#\ 
+" git branch
+set statusline+=%#MyStatuslineLineCol#
+set statusline+=%#MyStatuslineLineColBody#\ 
+set statusline+=%#MyStatuslineLineColBody#%{fugitive#head()}
+set statusline+=%#MyStatuslineLineCol#
 " Modified status
 " set statusline+=%#MyStatuslineModified#
 " set statusline+=%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}
