@@ -1,9 +1,10 @@
-" ====================================================================
-" Make sure to:
-" 1. source this file somewhere at the bottom of your config.
-" 2. disable any statusline plugins, as they will override this.
-" ====================================================================
+" based on and inspired by: 
+" https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/ and 
+" https://github.com/ginkobab/dots/blob/master/.config/nvim/statusline.vim
+" https://www.reddit.com/user/EmpressNoodle
 "
+" TODO adapt colors to colorscheme, perhaps just use colorscheme
+" highlight-groups
 
 " Do not show mode under the statusline since the statusline itself changes
 " color depending on mode
