@@ -123,6 +123,7 @@ htop
 htop-osx
 httperf
 hub
+hyperfine
 icu4c
 imapsync
 isl
