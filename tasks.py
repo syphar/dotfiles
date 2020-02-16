@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from invoke import task
+
 from projects import SRC_DIR, get_all_repos, yield_repos_in_folder
 
 
@@ -210,6 +211,7 @@ def mackup_dotfiles(ctx):
         "pgsql",
         "powerlevel10k",
         "prezto",
+        "ranger",
         "tmate",
         "tmux",
         "tmuxinator",
