@@ -10,6 +10,12 @@ vnoremap <space> zf
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 
+" don't count {} as jumps for the jumplist
+" see https://superuser.com/a/836924/1124707
+nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
+nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
+
+
 " fzf
 map <C-P> :GitFiles<CR>
 nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
