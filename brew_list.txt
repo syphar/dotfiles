@@ -301,6 +301,7 @@ sdl_image
 selecta
 sfcgal
 shared-mime-info
+shellcheck
 siege
 sl
 snappy
