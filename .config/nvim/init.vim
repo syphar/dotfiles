@@ -14,8 +14,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('chriskempson/base16-vim')
 
   " general plugins
-  call dein#add('vim-scripts/restore_view.vim') " safe/restore folds and position
-  call dein#add('vim-scripts/LargeFile')  " disable stuff for big files for performance
+  call dein#add('zhimsel/vim-stay') " save/restore sessions properly
   call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
   call dein#add('simnalamburt/vim-mundo')  " visual undo tree
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
@@ -81,6 +80,7 @@ if dein#load_state('$HOME/.cache/dein')
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
+  call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
 
   " Required:
   call dein#end()

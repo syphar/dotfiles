@@ -61,8 +61,6 @@ set equalalways
 " don't show docstring when completing
 set completeopt-=preview
 
-" set nofoldenable
-" set foldmethod=manual
 set foldmethod=indent
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
@@ -70,7 +68,7 @@ set backspace=indent,eol,start
 
 " mkview and loadview shouldn't do options (which includes keyboard mappings
 " etc)
-set viewoptions-=options
+set viewoptions=cursor,folds,slash,unix
 
 
 " https://vi.stackexchange.com/questions/16148/slow-vim-escape-from-insert-mode

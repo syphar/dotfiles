@@ -9,6 +9,9 @@ source $HOME/.config/nvim/languageserver.vim
 
 let b:indentLine_enabled = 0
 
+setlocal foldmethod=syntax
+
+
 let g:ale_fixers.python = ['black', 'autopep8', 'yapf', 'isort']
 
 " type ,p to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
