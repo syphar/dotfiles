@@ -142,6 +142,7 @@ alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
 alias h="heroku"
 alias k9="kill -9"
+alias gh="git show HEAD"
 
 
 if type brew &>/dev/null; then
