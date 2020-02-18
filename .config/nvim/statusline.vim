@@ -129,6 +129,23 @@ function! InactiveLine()
   return statusline
 endfunction
 
+function! SimpleLine()
+  let statusline=""
+  " Left side items
+  " =======================
+  " mode
+  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MySeparator#\ "
+
+  let statusline .= "%#MySeparator#\ "
+  " Modified status
+  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
+  " Filename
+  let statusline .= "%#MyStatuslineFilename#%f "
+  let statusline .= "%#MySeparator#\ "
+
+  return statusline
+endfunction
+
 
 " Setup the colors
 hi StatusLine          guifg=#bdae93 guibg=None
