@@ -48,6 +48,18 @@ let g:vista#renderer#icons = {
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
 
 " this currently breaks together with context.vim
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -61,7 +73,6 @@ command! -bang GitFiles
   \ )
 
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'))
-
 
 " custom BTags and Tags to include preview
 " inspired by https://github.com/junegunn/fzf.vim/issues/800
