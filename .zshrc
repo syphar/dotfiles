@@ -157,6 +157,9 @@ bindkey -v
 bindkey -s '^x' 'fg^M'
 alias j="jobs"
 
+# ctrl-p for projects
+bindkey -s '^p' 'cdp^M'
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 if [[ -s "/usr/share/fzf/key-bindings.zsh" ]]; then
