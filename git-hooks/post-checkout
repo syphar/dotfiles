@@ -7,4 +7,4 @@ cd ./$(git rev-parse --show-cdup)
 # find . -type d -empty -delete
 
 # update ctags for project
-git ls-files . --cached --exclude-standard --others | ctags -L - 2> /dev/null > /dev/null &
+nohup git ls-files . --cached --exclude-standard --others | ctags -L - 2> /dev/null > /dev/null &
