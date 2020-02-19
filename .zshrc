@@ -157,8 +157,11 @@ bindkey -v
 bindkey -s '^x' 'fg^M'
 alias j="jobs"
 
-# ctrl-p for projects
-bindkey -s '^p' 'cdp^M'
+# ctrl-p == `vv`, like search files in vim
+bindkey -s '^p' 'vv^M'
+
+# ctrl-o == `cdp`, goto project
+bindkey -s '^o' 'cdp^M'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
