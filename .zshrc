@@ -31,6 +31,8 @@ alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip ins
 
 alias tiga='tig --all'
 alias tigs='tig status'
+alias gb='git branch -vv'
+
 
 # cd in one of my projects
 function cdp() {
