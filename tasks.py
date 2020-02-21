@@ -45,7 +45,7 @@ def update_pipx(ctx):
 def cleanup_homebrew(ctx):
     print("cleanup_homebrew")
 
-    ctx.run("brew cleanup")
+    ctx.run("brew cleanup -s")
     ctx.run("brew prune")
 
     for l in ctx.run("brew missing").stdout.split("\n"):
