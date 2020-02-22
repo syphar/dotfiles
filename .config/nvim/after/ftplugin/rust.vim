@@ -1,8 +1,8 @@
-nmap <leader>tr :CargoRun<CR>
-nmap <leader>ts :CargoTestAll<CR>
-nmap <leader>tf :CargoUnitTestCurrentFile<CR>
-nmap <leader>tn :CargoUnitTestFocused<CR>
-nmap <leader>tc :VimuxCloseRunner<CR>
+nmap <leader>tr :term cargo run<CR>
+nmap <leader>tn :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
 
 source $HOME/.config/nvim/languageserver.vim
 

@@ -112,6 +112,10 @@ let g:test#python#runner = 'pytest'
 
 " }}}
 
+" dispatch {{{
+"
+" }}}
+
 
 " context {{{
 " default presenter (nvim-float) has rendering errors and adds flickering. try
