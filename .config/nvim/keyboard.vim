@@ -7,6 +7,10 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <space> za
 vnoremap <space> zf
 
+" fold/unfold all with F3
+nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
+
+
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 
