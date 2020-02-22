@@ -43,18 +43,38 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-function! ToggleLocList()
-    for i in range(1, winnr('$'))
-        let bnum = winbufnr(i)
-        if getbufvar(bnum, '&buftype') == 'quickfix'
-            lclose
-            return
-        endif
-    endfor
-    lopen
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
 endfunction
 
-nnoremap <F4> :call ToggleLocList()<CR>
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+nnoremap <F5> :call ToggleList("Location List", 'l')<CR>
+nnoremap <F6> :call ToggleList("Quickfix List", 'c')<CR>
+nnoremap <F7> :cprevious<CR>
+nnoremap <F8> :cnext<CR>
+
 
 " move between tabs with cmd+number. Not used in tmux, only when running a gui
 " vim

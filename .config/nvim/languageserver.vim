@@ -16,7 +16,7 @@ let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm usin
 " let g:LanguageClient_loggingFile =  '/tmp/languageclient-neovim.log'
 
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nmap <leader>gd :call LanguageClient#textDocument_definition()<CR>
