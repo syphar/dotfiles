@@ -70,8 +70,8 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
-nnoremap <F5> :call ToggleList("Location List", 'l')<CR>
-nnoremap <F6> :call ToggleList("Quickfix List", 'c')<CR>
+nnoremap <F4> :call ToggleList("Location List", 'l')<CR>
+nnoremap <F5> :call ToggleList("Quickfix List", 'c')<CR>
 nnoremap <F7> :cprevious<CR>
 nnoremap <F8> :cnext<CR>
 

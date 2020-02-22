@@ -45,6 +45,7 @@ if dein#load_state('$HOME/.cache/dein')
 
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
+  call dein#add('wting/rust.vim', {'on_ft': ['rust']})  " rust
 
   " generic software dev stuff
   call dein#add('rizzatti/dash.vim')
@@ -73,6 +74,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
+
 
   " Required:
   call dein#end()
