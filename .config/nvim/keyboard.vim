@@ -30,6 +30,8 @@ nmap <leader>m :Buffers<CR>
 nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
 
+nmap <silent> <leader>d <Plug>DashSearch
+
 " run Ag with word under cursor or selection
 nmap <leader>ag "zyiw:exe "Ag ".@z.""<CR>
 vnoremap <leader>ag "zy:exe "Ag ".@z.""<CR>
