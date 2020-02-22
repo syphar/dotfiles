@@ -15,11 +15,8 @@ if dein#load_state('$HOME/.cache/dein')
 
   " general plugins
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
-  call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
-  call dein#add('simnalamburt/vim-mundo')  " visual undo tree
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
-  call dein#add('benmills/vimux') " run commands in other tmux pane
   call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
 
   " file management / search
@@ -32,13 +29,11 @@ if dein#load_state('$HOME/.cache/dein')
 
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
-  " call dein#add('meain/vim-automkdir')  " autocreate missing directories on save
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('mhinz/vim-signify')  " git changes in sign column
-  call dein#add('junegunn/gv.vim')  " nice git log
   call dein#add('rhysd/git-messenger.vim') " git blame for single line + history
 
   " specific file types
@@ -47,23 +42,18 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
-  call dein#add('jtdowney/vimux-cargo', {'on_ft': ['rust']})
 
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
-  call dein#add('tmux-plugins/vim-tmux') " tmux config filetype
-  call dein#add('vim-scripts/applescript.vim', {'on_ft': ['applescript']})
 
   " generic software dev stuff
   call dein#add('rizzatti/dash.vim')
-  call dein#add('chrisbra/Colorizer', {'on_cmd': ['ColorHighlight', 'ColorHighlight']}) " colorize colors in code
   call dein#add('Yggdroot/indentLine') " indent helper lines
   call dein#add('Shougo/echodoc.vim') " Show signature
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
   call dein#add('wellle/context.vim', {'rev': '23-nvim-no-redraw', 'on_ft': ['python', 'rust']})  " show context of things outside of screen.
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running

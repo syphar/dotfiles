@@ -28,20 +28,6 @@ let g:ale_fix_on_save = 1
 
 " }}}
 
-" Vista {{{
-" ______________________________________________________________________
-
-" python stays through ctags, looks better
-let g:vista#renderer#enable_icon = 1
-let g:vista_fzf_preview = ['right:50%']
-let g:vista_echo_cursor_strategy = 'floating_win'
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
-
-" }}}
-
 " FZF {{{
 
 " default fzf on the shell ignores based on gitignore, in vim I don't want
@@ -119,16 +105,11 @@ let g:nv_create_note_window = 'split'
 " }}}
 
 " vim-test {{{
-" let g:test#strategy = "vimux"
 let g:test#strategy = "dispatch"
 let g:test#preserve_screen = 0
 let g:test#python#runner = 'pytest'
 "
 
-" }}}
-
-" vimux {{{
-let g:VimuxUseNearest = 1
 " }}}
 
 
