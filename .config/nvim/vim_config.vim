@@ -7,14 +7,8 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+let g:python3_host_prog = $HOME."/src/neovim_env/venv/bin/python"
 
-if filereadable('/usr/local/bin/python3')
-  let g:python_host_prog = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-else
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
-endif
 
 " global tab/spaces settings
 set expandtab
@@ -25,7 +19,7 @@ set shiftwidth=4
 " really write files
 set fsync
 
-set clipboard=unnamed  " use system clipboard
+" set clipboard=unnamed  " use system clipboard
 set autoread
 set hidden
 

@@ -45,7 +45,7 @@ def update_pipx(ctx):
 def cleanup_homebrew(ctx):
     print("cleanup_homebrew")
 
-    ctx.run("brew cleanup")
+    ctx.run("brew cleanup -s")
     ctx.run("brew prune")
 
     for l in ctx.run("brew missing").stdout.split("\n"):
@@ -280,6 +280,7 @@ def update(ctx):
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
     update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server[rope]")
+    update_virtualenv(ctx, "~/src/neovim_env/venv")
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
