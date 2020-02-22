@@ -15,4 +15,4 @@ let g:ale_rust_rls_executable = g:LanguageClient_serverCommands.rust[0]
 
 
 compiler cargo
-setlocal makeprg=cargo
+setlocal makeprg=cargo\ build
