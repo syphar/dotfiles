@@ -34,6 +34,8 @@ let g:ale_fix_on_save = 1
 " this. Fot the cases where I want this, I'll use git ls-files
 let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
 
+
+" adds c-q to move the currently selected items from fzf into quickfix
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
@@ -47,17 +49,19 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 
-" this currently breaks together with context.vim
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" new floating layout
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-autocmd FileType fzf IndentLinesDisable
 
+" custom GitFiles, to also show unstaged files
 command! -bang GitFiles
   \ call fzf#vim#gitfiles(
   \   '--cached --exclude-standard --others',
   \   fzf#vim#with_preview('right')
   \ )
 
+
+" customer Ag, only for preview
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'))
 
 " custom BTags and Tags to include preview
@@ -84,7 +88,11 @@ command! -bang Tags
   \                     "'
   \ })
 
-"
+" just the default Buffers/Helptext beause they disappeared when I updated
+" from homebrew-fzf to github-fzf. No time to research for now.
+command! -bar -bang -nargs=? -complete=buffer Buffers  call fzf#vim#buffers(<q-args>, <bang>0)
+command! -bar -bang Helptags                           call fzf#vim#helptags(<bang>0)
+
 " }}}
 
 " Echodoc {{{

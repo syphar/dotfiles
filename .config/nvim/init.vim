@@ -22,11 +22,7 @@ if dein#load_state('$HOME/.cache/dein')
   " file management / search
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
 
-  if isdirectory('/usr/local/opt/fzf')
-    call dein#add('/usr/local/opt/fzf')
-  end
-
-
+  call dein#add('junegunn/fzf')
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
@@ -55,7 +51,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('wellle/context.vim', {'rev': '23-nvim-no-redraw', 'on_ft': ['python', 'rust']})  " show context of things outside of screen.
+  call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen.'rev': '23-nvim-no-redraw',
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
   call dein#add('tpope/vim-dispatch', {'on_ft': ['python', 'rust']})

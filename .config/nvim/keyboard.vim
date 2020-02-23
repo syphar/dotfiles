@@ -31,7 +31,6 @@ nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right')
 nmap <leader>f :BTags<CR>
 nmap <leader>F :Tags<CR>
 nmap <leader>m :Buffers<CR>
-nmap <leader>. :History<CR>
 nmap <leader>h :Helptags<CR>
 
 nmap <silent> <leader>d <Plug>DashSearch
