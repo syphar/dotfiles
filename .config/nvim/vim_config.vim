@@ -62,7 +62,7 @@ set backspace=indent,eol,start
 
 " mkview and loadview shouldn't do options (which includes keyboard mappings
 " etc)
-set viewoptions=cursor,folds,slash,unix
+set viewoptions=cursor,slash,unix " ,folds
 
 
 " https://vi.stackexchange.com/questions/16148/slow-vim-escape-from-insert-mode
