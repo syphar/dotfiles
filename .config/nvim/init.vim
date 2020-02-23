@@ -22,7 +22,7 @@ if dein#load_state('$HOME/.cache/dein')
   " file management / search
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
 
-  call dein#add('junegunn/fzf')
+  call dein#add('junegunn/fzf', {'build': './install --bin'})
   call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
