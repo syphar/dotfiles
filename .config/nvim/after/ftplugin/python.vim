@@ -8,8 +8,6 @@ source $HOME/.config/nvim/languageserver.vim
 
 let b:indentLine_enabled = 0
 
-setlocal foldmethod=syntax
-
 
 let g:ale_fixers.python = ['black', 'autopep8', 'yapf', 'isort']
 

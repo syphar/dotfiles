@@ -73,7 +73,7 @@ if dein#load_state('$HOME/.cache/dein')
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
-  call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
+  " call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
 
 
   " Required:
