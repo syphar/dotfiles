@@ -262,6 +262,11 @@ def update_virtualenv(ctx, path, only_package):
 
 
 @task
+def tldr(ctx):
+    ctx.run("tldr --update")
+
+
+@task
 def bat_cache(ctx):
     ctx.run("bat cache --build")
 
@@ -284,4 +289,5 @@ def update(ctx):
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
+    tldr(ctx)
     update_vim(ctx)
