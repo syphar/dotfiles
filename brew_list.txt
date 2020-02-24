@@ -57,6 +57,7 @@ erlang@17
 erlang@20
 expat
 fd
+fff
 ffmpeg
 figlet
 flac
