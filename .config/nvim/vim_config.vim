@@ -36,6 +36,7 @@ set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
 set tags=./tags;/,~/.vimtags
 
+
 " no scrollbars
 set guioptions-=L
 set guioptions-=l
@@ -90,7 +91,7 @@ set nocursorline
 set updatetime=2000
 
 " When scrolling, keep cursor 5 lines away from screen border
-set scrolloff=5
+set scrolloff=10
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
