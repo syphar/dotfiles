@@ -145,6 +145,7 @@ alias n='vim -c "NV"'
 alias h="heroku"
 alias k9="kill -9"
 alias gh="git show HEAD"
+alias gt="git tag -n"
 
 
 if type brew &>/dev/null; then
