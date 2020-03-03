@@ -116,7 +116,13 @@ let g:nv_create_note_window = 'split'
 let g:test#strategy = "dispatch"
 let g:test#preserve_screen = 0
 let g:test#python#runner = 'pytest'
-"
+
+let g:test#python#pytest#options = {
+    \ 'nearest': '--reuse-db',
+    \ 'file':    '--reuse-db',
+    \ 'suite':   '--reuse-db',
+  \}
+
 
 " }}}
 
