@@ -20,9 +20,9 @@ nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
 nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 
 " copy to system clipboard separately
-xnoremap <C-c> "+y
-nnoremap <silent> cp "+y
-nnoremap <silent> cpp "+yy
+" xnoremap <C-c> "+y
+" nnoremap <silent> cp "+y
+" nnoremap <silent> cpp "+yy
 
 " fzf
 map <C-P> :GitFiles<CR>

@@ -19,7 +19,7 @@ set shiftwidth=4
 " really write files
 set fsync
 
-" set clipboard=unnamed  " use system clipboard
+set clipboard=unnamed  " use system clipboard
 set autoread
 set hidden
 
