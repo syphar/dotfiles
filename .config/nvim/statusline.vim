@@ -88,10 +88,6 @@ function! ActiveLine()
   let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
   " Padding
   let statusline .= "\ "
-  " Current scroll percentage and total lines of the file
-  let statusline .= "%#MySeparator#%#MyStatuslinePercentageBody#%P\/\%L%#MySeparator#"
-  " Padding
-  let statusline .= "\ "
   " Filetype
   let statusline .= "%#MySeparator#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MySeparator#\ "
 
@@ -117,10 +113,6 @@ function! InactiveLine()
   let statusline .= "%="
   " Line and Column
   let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
-  " Padding
-  let statusline .= "\ "
-  " Current scroll percentage and total lines of the file
-  let statusline .= "%#MySeparator#%#MyStatuslinePercentageBody#%P\/\%L%#MySeparator#"
   " Padding
   let statusline .= "\ "
   " Filetype
