@@ -101,7 +101,7 @@ def git_fetch(ctx, repo):
     with ctx.cd(repo):
         if len(ctx.run("git remote").stdout):
             ctx.run("git fetch --all --recurse-submodules=yes --prune")
-            ctx.run("git fetch --all --prune --tags")
+            ctx.run("git fetch --all --prune --tags --force")
             ctx.run("git merge --ff-only", warn=True)
             return True
         else:
