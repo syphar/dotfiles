@@ -67,7 +67,7 @@ function! ToggleList(bufname, pfx)
       return
   endif
   let winnr = winnr()
-  exec(a:pfx.'open')
+  exec(a:pfx.'open 30')
   if winnr() != winnr
     wincmd p
   endif
