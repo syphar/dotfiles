@@ -170,25 +170,6 @@ def update_rust_analyzer(ctx):
         ctx.run("cargo xtask install --server", echo=True, pty=True)
 
 
-def _update_bookmarks(filename, separator):
-    bookmark_file = Path(filename)
-    if bookmark_file.exists():
-        os.remove(bookmark_file)
-
-    with open(bookmark_file, "w") as f:
-        for p in get_all_repos():
-            path = Path(p)
-
-            f.write(f"{path.parts[-1]}{separator}" f"{path}\r\n")
-
-
-@task
-def update_vim_bookmarks(ctx):
-    _update_bookmarks("/Users/syphar/.NERDTreeBookmarks", " ")
-    _update_bookmarks("/Users/syphar/.cache/ctrlp/bkd/cache.txt", "\t")
-    # _update_bookmarks("/Users/syphar/.pathmarks", ": ")
-
-
 @task
 def mackup(ctx):
     ctx.run("mackup restore")
@@ -277,7 +258,6 @@ def update(ctx):
     update_homebrew(ctx)
     update_pipx(ctx)
     update_zsh(ctx)
-    update_vim_bookmarks(ctx)
     rustup(ctx)
     update_rust_analyzer(ctx)
     update_repos(ctx)
