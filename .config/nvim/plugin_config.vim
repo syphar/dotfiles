@@ -128,6 +128,9 @@ let g:test#python#pytest#options = {
 
 " dispatch {{{
 "
+let g:dispatch_quickfix_height = 20
+let g:dispatch_tmux_height = 20
+
 " }}}
 
 
