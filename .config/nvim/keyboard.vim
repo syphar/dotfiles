@@ -116,6 +116,7 @@ if has("user_commands")
     command! -bang Q q<bang>
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
+    command! -bang Vsp vsp<bang>
 endif
 
 " vim: et ts=2 sts=2 sw=2
