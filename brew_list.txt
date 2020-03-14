@@ -53,6 +53,8 @@ elasticsearch
 enchant
 epsilon
 erlang
+erlang@17
+erlang@20
 expat
 fd
 fff
@@ -208,6 +210,7 @@ memcached
 mercurial
 mhash
 midnight-commander
+mongodb
 mpfr
 msgpack
 mutt
@@ -269,6 +272,7 @@ pypy
 pypy3
 python
 python3
+python@2
 python@3.8
 qt
 rabbitmq
@@ -278,6 +282,7 @@ readline
 reattach-to-user-namespace
 redis
 rhino
+riak
 ripgrep
 rsnapshot
 rtmpdump
