@@ -147,6 +147,17 @@ alias k9="kill -9"
 alias gh="git show HEAD"
 alias gt="git tag -n"
 
+alias l="exa -alh"
+alias ls="exa"
+alias less="bat"
+alias cat="bat"
+alias du="dust"
+alias ps="procs"
+alias top="ytop"
+alias iftop="bandwhich"
+alias objdump="bingrep"
+alias hexdump="hx"
+
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
