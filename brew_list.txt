@@ -12,9 +12,11 @@ autoconf
 autoenv
 autojump
 automake
+bandwhich
 bat
 bazaar
 bdw-gc
+bingrep
 bison
 bison27
 bison@2.7
@@ -48,6 +50,7 @@ docker
 docker-compose
 docker-machine
 docutils
+dust
 eigen
 elasticsearch
 enchant
@@ -55,6 +58,7 @@ epsilon
 erlang
 erlang@17
 erlang@20
+exa
 expat
 fd
 fff
@@ -257,6 +261,7 @@ popt
 portaudio
 postgis
 postgresql
+procs
 proj
 protobuf
 protobuf-c
@@ -344,6 +349,7 @@ xerces-c
 xmlto
 xvid
 xz
+ytop
 zlib
 zsh
 zsh-completions
