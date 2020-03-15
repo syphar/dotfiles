@@ -147,6 +147,13 @@ let g:context_enabled = 1
 " vinegar / netwrk {{{
 " CTRL-6 should go back to the last file, not netrw/vinegar
 let g:netrw_altfile = 1
+
+let g:netrw_banner = 0 " disable banner
+let g:netrw_liststyle = 3 " tree view
+let g:netrw_altv = 1 " open split on the right
+
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+
 " }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
