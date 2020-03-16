@@ -106,17 +106,15 @@ vnoremap < <gv
 vnoremap > >gv
 
 " common typos .. (W, Wq WQ)
-if has("user_commands")
-    command! -bang -nargs=* -complete=file E e<bang> <args>
-    command! -bang -nargs=* -complete=file W w<bang> <args>
-    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-    command! -bang Vsp vsp<bang>
-endif
+cnoreabbrev E e
+cnoreabbrev W w
+cnoreabbrev WQ wq
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev WA wa
+cnoreabbrev Q q
+cnoreabbrev QA qa
+cnoreabbrev Qa qa
+cnoreabbrev Vsp vsp
 
 " vim: et ts=2 sts=2 sw=2
