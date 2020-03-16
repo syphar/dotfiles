@@ -62,7 +62,9 @@ command! -bang GitFiles
 
 
 " customer Ag, only for preview
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'))
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview('right'))
+cnoreabbrev Ag Rg
+
 
 " custom BTags and Tags to include preview
 " inspired by https://github.com/junegunn/fzf.vim/issues/800

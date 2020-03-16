@@ -35,9 +35,9 @@ nmap <leader>h :Helptags<CR>
 
 nmap <silent> <leader>d <Plug>DashSearch
 
-" run Ag with word under cursor or selection
-nmap <leader>ag "zyiw:exe "Ag ".@z.""<CR>
-vnoremap <leader>ag "zy:exe "Ag ".@z.""<CR>
+" run Rg with word under cursor or selection
+nmap <leader>ag "zyiw:exe "Rg ".@z.""<CR>
+vnoremap <leader>ag "zy:exe "Rg ".@z.""<CR>
 
 
 vmap v <Plug>(expand_region_expand)
