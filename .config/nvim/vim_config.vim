@@ -38,7 +38,14 @@ set concealcursor=""
 set inccommand=split
 
 set background=dark
-colorscheme base16-tomorrow-night
+
+" these overrides have to be defined before I load the colorscheme
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+\    'SignColumn': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+\    'VertSplit': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' }
+\}
+colorscheme jellybeans
 
 
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags

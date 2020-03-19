@@ -11,7 +11,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('haya14busa/dein-command.vim')
 
   " interface
-  call dein#add('chriskempson/base16-vim')
+  call dein#add('nanotech/jellybeans.vim')
 
   " general plugins
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
