@@ -91,7 +91,8 @@ export DOCKER_HOST=tcp://127.0.0.1:4243
 export PATH=/usr/local/lib/ruby/gems/2.6.0/bin:$PATH:~/.local/bin:~/bin/:
 
 export FD_OPTIONS="--hidden --follow"
-export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder --color fg:188,hl:103,fg+:222,hl+:104 --color info:183,prompt:110,spinner:107,pointer:167,marker:215 "
+export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
+
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
