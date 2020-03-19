@@ -14,11 +14,10 @@ set laststatus=2
 
 function! SetModifiedSymbol(modified) " {{{
     if a:modified == 1
-        hi MyStatuslineModifiedBody guifg=#d79921 guibg=#3c3836
+        return '[+]'
     else
-        hi MyStatuslineModifiedBody guifg=#928374 guibg=#3c3836
+        return ''
     endif
-    return '●'
 endfunction
 
 function! SetGitBranch(gitbranch)
@@ -65,31 +64,22 @@ function! ActiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%#MyStatuslineModeBody#\ %{toupper(mode())}%#MySeparator#\ "
-
+  let statusline .= "%{toupper(mode())} │ "
   " git branch
-  let statusline .= "%#MySeparator#%#MyStatuslineGitBranchBody#\ %{SetGitBranch(fugitive#head())}%#MySeparator#"
-
-  let statusline .= "%#MySeparator#\ "
-  " Modified status
-  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
-  " Filename
-  let statusline .= "%#MyStatuslineFilename#%f"
-  let statusline .= "%#MySeparator#\ "
+  let statusline .= " %{SetGitBranch(fugitive#head())} │ "
+  " Modified status and Filename
+  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
 
   " Right side items
   " =======================
   let statusline .= "%="
+
   " Linter Status
-  let statusline .= "%#MySeparator#%#MyStatuslineLinterStatusBody#%{LinterStatus()}%#MySeparator#"
-  " Padding
-  let statusline .= "\ "
+  let statusline .= "%{LinterStatus()} │ "
   " Line and Column
-  let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
-  " Padding
-  let statusline .= "\ "
+  let statusline .= "%2l\/%2c │ "
   " Filetype
-  let statusline .= "%#MySeparator#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MySeparator#\ "
+  let statusline .= "%{SetFiletype(&filetype)} "
 
   return statusline
 endfunction
@@ -99,59 +89,39 @@ function! InactiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MySeparator#\ "
-
-  let statusline .= "%#MySeparator#\ "
-  " Modified status
-  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
-  " Filename
-  let statusline .= "%#MyStatuslineFilename#%f "
-  let statusline .= "%#MySeparator#\ "
+  let statusline .= "%{toupper(mode())} │ "
+  " Modified status and Filename
+  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
 
   " Right side items
   " =======================
   let statusline .= "%="
+
   " Line and Column
-  let statusline .= "%#MySeparator#%#MyStatuslineLineColBody#%2l\/%2c%#MySeparator#"
-  " Padding
-  let statusline .= "\ "
+  let statusline .= "%2l\/%2c │ "
   " Filetype
-  let statusline .= "%#MySeparator#%#MyStatuslineFiletypeBody#%{SetFiletype(&filetype)}%#MySeparator#\ "
+  let statusline .= "%{SetFiletype(&filetype)} "
 
   return statusline
 endfunction
 
 function! SimpleLine()
   let statusline=""
+  let statusline=""
   " Left side items
   " =======================
   " mode
-  let statusline .= "%#MyStatuslineFiletypeBody#\ %{toupper(mode())}%#MySeparator#\ "
-
-  let statusline .= "%#MySeparator#\ "
-  " Modified status
-  let statusline .= "%#MyStatuslineModifiedBody#%{SetModifiedSymbol(&modified)}\ "
-  " Filename
-  let statusline .= "%#MyStatuslineFilename#%f "
-  let statusline .= "%#MySeparator#\ "
+  let statusline .= "%{toupper(mode())} │ "
+  " Modified status and Filename
+  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
 
   return statusline
 endfunction
 
 
 " Setup the colors
-hi StatusLine          guifg=#bdae93 guibg=None
-hi StatusLineNC        guifg=#bdae93 guibg=None
-
-hi MySeparator guifg=#3c3836 guibg=None
-hi MyStatuslineModeBody  guifg=#689d6a guibg=#3c3836
-hi MyStatuslineGitBranchBody  guifg=#458588 guibg=#3c3836
-hi MyStatuslineFilename guifg=#bdae93 guibg=#3c3836
-
-hi MyStatuslineLinterStatusBody  guifg=#689d6a guibg=#3c3836
-hi MyStatuslineLineColBody  guifg=#458588 guibg=#3c3836
-hi MyStatuslinePercentageBody guifg=#d65d0e guibg=#3c3836
-hi MyStatuslineFiletypeBody  guifg=#689d6a guibg=#3c3836
+hi StatusLine          guifg=#bdae93 ctermbg=None guibg=None
+hi StatusLineNC        guifg=#bdae93 ctermbg=None guibg=None
 
 " Change statusline automatically
 augroup Statusline
