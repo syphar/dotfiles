@@ -64,7 +64,7 @@ function! ActiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%{toupper(mode())} │ "
+  let statusline .= " %{toupper(mode())} │ "
   " git branch
   let statusline .= " %{SetGitBranch(fugitive#head())} │ "
   " Modified status and Filename
@@ -89,7 +89,7 @@ function! InactiveLine()
   " Left side items
   " =======================
   " mode
-  let statusline .= "%{toupper(mode())} │ "
+  let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
   let statusline .= "%f %{SetModifiedSymbol(&modified)}"
 
@@ -107,11 +107,10 @@ endfunction
 
 function! SimpleLine()
   let statusline=""
-  let statusline=""
   " Left side items
   " =======================
   " mode
-  let statusline .= "%{toupper(mode())} │ "
+  let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
   let statusline .= "%f %{SetModifiedSymbol(&modified)}"
 
