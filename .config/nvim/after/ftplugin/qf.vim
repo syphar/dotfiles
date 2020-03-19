@@ -1,2 +1,1 @@
 setlocal statusline=%!SimpleLine()
-ContextDisable
