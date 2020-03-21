@@ -60,7 +60,7 @@ function! ActiveLine()
   " git branch
   let statusline .= " %{SetGitBranch(fugitive#head())} │ "
   " Modified status and Filename
-  let statusline .= "%f %m %r"
+  let statusline .= "%f %< %m %r"
 
   " Right side items
   " =======================
@@ -83,7 +83,7 @@ function! InactiveLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %m %r"
+  let statusline .= "%f %< %m %r"
 
   " Right side items
   " =======================
@@ -104,7 +104,7 @@ function! SimpleLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %m %r"
+  let statusline .= "%f %< %m %r"
 
   return statusline
 endfunction
