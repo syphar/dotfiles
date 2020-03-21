@@ -111,8 +111,10 @@ endfunction
 
 
 " Setup the colors
-hi StatusLine          guifg=#bdae93 ctermbg=None guibg=None
-hi StatusLineNC        guifg=#bdae93 ctermbg=None guibg=None
+" - I can't make guibg=None, because then vim will print "^" as a separator.
+" - So I just set the background color of the terminal
+hi StatusLine          guifg=#bdae93 ctermbg=None guibg=#161616 term=bold gui=bold
+hi StatusLineNC        guifg=#bdae93 ctermbg=None guibg=#161616 term=bold gui=bold
 
 " Change statusline automatically
 augroup Statusline
