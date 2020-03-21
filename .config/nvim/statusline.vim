@@ -12,14 +12,6 @@ set laststatus=2
 
 " ':help statusline' is your friend!
 
-function! SetModifiedSymbol(modified) " {{{
-    if a:modified == 1
-        return '[+]'
-    else
-        return ''
-    endif
-endfunction
-
 function! SetGitBranch(gitbranch)
   if a:gitbranch == ''
       return 'ø'
@@ -68,7 +60,7 @@ function! ActiveLine()
   " git branch
   let statusline .= " %{SetGitBranch(fugitive#head())} │ "
   " Modified status and Filename
-  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
+  let statusline .= "%f %m %r"
 
   " Right side items
   " =======================
@@ -91,7 +83,7 @@ function! InactiveLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
+  let statusline .= "%f %m %r"
 
   " Right side items
   " =======================
@@ -112,7 +104,7 @@ function! SimpleLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %{SetModifiedSymbol(&modified)}"
+  let statusline .= "%f %m %r"
 
   return statusline
 endfunction
