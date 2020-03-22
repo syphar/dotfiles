@@ -119,12 +119,6 @@ let g:test#strategy = "dispatch"
 let g:test#preserve_screen = 0
 let g:test#python#runner = 'pytest'
 
-let g:test#python#pytest#options = {
-    \ 'nearest': '--reuse-db --show-capture=no --disable-warnings',
-    \ 'file':    '--reuse-db --show-capture=no --disable-warnings',
-    \ 'suite':   '--reuse-db --show-capture=no --disable-warnings',
-  \}
-
 
 " }}}
 
