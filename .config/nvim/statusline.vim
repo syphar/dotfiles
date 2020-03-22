@@ -114,8 +114,8 @@ endfunction
 " If StatusLine and StatusLineNC are the same,
 " vim will print "^" as a separator in the active window.
 " So I will just have it different.
-hi StatusLine          guifg=#bdae93 ctermbg=None guibg=None term=bold gui=bold
-hi StatusLineNC        guifg=#bdae93 ctermbg=None guibg=None
+hi StatusLine          guifg=#bdae93 ctermbg=None guibg=None term=bold,underline gui=bold,underline
+hi StatusLineNC        guifg=#bdae93 ctermbg=None guibg=None term=underline gui=underline
 
 " Change statusline automatically
 augroup Statusline
