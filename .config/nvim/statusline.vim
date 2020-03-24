@@ -1,9 +1,3 @@
-" based on and inspired by:
-" https://www.reddit.com/r/vimporn/comments/efjcv0/gruvboxxx/ and
-" https://github.com/ginkobab/dots/blob/master/.config/nvim/statusline.vim
-" https://www.reddit.com/user/EmpressNoodle
-" https://irrellia.github.io/blogs/vim-statusline/
-
 " don't show mode since we want it in the statusline
 set noshowmode
 
@@ -60,7 +54,7 @@ function! ActiveLine()
   " git branch
   let statusline .= " %{SetGitBranch(fugitive#head())} │ "
   " Modified status and Filename
-  let statusline .= "%f %< %m %r"
+  let statusline .= "%f%< %m%r"
 
   " Right side items
   " =======================
@@ -83,7 +77,7 @@ function! InactiveLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %< %m %r"
+  let statusline .= "%f%< %m%r"
 
   " Right side items
   " =======================
@@ -104,7 +98,7 @@ function! SimpleLine()
   " mode
   let statusline .= " %{toupper(mode())} │ "
   " Modified status and Filename
-  let statusline .= "%f %< %m %r"
+  let statusline .= "%f%< %m%r"
 
   return statusline
 endfunction
