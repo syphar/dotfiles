@@ -12,7 +12,6 @@ window:
 
 scrolling:
   history: 0  # disable history, since it's in tmux
-  auto_scroll: false
 
 font:
   normal:
