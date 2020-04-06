@@ -17,6 +17,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('RyanMillerC/better-vim-tmux-resizer') " easily resize vim and tmux panes through meta+hjkl
   call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
 
   " file management / search
@@ -71,6 +72,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   " call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
+  "
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
 
 
