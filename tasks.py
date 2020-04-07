@@ -232,9 +232,7 @@ def update_virtualenv(ctx, path, only_package):
     pip = path / "bin" / "pip"
 
     if only_package:
-        ctx.run(
-            f"{str(pip)} install -U '{only_package}'", echo=True, pty=True,
-        )
+        ctx.run(f"{str(pip)} install -U '{only_package}'", echo=True, pty=True),
     else:
         ctx.run(
             f"{str(pip)} freeze | grep = | cut -d = -f 1 | xargs {str(pip)} install -U",
@@ -265,8 +263,8 @@ def update(ctx):
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
-    update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server[rope]")
-    update_virtualenv(ctx, "~/src/neovim_env/venv", "")
+    # update_virtualenv(ctx, "~/src/pyls/venv", "python-language-server[rope]")
+    # update_virtualenv(ctx, "~/src/neovim_env/venv", "")
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
