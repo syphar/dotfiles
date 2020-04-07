@@ -123,8 +123,6 @@ ftags() {
     awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' tags |
     fzf \
       --with-nth=2,3 \
-      --preview-window=down \
-      --preview="bat {3} --color=always | tail -n +\$(echo {4} | tr -d \";\\\"\")"
   ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
 

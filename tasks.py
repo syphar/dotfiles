@@ -183,6 +183,7 @@ def mackup_dotfiles(ctx):
         "alacritty",
         "bat",
         "ctags",
+        "ctags_dir",
         "direnv",
         "fd",
         "git",
