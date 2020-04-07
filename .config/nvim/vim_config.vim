@@ -10,7 +10,7 @@ endif
 let g:python3_host_prog = $HOME."/src/neovim_env/venv/bin/python"
 
 " enable mouse support
-set mouse=a 
+set mouse=a
 
 " search files into subfolders
 " provides tab-complete for all files

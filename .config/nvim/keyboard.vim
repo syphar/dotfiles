@@ -9,6 +9,8 @@ vnoremap <space> zf
 
 " fold/unfold all with F3
 nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
+" fold to see classes and methods
+nnoremap <S-F3> :set foldlevel=1<CR>
 
 
 " notional
