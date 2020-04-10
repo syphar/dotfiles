@@ -1,7 +1,7 @@
 appdirs==1.4.3
 attrs==19.3.0
 black==19.10b0
-Click==7.0
+Click==7.1.1
 docopt==0.6.2
 invoke==1.4.1
 mackup==0.8.28
