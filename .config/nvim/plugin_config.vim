@@ -54,11 +54,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 
 " custom GitFiles, to also show unstaged files
-command! -bang GitFiles
-  \ call fzf#vim#gitfiles(
-  \   '--cached --exclude-standard --others',
-  \   fzf#vim#with_preview('right')
-  \ )
+command! -bang GitFiles call fzf#vim#gitfiles('--cached --exclude-standard --others', 0)
 
 
 " customer Ag, only for preview
@@ -66,28 +62,13 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 cnoreabbrev Ag Rg
 
 
-" custom BTags and Tags to include preview
-" inspired by https://github.com/junegunn/fzf.vim/issues/800
-command! -bang BTags
-  \ call fzf#vim#buffer_tags('', {
-  \     'options': '--with-nth 1,2
-  \                 --preview-window=right
-  \                 --reverse
-  \                 --preview "
-  \                     bat {2} --color=always |
-  \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
-  \                     "'
-  \ })
+command! -bang BTags call fzf#vim#buffer_tags('', {})
 
 command! -bang Tags
   \ call fzf#vim#tags('', {
-  \     'options': '--with-nth 1,2
-  \                 --preview-window=right
-  \                 --reverse
-  \                 --preview "
-  \                     bat {2} --color=always |
-  \                     tail -n +\$(echo {3} | tr -d \";\\\"\")
-  \                     "'
+  \     'options': '--with-nth 1,5,2
+  \                 --delimiter "\t"
+  \                 --reverse'
   \ })
 
 " just the default Buffers/Helptext beause they disappeared when I updated

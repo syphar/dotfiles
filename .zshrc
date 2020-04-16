@@ -47,17 +47,8 @@ vv() {
   local file
   file=$(
     eval "$FZF_DEFAULT_COMMAND" |
-    fzf --preview 'bat --color=always {} | head -$LINES'
+    fzf
   ) && $EDITOR $file
-}
-
-# v - open files in ~/.viminfo
-v() {
-  local files
-  files=$(grep '^>' ~/.viminfo | cut -c3- |
-          while read line; do
-            [ -f "${line/\~/$HOME}" ] && echo "$line"
-          done | fzf -d -m -q "$*" -1) && $EDITOR ${files//\~/$HOME}
 }
 
 # set HEROKU_APP environment based on the selected app
