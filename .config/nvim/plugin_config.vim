@@ -50,7 +50,7 @@ let g:fzf_action = {
 
 
 " new floating layout
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 
 
 " custom GitFiles, to also show unstaged files
@@ -58,11 +58,16 @@ command! -bang GitFiles call fzf#vim#gitfiles('--cached --exclude-standard --oth
 
 
 " customer Ag, only for preview
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview('right'))
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview('down'))
 cnoreabbrev Ag Rg
 
 
-command! -bang BTags call fzf#vim#buffer_tags('', {})
+command! -bang BTags
+  \ call fzf#vim#buffer_tags('', {
+  \     'options': '--with-nth 1,5
+  \                 --delimiter "\t"
+  \                 --reverse'
+  \ })
 
 command! -bang Tags
   \ call fzf#vim#tags('', {
