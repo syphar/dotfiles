@@ -138,4 +138,13 @@ let g:netrw_altv = 1 " open split on the right
 
 " }}}
 
+
+" goyo / limelight {{{
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
+let g:goyo_width=90  " default is 80, but 88 python lines should also fit
+" }}}
+
+
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
