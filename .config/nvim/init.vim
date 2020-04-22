@@ -19,6 +19,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
   call dein#add('RyanMillerC/better-vim-tmux-resizer') " easily resize vim and tmux panes through meta+hjkl
   call dein#add('alok/notational-fzf-vim', {'on_cmd': ['NV']})  " fzf markdown notes
+  call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
 
   " file management / search
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
