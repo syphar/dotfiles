@@ -111,7 +111,7 @@ def git_fetch(ctx, repo):
 
 def git_cleanup(ctx, repo):
     with ctx.cd(repo):
-        ctx.run("git gc --auto")
+        ctx.run("git gc")
 
 
 def update_repo(ctx, project, kind):
