@@ -103,6 +103,9 @@ export KEYTIMEOUT=1
 # i do this myself in dotfiles/tasks.py
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# reuse / cache dependencies across rust projects
+export RUSTC_WRAPPER=sccache
+
 export NVM_DIR="$HOME/.nvm"
 export BC_CACHE_DIR="$HOME/.cache/bc"
 
