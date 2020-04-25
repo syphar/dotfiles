@@ -145,6 +145,22 @@ let g:netrw_altv = 1 " open split on the right
 let g:goyo_width=90  " default is 80, but 88 python lines should also fit
 " }}}
 
+" Vista {{{
+" ______________________________________________________________________
+
+" python stays through ctags, looks better
+" let g:vista_executive_for = {
+"   \ 'rust': 'lcn',
+"   \ }
+let g:vista#renderer#enable_icon = 1
+let g:vista_fzf_preview = ['right:50%']
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+" }}}
 
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

@@ -3,14 +3,22 @@ let mapleader = ","
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Y should be yank until the end of the line
+" see :help Y
+map Y y$
+
 " open/close folds with spacebar
 nnoremap <space> za
 vnoremap <space> zf
 
-" fold/unfold all with F3
-nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
+" fold/unfold all with shift-F3
+nnoremap <expr> <S-F3> &foldlevel ? 'zM' :'zR'
 " fold to see classes and methods
-nnoremap <S-F3> :set foldlevel=1<CR>
+" nnoremap <S-F3> :set foldlevel=1<CR>
+
+
+" show tagbar
+nnoremap <silent> <F3> :Vista!!<CR>
 
 
 " notional
