@@ -314,6 +314,7 @@ source-highlight
 speex
 sqlite
 squashfs
+srt
 swig
 szip
 task
