@@ -188,6 +188,7 @@ def mackup_dotfiles(ctx):
         "fd",
         "git",
         "mackup",
+        "mybin",
         "myneovim",
         "mytmuxinator",
         "pgsql",
