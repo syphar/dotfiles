@@ -8,5 +8,5 @@ mackup==0.8.28
 pathspec==0.7.0
 regex==2020.4.4
 six==1.14.0
-toml==0.10.0
+toml==0.10.1
 typed-ast==1.4.1
