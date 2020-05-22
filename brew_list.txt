@@ -38,6 +38,7 @@ cowsay
 cscope
 ctags
 curl
+dav1d
 ddrescue
 dfc
 dfu-util
@@ -273,6 +274,7 @@ pypy
 pypy3
 python
 python3
+python@3.8
 qt
 rabbitmq
 ranger
@@ -326,6 +328,7 @@ tor
 travis
 unbound
 unibilium
+universal-ctags
 unixodbc
 utf8proc
 v8
