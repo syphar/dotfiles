@@ -49,6 +49,13 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('wting/rust.vim', {'on_ft': ['rust']})  " rust
 
+  let js_types = ['javascript', 'typescript', 'typescriptreact', 'javascriptreact']
+  call dein#add('pangloss/vim-javascript', {'on_ft': js_types})
+  call dein#add('leafgarland/typescript-vim', {'on_ft': js_types})
+  call dein#add('maxmellon/vim-jsx-pretty', {'on_ft': js_types})
+  call dein#add('peitalin/vim-jsx-typescript', {'on_ft': js_types})
+  call dein#add('jparise/vim-graphql', {'on_ft': js_types})
+
   " generic software dev stuff
   call dein#add('rizzatti/dash.vim')
   call dein#add('Yggdroot/indentLine') " indent helper lines
