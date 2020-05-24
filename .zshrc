@@ -21,8 +21,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 # unsetopt correct_all
-#
-#
+
+# share history across shells / panes..
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 
 alias gur="git fetch --all --recurse-submodules=yes --prune"
 
