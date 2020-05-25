@@ -160,6 +160,7 @@ def update_vim(ctx):
 def rustup(ctx):
     print("update rustup")
     ctx.run("rustup update")
+    ctx.run("cargo install-update -a")
 
 
 @task
