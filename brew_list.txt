@@ -86,6 +86,7 @@ ghi
 ghostscript
 giflib
 git
+git-delta
 git-flow
 git-ftp
 glew
