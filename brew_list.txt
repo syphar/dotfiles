@@ -276,7 +276,6 @@ pypy3
 python
 python3
 python@3.8
-qt
 rabbitmq
 ranger
 re2c
@@ -329,7 +328,6 @@ tor
 travis
 unbound
 unibilium
-universal-ctags
 unixodbc
 utf8proc
 v8
