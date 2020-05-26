@@ -49,6 +49,9 @@ let g:jellybeans_overrides = {
 \}
 colorscheme jellybeans
 
+" for base16 themese
+let base16colorspace=256
+
 
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
