@@ -34,6 +34,7 @@ alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip ins
 alias tiga='tig --all'
 alias tigs='tig status'
 alias gb='git branch -vv'
+alias clippy='cargo clippy -Zunstable-options --verbose'
 
 
 # cd in one of my projects
