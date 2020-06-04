@@ -315,6 +315,7 @@ swig
 szip
 task
 tcl-tk
+telnet
 tesseract
 the_silver_searcher
 thefuck
