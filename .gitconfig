@@ -102,3 +102,5 @@
 	required = true
 [difftool]
 	prompt = true
+[pull]
+	ff = only
