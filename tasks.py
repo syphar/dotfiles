@@ -173,7 +173,7 @@ def update_rust_analyzer(ctx):
 
 @task
 def mackup(ctx):
-    ctx.run("mackup restore")
+    ctx.run("mackup restore --force")
     ctx.run("mackup backup")
 
 
