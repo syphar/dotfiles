@@ -279,6 +279,7 @@ python@3.8
 qt
 rabbitmq
 ranger
+rav1e
 re2c
 readline
 reattach-to-user-namespace
