@@ -46,6 +46,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
 
+  call dein#add('keithluchtel/vim-monkey-c')
+
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('wting/rust.vim', {'on_ft': ['rust']})  " rust
