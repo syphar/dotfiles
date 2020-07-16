@@ -238,6 +238,7 @@ oniguruma
 openblas
 opencore-amr
 openjdk
+openjdk@11
 openjpeg
 openldap
 openssl
