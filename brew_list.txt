@@ -277,6 +277,7 @@ pypy3
 python
 python3
 python@3.8
+q
 qt
 rabbitmq
 ranger
