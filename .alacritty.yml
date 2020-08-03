@@ -9,6 +9,7 @@ shell:
 
 window:
   startup_mode: Fullscreen
+  dynamic_title: true
 
 scrolling:
   history: 0  # disable history, since it's in tmux
@@ -86,8 +87,6 @@ colors:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: false
-
-dynamic_title: true
 
 cursor:
   style: Block
