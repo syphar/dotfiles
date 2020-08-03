@@ -52,6 +52,10 @@ colorscheme jellybeans
 " for base16 themese
 let base16colorspace=256
 
+if executable('rg')
+	set grepprg=rg\ --vimgrep\ --hidden\ —glob "!.git"
+endif
+
 
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
