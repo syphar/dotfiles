@@ -7,6 +7,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 " see :help Y
 map Y y$
 
+
 " open/close folds with spacebar
 nnoremap <space> za
 vnoremap <space> zf

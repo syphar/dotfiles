@@ -26,6 +26,14 @@ let g:ale_virtualtext_cursor = 1
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 
+" only lint on safe
+let g:ale_lint_on_enter            = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_on_insert_leave     = 0
+let g:ale_lint_on_save             = 1
+let g:ale_lint_on_text_changed     = 'never'
+
+
 " }}}
 
 " FZF {{{
