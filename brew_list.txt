@@ -106,6 +106,7 @@ googler
 gource
 gpgme
 gpp
+gradle
 grails
 graph-tool
 graphite2
