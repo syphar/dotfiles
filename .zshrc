@@ -30,6 +30,7 @@ alias gur="git fetch --all --recurse-submodules=yes --prune"
 
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip install -U"
+alias pipirt="pip install -r requirements_test.txt"
 
 alias tiga='tig --all'
 alias tigs='tig status'
