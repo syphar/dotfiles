@@ -341,6 +341,7 @@ v8
 vim
 w3m
 watch
+watchman
 webp
 weechat
 wget
