@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import os
+import stat
+from urllib.request import urlretrieve
 from pathlib import Path
 
 from invoke import task
@@ -166,9 +168,18 @@ def rustup(ctx):
 @task
 def update_rust_analyzer(ctx):
     print("update rust-analyzer")
-    with ctx.cd("~/src/rust-analyzer/"):
-        ctx.run("git pull", echo=True)
-        ctx.run("cargo xtask install --server", echo=True, pty=True)
+
+    dest = Path("~/.local/bin/rust-analyzer").expanduser()
+
+    if dest.exists():
+        dest.unlink()
+
+    urlretrieve(
+        "https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac",
+        dest,
+    )
+
+    dest.chmod(dest.stat().st_mode | stat.S_IEXEC)
 
 
 @task

@@ -5,7 +5,7 @@
 " project python runtime
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
-    \ 'rust': ['~/src/rust-analyzer/target/release/rust-analyzer'],
+    \ 'rust': ['~/.local/bin/rust-analyzer'],
     \ }
 
     " \ 'python': ['~/src/pyls/venv/bin/pyls', '--verbose', '--log-file', '/tmp/pyls-log.txt'],
