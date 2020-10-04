@@ -12,7 +12,6 @@ if dein#load_state('$HOME/.cache/dein')
 
   " interface
   call dein#add('nanotech/jellybeans.vim')
-  call dein#add('chriskempson/base16-vim')
 
   " general plugins
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
@@ -35,19 +34,13 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('mhinz/vim-signify')  " git changes in sign column
   call dein#add('rhysd/git-messenger.vim') " git blame for single line + history
 
-  " distraction free writing
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('junegunn/limelight.vim')
-
   " specific file types
   call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
-
   call dein#add('keithluchtel/vim-monkey-c')
-
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('wting/rust.vim', {'on_ft': ['rust']})  " rust
