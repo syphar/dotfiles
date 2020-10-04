@@ -53,6 +53,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('jparise/vim-graphql', {'on_ft': js_types})
 
   " generic software dev stuff
+  let dev_types = ['python', 'rust', 'yaml', 'json'] + js_types
+
   call dein#add('rizzatti/dash.vim')
   call dein#add('Yggdroot/indentLine') " indent helper lines
   call dein#add('Shougo/echodoc.vim') " Show signature
@@ -61,11 +63,11 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
-  call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen.
+  call dein#add('wellle/context.vim', {'on_ft': dev_types})  " show context of things outside of screen.
   call dein#add('direnv/direnv.vim') " read direnv for vim env
-  call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
-  call dein#add('tpope/vim-dispatch', {'on_ft': ['python', 'rust']})
-  call dein#add('tpope/vim-projectionist', {'on_ft': ['python', 'rust']}) " :A alternate command to switch between tests and implementation
+  call dein#add('janko/vim-test', {'on_ft': dev_types}) " simple test running
+  call dein#add('tpope/vim-dispatch', {'on_ft': dev_types})
+  call dein#add('tpope/vim-projectionist', {'on_ft': dev_types}) " :A alternate command to switch between tests and implementation
   call dein#add('chaoren/vim-wordmotion')
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
