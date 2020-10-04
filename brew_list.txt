@@ -36,6 +36,7 @@ cmatrix
 coreutils
 cowsay
 cscope
+csview
 ctags
 curl
 dav1d
