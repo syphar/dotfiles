@@ -14,6 +14,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nanotech/jellybeans.vim')
 
   " general plugins
+  call dein#add('Konfekt/FastFold') " faster folding
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
@@ -83,6 +84,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
+  " call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
+  call dein#add('kalekundert/vim-coiled-snake', {'on_ft': ['python']})
 
 
   " Required:

@@ -78,7 +78,7 @@ set equalalways
 " don't show docstring when completing
 set completeopt-=preview
 
-set foldmethod=indent
+set foldmethod=manual
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 set backspace=indent,eol,start
