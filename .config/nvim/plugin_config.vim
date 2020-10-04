@@ -125,9 +125,7 @@ let g:dispatch_tmux_height = 20
 
 
 " context {{{
-" default presenter (nvim-float) has rendering errors and adds flickering. try
-" again later
-let g:context_presenter = 'nvim-float' "preview
+let g:context_presenter = 'nvim-float'
 let g:context_border_char = '─' " '▬'
 let g:context_enabled = 1
 " let g:context_nvim_no_redraw = 1
@@ -176,5 +174,10 @@ let g:vista#renderer#icons = {
 " let g:wordmotion_prefix = '<Leader>'
 " }}}
 
+" requirements.txt {{{
+
+let g:requirements#detect_filename_pattern = '\vrequirement?s\_.*\.(txt|in)$'
+
+" }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
