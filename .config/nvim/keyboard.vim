@@ -13,10 +13,9 @@ nnoremap <space> za
 vnoremap <space> zf
 
 " fold/unfold all with shift-F3
-nnoremap <expr> <S-F3> &foldlevel ? 'zM' :'zR'
+nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
 " fold to see classes and methods
-" nnoremap <S-F3> :set foldlevel=1<CR>
-
+nnoremap <S-F3> :set foldlevel=1<CR>
 
 " notional
 nnoremap <silent> <c-s> :NV<CR>
