@@ -26,8 +26,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key
 
   call dein#add('junegunn/fzf', {'build': './install --bin'})
-  " call dein#add('junegunn/fzf.vim')
-  call dein#add('syphar/fzf.vim', {'rev': 'unfold-after-tags'})
+  call dein#add('junegunn/fzf.vim')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
   " GIT integration
