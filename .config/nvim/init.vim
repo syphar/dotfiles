@@ -61,8 +61,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
-  " disable until the redraw-issues are gone
-  call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen.'rev': '23-nvim-no-redraw',
+  call dein#add('wellle/context.vim', {'on_ft': ['python', 'rust']})  " show context of things outside of screen.
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': ['python', 'rust']}) " simple test running
   call dein#add('tpope/vim-dispatch', {'on_ft': ['python', 'rust']})
@@ -81,8 +80,6 @@ if dein#load_state('$HOME/.cache/dein')
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
-  " call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
-  "
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
 
 
