@@ -18,10 +18,6 @@ nnoremap <expr> <S-F3> &foldlevel ? 'zM' :'zR'
 " nnoremap <S-F3> :set foldlevel=1<CR>
 
 
-" show tagbar
-nnoremap <silent> <F3> :Vista!!<CR>
-
-
 " notional
 nnoremap <silent> <c-s> :NV<CR>
 

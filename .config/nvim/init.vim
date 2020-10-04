@@ -63,7 +63,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
-  call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!', 'Vista']}) " tagbar
   call dein#add('wellle/context.vim', {'on_ft': dev_types})  " show context of things outside of screen.
   call dein#add('direnv/direnv.vim') " read direnv for vim env
   call dein#add('janko/vim-test', {'on_ft': dev_types}) " simple test running
@@ -84,7 +83,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
-  " call dein#add('tmhedberg/SimpylFold', {'on_ft': ['python']})
   call dein#add('kalekundert/vim-coiled-snake', {'on_ft': ['python']})
 
 
