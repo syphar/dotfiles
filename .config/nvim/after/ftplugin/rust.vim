@@ -24,3 +24,5 @@ let g:ale_rust_cargo_clippy_options = '-- -W clippy::nursery -W clippy::pedantic
 
 compiler cargo
 setlocal makeprg=cargo\ build
+
+let g:rust_fold=1
