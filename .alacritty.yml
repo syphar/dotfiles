@@ -97,7 +97,7 @@ live_config_reload: true
 alt_send_esc: true
 
 mouse:
-  hide_when_typing: false
+  hide_when_typing: true
 
   url:
     launcher:
