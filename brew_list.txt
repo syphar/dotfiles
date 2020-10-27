@@ -264,6 +264,7 @@ popt
 portaudio
 postgis
 postgresql
+postgresql@12
 procs
 proj
 protobuf
