@@ -227,6 +227,7 @@ netcdf
 netpbm
 nettle
 newt
+nginx
 ngrep
 nmap
 node
