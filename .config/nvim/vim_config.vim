@@ -117,6 +117,7 @@ set scrolloff=10
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+set smartcase           " smartcase search
 
 
 " vim: et ts=2 sts=2 sw=2
