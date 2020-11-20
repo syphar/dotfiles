@@ -173,6 +173,7 @@ libogg
 libpng
 libpq
 librsvg
+librttopo
 libsamplerate
 libscrypt
 libsigc++
@@ -217,6 +218,7 @@ memcached
 mercurial
 mhash
 midnight-commander
+minizip
 mpfr
 msgpack
 mutt
