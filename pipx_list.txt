@@ -5,3 +5,4 @@ httpie
 pipenv
 poetry
 watchdog
+yamllint
