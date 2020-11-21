@@ -104,6 +104,7 @@ go
 gobject-introspection
 google-sparsehash
 googler
+gopls
 gource
 gpgme
 gpp
