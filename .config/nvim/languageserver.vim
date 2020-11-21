@@ -7,10 +7,9 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
     \ 'rust': ['~/.local/bin/rust-analyzer'],
     \ 'go': ['gopls'],
+    \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
     \ }
-
-    " \ 'python': ['~/src/pyls/venv/bin/pyls', '--verbose', '--log-file', '/tmp/pyls-log.txt'],
-    " \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 
 let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
 

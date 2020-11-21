@@ -78,7 +78,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('autozimu/LanguageClient-neovim', {
      \ 'rev': 'next',
      \ 'build': 'bash install.sh',
-     \ 'on_ft': ['python', 'rust'],
+     \ 'on_ft': ['python', 'rust', 'go', 'typescript', 'typescript.tsx'],
      \ })
 
   " python stuff
