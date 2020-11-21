@@ -6,6 +6,7 @@
 let g:LanguageClient_serverCommands = {
     \ 'python': ['~/src/pyls/venv/bin/pyls'],
     \ 'rust': ['~/.local/bin/rust-analyzer'],
+    \ 'go': ['gopls'],
     \ }
 
     " \ 'python': ['~/src/pyls/venv/bin/pyls', '--verbose', '--log-file', '/tmp/pyls-log.txt'],

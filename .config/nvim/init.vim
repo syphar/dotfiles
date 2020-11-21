@@ -53,8 +53,10 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('peitalin/vim-jsx-typescript', {'on_ft': js_types})
   call dein#add('jparise/vim-graphql', {'on_ft': js_types})
 
+  call dein#add('fatih/vim-go', {'on_ft': ['go']})
+
   " generic software dev stuff
-  let dev_types = ['python', 'rust', 'yaml', 'json', 'vim'] + js_types
+  let dev_types = ['python', 'rust', 'yaml', 'json', 'vim', 'go'] + js_types
 
   call dein#add('rizzatti/dash.vim')
   call dein#add('Yggdroot/indentLine') " indent helper lines
