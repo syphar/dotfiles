@@ -9,9 +9,9 @@ source $HOME/.config/nvim/languageserver.vim
 let b:indentLine_enabled = 0
 
 let g:test#python#pytest#options = {
-    \ 'nearest': '--reuse-db --show-capture=no --disable-warnings',
-    \ 'file':    '--reuse-db --show-capture=no --disable-warnings',
-    \ 'suite':   '--reuse-db --show-capture=no --disable-warnings',
+    \ 'nearest': '--show-capture=no --disable-warnings',
+    \ 'file':    '--show-capture=no --disable-warnings',
+    \ 'suite':   '--show-capture=no --disable-warnings',
   \}
 
 
