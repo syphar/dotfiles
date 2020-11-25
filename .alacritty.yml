@@ -59,25 +59,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#a3a3a3'
-    red:     '#e98885'
-    green:   '#a3c38b'
-    yellow:  '#ffc68d'
-    blue:    '#a6cae2'
+    black: '#a3a3a3'
+    red: '#e98885'
+    green: '#a3c38b'
+    yellow: '#ffc68d'
+    blue: '#a6cae2'
     magenta: '#e7cdfb'
-    cyan:    '#00a69f'
-    white:   '#e4e4e4'
+    cyan: '#00a69f'
+    white: '#e4e4e4'
 
   # Bright colors
   bright:
-    black:   '#c8c8c8'
-    red:     '#ffb2b0'
-    green:   '#c8e2b9'
-    yellow:  '#ffe1af'
-    blue:    '#bddff7'
+    black: '#c8c8c8'
+    red: '#ffb2b0'
+    green: '#c8e2b9'
+    yellow: '#ffe1af'
+    blue: '#bddff7'
     magenta: '#fce2ff'
-    cyan:    '#0bbdb6'
-    white:   '#feffff'
+    cyan: '#0bbdb6'
+    white: '#feffff'
 
   # Selection colors
   selection:
@@ -101,12 +101,12 @@ mouse:
 
   url:
     launcher:
-     program: open
+      program: open
 
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
   - { key: Equals, mods: Command,         action: IncreaseFontSize }
-  - { key: Add,    mods: Command,         action: IncreaseFontSize }
+  - { key: Plus,  mods: Command,         action: IncreaseFontSize }
   - { key: Minus,  mods: Command,         action: DecreaseFontSize }
   - { key: K,      mods: Command,         action: ClearHistory     }
   - { key: K,      mods: Command,         chars: "\x0c"            }
