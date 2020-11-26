@@ -26,6 +26,7 @@ boost-python3
 boot2docker
 boxes
 byobu
+c-ares
 cairo
 cairomm
 cfitsio
@@ -158,6 +159,7 @@ libcerf
 libcroco
 libdap
 libepoxy
+libev
 libevent
 libffi
 libgcrypt
@@ -230,6 +232,7 @@ netcdf
 netpbm
 nettle
 newt
+nghttp2
 nginx
 ngrep
 nmap
