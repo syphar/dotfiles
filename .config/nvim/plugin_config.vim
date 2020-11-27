@@ -128,7 +128,7 @@ let g:dispatch_tmux_height = 20
 let g:context_presenter = 'nvim-float'
 let g:context_border_char = '─' " '▬'
 let g:context_enabled = 1
-" let g:context_nvim_no_redraw = 1
+let g:context_nvim_no_redraw = 1
 
 " }}}
 
