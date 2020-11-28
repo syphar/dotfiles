@@ -42,7 +42,7 @@ nmap <leader>h :Helptags<CR>
 nmap <silent> <leader>d <Plug>DashSearch
 
 " run Rg with word under cursor or selection
-nmap <leader>ag "zyiw:exe "Rg ".@z.""<CR>
+nmap <leader>ag "zyiW:exe "Rg ".@z.""<CR>
 vnoremap <leader>ag "zy:exe "Rg ".@z.""<CR>
 
 
