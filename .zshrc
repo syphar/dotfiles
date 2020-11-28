@@ -150,6 +150,7 @@ alias top="ytop"
 alias iftop="bandwhich"
 alias objdump="bingrep"
 alias hexdump="hx"
+alias source_nvm="source /usr/local/opt/nvm/nvm.sh"
 
 
 if type brew &>/dev/null; then
