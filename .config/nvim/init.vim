@@ -73,6 +73,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-dispatch', {'on_ft': dev_types})
   call dein#add('tpope/vim-projectionist', {'on_ft': dev_types}) " :A alternate command to switch between tests and implementation
   call dein#add('chaoren/vim-wordmotion')
+  call dein#add('vim-scripts/argtextobj.vim')
+  call dein#add('michaeljsmith/vim-indent-object')
 
   call dein#add('Shougo/deoplete.nvim', {'on_i': 1}) " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'on_i': 1, 'build': './install.sh' }) " ML-based autocomplete
