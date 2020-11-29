@@ -29,6 +29,7 @@ byobu
 c-ares
 cairo
 cairomm
+cairomm@1.14
 cfitsio
 cgal
 cloc
