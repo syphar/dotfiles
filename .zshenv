@@ -86,8 +86,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-export DOCKER_HOST=tcp://127.0.0.1:4243
-
 export PATH=/usr/local/lib/ruby/gems/2.6.0/bin:$PATH:~/.local/bin:~/bin/:
 
 export FD_OPTIONS="--hidden --follow"
