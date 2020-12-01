@@ -25,6 +25,7 @@ boost-python
 boost-python3
 boot2docker
 boxes
+brotli
 byobu
 c-ares
 cairo
@@ -172,6 +173,7 @@ libidn2
 libksba
 liblwgeom
 libmemcached
+libmetalink
 libmpc
 libogg
 libpng
