@@ -102,10 +102,11 @@ export KEYTIMEOUT=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # reuse / cache dependencies across rust projects
-# NOT FOR NOW, problems with clippy when using this wrapper
+export RUSTC_WRAPPER=sccache cargo build
 # export RUSTC_WRAPPER=sccache
 # export SCCACHE_CACHE_SIZE=10G
 # export SCCACHE_DIR=~/.cache/rust/sccache
+
 
 
 export NVM_DIR="$HOME/.nvm"
