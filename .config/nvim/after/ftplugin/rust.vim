@@ -9,7 +9,6 @@ source $HOME/.config/nvim/languageserver.vim
 let g:ale_fixers.rust = ['rustfmt']
 let b:ale_rust_rustfmt_options = '--edition 2018'
 
-let g:ale_linters.rust = ['cargo_unstable']
 let b:ale_rust_cargo_use_clippy = 1
 let g:ale_rust_cargo_clippy_options = '-- -W clippy::nursery -W clippy::pedantic'
 
