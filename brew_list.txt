@@ -212,6 +212,7 @@ little-cms2
 lolcat
 lua
 luajit
+luarocks
 lynx
 lz4
 lzip
