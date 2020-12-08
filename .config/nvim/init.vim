@@ -65,6 +65,7 @@ if dein#load_state('$HOME/.cache/dein')
   " generic software dev stuff
   let dev_types = ['python', 'rust', 'yaml', 'json', 'vim', 'go'] + js_types + ts_types
   call dein#add('rizzatti/dash.vim')
+  call dein#add('AndrewRadev/splitjoin.vim') " language specific switch between multi- and single-line expressions
   call dein#add('Yggdroot/indentLine') " indent helper lines
   call dein#add('Shougo/echodoc.vim') " Show signature
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
