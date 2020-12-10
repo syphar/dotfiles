@@ -46,7 +46,6 @@ dav1d
 ddrescue
 dfc
 dfu-util
-diff-pdf
 diff-so-fancy
 direnv
 docbook
