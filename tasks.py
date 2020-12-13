@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import shutil
 import stat
 from urllib.request import urlretrieve
 from pathlib import Path
@@ -271,6 +272,33 @@ def cleanup_rust_repos(ctx):
         ctx.run("fd Cargo.toml --exec rm -rf {//}/target")
 
 
+@task
+def cleanup_direnv(ctx):
+    print("cleanup direnv...")
+    for repo, kind in yield_repos_in_folder(SRC_DIR):
+        direnv = Path(repo) / ".direnv"
+        if not direnv.exists():
+            continue
+
+        python_environments = sorted(
+            [
+                p
+                for p in direnv.iterdir()
+                if p.is_dir() and p.name.startswith("python-")
+            ],
+            reverse=True,
+        )
+
+        for env in python_environments[1:]:
+            print(f"\t...deleting {str(env)}")
+            shutil.rmtree(str(env))
+
+
+@task
+def cleanup_thermondo(ctx):
+    shutil.rmtree(str(Path(SRC_DIR) / "thermondo" / "backend" / "sql" / "backup"))
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
@@ -281,6 +309,8 @@ def update(ctx):
     update_rust_analyzer(ctx)
     update_repos(ctx)
     cleanup_rust_repos(ctx)
+    cleanup_direnv(ctx)
+    cleanup_thermondo(ctx)
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
