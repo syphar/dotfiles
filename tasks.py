@@ -296,7 +296,9 @@ def cleanup_direnv(ctx):
 
 @task
 def cleanup_thermondo(ctx):
-    shutil.rmtree(str(Path(SRC_DIR) / "thermondo" / "backend" / "sql" / "backup"))
+    backend_backups = Path(SRC_DIR) / "thermondo" / "backend" / "sql" / "backup"
+    if backend_backups.exists():
+        shutil.rmtree(str(backend_backups))
 
 
 @task(default=True)
