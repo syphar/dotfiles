@@ -264,6 +264,13 @@ def bat_cache(ctx):
     ctx.run("bat cache --build")
 
 
+@task
+def cleanup_rust_repos(ctx):
+    with ctx.cd(SRC_DIR):
+        # delete all target directories in rust projects
+        ctx.run("fd Cargo.toml --exec rm -rf {//}/target")
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
@@ -273,6 +280,7 @@ def update(ctx):
     rustup(ctx)
     update_rust_analyzer(ctx)
     update_repos(ctx)
+    cleanup_rust_repos(ctx)
     update_zsh_plugin_repos(ctx)
     update_tmux_plugins(ctx)
     update_brew_list(ctx)
