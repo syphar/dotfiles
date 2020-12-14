@@ -8,7 +8,7 @@ shell:
     - tmux attach || tmux new
 
 window:
-  startup_mode: Fullscreen
+  # startup_mode: Fullscreen
   dynamic_title: true
 
 scrolling:
