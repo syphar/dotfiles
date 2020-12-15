@@ -81,8 +81,8 @@ endfunction
 
 nnoremap <F4> :call ToggleList("Location List", 'l')<CR>
 nnoremap <F5> :call ToggleList("Quickfix List", 'c')<CR>
-nnoremap <F7> :cprevious<CR>
-nnoremap <F8> :cnext<CR>
+nnoremap <F9> :cprevious<CR>
+nnoremap <F10> :cnext<CR>
 
 
 " move between tabs with cmd+number. Not used in tmux, only when running a gui
