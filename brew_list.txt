@@ -359,6 +359,7 @@ watchman
 webp
 weechat
 wget
+wrk
 wxmac
 x264
 x265
