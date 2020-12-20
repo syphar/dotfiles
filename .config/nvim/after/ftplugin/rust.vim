@@ -7,7 +7,7 @@ nmap <leader>tl :TestLast<CR>
 source $HOME/.config/nvim/languageserver.vim
 
 let g:ale_fixers.rust = ['rustfmt']
-let g:ale_linters.rust = ['rustc', 'rls', 'analyzer']
+let g:ale_linters.rust = ['cargo', 'analyzer']
 
 let b:ale_rust_rustfmt_options = '--edition 2018'
 
