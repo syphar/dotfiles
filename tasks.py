@@ -21,7 +21,7 @@ def self_update(ctx):
 def update_homebrew(ctx):
     print("update_homebrew")
 
-    installed = set(ctx.run("brew list", hide="out").stdout.split())
+    installed = set(ctx.run("brew list --formula -1", hide="out").stdout.split())
     with open(
         os.path.join(os.path.expanduser("~"), "src", "dotfiles", "brew_list.txt")
     ) as brew_list:
@@ -72,7 +72,7 @@ def update_zsh(ctx):
 def update_brew_list(ctx):
     print("update_brew_list")
     listfile = os.path.expanduser("~/src/dotfiles/brew_list.txt")
-    ctx.run("brew list >> {}".format(listfile))
+    ctx.run("brew list --formula -1 >> {}".format(listfile))
     ctx.run("sort {0} | uniq > {0}.tmp".format(listfile))
     os.remove(listfile)
     os.rename("{}.tmp".format(listfile), listfile)
