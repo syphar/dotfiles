@@ -102,7 +102,7 @@ export KEYTIMEOUT=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # reuse / cache dependencies across rust projects
-export RUSTC_WRAPPER=sccache
+# export RUSTC_WRAPPER=sccache
 # export SCCACHE_CACHE_SIZE=10G
 # export SCCACHE_DIR=~/.cache/rust/sccache
 
