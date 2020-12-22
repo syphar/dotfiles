@@ -49,7 +49,6 @@ def cleanup_homebrew(ctx):
     print("cleanup_homebrew")
 
     ctx.run("brew cleanup -s")
-    ctx.run("brew prune")
 
     for l in ctx.run("brew missing").stdout.split("\n"):
         if not l:
@@ -305,6 +304,7 @@ def cleanup_thermondo(ctx):
 def update(ctx):
     self_update(ctx)
     update_homebrew(ctx)
+    cleanup_homebrew(ctx)
     update_pipx(ctx)
     update_zsh(ctx)
     rustup(ctx)
