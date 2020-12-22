@@ -39,7 +39,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'forgit' \
-  'fzf-tab'
+  'fzf-tab' 
   # 'formarks'
 
 #
