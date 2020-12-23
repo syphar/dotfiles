@@ -301,6 +301,15 @@ def cleanup_thermondo(ctx):
         shutil.rmtree(str(backend_backups))
 
 
+@task
+def cleanup_docker(ctx):
+    ctx.run("docker container prune")
+    ctx.run("docker image prune -a")
+    ctx.run("docker builder prune -a")
+    ctx.run("docker volume prune")
+    ctx.run("docker network prune")
+
+
 @task(default=True)
 def update(ctx):
     self_update(ctx)
