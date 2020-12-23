@@ -309,7 +309,6 @@ ruby
 s-lang
 sbt
 scala
-sccache
 scipy
 scons
 screenfetch
