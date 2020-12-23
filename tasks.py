@@ -163,6 +163,7 @@ def rustup(ctx):
     print("update rustup")
     ctx.run("rustup update")
     ctx.run("cargo install-update -a")
+    ctx.run("cargo cache --autoclean-expensive")
 
 
 @task
