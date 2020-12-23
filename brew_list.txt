@@ -342,6 +342,7 @@ tldr
 tmate
 tmux
 tmuxinator
+tokei
 tokyo-cabinet
 tor
 travis
