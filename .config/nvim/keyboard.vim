@@ -13,9 +13,10 @@ nnoremap <space> za
 vnoremap <space> zf
 
 " fold/unfold all with shift-F3
-nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
+" nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
 " fold to see classes and methods
-nnoremap <S-F3> :set foldlevel=1<CR>
+" noremap <S-F3> :set foldlevel=1<CR>
+nnoremap  <S-F3> &foldlevel ? 'zM' :'zR'
 
 " notional
 nnoremap <silent> <c-s> :NV<CR>
@@ -79,6 +80,7 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
+nnoremap <F3> :Vista!!<CR>
 nnoremap <F4> :call ToggleList("Location List", 'l')<CR>
 nnoremap <F5> :call ToggleList("Quickfix List", 'c')<CR>
 nnoremap <F9> :cprevious<CR>
