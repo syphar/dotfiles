@@ -302,11 +302,21 @@ def cleanup_thermondo(ctx):
 
 @task
 def cleanup_docker(ctx):
-    ctx.run("docker container prune")
-    ctx.run("docker image prune -a")
-    ctx.run("docker builder prune -a")
-    ctx.run("docker volume prune")
-    ctx.run("docker network prune")
+    # cleanup only dangling docker resources
+    ctx.run("docker image prune -f")
+    ctx.run("docker builder prune -f")
+    ctx.run("docker volume prune -f")
+    ctx.run("docker network prune -f")
+
+
+@task
+def cleanup_docker_all(ctx):
+    # wipe all docker resources
+    ctx.run("docker container prune -f")
+    ctx.run("docker image prune -a -f")
+    ctx.run("docker builder prune -a -f")
+    ctx.run("docker volume prune -f ")
+    ctx.run("docker network prune -f")
 
 
 @task
@@ -340,5 +350,6 @@ def update(ctx):
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
+    cleanup_docker(ctx)
     tldr(ctx)
     update_vim(ctx)
