@@ -350,6 +350,5 @@ def update(ctx):
     mackup(ctx)
     mackup_dotfiles(ctx)
     bat_cache(ctx)
-    cleanup_docker(ctx)
     tldr(ctx)
     update_vim(ctx)
