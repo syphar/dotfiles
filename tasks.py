@@ -163,7 +163,6 @@ def rustup(ctx):
     print("update rustup")
     ctx.run("rustup update")
     ctx.run("cargo install-update -a")
-    ctx.run("cargo cache --autoclean-expensive")
 
 
 @task
@@ -308,6 +307,16 @@ def cleanup_docker(ctx):
     ctx.run("docker builder prune -a")
     ctx.run("docker volume prune")
     ctx.run("docker network prune")
+
+
+@task
+def free_disk_space(ctx):
+    cleanup_docker(ctx)
+    ctx.run("cargo cache --autoclean-expensive")
+
+    cache_dir = Path("/Users/syphar/Library/Caches")
+    shutil.rmtree(str(cache_dir))
+    cache_dir.mkdir()
 
 
 @task(default=True)
