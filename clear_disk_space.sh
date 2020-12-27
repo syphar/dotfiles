@@ -10,7 +10,7 @@ echo "delete caches"
 rm -rf "$HOME/Library/Caches/*"
 
 echo "clear cargo cache"
-cargo cache --autoclean-expensive
+cargo cache --autoclean
 
 echo "wipe docker data"
 docker container prune -f
@@ -18,3 +18,6 @@ docker image prune -a -f
 docker builder prune -a -f
 docker volume prune -f
 docker volume prune -f
+
+## cleanup target in rust repos
+(cd "$SRC_DIR" && fd Cargo.toml --exec rm -rf \{//\}/target)

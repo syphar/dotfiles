@@ -36,9 +36,6 @@ rm -rf "$rust_analyzer_bin"
 curl --compressed -L -o "$rust_analyzer_bin" "$ra_source"
 chmod +x "$rust_analyzer_bin"
 
-## cleanup target in rust repos
-(cd "$SRC_DIR" && fd Cargo.toml --exec rm -rf \{//\}/target)
-
 ## tldr update
 tldr --update
 
