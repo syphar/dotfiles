@@ -66,7 +66,7 @@ mackup backup
 ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 ./update_git_repo.sh
 
 # update all source repos
-./projects.py | xargs -n 1 ./update_git_repo.sh
+./find_repos.sh "$SRC_DIR" | xargs -n 1 ./update_git_repo.sh
 
 # update vim
 nvim "+call dein#update()" +qa
