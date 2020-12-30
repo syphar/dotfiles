@@ -16,7 +16,7 @@ vnoremap <space> zf
 " nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
 " fold to see classes and methods
 " noremap <S-F3> :set foldlevel=1<CR>
-nnoremap  <S-F3> &foldlevel ? 'zM' :'zR'
+nnoremap  <expr> <S-F3> &foldlevel ? 'zM' :'zR'
 
 " notional
 nnoremap <silent> <c-s> :NV<CR>

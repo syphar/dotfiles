@@ -49,6 +49,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']}) " rust
+  call dein#add('Glench/Vim-Jinja2-Syntax')  " jinja 2 
 
   let js_types = ['javascript', 'javascriptreact']
   call dein#add('pangloss/vim-javascript', {'on_ft': js_types})
