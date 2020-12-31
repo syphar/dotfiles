@@ -42,7 +42,7 @@ alias clippy='cargo clippy -Zunstable-options --verbose'
 function cdp() {
   local dir
   dir=$(
-    ~/src/dotfiles/projects.py | fzf
+  ~/src/dotfiles/find_projects.sh | fzf
   ) && cd $dir && clear
 }
 
