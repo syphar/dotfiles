@@ -42,9 +42,6 @@ tldr --update
 ## bat cache
 bat cache --build
 
-# clear thermondo backups
-rm -rf "$SRC_DIR/thermondo/backend/sql/backups"
-
 ## mackup
 mackup restore --force
 mackup backup

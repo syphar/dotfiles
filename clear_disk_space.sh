@@ -1,10 +1,10 @@
 #!/bin/bash
-set -euo pipefail
+set -exuo pipefail
 
 SRC_DIR="$HOME/src"
 
 echo "delete all .direnv directories"
-(cd "$SRC_DIR" && fd --type d --no-ignore --hidden "^\.direnv$" --exec rm -rf {})
+fd --type d --no-ignore --hidden "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
 
 echo "delete caches"
 rm -rf "$HOME/Library/Caches/*"
@@ -19,5 +19,8 @@ docker builder prune -a -f
 docker volume prune -f
 docker volume prune -f
 
-## cleanup target in rust repos
-(cd "$SRC_DIR" && fd Cargo.toml --exec rm -rf \{//\}/target)
+echo "clear rust target directories"
+fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+
+# clear thermondo backups
+rm -rf "$SRC_DIR/thermondo/backend/sql/backups"
