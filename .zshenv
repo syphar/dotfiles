@@ -96,6 +96,11 @@ export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
 
+# configure memoize-script in ~/bin/runcached
+export RUNCACHED_MAX_AGE=86400  # 1 day
+export RUNCACHED_IGNORE_ENV=1
+export RUNCACHED_IGNORE_PWD=1
+
 # for working vi-mode
 export KEYTIMEOUT=1
 
