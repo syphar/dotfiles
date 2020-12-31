@@ -42,7 +42,7 @@ alias clippy='cargo clippy -Zunstable-options --verbose'
 function cdp() {
   local dir
   dir=$(
-  ~/src/dotfiles/find_projects.sh | fzf
+  ~/src/dotfiles/find_projects.sh | fzf --tiebreak=end,index
   ) && cd $dir && clear
 }
 
@@ -171,20 +171,11 @@ bindkey -s '^p' 'vv^M'
 # ctrl-o == `cdp`, goto project
 bindkey -s '^o' 'cdp^M'
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-if [[ -s "/usr/share/fzf/key-bindings.zsh" ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-else
-  source ~/.fzf.zsh
-fi
-
+source ~/.p10k.zsh
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-
-enable-fzf-tab
+source ~/.fzf.zsh
 
 # uncomment for profiling
 # zprof
