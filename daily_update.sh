@@ -66,4 +66,4 @@ mackup backup
 ./find_repos.sh "$SRC_DIR" | xargs -n 1 ./update_git_repo.sh
 
 # update vim
-nvim "+call dein#update()" +qa
+./update_vim.sh
