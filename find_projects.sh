@@ -6,7 +6,11 @@ src_dir="$HOME/src/"
 echo "$HOME/.config/nvim/"
 
 (
+    # starting in src_dir
     cd "$src_dir" &&
+    # all Cargo projects
     fd Cargo.toml --exec echo $src_dir\{//\}/ &&
-    fd --type d --exclude "target" --exclude "node_modules" --exclude ".direnv" --prune --no-ignore --hidden "^\.git$" --exec echo $src_dir\{//\}/
+
+    # all git repos, a little slow
+    $HOME/src/dotfiles/find_repos.sh "$src_dir"
 )
