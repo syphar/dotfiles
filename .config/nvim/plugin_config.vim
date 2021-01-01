@@ -158,7 +158,7 @@ let g:goyo_width=90  " default is 80, but 88 python lines should also fit
 " wordmotion {{{
 " let g:wordmotion_prefix = '<Leader>'
 "
-let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' ', '<', '>']
+let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' ', '<', '>', ':']
 
 
 " }}}
