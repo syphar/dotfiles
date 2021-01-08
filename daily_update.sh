@@ -23,7 +23,7 @@ brew cleanup -s
 
 ## install/update pipx packages
 xargs -n 1 pipx install < pipx_list.txt 1>/dev/null
-pipx upgrade-all
+pipx reinstall-all
 
 ## rust environment
 rustup update
