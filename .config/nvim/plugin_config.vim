@@ -2,16 +2,21 @@
 " Deoplete {{{
 " ______________________________________________________________________
 
-let g:deoplete#enable_at_startup = 1
+" don't enable at startup, enable on insert
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
 
 " disable some deoplete sources. (aka all default ones + ale)
 " _ = all file types, but more can be added per type
 "
 " all default sources
-" https://github.com/Shougo/deoplete.nvim/blob/840c46aed8033efe19c7a5a809713c809b4a6bb5/doc/deoplete.txt#L567-L703
-let g:deoplete#ignore_sources ={
+" https://github.com/Shougo/deoplete.nvim/blob/0901b1886208a32880b92f22bf8f38a17e95045a/doc/deoplete.txt#L625-L759
+call deoplete#custom#option('ignore_sources', {
   \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
-  \ }
+  \ })
+
+" parallel execution, one process per source
+call deoplete#custom#option('num_processes', 0)
 
 " }}}
 
