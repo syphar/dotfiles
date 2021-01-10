@@ -11,6 +11,7 @@ fd --type d --no-ignore --hidden "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
 
 echo "delete caches"
 rm -rf ~/Library/Caches/*
+rm -rf ~/Library/Developer/CoreSimulator/Caches/*
 
 echo "clear cargo cache"
 cargo cache --autoclean
