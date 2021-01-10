@@ -7,7 +7,7 @@ echo "delete all .direnv directories"
 fd --type d --no-ignore --hidden "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
 
 echo "delete caches"
-rm -rf "$HOME/Library/Caches/*"
+rm -rf ~/Library/Caches/*
 
 echo "clear cargo cache"
 cargo cache --autoclean
