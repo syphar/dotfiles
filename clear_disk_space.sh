@@ -3,6 +3,9 @@ set -exuo pipefail
 
 SRC_DIR="$HOME/src"
 
+echo "remove all pyenv versions"
+rm -rf ~/.pyenv/versions/*
+
 echo "delete all .direnv directories"
 fd --type d --no-ignore --hidden "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
 
