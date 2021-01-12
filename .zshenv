@@ -119,9 +119,9 @@ export BC_CACHE_DIR="$HOME/.cache/bc"
 
 export CLICOLOR=1
 
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-export LDFLAGS=-L/usr/local/opt/openssl/lib
+# export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
+# export CPPFLAGS=-I/usr/local/opt/openssl/include
+# export LDFLAGS=-L/usr/local/opt/openssl/lib
 
 
 # mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
