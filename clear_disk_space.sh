@@ -33,4 +33,4 @@ rm -rf ~/src/rust-lang/docs.rs/.rustwide-docker
 rm -rf "$SRC_DIR/thermondo/backend/sql/backups"
 
 # delete some logs
-rm -f /usr/local/var/log/postgres.log
+rm -rf /usr/local/var/log/*
