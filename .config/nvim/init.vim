@@ -50,6 +50,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('Shougo/neco-vim', {'on_ft': ['vim']})  " autocomplete for viml
   call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']}) " rust
+  call dein#add('udalov/kotlin-vim', {'on_ft': ['kotlin']})  " kotlin
   call dein#add('Glench/Vim-Jinja2-Syntax')  " jinja 2
   call dein#add('ron-rs/ron.vim.git') " rust object notations
 
@@ -66,7 +67,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('fatih/vim-go', {'on_ft': ['go']})
 
   " generic software dev stuff
-  let dev_types = ['python', 'rust', 'yaml', 'json', 'vim', 'go'] + js_types + ts_types
+  let dev_types = ['python', 'rust', 'yaml', 'json', 'vim', 'go', 'kotlin'] + js_types + ts_types
   call dein#add('rizzatti/dash.vim')
   call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!']})  " tagbar
   call dein#add('AndrewRadev/splitjoin.vim') " language specific switch between multi- and single-line expressions
