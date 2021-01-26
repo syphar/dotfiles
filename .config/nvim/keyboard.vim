@@ -46,6 +46,8 @@ nmap <silent> <leader>d <Plug>DashSearch
 nmap <leader>ag "zyiW:exe "Rg ".@z.""<CR>
 vnoremap <leader>ag "zy:exe "Rg ".@z.""<CR>
 
+" show current file on master
+nmap <leader>em :Gedit master:%<CR>
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
