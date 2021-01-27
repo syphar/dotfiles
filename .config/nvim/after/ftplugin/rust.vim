@@ -12,7 +12,7 @@ let g:ale_linters.rust = ['cargo', 'analyzer']
 let b:ale_rust_rustfmt_options = '--edition 2018'
 
 let b:ale_rust_cargo_use_clippy = 1
-let g:ale_rust_cargo_clippy_options = '-- -W clippy::all -W clippy::nursery -W clippy::pedantic'
+let g:ale_rust_cargo_clippy_options = '-- -D warnings -W clippy::all -W clippy::nursery -W clippy::pedantic'
 let g:ale_rust_cargo_check_tests = 1
 let g:ale_rust_cargo_check_all_targets = 1
 let g:ale_rust_cargo_check_examples = 1

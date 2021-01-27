@@ -14,7 +14,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nanotech/jellybeans.vim')
 
   " general plugins
-  call dein#add('Konfekt/FastFold') " faster folding
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly
   call dein#add('christoomey/vim-tmux-navigator')  " nativate between vim and tmux panes
   call dein#add('tmux-plugins/vim-tmux-focus-events')
@@ -85,6 +84,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('chaoren/vim-wordmotion')
   call dein#add('vim-scripts/argtextobj.vim')
   call dein#add('michaeljsmith/vim-indent-object')
+  call dein#add('kkoomen/vim-doge')
 
   call dein#add('Shougo/deoplete.nvim') " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' }) " ML-based autocomplete
@@ -99,7 +99,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
-  call dein#add('kalekundert/vim-coiled-snake', {'on_ft': ['python']})
 
 
   " Required:
