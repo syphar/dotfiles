@@ -174,5 +174,12 @@ let g:requirements#detect_filename_pattern = '\vrequirement?s\_.*\.(txt|in)$'
 
 " }}}
 
+" ultisnips {{{
+
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<alt-tab>"
+
+" }}}
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

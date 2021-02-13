@@ -54,7 +54,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 function! GetBufferList()
   redir =>buflist
