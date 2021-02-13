@@ -84,6 +84,10 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('chaoren/vim-wordmotion')
   call dein#add('vim-scripts/argtextobj.vim')
   call dein#add('michaeljsmith/vim-indent-object')
+  call dein#add('SirVer/ultisnips', {'on_ft': dev_types, 'on_i': 1})
+  call dein#add('honza/vim-snippets', {'on_ft': dev_types, 'on_i': 1})
+
+
 
   call dein#add('Shougo/deoplete.nvim') " autocomplete
   call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' }) " ML-based autocomplete

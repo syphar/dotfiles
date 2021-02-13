@@ -39,6 +39,7 @@ nmap <leader>f :BTags<CR>
 nmap <leader>F :Tags<CR>
 nmap <leader>m :Buffers<CR>
 nmap <leader>h :Helptags<CR>
+nmap <leader>s :Snippets<CR>
 
 nmap <silent> <leader>d <Plug>DashSearch
 
