@@ -15,6 +15,10 @@ call deoplete#custom#option('ignore_sources', {
   \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
   \ })
 
+call deoplete#custom#source('tabnine', 'rank', 10)
+call deoplete#custom#source('ultisnips', 'rank', 100)
+call deoplete#custom#source('LanguageClient', 'rank', 1000)
+
 " parallel execution, one process per source
 call deoplete#custom#option('num_processes', 0)
 
@@ -100,7 +104,7 @@ command! -bar -bang Helptags                           call fzf#vim#helptags(<ba
 
 " Echodoc {{{
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'virtual'
+let g:echodoc#type = 'echo'
 " }}}
 
 " indentline {{{
