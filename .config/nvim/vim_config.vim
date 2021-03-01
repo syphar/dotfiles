@@ -49,6 +49,7 @@ let g:jellybeans_overrides = {
 \}
 colorscheme jellybeans
 
+
 if executable('rg')
 	set grepprg=rg\ --vimgrep\ --hidden\ —glob "!.git"
 endif
