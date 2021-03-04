@@ -161,6 +161,12 @@ let g:netrw_altv = 1 " open split on the right
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_width=90  " default is 80, but 88 python lines should also fit
+
+" https://github.com/junegunn/limelight.vim/issues/7
+let g:limelight_conceal_ctermfg = 100
+let g:limelight_conceal_guifg = '#888888'
+
+
 " }}}
 
 
