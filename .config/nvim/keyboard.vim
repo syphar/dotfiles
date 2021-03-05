@@ -41,6 +41,10 @@ nmap <leader>m :Buffers<CR>
 nmap <leader>h :Helptags<CR>
 nmap <leader>s :Snippets<CR>
 
+" Limelight for a selected range
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+
 nmap <silent> <leader>d <Plug>DashSearch
 
 " run Rg with word under cursor or selection
