@@ -4,6 +4,12 @@ set noshowmode
 " always show status
 set laststatus=2
 
+let g:lightline#ale#indicator_checking = "\uf110"
+let g:lightline#ale#indicator_warnings = "\uf071"
+let g:lightline#ale#indicator_errors = "\uf05e"
+let g:lightline#ale#indicator_ok = "\uf00c"
+
+
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'mode_map': {
@@ -21,15 +27,10 @@ let g:lightline = {
         \ },
       \ }
 
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
-let g:lightline#ale#indicator_ok = "\uf00c"
-
 let g:lightline.active = {
             \ 'left': [
             \  [ 'mode', 'paste' ],
-            \  [ 'gitbranch', 'readonly', 'relativepath', 'modified' ],
+            \  [ 'gitbranch', 'relativepath', 'modified', 'readonly' ],
             \ ],
             \ 'right': [
             \   [ 'lineinfo', 'filetype' ],
