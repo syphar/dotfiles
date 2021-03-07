@@ -192,24 +192,4 @@ let g:UltiSnipsJumpBackwardTrigger="<alt-tab>"
 
 " }}}
 
-" tmuxline {{{
-let g:tmuxline_preset = {
-      \'c': "[#S]",
-      \'win': "#I #W #F",
-      \'cwin': "#I #W #F",
-      \'y': ["#{docker_status}", " #(./bin/free_disk_space.sh)", "#{cpu_icon} #{cpu_percentage}", " #{ram_icon} #{ram_percentage}"],
-      \'z': "%H:%M",
-      \ }
-
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '│',
-    \ 'right' : '',
-    \ 'right_alt' : '│',
-    \ 'space' : ' '}
-
-" }}}
-
-
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

@@ -13,7 +13,6 @@ app_list = (
     "mackup",
     "mybin",
     "myneovim",
-    "mytmux",
     "mytmuxinator",
     "pgsql",
     "powerlevel10k",
