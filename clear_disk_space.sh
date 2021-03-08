@@ -27,7 +27,7 @@ fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
 rm -rf ~/src/rust-lang/docs.rs/.rustwide-docker
 
 # clear thermondo backups
-rm -rf "$SRC_DIR/thermondo/backend/sql/backups"
+rm -rf "$SRC_DIR/thermondo/backend/sql/backup"
 
 # delete some logs
 rm -rf /usr/local/var/log/*
