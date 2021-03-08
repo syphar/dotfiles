@@ -3,9 +3,6 @@ set -exuo pipefail
 
 SRC_DIR="$HOME/src"
 
-echo "remove all pyenv versions"
-rm -rf ~/.pyenv/versions/*
-
 echo "delete all .direnv, .tox or node_modules directories"
 fd --type d --no-ignore --hidden "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
 fd --type d --no-ignore --hidden "^\.tox$" "$SRC_DIR" --exec rm -rf {}
