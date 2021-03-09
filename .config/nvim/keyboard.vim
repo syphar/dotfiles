@@ -33,7 +33,7 @@ nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 
 " fzf
 map <C-P> :GitFiles<CR>
-nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', fzf#vim#with_preview('right'))<CR>
+nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', 0)<CR>
 
 nmap <leader>f :BTags<CR>
 nmap <leader>F :Tags<CR>
