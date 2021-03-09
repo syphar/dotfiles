@@ -103,8 +103,10 @@ command! -bar -bang Helptags                           call fzf#vim#helptags(<ba
 " }}}
 
 " Echodoc {{{
+set cmdheight=2
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'echo'
+let g:echodoc#type = 'signature'
+
 " }}}
 
 " indentline {{{
