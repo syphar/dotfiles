@@ -88,7 +88,7 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 export PATH=/usr/local/lib/ruby/gems/2.6.0/bin:$PATH:~/.local/bin:~/bin/:
 
-export FD_OPTIONS="--hidden --follow"
+export FD_OPTIONS="--hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
 
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"
