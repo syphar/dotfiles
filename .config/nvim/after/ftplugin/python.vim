@@ -15,7 +15,7 @@ let g:test#python#pytest#options = {
   \}
 
 
-let g:ale_linters = {"python": ['flake8', 'mypy', 'pylint', 'pydocstyle']}
+let g:ale_linters = {"python": ['flake8', 'pyright', 'pylint', 'pydocstyle']}
 let g:ale_fixers.python = ['black', 'autopep8', 'yapf', 'isort']
 
 " type ,p to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
