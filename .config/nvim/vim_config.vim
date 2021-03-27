@@ -50,11 +50,7 @@ let g:jellybeans_overrides = {
 colorscheme jellybeans
 
 
-if executable('rg')
-	set grepprg=rg\ --vimgrep\ --hidden\ —glob "!.git"
-endif
-
-
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
 set tags=./tags;/,~/.vimtags
