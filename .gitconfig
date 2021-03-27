@@ -70,6 +70,7 @@
     l = "!source ~/.githelpers && pretty_git_log"
     la = !git l --all
 
+    graph = log --graph --oneline --all
 
     # show different commits between branches
     branchdiff = log --graph --left-right --cherry-pick --oneline
