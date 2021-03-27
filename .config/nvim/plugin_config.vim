@@ -77,7 +77,7 @@ command! -bang GitFiles call fzf#vim#gitfiles('--cached --exclude-standard --oth
 
 
 " customer Ag, only for preview
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview('down'))
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('down'))
 cnoreabbrev Ag Rg
 
 
