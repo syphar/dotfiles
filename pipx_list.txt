@@ -6,3 +6,4 @@ pipenv
 poetry
 watchdog
 yamllint
+pre-commit
