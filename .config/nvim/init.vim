@@ -89,7 +89,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('michaeljsmith/vim-indent-object')
   call dein#add('SirVer/ultisnips', {'on_ft': dev_types, 'on_i': 1})
   call dein#add('honza/vim-snippets', {'on_ft': dev_types, 'on_i': 1})
-
+  call dein#add('kkoomen/vim-doge', {'on_ft': dev_types})
 
 
   call dein#add('Shougo/deoplete.nvim') " autocomplete

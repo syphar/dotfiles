@@ -194,4 +194,11 @@ let g:UltiSnipsJumpBackwardTrigger="<alt-tab>"
 
 " }}}
 
+" doge {{{
+
+let g:doge_mapping="<Leader>g"
+
+" }}}
+
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
