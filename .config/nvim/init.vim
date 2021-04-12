@@ -14,6 +14,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nanotech/jellybeans.vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('maximbaz/lightline-ale')
+  call dein#add('drzel/vim-line-no-indicator')
 
   " general plugins
   call dein#add('zhimsel/vim-stay') " save/restore sessions properly

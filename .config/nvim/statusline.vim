@@ -33,7 +33,7 @@ let g:lightline.active = {
             \  [ 'gitbranch', 'relativepath', 'modified', 'readonly' ],
             \ ],
             \ 'right': [
-            \   [ 'lineinfo', 'filetype' ],
+            \   [ 'indicator', 'lineinfo', 'filetype' ],
             \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
             \ ]
             \ }
@@ -43,8 +43,14 @@ let g:lightline.inactive = {
             \  [ 'paste' ],
             \  [ 'readonly', 'relativepath', 'modified' ],
             \ ],
-            \ 'right': [ ]
+            \ 'right': [
+            \   [ 'indicator', 'lineinfo', 'filetype' ],
+            \ ]
             \ }
+
+let g:lightline.component = {
+      \   'indicator': '%{LineNoIndicator()}'
+      \ }
 
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
