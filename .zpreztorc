@@ -23,6 +23,11 @@ zstyle ':prezto:load' pmodule-dirs $HOME/.zprezto-contrib
 
 # Set the Zsh functions to load (man zshcontrib).
 # zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+#
+
+# disable `gco` alias from `forgit`, since it conflicts with 
+# the `gco` alias from the zprezto git module
+forgit_checkout_commit=alongaliasthatwonteverhappen
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
@@ -39,7 +44,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'forgit' \
-  'fzf-docker' 
+  'fzf-docker'
   # 'formarks'
 
 #

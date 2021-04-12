@@ -37,7 +37,6 @@ alias tigs='tig status'
 alias gb='git branch -vv'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 
-
 # cd in one of my projects
 function cdp() {
   local dir
