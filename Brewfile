@@ -302,7 +302,6 @@ brew "mhash"
 brew "mcrypt"
 brew "memcached"
 brew "mercurial"
-brew "midnight-commander", link: false
 brew "mozjpeg"
 brew "msgpack"
 brew "tokyo-cabinet"
