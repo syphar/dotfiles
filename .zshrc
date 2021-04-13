@@ -152,6 +152,10 @@ alias objdump="bingrep"
 alias hexdump="hx"
 alias source_nvm="source /usr/local/opt/nvm/nvm.sh"
 
+mkpkg() {
+  mkdir -p $1
+  touch $1/__init__.py
+}
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
