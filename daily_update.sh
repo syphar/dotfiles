@@ -13,7 +13,10 @@ brew update && brew upgrade && brew upgrade --cask
 brew bundle --no-upgrade --no-lock --quiet 1>/dev/null
 
 ## dump new brew packages
-brew bundle dump -f
+# brew bundle dump -f
+
+## delete packages not in dump
+brew bundle cleanup
 
 ## cleanup
 brew cleanup -s
