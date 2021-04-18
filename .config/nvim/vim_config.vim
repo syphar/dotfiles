@@ -71,6 +71,8 @@ set showmatch
 autocmd VimResized * wincmd =
 set equalalways
 
+" set rust filetype for crs
+autocmd BufNewFile,BufRead *.crs set filetype=rust
 
 " don't show docstring when completing
 set completeopt-=preview
