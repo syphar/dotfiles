@@ -32,6 +32,9 @@ pipx reinstall-all
 rustup update
 cargo install-update -a
 
+## global NPM packages
+./npm-upgrade.sh
+
 ## rust-analyzer
 rust_analyzer_bin="$HOME/.local/bin/rust-analyzer"
 ra_source="https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac"
