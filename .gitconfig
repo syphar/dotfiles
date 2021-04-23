@@ -75,6 +75,9 @@
     # show different commits between branches
     branchdiff = log --graph --left-right --cherry-pick --oneline
 	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+    conflicts = diff --name-only --diff-filter=U
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
