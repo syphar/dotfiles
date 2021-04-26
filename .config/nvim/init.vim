@@ -56,6 +56,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('udalov/kotlin-vim', {'on_ft': ['kotlin']})  " kotlin
   call dein#add('Glench/Vim-Jinja2-Syntax')  " jinja 2
   call dein#add('ron-rs/ron.vim.git') " rust object notations
+  call dein#add('dag/vim-fish', {'on_ft': ['fish']}) " fish
 
   let js_types = ['javascript', 'javascriptreact']
   call dein#add('pangloss/vim-javascript', {'on_ft': js_types})
