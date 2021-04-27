@@ -37,6 +37,11 @@ alias tigs='tig status'
 alias gb='git branch -vv'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
+alias dcb='docker-compose build'
+alias dcs='docker-compose'
+
 # cd in one of my projects
 function cdp() {
   local dir
