@@ -16,7 +16,7 @@ brew bundle --no-upgrade --no-lock --quiet 1>/dev/null
 # brew bundle dump -f
 
 ## delete packages not in dump
-brew bundle cleanup
+brew bundle cleanup -f
 
 ## cleanup
 brew cleanup -s
