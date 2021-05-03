@@ -2,8 +2,9 @@ env:
   TERM: xterm-256color
 
 shell:
-  program: zsh
+  program: /usr/local/bin/fish
   args:
+    - -l
     - -c
     - tmux attach || tmux new
 

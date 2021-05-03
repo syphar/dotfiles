@@ -12,6 +12,7 @@ app_list = (
     "git",
     "mackup",
     "mybin",
+    "myfish",
     "myneovim",
     "mytmuxinator",
     "pgsql",
