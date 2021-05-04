@@ -43,5 +43,8 @@ alias g="git"
 alias gco="git checkout"
 alias gst="git status"
 alias gc="git commit"
+alias gs="git stash"
+alias gsa="git stash apply"
+alias gsc="git stash clear"
 
 alias unset 'set --erase'
