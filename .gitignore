@@ -6,4 +6,4 @@ venv
 .envrc
 .direnv
 .config/nvim/.netrwhist
-.config/fish/fish_variables
+.config/fish/fish_variables*
