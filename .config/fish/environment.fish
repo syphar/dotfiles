@@ -13,7 +13,7 @@ set --global -x PIP_RESPECT_VIRTUALENV true
 set --global -x XDG_CONFIG_HOME $HOME/.config/
 
 set --global -x FD_OPTIONS "--hidden --follow --exclude .git"
-set --global -x FZF_DEFAULT_OPTS "--no-hscroll --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
+set --global -x FZF_DEFAULT_OPTS "--no-hscroll --ansi --no-mouse --height 40% --layout=reverse --margin=0 --info=inline --preview-window=:noborder"
 
 set --global -x FZF_DEFAULT_COMMAND "fd --type f --type l $FD_OPTIONS"
 set --global -x FZF_CTRL_T_COMMAND "fd $FD_OPTIONS"
