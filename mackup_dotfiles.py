@@ -16,13 +16,10 @@ app_list = (
     "myneovim",
     "mytmuxinator",
     "pgsql",
-    "powerlevel10k",
-    "prezto",
     "ranger",
     "tmate",
     "tmux",
     "tmuxinator",
-    "zsh",
 )
 
 destination_folder = Path(__file__).parent
