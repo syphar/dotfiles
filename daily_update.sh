@@ -62,9 +62,6 @@ mackup backup
 # update fisher
 fish -c "fisher update"
 
-# update zsh plugins
-./find_repos.sh "$HOME/.zprezto-contrib" | xargs -n 1 ./update_git_repo.sh
-
 # update tmux plugins
 ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 ./update_git_repo.sh
 
