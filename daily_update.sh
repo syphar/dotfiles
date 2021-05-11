@@ -60,7 +60,7 @@ mackup backup
 ./mackup_dotfiles.py
 
 # update fisher
-fish -c fisher update
+fish -c "fisher update"
 
 # update zsh plugins
 ./find_repos.sh "$HOME/.zprezto-contrib" | xargs -n 1 ./update_git_repo.sh
