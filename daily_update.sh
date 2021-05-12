@@ -21,9 +21,6 @@ brew bundle cleanup -f
 ## cleanup
 brew cleanup -s
 
-## update zsh
-(cd ~/.zprezto && git pull && git submodule update --init --recursive)
-
 ## install/update pipx packages
 xargs -n 1 pipx install < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all
