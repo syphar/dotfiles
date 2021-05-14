@@ -39,7 +39,10 @@ set --global -x NVM_DIR "$HOME/.nvm"
 # if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
 #   source "${VIRTUAL_ENV}/bin/activate"
 # fi
-#
+
+
+# fisher / done
+set -U __done_allow_nongraphical 1
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
