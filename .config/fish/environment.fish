@@ -33,6 +33,7 @@ set --global -x FORGIT_LOG_GRAPH_ENABLE 1
 set --global -x RUSTC_WRAPPER sccache
 
 set --global -x NVM_DIR "$HOME/.nvm"
+set --global -x PYENV_ROOT "$HOME/.pyenv"
 
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
@@ -44,6 +45,7 @@ set --global -x NVM_DIR "$HOME/.nvm"
 # fisher / done
 set -U __done_allow_nongraphical 1
 
+fish_add_path $PYENV_ROOT/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
