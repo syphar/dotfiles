@@ -16,12 +16,12 @@ alias dcs='docker compose'
 
 alias vim="nvim"
 alias vi="nvim"
-alias da="direnv allow"
+abbr -ag da direnv allow
 alias mux="teamocil"
 alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodeclined --nostarted --details end"
 alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
-alias h="heroku"
+abbr -ag h heroku
 alias k9="kill -9"
 alias gh="git show HEAD"
 alias gt="git tag -n"
@@ -39,12 +39,12 @@ alias hexdump="hx"
 alias source_nvm="source /usr/local/opt/nvm/nvm.sh"
 alias j="jobs"
 
-alias g="git"
-alias gco="git checkout"
-alias gst="git status"
-alias gc="git commit"
-alias gs="git stash"
-alias gsa="git stash apply"
-alias gsc="git stash clear"
+abbr -ag g git
+abbr -ag gco git checkout
+abbr -ag gst git status
+abbr -ag gc git commit
+abbr -ag gs git stash
+abbr -ag gsa git stash apply
+abbr -ag gsc git stash clear
 
 alias unset 'set --erase'
