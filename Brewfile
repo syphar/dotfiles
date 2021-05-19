@@ -367,7 +367,6 @@ brew "watchman"
 brew "weechat"
 brew "wget"
 brew "wrk"
-brew "yq"
 brew "zlib"
 brew "zsh"
 brew "zsh-completions", link: false
