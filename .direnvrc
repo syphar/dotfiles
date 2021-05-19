@@ -60,6 +60,17 @@ use_nvm_from_nvm_rc() {
   use_nvm "$version"
 }
 
+use_pyenv_from_poetry_lock() {
+  if [[ ! -f poetry.lock ]]; then
+    log_error 'No poetry.lock found'
+    exit 2
+  fi
+
+  local version=$(tomlq '.metadata|.["python-versions"]' poetry.lock | sed 's/\"//g')
+  use_pyenv "$version"
+}
+
+
 use_pyenv_from_runtime_txt() {
   if [[ ! -f runtime.txt ]]; then
     log_error 'No runtime.txt found'
