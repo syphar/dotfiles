@@ -7,3 +7,4 @@ poetry
 watchdog
 yamllint
 pre-commit
+yq
