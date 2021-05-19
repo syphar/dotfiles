@@ -23,8 +23,8 @@ alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
 abbr -ag h heroku
 alias k9="kill -9"
-alias gh="git show HEAD"
-alias gt="git tag -n"
+abbr -ag gsh git show HEAD
+abbr -ag gt git tag -n
 
 alias l="exa -alh --group-directories-first"
 alias ls="exa --group-directories-first"
@@ -36,7 +36,6 @@ alias top="ytop"
 alias iftop="bandwhich"
 alias objdump="bingrep"
 alias hexdump="hx"
-alias source_nvm="source /usr/local/opt/nvm/nvm.sh"
 alias j="jobs"
 
 abbr -ag g git
@@ -46,5 +45,7 @@ abbr -ag gc git commit
 abbr -ag gs git stash
 abbr -ag gsa git stash apply
 abbr -ag gsc git stash clear
+
+alias create-pr="gh pr create --fill --assignee syphar"
 
 alias unset 'set --erase'
