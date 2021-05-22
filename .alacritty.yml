@@ -100,9 +100,9 @@ alt_send_esc: true
 mouse:
   hide_when_typing: true
 
-  url:
-    launcher:
-      program: open
+  # url:
+  #   launcher:
+  #     program: open
 
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
