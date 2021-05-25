@@ -4,7 +4,7 @@ fish_vi_key_bindings
 bind -M insert \cp vv
 
 # ctrl-e == 'select_heroku_app' insert heroku app name into command line
-bind -M insert \ce select_heroku_app
+bind -M insert \ce insert_heroku_app
 
 # ctrl-o == `cdp`, goto project
 bind -M insert \co cdp
