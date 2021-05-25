@@ -1,10 +1,13 @@
 fish_vi_key_bindings
 
 # ctrl-p == `vv`, like search files in vim
-bind -M insert \cp 'vv'
+bind -M insert \cp vv
+
+# ctrl-e == 'select_heroku_app' insert heroku app name into command line
+bind -M insert \ce select_heroku_app
 
 # ctrl-o == `cdp`, goto project
-bind -M insert \co 'cdp'
+bind -M insert \co cdp
 
 # forground last job
 bind -M insert \cq fg_
