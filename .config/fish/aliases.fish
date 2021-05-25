@@ -46,7 +46,7 @@ abbr -ag gs git stash
 abbr -ag gsa git stash apply
 abbr -ag gsc git stash clear
 
-alias pr-create="gh pr create --fill --assignee syphar"
+alias pr-create="gh pr create --fill --draft --assignee syphar"
 alias pr-open="gh pr view --web"
 
 alias unset 'set --erase'
