@@ -7,7 +7,7 @@ function fco
       --no-sort \
       --preview="git --no-pager branchdiff -150 '..{}'"
   ); \
-  and git checkout (echo "$branch" | sed "s/origin\///");
+  and git checkout (string replace -a "origin/" "" "$branch");
 
   commandline -f repaint
 end
