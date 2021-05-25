@@ -33,11 +33,7 @@ cargo install-update -a
 ./npm-upgrade.sh
 
 ## rust-analyzer
-rust_analyzer_bin="$HOME/.local/bin/rust-analyzer"
-ra_source="https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac"
-rm -rf "$rust_analyzer_bin"
-curl --compressed -L -o "$rust_analyzer_bin" "$ra_source"
-chmod +x "$rust_analyzer_bin"
+./update_rust_analyzer.sh
 
 ## tldr update
 tldr --update
