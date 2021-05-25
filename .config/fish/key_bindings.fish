@@ -3,6 +3,9 @@ fish_vi_key_bindings
 # ctrl-p == `vv`, like search files in vim
 bind -M insert \cp vv
 
+# ctrl-t == 'ftags'
+bind -M insert \ct ftags
+
 # ctrl-e == 'select_heroku_app' insert heroku app name into command line
 bind -M insert \ce insert_heroku_app
 
