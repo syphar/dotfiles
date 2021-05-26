@@ -9,10 +9,10 @@ alias tigs='tig status'
 alias gb='git branch -vv'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 
-alias dcu='docker compose up'
-alias dcd='docker compose down'
-alias dcb='docker compose build'
-alias dcs='docker compose'
+abbr -ag dcu docker compose up
+abbr -ag dcd docker compose down
+abbr -ag dcb docker compose build
+abbr -ag dcs docker compose
 
 alias vim="nvim"
 alias vi="nvim"
