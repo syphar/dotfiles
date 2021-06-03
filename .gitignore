@@ -7,3 +7,4 @@ venv
 .direnv
 .config/nvim/.netrwhist
 .config/fish/fish_variables*
+.config/fish/*.tmp.*
