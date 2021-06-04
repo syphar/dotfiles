@@ -8,3 +8,4 @@ watchdog
 yamllint
 pre-commit
 yq
+dephell
