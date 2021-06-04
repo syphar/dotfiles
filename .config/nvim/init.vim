@@ -43,7 +43,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('junegunn/limelight.vim')
 
   " specific file types
-  call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
+  " call dein#add('chrisbra/csv.vim', {'on_ft': ['csv']})
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('godlygeek/tabular', { 'on_ft': ['md', 'markdown'] })
