@@ -21,10 +21,12 @@ alias mux="teamocil"
 alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodeclined --nostarted --details end"
 alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
-abbr -ag h heroku
 alias k9="kill -9"
 abbr -ag gsh git show HEAD
 abbr -ag gt git tag -n
+
+abbr -ag h heroku
+alias heroku-shell "heroku run \"./manage.py shell\""
 
 alias l="exa -alh --group-directories-first"
 alias ls="exa --group-directories-first"
