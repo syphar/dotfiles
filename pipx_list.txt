@@ -9,3 +9,4 @@ yamllint
 pre-commit
 yq
 dephell
+lookatme
