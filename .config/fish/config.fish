@@ -5,6 +5,8 @@ source $XDG_CONFIG_HOME/fish/environment.fish
 set --global tide_pwd_truncate_margin 999
 set --global tide_right_prompt_items status cmd_duration context jobs heroku rust virtual_env
 
+fzf_configure_bindings --directory=\cf
+
 direnv hook fish | source
 
 # status is-login; and pyenv init --path | source
