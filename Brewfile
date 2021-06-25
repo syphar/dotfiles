@@ -96,7 +96,6 @@ brew "cmake"
 brew "cmatrix"
 brew "cowsay"
 brew "cscope"
-brew "ctags", link: false
 brew "jemalloc"
 brew "libidn2"
 brew "libssh2"
@@ -376,7 +375,7 @@ brew "eth-p/software/bat-extras"
 brew "fastly/tap/fastly"
 brew "heroku/brew/heroku-node"
 brew "heroku/brew/heroku"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD", "with-jansson"]
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "wfxr/csview/csview"
 cask "adoptopenjdk8"
 cask "alacritty"

@@ -18,10 +18,6 @@ brew bundle --no-upgrade --no-lock --quiet 1>/dev/null
 ## delete packages not in dump
 brew bundle cleanup -f
 
-# reinstall ctags because it sucks
-brew uninstall universal-ctags
-brew install --HEAD universal-ctags
-
 ## cleanup
 brew cleanup -s
 
