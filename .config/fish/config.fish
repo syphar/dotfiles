@@ -11,5 +11,6 @@ direnv hook fish | source
 
 # status is-login; and pyenv init --path | source
 # pyenv init - | source
+# status -i || exit  # see https://github.com/PatrickF1/fzf.fish/issues/183
 
 # vim: et ts=2 sts=2 sw=2
