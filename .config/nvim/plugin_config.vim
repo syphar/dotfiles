@@ -289,4 +289,18 @@ let g:requirements#detect_filename_pattern = '\vrequirement?s\_.*\.(txt|in)$'
 
 " }}}
 
+" trouble {{{ 
+
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    mode = "lsp_document_diagnostics"
+  }
+EOF
+"
+" }}}
+
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

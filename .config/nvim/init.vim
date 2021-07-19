@@ -59,6 +59,9 @@ if dein#load_state('$HOME/.cache/dein')
 
   " generic software dev stuff
   let dev_types = ['python', 'rust', 'yaml', 'json', 'vim']
+  call dein#add('kyazdani42/nvim-web-devicons')
+  call dein#add('folke/trouble.nvim')
+
   call dein#add('rizzatti/dash.vim')
   call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!']})  " tagbar
   " call dein#add('lukas-reineke/indent-blankline.nvim') " indent helper lines
