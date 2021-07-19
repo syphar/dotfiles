@@ -1,26 +1,191 @@
+" {{{ rust 
+lua <<EOF
+local opts = {
+    tools = { -- rust-tools options
+        -- automatically set inlay hints (type hints)
+        -- There is an issue due to which the hints are not applied on the first
+        -- opened file. For now, write to the file to trigger a reapplication of
+        -- the hints or just run :RustSetInlayHints.
+        -- default: true
+        autoSetHints = true,
+
+        -- whether to show hover actions inside the hover window
+        -- this overrides the default hover handler
+        -- default: true
+        hover_with_actions = true,
+
+        runnables = {
+            -- whether to use telescope for selection menu or not
+            -- default: true
+            use_telescope = true
+
+            -- rest of the opts are forwarded to telescope
+        },
+
+        inlay_hints = {
+            -- wheter to show parameter hints with the inlay hints or not
+            -- default: true
+            show_parameter_hints = true,
+
+            -- prefix for parameter hints
+            -- default: "<-"
+            parameter_hints_prefix = "<-",
+
+            -- prefix for all the other hints (type, chaining)
+            -- default: "=>"
+            other_hints_prefix  = "=>",
+
+            -- whether to align to the lenght of the longest line in the file
+            max_len_align = false,
+
+            -- padding from the left if max_len_align is true
+            max_len_align_padding = 1,
+
+            -- whether to align to the extreme right or not
+            right_align = false,
+
+            -- padding from the right if right_align is true
+            right_align_padding = 7,
+        },
+
+        hover_actions = {
+            -- the border that is used for the hover window
+            -- see vim.api.nvim_open_win()
+            border = {
+              {"╭", "FloatBorder"},
+              {"─", "FloatBorder"},
+              {"╮", "FloatBorder"},
+              {"│", "FloatBorder"},
+              {"╯", "FloatBorder"},
+              {"─", "FloatBorder"},
+              {"╰", "FloatBorder"},
+              {"│", "FloatBorder"}
+            },
+        }
+    },
+
+    -- all the opts to send to nvim-lspconfig
+    -- these override the defaults set by rust-tools.nvim
+    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+    server = {
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+              command = "clippy"
+          },
+        }
+      }
+    }, 
+}
+
+require('rust-tools').setup(opts)
+EOF
+" }}}
+
+" compe {{{
+lua <<EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = {
+    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    max_width = 120,
+    min_width = 60,
+    max_height = math.floor(vim.o.lines * 0.3),
+    min_height = 1,
+  };
+  source = {
+    path = true,
+    buffer = false,
+    calc = true,
+    nvim_lsp = true,
+    nvim_lua = true,
+    vsnip = false,
+    ultisnips = false,
+    luasnip = false,
+    tabnine = {
+      max_line = 1000,
+      max_num_results = 6,
+      priority = 10,
+      sort = false, -- setting sort to false means compe will leave tabnine to sort the completion items
+      show_prediction_strength = true,
+      ignore_pattern = '',
+    },
+  };
+}
+
+-- based on https://github.com/hrsh7th/nvim-compe#how-to-use-tab-to-navigate-completion-menu
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+EOF
+" }}}
 
 " Deoplete {{{
 " ______________________________________________________________________
 
 " don't enable at startup, enable on insert
-let g:deoplete#enable_at_startup = 0
-autocmd InsertEnter * call deoplete#enable()
+"let g:deoplete#enable_at_startup = 0
+"autocmd InsertEnter * call deoplete#enable()
 
-" disable some deoplete sources. (aka all default ones + ale)
-" _ = all file types, but more can be added per type
-"
-" all default sources
-" https://github.com/Shougo/deoplete.nvim/blob/0901b1886208a32880b92f22bf8f38a17e95045a/doc/deoplete.txt#L625-L759
-call deoplete#custom#option('ignore_sources', {
-  \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
-  \ })
+"" disable some deoplete sources. (aka all default ones + ale)
+"" _ = all file types, but more can be added per type
+""
+"" all default sources
+"" https://github.com/Shougo/deoplete.nvim/blob/0901b1886208a32880b92f22bf8f38a17e95045a/doc/deoplete.txt#L625-L759
+"call deoplete#custom#option('ignore_sources', {
+"  \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
+"  \ })
 
-call deoplete#custom#source('tabnine', 'rank', 10)
-call deoplete#custom#source('ultisnips', 'rank', 100)
-call deoplete#custom#source('LanguageClient', 'rank', 1000)
+"call deoplete#custom#source('tabnine', 'rank', 10)
+"call deoplete#custom#source('ultisnips', 'rank', 100)
+"call deoplete#custom#source('LanguageClient', 'rank', 1000)
 
-" parallel execution, one process per source
-call deoplete#custom#option('num_processes', 0)
+"" parallel execution, one process per source
+"call deoplete#custom#option('num_processes', 0)
 
 " }}}
 
@@ -47,71 +212,22 @@ let g:ale_lint_on_text_changed     = 'never'
 
 " }}}
 
-" FZF {{{
-
-" default fzf on the shell ignores based on gitignore, in vim I don't want
-" this. Fot the cases where I want this, I'll use git ls-files
-let $FZF_DEFAULT_COMMAND="fd --type f --type l --no-ignore-vcs --hidden --follow"
-
-
-" adds c-q to move the currently selected items from fzf into quickfix
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-
-" new floating layout
-let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
-
-
-" custom GitFiles, to also show unstaged files
-command! -bang GitFiles call fzf#vim#gitfiles('--cached --exclude-standard --others', 0)
-
-
-" customer Ag, only for preview
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview('down'))
-cnoreabbrev Ag Rg
-
-
-command! -bang BTags
-  \ call fzf#vim#buffer_tags('', {
-  \     'options': '--with-nth 1,5
-  \                 --delimiter "\t"
-  \                 --reverse'
-  \ })
-
-command! -bang Tags
-  \ call fzf#vim#tags('', {
-  \     'options': '--with-nth 1,5,2
-  \                 --delimiter "\t"
-  \                 --reverse'
-  \ })
-
-" just the default Buffers/Helptext beause they disappeared when I updated
-" from homebrew-fzf to github-fzf. No time to research for now.
-command! -bar -bang -nargs=? -complete=buffer Buffers  call fzf#vim#buffers(<q-args>, <bang>0)
-command! -bar -bang Helptags                           call fzf#vim#helptags(<bang>0)
-
-" }}}
-
-" Echodoc {{{
-set cmdheight=2
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'signature'
-
+" treesitter {{{
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
 " }}}
 
 " indentline {{{
-let g:indentLine_char = '│'
-let g:indentLine_enabled = 1
+" let g:indentLine_char = '│'
+" let g:indentLine_enabled = 1
 " }}}
 
 " Notational {{{
@@ -138,11 +254,11 @@ let g:dispatch_tmux_height = 20
 
 
 " context {{{
-let g:context_presenter = 'nvim-float'
-let g:context_border_char = '─' " '▬'
-let g:context_enabled = 1
-let g:context_nvim_no_redraw = 1
-
+lua <<EOF
+require'treesitter-context.config'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+}
+EOF
 " }}}
 
 
@@ -155,19 +271,6 @@ let g:netrw_liststyle = 3 " tree view
 let g:netrw_altv = 1 " open split on the right
 
 " let g:netrw_list_hide=netrw_gitignore#Hide()
-
-" }}}
-
-
-" goyo / limelight {{{
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-let g:goyo_width=90  " default is 80, but 88 python lines should also fit
-
-" https://github.com/junegunn/limelight.vim/issues/7
-let g:limelight_conceal_ctermfg = 100
-let g:limelight_conceal_guifg = '#888888'
-
 
 " }}}
 
@@ -185,20 +288,5 @@ let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' '
 let g:requirements#detect_filename_pattern = '\vrequirement?s\_.*\.(txt|in)$'
 
 " }}}
-
-" ultisnips {{{
-
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<alt-tab>"
-
-" }}}
-
-" doge {{{
-
-let g:doge_mapping="<Leader>g"
-
-" }}}
-
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0

@@ -6,23 +6,23 @@ nmap <leader>tl :TestLast<CR>
 
 source $HOME/.config/nvim/languageserver.vim
 
-let g:ale_fixers.rust = ['rustfmt']
-let g:ale_linters.rust = ['cargo', 'analyzer']
+" let g:ale_fixers.rust = ['rustfmt']
+" let g:ale_linters.rust = ['cargo', 'analyzer']
 
-let b:ale_rust_rustfmt_options = '--edition 2018'
+" let b:ale_rust_rustfmt_options = '--edition 2018'
 
-let b:ale_rust_cargo_use_clippy = 1
-let g:ale_rust_cargo_clippy_options = '-- -D warnings -W clippy::all -W clippy::nursery' "  -W clippy::pedantic'
-let g:ale_rust_cargo_check_tests = 1
-let g:ale_rust_cargo_check_all_targets = 1
-let g:ale_rust_cargo_check_examples = 1
+" let b:ale_rust_cargo_use_clippy = 1
+" let g:ale_rust_cargo_clippy_options = '-- -D warnings -W clippy::all -W clippy::nursery' "  -W clippy::pedantic'
+" let g:ale_rust_cargo_check_tests = 1
+" let g:ale_rust_cargo_check_all_targets = 1
+" let g:ale_rust_cargo_check_examples = 1
 
-let g:ale_rust_rls_executable = g:LanguageClient_serverCommands.rust[0]
-let g:ale_rust_rls_config = {
-      \   'rust': {
-      \     'clippy_preference': 'on'
-      \   }
-      \ }
+" let g:ale_rust_rls_executable = g:LanguageClient_serverCommands.rust[0]
+" let g:ale_rust_rls_config = {
+"       \   'rust': {
+"       \     'clippy_preference': 'on'
+"       \   }
+"       \ }
 
 
 compiler cargo

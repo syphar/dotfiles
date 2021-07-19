@@ -6,7 +6,7 @@ nmap <leader>tl :TestLast<CR>
 
 source $HOME/.config/nvim/languageserver.vim
 
-let b:indentLine_enabled = 0
+" let b:indent_blankline_enabled = 0
 
 let g:test#python#pytest#options = {
     \ 'nearest': '--show-capture=no --disable-warnings --tb=short',
@@ -15,8 +15,8 @@ let g:test#python#pytest#options = {
   \}
 
 
-let g:ale_linters = {"python": ['flake8', 'pyright', 'pylint', 'pydocstyle']}
-let g:ale_fixers.python = ['black', 'autopep8', 'yapf', 'isort']
+" let g:ale_linters = {"python": ['flake8', 'pyright', 'pylint', 'pydocstyle']}
+" let g:ale_fixers.python = ['black', 'autopep8', 'yapf', 'isort']
 
 " type ,p to insert breakpoint. ^[ is at the end.  Insert with ctrl v and then esc
 " (the github web gui doesn't display control characters, but it is there)

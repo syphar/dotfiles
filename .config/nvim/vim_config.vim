@@ -47,7 +47,7 @@ let g:jellybeans_overrides = {
 \    'SignColumn': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
 \    'VertSplit': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' }
 \}
-colorscheme jellybeans
+colorscheme jellybeans-nvim
 
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
@@ -75,7 +75,8 @@ set equalalways
 autocmd BufNewFile,BufRead *.crs set filetype=rust
 
 " don't show docstring when completing
-set completeopt-=preview
+" set completeopt-=preview
+set completeopt=menuone,noselect
 
 set foldmethod=manual
 set foldlevelstart=10   " open most folds by default

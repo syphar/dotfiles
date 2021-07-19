@@ -31,15 +31,14 @@ nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 " nnoremap <silent> cp "+y
 " nnoremap <silent> cpp "+yy
 
-" fzf
-map <C-P> :GitFiles<CR>
-nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', 0)<CR>
+" telescope
+nnoremap <C-P> <cmd>Telescope find_files theme=get_dropdown<cr>
+" nmap <leader>p :call fzf#vim#files('$VIRTUAL_ENV', 0)<CR>
 
-nmap <leader>f :BTags<CR>
-nmap <leader>F :Tags<CR>
-nmap <leader>m :Buffers<CR>
-nmap <leader>h :Helptags<CR>
-nmap <leader>s :Snippets<CR>
+nnoremap <leader>f <cmd>Telescope lsp_document_symbols theme=get_dropdown<cr>
+nnoremap <leader>F <cmd>Telescope tags theme=get_dropdown<cr>
+nnoremap <leader>m <cmd>Telescope buffers theme=get_dropdown<cr>
+nnoremap <leader>h <cmd>Telescope help_tags theme=get_dropdown<cr>
 
 " Limelight for a selected range
 nmap <Leader>l <Plug>(Limelight)
@@ -47,9 +46,9 @@ xmap <Leader>l <Plug>(Limelight)
 
 nmap <silent> <leader>d <Plug>DashSearch
 
-" run Rg with word under cursor or selection
-nmap <leader>ag "zyiW:exe "Rg ".@z.""<CR>
-vnoremap <leader>ag "zy:exe "Rg ".@z.""<CR>
+nmap <leader>rg <cmd>Telescope live_grep theme=get_dropdown<cr>
+" find word under cursor in project
+nmap <leader>ag <cmd>Telescope grep_string theme=get_dropdown<cr>
 
 " show current file on master
 nmap <leader>em :Gedit master:%<CR>
@@ -57,8 +56,15 @@ nmap <leader>em :Gedit master:%<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" nvim-compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
 " inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 function! GetBufferList()
