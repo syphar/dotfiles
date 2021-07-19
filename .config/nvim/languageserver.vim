@@ -30,9 +30,16 @@ lsp.pylsp.setup({
                 },
                 jedi_signature_help = {
                     enabled = false
-                }
+                },
             }
         }
+    }
+})
+
+lsp.pyright.setup({
+    settings = {
+        disableLanguageServices = true,
+        disableOrganizeImports = true,
     }
 })
 
