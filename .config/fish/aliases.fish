@@ -47,6 +47,7 @@ abbr -ag gc git commit
 abbr -ag gs git stash
 abbr -ag gsa git stash apply
 abbr -ag gsc git stash clear
+abbr -ag grc git rebase --continue
 
 alias pr-create="gh pr create --fill --draft --assignee syphar"
 alias pr-open="gh pr view --web"
