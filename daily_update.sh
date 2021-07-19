@@ -24,7 +24,9 @@ brew cleanup -s
 ## install/update pipx packages
 xargs -n 1 pipx install < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all
-pipx inject python-lsp-server pyls-flake8 mypy-ls pyls-isort python-lsp-black
+pipx inject python-lsp-server pyls-isort python-lsp-black
+# it seems like pyls-flake8 is broken. will fix later
+# mypy is too slow for backend
 
 ## rust environment
 rustup update
