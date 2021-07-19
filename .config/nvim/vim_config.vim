@@ -74,6 +74,9 @@ set equalalways
 " set rust filetype for crs
 autocmd BufNewFile,BufRead *.crs set filetype=rust
 
+" set TOML file type for poetry.lock
+autocmd BufNewFile,BufRead poetry.lock set filetype=toml
+
 " don't show docstring when completing
 " set completeopt-=preview
 set completeopt=menuone,noselect
