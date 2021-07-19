@@ -10,3 +10,4 @@ pre-commit
 yq
 dephell
 lookatme
+python-lsp-server[all]

@@ -24,6 +24,7 @@ brew cleanup -s
 ## install/update pipx packages
 xargs -n 1 pipx install < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all
+pipx inject python-lsp-server pyls-flake8 mypy-ls pyls-isort python-lsp-black
 
 ## rust environment
 rustup update
@@ -46,7 +47,7 @@ mackup restore --force
 mackup backup
 
 # update certain virtualenv
-./update_virtualenv.sh "$SRC_DIR/pyls/venv" "python-language-server"
+# ./update_virtualenv.sh "$SRC_DIR/pyls/venv" "python-language-server"
 ./update_virtualenv.sh "$SRC_DIR/neovim_env/venv"
 
 # copy mackup files to dotfiles
