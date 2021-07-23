@@ -22,12 +22,6 @@ lsp.pylsp.setup({
                 pyflakes = {
                     enabled = true
                 },
-                autopep8 = {
-                    enabled = false
-                },
-                yapf = {
-                    enabled = false
-                },
                 jedi_signature_help = {
                     enabled = false
                 },
