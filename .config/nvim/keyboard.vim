@@ -35,7 +35,7 @@ nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 nnoremap <C-P> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({find_command={"fd", "--type", "f", "--hidden", "--no-ignore", ".", vim.env.VIRTUAL_ENV}}))<cr>
 
-nnoremap <leader>f <cmd>Telescope lsp_document_symbols theme=get_dropdown<cr>
+nnoremap <leader>f <cmd>Telescope treesitter theme=get_dropdown<cr>
 nnoremap <leader>F <cmd>Telescope tags theme=get_dropdown<cr>
 nnoremap <leader>m <cmd>Telescope buffers theme=get_dropdown<cr>
 nnoremap <leader>h <cmd>Telescope help_tags theme=get_dropdown<cr>
