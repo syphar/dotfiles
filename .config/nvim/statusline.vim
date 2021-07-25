@@ -4,12 +4,6 @@ set noshowmode
 " always show status
 set laststatus=2
 
-let g:lightline#ale#indicator_checking = "\uf110"
-let g:lightline#ale#indicator_warnings = "\uf071"
-let g:lightline#ale#indicator_errors = "\uf05e"
-let g:lightline#ale#indicator_ok = "\uf00c"
-
-
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'mode_map': {
@@ -34,7 +28,6 @@ let g:lightline.active = {
             \ ],
             \ 'right': [
             \   [ 'indicator', 'lineinfo', 'filetype' ],
-            \   [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
             \ ]
             \ }
 
@@ -54,18 +47,6 @@ let g:lightline.component = {
 
 let g:lightline.component_function = {
             \ 'gitbranch': 'fugitive#head',
-            \ }
-
-let g:lightline.component_expand = {
-            \ 'linter_checking': 'lightline#ale#checking',
-            \ 'linter_warnings': 'lightline#ale#warnings',
-            \ 'linter_errors': 'lightline#ale#errors',
-            \ 'linter_ok': 'lightline#ale#ok',
-            \ }
-
-let g:lightline.component_type = {
-            \ 'linter_warnings': 'warning',
-            \ 'linter_errors': 'error'
             \ }
 
 " vim: et ts=2 sts=2 sw=2
