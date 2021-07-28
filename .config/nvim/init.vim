@@ -38,6 +38,7 @@ if dein#load_state('$HOME/.cache/dein')
 
   " telescope
   call dein#add('nvim-telescope/telescope.nvim')
+  call dein#add('nvim-telescope/telescope-fzf-native.nvim', {'build': 'make'})
 
   " GIT integration
   call dein#add('tpope/vim-fugitive') " git commands
