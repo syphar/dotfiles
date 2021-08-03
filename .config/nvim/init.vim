@@ -18,7 +18,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('rktjmp/lush.nvim') " foundation for colorscheme
   call dein#add('metalelf0/jellybeans-nvim')
   call dein#add('itchyny/lightline.vim')
-  " call dein#add('maximbaz/lightline-ale')
+  call dein#add('josa42/nvim-lightline-lsp')
   call dein#add('drzel/vim-line-no-indicator')
 
   " general plugins
