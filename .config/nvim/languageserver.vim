@@ -39,7 +39,7 @@ lsp.pyright.setup({
 
 EOF
 
-autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 " " pyls only works when run in a venv with version smaller than the smallest
 " " project python runtime
