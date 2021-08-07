@@ -5,7 +5,7 @@ set noshowmode
 set laststatus=2
 
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'ayu',
       \ 'mode_map': {
         \ 'n' : 'N',
         \ 'i' : 'I',

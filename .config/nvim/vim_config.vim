@@ -39,16 +39,20 @@ set concealcursor=""
 " to get an incremental visual feedback when doing the substitude command.
 set inccommand=split
 
-set background=dark
+set background=light
 
 " these overrides have to be defined before I load the colorscheme
-let g:jellybeans_overrides = {
-\    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-\    'SignColumn': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
-\    'VertSplit': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' }
-\}
-colorscheme jellybeans-nvim
-
+" let g:jellybeans_overrides = {
+" \    'background': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+" \    'SignColumn': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' },
+" \    'VertSplit': { 'ctermbg': 'none', '256ctermbg': 'none', 'guibg': 'none' }
+" \}
+" colorscheme jellybeans-nvim
+" colorscheme pencil
+colorscheme ayu
+let ayucolor="light"
+let g:ayu_italic_comment = 1
+let g:ayu_sign_contrast = 1
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags

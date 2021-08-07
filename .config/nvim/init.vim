@@ -16,7 +16,12 @@ if dein#load_state('$HOME/.cache/dein')
 
   " interface
   call dein#add('rktjmp/lush.nvim') " foundation for colorscheme
-  call dein#add('metalelf0/jellybeans-nvim')
+  call dein#add('preservim/vim-colors-pencil')
+  call dein#add('luxed/ayu-vim')
+  " call dein#add('tjdevries/colorbuddy.vim')
+  " call dein#add('Th3Whit3Wolf/onebuddy')
+  " call dein#add('mikker/lightline-theme-pencil')
+  " call dein#add('metalelf0/jellybeans-nvim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
   call dein#add('drzel/vim-line-no-indicator')
