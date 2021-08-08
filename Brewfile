@@ -1,3 +1,4 @@
+tap "afnanenayet/tap"
 tap "cjbassi/ytop"
 tap "eth-p/software"
 tap "fastly/tap"
@@ -371,6 +372,7 @@ brew "wrk"
 brew "zlib"
 brew "zsh"
 brew "zsh-completions", link: false
+brew "afnanenayet/tap/diffsitter"
 brew "cjbassi/ytop/ytop"
 brew "eth-p/software/bat-extras"
 brew "fastly/tap/fastly"
