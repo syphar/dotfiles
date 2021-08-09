@@ -46,33 +46,38 @@ debug:
   render_timer: false
   persistent_logging: false  # tmux does it
 
-# ayu-light
+# github Alacritty Colors
 colors:
+  # Default colors
   primary:
-    background: '0xfafafa'
-    foreground: '0x5b6672'
+    background: '0xffffff'
+    foreground: '0x586069'
 
   # Normal colors
   normal:
-    black: '0x000000' #0
-    red: '0xf2590b' #1
-    green: '0x76cc00' #2
-    yellow: '0xf29717' #3
-    blue: '0x41a5d9' #4
-    magenta: '0x9965cc' #5
-    cyan: '0x4dbf98' #6
-    white: '0xc7c7c7' #7
+    black:   '0x697179'
+    red:     '0xd03d3d'
+    green:   '0x14ce14'
+    yellow:  '0x949800'
+    blue:    '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan:    '0x0598bc'
+    white:   '0x586069'
 
   # Bright colors
   bright:
-    black: '0x676767'
-    red: '0xd6646a' #9
-    green: '0xa3d900' #10
-    yellow: '0xe7c446' #11
-    blue: '0x6871ff' #12
-    magenta: '0xa37acc' #13
-    cyan: '0x56d9ad' #14
-    white: '0xfeffff' #15
+    black:   '0x666666'
+    red:     '0xcd3131'
+    green:   '0x14ce14'
+    yellow:  '0xb5ba00'
+    blue:    '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan:    '0x0598bc'
+    white:   '0x586069'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcd3131' }
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

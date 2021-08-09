@@ -37,22 +37,21 @@ lsp.pyright.setup({
     }
 })
 
+lsp.efm.setup({
+    init_options = {documentFormatting = true},
+    settings = {
+        rootMarkers = {".git/"},
+        languages = {
+            lua = {
+                {formatCommand = "lua-format -i", formatStdin = true}
+            }
+        }
+    }
+})
+
 EOF
 
 autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)
-
-" " pyls only works when run in a venv with version smaller than the smallest
-" " project python runtime
-" let g:LanguageClient_serverCommands = {
-"     \ 'python': ['~/src/pyls/venv/bin/pyls'],
-"     \ 'rust': ['~/.local/bin/rust-analyzer'],
-"     \ 'go': ['gopls'],
-"     \ 'typescript': ['typescript-language-server', '--stdio'],
-"     \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-"     \ }
-
-" let g:LanguageClient_diagnosticsEnable = 0  " disable LC-Checks because I'm using ALE
-" let g:LanguageClient_useVirtualText="CodeLens"
 
 " nnoremap <F7> :call LanguageClient_contextMenu()<CR>
 " nnoremap <F8> :call LanguageClient#handleCodeLensAction()<CR>
@@ -61,10 +60,3 @@ nnoremap <silent> <F2> :lua vim.lsp.buf.rename()<CR>
 " nmap <leader>c :call LanguageClient#textDocument_visualCodeAction()<CR>
 nmap <leader>gd :lua vim.lsp.buf.definition()<CR>
 nmap <leader>n :lua vim.lsp.buf.references()<CR>
-
-
-" " nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-" nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-" " nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-" " nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-" nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>

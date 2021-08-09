@@ -164,53 +164,6 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 " }}}
 
-" Deoplete {{{
-" ______________________________________________________________________
-
-" don't enable at startup, enable on insert
-"let g:deoplete#enable_at_startup = 0
-"autocmd InsertEnter * call deoplete#enable()
-
-"" disable some deoplete sources. (aka all default ones + ale)
-"" _ = all file types, but more can be added per type
-""
-"" all default sources
-"" https://github.com/Shougo/deoplete.nvim/blob/0901b1886208a32880b92f22bf8f38a17e95045a/doc/deoplete.txt#L625-L759
-"call deoplete#custom#option('ignore_sources', {
-"  \ '_': ['tag', 'buffer', 'ale', 'around', 'file', 'member', 'omni']
-"  \ })
-
-"call deoplete#custom#source('tabnine', 'rank', 10)
-"call deoplete#custom#source('ultisnips', 'rank', 100)
-"call deoplete#custom#source('LanguageClient', 'rank', 1000)
-
-"" parallel execution, one process per source
-"call deoplete#custom#option('num_processes', 0)
-
-" }}}
-
-" ALE {{{
-" ______________________________________________________________________
-
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-let g:ale_virtualtext_cursor = 1
-let g:ale_set_signs = 1
-
-
-" filetype specific fixers and linters in ftplugin
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fix_on_save = 1
-
-" only lint on safe
-let g:ale_lint_on_enter            = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_insert_leave     = 0
-let g:ale_lint_on_save             = 1
-let g:ale_lint_on_text_changed     = 'never'
-
-
-" }}}
 
 " treesitter {{{
 lua <<EOF
@@ -220,25 +173,18 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {},  -- list of language that will be disabled
-  },
-  rainbow = {
-    enable = true,
-    colors = require('ayu').rainbow_colors
   }
 }
 EOF
 " }}}
 
-" indentline {{{
-" let g:indentLine_char = '│'
-" let g:indentLine_enabled = 1
-" }}}
-
-" Notational {{{
-
-let g:nv_search_paths = ['~/Dropbox/notes/']
-let g:nv_create_note_window = 'split'
-
+" github theme {{{
+lua <<EOF
+require("github-theme").setup({
+  themeStyle = "light",
+  transparent = true,
+})
+EOF
 " }}}
 
 " vim-test {{{
@@ -263,6 +209,9 @@ require'treesitter-context.config'.setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 }
 EOF
+
+hi! link TreesitterContext Folded
+
 " }}}
 
 

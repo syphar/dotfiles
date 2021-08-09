@@ -15,13 +15,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nvim-lua/plenary.nvim')
 
   " interface
-  call dein#add('rktjmp/lush.nvim') " foundation for colorscheme
-  call dein#add('preservim/vim-colors-pencil')
-  call dein#add('luxed/ayu-vim')
-  " call dein#add('tjdevries/colorbuddy.vim')
-  " call dein#add('Th3Whit3Wolf/onebuddy')
-  " call dein#add('mikker/lightline-theme-pencil')
-  " call dein#add('metalelf0/jellybeans-nvim')
+  call dein#add('projekt0n/github-nvim-theme')
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
   call dein#add('drzel/vim-line-no-indicator')
@@ -49,18 +43,14 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('tpope/vim-fugitive') " git commands
   call dein#add('tpope/vim-rhubarb')  " fugitive and github integration
   call dein#add('lewis6991/gitsigns.nvim')  " git changes in sign column
-  call dein#add('rhysd/git-messenger.vim') " git blame for single line + history
 
   " specific file types
   call dein#add('cespare/vim-toml', {'on_ft': ['toml']})
   call dein#add('elzr/vim-json', { 'on_ft': ['json'] })
   call dein#add('plasticboy/vim-markdown', { 'on_ft': ['md', 'markdown'] })
-  call dein#add('tbastos/vim-lua', { 'on_ft': ['lua']})
   call dein#add('raimon49/requirements.txt.vim', { 'on_ft': ['requirements'] })
   call dein#add('rust-lang/rust.vim', {'on_ft': ['rust']}) " rust
   call dein#add('simrat39/rust-tools.nvim')
-  call dein#add('Glench/Vim-Jinja2-Syntax')  " jinja 2
-  call dein#add('ron-rs/ron.vim.git') " rust object notations
   call dein#add('dag/vim-fish', {'on_ft': ['fish']}) " fish
 
   " generic software dev stuff
@@ -69,11 +59,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('folke/trouble.nvim')
 
   call dein#add('rizzatti/dash.vim')
-  call dein#add('liuchengxu/vista.vim', {'on_cmd': ['Vista!!']})  " tagbar
-  " call dein#add('lukas-reineke/indent-blankline.nvim') " indent helper lines
-  " call dein#add('Shougo/echodoc.vim') " Show signature
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
-  " call dein#add('dense-analysis/ale') " linting / fixing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
   call dein#add('editorconfig/editorconfig-vim') " read editorconfig and configure vim
   call dein#add('romgrk/nvim-treesitter-context') " show context based on treesitter
@@ -90,21 +76,10 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('hrsh7th/nvim-compe')  " completion
   call dein#add('tzachar/compe-tabnine', {'build': './install.sh'}) "ML-based automomplete
 
-
-  " call dein#add('Shougo/deoplete.nvim') " autocomplete
-  " call dein#add('tbodt/deoplete-tabnine', { 'build': './install.sh' }) " ML-based autocomplete
-
-  " call dein#add('autozimu/LanguageClient-neovim', {
-  "    \ 'rev': 'next',
-  "    \ 'build': 'bash install.sh',
-  "    \ 'on_ft': ['python', 'rust', 'go', 'typescript', 'typescript.tsx'],
-  "    \ })
-
   " python stuff
   call dein#add('Vimjas/vim-python-pep8-indent', {'on_ft': ['python']})
   call dein#add('jeetsukumaran/vim-pythonsense', {'on_ft': ['python']})
   call dein#add('5long/pytest-vim-compiler', {'on_ft': ['python']})
-
 
   " Required:
   call dein#end()
