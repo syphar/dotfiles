@@ -8,7 +8,8 @@
 	trustExitCode = true
 	autocrlf = input
 	; pager = diff-so-fancy | less --tabs=4 -RFX
-    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Boron'
+    ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='GitHub'
+    pager = delta --light --syntax-theme='GitHub'
 
 [interactive]
     diffFilter = delta --color-only
