@@ -25,29 +25,34 @@ lsp.pylsp.setup({
                 jedi_signature_help = {
                     enabled = false
                 },
-            }
-        }
+                pylsp_mypy = {
+                    enabled = true, 
+                    live_mode = false,
+                    dmypy = true,
+                }
+            },
+        },
     }
 })
 
-lsp.pyright.setup({
-    settings = {
-        disableLanguageServices = true,
-        disableOrganizeImports = true,
-    }
-})
+-- lsp.pyright.setup({
+--     settings = {
+--         disableLanguageServices = true,
+--         disableOrganizeImports = true,
+--     }
+-- })
 
-lsp.efm.setup({
-    init_options = {documentFormatting = true},
-    settings = {
-        rootMarkers = {".git/"},
-        languages = {
-            lua = {
-                {formatCommand = "lua-format -i", formatStdin = true}
-            }
-        }
-    }
-})
+-- lsp.efm.setup({
+--     init_options = {documentFormatting = true},
+--     settings = {
+--         rootMarkers = {".git/"},
+--         languages = {
+--             lua = {
+--                 {formatCommand = "lua-format -i", formatStdin = true}
+--             }
+--         }
+--     }
+-- })
 
 EOF
 
