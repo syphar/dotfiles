@@ -58,6 +58,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('kyazdani42/nvim-web-devicons')
   call dein#add('folke/trouble.nvim')
 
+  call dein#add('cohama/lexima.vim') " auto close braces
   call dein#add('rizzatti/dash.vim')
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
   call dein#add('tpope/vim-commentary') " comment/uncomment on gcc
