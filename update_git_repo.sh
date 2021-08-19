@@ -6,6 +6,8 @@ echo "updating git repo: $1"
 
 cd "$1"
 
+~/bin/rebuild_tags.sh
+
 ln -s $HOME/src/dotfiles/git-hooks/* "$1/.git/hooks" || echo "already exists"
 
 git gc
