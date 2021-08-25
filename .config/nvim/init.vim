@@ -30,6 +30,7 @@ if dein#load_state('$HOME/.cache/dein')
 
   " treesitter base
   call dein#add('nvim-treesitter/nvim-treesitter')
+  call dein#add('nvim-treesitter/playground')
 
   " file management / search
   call dein#add('tpope/vim-vinegar') " simple 'dig through current folder'  on the - key

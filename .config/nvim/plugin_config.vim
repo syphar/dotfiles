@@ -181,8 +181,12 @@ EOF
 " github theme {{{
 lua <<EOF
 require("github-theme").setup({
-  themeStyle = "light",
-  transparent = true,
+  themeStyle="light",
+  transparent=true,
+  commentStyle="italic",
+  keywordStyle="bold",
+  functionStyle="NONE",
+  variableStyle="NONE"
 })
 EOF
 " }}}
