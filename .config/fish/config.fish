@@ -2,7 +2,7 @@ source $XDG_CONFIG_HOME/fish/aliases.fish
 source $XDG_CONFIG_HOME/fish/key_bindings.fish
 source $XDG_CONFIG_HOME/fish/environment.fish
 
-set --global tide_pwd_truncate_margin 999
+set --global tide_prompt_min_cols 999
 set --global tide_right_prompt_items status cmd_duration context jobs heroku rustc virtual_env
 
 fzf_configure_bindings --directory=\cf
