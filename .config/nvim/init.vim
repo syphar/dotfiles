@@ -15,7 +15,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nvim-lua/plenary.nvim')
 
   " interface
-  call dein#add('projekt0n/github-nvim-theme')
+  call dein#add('projekt0n/github-nvim-theme', {'rev': '8e1cdd2'})
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
   call dein#add('drzel/vim-line-no-indicator')
