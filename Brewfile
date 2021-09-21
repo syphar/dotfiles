@@ -345,6 +345,7 @@ brew "pypy3"
 brew "q"
 brew "rabbitmq", restart_service: true
 brew "ranger"
+brew "rclone"
 brew "re2c"
 brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
