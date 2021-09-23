@@ -12,3 +12,4 @@ dephell
 lookatme
 python-lsp-server[flake8,pydocstyle,pycodestyle,pyflakes,pylint]
 sqlfluff
+gsutil
