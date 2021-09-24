@@ -15,7 +15,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nvim-lua/plenary.nvim')
 
   " interface
-  call dein#add('projekt0n/github-nvim-theme', {'rev': '8e1cdd2'})
+  " call dein#add('projekt0n/github-nvim-theme', {'rev': '8e1cdd2'})
+  call dein#add('projekt0n/github-nvim-theme')
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
   call dein#add('drzel/vim-line-no-indicator')
@@ -37,7 +38,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
   " telescope
-  call dein#add('nvim-telescope/telescope.nvim', {'rev': 'f1a27baf279976845eb43c65e99a71d7f0f92d02'})
+  " call dein#add('nvim-telescope/telescope.nvim', {'rev': 'f1a27baf279976845eb43c65e99a71d7f0f92d02'})
+  call dein#add('nvim-telescope/telescope.nvim')
   call dein#add('nvim-telescope/telescope-fzf-native.nvim', {'build': 'make'})
 
   " GIT integration
