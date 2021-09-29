@@ -38,8 +38,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
   " telescope
-  " call dein#add('nvim-telescope/telescope.nvim', {'rev': 'f1a27baf279976845eb43c65e99a71d7f0f92d02'})
-  call dein#add('nvim-telescope/telescope.nvim')
+  call dein#add('nvim-telescope/telescope.nvim', {'rev': 'f1a27baf279976845eb43c65e99a71d7f0f92d02'})
+  " call dein#add('nvim-telescope/telescope.nvim')
   call dein#add('nvim-telescope/telescope-fzf-native.nvim', {'build': 'make'})
 
   " GIT integration
@@ -60,6 +60,8 @@ if dein#load_state('$HOME/.cache/dein')
   let dev_types = ['python', 'rust', 'yaml', 'json', 'vim']
   call dein#add('kyazdani42/nvim-web-devicons')
   call dein#add('folke/trouble.nvim')
+  call dein#add('kosayoda/nvim-lightbulb')
+  call dein#add('weilbith/nvim-code-action-menu')
 
   call dein#add('rizzatti/dash.vim')
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing

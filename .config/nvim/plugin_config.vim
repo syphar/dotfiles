@@ -274,5 +274,9 @@ require('telescope').load_extension('fzf')
 EOF 
 " }}}
 
+" lightbulb LSP {{{
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+" }}} 
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
 "
