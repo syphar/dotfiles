@@ -7,6 +7,7 @@ alias pipirt="pip install -r requirements_test.txt"
 alias tiga='tig --all'
 alias tigs='tig status'
 alias gb='git branch -vv'
+alias gp='git push'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 
 abbr -ag dcu docker compose up
