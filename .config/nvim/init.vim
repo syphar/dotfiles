@@ -61,7 +61,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('kyazdani42/nvim-web-devicons')
   call dein#add('folke/trouble.nvim')
   call dein#add('kosayoda/nvim-lightbulb')
-  call dein#add('weilbith/nvim-code-action-menu')
+  " call dein#add('weilbith/nvim-code-action-menu')
 
   call dein#add('rizzatti/dash.vim')
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing

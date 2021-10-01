@@ -39,9 +39,9 @@ nnoremap <leader>f <cmd>Telescope treesitter theme=get_dropdown<cr>
 nnoremap <leader>F <cmd>Telescope tags theme=get_dropdown<cr>
 nnoremap <leader>m <cmd>Telescope buffers theme=get_dropdown<cr>
 nnoremap <leader>h <cmd>Telescope help_tags theme=get_dropdown<cr>
-" nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
-nnoremap <leader>a <cmd>CodeActionMenu<cr>
-vnoremap <leader>a <cmd>CodeActionMenu<cr>
+nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
+" nnoremap <leader>a <cmd>CodeActionMenu<cr>
+" vnoremap <leader>a <cmd>CodeActionMenu<cr>
 
 " Limelight for a selected range
 nmap <Leader>l <Plug>(Limelight)
