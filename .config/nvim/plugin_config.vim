@@ -278,5 +278,26 @@ EOF
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 " }}} 
 
+
+" focus {{{
+lua << EOF 
+require("focus").setup()
+EOF 
+" }}} 
+
+" treesitter-textsubjects {{{
+lua << EOF 
+require'nvim-treesitter.configs'.setup {
+    textsubjects = {
+        enable = true,
+        keymaps = {
+            ['.'] = 'textsubjects-smart',
+            [';'] = 'textsubjects-container-outer',
+        }
+    },
+}
+EOF 
+" }}} 
+
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
 "

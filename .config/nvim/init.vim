@@ -15,7 +15,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nvim-lua/plenary.nvim')
 
   " interface
-  " call dein#add('projekt0n/github-nvim-theme', {'rev': '8e1cdd2'})
   call dein#add('projekt0n/github-nvim-theme')
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
@@ -28,6 +27,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('RyanMillerC/better-vim-tmux-resizer') " easily resize vim and tmux panes through meta+hjkl
   call dein#add('terryma/vim-expand-region') " intelligently expand selection with V / CTRL+V
   call dein#add('machakann/vim-highlightedyank') " highlight yanked area
+  call dein#add('beauwilliams/focus.nvim') " auto focus / resize for splits
 
   " treesitter base
   call dein#add('nvim-treesitter/nvim-treesitter')
@@ -62,6 +62,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('folke/trouble.nvim')
   call dein#add('kosayoda/nvim-lightbulb')
   " call dein#add('weilbith/nvim-code-action-menu')
+  call dein#add('RRethy/nvim-treesitter-textsubjects')
 
   call dein#add('rizzatti/dash.vim')
   call dein#add('rhysd/committia.vim') " Better COMMIT_EDITMSG editing
