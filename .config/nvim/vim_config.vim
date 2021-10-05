@@ -71,9 +71,8 @@ autocmd BufNewFile,BufRead *.crs set filetype=rust
 " set TOML file type for poetry.lock
 autocmd BufNewFile,BufRead poetry.lock set filetype=toml
 
-" don't show docstring when completing
-" set completeopt-=preview
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
+
 
 set foldmethod=manual
 set foldlevelstart=10   " open most folds by default
