@@ -278,6 +278,11 @@ EOF
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 " }}} 
 
+" GitSigns {{{
+lua << EOF 
+require('gitsigns').setup()
+EOF 
+" }}} 
 
 " focus {{{
 lua << EOF 

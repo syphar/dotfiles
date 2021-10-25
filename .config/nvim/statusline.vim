@@ -24,7 +24,7 @@ let g:lightline = {
 let g:lightline.active = {
   \ 'left': [
   \  [ 'mode', 'paste' ],
-  \  [ 'gitbranch', 'relativepath', 'modified', 'readonly' ],
+  \  [ 'gitbranch', 'relativepath', 'modified', 'readonly', 'gitsigns' ],
   \ ],
   \ 'right': [
   \   [ 'indicator', 'lineinfo', 'filetype' ],
@@ -44,7 +44,8 @@ let g:lightline.inactive = {
   \ }
 
 let g:lightline.component = {
-      \   'indicator': '%{LineNoIndicator()}'
+      \   'indicator': '%{LineNoIndicator()}',
+      \   'gitsigns': "%{get(b:,'gitsigns_status','')}",
       \ }
 
 let g:lightline.component_expand = {
