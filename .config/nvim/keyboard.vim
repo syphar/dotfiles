@@ -60,17 +60,6 @@ nmap <leader>em :Gedit master:%<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" nvim-compe
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-" deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-" inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
-
 function! GetBufferList()
   redir =>buflist
   silent! ls!
