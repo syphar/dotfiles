@@ -1,0 +1,50 @@
+# A minimal left prompt
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$character"""
+
+# move the rest of the prompt to the right
+right_format = """$all"""
+
+
+[git_branch]
+format="on [$branch]($style)"
+style = "bold bright-green"
+
+[python]
+format="[${symbol}${pyenv_prefix}(${version} )]($style)"
+symbol=" "
+style="bright-cyan"
+
+[nodejs]
+format="[$symbol($version )]($style)"
+style="green"
+
+[aws]
+disabled = true
+
+[directory]
+truncation_length = 5
+style = "bright-blue"
+
+[env_var.herokuapp]
+variable = "HEROKU_APP"
+format = "[$symbol $env_value]($style)"
+default = ""
+style = "blue"
+symbol=""
+
+[docker_context]
+disabled = true
+
+[package] 
+format="[$symbol$version]($style) "
+
+[rust] 
+format="[$symbol($version )]($style)"

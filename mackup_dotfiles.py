@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from pathlib import Path
-from mackup import utils, appsdb
+
+from mackup import appsdb, utils
 
 app_list = (
     "alacritty",
@@ -17,6 +18,7 @@ app_list = (
     "mytmuxinator",
     "pgsql",
     "ranger",
+    "starship",
     "tmate",
     "tmux",
     "tmuxinator",
