@@ -1,6 +1,3 @@
-env:
-  TERM: xterm-256color
-
 shell:
   program: /usr/local/bin/fish
   args:
@@ -26,11 +23,11 @@ font:
 
   italic:
     family: 'BlexMono NF'
-    style: LightItalic
+    style: Light Italic
 
   bold_italic:
     family: 'BlexMono NF'
-    style: MediumItalic
+    style: Medium Italic
 
   # Point size
   size: 15.0
