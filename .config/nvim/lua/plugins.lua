@@ -92,6 +92,7 @@ return require('packer').startup(function()
           },
         },
       }
+      vim.cmd[[hi! link TreesitterContext Folded]]
     end
   }
   use {
@@ -267,11 +268,11 @@ return require('packer').startup(function()
       vim.cmd[[let g:test#strategy = "dispatch"]]
       vim.cmd[[let g:test#preserve_screen = 0]]
       vim.cmd[[let g:test#python#runner = 'pytest']]
-    end 
+    end
   }
   use {
     "tpope/vim-dispatch",
-    config = function()
+    config = function() 
       vim.cmd[[let g:dispatch_quickfix_height = 20]]
       vim.cmd[[let g:dispatch_tmux_height = 20]]
     end

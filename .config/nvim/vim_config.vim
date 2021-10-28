@@ -44,9 +44,6 @@ set inccommand=split
 set background=light
 colorscheme github_light
 
-" better hilight for context
-hi! link TreesitterContext Folded
-
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
