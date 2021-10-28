@@ -42,12 +42,12 @@ set concealcursor=""
 set inccommand=split
 
 set background=light
-colorscheme github
+colorscheme github_light
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
-set tags=./tags;/,~/.vimtags
+set tags=./tags;/
 
 
 " no scrollbars

@@ -15,6 +15,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('nvim-lua/plenary.nvim')
 
   " interface
+  " call dein#add('projekt0n/github-nvim-theme', {'rev': '8fa1340868a5114bd104cbbf7b6404d516f33b3a'})
   call dein#add('projekt0n/github-nvim-theme')
   call dein#add('itchyny/lightline.vim')
   call dein#add('josa42/nvim-lightline-lsp')
@@ -38,8 +39,7 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('airblade/vim-rooter')  " automatically set root directory to project directory
 
   " telescope
-  call dein#add('nvim-telescope/telescope.nvim', {'rev': 'f1a27baf279976845eb43c65e99a71d7f0f92d02'})
-  " call dein#add('nvim-telescope/telescope.nvim')
+  call dein#add('nvim-telescope/telescope.nvim')
   call dein#add('nvim-telescope/telescope-fzf-native.nvim', {'build': 'make'})
 
   " GIT integration
@@ -61,7 +61,6 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('kyazdani42/nvim-web-devicons')
   call dein#add('folke/trouble.nvim')
   call dein#add('kosayoda/nvim-lightbulb')
-  " call dein#add('weilbith/nvim-code-action-menu')
   call dein#add('RRethy/nvim-treesitter-textsubjects')
 
   call dein#add('rizzatti/dash.vim')
@@ -105,5 +104,8 @@ source ~/.config/nvim/vim_config.vim
 source ~/.config/nvim/plugin_config.vim
 source ~/.config/nvim/statusline.vim
 source ~/.config/nvim/keyboard.vim
+
+" quickfix
+set nocursorline
 
 " vim: et ts=2 sts=2 sw=2

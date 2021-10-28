@@ -165,7 +165,7 @@ EOF
 " }}}
 
 
-" treesitter {{{
+"treesitter {{{
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -175,6 +175,7 @@ require'nvim-treesitter.configs'.setup {
     disable = {},  -- list of language that will be disabled
   }
 }
+
 EOF
 " }}}
 
@@ -326,4 +327,3 @@ EOF
 " }}} 
 
 " vim: et ts=2 sts=2 sw=2 foldmethod=marker foldlevel=0
-"
