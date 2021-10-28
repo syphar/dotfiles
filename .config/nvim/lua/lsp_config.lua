@@ -63,14 +63,6 @@ function cfg.lsp_setup()
 end
 
 function cfg.cmp_setup() 
-    require('cmp_tabnine.config'):setup({
-      max_lines = 1000;
-      max_num_results = 6;
-      priority = 10;
-      sort = false;
-      run_on_every_keystroke = true;
-    })
-
     local cmp = require'cmp'
 
     cmp.setup({
