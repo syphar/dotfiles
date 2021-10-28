@@ -161,6 +161,7 @@ return require('packer').startup(function()
     "simrat39/rust-tools.nvim", 
     ft = {"rust"}, 
     config = function() 
+      local my_lsp_cfg = require('lsp_config')
       local opts = {
         tools = { -- rust-tools options
             -- automatically set inlay hints (type hints)
@@ -229,7 +230,8 @@ return require('packer').startup(function()
         -- these override the defaults set by rust-tools.nvim
         -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
         server = {
-          on_attach = require('lsp_config').lsp_on_attach,
+          capabilities = my_lsp_cfg.updated_capabilities(),
+          on_attach = my_lsp_cfg.lsp_on_attach,
           settings = {
             ["rust-analyzer"] = {
               checkOnSave = {
@@ -301,9 +303,23 @@ return require('packer').startup(function()
   use "neovim/nvim-lspconfig"
   use "ray-x/lsp_signature.nvim"
 
--- "  call dein#add('hrsh7th/nvim-compe')  " completion
--- "  call dein#add('tzachar/compe-tabnine', {'build': './install.sh'}) "ML-based automomplete
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer", 
+      "hrsh7th/cmp-calc",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path", 
+      "octaltree/cmp-look", 
+    }, 
+  }
 
+  use {
+      "tzachar/cmp-tabnine",
+      run = "./install.sh",
+      requires = "hrsh7th/nvim-cmp",
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
