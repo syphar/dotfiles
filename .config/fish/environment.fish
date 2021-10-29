@@ -4,7 +4,7 @@ set --global -x VISUAL nvim
 set --global -x PAGER less
 set --global -x LANG en_US.UTF-8
 set --global -x LESS "-F -g -i -M -R -S -w -X -z-4"
-set --global -x TMPDIR "/private/tmp"
+set --global -x TMPDIR /private/tmp
 
 set --global -x VIRTUAL_ENV_DISABLE_PROMPT true
 set --global -x PIP_REQUIRE_VIRTUALENV true
@@ -20,7 +20,7 @@ set --global -x FZF_CTRL_T_COMMAND "fd $FD_OPTIONS"
 set --global -x FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS"
 
 # configure memoize-script in ~/bin/runcached
-set --global -x RUNCACHED_MAX_AGE 86400  # 1 day
+set --global -x RUNCACHED_MAX_AGE 86400 # 1 day
 set --global -x RUNCACHED_IGNORE_ENV 1
 set --global -x RUNCACHED_IGNORE_PWD 1
 
