@@ -4,7 +4,7 @@ nmap <leader>tf :TestFile<CR>
 nmap <leader>ts :TestSuite<CR>
 nmap <leader>tl :TestLast<CR>
 
-" compiler cargo
-" setlocal makeprg=cargo\ build
+nmap <leader>b :make build<CR>
+nmap <leader>c :make check<CR>
 
 let g:rust_fold=1
