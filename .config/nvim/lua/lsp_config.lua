@@ -68,6 +68,8 @@ function cfg.cmp_setup()
     cmp.setup({
       completion = {
         completeopt = 'menu,menuone,noselect',
+        autocomplete = false,
+        -- autocomplete = { "types.cmp.TriggerEvent.TextChanged" },
       },
       mapping = {
         ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -105,19 +107,6 @@ function cfg.cmp_setup()
         { name = 'cmdline' }
       })
     })
-
-    -- Add additional capabilities supported by nvim-cmp
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-    -- -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-    -- local lspconfig = require('lspconfig')
-    -- local servers = { 'pylsp', 'rust_analyzer'}
-    -- for _, lsp in ipairs(servers) do
-    --   lspconfig[lsp].setup {
-    --     capabilities = capabilities,
-    --   }
-    -- end
 end
 
 return cfg
