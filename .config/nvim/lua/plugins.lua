@@ -332,10 +332,9 @@ return require("packer").startup({
 						null_ls.builtins.formatting.rustfmt,
 						null_ls.builtins.formatting.stylua,
 						null_ls.builtins.formatting.trim_whitespace,
-            -- null_ls.builtins.formatting.sqlformat,
-            null_ls.builtins.diagnostics.selene,
-            null_ls.builtins.diagnostics.vint,
-            null_ls.builtins.formatting.trim_newlines,
+						-- null_ls.builtins.formatting.sqlformat,
+						null_ls.builtins.diagnostics.vint,
+						null_ls.builtins.formatting.trim_newlines,
 					},
 				})
 				require("lspconfig")["null-ls"].setup({
