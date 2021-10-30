@@ -39,6 +39,18 @@ end
 function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
+	lsp.rust_analyzer.setup({
+		on_attach = cfg.lsp_on_attach_without_formatting,
+		capabilities = cfg.updated_capabilities(),
+		settings = {
+			["rust-analyzer"] = {
+				checkOnSave = {
+					command = "clippy",
+				},
+			},
+		},
+	})
+
 	lsp.pylsp.setup({
 		capabilities = cfg.updated_capabilities(),
 		on_attach = cfg.lsp_on_attach_without_formatting,
@@ -66,6 +78,60 @@ function cfg.lsp_setup()
 				},
 			},
 		},
+	})
+
+	local null_ls = require("null-ls")
+	null_ls.config({
+		-- debug = true,
+		sources = {
+			null_ls.builtins.code_actions.gitsigns,
+			null_ls.builtins.diagnostics.flake8,
+			null_ls.builtins.diagnostics.luacheck,
+			null_ls.builtins.diagnostics.shellcheck,
+			null_ls.builtins.formatting.black,
+			null_ls.builtins.formatting.isort,
+			-- null_ls.builtins.formatting.rustfmt,
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.trim_whitespace,
+			-- null_ls.builtins.formatting.sqlformat,
+			null_ls.builtins.diagnostics.vint,
+			null_ls.builtins.formatting.trim_newlines,
+		},
+	})
+	local rustfmt_fixed = {
+		method = null_ls.methods.FORMATTING,
+		filetypes = { "rust" },
+		generator = null_ls.generator({
+			command = "rustfmt",
+			args = { "--emit=stdout", "--edition=2018" },
+			to_stdin = true,
+			ignore_stderr = true,
+			on_output = function(params, done)
+				local output = params.output
+				if not output then
+					return done()
+				end
+
+				return done({
+					{
+						row = 1,
+						col = 1,
+						-- source: https://microsoft.github.io/language-server-protocol/specifications/specification-current/#range
+						-- "... the end position is exclusive. If you want to specify a range that contains a line including the
+						--  line ending character(s) then use an end position denoting the start of the next line."
+						end_row = vim.tbl_count(params.content) + 1,
+						end_col = 1,
+						text = output,
+					},
+				})
+			end,
+		}),
+	}
+
+	null_ls.register(rustfmt_fixed)
+
+	lsp["null-ls"].setup({
+		on_attach = cfg.lsp_on_attach,
 	})
 end
 

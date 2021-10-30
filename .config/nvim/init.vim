@@ -1,6 +1,3 @@
-lua require('impatient')
-lua require('packer_compiled') 
-
 lua require('plugins')
 lua require'lsp_config'.lsp_setup()
 lua require'lsp_config'.cmp_setup()
