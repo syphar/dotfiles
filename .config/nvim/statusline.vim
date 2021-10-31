@@ -27,8 +27,8 @@ let g:lightline.active = {
   \  [ 'gitbranch', 'relativepath', 'modified', 'readonly', 'gitsigns' ],
   \ ],
   \ 'right': [
-  \   [ 'indicator', 'lineinfo', 'filetype' ],
-  \   [ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ], 
+  \   [ 'lineinfo', 'filetype' ],
+  \   [ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ],
   \   [ 'lsp_status' ],
   \ ]
   \ }
@@ -39,12 +39,11 @@ let g:lightline.inactive = {
   \  [ 'readonly', 'relativepath', 'modified' ],
   \ ],
   \ 'right': [
-  \   [ 'indicator', 'lineinfo', 'filetype' ],
+  \   [ 'lineinfo', 'filetype' ],
   \ ]
   \ }
 
 let g:lightline.component = {
-      \   'indicator': '%{LineNoIndicator()}',
       \   'gitsigns': "%{get(b:,'gitsigns_status','')}",
       \ }
 

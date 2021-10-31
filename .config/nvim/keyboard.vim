@@ -44,10 +44,6 @@ nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
 " nnoremap <leader>a <cmd>CodeActionMenu<cr>
 " vnoremap <leader>a <cmd>CodeActionMenu<cr>
 
-" Limelight for a selected range
-nmap <Leader>l <Plug>(Limelight)
-xmap <Leader>l <Plug>(Limelight)
-
 nmap <silent> <leader>d <Plug>DashSearch
 
 nmap <leader>rg <cmd>Telescope live_grep theme=get_dropdown<cr>

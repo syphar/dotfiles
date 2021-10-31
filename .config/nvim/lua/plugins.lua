@@ -26,8 +26,6 @@ return require("packer").startup({
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
 
-		use("tweekmonster/startuptime.vim")
-
 		use({
 			"projekt0n/github-nvim-theme",
 			config = function()
@@ -45,7 +43,6 @@ return require("packer").startup({
 		-- status line
 		use("itchyny/lightline.vim")
 		use("josa42/nvim-lightline-lsp")
-		use("drzel/vim-line-no-indicator")
 
 		-- general plugins
 		use("zhimsel/vim-stay") --save/restore sessions properly
@@ -53,7 +50,6 @@ return require("packer").startup({
 		use("tmux-plugins/vim-tmux-focus-events")
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 		use("terryma/vim-expand-region") -- intelligently expand selection with V / CTRL+V
-		use("machakann/vim-highlightedyank") --highlight yanked area
 		use({
 			--auto focus / resize for splits
 			"beauwilliams/focus.nvim",
@@ -135,7 +131,6 @@ return require("packer").startup({
 							override_generic_sorter = true, -- override the generic sorter
 							override_file_sorter = true, -- override the file sorter
 							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-							-- the default case_mode is "smart_case"
 						},
 					},
 				})
@@ -157,8 +152,6 @@ return require("packer").startup({
 		})
 
 		-- specific file types
-		use({ "cespare/vim-toml", ft = { "toml" } })
-		use({ "elzr/vim-json", ft = { "json" } })
 		use({ "plasticboy/vim-markdown", ft = { "md", "markdown" } })
 		use({
 			"raimon49/requirements.txt.vim",
@@ -174,6 +167,12 @@ return require("packer").startup({
 		use("kyazdani42/nvim-web-devicons")
 		use({
 			"folke/trouble.nvim",
+			cmd = {
+				"Trouble",
+				"TroubleClose",
+				"TroubleToggle",
+				"TroubleRefresh",
+			},
 			config = function()
 				require("trouble").setup({
 					mode = "lsp_document_diagnostics",
@@ -200,7 +199,6 @@ return require("packer").startup({
 				vim.cmd([[let g:dispatch_tmux_height = 20]])
 			end,
 		})
-		use("tpope/vim-projectionist") --A alternate command to switch between tests and implementation
 		use({
 			"chaoren/vim-wordmotion",
 			config = function()
@@ -210,7 +208,6 @@ return require("packer").startup({
 			end,
 		})
 		use("vim-scripts/argtextobj.vim")
-		use("michaeljsmith/vim-indent-object")
 
 		-- python stuff
 		use({
@@ -261,11 +258,5 @@ return require("packer").startup({
 				})
 			end,
 		})
-
-		-- Automatically set up your configuration after cloning packer.nvim
-		-- Put this at the end after all plugins
-		if packer_bootstrap then
-			require("packer").sync()
-		end
 	end,
 })
