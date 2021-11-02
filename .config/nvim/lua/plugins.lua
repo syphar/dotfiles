@@ -37,6 +37,7 @@ return require("packer").startup({
 					function_style = "NONE",
 					variable_style = "NONE",
 				})
+				vim.cmd([[hi! link TreesitterContext Folded]])
 			end,
 		})
 
