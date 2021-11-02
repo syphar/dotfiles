@@ -90,45 +90,14 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.isort,
-			-- null_ls.builtins.formatting.rustfmt,
+			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.trim_whitespace,
+			-- null_ls.builtins.formatting.trim_whitespace, also trims inside string literals, which is wrong
 			-- null_ls.builtins.formatting.sqlformat,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.formatting.trim_newlines,
 		},
 	})
-	local rustfmt_fixed = {
-		method = null_ls.methods.FORMATTING,
-		filetypes = { "rust" },
-		generator = null_ls.generator({
-			command = "rustfmt",
-			args = { "--emit=stdout", "--edition=2018" },
-			to_stdin = true,
-			ignore_stderr = true,
-			on_output = function(params, done)
-				local output = params.output
-				if not output then
-					return done()
-				end
-
-				return done({
-					{
-						row = 1,
-						col = 1,
-						-- source: https://microsoft.github.io/language-server-protocol/specifications/specification-current/#range
-						-- "... the end position is exclusive. If you want to specify a range that contains a line including the
-						--  line ending character(s) then use an end position denoting the start of the next line."
-						end_row = vim.tbl_count(params.content) + 1,
-						end_col = 1,
-						text = output,
-					},
-				})
-			end,
-		}),
-	}
-
-	null_ls.register(rustfmt_fixed)
 
 	lsp["null-ls"].setup({
 		on_attach = cfg.lsp_on_attach,
