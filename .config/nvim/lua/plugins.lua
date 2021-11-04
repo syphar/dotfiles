@@ -27,10 +27,77 @@ return require("packer").startup({
 		use("wbthomason/packer.nvim")
 
 		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+			config = function()
+				require("lualine").setup({
+					options = {
+						theme = "github",
+						component_separators = "|",
+						section_separators = { left = "", right = "" },
+					},
+					sections = {
+						lualine_a = {
+							{
+								"mode",
+								fmt = function(str)
+									-- only show first character of mode
+									return str:sub(1, 1)
+								end,
+							},
+						},
+						lualine_b = {
+							{ "branch", icon = "" },
+							"diff",
+							{ "diagnostics", sources = { "nvim_lsp" } },
+						},
+						lualine_c = { { "filename", path = 1 } }, -- 1 => relativepath
+						lualine_x = {
+							{
+								"lsp_progress",
+								display_components = {
+									{ "title", "percentage" },
+									"spinner",
+								},
+								spinner_symbols = {
+									"🌑 ",
+									"🌒 ",
+									"🌓 ",
+									"🌔 ",
+									"🌕 ",
+									"🌖 ",
+									"🌗 ",
+									"🌘 ",
+								},
+							},
+							{ "filetype", icon_only = false },
+						},
+						lualine_y = { "progress" },
+						lualine_z = { "location" },
+					},
+					inactive_sections = {
+						lualine_a = {},
+						lualine_b = {},
+						lualine_c = { "filename" },
+						lualine_x = { "location" },
+						lualine_y = {},
+						lualine_z = {},
+					},
+					tabline = {},
+					extensions = {},
+				})
+			end,
+		})
+
+		use("arkav/lualine-lsp-progress")
+
+		use({
 			"projekt0n/github-nvim-theme",
 			config = function()
 				require("github-theme").setup({
-					theme_style = "light",
+					-- theme_style = "light",
+					-- theme_style = "dark_default",
+					theme_style = "dark",
 					transparent = true,
 					comment_style = "italic",
 					keyword_style = "bold",
@@ -41,16 +108,35 @@ return require("packer").startup({
 			end,
 		})
 
-		-- status line
-		use("itchyny/lightline.vim")
-		use("josa42/nvim-lightline-lsp")
-
 		-- general plugins
 		use("zhimsel/vim-stay") --save/restore sessions properly
 		use("christoomey/vim-tmux-navigator") --nativate between vim and tmux panes
 		use("tmux-plugins/vim-tmux-focus-events")
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 		use("terryma/vim-expand-region") -- intelligently expand selection with V / CTRL+V
+
+		use({
+			"phaazon/hop.nvim",
+			branch = "v1", -- optional but strongly recommended
+			after = "github-nvim-theme", -- so hilight works
+			config = function()
+				require("hop").setup({})
+
+				local function add_hop(mapping, method, direction)
+					local cmd = "<cmd>lua require'hop'."
+						.. method
+						.. "({ direction = require'hop.hint'.HintDirection."
+						.. direction
+						.. ", current_line_only = false })<cr>"
+
+					vim.api.nvim_set_keymap("n", mapping, cmd, { noremap = true, silent = false })
+				end
+				add_hop("<leader>hw", "hint_words", "AFTER_CURSOR")
+				add_hop("<leader>hW", "hint_words", "BEFORE_CURSOR")
+				add_hop("<leader>hl", "hint_lines_skip_whitespace", "AFTER_CURSOR")
+				add_hop("<leader>hL", "hint_lines_skip_whitespace", "BEFORE_CURSOR")
+			end,
+		})
 		use({
 			--auto focus / resize for splits
 			"beauwilliams/focus.nvim",
@@ -60,6 +146,7 @@ return require("packer").startup({
 		})
 		use({
 			"nvim-treesitter/nvim-treesitter",
+			branch = "0.5-compat",
 			config = function()
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -68,22 +155,56 @@ return require("packer").startup({
 						enable = true, -- false will disable the whole extension
 						disable = {}, -- list of language that will be disabled
 					},
+					textobjects = {
+						select = {
+							enable = true,
+
+							-- Automatically jump forward to textobj, similar to targets.vim
+							lookahead = true,
+
+							keymaps = {
+								-- You can use the capture groups defined in textobjects.scm
+								["af"] = "@function.outer",
+								["if"] = "@function.inner",
+								["ac"] = "@class.outer",
+								["ic"] = "@class.inner",
+								["aa"] = "@parameter.outer",
+								["ia"] = "@parameter.inner",
+							},
+						},
+						move = {
+							enable = true,
+							set_jumps = true,
+							goto_next_start = {
+								["]m"] = "@function.outer",
+								["]]"] = "@class.outer",
+							},
+							goto_next_end = {
+								["]M"] = "@function.outer",
+								["]["] = "@class.outer",
+							},
+							goto_previous_start = {
+								["[m"] = "@function.outer",
+								["[["] = "@class.outer",
+							},
+							goto_previous_end = {
+								["[M"] = "@function.outer",
+								["[]"] = "@class.outer",
+							},
+						},
+					},
 				})
 			end,
 		})
+		use({ "nvim-treesitter/nvim-treesitter-textobjects", branch = "0.5-compat" })
 		use({
-			--show context based on treesitter
 			"romgrk/nvim-treesitter-context",
 			config = function()
 				require("treesitter-context.config").setup({
-					enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-					throttle = true, -- Throttles plugin updates (may improve performance)
-					max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-					patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-						-- For all filetypes
-						-- Note that setting an entry here replaces all other patterns for this entry.
-						-- By setting the 'default' entry below, you can control which nodes you want to
-						-- appear in the context window.
+					enable = true,
+					throttle = true,
+					max_lines = 0,
+					patterns = {
 						default = {
 							"class",
 							"function",
@@ -176,7 +297,11 @@ return require("packer").startup({
 			},
 			config = function()
 				require("trouble").setup({
-					mode = "lsp_document_diagnostics",
+					mode = "lsp_workspace_diagnostics",
+					-- mode = "lsp_document_diagnostics",
+					auto_open = false,
+					auto_close = false,
+					auto_preview = true,
 				})
 			end,
 		})
@@ -203,12 +328,11 @@ return require("packer").startup({
 		use({
 			"chaoren/vim-wordmotion",
 			config = function()
-				vim.cmd(
-					"let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' ', '<', '>', ':']"
-				)
+				vim.cmd([[
+					let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' ', '<', '>', ':']
+				]])
 			end,
 		})
-		use("vim-scripts/argtextobj.vim")
 
 		-- python stuff
 		use({

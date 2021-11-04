@@ -88,13 +88,11 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.luacheck,
 			null_ls.builtins.diagnostics.shellcheck,
+			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.isort,
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
-			-- null_ls.builtins.formatting.trim_whitespace, also trims inside string literals, which is wrong
-			-- null_ls.builtins.formatting.sqlformat,
-			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.formatting.trim_newlines,
 		},
 	})
