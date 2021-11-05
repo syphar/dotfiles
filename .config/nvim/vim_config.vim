@@ -21,7 +21,6 @@ set path+=**
 " show all options when tab-completing
 set wildmenu
 
-
 " global tab/spaces settings
 set expandtab
 set tabstop=4
@@ -44,12 +43,10 @@ set inccommand=split
 set background=dark
 colorscheme github_dark
 
-
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 
 set tags=./tags;/
-
 
 " no scrollbars
 set guioptions-=L
@@ -67,7 +64,6 @@ autocmd VimResized * wincmd =
 set equalalways
 
 set completeopt=menu,menuone,noselect
-
 
 set foldmethod=manual
 set foldlevelstart=10   " open most folds by default

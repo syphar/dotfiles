@@ -12,21 +12,10 @@ map Y y$
 nnoremap <space> za
 vnoremap <space> zf
 
-" fold/unfold all with shift-F3
-" nnoremap <expr> <F3> &foldlevel ? 'zM' :'zR'
-" fold to see classes and methods
-" noremap <S-F3> :set foldlevel=1<CR>
-nnoremap  <expr> <S-F3> &foldlevel ? 'zM' :'zR'
-
 " don't count {} as jumps for the jumplist
 " see https://superuser.com/a/836924/1124707
 nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
 nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
-
-" copy to system clipboard separately
-" xnoremap <C-c> "+y
-" nnoremap <silent> cp "+y
-" nnoremap <silent> cpp "+yy
 
 " telescope
 nnoremap <C-P> <cmd>lua require('telescope-config').project_files()<cr>
