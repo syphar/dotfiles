@@ -12,6 +12,7 @@ lookatme
 pipenv
 poetry
 pre-commit
+pyflyby
 python-lsp-server 
 sqlfluff
 watchdog
