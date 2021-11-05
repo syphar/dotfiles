@@ -13,7 +13,7 @@ pipenv
 poetry
 pre-commit
 pyflyby
-python-lsp-server 
+python-lsp-server[pydocstyle]
 sqlfluff
 watchdog
 yamllint
