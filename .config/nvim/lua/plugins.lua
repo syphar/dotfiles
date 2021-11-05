@@ -35,6 +35,10 @@ return require("packer").startup({
 						literal = {
 							["poetry.lock"] = "toml",
 						},
+						complex = {
+							["requirements*.txt"] = "requirements",
+							["requirements*.in"] = "requirements",
+						},
 					},
 				})
 			end,
@@ -104,7 +108,9 @@ return require("packer").startup({
 						lualine_z = { "progress", "location" },
 					},
 					tabline = {},
-					extensions = {},
+					extensions = {
+						"fugitive",
+					},
 				})
 			end,
 		})
@@ -340,9 +346,6 @@ return require("packer").startup({
 		use({
 			"raimon49/requirements.txt.vim",
 			ft = { "requirements" },
-			config = function()
-				vim.cmd([[let g:requirements#detect_filename_pattern = '\vrequirement?s\_.*\.(txt|in)$']])
-			end,
 		})
 		use({ "rust-lang/rust.vim", ft = { "rust" } })
 		use({ "dag/vim-fish", ft = { "fish" } })
