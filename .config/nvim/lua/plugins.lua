@@ -1,5 +1,6 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap = false
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({
 		"git",
@@ -18,12 +19,8 @@ vim.cmd([[
   augroup end
 ]])
 
--- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
-
 return require("packer").startup({
-	function()
-		-- Packer can manage itself
+	function(use)
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
@@ -53,7 +50,7 @@ return require("packer").startup({
 					options = {
 						theme = "github",
 						component_separators = "|",
-						section_separators = { left = "", right = "" },
+						section_separators = "",
 					},
 					sections = {
 						lualine_a = {
@@ -92,18 +89,19 @@ return require("packer").startup({
 									"🌘 ",
 								},
 							},
+						},
+						lualine_y = {
 							{ "filetype", icon_only = false },
 						},
-						lualine_y = { "progress" },
-						lualine_z = { "location" },
+						lualine_z = { "progress", "location" },
 					},
 					inactive_sections = {
 						lualine_a = {},
 						lualine_b = {},
 						lualine_c = { { "filename", path = 1 } },
 						lualine_x = {},
-						lualine_y = { "progress" },
-						lualine_z = { "location" },
+						lualine_y = {},
+						lualine_z = { "progress", "location" },
 					},
 					tabline = {},
 					extensions = {},
@@ -126,7 +124,7 @@ return require("packer").startup({
 					function_style = "NONE",
 					variable_style = "NONE",
 				})
-				vim.cmd([[hi! link TreesitterContext Folded]])
+				vim.cmd([[hi! link TreesitterContext NormalFloat]])
 			end,
 		})
 
@@ -221,6 +219,7 @@ return require("packer").startup({
 		use({ "nvim-treesitter/nvim-treesitter-textobjects", branch = "0.5-compat" })
 		use({
 			"romgrk/nvim-treesitter-context",
+			after = { "github-nvim-theme", "nvim-treesitter" },
 			config = function()
 				require("treesitter-context.config").setup({
 					enable = true,
@@ -242,7 +241,7 @@ return require("packer").startup({
 						},
 					},
 				})
-				vim.cmd([[hi! link TreesitterContext Folded]])
+				vim.cmd([[hi! link TreesitterContext NormalFloat]])
 			end,
 		})
 		use({
@@ -264,38 +263,15 @@ return require("packer").startup({
 			config = function()
 				require("nvim-gps").setup({
 					icons = {
-						["class-name"] = " ", -- Classes and class-like objects
-						["function-name"] = " ", -- Functions
-						["method-name"] = " ", -- Methods (functions inside class-like objects)
-						["container-name"] = "⛶ ", -- Containers (example: lua tables)
-						["tag-name"] = "炙", -- Tags (example: html tags)
+						["class-name"] = " ",
+						["function-name"] = " ",
+						["method-name"] = " ",
+						["container-name"] = " ",
+						["tag-name"] = "» ",
 					},
-					-- Add custom configuration per language or
-					-- Disable the plugin for a language
-					-- Any language not disabled here is enabled by default
-					languages = {
-						-- ["bash"] = false, -- disables nvim-gps for bash
-						-- ["go"] = false,   -- disables nvim-gps for golang
-						-- ["ruby"] = {
-						--	separator = '|', -- Overrides default separator with '|'
-						--	icons = {
-						--		-- Default icons not specified in the lang config
-						--		-- will fallback to the default value
-						--		-- "container-name" will fallback to default because it's not set
-						--		["function-name"] = '',    -- to ensure empty values, set an empty string
-						--		["tag-name"] = ''
-						--		["class-name"] = '::',
-						--		["method-name"] = '#',
-						--	}
-						--}
-					},
+					languages = {},
 					separator = " > ",
-					-- limit for amount of context shown
-					-- 0 means no limit
-					-- Note: to make use of depth feature properly, make sure your separator isn't something that can appear
-					-- in context names (eg: function names, class names, etc)
 					depth = 0,
-					-- indicator used when context is hits depth limit
 					depth_limit_indicator = "..",
 				})
 			end,
@@ -375,12 +351,6 @@ return require("packer").startup({
 		use("kyazdani42/nvim-web-devicons")
 		use({
 			"folke/trouble.nvim",
-			cmd = {
-				"Trouble",
-				"TroubleClose",
-				"TroubleToggle",
-				"TroubleRefresh",
-			},
 			config = function()
 				require("trouble").setup({
 					mode = "lsp_workspace_diagnostics",
@@ -483,9 +453,12 @@ return require("packer").startup({
 				})
 			end,
 		})
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
-	config = {
-		-- Move to lua dir so impatient.nvim can cache it
-		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-	},
+	-- config = {
+	-- 	-- Move to lua dir so impatient.nvim can cache it
+	-- 	compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	-- },
 })

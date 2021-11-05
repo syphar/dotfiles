@@ -12,7 +12,6 @@ end
 
 function cfg.lsp_on_attach(client, bufnr)
 	-- generic on_attach, should be passed to all language servers.
-	-- rust-tools get it in `plugins` in its custom `config` method
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
@@ -93,6 +92,7 @@ function cfg.lsp_setup()
 	})
 
 	local null_ls = require("null-ls")
+
 	null_ls.config({
 		-- debug = true,
 		sources = {
