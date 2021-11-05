@@ -30,15 +30,15 @@ nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 
 " telescope
 nnoremap <C-P> <cmd>lua require('telescope-config').project_files()<cr>
-nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({find_command={"fd", "--type", "f", "--hidden", "--no-ignore", ".", vim.env.VIRTUAL_ENV}}))<cr>
+nnoremap <leader>p <cmd>lua require('telescope.builtin').find_files({find_command={"fd", "--type", "f", "--hidden", "--no-ignore", ".", vim.env.VIRTUAL_ENV}})<cr>
 
-nnoremap <leader>f <cmd>Telescope treesitter theme=get_dropdown<cr>
-nnoremap <leader>F <cmd>Telescope tags theme=get_dropdown<cr>
-nnoremap <leader>m <cmd>Telescope buffers theme=get_dropdown<cr>
-nnoremap <leader>ht <cmd>Telescope help_tags theme=get_dropdown<cr>
+nnoremap <leader>f <cmd>Telescope treesitter <cr>
+nnoremap <leader>F <cmd>Telescope tags<cr>
+nnoremap <leader>m <cmd>Telescope buffers <cr>
+nnoremap <leader>ht <cmd>Telescope help_tags <cr>
 nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
-nnoremap <leader>rg <cmd>Telescope live_grep theme=get_dropdown<cr>
-nnoremap <leader>ag <cmd>Telescope grep_string theme=get_dropdown<cr>
+nnoremap <leader>rg <cmd>Telescope live_grep <cr>
+nnoremap <leader>ag <cmd>Telescope grep_string <cr>
 
 nmap <silent> <leader>d <Plug>DashSearch
 

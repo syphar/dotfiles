@@ -66,12 +66,6 @@ set showmatch
 autocmd VimResized * wincmd =
 set equalalways
 
-" set rust filetype for crs
-autocmd BufNewFile,BufRead *.crs set filetype=rust
-
-" set TOML file type for poetry.lock
-autocmd BufNewFile,BufRead poetry.lock set filetype=toml
-
 set completeopt=menu,menuone,noselect
 
 

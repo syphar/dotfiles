@@ -25,11 +25,30 @@ return require("packer").startup({
 	function()
 		-- Packer can manage itself
 		use("wbthomason/packer.nvim")
+		use("lewis6991/impatient.nvim")
+		use("tweekmonster/startuptime.vim")
+		use({
+			"nathom/filetype.nvim",
+			config = function()
+				require("filetype").setup({
+					overrides = {
+						extensions = {
+							crs = "rust",
+						},
+						literal = {
+							["poetry.lock"] = "toml",
+						},
+					},
+				})
+			end,
+		})
 
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 			config = function()
+				local gps = require("nvim-gps")
+
 				require("lualine").setup({
 					options = {
 						theme = "github",
@@ -51,7 +70,10 @@ return require("packer").startup({
 							"diff",
 							{ "diagnostics", sources = { "nvim_lsp" } },
 						},
-						lualine_c = { { "filename", path = 1 } }, -- 1 => relativepath
+						lualine_c = {
+							{ "filename", path = 1 }, -- 1 => relativepath
+							{ gps.get_location, condition = gps.is_available },
+						},
 						lualine_x = {
 							{
 								"lsp_progress",
@@ -78,10 +100,10 @@ return require("packer").startup({
 					inactive_sections = {
 						lualine_a = {},
 						lualine_b = {},
-						lualine_c = { "filename" },
-						lualine_x = { "location" },
-						lualine_y = {},
-						lualine_z = {},
+						lualine_c = { { "filename", path = 1 } },
+						lualine_x = {},
+						lualine_y = { "progress" },
+						lualine_z = { "location" },
 					},
 					tabline = {},
 					extensions = {},
@@ -109,7 +131,7 @@ return require("packer").startup({
 		})
 
 		-- general plugins
-		use("zhimsel/vim-stay") --save/restore sessions properly
+		use("farmergreg/vim-lastplace") --save/restore sessions properly
 		use("christoomey/vim-tmux-navigator") --nativate between vim and tmux panes
 		use("tmux-plugins/vim-tmux-focus-events")
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
@@ -237,6 +259,47 @@ return require("packer").startup({
 				})
 			end,
 		})
+		use({
+			"SmiteshP/nvim-gps",
+			config = function()
+				require("nvim-gps").setup({
+					icons = {
+						["class-name"] = " ", -- Classes and class-like objects
+						["function-name"] = " ", -- Functions
+						["method-name"] = " ", -- Methods (functions inside class-like objects)
+						["container-name"] = "⛶ ", -- Containers (example: lua tables)
+						["tag-name"] = "炙", -- Tags (example: html tags)
+					},
+					-- Add custom configuration per language or
+					-- Disable the plugin for a language
+					-- Any language not disabled here is enabled by default
+					languages = {
+						-- ["bash"] = false, -- disables nvim-gps for bash
+						-- ["go"] = false,   -- disables nvim-gps for golang
+						-- ["ruby"] = {
+						--	separator = '|', -- Overrides default separator with '|'
+						--	icons = {
+						--		-- Default icons not specified in the lang config
+						--		-- will fallback to the default value
+						--		-- "container-name" will fallback to default because it's not set
+						--		["function-name"] = '',    -- to ensure empty values, set an empty string
+						--		["tag-name"] = ''
+						--		["class-name"] = '::',
+						--		["method-name"] = '#',
+						--	}
+						--}
+					},
+					separator = " > ",
+					-- limit for amount of context shown
+					-- 0 means no limit
+					-- Note: to make use of depth feature properly, make sure your separator isn't something that can appear
+					-- in context names (eg: function names, class names, etc)
+					depth = 0,
+					-- indicator used when context is hits depth limit
+					depth_limit_indicator = "..",
+				})
+			end,
+		})
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
@@ -246,7 +309,30 @@ return require("packer").startup({
 			"nvim-telescope/telescope.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
 			config = function()
+				local config_with_preview = {
+					layout_config = {
+						preview_cutoff = 40,
+						prompt_position = "bottom",
+					},
+				}
 				require("telescope").setup({
+					defaults = {
+						scroll_stratecy = "cycle",
+						layout_strategy = "center",
+						layout_config = {
+							width = 0.5,
+							height = 0.3,
+							preview_cutoff = 120,
+							prompt_position = "bottom",
+						},
+						theme = "dropdown",
+					},
+					pickers = {
+						tags = config_with_preview,
+						treesitter = config_with_preview,
+						live_grep = config_with_preview,
+						grep_string = config_with_preview,
+					},
 					extensions = {
 						fzf = {
 							fuzzy = true, -- false will only do exact matching
@@ -350,6 +436,20 @@ return require("packer").startup({
 
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
+		use({
+			"nvim-lua/lsp_extensions.nvim",
+			ft = { "rust" },
+			config = function()
+				-- only current line?
+				-- autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
+				vim.cmd([[
+				  augroup update_inlay_hints
+					autocmd!
+					autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_config'.show_inlay_hints()
+				  augroup end
+				]])
+			end,
+		})
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
@@ -384,4 +484,8 @@ return require("packer").startup({
 			end,
 		})
 	end,
+	config = {
+		-- Move to lua dir so impatient.nvim can cache it
+		compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
+	},
 })

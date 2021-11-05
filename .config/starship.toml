@@ -20,7 +20,8 @@ format="on [$branch]($style)"
 style = "bold bright-green"
 
 [python]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[${symbol}${pyenv_prefix}${version} ]($style)' 
+# format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol=" "
 style="bright-cyan"
 
@@ -45,6 +46,7 @@ symbol=""
 disabled = true
 
 [package] 
+disabled = true
 format="[$symbol$version]($style) "
 style="208"
 

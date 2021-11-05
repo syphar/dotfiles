@@ -1,5 +1,15 @@
 local cfg = {}
 
+function cfg.show_inlay_hints()
+	require("lsp_extensions").inlay_hints({
+		highlight = "Comment",
+		prefix = " » ",
+		aligned = false,
+		only_current_line = false,
+		enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
+	})
+end
+
 function cfg.lsp_on_attach(client, bufnr)
 	-- generic on_attach, should be passed to all language servers.
 	-- rust-tools get it in `plugins` in its custom `config` method
@@ -14,10 +24,12 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[augroup Format]])
-		vim.cmd([[autocmd! * <buffer>]])
-		vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
-		vim.cmd([[augroup END]])
+		vim.cmd([[
+			augroup AutoFormatOnSave
+			autocmd! * <buffer>
+			autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+			augroup END
+		]])
 	end
 
 	require("lsp_signature").on_attach({

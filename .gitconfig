@@ -7,12 +7,25 @@
 	quotepath = false
 	trustExitCode = true
 	autocrlf = input
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+    ;
 	; pager = diff-so-fancy | less --tabs=4 -RFX
     ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='GitHub'
-    pager = delta --light --syntax-theme='GitHub'
+    ; pager = delta
+    ;'--syntax-theme='GitHub Dark'
+    ;
 
 [interactive]
     diffFilter = delta --color-only
+
+[delta]
+    line-numbers = true
+    dark = true
+    syntax-theme = GitHub Dark
 
 [blame]
     date = short
