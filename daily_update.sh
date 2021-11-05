@@ -26,6 +26,7 @@ xargs -n 1 pipx install < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all
 pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
+pipx inject flake8 flake8-docstrings
 
 ## rust environment
 rustup update
