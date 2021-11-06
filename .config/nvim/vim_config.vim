@@ -40,9 +40,6 @@ set concealcursor=""
 " to get an incremental visual feedback when doing the substitude command.
 set inccommand=split
 
-set background=dark
-colorscheme github_dark
-
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 set wildignore+=.git,.hg,.svn,.idea,.pytest_cache,__pycache__,.DS_Store,tags
 

@@ -126,6 +126,7 @@ return require("packer").startup({
 		use({
 			"projekt0n/github-nvim-theme",
 			config = function()
+				vim.opt.background = "dark"
 				require("github-theme").setup({
 					-- theme_style = "light",
 					-- theme_style = "dark_default",
