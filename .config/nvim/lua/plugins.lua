@@ -203,6 +203,8 @@ return require("packer").startup({
 								["ic"] = "@class.inner",
 								["aa"] = "@parameter.outer",
 								["ia"] = "@parameter.inner",
+								["ab"] = "@block.outer",
+								["ib"] = "@block.inner",
 							},
 						},
 						move = {
@@ -210,18 +212,22 @@ return require("packer").startup({
 							set_jumps = true,
 							goto_next_start = {
 								["]m"] = "@function.outer",
+								["]b"] = "@block.outer",
 								["]]"] = "@class.outer",
 							},
 							goto_next_end = {
 								["]M"] = "@function.outer",
+								["]B"] = "@block.outer",
 								["]["] = "@class.outer",
 							},
 							goto_previous_start = {
 								["[m"] = "@function.outer",
+								["[b"] = "@block.outer",
 								["[["] = "@class.outer",
 							},
 							goto_previous_end = {
 								["[M"] = "@function.outer",
+								["[B"] = "@block.outer",
 								["[]"] = "@class.outer",
 							},
 						},
@@ -394,9 +400,10 @@ return require("packer").startup({
 		use({
 			"chaoren/vim-wordmotion",
 			config = function()
-				vim.cmd([[
-					let g:wordmotion_uppercase_spaces = ['.', ',', '(', ')', '[', ']', '{', '}', ' ', '<', '>', ':']
-				]])
+				-- uppercase spaces would stop the upper case motion (full words)
+				-- vim.g.wordmotion_uppercase_spaces = { ".", ",", "(", ")", "[", "]", "{", "}", " ", "<", ">", ":" }
+				-- normal spaces would stop the lower-case (x-case subword) motion
+				-- let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\.']
 			end,
 		})
 
