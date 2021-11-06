@@ -38,14 +38,10 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 
-" nnoremap <F3> <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
-" nnoremap <F4> <cmd>lua vim.lsp.diagnostic.set_loclist({workspace=true})<cr>
 nnoremap <F3> <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <F4> <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-" nnoremap <F9> :cprevious<CR>
-" nnoremap <F10> :cnext<CR>
-" nnoremap <F9> :lprevious<CR>
-" nnoremap <F10> :lnext<CR>
+" nnoremap <F9> <cmd>lua require("trouble").next({skip_groups = true, jump = true})<cr>
+" nnoremap <F10> <cmd>lua require("trouble").previous({skip_groups = true, jump = true})<cr>
 
 
 " Visual shifting (does not exit Visual mode)
