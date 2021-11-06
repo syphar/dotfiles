@@ -37,10 +37,15 @@ nmap <leader>em :Gedit master:%<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+
+" nnoremap <F3> <cmd>lua vim.lsp.diagnostic.set_loclist()<cr>
+" nnoremap <F4> <cmd>lua vim.lsp.diagnostic.set_loclist({workspace=true})<cr>
 nnoremap <F3> <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <F4> <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-nnoremap <F9> :cprevious<CR>
-nnoremap <F10> :cnext<CR>
+" nnoremap <F9> :cprevious<CR>
+" nnoremap <F10> :cnext<CR>
+" nnoremap <F9> :lprevious<CR>
+" nnoremap <F10> :lnext<CR>
 
 
 " Visual shifting (does not exit Visual mode)

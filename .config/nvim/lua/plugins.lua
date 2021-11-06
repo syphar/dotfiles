@@ -366,7 +366,7 @@ return require("packer").startup({
 					mode = "lsp_workspace_diagnostics",
 					-- mode = "lsp_document_diagnostics",
 					auto_open = false,
-					auto_close = false,
+					auto_close = true,
 					auto_preview = true,
 				})
 			end,
