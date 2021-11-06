@@ -25,6 +25,12 @@ return require("packer").startup({
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
 		use({
+			"antoinemadec/FixCursorHold.nvim",
+			config = function()
+				vim.g.cursorhold_updatetime = 100
+			end,
+		})
+		use({
 			"nathom/filetype.nvim",
 			config = function()
 				require("filetype").setup({
