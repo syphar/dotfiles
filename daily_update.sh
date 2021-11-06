@@ -64,5 +64,5 @@ fish -c "fisher update"
 # update all source repos
 ./find_repos.sh "$SRC_DIR" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
 
-# update vim
+./update_lua_language_server.sh
 ./update_vim.sh
