@@ -333,7 +333,7 @@ return require("packer").startup({
 						layout_strategy = "center",
 						layout_config = {
 							width = 0.5,
-							height = 0.3,
+							height = 0.5,
 							preview_cutoff = 120,
 							prompt_position = "bottom",
 						},
