@@ -22,12 +22,16 @@ font:
     style: Medium
 
   italic:
-    family: 'BlexMono NF'
+    family: IBM Plex Mono
     style: Light Italic
+    # family: 'BlexMono NF'
+    # style: Light Italic
 
   bold_italic:
-    family: 'BlexMono NF'
+    family: IBM Plex Mono
     style: Medium Italic
+    # family: 'BlexMono NF'
+    # style: 'Medium Italic'
 
   # Point size
   size: 15.0
