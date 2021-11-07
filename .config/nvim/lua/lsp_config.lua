@@ -6,8 +6,9 @@ function cfg.show_inlay_hints()
 		prefix = " » ",
 		aligned = false,
 		only_current_line = false,
-		enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
+		enabled = { "TypeHint", "ChainingHint" },
 	})
+	-- not included : ParameterHint
 end
 
 function cfg.lsp_on_attach(client, bufnr)
@@ -62,6 +63,7 @@ function cfg.lsp_setup()
 		},
 	})
 
+	-- based on https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 	local sumneko_root_path = vim.fn.expand("$HOME/src/lua-language-server")
 	local sumneko_binary = sumneko_root_path .. "/bin/MacOS/lua-language-server"
 
@@ -74,20 +76,15 @@ function cfg.lsp_setup()
 		settings = {
 			Lua = {
 				runtime = {
-					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 					version = "LuaJIT",
-					-- Setup your lua path
 					path = runtime_path,
 				},
 				diagnostics = {
-					-- Get the language server to recognize the `vim` global
 					globals = { "vim" },
 				},
 				workspace = {
-					-- Make the server aware of Neovim runtime files
 					library = vim.api.nvim_get_runtime_file("", true),
 				},
-				-- Do not send telemetry data containing a randomized but unique identifier
 				telemetry = {
 					enable = false,
 				},
@@ -100,7 +97,6 @@ function cfg.lsp_setup()
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
 			pylsp = {
-				-- configurationSources = {"flake8", "pycodestyle"},
 				plugins = {
 					pydocstyle = {
 						enabled = false,
@@ -125,7 +121,6 @@ function cfg.lsp_setup()
 	})
 
 	local null_ls = require("null-ls")
-	local helpers = require("null-ls.helpers")
 
 	null_ls.config({
 		-- debug = true,
@@ -235,22 +230,6 @@ function cfg.cmp_setup()
 			{ name = "cmp_tabnine" },
 		}, {
 			{ name = "buffer" },
-		}),
-	})
-
-	-- Use buffer source for `/`.
-	cmp.setup.cmdline("/", {
-		sources = {
-			{ name = "buffer" },
-		},
-	})
-
-	-- Use cmdline & path source for ':'.
-	cmp.setup.cmdline(":", {
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
 		}),
 	})
 end
