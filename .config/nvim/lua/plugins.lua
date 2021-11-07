@@ -56,11 +56,24 @@ return require("packer").startup({
 			config = function()
 				local gps = require("nvim-gps")
 
+				local function diff_source()
+					-- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff
+					local gitsigns = vim.b.gitsigns_status_dict
+					if gitsigns then
+						return {
+							added = gitsigns.added,
+							modified = gitsigns.changed,
+							removed = gitsigns.removed,
+						}
+					end
+				end
+
 				require("lualine").setup({
 					options = {
 						theme = "github",
 						component_separators = "|",
 						section_separators = "",
+						always_divide_middle = false,
 					},
 					sections = {
 						lualine_a = {
@@ -73,13 +86,16 @@ return require("packer").startup({
 							},
 						},
 						lualine_b = {
-							{ "branch", icon = "" },
-							"diff",
+							{ "b:gitsigns_head", icon = "" },
+							{ "diff", source = diff_source },
 							{ "diagnostics", sources = { "nvim_lsp" } },
 						},
 						lualine_c = {
-							{ "filename", path = 1 }, -- 1 => relativepath
-							{ gps.get_location, condition = gps.is_available },
+							{
+								"filename",
+								path = 1, -- 1 => relativepath
+							},
+							{ gps.get_location, cond = gps.is_available },
 						},
 						lualine_x = {
 							{
@@ -116,6 +132,7 @@ return require("packer").startup({
 					tabline = {},
 					extensions = {
 						"fugitive",
+						"quickfix",
 					},
 				})
 			end,
