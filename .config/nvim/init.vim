@@ -1,4 +1,7 @@
 lua <<EOF
+-- see https://github.com/nathom/filetype.nvim#usage
+vim.g.did_load_filetypes = 1
+
 require('impatient')
 require('plugins')
 
