@@ -8,6 +8,15 @@ cd "$1"
 
 ~/bin/rebuild_tags.sh
 
+if [ -f "$1/.pre-commit-config.yaml" ]; then 
+    if [ ! -f "$1/.git/hooks/pre-commit" ]; then
+        echo "pre-commit not found, installing..."
+        pre-commit install
+    else 
+        echo "pre-commit found"
+    fi
+fi
+
 ln -s $HOME/src/dotfiles/git-hooks/* "$1/.git/hooks" || echo "already exists"
 
 git gc
