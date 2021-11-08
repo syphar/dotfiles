@@ -38,7 +38,7 @@ cargo install-update -a
 ./update_rust_analyzer.sh
 
 ## tldr update
-tldr --update
+tldr --update || echo "failed, but ignore for now"
 
 ## bat cache
 bat cache --build
