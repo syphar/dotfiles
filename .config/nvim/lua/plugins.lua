@@ -49,6 +49,7 @@ return require("packer").startup({
 				})
 			end,
 		})
+		use("tpope/vim-projectionist")
 
 		use({
 			"nvim-lualine/lualine.nvim",
