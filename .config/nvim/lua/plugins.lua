@@ -40,6 +40,7 @@ return require("packer").startup({
 						},
 						literal = {
 							["poetry.lock"] = "toml",
+							[".envrc"] = "bash",
 						},
 						complex = {
 							["requirements*.txt"] = "requirements",
@@ -95,6 +96,7 @@ return require("packer").startup({
 							{
 								"filename",
 								path = 1, -- 1 => relativepath
+								-- shorting_target = 60,
 							},
 							{ gps.get_location, cond = gps.is_available },
 						},
