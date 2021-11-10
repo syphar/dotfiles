@@ -29,7 +29,7 @@ abbr -ag gt git tag -n
 abbr -ag h heroku
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-alias l="exa -alh --group-directories-first"
+alias l="exa --git --long --all --header --icons --group-directories-first"
 alias ls="exa --group-directories-first"
 alias less="bat"
 alias cat="bat"
