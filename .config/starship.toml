@@ -38,7 +38,7 @@ style = "bright-blue"
 
 [env_var.herokuapp]
 variable = "HEROKU_APP"
-format = "[$symbol $env_value]($style)"
+format = "[$symbol $env_value ]($style)"
 style = "blue"
 symbol=""
 
