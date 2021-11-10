@@ -153,7 +153,7 @@ return require("packer").startup({
 					theme_style = "dark",
 					transparent = true,
 					comment_style = "italic",
-					keyword_style = "bold",
+					keyword_style = "NONE",
 					function_style = "NONE",
 					variable_style = "NONE",
 				})
