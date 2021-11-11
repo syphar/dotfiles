@@ -1,7 +1,7 @@
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 
--- not needed any more?
+-- TODO: not needed any more?
 -- https://github.com/nanotee/nvim-lua-guide#vimapinvim_replace_termcodes
 -- vim.cmd([[
 -- let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -19,7 +19,19 @@ vim.opt.mouse = "a"
 
 -- search files into subfolders
 -- provides tab-complete for all files
-vim.opt.path:append({ "**" })
+-- by default we had `/usr/include` in here, which we don't need
+vim.opt.path = { ".", "**" }
+-- vim wildignore. Used for path autocomplete and `gf`.
+vim.opt.wildignore:append({
+	"*/.git/", -- I might have to remove this when fugitive has problems
+	"*/__pycache__/",
+	"*/.direnv/",
+	"*/node_modules/",
+	"*/.pytest_cache/",
+	"*/.mypy_cache/",
+	"*/target/", -- rust target directory
+	"tags",
+})
 
 -- show all options when tab-completing
 vim.opt.wildmenu = true
@@ -44,7 +56,6 @@ vim.opt.concealcursor = ""
 vim.opt.inccommand = "split"
 
 vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
-vim.opt.wildignore:append({ ".git", ".hg", ".svn", ".idea", ".pytest_cache", "__pycache__", ".DS_Store", "tags" })
 
 vim.opt.tags:append({ "./tags;/" })
 

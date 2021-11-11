@@ -11,7 +11,6 @@ lsp.cmp_setup()
 require('vim_options')
 EOF
 
-" source ~/.config/nvim/vim_config.vim
 source ~/.config/nvim/keyboard.vim
 
 hi! link TreesitterContext NormalFloat
