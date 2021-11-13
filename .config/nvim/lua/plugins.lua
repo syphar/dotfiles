@@ -41,6 +41,7 @@ return require("packer").startup({
 						literal = {
 							["poetry.lock"] = "toml",
 							[".envrc"] = "bash",
+							[".env"] = "bash",
 						},
 						complex = {
 							["requirements*.txt"] = "requirements",
