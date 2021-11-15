@@ -33,6 +33,12 @@ nmap <silent> <leader>d <Plug>DashSearch
 
 " show current file on master
 nmap <leader>em :Gedit master:%<CR>
+" show git log for current file
+nmap <leader>gl :0Gclog <CR>
+vmap <leader>gl :Gclog <CR> 
+" git blame for the current file
+nmap <leader>gb :Git blame <CR>
+
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
