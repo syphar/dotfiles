@@ -201,6 +201,9 @@ function cfg.lsp_setup()
 	lsp["null-ls"].setup({
 		on_attach = cfg.lsp_on_attach,
 	})
+
+	-- automatically show line diagnostics in a hover window
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
 end
 
 function cfg.cmp_setup()
