@@ -10,11 +10,3 @@ function vv
 
   commandline -f repaint
 end
-
-
-# old zsh command
-# local file
-# file=$(
-#   eval "$FZF_DEFAULT_COMMAND" |
-#   fzf
-# ) && $EDITOR $file
