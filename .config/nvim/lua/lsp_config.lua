@@ -51,6 +51,14 @@ end
 function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
+	-- nice diagnostic icons in sign-column
+	-- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#neovim-051
+	local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+	for type, icon in pairs(signs) do
+		local hl = "LspDiagnosticsSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	end
+
 	lsp.rust_analyzer.setup({
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		capabilities = cfg.updated_capabilities(),
@@ -130,6 +138,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.luacheck,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
+			null_ls.builtins.diagnostics.yamllint,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.isort,
 			null_ls.builtins.formatting.rustfmt,
