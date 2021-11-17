@@ -29,7 +29,7 @@ nnoremap <leader>a <cmd>Telescope lsp_code_actions<cr>
 nnoremap <leader>rg <cmd>Telescope live_grep <cr>
 nnoremap <leader>ag <cmd>Telescope grep_string <cr>
 
-nmap <silent> <leader>d <Plug>DashSearch
+nnoremap <leader>d <cmd>DashWord<cr>
 
 " show current file on master
 nmap <leader>em :Gedit master:%<CR>

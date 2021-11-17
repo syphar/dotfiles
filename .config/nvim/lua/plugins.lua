@@ -41,6 +41,7 @@ return require("packer").startup({
 						literal = {
 							["poetry.lock"] = "toml",
 							[".envrc"] = "bash",
+							[".direnvrc"] = "bash",
 							[".env"] = "bash",
 						},
 						complex = {
@@ -356,6 +357,13 @@ return require("packer").startup({
 							override_file_sorter = true, -- override the file sorter
 							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 						},
+						dash = {
+							search_engine = "google",
+							debounce = 100,
+							file_type_keywords = {
+								python = { "python3", "django", "sopython" },
+							},
+						},
 					},
 				})
 				-- To get fzf loaded and working with telescope, you need to call
@@ -398,7 +406,11 @@ return require("packer").startup({
 				})
 			end,
 		})
-		use("rizzatti/dash.vim")
+		use({
+			"mrjones2014/dash.nvim",
+			run = "make install",
+			after = "telescope.nvim",
+		})
 		use("rhysd/committia.vim") --Better COMMIT_EDITMSG editing
 		use("tpope/vim-commentary") --comment/uncomment on gcc
 		use("editorconfig/editorconfig-vim") -- read editorconfig and configure vim
@@ -406,16 +418,16 @@ return require("packer").startup({
 		use({
 			"janko/vim-test", --simple test running
 			config = function()
-				vim.cmd([[let g:test#strategy = "dispatch"]])
-				vim.cmd([[let g:test#preserve_screen = 0]])
-				vim.cmd([[let g:test#python#runner = 'pytest']])
+				vim.g["test#strategy"] = "dispatch"
+				vim.g["test#preserve_screen"] = 0
+				vim.g["test#python#runner"] = "pytest"
 			end,
 		})
 		use({
 			"tpope/vim-dispatch",
 			config = function()
-				vim.cmd([[let g:dispatch_quickfix_height = 20]])
-				vim.cmd([[let g:dispatch_tmux_height = 20]])
+				vim.g.dispatch_quickfix_height = 20
+				vim.g.dispatch_tmux_height = 20
 			end,
 		})
 		use({
@@ -461,6 +473,7 @@ return require("packer").startup({
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
+			commit = "9c3fc24b79576816c7ce9ee8a06710c9a76261af",
 			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		})
 
