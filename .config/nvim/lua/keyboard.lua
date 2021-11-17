@@ -19,8 +19,8 @@ end
 set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
 set_keymap_silent("n", "{", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "{"<CR>]])
 
--- vmap v <Plug>(expand_region_expand)
--- vmap <C-v> <Plug>(expand_region_shrink)
+-- set_keymap("v", "v", t("<Plug>") .. "(expand_region_expand)")
+-- set_keymap("<C-v>", "v", t("<Plug>") .. "(expand_region_shrink)")
 
 -- Y should be yank until the end of the line
 -- see :help Y

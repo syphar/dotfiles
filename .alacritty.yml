@@ -1,3 +1,6 @@
+env:
+  TERM: alacritty-direct
+
 shell:
   program: /usr/local/bin/fish
   args:
