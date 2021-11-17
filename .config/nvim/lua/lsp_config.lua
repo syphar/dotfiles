@@ -65,7 +65,12 @@ function cfg.lsp_setup()
 		settings = {
 			["rust-analyzer"] = {
 				checkOnSave = {
+					enable = true,
 					command = "clippy",
+					allTargets = true,
+				},
+				procMacro = {
+					enable = true,
 				},
 			},
 		},
