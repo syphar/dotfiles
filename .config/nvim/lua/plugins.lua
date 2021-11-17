@@ -40,6 +40,8 @@ return require("packer").startup({
 						},
 						literal = {
 							["poetry.lock"] = "toml",
+							["Pipfile"] = "toml",
+							["Pipfile.lock"] = "json",
 							[".envrc"] = "bash",
 							[".direnvrc"] = "bash",
 							[".env"] = "bash",
