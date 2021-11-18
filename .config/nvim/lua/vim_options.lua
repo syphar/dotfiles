@@ -103,7 +103,7 @@ vim.cmd("syntax sync minlines=256")
 vim.opt.cursorline = false
 
 -- Set updatetime
-vim.opt.updatetime = 2000
+vim.opt.updatetime = 1000
 
 -- When scrolling, keep cursor 5 lines away from screen border
 vim.opt.scrolloff = 10
