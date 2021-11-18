@@ -42,6 +42,17 @@ format = "[$symbol $env_value ]($style)"
 style = "blue"
 symbol=""
 
+# [heroku]
+# format = "[$symbol $app_name (\\( $account\\)) ]($style)"
+
+# [heroku.replace_patterns]
+# "thermondo-" = "(T°)-"
+# "medicaljobs-" = "(MJ)-"
+# 
+# [heroku.account_aliases]
+# "denis@cornehl.org" = "DC"
+# "denis.cornehl@thermondo.de" = "T°"
+
 [docker_context]
 disabled = true
 
