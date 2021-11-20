@@ -50,6 +50,9 @@ abbr -ag gsa git stash apply
 abbr -ag gsc git stash clear
 abbr -ag grc git rebase --continue
 abbr -ag grv git remote -v
+abbr -ag c cargo
+abbr -ag cab cargo build
+abbr -ag cac cargo check
 
 alias pr-create="gh pr create --fill --draft --assignee syphar"
 alias pr-open="gh pr view --web"
