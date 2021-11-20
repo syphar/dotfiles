@@ -492,7 +492,6 @@ return require("packer").startup({
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
-			commit = "9c3fc24b79576816c7ce9ee8a06710c9a76261af",
 			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		})
 

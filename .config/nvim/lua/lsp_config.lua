@@ -134,29 +134,11 @@ function cfg.lsp_setup()
 	})
 
 	local null_ls = require("null-ls")
-
-	null_ls.config({
-		-- debug = true,
-		sources = {
-			null_ls.builtins.code_actions.gitsigns,
-			null_ls.builtins.diagnostics.flake8,
-			null_ls.builtins.diagnostics.hadolint,
-			null_ls.builtins.diagnostics.luacheck,
-			null_ls.builtins.diagnostics.shellcheck,
-			null_ls.builtins.diagnostics.vint,
-			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.black,
-			null_ls.builtins.formatting.isort,
-			null_ls.builtins.formatting.rustfmt,
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.trim_newlines,
-		},
-	})
-
+	local helpers = require("null-ls.helpers")
 	local pydocstyle = {
 		method = null_ls.methods.DIAGNOSTICS,
 		filetypes = { "python" },
-		generator = null_ls.generator({
+		generator = helpers.generator_factory({
 			command = "pydocstyle",
 			args = {
 				-- Default config discovery ignores CWD and uses the directory the temp-file is in.
@@ -180,7 +162,7 @@ function cfg.lsp_setup()
 				-- pydocstyle output is in two lines for each error,
 				-- which is why we cannot use `format = "line"` and have to
 				-- split lines on our own.
-				--
+
 				-- Example:
 				--     nsync/tasks.py:48 in public function `send_stored_draft`:
 				--         D403: First word of the first line should be properly capitalized ('Send', not 'send')
@@ -211,7 +193,24 @@ function cfg.lsp_setup()
 		}),
 	}
 
-	null_ls.register(pydocstyle)
+	null_ls.config({
+		-- debug = true,
+		sources = {
+			null_ls.builtins.code_actions.gitsigns,
+			null_ls.builtins.diagnostics.flake8,
+			null_ls.builtins.diagnostics.hadolint,
+			null_ls.builtins.diagnostics.luacheck,
+			null_ls.builtins.diagnostics.shellcheck,
+			null_ls.builtins.diagnostics.vint,
+			null_ls.builtins.diagnostics.yamllint,
+			null_ls.builtins.formatting.black,
+			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.rustfmt,
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.trim_newlines,
+			pydocstyle,
+		},
+	})
 
 	lsp["null-ls"].setup({
 		on_attach = cfg.lsp_on_attach,
