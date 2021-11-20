@@ -414,7 +414,26 @@ return require("packer").startup({
 			after = "telescope.nvim",
 		})
 		use("rhysd/committia.vim") --Better COMMIT_EDITMSG editing
-		use("tpope/vim-commentary") --comment/uncomment on gcc
+		use({ --comment/uncomment on gcc
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup({
+					padding = true,
+					ignore = "^$",
+					mappings = {
+						---operator-pending mapping
+						---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
+						basic = true,
+						---extra mapping
+						---Includes `gco`, `gcO`, `gcA`
+						extra = true,
+						---extended mapping
+						---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
+						extended = true,
+					},
+				})
+			end,
+		})
 		use("editorconfig/editorconfig-vim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use({
