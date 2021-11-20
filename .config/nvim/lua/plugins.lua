@@ -462,8 +462,6 @@ return require("packer").startup({
 			"nvim-lua/lsp_extensions.nvim",
 			ft = { "rust" },
 			config = function()
-				-- only current line?
-				-- autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 				vim.cmd([[
 				  augroup update_inlay_hints
 					autocmd!
