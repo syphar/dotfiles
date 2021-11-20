@@ -9,3 +9,12 @@ lsp.cmp_setup()
 require("vim_options")
 require("keyboard")
 vim.cmd([[hi! link TreesitterContext NormalFloat]])
+
+-- I don't really know which plugin re-enables cursorline all the time
+-- but here I just disable it on certain events
+vim.cmd([[
+  augroup disable_cursorline
+	autocmd!
+	autocmd VimEnter,WinEnter,BufEnter,BufWinEnter,TabEnter * set nocursorline
+  augroup end
+]])
