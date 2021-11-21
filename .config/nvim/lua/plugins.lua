@@ -351,7 +351,7 @@ return require("packer").startup({
 						scroll_stratecy = "cycle",
 						layout_strategy = "center",
 						layout_config = {
-							width = 0.8,
+							width = 0.6,
 							height = 0.5,
 							preview_cutoff = 120,
 							prompt_position = "bottom",
