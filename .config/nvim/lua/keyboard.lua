@@ -8,19 +8,13 @@ local function set_keymap_silent(mode, mapping, command)
 end
 
 local function t(str)
-	-- Adjust boolean arguments as needed
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
--- nnoremap <silent> } :<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>
--- nnoremap <silent> { :<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
 set_keymap_silent("n", "{", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "{"<CR>]])
-
--- set_keymap("v", "v", t("<Plug>") .. "(expand_region_expand)")
--- set_keymap("<C-v>", "v", t("<Plug>") .. "(expand_region_shrink)")
 
 -- Y should be yank until the end of the line
 -- see :help Y
@@ -42,11 +36,7 @@ set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
 set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<C-P>", [[<cmd>lua require('telescope-config').project_files()<cr>]])
-set_keymap(
-	"n",
-	"<leader>p",
-	[[<cmd>lua require('telescope.builtin').find_files({find_command={"fd", "--type", "f", "--hidden", "--no-ignore", ".", vim.env.VIRTUAL_ENV}})<cr>]]
-)
+set_keymap("n", "<leader>p", [[<cmd>lua require('telescope-config').virtualenv_files()<cr>]])
 
 set_keymap("n", "<leader>d", "<cmd>DashWord<cr>")
 

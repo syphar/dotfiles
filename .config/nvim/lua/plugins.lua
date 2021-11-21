@@ -167,10 +167,13 @@ return require("packer").startup({
 
 		-- general plugins
 		use("farmergreg/vim-lastplace") --save/restore sessions properly
-		use("christoomey/vim-tmux-navigator") --nativate between vim and tmux panes
-		use("tmux-plugins/vim-tmux-focus-events")
+		use({
+			"numToStr/Navigator.nvim",
+			config = function()
+				require("Navigator").setup()
+			end,
+		})
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
-		use("terryma/vim-expand-region") -- intelligently expand selection with V / CTRL+V
 
 		use({
 			"phaazon/hop.nvim",
@@ -256,6 +259,15 @@ return require("packer").startup({
 							},
 						},
 					},
+					incremental_selection = {
+						enable = true,
+						keymaps = {
+							init_selection = "vv",
+							node_incremental = "v",
+							-- scope_incremental = "<C-v>",
+							node_decremental = "<C-v>",
+						},
+					},
 				})
 			end,
 		})
@@ -339,7 +351,7 @@ return require("packer").startup({
 						scroll_stratecy = "cycle",
 						layout_strategy = "center",
 						layout_config = {
-							width = 0.5,
+							width = 0.8,
 							height = 0.5,
 							preview_cutoff = 120,
 							prompt_position = "bottom",
