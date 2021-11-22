@@ -4,8 +4,8 @@ source $XDG_CONFIG_HOME/fish/environment.fish
 
 fzf_configure_bindings --directory=\cf
 
-direnv hook fish | source
-starship init fish | source
+/usr/local/bin/direnv hook fish | source
+/usr/local/bin/starship init fish | source
 
 # status is-login; and pyenv init --path | source
 # pyenv init - | source
