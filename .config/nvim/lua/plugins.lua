@@ -177,7 +177,6 @@ return require("packer").startup({
 
 		use({
 			"phaazon/hop.nvim",
-			branch = "v1", -- optional but strongly recommended
 			after = "github-nvim-theme", -- so hilight works
 			config = function()
 				require("hop").setup({})
