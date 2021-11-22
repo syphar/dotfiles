@@ -57,11 +57,11 @@ mackup backup
 # update fisher
 fish -c "fisher update"
 
+./update_lua_language_server.sh
+./update_vim.sh
+
 # update tmux plugins
 ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
 
 # update all source repos
 ./find_repos.sh "$SRC_DIR" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
-
-./update_lua_language_server.sh
-./update_vim.sh
