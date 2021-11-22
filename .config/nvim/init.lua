@@ -15,6 +15,6 @@ vim.cmd([[hi! link TreesitterContext NormalFloat]])
 vim.cmd([[
   augroup disable_cursorline
 	autocmd!
-	autocmd VimEnter,WinEnter,BufEnter,BufWinEnter,TabEnter,BufRead,BufNewFile * set nocursorline
+	autocmd VimEnter,WinEnter,BufEnter,BufWinEnter,TabEnter,BufRead,BufNewFile,InsertLeave * set nocursorline
   augroup end
 ]])
