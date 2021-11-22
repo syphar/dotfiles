@@ -60,6 +60,12 @@ set_keymap("n", "<F4>", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>")
 set_keymap("v", "<", "<gv")
 set_keymap("v", ">", ">gv")
 
+-- tmux navigation
+set_keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>")
+set_keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>")
+set_keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>")
+set_keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>")
+
 -- common typos .. (W, Wq WQ)
 vim.cmd([[
 cnoreabbrev E e
