@@ -1,17 +1,6 @@
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 
--- TODO: not needed any more?
--- https://github.com/nanotee/nvim-lua-guide#vimapinvim_replace_termcodes
--- vim.cmd([[
--- let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
--- let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
--- set termguicolors
--- " italic fonts
--- let &t_ZH="\e[3m"
--- let &t_ZR="\e[23m"
--- ]])
-
 vim.g.python3_host_prog = vim.fn.expand("$HOME/src/neovim_env/venv/bin/python")
 
 -- enable mouse support

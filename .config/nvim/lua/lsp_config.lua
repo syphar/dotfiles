@@ -23,6 +23,23 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
+	-- Use LSP as the handler for omnifunc.
+	--    See `:help omnifunc` and `:help ins-completion` for more information.
+	vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+	-- Use LSP as the handler for formatexpr.
+	--    See `:help formatexpr` for more information.
+	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+
+	-- better mappings for omnifunc
+	-- up/down with tab/shift-tab
+	vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"]])
+	vim.cmd([[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
+	-- enter selects entry
+	vim.cmd([[inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
+	-- show omnicomplete on C-space
+	buf_set_keymap("i", "<C-Space>", "<C-X><C-O>", opts)
+
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[
 			augroup AutoFormatOnSave
@@ -43,11 +60,6 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	client.resolved_capabilities.document_range_formatting = false
 end
 
-function cfg.updated_capabilities()
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	return require("cmp_nvim_lsp").update_capabilities(capabilities)
-end
-
 function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
@@ -61,7 +73,6 @@ function cfg.lsp_setup()
 
 	lsp.rust_analyzer.setup({
 		on_attach = cfg.lsp_on_attach_without_formatting,
-		capabilities = cfg.updated_capabilities(),
 		settings = {
 			["rust-analyzer"] = {
 				checkOnSave = {
@@ -106,7 +117,6 @@ function cfg.lsp_setup()
 	})
 
 	lsp.pylsp.setup({
-		capabilities = cfg.updated_capabilities(),
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
 			pylsp = {
@@ -218,37 +228,6 @@ function cfg.lsp_setup()
 
 	-- automatically show line diagnostics in a hover window
 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
-end
-
-function cfg.cmp_setup()
-	local cmp = require("cmp")
-
-	cmp.setup({
-		completion = {
-			completeopt = "menu,menuone,noselect",
-			autocomplete = false,
-			-- autocomplete = { "types.cmp.TriggerEvent.TextChanged" },
-		},
-		mapping = {
-			["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-			["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-			["<C-y>"] = cmp.config.disable, -- If you want to remove the default `<C-y>` mapping, You can specify `cmp.config.disable` value.
-			["<C-e>"] = cmp.mapping({
-				i = cmp.mapping.abort(),
-				c = cmp.mapping.close(),
-			}),
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
-			["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
-			["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
-		},
-		sources = cmp.config.sources({
-			{ name = "nvim_lsp" },
-			{ name = "cmp_tabnine" },
-		}, {
-			{ name = "buffer" },
-		}),
-	})
 end
 
 return cfg

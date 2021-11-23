@@ -166,8 +166,8 @@ return require("packer").startup({
 		})
 
 		-- general plugins
-		use("farmergreg/vim-lastplace") --save/restore sessions properly
-		use({
+		use("farmergreg/vim-lastplace") --jump to last edited line in files
+		use({ -- jump between vim and tmux splits with C+hjkl
 			"numToStr/Navigator.nvim",
 			config = function()
 				require("Navigator").setup()
@@ -506,33 +506,6 @@ return require("packer").startup({
 			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		})
 
-		use({
-			"hrsh7th/nvim-cmp",
-			requires = {
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-calc",
-				"hrsh7th/cmp-nvim-lsp",
-				"hrsh7th/cmp-nvim-lua",
-				"hrsh7th/cmp-path",
-				"octaltree/cmp-look",
-			},
-		})
-
-		use({
-			"tzachar/cmp-tabnine",
-			run = "./install.sh",
-			requires = "hrsh7th/nvim-cmp",
-			event = "InsertEnter",
-			config = function()
-				require("cmp_tabnine.config"):setup({
-					max_lines = 1000,
-					max_num_results = 6,
-					priority = 10,
-					sort = false,
-					run_on_every_keystroke = true,
-				})
-			end,
-		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
