@@ -23,12 +23,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
-	-- Use LSP as the handler for omnifunc.
-	--    See `:help omnifunc` and `:help ins-completion` for more information.
 	vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Use LSP as the handler for formatexpr.
-	--    See `:help formatexpr` for more information.
 	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
 	-- better mappings for omnifunc
