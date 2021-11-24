@@ -86,13 +86,23 @@ return require("packer").startup({
 							{
 								"mode",
 								fmt = function(str)
-									-- only show first character of mode
+									-- only show first character of modeq
 									return str:sub(1, 1)
 								end,
 							},
 						},
 						lualine_b = {
-							{ "b:gitsigns_head", icon = "" },
+							{
+								"b:gitsigns_head",
+								icon = "",
+								fmt = function(str)
+									if string.len(str) > 20 then
+										return string.sub(str, 1, 20) .. "…"
+									else
+										return str
+									end
+								end,
+							},
 							{ "diff", source = diff_source },
 							{ "diagnostics", sources = { "nvim_lsp" } },
 						},
