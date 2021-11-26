@@ -1,6 +1,7 @@
 awscli
 black
 dephell
+djhtml
 flake8
 gcalcli
 gcloud
