@@ -50,11 +50,13 @@ set_keymap("v", "<leader>gl", ":Gclog <CR>")
 -- git blame for the current file
 set_keymap("n", "<leader>gb", ":Git blame <CR>")
 
--- trouble
-set_keymap("n", "<F3>", "<cmd>TroubleToggle lsp_document_diagnostics<cr>")
-set_keymap("n", "<F4>", "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>")
--- nnoremap <F9> <cmd>lua require("trouble").next({skip_groups = true, jump = true})<cr>
--- nnoremap <F10> <cmd>lua require("trouble").previous({skip_groups = true, jump = true})<cr>
+-- set_keymap("n", "<F3>", "<cmd>lopen<cr>")
+set_keymap("n", "<F3>", "<cmd>lopen<cr>")
+set_keymap("n", "<F4>", "<cmd>copen<cr>")
+set_keymap("n", "<F9>", "<cmd>lprev<cr>")
+set_keymap("n", "<F10>", "<cmd>lnext<cr>")
+set_keymap("n", "<F11>", "<cmd>cprev<cr>")
+set_keymap("n", "<F12>", "<cmd>cnext<cr>")
 
 -- Visual shifting (does not exit Visual mode)
 set_keymap("v", "<", "<gv")

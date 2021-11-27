@@ -419,18 +419,6 @@ return require("packer").startup({
 		-- generic software dev stuff
 		use("kyazdani42/nvim-web-devicons")
 		use({
-			"folke/trouble.nvim",
-			config = function()
-				require("trouble").setup({
-					mode = "lsp_workspace_diagnostics",
-					-- mode = "lsp_document_diagnostics",
-					auto_open = false,
-					auto_close = true,
-					auto_preview = true,
-				})
-			end,
-		})
-		use({
 			"mrjones2014/dash.nvim",
 			run = "make install",
 			after = "telescope.nvim",

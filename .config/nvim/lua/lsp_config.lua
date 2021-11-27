@@ -75,7 +75,7 @@ function cfg.lsp_setup()
 				checkOnSave = {
 					enable = true,
 					command = "clippy",
-					allTargets = true,
+					allTargets = false,
 				},
 				procMacro = {
 					enable = true,
@@ -314,6 +314,11 @@ function cfg.lsp_setup()
 
 	-- automatically show line diagnostics in a hover window
 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+
+	-- update loclist with diagnostics for the current file
+	vim.api.nvim_command(
+		[[autocmd! User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false})]]
+	)
 end
 
 return cfg
