@@ -210,7 +210,7 @@ return require("packer").startup({
 			--auto focus / resize for splits
 			"beauwilliams/focus.nvim",
 			config = function()
-				require("focus").setup()
+				require("focus").setup({ cursorline = false, signcolumn = false })
 			end,
 		})
 		use({
@@ -407,6 +407,7 @@ return require("packer").startup({
 		})
 
 		-- specific file types
+		use({ "Glench/Vim-Jinja2-Syntax" })
 		use({ "plasticboy/vim-markdown", ft = { "md", "markdown" } })
 		use({
 			"raimon49/requirements.txt.vim",
