@@ -45,6 +45,7 @@ abbr -ag g git
 abbr -ag gco git checkout
 abbr -ag gst git status
 abbr -ag gc git commit
+abbr -ag gcn git commit --no-verify
 abbr -ag gs git stash
 abbr -ag gsa git stash apply
 abbr -ag gsc git stash clear
