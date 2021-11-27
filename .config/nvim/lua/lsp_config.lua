@@ -28,7 +28,9 @@ function cfg.lsp_on_attach(client, bufnr)
 
 	-- better mappings for omnifunc
 	-- up/down with tab/shift-tab
-	vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"]])
+	-- tab => start omni complete, I don't need tab for other things.
+	-- old default tab expr = `\<Tab>`
+	vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-X><C-O>"]])
 	vim.cmd([[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
 	-- enter selects entry
 	vim.cmd([[inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
@@ -111,6 +113,24 @@ function cfg.lsp_setup()
 		},
 	})
 
+	-- needs
+	-- * global: npm install -g typescript-language-server
+	-- * local: npm install typescript
+	lsp.tsserver.setup({
+		on_attach = cfg.lsp_on_attach_without_formatting,
+	})
+	-- I like deno more, but it doesn't use npm/node_modules,
+	-- which leads to many errors in normal projects.
+
+	-- lsp.denols.setup({
+	-- 	on_attach = cfg.lsp_on_attach_without_formatting,
+	-- 	init_options = {
+	-- 		enable = true,
+	-- 		lint = false,
+	-- 		unstable = false,
+	-- 	},
+	-- })
+
 	lsp.pylsp.setup({
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
@@ -140,6 +160,53 @@ function cfg.lsp_setup()
 
 	local null_ls = require("null-ls")
 	local helpers = require("null-ls.helpers")
+
+	-- local dj_html = {
+	-- 	method = null_ls.methods.FORMATTING,
+	-- 	filetypes = { "jinja.html", "htmldjango" },
+	-- 	generator = helpers.formatter_factory({
+	-- 		command = "djhtml",
+	-- 		args = {
+	-- 			"--tabwidth",
+	-- 			"2",
+	-- 		},
+	-- 		to_stdin = true,
+	-- 	}),
+	-- }
+
+	local curlylint = {
+		method = null_ls.methods.DIAGNOSTICS,
+		filetypes = { "jinja.html", "htmldjango" },
+		generator = helpers.generator_factory({
+			command = "curlylint",
+			args = {
+				-- no logging output
+				"--quiet",
+				-- read from stdin
+				"-",
+				-- output in JSON
+				"--format",
+				"json",
+				-- still define filepath so curlylint knows about it
+				"--stdin-filepath",
+				"$FILENAME",
+			},
+			to_stdin = true,
+			format = "json",
+			check_exit_code = function(code)
+				return code <= 1
+			end,
+			on_output = helpers.diagnostics.from_json({
+				attributes = {
+					row = "line",
+					col = "column",
+					code = "code",
+					message = "message",
+				},
+			}),
+		}),
+	}
+
 	local pydocstyle = {
 		method = null_ls.methods.DIAGNOSTICS,
 		filetypes = { "python" },
@@ -198,10 +265,27 @@ function cfg.lsp_setup()
 		}),
 	}
 
+	local function has_any_config(filenames)
+		local function checker(utils)
+			for _, fn in pairs(filenames) do
+				if utils.root_has_file(fn) then
+					return true
+				end
+			end
+		end
+
+		return checker
+	end
+
+	local function has_eslint_rc(utils)
+		return has_any_config({ ".eslintrc.js", ".eslintrc.json", ".eslintrc" })(utils)
+	end
+
 	null_ls.config({
 		-- debug = true,
 		sources = {
 			null_ls.builtins.code_actions.gitsigns,
+			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.luacheck,
@@ -209,11 +293,18 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
 			null_ls.builtins.formatting.black,
+			null_ls.builtins.formatting.eslint_d.with({ condition = has_eslint_rc }),
+			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.prettierd.with({
+				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
+			}),
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.trim_newlines,
+			curlylint,
 			pydocstyle,
+			-- dj_html,
 		},
 	})
 
