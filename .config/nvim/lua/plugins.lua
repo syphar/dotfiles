@@ -447,21 +447,6 @@ return require("packer").startup({
 		use("editorconfig/editorconfig-vim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use({
-			"janko/vim-test", --simple test running
-			config = function()
-				vim.g["test#strategy"] = "dispatch"
-				vim.g["test#preserve_screen"] = 0
-				vim.g["test#python#runner"] = "pytest"
-			end,
-		})
-		use({
-			"tpope/vim-dispatch",
-			config = function()
-				vim.g.dispatch_quickfix_height = 20
-				vim.g.dispatch_tmux_height = 20
-			end,
-		})
-		use({
 			"chaoren/vim-wordmotion",
 			config = function()
 				-- uppercase spaces would stop the upper case motion (full words)
@@ -480,10 +465,7 @@ return require("packer").startup({
 			"jeetsukumaran/vim-pythonsense",
 			ft = { "python" },
 		})
-		use({
-			"5long/pytest-vim-compiler",
-			ft = { "python" },
-		})
+		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
