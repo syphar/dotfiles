@@ -162,8 +162,6 @@ return require("packer").startup({
 			config = function()
 				vim.opt.background = "dark"
 				require("github-theme").setup({
-					-- theme_style = "light",
-					-- theme_style = "dark_default",
 					theme_style = "dark",
 					transparent = true,
 					comment_style = "italic",
@@ -418,18 +416,12 @@ return require("packer").startup({
 
 		-- generic software dev stuff
 		use("kyazdani42/nvim-web-devicons")
-		use({
-			"mrjones2014/dash.nvim",
-			run = "make install",
-			after = "telescope.nvim",
-		})
-		use("rhysd/committia.vim") --Better COMMIT_EDITMSG editing
 		use({ --comment/uncomment on gcc
 			"numToStr/Comment.nvim",
 			config = function()
 				require("Comment").setup({
 					padding = true,
-					ignore = "^$",
+					ignore = "^$", -- ignore empty lines
 					mappings = {
 						---operator-pending mapping
 						---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
@@ -450,7 +442,7 @@ return require("packer").startup({
 			"chaoren/vim-wordmotion",
 			config = function()
 				-- uppercase spaces would stop the upper case motion (full words)
-				-- vim.g.wordmotion_uppercase_spaces = { ".", ",", "(", ")", "[", "]", "{", "}", " ", "<", ">", ":" }
+				vim.g.wordmotion_uppercase_spaces = { ".", ",", "(", ")", "[", "]", "{", "}", " ", "<", ">", ":" }
 				-- normal spaces would stop the lower-case (x-case subword) motion
 				-- let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\.']
 			end,
@@ -468,7 +460,6 @@ return require("packer").startup({
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
-		use("ray-x/lsp_signature.nvim")
 		use({
 			"nvim-lua/lsp_extensions.nvim",
 			ft = { "rust" },
