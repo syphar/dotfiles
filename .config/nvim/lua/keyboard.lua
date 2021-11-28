@@ -50,9 +50,8 @@ set_keymap("v", "<leader>gl", ":Gclog <CR>")
 -- git blame for the current file
 set_keymap("n", "<leader>gb", ":Git blame <CR>")
 
--- set_keymap("n", "<F3>", "<cmd>lopen<cr>")
-set_keymap("n", "<F3>", "<cmd>lopen<cr>")
-set_keymap("n", "<F4>", "<cmd>copen<cr>")
+set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
+set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
 set_keymap("n", "<F9>", "<cmd>lprevious<cr>")
 set_keymap("n", "<F10>", "<cmd>lnext<cr>")
 set_keymap("n", "<F11>", "<cmd>cprevious<cr>")

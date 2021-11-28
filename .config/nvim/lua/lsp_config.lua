@@ -30,6 +30,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	-- up/down with tab/shift-tab
 	-- tab => start omni complete, I don't need tab for other things.
 	-- old default tab expr = `\<Tab>`
+	-- vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"]])
 	vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-X><C-O>"]])
 	vim.cmd([[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
 	-- enter selects entry
@@ -45,10 +46,6 @@ function cfg.lsp_on_attach(client, bufnr)
 			augroup END
 		]])
 	end
-
-	require("lsp_signature").on_attach({
-		bind = true,
-	})
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
@@ -75,7 +72,8 @@ function cfg.lsp_setup()
 				checkOnSave = {
 					enable = true,
 					command = "clippy",
-					allTargets = false,
+					allTargets = true,
+					allFeatures = true,
 				},
 				procMacro = {
 					enable = true,
@@ -159,111 +157,6 @@ function cfg.lsp_setup()
 	})
 
 	local null_ls = require("null-ls")
-	local helpers = require("null-ls.helpers")
-
-	-- local dj_html = {
-	-- 	method = null_ls.methods.FORMATTING,
-	-- 	filetypes = { "jinja.html", "htmldjango" },
-	-- 	generator = helpers.formatter_factory({
-	-- 		command = "djhtml",
-	-- 		args = {
-	-- 			"--tabwidth",
-	-- 			"2",
-	-- 		},
-	-- 		to_stdin = true,
-	-- 	}),
-	-- }
-
-	local curlylint = {
-		method = null_ls.methods.DIAGNOSTICS,
-		filetypes = { "jinja.html", "htmldjango" },
-		generator = helpers.generator_factory({
-			command = "curlylint",
-			args = {
-				-- no logging output
-				"--quiet",
-				-- read from stdin
-				"-",
-				-- output in JSON
-				"--format",
-				"json",
-				-- still define filepath so curlylint knows about it
-				"--stdin-filepath",
-				"$FILENAME",
-			},
-			to_stdin = true,
-			format = "json",
-			check_exit_code = function(code)
-				return code <= 1
-			end,
-			on_output = helpers.diagnostics.from_json({
-				attributes = {
-					row = "line",
-					col = "column",
-					code = "code",
-					message = "message",
-				},
-			}),
-		}),
-	}
-
-	local pydocstyle = {
-		method = null_ls.methods.DIAGNOSTICS,
-		filetypes = { "python" },
-		generator = helpers.generator_factory({
-			command = "pydocstyle",
-			args = {
-				-- Default config discovery ignores CWD and uses the directory the temp-file is in.
-				-- we want to use the config in the project.
-				"--config=$ROOT/setup.cfg",
-				-- pydocstyle doesn't support receiving the file via STDIN
-				"$FILENAME",
-			},
-			to_stdin = false,
-			to_temp_file = true,
-			format = "raw",
-			check_exit_code = function(code)
-				return code <= 1
-			end,
-			on_output = function(params, done)
-				local output = params.output
-				if not output then
-					return done()
-				end
-
-				-- pydocstyle output is in two lines for each error,
-				-- which is why we cannot use `format = "line"` and have to
-				-- split lines on our own.
-
-				-- Example:
-				--     nsync/tasks.py:48 in public function `send_stored_draft`:
-				--         D403: First word of the first line should be properly capitalized ('Send', not 'send')
-
-				local diagnostics = {}
-				local current_line = nil
-
-				for _, line in ipairs(vim.split(output, "\n")) do
-					if line ~= "" then
-						if current_line == nil then
-							current_line = tonumber(line:match(":(%d+) "))
-						else
-							local code, message = line:match("%s+(D%d+): (.*)")
-
-							table.insert(diagnostics, {
-								row = current_line,
-								source = "pydocstyle(" .. code .. ")",
-								message = message,
-								severity = 3, -- "info" severity
-							})
-
-							current_line = nil
-						end
-					end
-				end
-				done(diagnostics)
-			end,
-		}),
-	}
 
 	local function has_any_config(filenames)
 		local function checker(utils)
@@ -281,6 +174,8 @@ function cfg.lsp_setup()
 		return has_any_config({ ".eslintrc.js", ".eslintrc.json", ".eslintrc" })(utils)
 	end
 
+	local custom = require("null_ls_custom")
+
 	null_ls.config({
 		-- debug = true,
 		sources = {
@@ -289,6 +184,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.luacheck,
+			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
@@ -302,10 +198,14 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.trim_newlines,
-			curlylint,
-			pydocstyle,
-			-- dj_html,
+			custom.curlylint,
+			custom.gitlint,
+			custom.pydocstyle,
+			-- custom.dj_html,
 		},
+		debounce = 1000,
+		update_on_insert = false,
+		diagnostics_format = "[#{c}] #{m} (#{s})",
 	})
 
 	lsp["null-ls"].setup({
