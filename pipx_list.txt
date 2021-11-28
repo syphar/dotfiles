@@ -1,5 +1,6 @@
 awscli
 black
+curlylint
 dephell
 djhtml
 flake8
