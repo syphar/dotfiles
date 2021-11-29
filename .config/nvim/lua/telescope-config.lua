@@ -10,18 +10,15 @@ end
 
 M.virtualenv_files = function()
 	require("telescope.builtin").find_files({
+		path_display = { "smart" },
 		find_command = {
 			"fd",
 			"--type",
 			"f",
 			"--hidden",
-			"--ignore-file",
-			"~/src/dotfiles/gitignore/python.gitignore",
-			-- I'll have to change the path after py310, or just start
-			-- search from the virtualenv
-			"--base-directory",
-			vim.env.VIRTUAL_ENV .. "/lib/python3.9/site-packages/",
-			".",
+			"--no-ignore",
+			[[.*\.py$]],
+			vim.env.VIRTUAL_ENV,
 		},
 	})
 end
