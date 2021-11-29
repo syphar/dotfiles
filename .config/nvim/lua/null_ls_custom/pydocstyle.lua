@@ -45,7 +45,8 @@ return {
 
 						table.insert(diagnostics, {
 							row = current_line,
-							source = "pydocstyle(" .. code .. ")",
+							code = code,
+							source = "pydocstyle",
 							message = message,
 							severity = 3, -- "info" severity
 						})
