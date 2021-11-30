@@ -156,6 +156,10 @@ function cfg.lsp_setup()
 		},
 	})
 
+	lsp.gopls.setup({
+		on_attach = cfg.lsp_on_attach_without_formatting,
+	})
+
 	local null_ls = require("null-ls")
 
 	local function has_any_config(filenames)
@@ -191,6 +195,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.formatting.fish_indent,
+			null_ls.builtins.formatting.gofmt,
 			null_ls.builtins.formatting.isort,
 			null_ls.builtins.formatting.prettierd.with({
 				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
