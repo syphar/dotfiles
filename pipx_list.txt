@@ -11,6 +11,7 @@ gsutil
 httpie
 isort
 lookatme
+pip-tools
 pipenv
 poetry
 pre-commit
