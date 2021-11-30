@@ -58,10 +58,10 @@ function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
 	-- nice diagnostic icons in sign-column
-	-- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization#neovim-051
-	local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+	-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#neovim-060-1
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
-		local hl = "LspDiagnosticsSign" .. type
+		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 
@@ -218,12 +218,11 @@ function cfg.lsp_setup()
 	})
 
 	-- automatically show line diagnostics in a hover window
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0, {focusable=false,scope="line"})]])
+	-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]]
 
 	-- update loclist with diagnostics for the current file
-	vim.api.nvim_command(
-		[[autocmd! User LspDiagnosticsChanged lua vim.lsp.diagnostic.set_loclist({open_loclist=false})]]
-	)
+	vim.api.nvim_command([[autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})]])
 end
 
 return cfg
