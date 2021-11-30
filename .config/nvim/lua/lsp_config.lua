@@ -223,6 +223,14 @@ function cfg.lsp_setup()
 
 	-- update loclist with diagnostics for the current file
 	vim.api.nvim_command([[autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})]])
+
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		virtual_text = {
+			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics-neovim-06-only
+			source = "always", -- Or "if_many"
+			prefix = "●", -- Could be '●', '▎', 'x'
+		},
+	})
 end
 
 return cfg
