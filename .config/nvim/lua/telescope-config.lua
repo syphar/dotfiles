@@ -13,6 +13,7 @@ M.virtualenv_files = function()
 		path_display = { "smart" },
 		find_command = {
 			"fd",
+			"--strip-cwd-prefix",
 			"--type",
 			"f",
 			"--hidden",

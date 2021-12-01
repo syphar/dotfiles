@@ -65,6 +65,10 @@ function cfg.lsp_setup()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 
+	lsp.taplo.setup({
+		on_attach = cfg.lsp_on_attach_without_formatting,
+	})
+
 	lsp.rust_analyzer.setup({
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
@@ -202,6 +206,7 @@ function cfg.lsp_setup()
 			}),
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.taplo,
 			null_ls.builtins.formatting.trim_newlines,
 			custom.curlylint,
 			custom.gitlint,
@@ -227,7 +232,7 @@ function cfg.lsp_setup()
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = {
 			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics-neovim-06-only
-			source = "always", -- Or "if_many"
+			source = "if_many", -- Or "always"
 			prefix = "●", -- Could be '●', '▎', 'x'
 		},
 	})
