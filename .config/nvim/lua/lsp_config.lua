@@ -225,6 +225,7 @@ function cfg.lsp_setup()
 			custom.gitlint,
 			custom.pydocstyle,
 			-- custom.dj_html,
+			custom.luasnip,
 		},
 		debounce = vim.opt.updatetime:get(),
 		update_on_insert = false,

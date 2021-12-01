@@ -35,7 +35,7 @@ _G.tab_complete = function()
 	elseif check_back_space() then
 		return t("<Tab>")
 	else
-		return t("<C-X><C-O>")
+		return t("<Tab>")
 	end
 end
 _G.s_tab_complete = function()

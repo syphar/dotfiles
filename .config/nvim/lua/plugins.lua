@@ -440,6 +440,7 @@ return require("packer").startup({
 			"rafamadriz/friendly-snippets",
 			requires = { "L3MON4D3/LuaSnip" },
 		})
+		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
 		use({ --comment/uncomment on gcc
 			"numToStr/Comment.nvim",
