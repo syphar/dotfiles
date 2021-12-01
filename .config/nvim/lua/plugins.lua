@@ -430,6 +430,16 @@ return require("packer").startup({
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
+		use({
+			"L3MON4D3/LuaSnip",
+			config = function()
+				require("snippets")
+			end,
+		})
+		use({
+			"rafamadriz/friendly-snippets",
+			requires = { "L3MON4D3/LuaSnip" },
+		})
 		use("kyazdani42/nvim-web-devicons")
 		use({ --comment/uncomment on gcc
 			"numToStr/Comment.nvim",

@@ -1,3 +1,5 @@
+local luasnip = require("luasnip")
+
 vim.g.mapleader = ","
 
 local function set_keymap(mode, mapping, command)
@@ -15,6 +17,48 @@ end
 -- see https://superuser.com/a/836924/1124707
 set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
 set_keymap_silent("n", "{", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "{"<CR>]])
+
+local check_back_space = function()
+	local col = vim.fn.col(".") - 1
+	if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
+		return true
+	else
+		return false
+	end
+end
+
+_G.tab_complete = function()
+	if vim.fn.pumvisible() == 1 then
+		return t("<C-n>")
+	elseif luasnip.expand_or_jumpable() then
+		return t("<Plug>luasnip-expand-or-jump")
+	elseif check_back_space() then
+		return t("<Tab>")
+	else
+		return t("<C-X><C-O>")
+	end
+end
+_G.s_tab_complete = function()
+	if vim.fn.pumvisible() == 1 then
+		return t("<C-p>")
+	elseif luasnip and luasnip.jumpable(-1) then
+		return t("<Plug>luasnip-jump-prev")
+	else
+		return t("<S-Tab>")
+	end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})
+
+-- enter selects entry from autocomplete
+vim.cmd([[inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
+-- show omnicomplete on C-space
+set_keymap_silent("i", "<C-Space>", "<C-X><C-O>")
 
 -- Y should be yank until the end of the line
 -- see :help Y

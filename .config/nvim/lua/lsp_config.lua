@@ -35,18 +35,6 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
-	-- better mappings for omnifunc
-	-- up/down with tab/shift-tab
-	-- tab => start omni complete, I don't need tab for other things.
-	-- old default tab expr = `\<Tab>`
-	-- vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"]])
-	vim.cmd([[inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-X><C-O>"]])
-	vim.cmd([[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]])
-	-- enter selects entry
-	vim.cmd([[inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
-	-- show omnicomplete on C-space
-	buf_set_keymap("i", "<C-Space>", "<C-X><C-O>", opts)
-
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[
 			augroup AutoFormatOnSave
@@ -148,24 +136,10 @@ function cfg.lsp_setup()
 		},
 	})
 
-	-- needs
-	-- * global: npm install -g typescript-language-server
-	-- * local: npm install typescript
 	lsp.tsserver.setup({
 		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
-	-- I like deno more, but it doesn't use npm/node_modules,
-	-- which leads to many errors in normal projects.
-
-	-- lsp.denols.setup({
-	-- 	on_attach = cfg.lsp_on_attach_without_formatting,
-	-- 	init_options = {
-	-- 		enable = true,
-	-- 		lint = false,
-	-- 		unstable = false,
-	-- 	},
-	-- })
 
 	lsp.pylsp.setup({
 		flags = global_flags,
@@ -245,7 +219,7 @@ function cfg.lsp_setup()
 			}),
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.taplo,
+			-- null_ls.builtins.formatting.taplo,
 			null_ls.builtins.formatting.trim_newlines,
 			custom.curlylint,
 			custom.gitlint,
