@@ -1,5 +1,14 @@
 local cfg = {}
 
+function cfg.open_diagnostics_float()
+	-- open diagnostics float, to be used by CursorHold & CursorHoldI
+	-- separate method because I don't want diagnostics when the auto
+	-- complete popup is opened.
+	if vim.fn.pumvisible() ~= 1 then
+		vim.diagnostic.open_float(0, { focusable = false, scope = "line" })
+	end
+end
+
 function cfg.show_inlay_hints()
 	require("lsp_extensions").inlay_hints({
 		highlight = "Comment",
@@ -58,7 +67,7 @@ function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
 	local global_flags = {
-		debounce_text_changes = 500,
+		debounce_text_changes = vim.opt.updatetime:get(),
 	}
 
 	-- nice diagnostic icons in sign-column
@@ -240,7 +249,7 @@ function cfg.lsp_setup()
 			custom.pydocstyle,
 			-- custom.dj_html,
 		},
-		debounce = 1000,
+		debounce = vim.opt.updatetime:get(),
 		update_on_insert = false,
 		diagnostics_format = "[#{c}] #{m} (#{s})",
 	})
@@ -251,8 +260,8 @@ function cfg.lsp_setup()
 	})
 
 	-- automatically show line diagnostics in a hover window
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0, {focusable=false,scope="line"})]])
-	-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil,{focusable=false,scope="cursor"})]]
+	-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0, {focusable=false,scope="line"})]])
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require"lsp_config".open_diagnostics_float()]])
 
 	-- update loclist with diagnostics for the current file
 	vim.api.nvim_command([[autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})]])

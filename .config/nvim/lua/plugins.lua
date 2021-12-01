@@ -27,7 +27,7 @@ return require("packer").startup({
 		use({
 			"antoinemadec/FixCursorHold.nvim",
 			config = function()
-				vim.g.cursorhold_updatetime = 1000
+				vim.g.cursorhold_updatetime = vim.opt.updatetime:get()
 			end,
 		})
 		use({
