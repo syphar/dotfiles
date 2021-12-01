@@ -15,6 +15,7 @@ pip-tools
 pipenv
 poetry
 pre-commit
+proselint
 pydocstyle
 pyflyby
 python-lsp-server
