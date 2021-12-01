@@ -57,6 +57,10 @@ end
 function cfg.lsp_setup()
 	local lsp = require("lspconfig")
 
+	local global_flags = {
+		debounce_text_changes = 500,
+	}
+
 	-- nice diagnostic icons in sign-column
 	-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#neovim-060-1
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -65,11 +69,14 @@ function cfg.lsp_setup()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 
+	-- TOML language server with schemas
 	lsp.taplo.setup({
+		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 
 	lsp.rust_analyzer.setup({
+		flags = global_flags,
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
@@ -136,6 +143,7 @@ function cfg.lsp_setup()
 	-- * global: npm install -g typescript-language-server
 	-- * local: npm install typescript
 	lsp.tsserver.setup({
+		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 	-- I like deno more, but it doesn't use npm/node_modules,
@@ -151,6 +159,7 @@ function cfg.lsp_setup()
 	-- })
 
 	lsp.pylsp.setup({
+		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
 			pylsp = {
@@ -178,6 +187,7 @@ function cfg.lsp_setup()
 	})
 
 	lsp.gopls.setup({
+		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 
@@ -236,6 +246,7 @@ function cfg.lsp_setup()
 	})
 
 	lsp["null-ls"].setup({
+		flags = global_flags,
 		on_attach = cfg.lsp_on_attach,
 	})
 
