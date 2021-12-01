@@ -213,7 +213,6 @@ return require("packer").startup({
 		})
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			branch = "0.5-compat",
 			config = function()
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -278,7 +277,7 @@ return require("packer").startup({
 				})
 			end,
 		})
-		use({ "nvim-treesitter/nvim-treesitter-textobjects", branch = "0.5-compat" })
+		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
 			"romgrk/nvim-treesitter-context",
 			after = { "github-nvim-theme", "nvim-treesitter" },
@@ -341,7 +340,23 @@ return require("packer").startup({
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
-		use("airblade/vim-rooter") --automatically set root directory to project directory
+		use({ --automatically set root directory to project directory
+			"ygm2/rooter.nvim",
+			config = function()
+				vim.g.rooter_pattern = {
+					".git",
+					"Makefile",
+					".hg",
+					".bzr",
+					".svn",
+					"node_modules",
+					"CMakeLists.txt",
+					"Cargo.toml",
+					"pyproject.toml",
+				}
+				vim.g.outermost_root = false
+			end,
+		})
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({
 			"nvim-telescope/telescope.nvim",
@@ -460,18 +475,7 @@ return require("packer").startup({
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
-		use({
-			"nvim-lua/lsp_extensions.nvim",
-			ft = { "rust" },
-			config = function()
-				vim.cmd([[
-				  augroup update_inlay_hints
-					autocmd!
-					autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_config'.show_inlay_hints()
-				  augroup end
-				]])
-			end,
-		})
+		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
