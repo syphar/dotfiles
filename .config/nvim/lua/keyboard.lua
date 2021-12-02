@@ -88,9 +88,9 @@ set_keymap("n", "<leader>d", "<cmd>DashWord<cr>")
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
 
 -- show git log for current file
-set_keymap("n", "<leader>gl", ":0Gclog <CR>")
-set_keymap("v", "<leader>gl", ":Gclog <CR>")
 
+set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
+set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
 -- git blame for the current file
 set_keymap("n", "<leader>gb", ":Git blame <CR>")
 
