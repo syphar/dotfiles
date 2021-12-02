@@ -41,6 +41,7 @@ alias objdump="bingrep"
 alias hexdump="hx"
 alias j="jobs"
 
+abbr -ag lg lazygit
 abbr -ag g git
 abbr -ag gco git checkout
 abbr -ag gst git status
