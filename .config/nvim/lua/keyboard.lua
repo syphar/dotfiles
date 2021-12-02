@@ -35,16 +35,29 @@ _G.tab_complete = function()
 	elseif check_back_space() then
 		return t("<Tab>")
 	else
-		return t("<Tab>")
+		return t("<C-X><C-O>")
 	end
 end
+
 _G.s_tab_complete = function()
 	if vim.fn.pumvisible() == 1 then
 		return t("<C-p>")
-	elseif luasnip and luasnip.jumpable(-1) then
+	elseif luasnip.jumpable(-1) then
 		return t("<Plug>luasnip-jump-prev")
 	else
 		return t("<S-Tab>")
+	end
+end
+
+_G.enter_complete = function()
+	if vim.fn.pumvisible() == 1 then
+		if luasnip.expandable() then
+			return t("<C-y><cmd>lua require'luasnip'.expand()<CR>")
+		else
+			return t("<C-y>")
+		end
+	else
+		return t("<CR>")
 	end
 end
 
@@ -52,11 +65,10 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})
 
--- enter selects entry from autocomplete
-vim.cmd([[inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"]])
+-- enter selects entry from autocomplete, directly expands snippet when possible
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua.enter_complete()", { expr = true, noremap = true })
+
 -- show omnicomplete on C-space
 set_keymap_silent("i", "<C-Space>", "<C-X><C-O>")
 
@@ -88,7 +100,6 @@ set_keymap("n", "<leader>d", "<cmd>DashWord<cr>")
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
 
 -- show git log for current file
-
 set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
 -- git blame for the current file
