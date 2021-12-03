@@ -6,10 +6,12 @@ return {
 	filetypes = { "jinja.html", "htmldjango" },
 	generator = helpers.formatter_factory({
 		command = "djhtml",
-		args = {
-			"--tabwidth",
-			"2",
-		},
+		args = function(params)
+			return {
+				"--tabwidth",
+				vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+			}
+		end,
 		to_stdin = true,
 	}),
 }
