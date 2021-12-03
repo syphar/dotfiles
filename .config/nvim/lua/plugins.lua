@@ -481,6 +481,7 @@ return require("packer").startup({
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
+		use("ray-x/lsp_signature.nvim")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({
@@ -492,8 +493,4 @@ return require("packer").startup({
 			require("packer").sync()
 		end
 	end,
-	--config = {
-	--	-- Move to lua dir so impatient.nvim can cache it
-	--	compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
-	--},
 })

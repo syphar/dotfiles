@@ -27,9 +27,8 @@ function cfg.lsp_on_attach(client, bufnr)
 	end
 
 	local opts = { noremap = true, silent = true }
+	buf_set_keymap("n", "<leader>d", [[<CMD>lua require"lsp_config".open_diagnostics_float()<CR>]], opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<C-K>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("i", "<C-K>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
@@ -56,6 +55,8 @@ function cfg.lsp_on_attach(client, bufnr)
 			augroup END
 		]])
 	end
+
+	require("lsp_signature").on_attach()
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
@@ -80,6 +81,7 @@ function cfg.lsp_setup()
 	end
 
 	-- TOML language server with schemas
+	-- schemas broken for now in LSP
 	lsp.taplo.setup({
 		flags = global_flags,
 		on_attach = cfg.lsp_on_attach_without_formatting,
@@ -249,10 +251,6 @@ function cfg.lsp_setup()
 		flags = global_flags,
 		on_attach = cfg.lsp_on_attach,
 	})
-
-	-- automatically show line diagnostics in a hover window
-	-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0, {focusable=false,scope="line"})]])
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require"lsp_config".open_diagnostics_float()]])
 
 	-- update loclist with diagnostics for the current file
 	vim.api.nvim_command([[autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})]])
