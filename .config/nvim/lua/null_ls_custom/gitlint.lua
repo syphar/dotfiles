@@ -6,9 +6,11 @@ return {
 	filetypes = { "gitcommit" },
 	generator = helpers.generator_factory({
 		command = "gitlint",
-		args = {},
+		args = { "lint" },
 		to_stdin = true,
 		format = "line",
+		from_stderr = true,
+		check_exit_code = { 0, 1 },
 		on_output = helpers.diagnostics.from_pattern([[(%d+): (%w+) (.*)]], { "line", "code", "message" }),
 	}),
 }
