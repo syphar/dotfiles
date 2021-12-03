@@ -395,13 +395,6 @@ return require("packer").startup({
 							override_file_sorter = true, -- override the file sorter
 							case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 						},
-						dash = {
-							search_engine = "google",
-							debounce = 100,
-							file_type_keywords = {
-								python = { "python3", "django", "sopython" },
-							},
-						},
 					},
 				})
 				-- To get fzf loaded and working with telescope, you need to call
