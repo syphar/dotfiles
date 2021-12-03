@@ -7,6 +7,14 @@ return {
 	generator = helpers.generator_factory({
 		command = "pydocstyle",
 		args = function(params)
+			-- by default pydocstyle searches for config-files not in the CWD,
+			-- but only starting from the file location. Since the file-location
+			-- is a temp-directory, any config won't be found.
+			--
+			-- So we replicated the pydocstyle config discovery and then pass the
+			-- config-file path to pydocstyle
+			-- See also:
+			-- https://www.pydocstyle.org/en/stable/usage.html#configuration-files
 			local possible_config_files = {
 				"setup.cfg",
 				"tox.ini",
@@ -28,11 +36,7 @@ return {
 
 			if cfg ~= nil then
 				return {
-					-- Default config discovery ignores CWD and uses the directory the temp-file is in,
-					-- so won't find the config for the project.
-					-- So we find it ourselves and give it to pydocstyle directly
 					"--config=" .. params.root .. "/" .. cfg,
-					-- pydocstyle doesn't support receiving the file via STDIN
 					"$FILENAME",
 				}
 			else
@@ -56,7 +60,7 @@ return {
 			-- split lines on our own.
 
 			-- Example:
-			--     nsync/tasks.py:48 in public function `send_stored_draft`:
+			--     example.py.py:48 in public function `send_stored_draft`:
 			--         D403: First word of the first line should be properly capitalized ('Send', not 'send')
 
 			local diagnostics = {}
