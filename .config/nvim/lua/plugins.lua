@@ -340,6 +340,7 @@ return require("packer").startup({
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
+		-- use("airblade/vim-rooter") --automatically set root directory to project directory
 		use({ --automatically set root directory to project directory
 			"ygm2/rooter.nvim",
 			config = function()
@@ -354,7 +355,7 @@ return require("packer").startup({
 					"Cargo.toml",
 					"pyproject.toml",
 				}
-				vim.g.outermost_root = false
+				vim.g.outermost_root = true
 			end,
 		})
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
