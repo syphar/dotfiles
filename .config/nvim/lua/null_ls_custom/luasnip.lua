@@ -11,7 +11,7 @@ return {
 			local snips = available[params.ft]
 			vim.list_extend(snips, available.all)
 			local targets = vim.tbl_filter(function(item)
-				return string.match(item.name, "^" .. params.word_to_complete)
+				return string.match(item.trigger, "^" .. params.word_to_complete)
 			end, snips)
 			for _, item in ipairs(targets) do
 				table.insert(items, {
