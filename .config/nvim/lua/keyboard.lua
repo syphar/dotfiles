@@ -93,6 +93,7 @@ set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<C-P>", [[<cmd>lua require('telescope-config').project_files()<cr>]])
 set_keymap("n", "<leader>p", [[<cmd>lua require('telescope-config').virtualenv_files()<cr>]])
+set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
 
 -- show current file on master
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")

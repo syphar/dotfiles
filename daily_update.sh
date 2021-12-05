@@ -60,6 +60,9 @@ fish -c "fisher update"
 ./update_lua_language_server.sh
 ./update_vim.sh
 
+# store project-list for telescope-projects
+./find_projects.sh | ./write_telescope_projects.py > ~/.local/share/nvim/telescope-projects.txt
+
 # update tmux plugins
 ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
 
