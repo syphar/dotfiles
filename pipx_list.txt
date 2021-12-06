@@ -9,6 +9,7 @@ gcloud
 gitlint
 gsutil
 httpie
+ipython
 isort
 lookatme
 pip-tools
