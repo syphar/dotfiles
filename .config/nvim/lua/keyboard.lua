@@ -1,4 +1,5 @@
 local luasnip = require("luasnip")
+local npairs = require("nvim-autopairs")
 
 vim.g.mapleader = ","
 
@@ -49,6 +50,23 @@ _G.s_tab_complete = function()
 	end
 end
 
+-- MUtils.completion_confirm=function()
+--   if vim.fn.pumvisible() ~= 0  then
+--     if vim.fn.complete_info()["selected"] ~= -1 then
+--       require'completion'.confirmCompletion()
+--       return npairs.esc("<c-y>")
+--     else
+--       vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
+--       require'completion'.confirmCompletion()
+--       return npairs.esc("<c-n><c-y>")
+--     end
+--   else
+--     return npairs.autopairs_cr()
+--   end
+-- end
+
+-- remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
 _G.enter_complete = function()
 	if vim.fn.pumvisible() == 1 then
 		if luasnip.expandable() then
@@ -57,7 +75,8 @@ _G.enter_complete = function()
 			return t("<C-y>")
 		end
 	else
-		return t("<CR>")
+		return npairs.autopairs_cr()
+		-- return t("<CR>")
 	end
 end
 

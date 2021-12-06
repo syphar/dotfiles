@@ -438,6 +438,18 @@ return require("packer").startup({
 			"rafamadriz/friendly-snippets",
 			requires = { "L3MON4D3/LuaSnip" },
 		})
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				local npairs = require("nvim-autopairs")
+				npairs.setup({
+					map_cr = false,
+					map_bs = true,
+					map_c_w = false,
+					check_ts = true, -- treesitter support
+				})
+			end,
+		})
 		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
 		use({ --comment/uncomment on gcc
@@ -460,7 +472,7 @@ return require("packer").startup({
 				})
 			end,
 		})
-		use("editorconfig/editorconfig-vim") -- read editorconfig and configure vim
+		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use({
 			"chaoren/vim-wordmotion",
