@@ -352,10 +352,10 @@ return require("packer").startup({
 					".svn",
 					"node_modules",
 					"CMakeLists.txt",
-					-- "Cargo.toml",
+					"Cargo.toml",
 					"pyproject.toml",
 				}
-				vim.g.outermost_root = true
+				vim.g.outermost_root = false
 			end,
 		})
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
