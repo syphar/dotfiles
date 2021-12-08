@@ -366,6 +366,12 @@ return require("packer").startup({
 				vim.g.outermost_root = false
 			end,
 		})
+		use({
+			"blackCauldron7/surround.nvim",
+			config = function()
+				require("surround").setup({ mappings_style = "sandwich" })
+			end,
+		})
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use("nvim-telescope/telescope-project.nvim")
 		use({
