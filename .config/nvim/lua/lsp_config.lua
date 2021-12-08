@@ -212,7 +212,6 @@ function cfg.lsp_setup()
 	null_ls.config({
 		-- debug = true,
 		sources = {
-			null_ls.builtins.code_actions.gitsigns,
 			null_ls.builtins.code_actions.proselint,
 			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.diagnostics.flake8,
