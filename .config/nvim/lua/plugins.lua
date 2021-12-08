@@ -159,8 +159,10 @@ return require("packer").startup({
 
 		use({
 			"projekt0n/github-nvim-theme",
+			after = "lualine.nvim",
 			config = function()
 				vim.opt.background = "dark"
+				local util = require("github-theme.util")
 				require("github-theme").setup({
 					theme_style = "dark",
 					transparent = true,
@@ -168,6 +170,12 @@ return require("packer").startup({
 					keyword_style = "NONE",
 					function_style = "NONE",
 					variable_style = "NONE",
+					dark_sidebar = true,
+					dark_float = true,
+					colors = {
+						-- original color-code is coming from theme-style: dark and the same item
+						cursor_line_nr = util.darken("#e1e4e8", 0.4),
+					},
 				})
 				vim.cmd([[hi! link TreesitterContext NormalFloat]])
 			end,

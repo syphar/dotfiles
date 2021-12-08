@@ -2,6 +2,9 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 vim.o.termguicolors = true
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 vim.g.python3_host_prog = vim.fn.expand("$HOME/src/neovim_env/venv/bin/python")
 
 -- enable mouse support
