@@ -174,7 +174,7 @@ return require("packer").startup({
 					dark_float = true,
 					colors = {
 						-- original color-code is coming from theme-style: dark and the same item
-						cursor_line_nr = util.darken("#e1e4e8", 0.4),
+						cursor_line_nr = util.darken("#e1e4e8", 0.25),
 					},
 				})
 				vim.cmd([[hi! link TreesitterContext NormalFloat]])

@@ -11,7 +11,7 @@ end
 
 function cfg.show_inlay_hints()
 	require("lsp_extensions").inlay_hints({
-		highlight = "Comment",
+		highlight = "CursorLineNr", -- previous "Comment",
 		prefix = " » ",
 		aligned = false,
 		only_current_line = false,
