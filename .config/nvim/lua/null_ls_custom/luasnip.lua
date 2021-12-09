@@ -15,6 +15,8 @@ return {
 			end, snips)
 			for _, item in ipairs(targets) do
 				table.insert(items, {
+					-- insertText = word,
+					-- TODO: set insert-text corectly?
 					label = item.trigger,
 					detail = table.concat(item.description, " "),
 					kind = vim.lsp.protocol.CompletionItemKind["Snippet"],

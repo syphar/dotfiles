@@ -225,6 +225,12 @@ return require("packer").startup({
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 					ignore_install = {}, -- List of parsers to ignore installing
+					playground = {
+						enable = true,
+						disable = {},
+						updatetime = 25,
+						persist_queries = false,
+					},
 					highlight = {
 						enable = true, -- false will disable the whole extension
 						disable = {}, -- list of language that will be disabled
@@ -285,6 +291,7 @@ return require("packer").startup({
 				})
 			end,
 		})
+		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
 			"romgrk/nvim-treesitter-context",
@@ -432,7 +439,11 @@ return require("packer").startup({
 		})
 
 		-- specific file types
-		use({ "Glench/Vim-Jinja2-Syntax" })
+		use({
+			"Glench/Vim-Jinja2-Syntax",
+			-- TODO: optimize by lazy-loading this plugin, and doing ft-detection with filetype.nvim
+			-- https://github.com/Glench/Vim-Jinja2-Syntax/blob/master/ftdetect/jinja.vim
+		})
 		use({ "plasticboy/vim-markdown", ft = { "md", "markdown" } })
 		use({
 			"raimon49/requirements.txt.vim",
@@ -507,7 +518,10 @@ return require("packer").startup({
 			"jeetsukumaran/vim-pythonsense",
 			ft = { "python" },
 		})
-		use("5long/pytest-vim-compiler")
+		use({
+			"5long/pytest-vim-compiler",
+			ft = { "python" },
+		})
 
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
