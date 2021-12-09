@@ -54,7 +54,7 @@ symbol = ""
 # "denis.cornehl@thermondo.de" = "T°"
 
 [docker_context]
-disabled = true
+format = "[🐋 ](blue bold)"
 
 [package]
 disabled = true
