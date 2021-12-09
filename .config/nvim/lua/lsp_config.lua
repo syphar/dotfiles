@@ -225,6 +225,14 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.write_good,
 			null_ls.builtins.diagnostics.yamllint,
 			null_ls.builtins.formatting.black,
+			null_ls.builtins.formatting.djhtml.with({
+				args = function(params)
+					return {
+						"--tabwidth",
+						vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+					}
+				end,
+			}),
 			null_ls.builtins.formatting.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.gofmt,
@@ -239,7 +247,6 @@ function cfg.lsp_setup()
 			custom.curlylint,
 			custom.gitlint,
 			custom.pydocstyle,
-			custom.dj_html,
 			custom.luasnip,
 		},
 		debounce = vim.opt.updatetime:get(),
