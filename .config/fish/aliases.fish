@@ -56,7 +56,8 @@ abbr -ag c cargo
 abbr -ag cab cargo build
 abbr -ag cac cargo check
 
-alias pr-create="gh pr create --fill --draft --assignee syphar"
-alias pr-open="gh pr view --web"
+alias prcreate="gh pr create --fill --draft --assignee syphar"
+alias propen="gh pr view --web"
+alias prcropen="gh pr create --fill --draft --assignee syphar && gh pr view --web"
 
 alias unset 'set --erase'
