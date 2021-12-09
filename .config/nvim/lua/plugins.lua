@@ -104,7 +104,7 @@ return require("packer").startup({
 								end,
 							},
 							{ "diff", source = diff_source },
-							{ "diagnostics", sources = { "nvim_lsp" } },
+							{ "diagnostics", sources = { "nvim_diagnostic" } },
 						},
 						lualine_c = {
 							{
@@ -353,6 +353,129 @@ return require("packer").startup({
 			end,
 		})
 
+		use("onsails/lspkind-nvim")
+
+		use({
+			"hrsh7th/nvim-cmp",
+			after = "LuaSnip",
+			requires = {
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-path",
+				"saadparwaiz1/cmp_luasnip",
+			},
+			config = function()
+				local has_words_before = function()
+					local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+					return col ~= 0
+						and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+				end
+
+				local lspkind = require("lspkind")
+				local luasnip = require("luasnip")
+				local cmp = require("cmp")
+				cmp.setup({
+					completion = {
+						-- autocomplete through manual debounce
+						autocomplete = false,
+					},
+					snippet = {
+						expand = function(args)
+							require("luasnip").lsp_expand(args.body)
+						end,
+					},
+					mapping = {
+						["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+						["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+						["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+						["<C-y>"] = cmp.config.disable,
+						["<C-e>"] = cmp.mapping({
+							i = cmp.mapping.abort(),
+							c = cmp.mapping.close(),
+						}),
+						["<CR>"] = cmp.mapping.confirm({ select = true }),
+						["<Tab>"] = cmp.mapping(function(fallback)
+							if cmp.visible() then
+								cmp.select_next_item()
+							elseif luasnip.expand_or_jumpable() then
+								luasnip.expand_or_jump()
+							elseif has_words_before() then
+								cmp.complete()
+							else
+								fallback()
+							end
+						end, { "i", "s" }),
+						["<S-Tab>"] = cmp.mapping(function(fallback)
+							if cmp.visible() then
+								cmp.select_prev_item()
+							elseif luasnip.jumpable(-1) then
+								luasnip.jump(-1)
+							else
+								fallback()
+							end
+						end, { "i", "s" }),
+					},
+					sources = cmp.config.sources({
+						{ name = "nvim_lua" },
+						{ name = "nvim_lsp" },
+						{ name = "luasnip" },
+						{ name = "cmp_tabnine" },
+						{ name = "path" },
+						{ name = "crates" },
+					}),
+					formatting = {
+						format = lspkind.cmp_format({
+							with_text = true,
+							maxwidth = 50,
+							menu = {
+								nvim_lsp = "[LSP]",
+								luasnip = "[LuaSnip]",
+								nvim_lua = "[Lua]",
+								cmp_tabnine = "[T9]",
+								path = "[Path]",
+								crates = "[Crates]",
+							},
+						}),
+					},
+					experimental = {
+						native_menu = true,
+						ghost_text = true,
+					},
+				})
+
+				vim.cmd([[
+				  augroup CmpDebounceAuGroup
+					au!
+					au TextChangedI * lua require("debounce").debounce()
+				  augroup end
+				]])
+			end,
+		})
+		use({
+			"tzachar/cmp-tabnine",
+			run = "./install.sh",
+			requires = "hrsh7th/nvim-cmp",
+			config = function()
+				local tabnine = require("cmp_tabnine.config")
+				tabnine:setup({
+					max_lines = 1000,
+					max_num_results = 20,
+					sort = true,
+					run_on_every_keystroke = false,
+					snippet_placeholder = "..",
+					ignored_file_types = {},
+				})
+			end,
+		})
+
+		use({
+			"Saecki/crates.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("crates").setup({})
+			end,
+		})
+
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
 		-- use("airblade/vim-rooter") --automatically set root directory to project directory
@@ -518,10 +641,7 @@ return require("packer").startup({
 			"jeetsukumaran/vim-pythonsense",
 			ft = { "python" },
 		})
-		use({
-			"5long/pytest-vim-compiler",
-			ft = { "python" },
-		})
+		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")

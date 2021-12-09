@@ -14,8 +14,16 @@ ls.snippets = {
 			text({ "", "}" }),
 		}),
 	},
+	python = {
+		snippet("loggermod", {
+			text({ "logger = logging.getLogger(__name__)" }),
+		}),
+		snippet("pdb", {
+			text({ "import pdb; pdb.set_trace()" }),
+		}),
+	},
 }
 
 -- this loads the snippets from friendly-snippets
 -- https://github.com/rafamadriz/friendly-snippets
-require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip/loaders/from_vscode").lazy_load()

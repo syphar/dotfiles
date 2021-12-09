@@ -34,9 +34,6 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
-	vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[
 			augroup AutoFormatOnSave
@@ -81,15 +78,19 @@ function cfg.lsp_setup()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 	end
 
+	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 	-- TOML language server with schemas
 	-- schemas broken for now in LSP
 	lsp.taplo.setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 
 	lsp.rust_analyzer.setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
@@ -154,11 +155,13 @@ function cfg.lsp_setup()
 
 	lsp.tsserver.setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 
 	lsp.pylsp.setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 		settings = {
 			pylsp = {
@@ -187,6 +190,7 @@ function cfg.lsp_setup()
 
 	lsp.gopls.setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach_without_formatting,
 	})
 
@@ -247,7 +251,6 @@ function cfg.lsp_setup()
 			custom.curlylint,
 			custom.gitlint,
 			custom.pydocstyle,
-			custom.luasnip,
 		},
 		debounce = vim.opt.updatetime:get(),
 		update_on_insert = false,
@@ -256,6 +259,7 @@ function cfg.lsp_setup()
 
 	lsp["null-ls"].setup({
 		flags = global_flags,
+		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach,
 	})
 
