@@ -13,7 +13,11 @@ function M.debounce()
 		DEBOUNCE_DELAY,
 		0,
 		vim.schedule_wrap(function()
-			cmp.complete({ reason = cmp.ContextReason.Auto })
+			-- sometimes I already exited insert-mode when the debounce
+			-- kicks in and wants to start completion.
+			if vim.fn.mode() == "i" then
+				cmp.complete({ reason = cmp.ContextReason.Auto })
+			end
 		end)
 	)
 end
