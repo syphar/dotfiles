@@ -110,7 +110,6 @@ return require("packer").startup({
 							{
 								"filename",
 								path = 1, -- 1 => relativepath
-								-- shorting_target = 60,
 							},
 							{ gps.get_location, cond = gps.is_available },
 						},
@@ -223,8 +222,8 @@ return require("packer").startup({
 			"nvim-treesitter/nvim-treesitter",
 			config = function()
 				require("nvim-treesitter.configs").setup({
-					ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-					ignore_install = {}, -- List of parsers to ignore installing
+					ensure_installed = "maintained",
+					ignore_install = {},
 					playground = {
 						enable = true,
 						disable = {},
@@ -232,8 +231,8 @@ return require("packer").startup({
 						persist_queries = false,
 					},
 					highlight = {
-						enable = true, -- false will disable the whole extension
-						disable = {}, -- list of language that will be disabled
+						enable = true,
+						disable = {},
 					},
 					textobjects = {
 						select = {
@@ -353,12 +352,11 @@ return require("packer").startup({
 			end,
 		})
 
-		use("onsails/lspkind-nvim")
-
 		use({
 			"hrsh7th/nvim-cmp",
 			after = "LuaSnip",
 			requires = {
+				"onsails/lspkind-nvim",
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",

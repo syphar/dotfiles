@@ -8,11 +8,12 @@ return {
 		command = "pydocstyle",
 		args = function(params)
 			-- by default pydocstyle searches for config-files not in the CWD,
-			-- but only starting from the file location. Since the file-location
+			-- but starting from the file location. Since the file-location
 			-- is a temp-directory, any config won't be found.
 			--
-			-- So we replicated the pydocstyle config discovery and then pass the
-			-- config-file path to pydocstyle
+			-- So we partially replicated the pydocstyle config discovery and
+			-- then pass the config-file path to pydocstyle. We don't merge
+			-- multiple existing config-files as pydocstyle itself does it.
 			-- See also:
 			-- https://www.pydocstyle.org/en/stable/usage.html#configuration-files
 			local possible_config_files = {
@@ -60,7 +61,7 @@ return {
 			-- split lines on our own.
 
 			-- Example:
-			--     example.py.py:48 in public function `send_stored_draft`:
+			--     example.py:48 in public function `send_stored_draft`:
 			--         D403: First word of the first line should be properly capitalized ('Send', not 'send')
 
 			local diagnostics = {}
