@@ -375,7 +375,7 @@ return require("packer").startup({
 				cmp.setup({
 					completion = {
 						-- autocomplete through manual debounce
-						autocomplete = false,
+						-- autocomplete = false,
 					},
 					snippet = {
 						expand = function(args)
@@ -441,12 +441,12 @@ return require("packer").startup({
 					},
 				})
 
-				vim.cmd([[
-				  augroup CmpDebounceAuGroup
-					au!
-					au TextChangedI * lua require("debounce").debounce()
-				  augroup end
-				]])
+				-- vim.cmd([[
+				--   augroup CmpDebounceAuGroup
+				-- 	au!
+				-- 	au TextChangedI * lua require("debounce").debounce()
+				--   augroup end
+				-- ]])
 			end,
 		})
 		use({

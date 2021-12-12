@@ -43,18 +43,18 @@ function cfg.lsp_on_attach(client, bufnr)
 		]])
 	end
 
-	if client.resolved_capabilities.document_highlight then
-		vim.cmd([[
-			augroup hilight_references
-			autocmd! * <buffer>
-			autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-			autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-			augroup END
-		]])
-	end
+	-- if client.resolved_capabilities.document_highlight then
+	-- 	vim.cmd([[
+	-- 		augroup hilight_references
+	-- 		autocmd! * <buffer>
+	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+	-- 		autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	-- 		augroup END
+	-- 	]])
+	-- end
 
-	require("lsp_signature").on_attach()
+	-- require("lsp_signature").on_attach()
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
