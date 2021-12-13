@@ -11,7 +11,7 @@ end
 
 function cfg.show_inlay_hints()
 	require("lsp_extensions").inlay_hints({
-		highlight = "CursorLineNr", -- previous "Comment",
+		highlight = "CursorLineNr", -- previously: "Comment",
 		prefix = " » ",
 		aligned = false,
 		only_current_line = false,
@@ -53,8 +53,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	-- 		augroup END
 	-- 	]])
 	-- end
-
-	-- require("lsp_signature").on_attach()
+	require("lsp_signature").on_attach()
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
@@ -105,7 +104,7 @@ function cfg.lsp_setup()
 		settings = {
 			["rust-analyzer"] = {
 				assist = {
-					importGranularity = "module",
+					importGranularity = "crate",
 					importPrefix = "by_self",
 				},
 				checkOnSave = {
@@ -264,7 +263,7 @@ function cfg.lsp_setup()
 	vim.diagnostic.config({
 		virtual_text = true,
 		signs = true,
-		underline = false,
+		underline = true,
 		update_in_insert = false,
 		severity_sort = true,
 	})

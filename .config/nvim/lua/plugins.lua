@@ -419,7 +419,10 @@ return require("packer").startup({
 						{ name = "luasnip" },
 						{ name = "cmp_tabnine" },
 						{ name = "path" },
+						{ name = "treesitter" },
 						{ name = "crates" },
+						{ name = "jira_issues" },
+						{ name = "gh_issues" },
 					}),
 					formatting = {
 						format = lspkind.cmp_format({
@@ -432,6 +435,9 @@ return require("packer").startup({
 								cmp_tabnine = "[T9]",
 								path = "[Path]",
 								crates = "[Crates]",
+								treesitter = "[TS]",
+								jira_issues = "[JIRA]",
+								gh_issues = "[GitHub]",
 							},
 						}),
 					},
@@ -641,7 +647,27 @@ return require("packer").startup({
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
-		use("ray-x/lsp_signature.nvim")
+		use({
+			"ray-x/lsp_signature.nvim",
+			config = function()
+				require("lsp_signature").setup({
+					bind = true,
+					doc_lines = 0,
+					floating_window = true,
+					floating_window_above_cur_line = true,
+					fix_pos = false,
+					hint_enable = true,
+					hint_prefix = "🐼 ",
+					hint_scheme = "String",
+					use_lspsaga = false,
+					max_height = 12,
+					max_width = 120,
+					always_trigger = false,
+					zindex = 20,
+					timer_interval = 200,
+				})
+			end,
+		})
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({
