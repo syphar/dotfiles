@@ -422,7 +422,6 @@ return require("packer").startup({
 						{ name = "treesitter" },
 						{ name = "crates" },
 						{ name = "jira_issues" },
-						{ name = "gh_issues" },
 					}),
 					formatting = {
 						format = lspkind.cmp_format({
@@ -437,7 +436,6 @@ return require("packer").startup({
 								crates = "[Crates]",
 								treesitter = "[TS]",
 								jira_issues = "[JIRA]",
-								gh_issues = "[GitHub]",
 							},
 						}),
 					},
