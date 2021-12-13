@@ -61,6 +61,7 @@ function source:complete(params, callback)
 						if #parts >= 3 then
 							table.insert(items, {
 								label = parts[1] .. " - " .. parts[3],
+								insertText = parts[1],
 							})
 						end
 					end
