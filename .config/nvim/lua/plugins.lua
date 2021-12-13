@@ -647,7 +647,7 @@ return require("packer").startup({
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+			requires = { "nvim-lua/plenary.nvim" },
 		})
 
 		if packer_bootstrap then

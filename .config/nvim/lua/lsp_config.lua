@@ -214,7 +214,7 @@ function cfg.lsp_setup()
 
 	local custom = require("null_ls_custom")
 
-	null_ls.config({
+	null_ls.setup({
 		-- debug = true,
 		sources = {
 			null_ls.builtins.code_actions.proselint,
@@ -255,11 +255,6 @@ function cfg.lsp_setup()
 		debounce = vim.opt.updatetime:get(),
 		update_on_insert = false,
 		diagnostics_format = "[#{c}] #{m} (#{s})",
-	})
-
-	lsp["null-ls"].setup({
-		flags = global_flags,
-		capabilities = capabilities,
 		on_attach = cfg.lsp_on_attach,
 	})
 
