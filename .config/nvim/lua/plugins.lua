@@ -60,8 +60,6 @@ return require("packer").startup({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 			config = function()
-				local gps = require("nvim-gps")
-
 				local function diff_source()
 					-- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff
 					local gitsigns = vim.b.gitsigns_status_dict
@@ -74,6 +72,7 @@ return require("packer").startup({
 					end
 				end
 
+				local gps = require("nvim-gps")
 				require("lualine").setup({
 					options = {
 						theme = "github",
@@ -361,6 +360,7 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
 				"saadparwaiz1/cmp_luasnip",
+				"ray-x/cmp-treesitter",
 			},
 			config = function()
 				local has_words_before = function()
@@ -374,7 +374,7 @@ return require("packer").startup({
 				local cmp = require("cmp")
 				cmp.setup({
 					completion = {
-						-- autocomplete through manual debounce
+						-- autocomplete through manual debounce, not right now
 						-- autocomplete = false,
 					},
 					snippet = {
@@ -424,7 +424,7 @@ return require("packer").startup({
 					formatting = {
 						format = lspkind.cmp_format({
 							with_text = true,
-							maxwidth = 50,
+							-- maxwidth = 50,
 							menu = {
 								nvim_lsp = "[LSP]",
 								luasnip = "[LuaSnip]",
@@ -476,7 +476,6 @@ return require("packer").startup({
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
-		-- use("airblade/vim-rooter") --automatically set root directory to project directory
 		use({ --automatically set root directory to project directory
 			"ygm2/rooter.nvim",
 			config = function()

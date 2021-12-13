@@ -3,7 +3,7 @@ local snippet = ls.snippet
 local text = ls.text_node
 local insert = ls.insert_node
 
--- examples as documentation:
+-- documentation for snippet format inside examples:
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
 
 ls.snippets = {

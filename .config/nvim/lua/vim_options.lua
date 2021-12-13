@@ -2,6 +2,7 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 vim.o.termguicolors = true
 
+-- line numbers and relative number
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -29,7 +30,7 @@ vim.opt.wildignore:append({
 -- show all options when tab-completing
 vim.opt.wildmenu = true
 
--- global tab/spaces settings
+-- default tab/spaces settings
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -48,11 +49,12 @@ vim.opt.concealcursor = ""
 -- to get an incremental visual feedback when doing the substitude command.
 vim.opt.inccommand = "split"
 
+-- use ripgrep for :grep
 vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 
 vim.opt.tags:append({ "./tags;/" })
 
-vim.opt.showtabline = 1
+vim.opt.showtabline = 0
 
 vim.opt.showmatch = true
 
@@ -92,13 +94,13 @@ vim.opt.redrawtime = 10000
 vim.opt.synmaxcol = 400
 vim.cmd("syntax sync minlines=256")
 
--- Highlight cursor line (slows down)
+-- no cursor line
 vim.opt.cursorline = false
 
 -- Set updatetime
 vim.opt.updatetime = 500
 
--- When scrolling, keep cursor 5 lines away from screen border
+-- When scrolling, keep cursor 10 lines away from screen border
 vim.opt.scrolloff = 10
 
 vim.opt.incsearch = true -- search as characters are entered
