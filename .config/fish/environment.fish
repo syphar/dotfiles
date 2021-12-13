@@ -26,6 +26,7 @@ set --global -x RUNCACHED_IGNORE_PWD 1
 
 # i do this myself in dotfiles/tasks.py
 set --global -x HOMEBREW_NO_AUTO_UPDATE 1
+set --global -x HOMEBREW_NO_INSTALL_CLEANUP 1
 
 set --global -x FORGIT_LOG_GRAPH_ENABLE 1
 
