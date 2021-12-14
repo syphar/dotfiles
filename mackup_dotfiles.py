@@ -11,6 +11,7 @@ app_list = (
     "direnv",
     "fd",
     "git",
+    "kitty",
     "mackup",
     "mybin",
     "myfish",
