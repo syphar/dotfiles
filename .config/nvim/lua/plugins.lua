@@ -58,7 +58,10 @@ return require("packer").startup({
 
 		use({
 			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+			requires = {
+				{ "arkav/lualine-lsp-progress" },
+				{ "kyazdani42/nvim-web-devicons", opt = true },
+			},
 			config = function()
 				local function diff_source()
 					-- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff
@@ -153,8 +156,6 @@ return require("packer").startup({
 			end,
 		})
 
-		use("arkav/lualine-lsp-progress")
-
 		use({
 			"projekt0n/github-nvim-theme",
 			after = "lualine.nvim",
@@ -171,6 +172,7 @@ return require("packer").startup({
 					dark_sidebar = true,
 					dark_float = true,
 					colors = {
+						-- I want darker line numbers
 						-- original color-code is coming from theme-style: dark and the same item
 						cursor_line_nr = util.darken("#e1e4e8", 0.25),
 					},
@@ -226,7 +228,7 @@ return require("packer").startup({
 					playground = {
 						enable = true,
 						disable = {},
-						updatetime = 25,
+						updatetime = vim.opt.updatetime:get(),
 						persist_queries = false,
 					},
 					highlight = {
@@ -426,7 +428,7 @@ return require("packer").startup({
 					formatting = {
 						format = lspkind.cmp_format({
 							with_text = true,
-							-- maxwidth = 50,
+							maxwidth = 50,
 							menu = {
 								nvim_lsp = "[LSP]",
 								luasnip = "[LuaSnip]",
@@ -480,23 +482,7 @@ return require("packer").startup({
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
-		use({ --automatically set root directory to project directory
-			"ygm2/rooter.nvim",
-			config = function()
-				vim.g.rooter_pattern = {
-					".git",
-					"Makefile",
-					".hg",
-					".bzr",
-					".svn",
-					"node_modules",
-					"CMakeLists.txt",
-					"Cargo.toml",
-					"pyproject.toml",
-				}
-				vim.g.outermost_root = false
-			end,
-		})
+		use("airblade/vim-rooter") --automatically set root directory to project directory
 		use({
 			"blackCauldron7/surround.nvim",
 			config = function()
@@ -544,8 +530,6 @@ return require("packer").startup({
 						},
 					},
 				})
-				-- To get fzf loaded and working with telescope, you need to call
-				-- load_extension, somewhere after setup function:
 				require("telescope").load_extension("fzf")
 				require("telescope").load_extension("project")
 			end,
@@ -563,11 +547,7 @@ return require("packer").startup({
 		})
 
 		-- specific file types
-		use({
-			"Glench/Vim-Jinja2-Syntax",
-			-- TODO: optimize by lazy-loading this plugin, and doing ft-detection with filetype.nvim
-			-- https://github.com/Glench/Vim-Jinja2-Syntax/blob/master/ftdetect/jinja.vim
-		})
+		use("Glench/Vim-Jinja2-Syntax")
 		use({ "plasticboy/vim-markdown", ft = { "md", "markdown" } })
 		use({
 			"raimon49/requirements.txt.vim",
@@ -655,9 +635,7 @@ return require("packer").startup({
 					floating_window_above_cur_line = true,
 					fix_pos = false,
 					hint_enable = true,
-					hint_prefix = "🐼 ",
 					hint_scheme = "String",
-					use_lspsaga = false,
 					max_height = 12,
 					max_width = 120,
 					always_trigger = false,
