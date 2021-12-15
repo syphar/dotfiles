@@ -1,6 +1,3 @@
-local luasnip = require("luasnip")
-local npairs = require("nvim-autopairs")
-
 vim.g.mapleader = ","
 
 local function set_keymap(mode, mapping, command)
