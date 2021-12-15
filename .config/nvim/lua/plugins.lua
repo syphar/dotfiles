@@ -177,7 +177,6 @@ return require("packer").startup({
 						cursor_line_nr = util.darken("#e1e4e8", 0.25),
 					},
 				})
-				vim.cmd([[hi! link TreesitterContext NormalFloat]])
 			end,
 		})
 
@@ -317,7 +316,6 @@ return require("packer").startup({
 						},
 					},
 				})
-				vim.cmd([[hi! link TreesitterContext NormalFloat]])
 			end,
 		})
 		use({
@@ -491,6 +489,17 @@ return require("packer").startup({
 		})
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use("nvim-telescope/telescope-project.nvim")
+		use({
+			"folke/todo-comments.nvim",
+			requires = "nvim-lua/plenary.nvim",
+			config = function()
+				require("todo-comments").setup({
+					-- your configuration comes here
+					-- or leave it empty to use the default settings
+					-- refer to the configuration section below
+				})
+			end,
+		})
 		use({
 			"nvim-telescope/telescope.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },

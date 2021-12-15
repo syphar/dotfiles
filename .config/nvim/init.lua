@@ -7,4 +7,3 @@ require("plugins")
 
 require("lsp_config").lsp_setup()
 require("keyboard")
-vim.cmd([[hi! link TreesitterContext NormalFloat]])
