@@ -45,7 +45,7 @@ function source:complete(params, callback)
 				"--limit",
 				"10000",
 				"--jql",
-				"statusCategory != Done",
+				"statusCategory != Done AND assignee= currentUser()",
 				on_stderr = function(_, data, _)
 					if not string.find(data, "Fetching issues") then
 						print("GOT ERROR FROM JIRA CLI: " .. data)
