@@ -1,5 +1,6 @@
 @fsouza/prettierd
 @salesforce/cli
+cspell
 eslint_d
 npm
 npm-check-updates
