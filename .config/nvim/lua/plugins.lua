@@ -557,7 +557,6 @@ return require("packer").startup({
 
 		-- specific file types
 		use("Glench/Vim-Jinja2-Syntax")
-		use({ "plasticboy/vim-markdown", ft = { "md", "markdown" } })
 		use({
 			"raimon49/requirements.txt.vim",
 			ft = { "requirements" },

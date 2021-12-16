@@ -144,6 +144,7 @@ function cfg.lsp_setup()
 				},
 				workspace = {
 					library = vim.api.nvim_get_runtime_file("", true),
+					preloadFileSize = 500,
 				},
 				telemetry = {
 					enable = false,
@@ -222,10 +223,8 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.luacheck,
 			null_ls.builtins.diagnostics.markdownlint,
-			null_ls.builtins.diagnostics.proselint,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
-			null_ls.builtins.diagnostics.write_good,
 			null_ls.builtins.diagnostics.yamllint,
 			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.djhtml.with({
@@ -271,8 +270,8 @@ function cfg.lsp_setup()
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = {
 			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics-neovim-06-only
-			source = "if_many", -- Or "always"
-			prefix = "●", -- Could be '●', '▎', 'x'
+			source = "if_many",
+			prefix = "●",
 		},
 	})
 end
