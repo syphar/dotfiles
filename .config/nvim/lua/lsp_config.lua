@@ -249,6 +249,11 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.taplo,
 			null_ls.builtins.formatting.trim_newlines,
+			null_ls.builtins.formatting.trim_whitespace.with({
+				-- I don't want this for all filetypes since it
+				-- also removes whitespace inside string literals.
+				filetypes = { "markdown", "yaml" },
+			}),
 			custom.curlylint,
 			custom.gitlint,
 			custom.pydocstyle,
