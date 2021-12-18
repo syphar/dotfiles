@@ -528,7 +528,7 @@ return require("packer").startup({
 						live_grep = config_with_preview,
 						grep_string = config_with_preview,
 						git_bcommits = config_with_preview,
-						git_branch = config_with_preview,
+						git_branches = config_with_preview,
 					},
 					extensions = {
 						fzf = {
