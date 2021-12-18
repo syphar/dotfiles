@@ -13,6 +13,11 @@ ls.snippets = {
 			insert(0),
 			text({ "", "}" }),
 		}),
+		snippet("debugprint", {
+			text('println!("{:?}", '),
+			insert(0),
+			text(");"),
+		}),
 	},
 	python = {
 		snippet("loggermod", {
