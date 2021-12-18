@@ -11,17 +11,16 @@ $character"""
 
 # move the rest of the prompt to the right
 right_format = """$all"""
-
 add_newline = false
 
 
 [git_branch]
 format = "on [$branch]($style)"
 style = "bold bright-green"
+truncation_length = 20
 
 [python]
 format = '[${symbol}${pyenv_prefix}${version} ]($style)'
-# format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol = " "
 style = "bright-cyan"
 
