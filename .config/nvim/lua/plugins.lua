@@ -236,6 +236,9 @@ return require("packer").startup({
 						enable = true,
 						disable = {},
 					},
+					indent = {
+						enable = true,
+					},
 					textobjects = {
 						select = {
 							enable = true,
@@ -630,15 +633,6 @@ return require("packer").startup({
 			end,
 		})
 
-		-- python stuff
-		use({
-			"Vimjas/vim-python-pep8-indent",
-			ft = { "python" },
-		})
-		use({
-			"jeetsukumaran/vim-pythonsense",
-			ft = { "python" },
-		})
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
