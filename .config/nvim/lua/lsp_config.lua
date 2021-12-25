@@ -176,7 +176,7 @@ function cfg.lsp_setup()
 						enabled = false,
 					},
 					jedi_signature_help = {
-						enabled = false,
+						enabled = true,
 					},
 					pylsp_mypy = {
 						enabled = true,
@@ -229,7 +229,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.black,
+			null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
 			null_ls.builtins.formatting.djhtml.with({
 				args = function(params)
 					return {
@@ -245,7 +245,11 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.prettierd.with({
 				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 			}),
-			null_ls.builtins.formatting.rustfmt,
+			null_ls.builtins.formatting.rustfmt.with({
+				-- read Cargo.toml?
+				-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Source-specific-Configuration#rustfmt
+				extra_args = { "--edition=2021" },
+			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.taplo,
 			null_ls.builtins.formatting.trim_newlines,
