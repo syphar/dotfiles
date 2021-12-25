@@ -78,7 +78,7 @@ return require("packer").startup({
 				local gps = require("nvim-gps")
 				require("lualine").setup({
 					options = {
-						theme = "github",
+						theme = "kanagawa",
 						component_separators = "|",
 						section_separators = "",
 						always_divide_middle = false,
@@ -157,26 +157,28 @@ return require("packer").startup({
 		})
 
 		use({
-			"projekt0n/github-nvim-theme",
+			"rebelot/kanagawa.nvim",
 			after = "lualine.nvim",
 			config = function()
-				vim.opt.background = "dark"
-				local util = require("github-theme.util")
-				require("github-theme").setup({
-					theme_style = "dark",
+				local default_colors = require("kanagawa.colors")
+				require("kanagawa").setup({
+					undercurl = true, -- enable undercurls
+					commentStyle = "italic",
+					functionStyle = "NONE",
+					keywordStyle = "bold",
+					statementStyle = "bold",
+					typeStyle = "NONE",
+					variablebuiltinStyle = "italic",
+					specialReturn = true,
+					specialException = false,
 					transparent = true,
-					comment_style = "italic",
-					keyword_style = "NONE",
-					function_style = "NONE",
-					variable_style = "NONE",
-					dark_sidebar = true,
-					dark_float = true,
-					colors = {
-						-- I want darker line numbers
-						-- original color-code is coming from theme-style: dark and the same item
-						cursor_line_nr = util.darken("#e1e4e8", 0.25),
+					colors = {},
+					overrides = {
+						-- brighter background for context
+						TreesitterContext = { bg = default_colors.bg_light0 },
 					},
 				})
+				vim.cmd("colorscheme kanagawa")
 			end,
 		})
 
@@ -192,7 +194,7 @@ return require("packer").startup({
 
 		use({
 			"phaazon/hop.nvim",
-			after = "github-nvim-theme", -- so hilight works
+			after = "kanagawa.nvim",
 			config = function()
 				require("hop").setup({})
 
@@ -294,7 +296,10 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
 			"romgrk/nvim-treesitter-context",
-			after = { "github-nvim-theme", "nvim-treesitter" },
+			after = {
+				"kanagawa.nvim",
+				"nvim-treesitter",
+			},
 			config = function()
 				require("treesitter-context.config").setup({
 					enable = true,
@@ -493,11 +498,7 @@ return require("packer").startup({
 			"folke/todo-comments.nvim",
 			requires = "nvim-lua/plenary.nvim",
 			config = function()
-				require("todo-comments").setup({
-					-- your configuration comes here
-					-- or leave it empty to use the default settings
-					-- refer to the configuration section below
-				})
+				require("todo-comments").setup({})
 			end,
 		})
 		use({
@@ -556,6 +557,8 @@ return require("packer").startup({
 		})
 
 		-- specific file types
+		use({ "plasticboy/vim-markdown", filetype = { "markdown" } })
+		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
 		use("Glench/Vim-Jinja2-Syntax")
 		use({
 			"raimon49/requirements.txt.vim",
@@ -565,6 +568,12 @@ return require("packer").startup({
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
+		use({ -- auto-update global tag-file on save
+			"ludovicchabant/vim-gutentags",
+			config = function()
+				vim.g.gutentags_file_list_command = "fd . --type f"
+			end,
+		})
 		use({
 			"L3MON4D3/LuaSnip",
 			config = function()
