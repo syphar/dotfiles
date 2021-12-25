@@ -78,4 +78,5 @@ cnoreabbrev Q q
 cnoreabbrev QA qa
 cnoreabbrev Qa qa
 cnoreabbrev Vsp vsp
+cnoreabbrev On on 
 ]])
