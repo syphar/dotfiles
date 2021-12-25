@@ -44,7 +44,7 @@ vim.opt.autoread = true
 vim.opt.hidden = true
 
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = ""
+vim.opt.concealcursor = "nc"
 
 -- to get an incremental visual feedback when doing the substitude command.
 vim.opt.inccommand = "split"
@@ -66,7 +66,9 @@ vim.opt.equalalways = true
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
-vim.opt.foldmethod = "manual"
+vim.opt.foldmethod = "expr"
+-- vim.opt.foldmethod = "manual"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 10 -- open most folds by default
 vim.opt.foldnestmax = 10 -- 10 nested fold max
 vim.opt.backspace = { "indent", "eol", "start" }
