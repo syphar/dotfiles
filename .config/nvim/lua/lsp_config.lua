@@ -11,13 +11,12 @@ end
 
 function cfg.show_inlay_hints()
 	require("lsp_extensions").inlay_hints({
-		highlight = "CursorLineNr", -- previously: "Comment",
+		highlight = "LineNr",
 		prefix = " » ",
 		aligned = false,
 		only_current_line = false,
-		enabled = { "TypeHint", "ChainingHint" },
+		enabled = { "TypeHint", "ChainingHint" }, -- not: ParameterHint
 	})
-	-- not included : ParameterHint
 end
 
 function cfg.lsp_on_attach(client, bufnr)
@@ -224,6 +223,8 @@ function cfg.lsp_setup()
 		-- debug = true,
 		sources = {
 			null_ls.builtins.code_actions.proselint,
+			null_ls.builtins.code_actions.shellcheck,
+			null_ls.builtins.completion.spell,
 			null_ls.builtins.diagnostics.cspell.with({
 				filetypes = { "markdown" },
 			}),
@@ -232,6 +233,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.luacheck,
 			null_ls.builtins.diagnostics.markdownlint,
+			null_ls.builtins.diagnostics.proselint,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
@@ -248,6 +250,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.gofmt,
 			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.json_tool, -- keep this or not?
 			null_ls.builtins.formatting.markdownlint,
 			null_ls.builtins.formatting.prettierd.with({
 				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
@@ -265,6 +268,7 @@ function cfg.lsp_setup()
 				-- also removes whitespace inside string literals.
 				filetypes = { "markdown", "yaml" },
 			}),
+			null_ls.builtins.hover.dictionary,
 			custom.curlylint,
 			custom.gitlint,
 			custom.pydocstyle,

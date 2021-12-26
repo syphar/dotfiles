@@ -44,7 +44,7 @@ vim.opt.autoread = true
 vim.opt.hidden = true
 
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nc"
+vim.opt.concealcursor = ""
 
 -- to get an incremental visual feedback when doing the substitude command.
 vim.opt.inccommand = "split"
@@ -114,3 +114,18 @@ vim.g.netrw_altfile = 1
 vim.g.netrw_banner = 0 -- disable banner
 vim.g.netrw_liststyle = 3 -- tree view
 vim.g.netrw_altv = 1 -- open split on the right
+
+-- formatoptions
+vim.opt.formatoptions = {
+	-- default: jtqlnr
+	j = true, -- remove comment leader when joining lines
+	t = true, -- autoformat text using textwidth
+	q = true, -- format comments with gq
+	l = true, -- keep long lines when they were long before insert-mode
+	n = true, -- autoformat numbered list
+	r = true, -- auto insert comment leader on pressing enter
+	c = true, -- autoformat comment using textwidth
+	o = false, -- don't insert comment leader on pressing o
+	a = false, -- don't autoformat. Enabled filetype specific
+	[1] = true, -- indent of the first line of the paragraph defines further indent
+}

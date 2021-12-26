@@ -176,6 +176,7 @@ return require("packer").startup({
 					overrides = {
 						-- brighter background for context
 						TreesitterContext = { bg = default_colors.bg_light0 },
+						NormalFloat = { bg = default_colors.bg_light1 },
 					},
 				})
 				vim.cmd("colorscheme kanagawa")
@@ -236,9 +237,9 @@ return require("packer").startup({
 						enable = true,
 						disable = {},
 					},
-					indent = {
-						enable = true,
-					},
+					-- indent = {
+					-- 	enable = true,
+					-- },
 					textobjects = {
 						select = {
 							enable = true,
@@ -632,6 +633,10 @@ return require("packer").startup({
 			end,
 		})
 
+		use({
+			"Vimjas/vim-python-pep8-indent",
+			ft = { "python" },
+		})
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
