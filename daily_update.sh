@@ -34,8 +34,9 @@ cargo install-update -a
 ## global NPM packages
 ./npm-upgrade.sh
 
-## rust-analyzer
+## binaries from github releases
 ./update_rust_analyzer.sh
+./update_zeta_note.sh
 
 ## tldr update
 tldr --update || echo "failed, but ignore for now"

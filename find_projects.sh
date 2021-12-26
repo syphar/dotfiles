@@ -5,6 +5,7 @@ src_dir="$HOME/src"
 
 echo "$HOME/.config/nvim/"
 echo "$HOME/.config/fish/"
+echo "$HOME/Dropbox/notes/"
 
 (
     # all Cargo projects including sub-crates

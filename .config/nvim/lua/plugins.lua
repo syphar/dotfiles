@@ -560,7 +560,6 @@ return require("packer").startup({
 		})
 
 		-- specific file types
-		use({ "plasticboy/vim-markdown", filetype = { "markdown" } })
 		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
 		use("Glench/Vim-Jinja2-Syntax")
 		use({

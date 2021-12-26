@@ -188,6 +188,12 @@ function cfg.lsp_setup()
 		},
 	})
 
+	lsp.zeta_note.setup({
+		cmd = {
+			vim.fn.expand("$HOME/.local/bin/zeta-note"),
+		},
+	})
+
 	lsp.gopls.setup({
 		flags = global_flags,
 		capabilities = capabilities,
@@ -229,9 +235,9 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
+			null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.djhtml.with({
-				args = function(params)
+				extra_args = function(params)
 					return {
 						"--tabwidth",
 						vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
@@ -242,6 +248,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.gofmt,
 			null_ls.builtins.formatting.isort,
+			null_ls.builtins.formatting.markdownlint,
 			null_ls.builtins.formatting.prettierd.with({
 				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 			}),
