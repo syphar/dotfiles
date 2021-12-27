@@ -122,16 +122,20 @@ return require("packer").startup({
 									{ "title", "percentage" },
 									"spinner",
 								},
+								-- https://github.com/sindresorhus/cli-spinners
 								spinner_symbols = {
-									"🌑 ",
-									"🌒 ",
-									"🌓 ",
-									"🌔 ",
-									"🌕 ",
-									"🌖 ",
-									"🌗 ",
-									"🌘 ",
+									"⠋ ",
+									"⠙ ",
+									"⠹ ",
+									"⠸ ",
+									"⠼ ",
+									"⠴ ",
+									"⠦ ",
+									"⠧ ",
+									"⠇ ",
+									"⠏ ",
 								},
+								timer = { progress_enddelay = 500, spinner = 80, lsp_client_name_enddelay = 1000 },
 							},
 						},
 						lualine_y = {
@@ -226,6 +230,7 @@ return require("packer").startup({
 			config = function()
 				require("nvim-treesitter.configs").setup({
 					ensure_installed = "maintained",
+					sync_install = true,
 					ignore_install = {},
 					playground = {
 						enable = true,
