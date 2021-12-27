@@ -164,8 +164,10 @@ return require("packer").startup({
 					transparent = true,
 					colors = {},
 					overrides = {
-						-- brighter background for context
+						-- brighter background for context and LspReference
 						TreesitterContext = { bg = default_colors.bg_light0 },
+						LspReferenceText = { bg = default_colors.bg_light0 },
+						-- default NormalFloat BG is too dark
 						NormalFloat = { bg = default_colors.bg_light1 },
 					},
 				})

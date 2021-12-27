@@ -42,16 +42,16 @@ function cfg.lsp_on_attach(client, bufnr)
 		]])
 	end
 
-	-- if client.resolved_capabilities.document_highlight then
-	-- 	vim.cmd([[
-	-- 		augroup hilight_references
-	-- 		autocmd! * <buffer>
-	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-	-- 		autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	-- 		augroup END
-	-- 	]])
-	-- end
+	if client.resolved_capabilities.document_highlight then
+		vim.cmd([[
+			augroup hilight_references
+			autocmd! * <buffer>
+			autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+		]])
+	end
 	require("lsp_signature").on_attach()
 end
 
@@ -256,9 +256,27 @@ function cfg.lsp_setup()
 				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 			}),
 			null_ls.builtins.formatting.rustfmt.with({
-				-- read Cargo.toml?
 				-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Source-specific-Configuration#rustfmt
-				extra_args = { "--edition=2021" },
+				-- added 2021 as default
+				extra_args = function(params)
+					local default_edition_args = { "--edition=2021" }
+					local cargo_toml = params.root .. "/" .. "Cargo.toml"
+					local fd = vim.loop.fs_open(cargo_toml, "r", 438)
+					if not fd then
+						return default_edition_args
+					end
+					local stat = vim.loop.fs_fstat(fd)
+					local data = vim.loop.fs_read(fd, stat.size, 0)
+					vim.loop.fs_close(fd)
+					for _, line in ipairs(vim.split(data, "\n")) do
+						local edition = line:match([[^edition%s*=%s*%"(%d+)%"]])
+						-- regex maybe wrong.
+						if edition then
+							return { "--edition=" .. edition }
+						end
+					end
+					return default_edition_args
+				end,
 			}),
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.taplo,
