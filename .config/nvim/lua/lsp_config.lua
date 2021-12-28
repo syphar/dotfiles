@@ -1,3 +1,4 @@
+local Path = require("plenary.path")
 local cfg = {}
 
 function cfg.open_diagnostics_float()
@@ -224,7 +225,9 @@ function cfg.lsp_setup()
 		sources = {
 			null_ls.builtins.code_actions.proselint,
 			null_ls.builtins.code_actions.shellcheck,
-			null_ls.builtins.completion.spell,
+			null_ls.builtins.completion.spell.with({
+				filetypes = { "markdown" },
+			}),
 			null_ls.builtins.diagnostics.cspell.with({
 				filetypes = { "markdown" },
 			}),
@@ -263,22 +266,18 @@ function cfg.lsp_setup()
 				-- Since I want formatting to work before that, I use `rustfmt` instead of
 				-- rust-analyzer here.
 				extra_args = function(params)
-					local default_edition_args = { "--edition=2021" }
-					local cargo_toml = params.root .. "/" .. "Cargo.toml"
-					local fd = vim.loop.fs_open(cargo_toml, "r", 438)
-					if not fd then
-						return default_edition_args
-					end
-					local stat = vim.loop.fs_fstat(fd)
-					local data = vim.loop.fs_read(fd, stat.size, 0)
-					vim.loop.fs_close(fd)
-					for _, line in ipairs(vim.split(data, "\n")) do
-						local edition = line:match([[^edition%s*=%s*%"(%d+)%"]])
-						if edition then
-							return { "--edition=" .. edition }
+					local cargo_toml = Path:new(params.root .. "/" .. "Cargo.toml")
+
+					if cargo_toml:exists() and cargo_toml:is_file() then
+						for _, line in ipairs(cargo_toml:readlines()) do
+							local edition = line:match([[^edition%s*=%s*%"(%d+)%"]])
+							if edition then
+								return { "--edition=" .. edition }
+							end
 						end
 					end
-					return default_edition_args
+					-- default edition when we don't find `Cargo.toml` or the `edition` in it.
+					return { "--edition=2021" }
 				end,
 			}),
 			null_ls.builtins.formatting.stylua,
