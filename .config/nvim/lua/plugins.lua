@@ -22,31 +22,24 @@ return require("packer").startup({
 			},
 		})
 
-		use({ "rebelot/kanagawa.nvim", after = "lualine.nvim" })
+		use({ "rebelot/kanagawa.nvim" })
 
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
 		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
-		use({ "phaazon/hop.nvim", after = "kanagawa.nvim" })
+		use("phaazon/hop.nvim")
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
 		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use({
-			"romgrk/nvim-treesitter-context",
-			after = {
-				"kanagawa.nvim",
-				"nvim-treesitter",
-			},
-		})
+		use("romgrk/nvim-treesitter-context")
 		use("RRethy/nvim-treesitter-textsubjects")
 		use("SmiteshP/nvim-gps")
 
 		use({
 			"hrsh7th/nvim-cmp",
-			after = "LuaSnip",
 			requires = {
 				"onsails/lspkind-nvim",
 				"hrsh7th/cmp-nvim-lua",

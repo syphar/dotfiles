@@ -37,3 +37,16 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("project")
+
+local set_keymap = require("utils").set_keymap
+set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
+set_keymap("n", "<leader>F", "<cmd>Telescope tags<cr>")
+set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
+set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
+set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
+set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
+set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
+set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
+set_keymap("n", "<C-P>", [[<cmd>lua require('telescope-config').project_files()<cr>]])
+set_keymap("n", "<leader>p", [[<cmd>lua require('telescope-config').virtualenv_files()<cr>]])
+set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")

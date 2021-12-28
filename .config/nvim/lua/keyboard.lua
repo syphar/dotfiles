@@ -1,16 +1,8 @@
+local t = require("utils").tc
+local set_keymap = require("utils").set_keymap
+local set_keymap_silent = require("utils").set_keymap
+
 vim.g.mapleader = ","
-
-local function set_keymap(mode, mapping, command)
-	vim.api.nvim_set_keymap(mode, mapping, command, { noremap = true, silent = false })
-end
-local function set_keymap_silent(mode, mapping, command)
-	vim.api.nvim_set_keymap(mode, mapping, command, { noremap = true, silent = true })
-end
-
-local function t(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
 set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
@@ -26,19 +18,6 @@ set_keymap("n", "<leader><space>", ":nohlsearch<CR>")
 -- open/close folds with spacebar
 set_keymap("n", "<space>", "za")
 set_keymap("v", "<space>", "zf")
-
--- telescope mapping
-set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
-set_keymap("n", "<leader>F", "<cmd>Telescope tags<cr>")
-set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
-set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
-set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
-set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
-set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
-set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
-set_keymap("n", "<C-P>", [[<cmd>lua require('telescope-config').project_files()<cr>]])
-set_keymap("n", "<leader>p", [[<cmd>lua require('telescope-config').virtualenv_files()<cr>]])
-set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
 
 -- show current file on master
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
@@ -59,12 +38,6 @@ set_keymap("n", "<F12>", "<cmd>cnext<cr>")
 -- Visual shifting (does not exit Visual mode)
 set_keymap("v", "<", "<gv")
 set_keymap("v", ">", ">gv")
-
--- tmux navigation
-set_keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>")
-set_keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>")
-set_keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>")
-set_keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>")
 
 -- common typos .. (W, Wq WQ)
 vim.cmd([[
