@@ -81,39 +81,22 @@ return require("packer").startup({
 		-- generic software dev stuff
 		use("ludovicchabant/vim-gutentags") -- auto-update global tag-file on save
 		use("L3MON4D3/LuaSnip")
-		use({
-			"rafamadriz/friendly-snippets",
-			requires = { "L3MON4D3/LuaSnip" },
-		})
+		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
 		use("windwp/nvim-autopairs")
 		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
 		use("numToStr/Comment.nvim") --comment/uncomment on gcc
 		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
-		use({
-			"chaoren/vim-wordmotion",
-			config = function()
-				-- uppercase spaces would stop the upper case motion (full words)
-				vim.g.wordmotion_uppercase_spaces = { ".", ",", "(", ")", "[", "]", "{", "}", " ", "<", ">", ":" }
-				-- normal spaces would stop the lower-case (x-case subword) motion
-				-- let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\.']
-			end,
-		})
+		use("chaoren/vim-wordmotion")
 
-		use({
-			"Vimjas/vim-python-pep8-indent",
-			ft = { "python" },
-		})
+		use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
+		use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	end,
 })

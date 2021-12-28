@@ -38,6 +38,35 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("project")
 
+-- pick from git-files if inside git repository,
+-- if that breaks, use find_files from CWD
+-- selene: allow(global_usage)
+_G.telescope_project_files = function()
+	local opts = {}
+	local ok = pcall(require("telescope.builtin").git_files, opts)
+	if not ok then
+		require("telescope.builtin").find_files(opts)
+	end
+end
+
+-- choose from files inside current virtualenv
+-- selene: allow(global_usage)
+_G.telescope_virtualenv_files = function()
+	require("telescope.builtin").find_files({
+		path_display = { "smart" },
+		find_command = {
+			"fd",
+			"--strip-cwd-prefix",
+			"--type",
+			"f",
+			"--hidden",
+			"--no-ignore",
+			[[.*\.py$]],
+			vim.env.VIRTUAL_ENV,
+		},
+	})
+end
+
 local set_keymap = require("utils").set_keymap
 set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
 set_keymap("n", "<leader>F", "<cmd>Telescope tags<cr>")
@@ -47,6 +76,8 @@ set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
 set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
-set_keymap("n", "<C-P>", [[<cmd>lua require('telescope-config').project_files()<cr>]])
-set_keymap("n", "<leader>p", [[<cmd>lua require('telescope-config').virtualenv_files()<cr>]])
+set_keymap("n", "<C-P>", "<cmd>lua telescope_project_files()<cr>")
+set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
 set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
+set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
+set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")

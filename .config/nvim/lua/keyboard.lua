@@ -3,6 +3,7 @@ local set_keymap = require("utils").set_keymap
 local set_keymap_silent = require("utils").set_keymap
 
 vim.g.mapleader = ","
+
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
 set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
@@ -22,9 +23,6 @@ set_keymap("v", "<space>", "zf")
 -- show current file on master
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
 
--- show git log for current file
-set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
-set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
 -- git blame for the current file
 set_keymap("n", "<leader>gb", ":Git blame <CR>")
 

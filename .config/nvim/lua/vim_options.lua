@@ -2,14 +2,7 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 vim.o.termguicolors = true
 
--- line numbers and relative number
-vim.opt.number = true
-vim.opt.relativenumber = true
-
 vim.g.python3_host_prog = vim.fn.expand("$HOME/src/neovim_env/venv/bin/python")
-
--- enable mouse support
-vim.opt.mouse = "a"
 
 -- search files into subfolders
 -- provides tab-complete for all files
@@ -54,23 +47,13 @@ vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 
 vim.opt.tags:append({ "./tags;/" })
 
-vim.opt.showtabline = 0
-
 vim.opt.showmatch = true
 
--- auto-adjust splits when window is resized
--- https://vi.stackexchange.com/questions/201/make-panes-resize-when-host-window-is-resized
-vim.cmd("autocmd VimResized * wincmd =")
-
-vim.opt.equalalways = true
-
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 vim.opt.foldmethod = "expr"
--- vim.opt.foldmethod = "manual"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 10 -- open most folds by default
 vim.opt.foldnestmax = 10 -- 10 nested fold max
+
 vim.opt.backspace = { "indent", "eol", "start" }
 
 -- mkview and loadview shouldn't do options (which includes keyboard mappings
@@ -88,32 +71,12 @@ vim.opt.directory = vim.fn.expand("~/.cache/vim/dirs/tmp") -- directory to place
 vim.opt.backupdir = vim.fn.expand("~/.cache/vim/dirs/backups") -- where to put backup files
 vim.opt.undodir = vim.fn.expand("~/.cache/vim/dirs/undodir") -- undo directory
 
--- Redraw only when essential
-vim.opt.lazyredraw = true
-vim.opt.redrawtime = 10000
-
--- Just sync some lines of a large file
-vim.opt.synmaxcol = 400
-vim.cmd("syntax sync minlines=256")
-
--- no cursor line
-vim.opt.cursorline = false
-
 -- Set updatetime
 vim.opt.updatetime = 500
-
--- When scrolling, keep cursor 10 lines away from screen border
-vim.opt.scrolloff = 10
 
 vim.opt.incsearch = true -- search as characters are entered
 vim.opt.hlsearch = true -- highlight matches
 vim.opt.smartcase = true -- smartcase search
-
--- CTRL-6 should go back to the last file, not netrw/vinegar
-vim.g.netrw_altfile = 1
-vim.g.netrw_banner = 0 -- disable banner
-vim.g.netrw_liststyle = 3 -- tree view
-vim.g.netrw_altv = 1 -- open split on the right
 
 -- formatoptions
 vim.opt.formatoptions = {
