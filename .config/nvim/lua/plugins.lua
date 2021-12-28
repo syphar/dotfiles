@@ -347,7 +347,7 @@ return require("packer").startup({
 					},
 					languages = {},
 					separator = " > ",
-					depth = 0,
+					depth = 20,
 					depth_limit_indicator = "..",
 				})
 			end,
@@ -639,7 +639,7 @@ return require("packer").startup({
 				require("lsp_signature").setup({
 					bind = true,
 					doc_lines = 0,
-					floating_window = true,
+					floating_window = false,
 					floating_window_above_cur_line = true,
 					fix_pos = false,
 					hint_enable = true,
@@ -649,6 +649,7 @@ return require("packer").startup({
 					always_trigger = false,
 					zindex = 20,
 					timer_interval = 200,
+					transparency = 50,
 				})
 			end,
 		})

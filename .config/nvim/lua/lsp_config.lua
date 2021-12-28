@@ -259,6 +259,9 @@ function cfg.lsp_setup()
 			null_ls.builtins.formatting.rustfmt.with({
 				-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Source-specific-Configuration#rustfmt
 				-- added 2021 as default
+				-- For bigger projects rust-analyzer takes ages to load the whole workspace.
+				-- Since I want formatting to work before that, I use `rustfmt` instead of
+				-- rust-analyzer here.
 				extra_args = function(params)
 					local default_edition_args = { "--edition=2021" }
 					local cargo_toml = params.root .. "/" .. "Cargo.toml"
@@ -271,7 +274,6 @@ function cfg.lsp_setup()
 					vim.loop.fs_close(fd)
 					for _, line in ipairs(vim.split(data, "\n")) do
 						local edition = line:match([[^edition%s*=%s*%"(%d+)%"]])
-						-- regex maybe wrong.
 						if edition then
 							return { "--edition=" .. edition }
 						end
