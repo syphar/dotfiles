@@ -6,44 +6,13 @@ return {
 	filetypes = { "python" },
 	generator = helpers.generator_factory({
 		command = "pydocstyle",
-		args = function(params)
-			-- by default pydocstyle searches for config-files not in the CWD,
-			-- but starting from the file location. Since the file-location
-			-- is a temp-directory, any config won't be found.
-			--
-			-- So we partially replicated the pydocstyle config discovery and
-			-- then pass the config-file path to pydocstyle. We don't merge
-			-- multiple existing config-files as pydocstyle itself does it.
-			-- See also:
-			-- https://www.pydocstyle.org/en/stable/usage.html#configuration-files
-			local possible_config_files = {
-				"setup.cfg",
-				"tox.ini",
-				".pydocstyle",
-				".pydocstyle.ini",
-				".pydocstylerc",
-				".pydocstylerc.ini",
-				"pyproject.toml",
-			}
-
-			local cfg = nil
-			for _, fn in ipairs(possible_config_files) do
-				local found = vim.fn.findfile(fn, params.root .. ";")
-				if found then
-					cfg = found
-					break
-				end
-			end
-
-			if cfg ~= nil then
-				return {
-					"--config=" .. params.root .. "/" .. cfg,
-					"$FILENAME",
-				}
-			else
-				return { "$FILENAME" }
-			end
-		end,
+		args = {
+			-- Default config discovery ignores CWD and uses the directory the temp-file is in.
+			-- we want to use the config in the project.
+			"--config=$ROOT/setup.cfg",
+			-- pydocstyle doesn't support receiving the file via STDIN
+			"$FILENAME",
+		},
 		to_stdin = false,
 		to_temp_file = true,
 		format = "raw",
