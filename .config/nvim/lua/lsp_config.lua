@@ -41,6 +41,9 @@ function cfg.lsp_on_attach(client, bufnr)
 			autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
 			augroup END
 		]])
+
+		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+		buf_set_keymap("n", "<leader>gq", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 	end
 
 	if client.resolved_capabilities.document_highlight then
@@ -52,6 +55,9 @@ function cfg.lsp_on_attach(client, bufnr)
 			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
 			augroup END
 		]])
+	end
+	if client.resolved_capabilities.goto_definition == true then
+		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	end
 	require("lsp_signature").on_attach()
 end
