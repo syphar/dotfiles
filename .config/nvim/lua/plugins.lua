@@ -10,12 +10,7 @@ return require("packer").startup({
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
-		use({
-			"antoinemadec/FixCursorHold.nvim",
-			config = function()
-				vim.g.cursorhold_updatetime = vim.opt.updatetime:get()
-			end,
-		})
+		use("antoinemadec/FixCursorHold.nvim")
 		use("nathom/filetype.nvim")
 		use("tpope/vim-projectionist")
 
@@ -31,25 +26,12 @@ return require("packer").startup({
 
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
-		use({ -- jump between vim and tmux splits with C+hjkl
-			"numToStr/Navigator.nvim",
-			config = function()
-				require("Navigator").setup()
-			end,
-		})
+		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
 		use({ "phaazon/hop.nvim", after = "kanagawa.nvim" })
-		use({
-			--auto focus / resize for splits
-			"beauwilliams/focus.nvim",
-			config = function()
-				require("focus").setup({ cursorline = false, signcolumn = false })
-			end,
-		})
-		use({
-			"nvim-treesitter/nvim-treesitter",
-		})
+		use("beauwilliams/focus.nvim") --auto focus / resize for splits
+		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
@@ -80,23 +62,12 @@ return require("packer").startup({
 			requires = "hrsh7th/nvim-cmp",
 		})
 
-		use({
-			"Saecki/crates.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-			config = function()
-				require("crates").setup({})
-			end,
-		})
+		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
 		use("airblade/vim-rooter") --automatically set root directory to project directory
-		use({
-			"blackCauldron7/surround.nvim",
-			config = function()
-				require("surround").setup({ mappings_style = "sandwich" })
-			end,
-		})
+		use("blackCauldron7/surround.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use("nvim-telescope/telescope-project.nvim")
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
@@ -105,70 +76,26 @@ return require("packer").startup({
 		-- GIT integration
 		use("tpope/vim-fugitive") --git commands
 		use("tpope/vim-rhubarb") --fugitive and github integration
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-			config = function()
-				require("gitsigns").setup()
-			end,
-		})
+		use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- specific file types
 		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
 		use("Glench/Vim-Jinja2-Syntax")
-		use({
-			"raimon49/requirements.txt.vim",
-			ft = { "requirements" },
-		})
+		use({ "raimon49/requirements.txt.vim", ft = { "requirements" } })
 		use({ "rust-lang/rust.vim", ft = { "rust" } })
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
-		use({ -- auto-update global tag-file on save
-			"ludovicchabant/vim-gutentags",
-			config = function()
-				vim.g.gutentags_file_list_command = "fd . --type f"
-			end,
-		})
+		use("ludovicchabant/vim-gutentags") -- auto-update global tag-file on save
 		use("L3MON4D3/LuaSnip")
 		use({
 			"rafamadriz/friendly-snippets",
 			requires = { "L3MON4D3/LuaSnip" },
 		})
-		use({
-			"windwp/nvim-autopairs",
-			config = function()
-				local npairs = require("nvim-autopairs")
-				npairs.setup({
-					map_cr = false,
-					map_bs = true,
-					map_c_w = false,
-					check_ts = true, -- treesitter support
-				})
-			end,
-		})
+		use("windwp/nvim-autopairs")
 		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
-		use({ --comment/uncomment on gcc
-			"numToStr/Comment.nvim",
-			config = function()
-				require("Comment").setup({
-					padding = true,
-					ignore = "^$", -- ignore empty lines
-					mappings = {
-						---operator-pending mapping
-						---Includes `gcc`, `gcb`, `gc[count]{motion}` and `gb[count]{motion}`
-						basic = true,
-						---extra mapping
-						---Includes `gco`, `gcO`, `gcA`
-						extra = true,
-						---extended mapping
-						---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-						extended = true,
-					},
-				})
-			end,
-		})
+		use("numToStr/Comment.nvim") --comment/uncomment on gcc
 		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use({
@@ -188,26 +115,7 @@ return require("packer").startup({
 		use("5long/pytest-vim-compiler")
 
 		use("neovim/nvim-lspconfig")
-		use({
-			"ray-x/lsp_signature.nvim",
-			config = function()
-				require("lsp_signature").setup({
-					bind = true,
-					doc_lines = 0,
-					floating_window = false,
-					floating_window_above_cur_line = true,
-					fix_pos = false,
-					hint_enable = true,
-					hint_scheme = "String",
-					max_height = 12,
-					max_width = 120,
-					always_trigger = false,
-					zindex = 20,
-					timer_interval = 200,
-					transparency = 50,
-				})
-			end,
-		})
+		use("ray-x/lsp_signature.nvim")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({

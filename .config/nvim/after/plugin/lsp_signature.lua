@@ -1,0 +1,15 @@
+require("lsp_signature").setup({
+	bind = true,
+	doc_lines = 0,
+	floating_window = false,
+	floating_window_above_cur_line = true,
+	fix_pos = false,
+	hint_enable = true,
+	hint_scheme = "String",
+	max_height = 12,
+	max_width = 120,
+	always_trigger = false,
+	zindex = 20,
+	timer_interval = 200,
+	transparency = 50,
+})
