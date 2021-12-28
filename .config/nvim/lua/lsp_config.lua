@@ -234,6 +234,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.luacheck,
 			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.diagnostics.proselint,
+			null_ls.builtins.diagnostics.selene,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
