@@ -139,6 +139,7 @@ function cfg.lsp_setup()
 
 	lsp.sumneko_lua.setup({
 		cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+		capabilities = capabilities,
 		settings = {
 			Lua = {
 				runtime = {
@@ -195,6 +196,7 @@ function cfg.lsp_setup()
 	})
 
 	lsp.zeta_note.setup({
+		capabilities = capabilities,
 		cmd = {
 			vim.fn.expand("$HOME/.local/bin/zeta-note"),
 		},
@@ -245,6 +247,7 @@ function cfg.lsp_setup()
 			null_ls.builtins.diagnostics.proselint,
 			null_ls.builtins.diagnostics.selene,
 			null_ls.builtins.diagnostics.shellcheck,
+			null_ls.builtins.diagnostics.teal,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
 			null_ls.builtins.formatting.black,
@@ -303,6 +306,7 @@ function cfg.lsp_setup()
 		update_on_insert = false,
 		diagnostics_format = "[#{c}] #{m} (#{s})",
 		on_attach = cfg.lsp_on_attach,
+		capabilities = capabilities,
 	})
 
 	-- update loclist with diagnostics for the current file
