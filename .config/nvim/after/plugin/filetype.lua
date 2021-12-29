@@ -2,6 +2,7 @@ require("filetype").setup({
 	overrides = {
 		extensions = {
 			crs = "rust",
+			tl = "teal",
 		},
 		literal = {
 			["poetry.lock"] = "toml",
@@ -14,6 +15,9 @@ require("filetype").setup({
 		complex = {
 			["requirements*.txt"] = "requirements",
 			["requirements*.in"] = "requirements",
+		},
+		shebang = {
+			tl = "teal",
 		},
 	},
 })

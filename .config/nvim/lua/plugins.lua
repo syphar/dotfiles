@@ -90,6 +90,7 @@ return require("packer").startup({
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
 
+		use({ "teal-language/vim-teal", ft = { "teal" } })
 		use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
 		use("5long/pytest-vim-compiler")
 
