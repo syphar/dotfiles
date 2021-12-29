@@ -54,9 +54,9 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
 		{ name = "path" },
-		{ name = "treesitter" },
 		{ name = "crates" },
 		{ name = "jira_issues" },
+		{ name = "gh_issues" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
@@ -69,8 +69,8 @@ cmp.setup({
 				cmp_tabnine = "[T9]",
 				path = "[Path]",
 				crates = "[Crates]",
-				treesitter = "[TS]",
-				jira_issues = "[JIRA]",
+				jira_issues = "[ JIRA]",
+				gh_issues = "[ GH]",
 			},
 		}),
 	},
