@@ -78,6 +78,8 @@ vim.opt.incsearch = true -- search as characters are entered
 vim.opt.hlsearch = true -- highlight matches
 vim.opt.smartcase = true -- smartcase search
 
+vim.cmd("set nowrap")
+
 -- formatoptions
 vim.opt.formatoptions = {
 	-- default: jtqlnr
