@@ -8,9 +8,12 @@ require("kanagawa").setup({
 	typeStyle = "NONE",
 	variablebuiltinStyle = "italic",
 	specialReturn = true,
-	specialException = false,
+	specialException = true,
 	transparent = true,
-	colors = {},
+	colors = {
+		-- inactive statusline was too dark, should be brighter
+		bg_status = default_colors.bg_light0,
+	},
 	overrides = {
 		-- brighter background for context and LspReference
 		TreesitterContext = { bg = default_colors.bg_light0 },
