@@ -35,12 +35,12 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
-		vim.cmd([[
-			augroup AutoFormatOnSave
-			autocmd! * <buffer>
-			autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-			augroup END
-		]])
+		-- vim.cmd([[
+		-- 	augroup AutoFormatOnSave
+		-- 	autocmd! * <buffer>
+		-- 	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
+		-- 	augroup END
+		-- ]])
 
 		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 		buf_set_keymap("n", "<leader>gq", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
