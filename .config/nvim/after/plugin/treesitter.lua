@@ -11,9 +11,13 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		disable = {},
 	},
-	-- indent = {
-	-- 	enable = true,
-	-- },
+	indent = {
+		enable = true,
+		disable = {
+			"python", -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
+			"rust", -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1336
+		},
+	},
 	textobjects = {
 		select = {
 			enable = true,
