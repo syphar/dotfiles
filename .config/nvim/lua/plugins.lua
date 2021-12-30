@@ -24,6 +24,8 @@ return require("packer").startup({
 
 		use({ "rebelot/kanagawa.nvim" })
 
+		use("chentau/marks.nvim")
+
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
 		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
