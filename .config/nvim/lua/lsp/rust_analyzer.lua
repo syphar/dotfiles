@@ -9,7 +9,7 @@ require("lspconfig").rust_analyzer.setup({
 		vim.cmd([[
 			  augroup update_inlay_hints
 				autocmd! * <buffer>
-				autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost <buffer> :lua require'lsp_config'.show_inlay_hints()
+				autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost <buffer> :lua require("lsp").show_inlay_hints()
 			  augroup end
 			]])
 	end,
