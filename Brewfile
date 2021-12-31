@@ -378,6 +378,7 @@ brew "weechat"
 brew "wget"
 brew "wrk"
 brew "zlib"
+brew "zoxide"
 brew "zsh"
 brew "zsh-completions", link: false
 brew "afnanenayet/tap/diffsitter"
