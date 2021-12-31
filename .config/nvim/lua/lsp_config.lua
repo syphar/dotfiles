@@ -236,9 +236,6 @@ function cfg.lsp_setup()
 			null_ls.builtins.completion.spell.with({
 				filetypes = { "markdown" },
 			}),
-			null_ls.builtins.diagnostics.cspell.with({
-				filetypes = { "markdown" },
-			}),
 			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.diagnostics.flake8,
 			null_ls.builtins.diagnostics.hadolint,
