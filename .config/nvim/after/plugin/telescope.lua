@@ -69,6 +69,18 @@ _G.telescope_virtualenv_files = function()
 	})
 end
 
+require("telescope._extensions.zoxide.config").setup({
+	mappings = {
+		default = {
+			-- after CD into directory select project-file to open
+			after_action = function(_)
+				-- selene: allow(global_usage)
+				_G.telescope_project_files()
+			end,
+		},
+	},
+})
+
 local set_keymap = require("utils").set_keymap
 set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
 set_keymap("n", "<leader>F", "<cmd>Telescope tags<cr>")
@@ -80,7 +92,8 @@ set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
 set_keymap("n", "<C-P>", "<cmd>lua telescope_project_files()<cr>")
 set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
-set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
 set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
+-- zoxide & project are kind of duplicate, one of them can go away after some trial
 set_keymap("n", "<leader>cd", "<cmd>Telescope zoxide list<cr>")
+set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
