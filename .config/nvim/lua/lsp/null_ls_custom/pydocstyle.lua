@@ -3,6 +3,7 @@ local helpers = require("null-ls.helpers")
 
 return {
 	method = null_ls.methods.DIAGNOSTICS,
+	name = "pydocstyle",
 	filetypes = { "python" },
 	generator = helpers.generator_factory({
 		command = "pydocstyle",

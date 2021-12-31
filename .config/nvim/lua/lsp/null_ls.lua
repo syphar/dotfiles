@@ -19,7 +19,7 @@ local function has_eslint_rc(utils)
 end
 
 null_ls.setup({
-	-- debug = true,
+	debug = true,
 	sources = {
 		null_ls.builtins.code_actions.proselint,
 		null_ls.builtins.code_actions.shellcheck,
@@ -88,6 +88,8 @@ null_ls.setup({
 		require("lsp.null_ls_custom.curlylint"),
 		require("lsp.null_ls_custom.gitlint"),
 		require("lsp.null_ls_custom.pydocstyle"),
+		require("lsp.null_ls_custom.sqlfluff_diagnostic"),
+		require("lsp.null_ls_custom.sqlfluff_fix"),
 	},
 	debounce = vim.opt.updatetime:get(),
 	update_on_insert = false,

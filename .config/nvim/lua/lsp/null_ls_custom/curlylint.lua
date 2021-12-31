@@ -4,6 +4,7 @@ local helpers = require("null-ls.helpers")
 return {
 	method = null_ls.methods.DIAGNOSTICS,
 	filetypes = { "jinja.html", "htmldjango" },
+	name = "curlylint",
 	generator = helpers.generator_factory({
 		command = "curlylint",
 		args = {
