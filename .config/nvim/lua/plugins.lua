@@ -47,6 +47,7 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
+				"f3fora/cmp-spell",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
 			},
@@ -101,9 +102,13 @@ return require("packer").startup({
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
-		-- clipboard history
-		use({ "AckslD/nvim-neoclip.lua", requires = {
-			{ "tami5/sqlite.lua", module = "sqlite" },
-		} })
+		use({ -- clipboard history
+			"AckslD/nvim-neoclip.lua",
+			requires = {
+				{ "tami5/sqlite.lua", module = "sqlite" },
+			},
+		})
+		use("jvgrootveld/telescope-zoxide")
+		use("lewis6991/spellsitter.nvim")
 	end,
 })

@@ -6,6 +6,7 @@ fzf_configure_bindings --directory=\cf
 
 /usr/local/bin/direnv hook fish | source
 /usr/local/bin/starship init fish | source
+/usr/local/bin/zoxide init fish --cmd cd | source
 
 # status is-login; and pyenv init --path | source
 # pyenv init - | source

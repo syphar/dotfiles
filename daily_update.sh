@@ -64,6 +64,9 @@ fish -c "fisher update"
 # store project-list for telescope-projects
 ./find_projects.sh | ./write_telescope_projects.py > ~/.local/share/nvim/telescope-projects.txt
 
+# add projects to zoxide list
+./find_projects.sh | xargs -n 1 sh -c 'zoxide query $0 > /dev/null 2>&1 || zoxide add $0'
+
 # update tmux plugins
 ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
 

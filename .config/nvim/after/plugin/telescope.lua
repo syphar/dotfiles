@@ -38,6 +38,7 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("project")
+require("telescope").load_extension("zoxide")
 
 -- pick from git-files if inside git repository,
 -- if that breaks, use find_files from CWD
@@ -82,3 +83,4 @@ set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
 set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
 set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
+set_keymap("n", "<leader>cd", "<cmd>Telescope zoxide list<cr>")
