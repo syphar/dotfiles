@@ -47,7 +47,6 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
-				"f3fora/cmp-spell",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
 			},
@@ -110,6 +109,5 @@ return require("packer").startup({
 		})
 		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
-		use("stevearc/aerial.nvim")
 	end,
 })

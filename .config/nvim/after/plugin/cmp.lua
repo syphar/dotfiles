@@ -57,7 +57,6 @@ cmp.setup({
 		{ name = "crates" },
 		{ name = "jira_issues" },
 		{ name = "gh_issues" },
-		{ name = "spell" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
@@ -72,7 +71,6 @@ cmp.setup({
 				crates = "[Crates]",
 				jira_issues = "[ JIRA]",
 				gh_issues = "[ GH]",
-				spell = "[暈 spell]"
 			},
 		}),
 	},
