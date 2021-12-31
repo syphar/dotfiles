@@ -17,6 +17,7 @@ require("telescope").setup({
 			prompt_position = "bottom",
 		},
 		theme = "dropdown",
+		dynamic_preview_title = true,
 	},
 	pickers = {
 		tags = config_with_preview,

@@ -101,5 +101,9 @@ return require("packer").startup({
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
+		-- clipboard history
+		use({ "AckslD/nvim-neoclip.lua", requires = {
+			{ "tami5/sqlite.lua", module = "sqlite" },
+		} })
 	end,
 })
