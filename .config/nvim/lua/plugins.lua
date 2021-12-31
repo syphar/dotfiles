@@ -110,5 +110,6 @@ return require("packer").startup({
 		})
 		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
+		use("stevearc/aerial.nvim")
 	end,
 })
