@@ -296,6 +296,7 @@ brew "mcrypt"
 brew "memcached", restart_service: true
 brew "mercurial"
 brew "midnight-commander"
+brew "mold"
 brew "msgpack"
 brew "tokyo-cabinet"
 brew "mutt"
