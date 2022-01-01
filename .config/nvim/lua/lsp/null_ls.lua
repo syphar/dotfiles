@@ -32,7 +32,11 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.luacheck,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.proselint,
-		null_ls.builtins.diagnostics.selene,
+		null_ls.builtins.diagnostics.selene.with({
+			condition = function(utils)
+				return utils.root_has_file({ "selene.toml" })
+			end,
+		}),
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.teal,
 		null_ls.builtins.diagnostics.vint,
