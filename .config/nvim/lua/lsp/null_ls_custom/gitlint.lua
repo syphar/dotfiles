@@ -4,13 +4,20 @@ local helpers = require("null-ls.helpers")
 return {
 	method = null_ls.methods.DIAGNOSTICS,
 	filetypes = { "gitcommit" },
+	name = "gitlint",
 	generator = helpers.generator_factory({
 		command = "gitlint",
-		args = { "lint" },
+		args = { "--msg-filename", "$FILENAME" },
+		to_temp_file = true,
+		from_stderr = true,
 		to_stdin = true,
 		format = "line",
-		from_stderr = true,
 		check_exit_code = { 0, 1 },
-		on_output = helpers.diagnostics.from_pattern([[(%d+): (%w+) (.*)]], { "line", "code", "message" }),
+		on_output = helpers.diagnostics.from_patterns({
+			{
+				pattern = [[(%d+): (%w+) (.+)]],
+				groups = { "row", "code", "message" },
+			},
+		}),
 	}),
 }

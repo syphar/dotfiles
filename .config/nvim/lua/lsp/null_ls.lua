@@ -24,7 +24,7 @@ null_ls.setup({
 		null_ls.builtins.code_actions.proselint,
 		null_ls.builtins.code_actions.shellcheck,
 		null_ls.builtins.completion.spell.with({
-			filetypes = { "markdown" },
+			filetypes = { "markdown", "gitcommit" },
 		}),
 		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 		null_ls.builtins.diagnostics.flake8,
@@ -97,7 +97,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.trim_whitespace.with({
 			-- I don't want this for all filetypes since it
 			-- also removes whitespace inside string literals.
-			filetypes = { "markdown", "yaml" },
+			filetypes = { "markdown", "yaml", "gitcommit" },
 		}),
 		null_ls.builtins.hover.dictionary,
 		require("lsp.null_ls_custom.curlylint"),
