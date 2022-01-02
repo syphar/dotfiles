@@ -56,7 +56,6 @@ symbol = ""
 format = "[🐋 ](blue bold)"
 
 [package]
-disabled = true
 format = "[$symbol$version]($style) "
 style = "208"
 
