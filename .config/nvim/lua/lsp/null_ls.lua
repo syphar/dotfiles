@@ -81,6 +81,17 @@ null_ls.setup({
 			end,
 		}),
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.sqlformat.with({
+			extra_args = function(params)
+				return {
+					"--identifiers=lower",
+					"--keywords=upper",
+					"--reindent",
+					"--indent_width=" .. vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
+					"--reindent",
+				}
+			end,
+		}),
 		null_ls.builtins.formatting.taplo,
 		null_ls.builtins.formatting.trim_newlines,
 		null_ls.builtins.formatting.trim_whitespace.with({
