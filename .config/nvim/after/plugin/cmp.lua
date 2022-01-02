@@ -65,10 +65,10 @@ cmp.setup({
 			menu = {
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
+				nvim_lua = "[ Lua]",
 				cmp_tabnine = "[T9]",
-				path = "[Path]",
-				crates = "[Crates]",
+				path = "[/ Path]",
+				crates = " [📦 Crates]",
 				jira_issues = "[ JIRA]",
 				gh_issues = "[ GH]",
 			},
