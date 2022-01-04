@@ -64,7 +64,6 @@ return require("packer").startup({
 		use("airblade/vim-rooter") --automatically set root directory to project directory
 		use("blackCauldron7/surround.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-		use("nvim-telescope/telescope-project.nvim")
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 

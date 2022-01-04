@@ -37,7 +37,6 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("project")
 require("telescope").load_extension("zoxide")
 
 -- pick from git-files if inside git repository,
@@ -58,7 +57,6 @@ _G.telescope_virtualenv_files = function()
 		path_display = { "smart" },
 		find_command = {
 			"fd",
-			"--strip-cwd-prefix",
 			"--type",
 			"f",
 			"--hidden",
@@ -96,4 +94,3 @@ set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
 -- zoxide & project are kind of duplicate, one of them can go away after some trial
 set_keymap("n", "<leader>cd", "<cmd>Telescope zoxide list<cr>")
-set_keymap("n", "<leader>q", "<cmd>lua require'telescope'.extensions.project.project{}<CR>")
