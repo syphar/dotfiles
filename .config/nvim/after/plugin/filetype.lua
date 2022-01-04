@@ -11,6 +11,7 @@ require("filetype").setup({
 			[".envrc"] = "bash",
 			[".direnvrc"] = "bash",
 			[".env"] = "bash",
+			[".env.sample"] = "bash",
 		},
 		complex = {
 			["requirements*.txt"] = "requirements",
@@ -18,6 +19,7 @@ require("filetype").setup({
 		},
 		shebang = {
 			tl = "teal",
+			bash="bash",
 		},
 	},
 })
