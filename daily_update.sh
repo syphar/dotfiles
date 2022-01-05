@@ -61,9 +61,6 @@ fish -c "fisher update"
 ./update_lua_language_server.sh
 ./update_vim.sh
 
-# store project-list for telescope-projects
-./find_projects.sh | ./write_telescope_projects.py > ~/.local/share/nvim/telescope-projects.txt
-
 # add projects to zoxide list
 ./find_projects.sh | xargs -n 1 sh -c 'zoxide query $0 > /dev/null 2>&1 || zoxide add $0'
 
