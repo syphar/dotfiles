@@ -53,3 +53,10 @@ local command_abbrev = {
 for old, new in pairs(command_abbrev) do
 	vim.cmd("cnoreabbrev " .. old .. " " .. new)
 end
+
+-- disable ex mode mappings, I always end up
+-- in ex-mode and never need it. Then I have
+-- to remember how to exit it.
+-- https://vi.stackexchange.com/q/457/27498
+vim.cmd("map q: <Nop>")
+vim.cmd("nnoremap Q <nop>")
