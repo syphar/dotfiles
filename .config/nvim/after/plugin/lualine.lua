@@ -68,12 +68,24 @@ require("lualine").setup({
 			{
 				"lsp_progress",
 				display_components = {
-					{ "title", "percentage" },
+					"lsp_client_name",
+					{
+						-- "title",
+						"percentage",
+						"message",
+					},
 					"spinner",
 				},
 				-- https://github.com/sindresorhus/cli-spinners
 				spinner_symbols = { "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " },
-				timer = { progress_enddelay = 500, spinner = 80, lsp_client_name_enddelay = 1000 },
+				timer = { progress_enddelay = 100, spinner = 80, lsp_client_name_enddelay = 100 },
+				message = { commenced = "", completed = "" },
+				separators = {
+					component = " ",
+					progress = " ",
+					title = { pre = "", post = " " },
+					message = { pre = "(", post = ")" },
+				},
 			},
 		},
 		lualine_y = {
