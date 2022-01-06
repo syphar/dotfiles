@@ -29,15 +29,11 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>d", [[<CMD>lua require("lsp").open_diagnostics_float()<CR>]], opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	buf_set_keymap("n", "gT", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "<leader>gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<leader>n", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts)
-	buf_set_keymap("n", "gI", "<Cmd>Telescope lsp_implementations<CR>", opts)
+	buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
 		-- vim.cmd([[
