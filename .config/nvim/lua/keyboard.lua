@@ -18,7 +18,6 @@ set_keymap("n", "<leader><space>", ":nohlsearch<CR>")
 
 -- open/close folds with spacebar
 set_keymap("n", "<space>", "za")
-set_keymap("v", "<space>", "zf")
 
 -- show current file on master
 set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
@@ -37,17 +36,20 @@ set_keymap("n", "<F12>", "<cmd>cnext<cr>")
 set_keymap("v", "<", "<gv")
 set_keymap("v", ">", ">gv")
 
--- common typos .. (W, Wq WQ)
-vim.cmd([[
-cnoreabbrev E e
-cnoreabbrev W w
-cnoreabbrev WQ wq
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev WA wa
-cnoreabbrev Q q
-cnoreabbrev QA qa
-cnoreabbrev Qa qa
-cnoreabbrev Vsp vsp
-cnoreabbrev On on 
-]])
+-- common command typos .. (W, Wq WQ)
+local command_abbrev = {
+	E = "e",
+	W = "w",
+	WQ = "wq",
+	Wq = "wq",
+	Wa = "wa",
+	WA = "wa",
+	Q = "q",
+	QA = "qa",
+	Qa = "qa",
+	Vsp = "vsp",
+	On = "on",
+}
+for old, new in pairs(command_abbrev) do
+	vim.cmd("cnoreabbrev " .. old .. " " .. new)
+end
