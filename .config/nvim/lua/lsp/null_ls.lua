@@ -96,7 +96,7 @@ null_ls.setup({
 		require("lsp.null_ls_custom.sqlfluff_fix"),
 	},
 	debounce = vim.opt.updatetime:get(),
-	update_on_insert = false,
+	update_in_insert = false,
 	diagnostics_format = "[#{c}] #{m} (#{s})",
 	on_attach = cfg.lsp_on_attach,
 	capabilities = cfg.capabilities(),
