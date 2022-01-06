@@ -8,11 +8,11 @@ echo "$HOME/.config/fish/"
 echo "$HOME/Dropbox/notes/"
 
 (
-    # all Cargo projects including sub-crates
-    fd Cargo.toml "$src_dir" --exec-batch printf "%s\n" \{//\}/
+    # # all Cargo projects including sub-crates
+    # fd Cargo.toml "$src_dir" --exec-batch printf "'%s'\n" \{//\}/
 
-    # # all Go projects
-    fd go.mod "$src_dir" --exec-batch printf "%s\n" \{//\}/
+    # # # all Go projects
+    # fd go.mod "$src_dir" --exec-batch printf "'%s'\n" \{//\}/
 
     # all git repos, a little slow
     $HOME/src/dotfiles/find_repos.sh "$src_dir"
