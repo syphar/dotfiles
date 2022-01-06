@@ -7,6 +7,7 @@ return {
 	filetypes = { "python" },
 	generator = helpers.generator_factory({
 		command = "pydocstyle",
+		name = "pydocstyle",
 		args = {
 			-- Default config discovery ignores CWD and uses the directory the temp-file is in.
 			-- we want to use the config in the project.

@@ -7,6 +7,7 @@ return {
 	name = "curlylint",
 	generator = helpers.generator_factory({
 		command = "curlylint",
+		name = "curlylint",
 		args = {
 			-- no logging output
 			"--quiet",

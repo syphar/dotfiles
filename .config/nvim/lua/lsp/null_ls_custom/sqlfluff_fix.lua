@@ -7,6 +7,7 @@ return {
 	filetypes = { "sql" },
 	generator = helpers.formatter_factory({
 		command = "sqlfluff",
+		name = "sqlfluff_fix",
 		args = {
 			"fix",
 			"-",

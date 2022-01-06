@@ -7,6 +7,7 @@ return {
 	filetypes = { "sql" },
 	generator = helpers.generator_factory({
 		command = "sqlfluff",
+		name = "sqlfluff_diagnostic",
 		args = {
 			"lint",
 			"-",
