@@ -19,7 +19,7 @@ require("filetype").setup({
 		},
 		shebang = {
 			tl = "teal",
-			bash="bash",
+			bash = "bash",
 		},
 	},
 })
