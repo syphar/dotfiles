@@ -36,6 +36,8 @@ set --global -x RUSTC_WRAPPER sccache
 set --global -x NVM_DIR "$HOME/.nvm"
 set --global -x PYENV_ROOT "$HOME/.pyenv"
 
+set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
+
 # fix for neovim / virtualenv and direnv
 # see https://vi.stackexchange.com/a/7644/
 # if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
