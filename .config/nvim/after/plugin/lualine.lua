@@ -1,15 +1,6 @@
-local function diff_source()
-	-- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets#using-external-source-for-diff
-	local gitsigns = vim.b.gitsigns_status_dict
-	if gitsigns then
-		return {
-			added = gitsigns.added,
-			modified = gitsigns.changed,
-			removed = gitsigns.removed,
-		}
-	end
-end
-
+-- https://github.com/sindresorhus/cli-spinners
+local spinner_symbols = { "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " }
+local gps_separator = " > "
 require("nvim-gps").setup({
 	icons = {
 		["class-name"] = " ",
@@ -19,9 +10,9 @@ require("nvim-gps").setup({
 		["tag-name"] = "» ",
 	},
 	languages = {},
-	separator = " > ",
-	depth = 20,
-	depth_limit_indicator = "..",
+	separator = gps_separator,
+	depth = 2,
+	depth_limit_indicator = "…",
 })
 
 local gps = require("nvim-gps")
@@ -54,13 +45,12 @@ require("lualine").setup({
 					end
 				end,
 			},
-			{ "diff", source = diff_source },
-			{ "diagnostics", sources = { "nvim_diagnostic" } },
 		},
 		lualine_c = {
 			{
 				"filename",
 				path = 1, -- 1 => relativepath
+				shorting_target = 20,
 			},
 			{ gps.get_location, cond = gps.is_available },
 		},
@@ -68,30 +58,33 @@ require("lualine").setup({
 			{
 				"lsp_progress",
 				display_components = {
-					"lsp_client_name",
+					-- "lsp_client_name",
 					{
-						-- "title",
-						"percentage",
+						"title",
 						"message",
+						"percentage",
 					},
 					"spinner",
 				},
-				-- https://github.com/sindresorhus/cli-spinners
-				spinner_symbols = { "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " },
-				timer = { progress_enddelay = 100, spinner = 80, lsp_client_name_enddelay = 100 },
+				spinner_symbols = spinner_symbols,
+				timer = { progress_enddelay = 0, spinner = 80, lsp_client_name_enddelay = 0 },
 				message = { commenced = "", completed = "" },
 				separators = {
 					component = " ",
 					progress = " ",
+					lsp_client_name = { pre = "[", post = "] " },
 					title = { pre = "", post = " " },
-					message = { pre = "(", post = ")" },
+					percentage = { pre = "", post = "%% " },
+					message = { pre = "(", post = ") " },
 				},
 			},
 		},
 		lualine_y = {
+			{ "diagnostics", sources = { "nvim_diagnostic" } },
+		},
+		lualine_z = {
 			{ "filetype", icon_only = false },
 		},
-		lualine_z = { "progress", "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
@@ -99,7 +92,9 @@ require("lualine").setup({
 		lualine_c = { { "filename", path = 1 } },
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = { "progress", "location" },
+		lualine_z = {
+			{ "filetype", icon_only = false },
+		},
 	},
 	tabline = {},
 	extensions = {
