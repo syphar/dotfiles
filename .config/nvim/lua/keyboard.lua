@@ -60,3 +60,6 @@ end
 -- https://vi.stackexchange.com/q/457/27498
 vim.cmd("map q: <Nop>")
 vim.cmd("nnoremap Q <nop>")
+
+-- C-q to close split
+set_keymap("n", "<C-q>", "<C-w>q")
