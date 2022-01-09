@@ -1,5 +1,7 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "maintained",
+	-- this costs 20ms startup time.
+	-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
+	-- ensure_installed = "maintained",
 	ignore_install = {},
 	playground = {
 		enable = true,
