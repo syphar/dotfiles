@@ -104,12 +104,6 @@ return require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-		use({ -- clipboard history
-			"AckslD/nvim-neoclip.lua",
-			requires = {
-				{ "tami5/sqlite.lua", module = "sqlite" },
-			},
-		})
 		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
 		use({ --simple test running
