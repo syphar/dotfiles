@@ -39,7 +39,6 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use("romgrk/nvim-treesitter-context")
 		use("RRethy/nvim-treesitter-textsubjects")
-		use("SmiteshP/nvim-gps")
 
 		use({
 			"hrsh7th/nvim-cmp",

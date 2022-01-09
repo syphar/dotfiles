@@ -1,21 +1,5 @@
 -- https://github.com/sindresorhus/cli-spinners
 local spinner_symbols = { "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " }
-local gps_separator = " > "
-require("nvim-gps").setup({
-	icons = {
-		["class-name"] = " ",
-		["function-name"] = " ",
-		["method-name"] = " ",
-		["container-name"] = " ",
-		["tag-name"] = "» ",
-	},
-	languages = {},
-	separator = gps_separator,
-	depth = 2,
-	depth_limit_indicator = "…",
-})
-
-local gps = require("nvim-gps")
 require("lualine").setup({
 	options = {
 		theme = "kanagawa",
@@ -52,7 +36,6 @@ require("lualine").setup({
 				path = 1, -- 1 => relativepath
 				shorting_target = 20,
 			},
-			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = {
 			{
@@ -77,24 +60,42 @@ require("lualine").setup({
 					percentage = { pre = "", post = "%% " },
 					message = { pre = "(", post = ") " },
 				},
+				fmt = function(str)
+					-- FIXME ugly hack.
+					-- Something in either the sumneko_lua & rust_analyzer LSPs or
+					-- lualine_lsp_progress leads to some statuses being duplicated.
+					-- This happens only on workspace load / startup.
+					--
+					-- This codes just de-duplicates words, which partially fixes
+					-- this issue.
+					local output = {}
+					local seen = {}
+
+					for _, word in ipairs(vim.split(str, " ")) do
+						if seen[word] == nil then
+							table.insert(output, word)
+							seen[word] = true
+						end
+					end
+					return table.concat(output, " ")
+				end,
 			},
 		},
 		lualine_y = {
 			{ "diagnostics", sources = { "nvim_diagnostic" } },
-		},
-		lualine_z = {
 			{ "filetype", icon_only = false },
 		},
+		lualine_z = { "LineNoIndicator", "location", },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
 		lualine_c = { { "filename", path = 1 } },
 		lualine_x = {},
-		lualine_y = {},
-		lualine_z = {
+		lualine_y = {
 			{ "filetype", icon_only = false },
 		},
+		lualine_z = { "progress", "location", },
 	},
 	tabline = {},
 	extensions = {
