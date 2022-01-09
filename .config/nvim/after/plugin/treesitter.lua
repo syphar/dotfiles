@@ -1,14 +1,3 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.sql = {
-	install_info = {
-		-- url = "https://github.com/DerekStride/tree-sitter-sql/tarball/master",
-		url = "~/src/tree-sitter-sql/",
-		files = { "src/parser.c" },
-	},
-	filetype = "sql", -- if filetype does not agrees with parser name
-	-- used_by = { "python", "rust", "markdown" }, -- additional filetypes that use this parser
-}
-
 require("nvim-treesitter.configs").setup({
 	-- this costs 20ms startup time.
 	-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
