@@ -21,6 +21,7 @@ return require("packer").startup({
 				{ "kyazdani42/nvim-web-devicons" },
 			},
 		})
+		use("drzel/vim-line-no-indicator")
 
 		use({ "rebelot/kanagawa.nvim" })
 
@@ -111,6 +112,9 @@ return require("packer").startup({
 		})
 		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
-		use("janko/vim-test") --simple test running
+		use({ --simple test running
+			"janko/vim-test",
+			ft = { "rust", "python" },
+		})
 	end,
 })
