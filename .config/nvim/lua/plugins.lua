@@ -112,5 +112,6 @@ return require("packer").startup({
 		})
 		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
+		use("janko/vim-test") --simple test running
 	end,
 })
