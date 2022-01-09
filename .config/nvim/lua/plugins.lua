@@ -99,9 +99,8 @@ return require("packer").startup({
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 
 		use({
-			"~/src/null-ls.nvim/",
-			-- "jose-elias-alvarez/null-ls.nvim",
-			-- branch = "progress-notifications",
+			-- "~/src/null-ls.nvim/",
+			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 		use({ -- clipboard history
