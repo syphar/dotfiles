@@ -42,7 +42,9 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.teal,
 		null_ls.builtins.diagnostics.vint,
 		null_ls.builtins.diagnostics.yamllint,
-		null_ls.builtins.formatting.black,
+		null_ls.builtins.formatting.black.with({
+			extra_args = { "--fast" },
+		}),
 		null_ls.builtins.formatting.djhtml.with({
 			extra_args = function(params)
 				return {
