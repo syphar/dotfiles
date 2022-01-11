@@ -11,8 +11,6 @@ return {
 		args = {
 			"fix",
 			"-",
-			"--dialect",
-			"postgres",
 			"--disable_progress_bar",
 			"--force",
 		},

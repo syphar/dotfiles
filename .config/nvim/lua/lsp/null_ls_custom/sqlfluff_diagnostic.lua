@@ -13,12 +13,11 @@ return {
 			"-",
 			"--format",
 			"json",
-			"--dialect",
-			"postgres",
 			"--disable_progress_bar",
 		},
 		to_stdin = true,
 		from_stderr = false,
+		ignore_stderr = true,
 		format = "json",
 		check_exit_code = { 0, 65 },
 		on_output = function(params)
