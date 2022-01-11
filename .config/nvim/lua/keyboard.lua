@@ -62,4 +62,4 @@ vim.cmd("map q: <Nop>")
 vim.cmd("nnoremap Q <nop>")
 
 -- C-q to close split
-set_keymap("n", "<C-q>", "<C-w>q")
+set_keymap("n", "<leader>q", "<C-w>q")
