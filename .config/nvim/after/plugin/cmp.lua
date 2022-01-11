@@ -57,6 +57,7 @@ cmp.setup({
 		{ name = "crates" },
 		{ name = "jira_issues" },
 		{ name = "gh_issues" },
+		{ name = "emoji" },
 	}),
 	formatting = {
 		format = lspkind.cmp_format({
