@@ -94,11 +94,26 @@ require("treesitter-context.config").setup({
 			"for",
 			"while",
 			"if",
+			"else",
 			"switch",
 			"case",
 		},
 		rust = {
 			"impl_item",
+			"mod_item",
 		},
+		python = {
+			"elif",
+		},
+		json = {
+			"object",
+			"pair",
+		},
+		yaml = {
+			"block_mapping_pair",
+		},
+		toml = {
+			"table",
+		}
 	},
 })
