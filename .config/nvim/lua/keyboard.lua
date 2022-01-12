@@ -61,5 +61,5 @@ end
 vim.cmd("map q: <Nop>")
 vim.cmd("nnoremap Q <nop>")
 
--- C-q to close split
-set_keymap("n", "<leader>q", "<C-w>q")
+-- ; as <C-w> to quickly reach window/split control
+vim.cmd("nnoremap ; <C-w>")
