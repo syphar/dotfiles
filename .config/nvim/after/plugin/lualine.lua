@@ -95,7 +95,7 @@ require("lualine").setup({
 		lualine_y = {
 			{ "filetype", icon_only = false },
 		},
-		lualine_z = { "progress", "location", },
+		lualine_z = { "LineNoIndicator", "location", },
 	},
 	tabline = {},
 	extensions = {
