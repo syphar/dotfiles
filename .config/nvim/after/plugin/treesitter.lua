@@ -101,6 +101,9 @@ require("treesitter-context.config").setup({
 		rust = {
 			"impl_item",
 			"mod_item",
+			"match",
+			"struct",
+			"loop",
 		},
 		python = {
 			"elif",
@@ -111,9 +114,11 @@ require("treesitter-context.config").setup({
 		},
 		yaml = {
 			"block_mapping_pair",
+			"block_sequence_item",
 		},
 		toml = {
 			"table",
-		}
+			"pair",
+		},
 	},
 })
