@@ -104,6 +104,7 @@ require("treesitter-context.config").setup({
 			"match",
 			"struct",
 			"loop",
+			"closure",
 		},
 		python = {
 			"elif",
