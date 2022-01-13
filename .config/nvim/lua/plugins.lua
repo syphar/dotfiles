@@ -38,8 +38,8 @@ return require("packer").startup({
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
-			"~/src/nvim-treesitter-context",
-			--"romgrk/nvim-treesitter-context"
+			-- "~/src/nvim-treesitter-context",
+			"romgrk/nvim-treesitter-context"
 		})
 		use("RRethy/nvim-treesitter-textsubjects")
 
