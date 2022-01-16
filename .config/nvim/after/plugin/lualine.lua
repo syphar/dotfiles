@@ -45,6 +45,7 @@ require("lualine").setup({
 					{
 						"title",
 						"message",
+						-- for later: https://changaco.oy.lc/unicode-progress-bars/
 						"percentage",
 					},
 					"spinner",

@@ -17,12 +17,6 @@
     log = delta
     reflog = delta
     show = delta
-    ;
-	; pager = diff-so-fancy | less --tabs=4 -RFX
-    ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='GitHub'
-    ; pager = delta
-    ;'--syntax-theme='GitHub Dark'
-    ;
 
 [interactive]
     diffFilter = delta --color-only
