@@ -108,6 +108,7 @@ require("treesitter-context.config").setup({
 		},
 		python = {
 			"elif",
+			"with",
 		},
 		json = {
 			"object",
