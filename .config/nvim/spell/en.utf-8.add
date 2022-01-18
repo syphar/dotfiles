@@ -4,3 +4,8 @@ resize
 Heroku
 Redis
 backend
+EC2
+RSSBus
+s3
+AWS_ACCESS_KEY_ID
+DNS
