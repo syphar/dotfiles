@@ -23,7 +23,7 @@ return require("packer").startup({
 		})
 		use("drzel/vim-line-no-indicator")
 
-		use({ "rebelot/kanagawa.nvim" })
+		use("rebelot/kanagawa.nvim")
 
 		use("chentau/marks.nvim")
 
@@ -34,9 +34,15 @@ return require("packer").startup({
 
 		use("phaazon/hop.nvim")
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
-		use("nvim-treesitter/nvim-treesitter")
+		use({
+			"nvim-treesitter/nvim-treesitter",
+			commit = "723d91e8217ae66ea75f809f404d801ed939f497",
+		})
 		use("nvim-treesitter/playground")
-		use("nvim-treesitter/nvim-treesitter-textobjects")
+		use({
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			commit = "ca4a500c7fb17f770b3b633d7c0fb7fbb8aca6fc",
+		})
 		use({
 			"~/src/nvim-treesitter-context",
 			-- "romgrk/nvim-treesitter-context"
