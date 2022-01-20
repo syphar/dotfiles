@@ -41,6 +41,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.teal,
 		null_ls.builtins.diagnostics.vint,
+		null_ls.builtins.diagnostics.write_good,
 		null_ls.builtins.diagnostics.yamllint,
 		null_ls.builtins.formatting.black.with({
 			extra_args = { "--fast" },
