@@ -38,15 +38,18 @@ set --global -x PYENV_ROOT "$HOME/.pyenv"
 
 set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
 
-# fix for neovim / virtualenv and direnv
-# see https://vi.stackexchange.com/a/7644/
-# if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-#   source "${VIRTUAL_ENV}/bin/activate"
-# fi
-
-
-# fisher / done
-set -U __done_allow_nongraphical 1
+# zoxide fzf options 
+# Just the default from src/fzf.rs, 
+# just an updated preview.
+set --global -x _ZO_FZF_OPTS "
+    --bind=ctrl-z:ignore 
+    --exit-0 
+    --height=40% 
+    --inline-info 
+    --no-sort 
+    --reverse 
+    --select-1
+    --preview='exa -1 {2..}'"
 
 fish_add_path $PYENV_ROOT/bin
 fish_add_path $HOME/.cargo/bin
