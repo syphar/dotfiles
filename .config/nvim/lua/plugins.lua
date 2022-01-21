@@ -44,8 +44,8 @@ return require("packer").startup({
 			commit = "ca4a500c7fb17f770b3b633d7c0fb7fbb8aca6fc",
 		})
 		use({
-			-- "~/src/nvim-treesitter-context",
-			"romgrk/nvim-treesitter-context"
+			"~/src/nvim-treesitter-context",
+			-- "romgrk/nvim-treesitter-context"
 		})
 		use("RRethy/nvim-treesitter-textsubjects")
 
