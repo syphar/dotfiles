@@ -36,12 +36,10 @@ return require("packer").startup({
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			commit = "723d91e8217ae66ea75f809f404d801ed939f497",
 		})
 		use("nvim-treesitter/playground")
 		use({
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			commit = "ca4a500c7fb17f770b3b633d7c0fb7fbb8aca6fc",
 		})
 		use({
 			"~/src/nvim-treesitter-context",
@@ -90,6 +88,7 @@ return require("packer").startup({
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
+		use("rhysd/committia.vim")
 		use("L3MON4D3/LuaSnip")
 		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
 		use("windwp/nvim-autopairs")

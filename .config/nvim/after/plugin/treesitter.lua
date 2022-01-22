@@ -7,7 +7,12 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		disable = {},
 		updatetime = vim.opt.updatetime:get(),
-		persist_queries = false,
+		persist_queries = true,
+	},
+	query_linter = {
+		enable = true,
+		use_virtual_text = true,
+		lint_events = { "BufWrite", "CursorHold", "CursorHoldI" },
 	},
 	highlight = {
 		enable = true,
