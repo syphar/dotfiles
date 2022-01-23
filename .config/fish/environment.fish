@@ -51,6 +51,9 @@ set --global -x _ZO_FZF_OPTS "
     --select-1
     --preview='exa -1 {2..}'"
 
+# for tmux-spotify
+export MUSIC_APP="Music"
+
 fish_add_path $PYENV_ROOT/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
