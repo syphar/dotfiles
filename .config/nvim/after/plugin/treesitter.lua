@@ -110,10 +110,13 @@ require("treesitter-context.config").setup({
 			"struct",
 			"loop",
 			"closure",
+			"async_block",
 		},
 		python = {
 			"elif",
 			"with",
+			"try", 
+			"except",
 		},
 		json = {
 			"object",
