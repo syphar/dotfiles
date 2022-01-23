@@ -26,6 +26,7 @@ null_ls.setup({
 		null_ls.builtins.completion.spell.with({
 			filetypes = { "markdown", "gitcommit" },
 		}),
+		null_ls.builtins.diagnostics.curlylint,
 		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.diagnostics.gitlint,
@@ -93,7 +94,6 @@ null_ls.setup({
 			filetypes = { "markdown", "yaml", "gitcommit" },
 		}),
 		null_ls.builtins.hover.dictionary,
-		require("lsp.null_ls_custom.curlylint"),
 		require("lsp.null_ls_custom.pydocstyle"),
 		require("lsp.null_ls_custom.sqlfluff_diagnostic"),
 		require("lsp.null_ls_custom.sqlfluff_fix"),
