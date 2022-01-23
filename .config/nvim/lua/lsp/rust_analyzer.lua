@@ -7,11 +7,11 @@ require("lspconfig").rust_analyzer.setup({
 
 		-- show inlay hints, only for rust-analyzer
 		vim.cmd([[
-			  augroup update_inlay_hints
-				autocmd! * <buffer>
-				autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost <buffer> :lua require("lsp").show_inlay_hints()
-			  augroup end
-			]])
+		  augroup update_inlay_hints
+			autocmd! * <buffer>
+			autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost <buffer> :lua require("lsp").show_inlay_hints()
+		  augroup end
+		]])
 	end,
 	settings = {
 		["rust-analyzer"] = {

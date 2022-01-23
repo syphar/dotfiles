@@ -9,11 +9,11 @@ return {
 		command = "pydocstyle",
 		name = "pydocstyle",
 		args = {
+			-- pydocstyle doesn't support receiving the file via STDIN
+			"$FILENAME",
 			-- Default config discovery ignores CWD and uses the directory the temp-file is in.
 			-- we want to use the config in the project.
 			"--config=$ROOT/setup.cfg",
-			-- pydocstyle doesn't support receiving the file via STDIN
-			"$FILENAME",
 		},
 		to_stdin = false,
 		to_temp_file = true,
