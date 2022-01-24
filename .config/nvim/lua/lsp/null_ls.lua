@@ -34,6 +34,9 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.luacheck,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.proselint,
+		null_ls.builtins.diagnostics.pydocstyle.with({
+			extra_args = { "--config=$ROOT/setup.cfg" }
+		}),
 		null_ls.builtins.diagnostics.selene.with({
 			condition = function(utils)
 				return utils.root_has_file({ "selene.toml" })
@@ -94,7 +97,6 @@ null_ls.setup({
 			filetypes = { "markdown", "yaml", "gitcommit" },
 		}),
 		null_ls.builtins.hover.dictionary,
-		require("lsp.null_ls_custom.pydocstyle"),
 		require("lsp.null_ls_custom.sqlfluff_diagnostic"),
 		require("lsp.null_ls_custom.sqlfluff_fix"),
 	},
