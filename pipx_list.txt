@@ -12,6 +12,7 @@ httpie
 ipython
 isort
 lookatme
+pgcli
 pip-tools
 pipenv
 poetry
