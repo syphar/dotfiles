@@ -56,6 +56,7 @@ abbr -ag grv git remote -v
 abbr -ag c cargo
 abbr -ag cab cargo build
 abbr -ag cac cargo check
+abbr -ag sqlbat bat -l sql
 
 alias prcreate="gh pr create --fill --draft --assignee syphar"
 alias propen="gh pr view --web"
