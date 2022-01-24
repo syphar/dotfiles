@@ -9,3 +9,11 @@ RSSBus
 s3
 AWS_ACCESS_KEY_ID
 DNS
+Django
+PostgreSQL
+Cornehl
+querysets
+ORM
+preboot
+QuerySet
+RabbitMQ
