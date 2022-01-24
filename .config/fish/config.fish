@@ -1,6 +1,7 @@
 source $XDG_CONFIG_HOME/fish/aliases.fish
 source $XDG_CONFIG_HOME/fish/key_bindings.fish
 source $XDG_CONFIG_HOME/fish/environment.fish
+source $XDG_CONFIG_HOME/fish/colors.fish
 
 fzf_configure_bindings --directory=\cf
 
