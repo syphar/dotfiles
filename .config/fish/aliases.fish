@@ -23,13 +23,15 @@ alias agenda="watch --no-title --color --interval 120 gcalcli agenda --nodecline
 alias tasks="watch --no-title --color --interval 1 task list"
 alias n='vim -c "NV"'
 alias k9="kill -9"
+abbr -ag pg pgrep -f 
+abbr -ag pk pkill -f 
 abbr -ag gsh git show HEAD
 abbr -ag gt git tag -n
 
 abbr -ag h heroku
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-alias l="exa --git --long --all --header --icons --group-directories-first"
+alias l="exa --long --all --header --icons --group-directories-first"
 alias ls="exa --group-directories-first"
 alias less="bat"
 alias cat="bat"
