@@ -12,6 +12,7 @@ require("filetype").setup({
 			[".direnvrc"] = "bash",
 			[".env"] = "bash",
 			[".env.sample"] = "bash",
+			[".luacheckrc"] = "lua",
 		},
 		complex = {
 			["requirements*.txt"] = "requirements",
