@@ -17,7 +17,7 @@ return require("packer").startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = {
-				{ "arkav/lualine-lsp-progress" },
+				-- { "arkav/lualine-lsp-progress" },
 				{ "kyazdani42/nvim-web-devicons" },
 			},
 		})
@@ -103,6 +103,7 @@ return require("packer").startup({
 		use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
 		use("5long/pytest-vim-compiler")
 
+		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })

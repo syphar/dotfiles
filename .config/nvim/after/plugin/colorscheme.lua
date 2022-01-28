@@ -9,7 +9,7 @@ require("kanagawa").setup({
 	variablebuiltinStyle = "italic",
 	specialReturn = true,
 	specialException = true,
-	transparent = true,
+	transparent = false,
 	colors = {
 		-- inactive statusline was too dark, should be brighter
 		bg_status = default_colors.bg_light0,
