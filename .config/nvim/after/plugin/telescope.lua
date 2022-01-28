@@ -81,16 +81,15 @@ require("telescope._extensions.zoxide.config").setup({
 
 local set_keymap = require("utils").set_keymap
 set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
-set_keymap("n", "<leader>F", "<cmd>Telescope tags<cr>")
+set_keymap("n", "<leader>F", "<cmd>Telescope tags debounce=100<cr>")
 set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
 set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
 set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
-set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep <cr>")
+set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
 set_keymap("n", "<C-P>", "<cmd>lua telescope_project_files()<cr>")
 set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
 set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
--- zoxide & project are kind of duplicate, one of them can go away after some trial
 set_keymap("n", "<leader>cd", "<cmd>Telescope zoxide list<cr>")

@@ -17,7 +17,6 @@ return require("packer").startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = {
-				-- { "arkav/lualine-lsp-progress" },
 				{ "kyazdani42/nvim-web-devicons" },
 			},
 		})
@@ -34,13 +33,9 @@ return require("packer").startup({
 
 		use("phaazon/hop.nvim")
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
-		use({
-			"nvim-treesitter/nvim-treesitter",
-		})
+		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
-		use({
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		})
+		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use({
 			"~/src/nvim-treesitter-context",
 			-- "romgrk/nvim-treesitter-context"

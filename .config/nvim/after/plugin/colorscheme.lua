@@ -20,6 +20,9 @@ require("kanagawa").setup({
 		LspReferenceText = { bg = default_colors.bg_light0 },
 		-- default NormalFloat BG is too dark
 		NormalFloat = { bg = default_colors.bg_light1 },
+		-- for fidget.nvim
+		Title = { bg = default_colors.bg_light0, fg = default_colors.fn },
+		NonText = { bg = default_colors.bg_light0, fg = default_colors.bg_light2 },
 	},
 })
 vim.cmd("colorscheme kanagawa")
