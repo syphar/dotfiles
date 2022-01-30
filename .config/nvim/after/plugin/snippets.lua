@@ -18,6 +18,7 @@ ls.snippets = {
 			insert(0),
 			text(");"),
 		}),
+		snippet("default", { text("..Default::default()") }),
 	},
 	python = {
 		snippet("loggermod", {
