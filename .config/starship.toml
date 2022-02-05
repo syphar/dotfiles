@@ -17,7 +17,8 @@ add_newline = false
 command_timeout = 100 
 
 [git_branch]
-format = "on [$branch]($style)"
+format = "[$symbol $branch]($style)"
+symbol = ""
 style = "bold bright-green"
 truncation_length = 20
 
@@ -32,40 +33,102 @@ style = "green"
 
 [aws]
 disabled = true
+symbol = "  "
 
 [directory]
 truncation_length = 5
 style = "bright-blue"
+read_only = " "
 
-[env_var.herokuapp]
-variable = "HEROKU_APP"
-format = "[$symbol $env_value ]($style)"
-style = "blue"
-symbol = ""
 
-# [heroku]
-# format = "[$symbol $app_name (\\( $account\\)) ]($style)"
+# [env_var.herokuapp]
+# variable = "HEROKU_APP"
+# format = "[$symbol $env_value ]($style)"
+# style = "blue"
+# symbol = ""
 
-# [heroku.replace_patterns]
-# "thermondo-" = "(T°)-"
-# "medicaljobs-" = "(MJ)-"
-# 
-# [heroku.account_aliases]
-# "denis@cornehl.org" = "DC"
-# "denis.cornehl@thermondo.de" = "T°"
+[heroku]
+format = "[$symbol($app_name )($account )]($style)"
+
+[heroku.app_aliases]
+"medicaljobs-production" = "MJ prod"
+"medicaljobs-staging" = "MJ staging"
+"thermondo-backend" = "⭘ backend"
+"thermondo-backend-staging" = "⭘ backend-staging"
+"thermondo-phone" = "⭘ phone"
+"thermondo-phone-staging" = "⭘ phone-staging"
+"thermondo-tmail" = "⭘ tmail"
+"thermondo-tmail-test" = "⭘ tmail-test"
+
+[heroku.account_aliases]
+"denis@cornehl.org" = ""
+"denis.cornehl@thermondo.de" = ""
 
 [docker_context]
-format = "[🐋 ](blue bold)"
+format = "[ ](blue bold)"
 
 [package]
 disabled = true
 format = "[$symbol$version]($style) "
 style = "208"
+symbol = " "
 
 [rust]
 format = "[$symbol($version )]($style)"
 style = "red"
+symbol = " "
 
 [lua]
 format = "[$symbol($version )]($style)"
 style = "blue"
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
