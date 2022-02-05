@@ -3,6 +3,7 @@ require("filetype").setup({
 		extensions = {
 			crs = "rust",
 			tl = "teal",
+			pest = "pest",
 		},
 		literal = {
 			["poetry.lock"] = "toml",

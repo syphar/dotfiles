@@ -78,6 +78,7 @@ return require("packer").startup({
 		use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- specific file types
+		use({ "pest-parser/pest.vim", filetype = { "pest" } })
 		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
 		use("Glench/Vim-Jinja2-Syntax")
 		use({ "raimon49/requirements.txt.vim", ft = { "requirements" } })
