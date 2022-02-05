@@ -4,7 +4,7 @@ require("dressing").setup({
 		enabled = true,
 
 		-- Default prompt string
-		default_prompt = "➤ ",
+		default_prompt = "❯ ",
 
 		-- When true, <Esc> will close the modal
 		insert_only = true,
@@ -19,7 +19,7 @@ require("dressing").setup({
 		-- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
 		prefer_width = 40,
 		max_width = nil,
-		min_width = 20,
+		min_width = 30,
 
 		-- Window transparency (0-100)
 		winblend = 0,
