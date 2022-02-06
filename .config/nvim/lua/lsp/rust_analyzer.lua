@@ -18,9 +18,9 @@ require("lspconfig").rust_analyzer.setup({
 				importGranularity = "crate",
 				importPrefix = "by_self",
 			},
-			cache = {
-				warmup = false,
-			},
+			-- cache = {
+			-- 	warmup = false,
+			-- },
 			checkOnSave = {
 				enable = true,
 				command = "clippy",
