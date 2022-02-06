@@ -48,7 +48,8 @@ read_only = " "
 # symbol = ""
 
 [heroku]
-format = "[$symbol($app_name )($account )]($style)"
+format = "[($symbol$app_name$account )]($style)"
+symbol = " "
 
 [heroku.app_aliases]
 "medicaljobs-production" = "MJ prod"
