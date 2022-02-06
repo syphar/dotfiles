@@ -25,6 +25,16 @@ set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
 -- git blame for the current file
 set_keymap("n", "<leader>gb", ":Git blame <CR>")
 
+-- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
+-- TODO 
+-- set_keymap("n", "gr", ":grep <cword> *<CR>")
+-- set_keymap("n", "Gr", ":grep <cword> *:p:h<CR>")
+-- set_keymap("n", "gr", ":grep '\b<cword>\b' *<CR>")
+-- set_keymap("n", "Gr", ":grep <cword> *:p:h<CR>")
+-- :nnoremap Gr :grep <cword> %:p:h/*<CR>
+-- :nnoremap gR :grep '\b<cword>\b' *<CR>
+-- :nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
+
 set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
 set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
 set_keymap("n", "<F9>", "<cmd>lprevious<cr>")
