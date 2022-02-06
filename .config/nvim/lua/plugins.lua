@@ -90,6 +90,7 @@ return require("packer").startup({
 		use("L3MON4D3/LuaSnip")
 		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
 		use("windwp/nvim-autopairs")
+		use("RRethy/nvim-treesitter-endwise")
 		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
 		use("numToStr/Comment.nvim") --comment/uncomment on gcc
