@@ -67,9 +67,9 @@ vim.opt.ttimeoutlen = 5
 -- better backup, swap and undos storage
 vim.opt.backup = true -- make backup files
 vim.opt.undofile = true -- persistent undos - undo after you re-open the file
-vim.opt.directory = vim.fn.expand("~/.cache/vim/dirs/tmp") -- directory to place swap files in
-vim.opt.backupdir = vim.fn.expand("~/.cache/vim/dirs/backups") -- where to put backup files
-vim.opt.undodir = vim.fn.expand("~/.cache/vim/dirs/undodir") -- undo directory
+vim.opt.directory = "/tmp/nvim/tmp" -- directory to place swap files in
+vim.opt.backupdir = "/tmp/nvim/backup" -- where to put backup files
+vim.opt.undodir = vim.fn.expand("~/.cache/nvim/dirs/undodir") -- undo directory
 
 -- Set updatetime
 vim.opt.updatetime = 500
