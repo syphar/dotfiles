@@ -9,8 +9,7 @@ shell:
     - tmux attach || tmux new
 
 window:
-  # startup_mode: Fullscreen
-  dynamic_title: true
+  dynamic_title: false
 
 scrolling:
   history: 0  # disable history, since it's in tmux
