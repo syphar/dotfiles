@@ -116,6 +116,10 @@ return require("packer").startup({
 		use("lewis6991/spellsitter.nvim")
 		use({ --simple test running
 			"janko/vim-test",
+			requires = {
+				"tpope/vim-dispatch",
+				"radenling/vim-dispatch-neovim",
+			},
 			ft = { "rust", "python" },
 		})
 	end,
