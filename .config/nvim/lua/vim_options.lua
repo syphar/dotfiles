@@ -69,7 +69,7 @@ vim.opt.backup = true -- make backup files
 vim.opt.undofile = true -- persistent undos - undo after you re-open the file
 vim.opt.directory = "/tmp/nvim/tmp" -- directory to place swap files in
 vim.opt.backupdir = "/tmp/nvim/backup" -- where to put backup files
-vim.opt.undodir = vim.fn.expand("~/.cache/nvim/dirs/undodir") -- undo directory
+vim.opt.undodir = "/tmp/nvim/undodir" -- undo directory
 
 -- Set updatetime
 vim.opt.updatetime = 500
