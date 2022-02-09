@@ -36,6 +36,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	buf_set_keymap("n", "gT", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+	buf_set_keymap("i", "<C-s>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
 		-- vim.cmd([[
