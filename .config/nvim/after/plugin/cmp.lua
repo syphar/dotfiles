@@ -53,6 +53,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
+		{ name = "cmp_nvim_lsp_signature_help" },
 		{ name = "path" },
 		{ name = "crates" },
 		{ name = "jira_issues" },

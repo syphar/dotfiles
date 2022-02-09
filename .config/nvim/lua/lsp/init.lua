@@ -61,7 +61,6 @@ function cfg.lsp_on_attach(client, bufnr)
 	if client.resolved_capabilities.goto_definition == true then
 		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	end
-	require("lsp_signature").on_attach(client, bufnr)
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
