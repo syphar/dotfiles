@@ -67,7 +67,10 @@ style = "purple"
 "denis.cornehl@thermondo.de" = ""
 
 [docker_context]
-format = "[ ](blue bold)"
+format = "[$symbol]($style)"
+symbol = " "
+style = "blue"
+
 
 [package]
 disabled = true
