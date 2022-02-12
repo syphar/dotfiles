@@ -1,5 +1,5 @@
 local cfg = require("lsp")
-local util = require 'lspconfig.util'
+local util = require("lspconfig.util")
 
 -- based on https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
 local sumneko_root_path = vim.fn.expand("$HOME/src/lua-language-server")
@@ -15,6 +15,7 @@ require("lspconfig").sumneko_lua.setup({
 	single_file_support = false, -- manually disable for now
 	capabilities = cfg.capabilities(),
 	flags = cfg.global_flags(),
+	on_attach = cfg.lsp_on_attach_without_formatting,
 	settings = {
 		Lua = {
 			runtime = {
