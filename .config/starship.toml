@@ -14,7 +14,7 @@ right_format = """$all"""
 add_newline = false
 
 # shorter command timeout. Default: 500
-command_timeout = 100 
+command_timeout = 100
 
 [git_branch]
 format = "[$symbol $branch]($style)"
@@ -40,7 +40,6 @@ truncation_length = 5
 style = "bright-blue"
 read_only = " "
 
-
 # [env_var.herokuapp]
 # variable = "HEROKU_APP"
 # format = "[$symbol $env_value ]($style)"
@@ -53,14 +52,9 @@ symbol = " "
 style = "purple"
 
 [heroku.app_aliases]
-"medicaljobs-production" = "MJ prod"
-"medicaljobs-staging" = "MJ staging"
-"thermondo-backend" = "⭘ backend"
-"thermondo-backend-staging" = "⭘ backend-staging"
-"thermondo-phone" = "⭘ phone"
-"thermondo-phone-staging" = "⭘ phone-staging"
-"thermondo-tmail" = "⭘ tmail"
-"thermondo-tmail-test" = "⭘ tmail-test"
+"automagically-(?P<app>.*)" = " $app"
+"medicaljobs-(?P<app>.*)" = "MJ $app"
+"thermondo-(?P<app>.*)" = "⭘ $app"
 
 [heroku.account_aliases]
 "denis@cornehl.org" = ""
@@ -68,7 +62,7 @@ style = "purple"
 
 [docker_context]
 format = "[$symbol]($style)"
-symbol = " "
+symbol = "  "
 style = "blue"
 
 
