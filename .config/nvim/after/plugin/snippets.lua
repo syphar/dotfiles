@@ -2,6 +2,12 @@ local ls = require("luasnip")
 local snippet = ls.snippet
 local text = ls.text_node
 local insert = ls.insert_node
+local set_keymap = require("utils").set_keymap
+
+ls.config.set_config({
+	history = true,
+	updateevents = "TextChanged,TextChangedI",
+})
 
 -- documentation for snippet format inside examples:
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
@@ -19,6 +25,8 @@ ls.snippets = {
 			text(");"),
 		}),
 		snippet("default", { text("..Default::default()") }),
+		ls.parser.parse_snippet("clcl", "let $1 = $1.clone();"),
+		ls.parser.parse_snippet("dbl", 'log::debug!("{:?}", $1);'),
 	},
 	python = {
 		snippet("loggermod", {
@@ -44,3 +52,5 @@ vim.cmd([[
 	imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 	smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 ]])
+
+set_keymap("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
