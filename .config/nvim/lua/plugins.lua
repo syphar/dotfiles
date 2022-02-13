@@ -34,7 +34,6 @@ return require("packer").startup({
 		use("phaazon/hop.nvim")
 		use("stevearc/dressing.nvim") -- nvim 0.6 interface improvement
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
-		use("sunjon/shade.nvim") -- dim inactive windows
 		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
