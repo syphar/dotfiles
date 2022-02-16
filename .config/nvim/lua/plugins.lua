@@ -67,7 +67,7 @@ return require("packer").startup({
 		-- file management / search
 		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
 		use("airblade/vim-rooter") --automatically set root directory to project directory
-		use("blackCauldron7/surround.nvim")
+		use("ur4ltz/surround.nvim") -- fork of use("blackCauldron7/surround.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
@@ -105,6 +105,7 @@ return require("packer").startup({
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
+		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
 		use({
 			-- "~/src/null-ls.nvim/",

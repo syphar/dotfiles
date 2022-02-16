@@ -26,6 +26,7 @@ require("telescope").setup({
 		grep_string = config_with_preview,
 		git_bcommits = config_with_preview,
 		git_branches = config_with_preview,
+		lsp_code_actions = config_with_preview,
 	},
 	extensions = {
 		fzf = {
@@ -84,7 +85,8 @@ set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
 set_keymap("n", "<leader>F", "<cmd>Telescope tags debounce=100<cr>")
 set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
 set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
-set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
+-- set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
+-- set_keymap("v", "<leader>a", "<cmd>Telescope lsp_range_code_actions<cr>")
 set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
