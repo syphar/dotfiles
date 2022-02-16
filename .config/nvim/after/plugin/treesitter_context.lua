@@ -33,6 +33,10 @@ require("treesitter-context.config").setup({
 			"object",
 			"pair",
 		},
+		javascript = {
+			"object",
+			"pair",
+		},
 		yaml = {
 			"block_mapping_pair",
 			"block_sequence_item",
