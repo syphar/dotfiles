@@ -38,6 +38,9 @@ cargo install-update -a
 ./update_rust_analyzer.sh
 ./update_zeta_note.sh
 
+## cleanup dmypy processes
+./kill_mypyd.sh
+
 ## tldr update
 tldr --update || echo "failed, but ignore for now"
 
