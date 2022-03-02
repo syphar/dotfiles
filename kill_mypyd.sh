@@ -1,4 +1,4 @@
 #!/bin/bash
 set -exuo pipefail
 
-pkill -f dmypy
+pkill -f dmypy || echo "nothing to kill"
