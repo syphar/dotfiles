@@ -29,6 +29,7 @@ abbr -ag gsh git show HEAD
 abbr -ag gt git tag -n
 
 abbr -ag h heroku
+abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
 alias l="exa --long --all --header --icons --group-directories-first"
