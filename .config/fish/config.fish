@@ -5,12 +5,15 @@ source $XDG_CONFIG_HOME/fish/colors.fish
 
 fzf_configure_bindings --directory=\cf
 
-/usr/local/bin/direnv hook fish | source
-/usr/local/bin/starship init fish | source
-/usr/local/bin/zoxide init fish --cmd cd | source
+# configure franciscolourenco/done
+set -U __done_allow_nongraphical 1
+set -U __done_exclude 'nvim'
 
-# status is-login; and pyenv init --path | source
-# pyenv init - | source
-# status -i || exit  # see https://github.com/PatrickF1/fzf.fish/issues/183
+/usr/local/bin/direnv hook fish | source
+
+# /usr/local/bin/starship init fish | source
+~/src/starship/target/release/starship init fish | source
+
+/usr/local/bin/zoxide init fish --cmd cd | source
 
 # vim: et ts=2 sts=2 sw=2
