@@ -31,7 +31,7 @@ return require("packer").startup({
 		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
-		use("phaazon/hop.nvim")
+		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
 		use("stevearc/dressing.nvim") -- nvim 0.6 interface improvement
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
 		use("nvim-treesitter/nvim-treesitter")
@@ -65,7 +65,8 @@ return require("packer").startup({
 		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- file management / search
-		use("tpope/vim-vinegar") --simple 'dig through current folder'  on the - key
+		use("tamago324/lir.nvim") -- file manager
+		use("tamago324/lir-git-status.nvim")
 		use("airblade/vim-rooter") --automatically set root directory to project directory
 		use("ur4ltz/surround.nvim") -- fork of use("blackCauldron7/surround.nvim")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -86,6 +87,7 @@ return require("packer").startup({
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
+		use("JoseConseco/vim-case-change")
 		use("rhysd/committia.vim")
 		use("L3MON4D3/LuaSnip")
 		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
