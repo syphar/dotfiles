@@ -32,7 +32,7 @@ vim.opt.shiftwidth = 4
 -- really write files
 vim.opt.fsync = true
 
-vim.opt.clipboard = "unnamed" -- use system clipboard
+vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.autoread = true
 vim.opt.hidden = true
 
