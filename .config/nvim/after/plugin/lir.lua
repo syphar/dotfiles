@@ -15,7 +15,9 @@ require("lir").setup({
 		-- ["<C-t>"] = actions.tabedit,
 
 		["h"] = actions.up,
+		["p"] = actions.up,
 		["q"] = actions.quit,
+		["<ESC>"] = actions.quit,
 
 		-- ["K"] = actions.mkdir,
 		-- ["N"] = actions.newfile,
