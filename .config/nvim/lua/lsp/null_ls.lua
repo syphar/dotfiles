@@ -36,7 +36,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.proselint,
 		null_ls.builtins.diagnostics.pydocstyle.with({
-			extra_args = { "--config=$ROOT/setup.cfg" }
+			extra_args = { "--config=$ROOT/setup.cfg" },
 		}),
 		null_ls.builtins.diagnostics.selene.with({
 			condition = function(utils)

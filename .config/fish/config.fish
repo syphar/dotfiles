@@ -7,7 +7,7 @@ fzf_configure_bindings --directory=\cf
 
 # configure franciscolourenco/done
 set -U __done_allow_nongraphical 1
-set -U __done_exclude 'nvim'
+set -U __done_exclude 'nvim|vim'
 
 /usr/local/bin/direnv hook fish | source
 
