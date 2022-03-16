@@ -54,6 +54,9 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 10 -- open most folds by default
 vim.opt.foldnestmax = 10 -- 10 nested fold max
 
+vim.opt.list = true
+vim.opt.listchars = "tab:>-"
+
 vim.opt.backspace = { "indent", "eol", "start" }
 
 -- mkview and loadview shouldn't do options (which includes keyboard mappings
