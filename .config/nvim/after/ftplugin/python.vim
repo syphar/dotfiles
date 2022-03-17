@@ -11,9 +11,9 @@ nmap <leader>ts :TestSuite<CR>
 nmap <leader>tl :TestLast<CR>
 
 let g:test#python#pytest#options = {
-    \ 'nearest': '--show-capture=no --disable-warnings --tb=short',
-    \ 'file':    '--show-capture=no --disable-warnings --tb=short',
-    \ 'suite':   '--show-capture=no --disable-warnings --tb=short',
+    \ 'nearest': '--show-capture=no --disable-warnings --tb=short -vv',
+    \ 'file':    '--show-capture=no --disable-warnings --tb=short -vv',
+    \ 'suite':   '--show-capture=no --disable-warnings --tb=short -vv',
   \}
 
 " 88 is black format default
