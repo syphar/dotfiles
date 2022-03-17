@@ -26,6 +26,7 @@ xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null || echo "fail
 pipx reinstall-all
 pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
+pipx inject poetry poetry-dynamic-versioning
 
 ## rust environment
 rustup update
