@@ -37,10 +37,7 @@ require("dressing").setup({
 		backend = { "telescope" },
 
 		-- Options for telescope selector
-		telescope = {
-			-- can be 'dropdown', 'cursor', or 'ivy'
-			theme = "dropdown",
-		},
+		telescope = nil,
 
 		-- Used to override format_item. See :help dressing-format
 		format_item_override = {},
