@@ -126,6 +126,85 @@ _G.telescope_project_tags = function()
 	})
 end
 
+_G.telescope_treesitter_tags = function()
+	local display_items = {
+		{ width = 25 },
+		{ width = 10 },
+		-- { width = 25 },
+		{ remaining = true },
+	}
+
+	local displayer = entry_display.create({
+		separator = " │ ",
+		items = display_items,
+	})
+
+	local type_highlight = {
+		["associated"] = "TSConstant",
+		["constant"] = "TSConstant",
+		["field"] = "TSField",
+		["function"] = "TSFunction",
+		["method"] = "TSMethod",
+		["parameter"] = "TSParameter",
+		["property"] = "TSProperty",
+		["struct"] = "Struct",
+		["var"] = "TSVariableBuiltin",
+	}
+
+	local make_display = function(entry)
+		local display_columns = {
+			entry.text,
+			{ entry.kind, type_highlight[entry.kind], type_highlight[entry.kind] },
+			entry.parent or " ",
+		}
+
+		return displayer(display_columns)
+	end
+
+	require("telescope.builtin").treesitter({
+		debounce = 100,
+		entry_maker = function(entry)
+			local ts_utils = require("nvim-treesitter.ts_utils")
+			local start_row, start_col, end_row, _ = ts_utils.get_node_range(entry.node)
+			local node_text = ts_utils.get_node_text(entry.node, bufnr)[1]
+
+			local node_line = ts_utils.get_node_range(entry.node)
+
+			local parent_name = ""
+			local parent = entry.node:parent()
+			while parent ~= nil do
+				-- TODO: reuse ts context for parent finding?
+				local parent_text = ts_utils.get_node_text(parent, bufnr)[1]
+				local parent_line = ts_utils.get_node_range(parent)
+				if parent_text ~= node_text and node_line ~= parent_line then
+					parent_name = parent_text
+					break
+				end
+				parent = parent:parent()
+			end
+
+			return {
+				valid = true,
+
+				value = entry.node,
+				kind = entry.kind,
+				parent = parent_name,
+				ordinal = node_text .. " " .. (entry.kind or "unknown"),
+				display = make_display,
+
+				node_text = node_text,
+
+				filename = vim.api.nvim_buf_get_name(bufnr),
+				lnum = start_row + 1,
+				col = start_col,
+				text = node_text,
+				start = start_row,
+				finish = end_row,
+			}
+		end,
+	})
+end
+
 -- pick from git-files if inside git repository,
 -- if that breaks, use find_files from CWD
 -- selene: allow(global_usage)
@@ -167,8 +246,8 @@ require("telescope._extensions.zoxide.config").setup({
 })
 
 local set_keymap = require("utils").set_keymap
-set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
--- set_keymap("n", "<leader>F", "<cmd>Telescope tags debounce=100<cr>")
+-- set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
+set_keymap("n", "<leader>f", "<cmd>lua telescope_treesitter_tags()<cr>")
 set_keymap("n", "<leader>F", "<cmd>lua telescope_project_tags()<cr>")
 set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
 set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
