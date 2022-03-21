@@ -40,6 +40,92 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("zoxide")
 
+local entry_display = require("telescope.pickers.entry_display")
+local utils = require("telescope.utils")
+
+-- ctags also showing class etc
+_G.telescope_project_tags = function()
+	local displayer = entry_display.create({
+		separator = " │ ",
+		items = {
+			{ width = 1 },
+			{ width = 30 },
+			{ width = 1 },
+			{ width = 20 },
+			{ remaining = true },
+		},
+	})
+	local make_display = function(entry)
+		return displayer({
+			entry.kind,
+			entry.tag,
+			entry.parent_kind or " ",
+			entry.parent_name or " ",
+			entry.filename,
+			entry.scode,
+		})
+	end
+	require("telescope.builtin").tags({
+		debounce = 100,
+		entry_maker = function(line)
+			if line == "" or line:sub(1, 1) == "!" then
+				return nil
+			end
+
+			local tag, file, scode, kind, parent
+
+			tag, file, scode, kind, parent = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)\t([^\t]+)')
+			if not tag then
+				tag, file, scode, kind = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)')
+			end
+
+			if kind == "c" then
+				kind = "ﴯ"
+			elseif kind == "v" then
+				kind = ""
+			elseif kind == "f" then
+				kind = ""
+			elseif kind == "m" then
+				kind = ""
+			end
+
+			local parent_kind = " "
+			local parent_name = " "
+
+			if parent then
+				local items = vim.split(parent, ":")
+				parent_kind = items[1]
+				parent_name = items[2]
+
+				if parent_kind == "class" then
+					parent_kind = "ﴯ"
+				elseif parent_kind == "function" then
+					parent_kind = ""
+				else
+					parent_kind = string.sub(parent_kind, 1, 1)
+				end
+			end
+
+			-- needed so the pattern can be searched again
+			scode = string.gsub(scode, "%[", "\\[")
+			scode = string.gsub(scode, "%]", "\\]")
+
+			return {
+				ordinal = tag,
+				display = make_display,
+				scode = scode,
+				tag = tag,
+				filename = file,
+				kind = kind,
+				parent_kind = parent_kind,
+				parent_name = parent_name,
+				col = 1,
+				lnum = 1,
+			}
+		end,
+	})
+end
+
 -- pick from git-files if inside git repository,
 -- if that breaks, use find_files from CWD
 -- selene: allow(global_usage)
@@ -62,7 +148,7 @@ _G.telescope_virtualenv_files = function()
 			"f",
 			"--hidden",
 			"--no-ignore",
-			[[.*\.py$]],
+			[[.*\.pyi?$]],
 			vim.env.VIRTUAL_ENV,
 		},
 	})
@@ -82,7 +168,8 @@ require("telescope._extensions.zoxide.config").setup({
 
 local set_keymap = require("utils").set_keymap
 set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
-set_keymap("n", "<leader>F", "<cmd>Telescope tags debounce=100<cr>")
+-- set_keymap("n", "<leader>F", "<cmd>Telescope tags debounce=100<cr>")
+set_keymap("n", "<leader>F", "<cmd>lua telescope_project_tags()<cr>")
 set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
 set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
 -- set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
