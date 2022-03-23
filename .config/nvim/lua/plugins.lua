@@ -28,7 +28,11 @@ return require("packer").startup({
 
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
-		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
+		use({ -- jump between vim and tmux splits with C+hjkl
+			"numToStr/Navigator.nvim",
+			-- current master is broken with neovim stable
+			commit = "6bfcf7da965a03fd1e170aa6870b92b16bf739ee",
+		})
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
 		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
