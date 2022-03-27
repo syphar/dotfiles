@@ -33,7 +33,7 @@ set_keymap("t", "<Esc>", [[<C-\><C-n>]])
 set_keymap("n", "gw", ":silent grep <cword> | copen <CR>")
 set_keymap("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
 -- grep selection
-set_keymap("v", "gw", [[y:execute 'silent grep "' . escape(']] .. t("<c-r>") .. [["', '\^$.|?*+"()[]{}') . '"' | copen <CR>]])
+set_keymap("v", "gw", [[y:execute 'silent grep "' . escape(']] .. t("<c-r>") .. [["', '\^$.|?*+"()[]{}-') . '"' | copen <CR>]])
 
 set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
 set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
