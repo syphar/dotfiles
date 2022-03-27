@@ -111,6 +111,7 @@ return require("packer").startup({
 
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
+		use("ray-x/lsp_signature.nvim")
 		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 

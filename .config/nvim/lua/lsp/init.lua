@@ -62,6 +62,13 @@ function cfg.lsp_on_attach(client, bufnr)
 	if client.resolved_capabilities.goto_definition == true then
 		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	end
+
+	require("lsp_signature").on_attach({
+		doc_lines = 0,
+		handler_opts = {
+			border = "none",
+		},
+	})
 end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
