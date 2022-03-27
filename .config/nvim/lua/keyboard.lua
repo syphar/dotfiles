@@ -32,6 +32,8 @@ set_keymap("t", "<Esc>", [[<C-\><C-n>]])
 -- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
 set_keymap("n", "gw", ":silent grep <cword> | copen <CR>")
 set_keymap("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
+-- grep selection
+set_keymap("v", "gw", "y:silent grep \"" .. t("<c-r>") .. "\"\" | copen <CR>")
 
 set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
 set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
