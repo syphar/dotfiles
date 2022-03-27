@@ -91,7 +91,6 @@ return require("packer").startup({
 		use({ "dag/vim-fish", ft = { "fish" } })
 
 		-- generic software dev stuff
-		use("JoseConseco/vim-case-change")
 		use("rhysd/committia.vim")
 		use("L3MON4D3/LuaSnip")
 		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
