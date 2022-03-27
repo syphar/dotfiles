@@ -233,13 +233,10 @@ _G.telescope_virtualenv_files = function()
 end
 
 local set_keymap = require("utils").set_keymap
--- set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
 set_keymap("n", "<leader>f", "<cmd>lua telescope_treesitter_tags()<cr>")
 set_keymap("n", "<leader>F", "<cmd>lua telescope_project_tags()<cr>")
 set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
 set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
--- set_keymap("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
--- set_keymap("v", "<leader>a", "<cmd>Telescope lsp_range_code_actions<cr>")
 set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
 set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
 set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
