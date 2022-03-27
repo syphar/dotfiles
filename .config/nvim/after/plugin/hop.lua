@@ -8,6 +8,8 @@ local function add_hop(mapping, method, direction)
 		.. ", current_line_only = false })<cr>"
 
 	vim.api.nvim_set_keymap("n", mapping, cmd, { noremap = true, silent = false })
+	-- "o" is "operator pending mode", which enables us to use hops as range
+	vim.api.nvim_set_keymap("o", mapping, cmd, { noremap = true, silent = false })
 end
 add_hop("<leader>hw", "hint_words", "AFTER_CURSOR")
 add_hop("<leader>hW", "hint_words", "BEFORE_CURSOR")
