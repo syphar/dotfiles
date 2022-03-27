@@ -22,6 +22,16 @@ symbol = ""
 style = "bold bright-green"
 truncation_length = 20
 
+[custom.heroku]
+shell = "bash"
+description = "currently active Heroku app and logged in user"
+# command = "~/bin/starship_heroku.py"
+command = "~/bin/starship_heroku.sh"
+when = """ echo 1 """ 
+symbol = " "
+format = "[($output )]($style)"
+style = "purple"
+
 [python]
 format = '[${symbol}${pyenv_prefix}${version} ]($style)'
 symbol = " "
@@ -39,26 +49,6 @@ symbol = "  "
 truncation_length = 5
 style = "bright-blue"
 read_only = " "
-
-# [env_var.herokuapp]
-# variable = "HEROKU_APP"
-# format = "[$symbol $env_value ]($style)"
-# style = "blue"
-# symbol = ""
-
-[heroku]
-format = "[($symbol$app_name $account )]($style)"
-symbol = " "
-style = "purple"
-
-[heroku.app_aliases]
-"automagically-(?P<app>.*)" = " $app"
-"medicaljobs-(?P<app>.*)" = "MJ $app"
-"thermondo-(?P<app>.*)" = "⭘ $app"
-
-[heroku.account_aliases]
-"denis@cornehl.org" = ""
-"denis.cornehl@thermondo.de" = ""
 
 [docker_context]
 format = "[$symbol]($style)"

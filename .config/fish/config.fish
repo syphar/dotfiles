@@ -11,8 +11,7 @@ set -U __done_exclude 'nvim|vim'
 
 /usr/local/bin/direnv hook fish | source
 
-# /usr/local/bin/starship init fish | source
-~/src/starship/target/release/starship init fish | source
+/usr/local/bin/starship init fish | source
 
 /usr/local/bin/zoxide init fish --cmd cd | source
 
