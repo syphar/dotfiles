@@ -30,14 +30,8 @@ set_keymap("n", "<leader>gb", ":Git blame <CR>")
 set_keymap("t", "<Esc>", [[<C-\><C-n>]])
 
 -- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
--- TODO
--- set_keymap("n", "gr", ":grep <cword> *<CR>")
--- set_keymap("n", "Gr", ":grep <cword> *:p:h<CR>")
--- set_keymap("n", "gr", ":grep '\b<cword>\b' *<CR>")
--- set_keymap("n", "Gr", ":grep <cword> *:p:h<CR>")
--- :nnoremap Gr :grep <cword> %:p:h/*<CR>
--- :nnoremap gR :grep '\b<cword>\b' *<CR>
--- :nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
+set_keymap("n", "gw", ":silent grep <cword> | copen <CR>")
+set_keymap("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
 
 set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
 set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
