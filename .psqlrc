@@ -1,8 +1,6 @@
 \set QUIET 1
 
 -- By default, NULL displays as an empty space. Is it actually an empty
-\set COMP_KEYWORD_CASE upper
-
 -- string, or is it null? This makes that distinction visible.
 \pset null 'ø'
 
