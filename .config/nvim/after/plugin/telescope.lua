@@ -38,7 +38,6 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("zoxide")
 
 local entry_display = require("telescope.pickers.entry_display")
 local utils = require("telescope.utils")
@@ -233,18 +232,6 @@ _G.telescope_virtualenv_files = function()
 	})
 end
 
-require("telescope._extensions.zoxide.config").setup({
-	mappings = {
-		default = {
-			-- after CD into directory select project-file to open
-			after_action = function(_)
-				-- selene: allow(global_usage)
-				_G.telescope_project_files()
-			end,
-		},
-	},
-})
-
 local set_keymap = require("utils").set_keymap
 -- set_keymap("n", "<leader>f", "<cmd>Telescope treesitter <cr>")
 set_keymap("n", "<leader>f", "<cmd>lua telescope_treesitter_tags()<cr>")
@@ -260,4 +247,3 @@ set_keymap("n", "<C-P>", "<cmd>lua telescope_project_files()<cr>")
 set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
 set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
 set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
-set_keymap("n", "<leader>cd", "<cmd>Telescope zoxide list<cr>")

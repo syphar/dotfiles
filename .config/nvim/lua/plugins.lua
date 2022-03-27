@@ -119,7 +119,6 @@ return require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-		use("jvgrootveld/telescope-zoxide")
 		use("lewis6991/spellsitter.nvim")
 		use({ --simple test running
 			"janko/vim-test",
