@@ -26,5 +26,5 @@ then
     git fetch --all --recurse-submodules=yes --prune
     git fetch --all --prune --tags --force
     git merge --ff-only || echo "merge failed, but ok"
-    # git branch --v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D
+    git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D
 fi
