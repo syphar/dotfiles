@@ -23,11 +23,11 @@ style = "bold bright-green"
 truncation_length = 20
 
 [custom.heroku]
-shell = "bash"
+# shell = "bash"
+shell = ["bash", "--noprofile", "--norc"]
 description = "currently active Heroku app and logged in user"
-# command = "~/bin/starship_heroku.py"
 command = "~/bin/starship_heroku.sh"
-when = """ echo 1 """ 
+when = "exit 0"
 symbol = " "
 format = "[($output )]($style)"
 style = "purple"
