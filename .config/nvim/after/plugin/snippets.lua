@@ -12,31 +12,34 @@ ls.config.set_config({
 -- documentation for snippet format inside examples:
 -- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
 
-ls.snippets = {
-	rust = {
-		snippet("testmod", {
-			text({ "#[cfg(test)]", "mod tests {", "    use super::*;", "    ", "    " }),
-			insert(0),
-			text({ "", "}" }),
-		}),
-		snippet("debugprint", {
-			text('println!("{:?}", '),
-			insert(0),
-			text(");"),
-		}),
-		snippet("default", { text("..Default::default()") }),
-		ls.parser.parse_snippet("clcl", "let $1 = $1.clone();"),
-		ls.parser.parse_snippet("dbl", 'log::debug!("{:?}", $1);'),
-	},
-	python = {
-		snippet("loggermod", {
-			text({ "logger = logging.getLogger(__name__)" }),
-		}),
-		snippet("pdb", {
-			text({ "import pdb; pdb.set_trace()" }),
-		}),
-	},
-}
+ls.add_snippets("rust", {
+	snippet("testmod", {
+		text({ "#[cfg(test)]", "mod tests {", "    use super::*;", "    ", "    " }),
+		insert(0),
+		text({ "", "}" }),
+	}),
+	snippet("debugprint", {
+		text('println!("{:?}", '),
+		insert(0),
+		text(");"),
+	}),
+	snippet("default", { text("..Default::default()") }),
+	ls.parser.parse_snippet("clcl", "let $1 = $1.clone();"),
+	ls.parser.parse_snippet("dbl", 'log::debug!("{:?}", $1);'),
+}, {
+	key = "my_rust_snippets",
+})
+
+ls.add_snippets("python", {
+	snippet("loggermod", {
+		text({ "logger = logging.getLogger(__name__)" }),
+	}),
+	snippet("pdb", {
+		text({ "import pdb; pdb.set_trace()" }),
+	}),
+}, {
+	key = "my_python_snippets",
+})
 
 -- this loads the snippets from friendly-snippets
 -- https://github.com/rafamadriz/friendly-snippets
