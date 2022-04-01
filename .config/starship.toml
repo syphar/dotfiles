@@ -23,14 +23,16 @@ style = "bold bright-green"
 truncation_length = 20
 
 [custom.heroku]
-# shell = "bash"
-shell = ["bash", "--noprofile", "--norc"]
+# shell = ["bash", "--noprofile", "--norc"]
+shell = "lua"
+# shell = ["python3", "-"]
 description = "currently active Heroku app and logged in user"
-command = "~/bin/starship_heroku.sh"
-when = "exit 0"
+command = """dofile("/Users/syphar/bin/starship_heroku.lua")"""
+when = "exit(0)"
 symbol = " "
 format = "[($output )]($style)"
 style = "purple"
+
 
 [python]
 format = '[${symbol}${pyenv_prefix}${version} ]($style)'
