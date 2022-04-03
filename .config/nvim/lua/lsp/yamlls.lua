@@ -8,6 +8,8 @@ require("lspconfig").yamlls.setup({
 		yaml = {
 			schemas = {
 				["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+				["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose.yml",
+				["https://json.schemastore.org/dependabot-2.0.json"] = "/.github/dependabot.yml",
 			},
 		},
 	},
