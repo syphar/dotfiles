@@ -23,14 +23,14 @@ style = "bold bright-green"
 truncation_length = 20
 
 [custom.heroku]
-# shell = ["bash", "--noprofile", "--norc"]
-shell = "lua"
-# shell = ["python3", "-"]
+shell = ["luajit", "-"]
 description = "currently active Heroku app and logged in user"
-command = """dofile("/Users/syphar/bin/starship_heroku.lua")"""
-when = "exit(0)"
+command = """
+dofile(os.getenv("HOME") .. "/bin/starship_heroku.lua")
+"""
+when = "os.exit(0)"
 symbol = " "
-format = "[($output )]($style)"
+format = "[($symbol$output )]($style)"
 style = "purple"
 
 
