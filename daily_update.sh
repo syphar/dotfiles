@@ -35,6 +35,9 @@ cargo install-update -a
 ## global NPM packages
 ./npm-upgrade.sh
 
+## global Yarn packages
+./yarn-upgrade.sh
+
 ## binaries from github releases
 ./update_rust_analyzer.sh
 ./update_zeta_note.sh
