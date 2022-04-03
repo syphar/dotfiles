@@ -20,7 +20,7 @@ function cfg.show_inlay_hints()
 end
 
 function cfg.lsp_on_attach(client, bufnr)
-	-- vim.lsp.set_log_level("warn")
+	vim.lsp.set_log_level("error")
 
 	-- generic on_attach, should be passed to all language servers.
 	local function buf_set_keymap(...)
