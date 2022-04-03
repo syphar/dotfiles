@@ -54,8 +54,8 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 10 -- open most folds by default
 vim.opt.foldnestmax = 10 -- 10 nested fold max
 
-vim.opt.list = true
-vim.opt.listchars = "tab:>-"
+vim.opt.list = false
+-- vim.opt.listchars = "tab:>-"
 
 vim.opt.backspace = { "indent", "eol", "start" }
 
