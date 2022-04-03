@@ -49,7 +49,9 @@ symbol = "  "
 
 [directory]
 truncation_length = 5
+truncation_symbol = "…/"
 style = "bright-blue"
+repo_root_style = "bright-blue bold"
 read_only = " "
 
 [docker_context]
