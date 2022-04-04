@@ -29,6 +29,7 @@ null_ls.setup({
 		}),
 		null_ls.builtins.diagnostics.curlylint,
 		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
+		null_ls.builtins.diagnostics.fish,
 		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.diagnostics.gitlint,
 		null_ls.builtins.diagnostics.hadolint,
