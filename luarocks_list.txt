@@ -1,0 +1,6 @@
+argparse
+luacheck
+luafilesystem
+luaformatter
+selene
+stringy
