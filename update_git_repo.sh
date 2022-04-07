@@ -17,6 +17,10 @@ if [ -f "$1/.pre-commit-config.yaml" ]; then
     fi
 fi
 
+if [ -f "$1/.git-blame-ignore-revs" ]; then 
+    git config blame.ignoreRevsFile .git-blame-ignore-revs
+fi
+
 ln -s $HOME/src/dotfiles/git-hooks/* "$1/.git/hooks" || echo "already exists"
 
 git gc
