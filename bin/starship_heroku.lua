@@ -1,8 +1,8 @@
-function get_app()
+local get_app = function()
 	return os.getenv("HEROKU_APP") or ""
 end
 
-function get_account()
+local get_account = function()
 	local netrc_file = assert(io.open(os.getenv("HOME") .. "/.netrc", "r"))
 	local netrc = netrc_file:read("*all")
 	netrc_file:close()
