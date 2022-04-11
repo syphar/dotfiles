@@ -43,7 +43,7 @@ vim.opt.concealcursor = ""
 vim.opt.inccommand = "split"
 
 -- use ripgrep for :grep
-vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
+vim.opt.grepprg = "rg --vimgrep --smart-case --follow --hidden"
 
 vim.opt.tags:append({ "./tags;/" })
 
