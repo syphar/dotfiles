@@ -1,4 +1,5 @@
 require("todo-comments").setup({})
+local actions = require("telescope.actions")
 
 local config_with_preview = {
 	layout_config = {
@@ -18,6 +19,16 @@ require("telescope").setup({
 		},
 		theme = "dropdown",
 		dynamic_preview_title = true,
+		history = {
+			path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+			limit = 100,
+		},
+		mappings = {
+			i = {
+				["<C-k>"] = actions.cycle_history_next,
+				["<C-j>"] = actions.cycle_history_prev,
+			},
+		},
 	},
 	pickers = {
 		tags = config_with_preview,
@@ -38,6 +49,7 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("smart_history")
 
 local entry_display = require("telescope.pickers.entry_display")
 local utils = require("telescope.utils")
