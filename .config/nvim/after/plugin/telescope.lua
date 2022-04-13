@@ -53,8 +53,16 @@ require("telescope").load_extension("smart_history")
 
 local entry_display = require("telescope.pickers.entry_display")
 local utils = require("telescope.utils")
+local finders = require("telescope.finders")
+local action_state = require("telescope.actions.state")
+local action_set = require("telescope.actions.set")
+local pickers = require("telescope.pickers")
+local conf = require("telescope.config").values
+local previewers = require("telescope.previewers")
+local Path = require("plenary.path")
 
 -- ctags also showing class etc
+-- also only load filtered lines
 _G.telescope_project_tags = function()
 	local displayer = entry_display.create({
 		separator = " │ ",
@@ -76,65 +84,116 @@ _G.telescope_project_tags = function()
 			entry.scode,
 		})
 	end
-	require("telescope.builtin").tags({
-		debounce = 100,
-		entry_maker = function(line)
-			if line == "" or line:sub(1, 1) == "!" then
-				return nil
+
+	local entry_maker = function(line)
+		if line == "" or line:sub(1, 1) == "!" then
+			return nil
+		end
+
+		local tag, file, scode, kind, parent
+
+		tag, file, scode, kind, parent = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)\t([^\t]+)')
+		if not tag then
+			tag, file, scode, kind = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)')
+		end
+
+		if kind == "c" then
+			kind = "ﴯ"
+		elseif kind == "v" then
+			kind = ""
+		elseif kind == "f" then
+			kind = ""
+		elseif kind == "m" then
+			kind = ""
+		end
+
+		local parent_kind = " "
+		local parent_name = " "
+
+		if parent then
+			local items = vim.split(parent, ":")
+			parent_kind = items[1]
+			parent_name = items[2]
+
+			if parent_kind == "class" then
+				parent_kind = "ﴯ"
+			elseif parent_kind == "function" then
+				parent_kind = ""
+			else
+				parent_kind = string.sub(parent_kind, 1, 1)
 			end
+		end
 
-			local tag, file, scode, kind, parent
+		-- needed so the pattern can be searched again
+		scode = string.gsub(scode, "%[", "\\[")
+		scode = string.gsub(scode, "%]", "\\]")
 
-			tag, file, scode, kind, parent = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)\t([^\t]+)')
-			if not tag then
-				tag, file, scode, kind = string.match(line, '([^\t]+)\t([^\t]+)\t/^?\t?(.*)/;"\t(%l?)')
-			end
+		return {
+			ordinal = tag,
+			display = make_display,
+			scode = scode,
+			tag = tag,
+			filename = file,
+			kind = kind,
+			parent_kind = parent_kind,
+			parent_name = parent_name,
+			col = 1,
+			lnum = 1,
+		}
+	end
 
-			if kind == "c" then
-				kind = "ﴯ"
-			elseif kind == "v" then
-				kind = ""
-			elseif kind == "f" then
-				kind = ""
-			elseif kind == "m" then
-				kind = ""
-			end
+	local generate_tag_lines = function(prompt)
+		local results = {}
+		if string.len(prompt) < 2 then
+			return results
+		end
 
-			local parent_kind = " "
-			local parent_name = " "
-
-			if parent then
-				local items = vim.split(parent, ":")
-				parent_kind = items[1]
-				parent_name = items[2]
-
-				if parent_kind == "class" then
-					parent_kind = "ﴯ"
-				elseif parent_kind == "function" then
-					parent_kind = ""
-				else
-					parent_kind = string.sub(parent_kind, 1, 1)
+		for _, ctags_file in ipairs(vim.fn.tagfiles()) do
+			local lower_prompt = string.lower(prompt)
+			for line in Path:new(vim.fn.expand(ctags_file, true)):iter() do
+				if string.lower(line):find(lower_prompt) then
+					table.insert(results, line)
 				end
 			end
+		end
+		return results
+	end
 
-			-- needed so the pattern can be searched again
-			scode = string.gsub(scode, "%[", "\\[")
-			scode = string.gsub(scode, "%]", "\\]")
+	local opts = {
+		debounce = 200,
+	}
+	pickers.new(opts, {
+		prompt_title = "Tags",
+		finder = finders.new_dynamic({
+			entry_maker = entry_maker,
+			fn = generate_tag_lines,
+		}),
+		previewer = previewers.ctags.new(opts),
+		sorter = conf.generic_sorter(opts),
+		attach_mappings = function()
+			action_set.select:enhance({
+				post = function()
+					local selection = action_state.get_selected_entry()
 
-			return {
-				ordinal = tag,
-				display = make_display,
-				scode = scode,
-				tag = tag,
-				filename = file,
-				kind = kind,
-				parent_kind = parent_kind,
-				parent_name = parent_name,
-				col = 1,
-				lnum = 1,
-			}
+					if selection.scode then
+						-- un-escape / then escape required
+						-- special chars for vim.fn.search()
+						-- ] ~ *
+						local scode = selection.scode:gsub([[\/]], "/"):gsub("[%]~*]", function(x)
+							return "\\" .. x
+						end)
+
+						vim.cmd("norm! gg")
+						vim.fn.search(scode)
+						vim.cmd("norm! zz")
+					else
+						vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
+					end
+				end,
+			})
+			return true
 		end,
-	})
+	}):find()
 end
 
 _G.telescope_treesitter_tags = function()
