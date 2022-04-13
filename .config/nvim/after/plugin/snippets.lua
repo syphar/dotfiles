@@ -34,9 +34,6 @@ ls.add_snippets("python", {
 	snippet("loggermod", {
 		text({ "logger = logging.getLogger(__name__)" }),
 	}),
-	snippet("pdb", {
-		text({ "import pdb; pdb.set_trace()" }),
-	}),
 }, {
 	key = "my_python_snippets",
 })
