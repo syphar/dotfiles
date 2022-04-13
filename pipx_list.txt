@@ -1,4 +1,5 @@
 awscli
+bandit
 black
 curlylint
 dephell

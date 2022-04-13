@@ -101,6 +101,7 @@ null_ls.setup({
 			filetypes = { "markdown", "yaml", "gitcommit" },
 		}),
 		null_ls.builtins.hover.dictionary,
+		require("lsp.null_ls_custom.bandit"),
 	},
 	debounce = vim.opt.updatetime:get(),
 	update_in_insert = false,
