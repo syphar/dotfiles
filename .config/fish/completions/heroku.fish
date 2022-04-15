@@ -61,7 +61,7 @@ for line in (/bin/cat $heroku_ac_commands_path)
                 # special case to add short `-a` arg for `--app` for now
                 complete -c heroku -n "__fish_heroku_using_command $cmd" -s a -l app -xa '(__list_heroku_complete_options)'
             else
-                complete -c heroku -n "__fish_heroku_using_command $cmd" $short_arg -l $long_arg -xa '(__list_heroku_complete_options)'
+                complete -c heroku -n "__fish_heroku_using_command $cmd" -l $long_arg -xa '(__list_heroku_complete_options)'
             end
         end
     end
