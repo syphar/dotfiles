@@ -2,7 +2,10 @@ require("focus").setup({ cursorline = false, signcolumn = false })
 
 -- auto-adjust splits when window is resized
 -- https://vi.stackexchange.com/questions/201/make-panes-resize-when-host-window-is-resized
-vim.cmd("autocmd VimResized * wincmd =")
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+	pattern = "*",
+	command = "wincmd =",
+})
 
 vim.opt.equalalways = true
 

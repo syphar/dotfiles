@@ -49,13 +49,25 @@ function cfg.lsp_on_attach(client, bufnr)
 	end
 
 	-- if client.resolved_capabilities.document_highlight then
-	-- 	vim.cmd([[
-	-- 		augroup hilight_references
-	-- 		autocmd! * <buffer>
-	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	-- 		augroup END
-	-- 	]])
+	-- 	local group = vim.api.nvim_create_augroup("update_inlay_hints", {})
+
+	-- 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- 		pattern = "<buffer>",
+	-- 		callback = vim.lsp.buf.document_highlight,
+	-- 		group = group,
+	-- 	})
+		-- vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+		-- 	pattern = "<buffer>",
+		-- 	callback = vim.lsp.buf.clear_references,
+		-- 	group = group,
+		-- })
+		-- 	vim.cmd([[
+		-- 		augroup hilight_references
+		-- 		autocmd! * <buffer>
+		-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+		-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+		-- 		augroup END
+		-- 	]])
 	-- end
 	-- if client.resolved_capabilities.goto_definition == true then
 	-- 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
@@ -111,7 +123,13 @@ function cfg.lsp_setup()
 	end
 
 	-- update loclist with diagnostics for the current file
-	vim.api.nvim_command([[autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open=false})]])
+	vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
+		pattern = "*",
+		callback = function()
+			vim.diagnostic.setloclist({ open = false })
+		end,
+		group = vim.api.nvim_create_augroup("update_diagnostic_loclist", {}),
+	})
 
 	vim.diagnostic.config({
 		virtual_text = true,
