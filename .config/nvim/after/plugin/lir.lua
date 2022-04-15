@@ -1,9 +1,7 @@
-local set_keymap = require("utils").set_keymap
+local utils = require("utils")
 local actions = require("lir.actions")
-local mark_actions = require("lir.mark.actions")
-local clipboard_actions = require("lir.clipboard.actions")
 
-set_keymap("n", "-", "<cmd>lua require'lir.float'.toggle()<cr>")
+utils.set_lua_keymap("n", "-", require('lir.float').toggle)
 
 require("lir").setup({
 	show_hidden_files = false,

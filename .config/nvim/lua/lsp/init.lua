@@ -22,21 +22,19 @@ end
 function cfg.lsp_on_attach(client, bufnr)
 	vim.lsp.set_log_level("error")
 
-	-- generic on_attach, should be passed to all language servers.
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	local function buf_set_keymap(mode, lhs, fn)
+		vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, "", { noremap = true, silent = true, callback = fn })
 	end
 
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "<leader>d", [[<CMD>lua require("lsp").open_diagnostics_float()<CR>]], opts)
-	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<F2>", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gT", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("i", "<C-s>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	buf_set_keymap("n", "<leader>d", require("lsp").open_diagnostics_float)
+	buf_set_keymap("n", "K", vim.lsp.buf.hover)
+	buf_set_keymap("n", "<F2>", vim.lsp.buf.rename)
+	buf_set_keymap("n", "gd", vim.lsp.buf.definition)
+	buf_set_keymap("n", "gD", vim.lsp.buf.declaration)
+	buf_set_keymap("n", "gT", vim.lsp.buf.type_definition)
+	buf_set_keymap("n", "gI", vim.lsp.buf.implementation)
+	buf_set_keymap("n", "gr", vim.lsp.buf.references)
+	buf_set_keymap("i", "<C-s>", vim.lsp.buf.signature_help)
 
 	if client.resolved_capabilities.document_formatting then
 		-- vim.cmd([[
@@ -47,21 +45,21 @@ function cfg.lsp_on_attach(client, bufnr)
 		-- ]])
 
 		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-		buf_set_keymap("n", "<leader>gq", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+		buf_set_keymap("n", "<leader>gq", vim.lsp.buf.formatting)
 	end
 
-	if client.resolved_capabilities.document_highlight then
-		vim.cmd([[
-			augroup hilight_references
-			autocmd! * <buffer>
-			autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-			autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-			augroup END
-		]])
-	end
-	if client.resolved_capabilities.goto_definition == true then
-		vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
-	end
+	-- if client.resolved_capabilities.document_highlight then
+	-- 	vim.cmd([[
+	-- 		augroup hilight_references
+	-- 		autocmd! * <buffer>
+	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	-- 		augroup END
+	-- 	]])
+	-- end
+	-- if client.resolved_capabilities.goto_definition == true then
+	-- 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
+	-- end
 
 	require("lsp_signature").on_attach({
 		doc_lines = 0,

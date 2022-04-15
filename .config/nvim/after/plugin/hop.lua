@@ -1,15 +1,14 @@
-require("hop").setup({})
+local hop = require("hop")
+hop.setup({})
 
 local function add_hop(mapping, method, direction)
-	local cmd = "<cmd>lua require'hop'."
-		.. method
-		.. "({ direction = require'hop.hint'.HintDirection."
-		.. direction
-		.. ", current_line_only = false })<cr>"
+	local fn = function()
+		hop[method]({ direction = require("hop.hint").HintDirection[direction], current_line_only = false })
+	end
 
-	vim.api.nvim_set_keymap("n", mapping, cmd, { noremap = true, silent = false })
+	vim.api.nvim_set_keymap("n", mapping, "", { noremap = true, silent = false, callback = fn })
 	-- "o" is "operator pending mode", which enables us to use hops as range
-	vim.api.nvim_set_keymap("o", mapping, cmd, { noremap = true, silent = false })
+	vim.api.nvim_set_keymap("o", mapping, "", { noremap = true, silent = false, callback = fn })
 end
 add_hop("<leader>hw", "hint_words", "AFTER_CURSOR")
 add_hop("<leader>hW", "hint_words", "BEFORE_CURSOR")

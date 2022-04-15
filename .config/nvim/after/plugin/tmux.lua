@@ -1,7 +1,8 @@
-require("Navigator").setup()
+local utils = require("utils")
+local navigator = require("Navigator")
+navigator.setup()
 
-local set_keymap = require("utils").set_keymap
-set_keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>")
-set_keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>")
-set_keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>")
-set_keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>")
+utils.set_lua_keymap("n", "<C-h>", navigator.left)
+utils.set_lua_keymap("n", "<C-k>", navigator.up)
+utils.set_lua_keymap("n", "<C-l>", navigator.right)
+utils.set_lua_keymap("n", "<C-j>", navigator.down)

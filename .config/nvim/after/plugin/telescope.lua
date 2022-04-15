@@ -52,7 +52,6 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("smart_history")
 
 local entry_display = require("telescope.pickers.entry_display")
-local utils = require("telescope.utils")
 local finders = require("telescope.finders")
 local action_state = require("telescope.actions.state")
 local action_set = require("telescope.actions.set")
@@ -63,7 +62,7 @@ local Path = require("plenary.path")
 
 -- ctags also showing class etc
 -- also only load filtered lines
-_G.telescope_project_tags = function()
+local telescope_project_tags = function()
 	local displayer = entry_display.create({
 		separator = " │ ",
 		items = {
@@ -196,7 +195,7 @@ _G.telescope_project_tags = function()
 	}):find()
 end
 
-_G.telescope_treesitter_tags = function()
+local telescope_treesitter_tags = function()
 	local display_items = {
 		{ width = 25 },
 		{ width = 10 },
@@ -285,8 +284,7 @@ end
 
 -- pick from git-files if inside git repository,
 -- if that breaks, use find_files from CWD
--- selene: allow(global_usage)
-_G.telescope_project_files = function()
+local telescope_project_files = function()
 	local opts = {}
 	local ok = pcall(require("telescope.builtin").git_files, opts)
 	if not ok then
@@ -295,8 +293,7 @@ _G.telescope_project_files = function()
 end
 
 -- choose from files inside current virtualenv
--- selene: allow(global_usage)
-_G.telescope_virtualenv_files = function()
+local telescope_virtualenv_files = function()
 	require("telescope.builtin").find_files({
 		path_display = { "smart" },
 		find_command = {
@@ -311,15 +308,15 @@ _G.telescope_virtualenv_files = function()
 	})
 end
 
-local set_keymap = require("utils").set_keymap
-set_keymap("n", "<leader>f", "<cmd>lua telescope_treesitter_tags()<cr>")
-set_keymap("n", "<leader>F", "<cmd>lua telescope_project_tags()<cr>")
-set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
-set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
-set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
-set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
-set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
-set_keymap("n", "<C-P>", "<cmd>lua telescope_project_files()<cr>")
-set_keymap("n", "<leader>p", "<cmd>lua telescope_virtualenv_files()<cr>")
-set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
-set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
+local utils = require("utils")
+utils.set_lua_keymap("n", "<leader>f", telescope_treesitter_tags)
+utils.set_lua_keymap("n", "<leader>F", telescope_project_tags)
+utils.set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
+utils.set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
+utils.set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
+utils.set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
+utils.set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
+utils.set_lua_keymap("n", "<C-P>", telescope_project_files)
+utils.set_lua_keymap("n", "<leader>p", telescope_virtualenv_files)
+utils.set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
+utils.set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
