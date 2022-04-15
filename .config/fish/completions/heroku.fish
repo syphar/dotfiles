@@ -18,7 +18,7 @@ function __fish_heroku_using_command
 end
 
 # add missing --app autocomplete for some commands
-for cmd in 'logs' 'pg:psql' 'pg:backups:url' 'pg:backups:restore'
+for cmd in 'logs' 'pg:psql' 'pg:backups:url' 'pg:backups:restore' 'ps'
     complete -c heroku -n "__fish_heroku_using_command $cmd" -s a -l app -xa '(__fish_list_heroku_apps)'
 end
 
