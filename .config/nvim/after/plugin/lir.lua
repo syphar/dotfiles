@@ -1,7 +1,6 @@
-local utils = require("utils")
 local actions = require("lir.actions")
 
-utils.set_lua_keymap("n", "-", require('lir.float').toggle)
+vim.keymap.set("n", "-", require('lir.float').toggle)
 
 require("lir").setup({
 	show_hidden_files = false,

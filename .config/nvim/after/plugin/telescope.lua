@@ -282,18 +282,30 @@ local telescope_treesitter_tags = function()
 	})
 end
 
--- pick from git-files if inside git repository,
--- if that breaks, use find_files from CWD
-local telescope_project_files = function()
+vim.keymap.set("n", "<leader>f", telescope_treesitter_tags)
+vim.keymap.set("n", "<leader>F", telescope_project_tags)
+vim.keymap.set("n", "<leader>m", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>ht", require("telescope.builtin").help_tags)
+
+vim.keymap.set("n", "<leader>rg", function()
+	require("telescope.builtin").live_grep({ debounce = 100 })
+end)
+
+vim.keymap.set("n", "<leader>ag", require("telescope.builtin").grep_string)
+vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<cr>")
+
+vim.keymap.set("n", "<C-P>", function()
+	-- pick from git-files if inside git repository,
+	-- if that breaks, use find_files from CWD
 	local opts = {}
 	local ok = pcall(require("telescope.builtin").git_files, opts)
 	if not ok then
 		require("telescope.builtin").find_files(opts)
 	end
-end
+end)
 
--- choose from files inside current virtualenv
-local telescope_virtualenv_files = function()
+vim.keymap.set("n", "<leader>p", function()
+	-- choose from files inside current virtualenv
 	require("telescope.builtin").find_files({
 		path_display = { "smart" },
 		find_command = {
@@ -306,17 +318,7 @@ local telescope_virtualenv_files = function()
 			vim.env.VIRTUAL_ENV,
 		},
 	})
-end
+end)
 
-local utils = require("utils")
-utils.set_lua_keymap("n", "<leader>f", telescope_treesitter_tags)
-utils.set_lua_keymap("n", "<leader>F", telescope_project_tags)
-utils.set_keymap("n", "<leader>m", "<cmd>Telescope buffers <cr>")
-utils.set_keymap("n", "<leader>ht", "<cmd>Telescope help_tags <cr>")
-utils.set_keymap("n", "<leader>rg", "<cmd>Telescope live_grep debounce=100 <cr>")
-utils.set_keymap("n", "<leader>ag", "<cmd>Telescope grep_string <cr>")
-utils.set_keymap("n", "<leader>td", "<cmd>TodoTelescope<cr>")
-utils.set_lua_keymap("n", "<C-P>", telescope_project_files)
-utils.set_lua_keymap("n", "<leader>p", telescope_virtualenv_files)
-utils.set_keymap("n", "<leader>gl", "<cmd>Telescope git_bcommits<cr>")
-utils.set_keymap("n", "<leader>gr", "<cmd>Telescope git_branches<cr>")
+vim.keymap.set("n", "<leader>gl", require("telescope.builtin").git_bcommits)
+vim.keymap.set("n", "<leader>gr", require("telescope.builtin").git_branches)

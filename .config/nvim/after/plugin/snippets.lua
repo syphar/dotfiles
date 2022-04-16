@@ -2,7 +2,6 @@ local ls = require("luasnip")
 local snippet = ls.snippet
 local text = ls.text_node
 local insert = ls.insert_node
-local set_keymap = require("utils").set_keymap
 
 ls.config.set_config({
 	history = true,
@@ -53,4 +52,4 @@ vim.cmd([[
 	smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 ]])
 
-set_keymap("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
+vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")

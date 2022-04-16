@@ -1,50 +1,52 @@
-local t = require("utils").tc
-local set_keymap = require("utils").set_keymap
-local set_keymap_silent = require("utils").set_keymap
-
 vim.g.mapleader = ","
 
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
-set_keymap_silent("n", "}", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "}"<CR>]])
-set_keymap_silent("n", "{", ":" .. t("<C-u>") .. [[execute "keepjumps norm! " . v:count1 . "{"<CR>]])
+local opts = { silent = true, replace_keycodes = true }
+vim.keymap.set("n", "}", [[:<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>]], opts)
+vim.keymap.set("n", "{", [[:<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>]], opts)
 
 -- Y should be yank until the end of the line
 -- see :help Y
-vim.cmd([[map Y y$]])
+vim.keymap.set({ "n", "v", "o" }, "Y", "y$")
 
 -- turn off search highlight
-set_keymap("n", "<leader><space>", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>")
 
 -- open/close folds with spacebar
-set_keymap("n", "<space>", "za")
+vim.keymap.set("n", "<space>", "za")
 
 -- show current file on master
-set_keymap("n", "<leader>em", ":Gedit master:%<CR>")
+vim.keymap.set("n", "<leader>em", ":Gedit master:%<CR>")
 
 -- git blame for the current file
-set_keymap("n", "<leader>gb", ":Git blame <CR>")
+vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
 
 -- terminal mode
 -- back to normal mode for scrolling via <Esc>
-set_keymap("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
-set_keymap("n", "gw", ":silent grep <cword> | copen <CR>")
-set_keymap("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
+vim.keymap.set("n", "gw", ":silent grep <cword> | copen <CR>")
+vim.keymap.set("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
 -- grep selection
-set_keymap("v", "gw", [[y:execute 'silent grep "' . escape(']] .. t("<c-r>") .. [["', '\^$.|?*+"()[]{}-') . '"' | copen <CR>]])
+vim.keymap.set(
+	"v",
+	"gw",
+	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' | copen <CR>]],
+	{ replace_keycodes = true }
+)
 
-set_keymap("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
-set_keymap("n", "<F4>", "<cmd>cwindow<cr>") --  same
-set_keymap("n", "<F9>", "<cmd>lprevious<cr>")
-set_keymap("n", "<F10>", "<cmd>lnext<cr>")
-set_keymap("n", "<F11>", "<cmd>cprevious<cr>")
-set_keymap("n", "<F12>", "<cmd>cnext<cr>")
+vim.keymap.set("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
+vim.keymap.set("n", "<F4>", "<cmd>cwindow<cr>") --  same
+vim.keymap.set("n", "<F9>", "<cmd>lprevious<cr>")
+vim.keymap.set("n", "<F10>", "<cmd>lnext<cr>")
+vim.keymap.set("n", "<F11>", "<cmd>cprevious<cr>")
+vim.keymap.set("n", "<F12>", "<cmd>cnext<cr>")
 
 -- Visual shifting (does not exit Visual mode)
-set_keymap("v", "<", "<gv")
-set_keymap("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- common command typos .. (W, Wq WQ)
 local command_abbrev = {
@@ -72,4 +74,4 @@ vim.cmd("map q: <Nop>")
 vim.cmd("nnoremap Q <nop>")
 
 -- ; as <C-w> to quickly reach window/split control
-vim.cmd("nnoremap ; <C-w>")
+vim.keymap.set("n", ";", "<C-w>", { replace_keycodes = true })

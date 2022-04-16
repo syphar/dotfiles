@@ -22,19 +22,17 @@ end
 function cfg.lsp_on_attach(client, bufnr)
 	vim.lsp.set_log_level("error")
 
-	local function buf_set_keymap(mode, lhs, fn)
-		vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, "", { noremap = true, silent = true, callback = fn })
-	end
+	local opts = { buffer = bufnr, silent = true }
 
-	buf_set_keymap("n", "<leader>d", require("lsp").open_diagnostics_float)
-	buf_set_keymap("n", "K", vim.lsp.buf.hover)
-	buf_set_keymap("n", "<F2>", vim.lsp.buf.rename)
-	buf_set_keymap("n", "gd", vim.lsp.buf.definition)
-	buf_set_keymap("n", "gD", vim.lsp.buf.declaration)
-	buf_set_keymap("n", "gT", vim.lsp.buf.type_definition)
-	buf_set_keymap("n", "gI", vim.lsp.buf.implementation)
-	buf_set_keymap("n", "gr", vim.lsp.buf.references)
-	buf_set_keymap("i", "<C-s>", vim.lsp.buf.signature_help)
+	vim.keymap.set("n", "<leader>d", require("lsp").open_diagnostics_float, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
 	if client.resolved_capabilities.document_formatting then
 		-- vim.cmd([[
@@ -45,7 +43,7 @@ function cfg.lsp_on_attach(client, bufnr)
 		-- ]])
 
 		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-		buf_set_keymap("n", "<leader>gq", vim.lsp.buf.formatting)
+		vim.keymap.set("n", "<leader>gq", vim.lsp.buf.formatting)
 	end
 
 	-- if client.resolved_capabilities.document_highlight then
@@ -56,18 +54,18 @@ function cfg.lsp_on_attach(client, bufnr)
 	-- 		callback = vim.lsp.buf.document_highlight,
 	-- 		group = group,
 	-- 	})
-		-- vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-		-- 	pattern = "<buffer>",
-		-- 	callback = vim.lsp.buf.clear_references,
-		-- 	group = group,
-		-- })
-		-- 	vim.cmd([[
-		-- 		augroup hilight_references
-		-- 		autocmd! * <buffer>
-		-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-		-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-		-- 		augroup END
-		-- 	]])
+	-- vim.api.nvim_create_autocmd({ "CursorMoved" }, {
+	-- 	pattern = "<buffer>",
+	-- 	callback = vim.lsp.buf.clear_references,
+	-- 	group = group,
+	-- })
+	-- 	vim.cmd([[
+	-- 		augroup hilight_references
+	-- 		autocmd! * <buffer>
+	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+	-- 		augroup END
+	-- 	]])
 	-- end
 	-- if client.resolved_capabilities.goto_definition == true then
 	-- 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
