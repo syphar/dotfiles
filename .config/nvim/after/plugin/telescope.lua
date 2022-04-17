@@ -230,7 +230,8 @@ local telescope_treesitter_tags = function()
 		return displayer(display_columns)
 	end
 
-	local treesitter_context = require("treesitter-context")
+	-- local treesitter_context = require("treesitter-context")
+	local bufnr = 0 -- find?
 
 	require("telescope.builtin").treesitter({
 		debounce = 100,
@@ -238,14 +239,14 @@ local telescope_treesitter_tags = function()
 			local ts_utils = require("nvim-treesitter.ts_utils")
 			local start_row, start_col, end_row, _ = ts_utils.get_node_range(entry.node)
 			local node_text = ts_utils.get_node_text(entry.node, bufnr)[1]
-			local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
 			local node_line = ts_utils.get_node_range(entry.node)
 
 			local parent_name = ""
 			local parent = entry.node:parent()
 			while parent ~= nil do
-				if treesitter_context.is_valid(parent, filetype) then
+				local node_type = parent:type()
+				if node_type:find("class") then -- TODO: use treesitter-context logic for this?
 					local parent_text = ts_utils.get_node_text(parent, bufnr)[1]
 					local parent_line = ts_utils.get_node_range(parent)
 					if parent_text ~= node_text and node_line ~= parent_line then
