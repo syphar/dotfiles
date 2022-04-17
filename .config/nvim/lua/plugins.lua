@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "source <afile> | PackerCompile",
+	group = vim.api.nvim_create_augroup("Packer",{}),
+	pattern = "plugins.lua",
+})
+
 return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
@@ -30,10 +36,7 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use({
-			"~/src/nvim-treesitter-context",
-			-- "romgrk/nvim-treesitter-context"
-		})
+		use("lewis6991/nvim-treesitter-context")
 		use("RRethy/nvim-treesitter-textsubjects")
 
 		use({
