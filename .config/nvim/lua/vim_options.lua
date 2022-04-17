@@ -1,3 +1,8 @@
+-- enable new lua filetypes
+vim.g.do_filetype_lua = 1
+-- disable old filetype.vim
+vim.g.did_load_filetypes = 0
+
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 vim.o.termguicolors = true

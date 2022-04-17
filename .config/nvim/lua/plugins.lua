@@ -10,7 +10,6 @@ return require("packer").startup({
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
 		use("antoinemadec/FixCursorHold.nvim")
-		use("nathom/filetype.nvim")
 		use("tpope/vim-projectionist")
 
 		use({
