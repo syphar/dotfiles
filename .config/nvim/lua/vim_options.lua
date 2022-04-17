@@ -41,7 +41,7 @@ vim.opt.clipboard = "unnamedplus" -- use system clipboard
 vim.opt.autoread = true
 vim.opt.hidden = true
 
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 vim.opt.concealcursor = ""
 
 -- to get an incremental visual feedback when doing the substitude command.
