@@ -45,7 +45,9 @@ null_ls.setup({
 			end,
 		}),
 		null_ls.builtins.diagnostics.shellcheck,
-		null_ls.builtins.diagnostics.sqlfluff,
+		null_ls.builtins.diagnostics.sqlfluff.with({
+			extra_args = { "--dialect", "postgres" },
+		}),
 		null_ls.builtins.diagnostics.teal,
 		null_ls.builtins.diagnostics.vint,
 		null_ls.builtins.diagnostics.write_good,
@@ -92,7 +94,9 @@ null_ls.setup({
 			end,
 		}),
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.sqlfluff,
+		null_ls.builtins.formatting.sqlfluff.with({
+			extra_args = { "--dialect", "postgres" },
+		}),
 		null_ls.builtins.formatting.taplo,
 		null_ls.builtins.formatting.trim_newlines,
 		null_ls.builtins.formatting.trim_whitespace.with({
