@@ -18,3 +18,5 @@ let g:test#python#pytest#options = {
 
 " 88 is black format default
 setlocal textwidth=88
+
+set suffixesadd+=.py,__init__.py
