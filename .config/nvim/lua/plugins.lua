@@ -85,7 +85,6 @@ return require("packer").startup({
 		-- generic software dev stuff
 		use("rhysd/committia.vim")
 		use("L3MON4D3/LuaSnip")
-		use({ "rafamadriz/friendly-snippets", requires = { "L3MON4D3/LuaSnip" } })
 		use("windwp/nvim-autopairs")
 		use("RRethy/nvim-treesitter-endwise")
 		use("rafcamlet/nvim-luapad")
