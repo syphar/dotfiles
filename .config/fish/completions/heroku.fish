@@ -17,6 +17,10 @@ function __list_heroku_complete_options
         -- heroku autocomplete:options "$cmd"
 end
 
+function __list_heroku_apps 
+    cat ~/.cache/heroku_apps
+end
+    
 function __get_only_name_from_json
     jq -r '. | map("\(.name)") | .[]'
 end
@@ -41,7 +45,7 @@ for line in (/bin/cat $heroku_ac_commands_path)
 
             if test $long_arg = 'app' 
                 # special case to add short `-a` arg for `--app` for now
-                complete -c heroku -n "__fish_seen_subcommand_from $cmd" -s a -l app -xa '(__list_heroku_complete_options)'
+                complete -c heroku -n "__fish_seen_subcommand_from $cmd" -s a -l app -xa '(__list_heroku_apps)'
             else
                 complete -c heroku -n "__fish_seen_subcommand_from $cmd" -l $long_arg -xa '(__list_heroku_complete_options)'
             end
