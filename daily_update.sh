@@ -32,7 +32,8 @@ pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
 
 ## update cached pypi package list
-./get_pypi_packages.py > ~/.cache/pypi_packages.txt
+# regex /ggrep via https://unix.stackexchange.com/a/13472/388999
+curl -s "https://pypi.org/simple/" | ggrep -oP '(?<=/simple/)[^/]+(?=/)' > ~/.cache/pypi_packages.txt
 
 ## rust environment
 rustup update
