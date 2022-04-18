@@ -8,6 +8,8 @@ end
 local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -85,6 +87,8 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
+
+-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
