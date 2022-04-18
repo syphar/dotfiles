@@ -56,15 +56,4 @@ ls.add_snippets("lua", {
 	key = "my_lua_snippets",
 })
 
-vim.cmd([[
-	imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-	inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<CR>
-
-	snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<CR>
-	snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<CR>
-
-	imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-	smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
-]])
-
 vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
