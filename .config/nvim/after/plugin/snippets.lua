@@ -1,6 +1,7 @@
 local ls = require("luasnip")
 local snippet = ls.snippet
 local function_ = ls.function_node
+local repeat_ = require("luasnip.extras").rep
 local text = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 local insert = ls.insert_node
@@ -25,8 +26,8 @@ ls.add_snippets("rust", {
 		text(");"),
 	}),
 	snippet("default", { text("..Default::default()") }),
-	ls.parser.parse_snippet("clcl", "let $1 = $1.clone();"),
-	ls.parser.parse_snippet("dbl", 'log::debug!("{:?}", $1);'),
+	snippet("clcl", fmt("let {1} = {2}.clone();", { insert(1), repeat_(1) })),
+	snippet("dbl", fmt('log::debug!("{{:?}}", {});', { insert(1) })),
 }, {
 	key = "my_rust_snippets",
 })
@@ -56,4 +57,5 @@ ls.add_snippets("lua", {
 	key = "my_lua_snippets",
 })
 
+vim.keymap.set({ "i", "s" }, "<C-E>", "<Plug>luasnip-next-choice")
 vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
