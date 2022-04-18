@@ -31,6 +31,9 @@ pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
 
+## update cached pypi package list
+./get_pypi_packages.py > ~/.cache/pypi_packages.txt
+
 ## rust environment
 rustup update
 cargo install-update -a
