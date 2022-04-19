@@ -104,3 +104,5 @@ require("lualine").setup({
 		"quickfix",
 	},
 })
+
+vim.opt.laststatus = 3
