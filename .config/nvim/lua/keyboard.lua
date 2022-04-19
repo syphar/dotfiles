@@ -27,13 +27,13 @@ vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
-vim.keymap.set("n", "gw", ":silent grep <cword> | copen <CR>")
-vim.keymap.set("n", "gW", ":silent grep '\\b<cword>\\b' | copen <CR>")
+vim.keymap.set("n", "gw", ":silent grep <cword> | botright copen <CR>")
+vim.keymap.set("n", "gW", ":silent grep '\\b<cword>\\b' | botright copen <CR>")
 -- grep selection
 vim.keymap.set(
 	"v",
 	"gw",
-	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' | copen <CR>]],
+	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' | botright copen <CR>]],
 	{ replace_keycodes = true }
 )
 
