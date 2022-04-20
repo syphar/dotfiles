@@ -9,7 +9,7 @@ return {
 		command = "bandit",
 		name = "bandit",
 		args = {
-			"-", -- read from stdin
+			"-",
 			"--format",
 			"json",
 		},
@@ -26,6 +26,9 @@ return {
 					code = "test_id",
 					message = "issue_text",
 					severity = "issue_severity",
+				},
+				offsets = {
+					col = 1,
 				},
 				severities = {
 					HIGH = helpers.diagnostics.severities["error"],
