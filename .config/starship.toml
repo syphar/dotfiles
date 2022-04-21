@@ -28,7 +28,7 @@ description = "currently active Heroku app and logged in user"
 command = """
 dofile(os.getenv("HOME") .. "/bin/starship_heroku.lua")
 """
-when = "os.exit(0)"
+when = true
 symbol = " "
 format = "[($symbol$output )]($style)"
 style = "purple"
