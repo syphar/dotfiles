@@ -6,6 +6,9 @@ SRC_DIR="$HOME/src"
 ## update self
 git pull
 
+## heroku login, so we can fetch from heroku remotes later 
+heroku whoami || heroku login
+
 ## update homebrew
 brew update && brew upgrade && brew upgrade --cask
 
