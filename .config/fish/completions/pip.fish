@@ -20,4 +20,9 @@ function __list_pypi_packages
     end
 end
 
+function __list_installed_packages 
+    pip list --format json | __get_only_name_from_json
+end
+
 complete -c pip -n "__fish_seen_subcommand_from install" -fka '(__list_pypi_packages)'
+complete -c pip -n "__fish_seen_subcommand_from uninstall" -fa '(__list_installed_packages)'

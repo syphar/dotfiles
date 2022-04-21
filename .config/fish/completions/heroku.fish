@@ -21,10 +21,6 @@ function __list_heroku_apps
     cat ~/.cache/heroku_apps
 end
     
-function __get_only_name_from_json
-    jq -r '. | map("\(.name)") | .[]'
-end
-
 function __fish_list_installed_addons
     # TODO: fetch --app from other args or HEROKU_APP and use to fetch the correct app-addons 
     ~/bin/runcached \
