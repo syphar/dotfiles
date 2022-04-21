@@ -9,11 +9,11 @@ function __list_pypi_packages
 
     if string match -q "*==*" $partial_name
         set -l package (string match -g --regex "([^=]+)==.*" $partial_name)
-        curl -Lfs https://pypi.org/pypi/$package/json | \
+            # fetch only keys from array under `releases`
             jq -r '.releases|keys[]' | \
-            # prefix with package name again so complete matches
+            # prefix with package name again so the match can complete
             sed -e "s/^/$package==/" | \
-            # semver sort: https://stackoverflow.com/a/63027058/1194456
+            # simple semver sort: https://stackoverflow.com/a/63027058/1194456
             sort -r -t "." -k1,1n -k2,2n -k3,3n 
     else
         rg "^$partial_name" --smart-case ~/.cache/pypi_packages.txt
