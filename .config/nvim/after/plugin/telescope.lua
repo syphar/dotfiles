@@ -249,7 +249,7 @@ local telescope_treesitter_tags = function()
 			local parent = entry.node:parent()
 			while parent ~= nil do
 				local node_type = parent:type()
-				if node_type:find("class") then -- TODO: use treesitter-context logic for this?
+				if node_type:find("class") or node_type:find("mod_item") then -- TODO: use treesitter-context logic for this?
 					local parent_text = _node_text_first_line(parent, bufnr)
 					local parent_line = ts_utils.get_node_range(parent)
 					if parent_text ~= node_text and node_line ~= parent_line then
