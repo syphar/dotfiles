@@ -9,7 +9,8 @@ function __list_pypi_packages
 
     if string match -q "*==*" $partial_name
         set -l package (string match -g --regex "([^=]+)==.*" $partial_name)
-        curl -Lfs https://pypi.org/pypi/$package/json | \
+        ~/bin/runcached --ignore-pwd --ignore-env -- \
+            curl -Lfs https://pypi.org/pypi/$package/json | \
             # fetch only keys from array under `releases`
             jq -r '.releases|keys[]' | \
             # prefix with package name again so the match can complete
