@@ -28,6 +28,6 @@ require("incline").setup({
 	-- 	wintypes = "special",
 	-- },
 	hide = {
-		focused_win = true,
+		focused_win = false,
 	},
 })
