@@ -33,7 +33,7 @@ return {
 				for _, line in ipairs(bandit_ini:readlines()) do
 					local excludes = string.match(line, "^exclude%:%s*(.*)")
 					if excludes then
-						for pattern in string.gmatch(excludes, "[^,]+") do
+						for _, pattern in vim.split(excludes, ",") do
 							if string.find(params.bufname, pattern) then
 								return false
 							end
