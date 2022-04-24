@@ -1,5 +1,7 @@
 local cfg = {}
 
+local util = require("vim.lsp.util")
+
 function cfg.open_diagnostics_float()
 	-- open diagnostics float, to be used by CursorHold & CursorHoldI
 	-- separate method because I don't want diagnostics when the auto
@@ -19,7 +21,7 @@ function cfg.show_inlay_hints()
 	})
 end
 
-function cfg.lsp_on_attach(client, bufnr)
+function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	vim.lsp.set_log_level("error")
 
 	local opts = { buffer = bufnr, silent = true }
@@ -34,42 +36,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
-	if client.resolved_capabilities.document_formatting then
-		-- vim.cmd([[
-		-- 	augroup AutoFormatOnSave
-		-- 	autocmd! * <buffer>
-		-- 	autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)
-		-- 	augroup END
-		-- ]])
-
-		vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-		vim.keymap.set("n", "<leader>gq", vim.lsp.buf.formatting)
-	end
-
-	-- if client.resolved_capabilities.document_highlight then
-	-- 	local group = vim.api.nvim_create_augroup("update_inlay_hints", {})
-
-	-- 	vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	-- 		pattern = "<buffer>",
-	-- 		callback = vim.lsp.buf.document_highlight,
-	-- 		group = group,
-	-- 	})
-	-- vim.api.nvim_create_autocmd({ "CursorMoved" }, {
-	-- 	pattern = "<buffer>",
-	-- 	callback = vim.lsp.buf.clear_references,
-	-- 	group = group,
-	-- })
-	-- 	vim.cmd([[
-	-- 		augroup hilight_references
-	-- 		autocmd! * <buffer>
-	-- 		autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	-- 		augroup END
-	-- 	]])
-	-- end
-	-- if client.resolved_capabilities.goto_definition == true then
-	-- 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
-	-- end
+	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 
 	require("lsp_signature").on_attach({
 		doc_lines = 0,
@@ -79,10 +46,14 @@ function cfg.lsp_on_attach(client, bufnr)
 	})
 end
 
-function cfg.lsp_on_attach_without_formatting(client, bufnr)
-	cfg.lsp_on_attach(client, bufnr)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+function cfg.lsp_on_attach(client, bufnr)
+	cfg.lsp_on_attach_without_formatting(client, bufnr)
+
+	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+	vim.keymap.set("n", "<leader>gq", function()
+		local params = util.make_formatting_params({})
+		client.request("textDocument/formatting", params, nil, bufnr)
+	end, { buffer = bufnr })
 end
 
 function cfg.capabilities()
