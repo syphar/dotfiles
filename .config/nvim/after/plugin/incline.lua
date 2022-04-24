@@ -9,7 +9,7 @@ require("incline").setup({
 		return bufname
 	end,
 	-- debounce_threshold = { rising = 10, falling = 50 },
-	-- window = {
+	window = {
 	-- 	width = "fit",
 	-- 	placement = { horizontal = "right", vertical = "top" },
 	-- 	margin = {
@@ -18,8 +18,8 @@ require("incline").setup({
 	-- 	},
 	-- 	padding = { left = 1, right = 1 },
 	-- 	padding_char = " ",
-	-- 	zindex = 50,
-	-- },
+		zindex = 100,
+	},
 	-- ignore = {
 	-- 	floating_wins = true,
 	-- 	unlisted_buffers = true,
