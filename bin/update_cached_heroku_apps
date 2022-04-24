@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+set -l fn "$HOME/.cache/heroku_apps"
+touch "$fn"

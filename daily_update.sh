@@ -9,6 +9,9 @@ git pull
 ## heroku login, so we can fetch from heroku remotes later 
 heroku whoami || heroku login
 
+## update cached heroku apps list
+update_cached_heroku_apps
+
 ## update homebrew
 brew update && brew upgrade && brew upgrade --cask
 
