@@ -29,7 +29,7 @@ set --global -x HOMEBREW_NO_INSTALL_CLEANUP 1
 set --global -x FORGIT_LOG_GRAPH_ENABLE 1
 
 # reuse / cache dependencies across rust projects
-set --global -x RUSTC_WRAPPER sccache
+set --global -x CARGO_TARGET_DIR "$HOME/.cargo/cache"
 
 set --global -x NVM_DIR "$HOME/.nvm"
 set --global -x PYENV_ROOT "$HOME/.pyenv"
