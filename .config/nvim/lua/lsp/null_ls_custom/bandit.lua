@@ -1,5 +1,7 @@
 local null_ls = require("null-ls")
+local Path = require("plenary.path")
 local helpers = require("null-ls.helpers")
+local utils = require("null-ls.utils")
 
 return {
 	method = null_ls.methods.DIAGNOSTICS,
@@ -18,6 +20,29 @@ return {
 		ignore_stderr = true,
 		format = "json",
 		check_exit_code = { 0, 1 },
+		runtime_condition = function(params)
+			-- HACK: mimic bandit excludes so I can use it with null-ls for now
+			local bandit_ini = Path:new(utils.get_root() .. "/" .. ".bandit")
+
+			-- see
+			-- https://github.com/PyCQA/bandit/blob/a2ac371f30812e1c393dfacb7611c6c162564988/bandit/core/manager.py#L230-L234
+			-- https://github.com/PyCQA/bandit/blob/a2ac371f30812e1c393dfacb7611c6c162564988/bandit/core/manager.py#L411-L415
+			-- when searching subdirectories bandit just checks if the exclude-string is anywhere in the path
+
+			if bandit_ini:exists() and bandit_ini:is_file() then
+				for _, line in ipairs(bandit_ini:readlines()) do
+					local excludes = string.match(line, "^exclude%:%s*(.*)")
+					if excludes then
+						for pattern in string.gmatch(excludes, "[^,]+") do
+							if string.find(params.bufname, pattern) then
+								return false
+							end
+						end
+					end
+				end
+			end
+			return true
+		end,
 		on_output = function(params)
 			local parse = helpers.diagnostics.from_json({
 				attributes = {
