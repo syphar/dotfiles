@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "source <afile> | PackerCompile",
-	group = vim.api.nvim_create_augroup("Packer",{}),
+	group = vim.api.nvim_create_augroup("Packer", {}),
 	pattern = "plugins.lua",
 })
 
