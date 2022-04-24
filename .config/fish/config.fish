@@ -17,6 +17,9 @@ if status --is-interactive
 
   /usr/local/bin/zoxide init fish --cmd cd | source
 
+  # upgrade open-file limit for vim & docs.rs
+  ulimit -n 10000
+
   # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
   complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 end
