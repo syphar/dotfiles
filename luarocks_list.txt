@@ -3,4 +3,6 @@ luacheck
 luafilesystem
 luaformatter
 selene
+semver
 stringy
+version
