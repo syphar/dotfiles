@@ -1,4 +1,5 @@
 local Job = require("plenary.job")
+local curl = require("plenary.curl")
 
 local custom_ns = vim.api.nvim_create_namespace("pypi.nvim")
 
@@ -58,38 +59,27 @@ local update_package = function(buf, releases, version, i)
 		hi = "DiagnosticVirtualTextWarn"
 	end
 
-	vim.api.nvim_buf_clear_namespace(buf, custom_ns, i - 1, i)
-	vim.api.nvim_buf_set_extmark(buf, custom_ns, i - 1, -1, {
-		virt_text = { { string.format(fmt, latest_version), hi } },
-		virt_text_pos = "eol",
-		hl_mode = "combine",
-	})
+	vim.schedule(function()
+		vim.api.nvim_buf_clear_namespace(buf, custom_ns, i - 1, i)
+		vim.api.nvim_buf_set_extmark(buf, custom_ns, i - 1, -1, {
+			virt_text = { { string.format(fmt, latest_version), hi } },
+			virt_text_pos = "eol",
+			hl_mode = "combine",
+		})
+	end)
 end
 
 local fetch_package = function(buf, package, version, i)
-	local j = Job:new({
-		command = "curl",
-		args = { "-sLA", useragent, string.format(endpoint, package) },
-		on_exit = vim.schedule_wrap(function(j, return_val)
-			if return_val ~= 0 then
-				print("error fetching pypi")
-				vim.pretty_print(j:result())
-				return
-			end
-
-			local json = table.concat(j:result(), "\n")
-			local success, result = pcall(vim.json.decode, json, json_decode_opts)
+	curl.get(string.format(endpoint, package), {
+		callback = function(out)
+			local success, result = pcall(vim.json.decode, out.body, json_decode_opts)
 			if not success then
 				return
 			end
-
 			cache[package] = result.releases
-
 			update_package(buf, result.releases, version, i)
-		end),
+		end,
 	})
-
-	j:start()
 end
 
 local update = function()
