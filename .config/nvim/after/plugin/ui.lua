@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	callback = function()
 		vim.schedule(function()
 			require("focus").resize()
-			vim.cmd([[doautocmd WinScrolled]])
+			vim.api.nvim_exec_autocmds("WinScrolled", {})
 		end)
 	end,
 })
