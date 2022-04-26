@@ -17,7 +17,7 @@ add_newline = false
 command_timeout = 100
 
 [git_branch]
-format = "[$symbol $branch]($style)"
+format = "[$symbol $branch ]($style)"
 symbol = ""
 style = "bold bright-green"
 truncation_length = 20
