@@ -6,7 +6,7 @@ $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-$hg_branch \
+$jobs\
 $character"""
 
 # move the rest of the prompt to the right
@@ -125,3 +125,11 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
+
+[jobs]
+symbol = "*"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[V❯](bold green)"
