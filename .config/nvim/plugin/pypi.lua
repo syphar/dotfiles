@@ -1,10 +1,8 @@
-local Job = require("plenary.job")
 local curl = require("plenary.curl")
 
 local custom_ns = vim.api.nvim_create_namespace("pypi.nvim")
 
 local endpoint = "https://pypi.org/pypi/%s/json"
-local useragent = vim.fn.shellescape("pypi.nvim (https://github.com/syphar/pypi.nvim)")
 local json_decode_opts = { luanil = { object = true, array = true } }
 local cache = {}
 
