@@ -6,18 +6,25 @@ require("incline").setup({
 		else
 			bufname = vim.fn.fnamemodify(bufname, ":.")
 		end
-		return bufname
+		local win_width = vim.api.nvim_win_get_width(props.win)
+		local max_len = win_width / 2
+
+		if #bufname > max_len then
+			return "…" .. string.sub(bufname, #bufname - max_len, -1)
+		else
+			return bufname
+		end
 	end,
 	-- debounce_threshold = { rising = 10, falling = 50 },
 	window = {
-	-- 	width = "fit",
-	-- 	placement = { horizontal = "right", vertical = "top" },
-	-- 	margin = {
-	-- 		horizontal = { left = 1, right = 1 },
-	-- 		vertical = { bottom = 0, top = 1 },
-	-- 	},
-	-- 	padding = { left = 1, right = 1 },
-	-- 	padding_char = " ",
+		-- 	width = "fit",
+		-- 	placement = { horizontal = "right", vertical = "top" },
+		-- 	margin = {
+		-- 		horizontal = { left = 1, right = 1 },
+		-- 		vertical = { bottom = 0, top = 1 },
+		-- 	},
+		-- 	padding = { left = 1, right = 1 },
+		-- 	padding_char = " ",
 		zindex = 100,
 	},
 	-- ignore = {
