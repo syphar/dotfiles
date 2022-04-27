@@ -23,7 +23,7 @@ require("kanagawa").setup({
 		-- for fidget.nvim
 		FidgetTask = { bg = default_colors.bg_light0, fg = default_colors.fn },
 		FidgetTitle = { bg = default_colors.bg_light0, fg = default_colors.bg_light2 },
-		WinSeparator = { bg = "NONE" },
+		WinSeparator = { bg = "NONE", fg="#727169" },
 	},
 })
 vim.cmd("colorscheme kanagawa")
