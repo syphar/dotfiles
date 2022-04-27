@@ -23,7 +23,8 @@ function __list_pypi_packages
 end
 
 function __list_installed_packages 
-    pip list --format json | __get_only_name_from_json
+    ~/bin/runcached --ignore-pwd --ignore-env --ttl 300 -- \
+        pip list --format json | __get_only_name_from_json
 end
 
 complete -c pip -n "__fish_seen_subcommand_from install && not __fish_seen_argument -s r -l requirement" -fka '(__list_pypi_packages)'
