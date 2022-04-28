@@ -1,4 +1,4 @@
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "source <afile> | PackerCompile",
@@ -105,7 +105,7 @@ return require("packer").startup({
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
-		use({ "nvim-lua/lsp_extensions.nvim", ft = { "rust" } })
+		use({ "simrat39/rust-tools.nvim" })
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
 		use({

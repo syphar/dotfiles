@@ -11,16 +11,6 @@ function cfg.open_diagnostics_float()
 	end
 end
 
-function cfg.show_inlay_hints()
-	require("lsp_extensions").inlay_hints({
-		highlight = "LineNr",
-		prefix = " » ",
-		aligned = false,
-		only_current_line = false,
-		enabled = { "TypeHint", "ChainingHint" }, -- not: ParameterHint
-	})
-end
-
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	vim.lsp.set_log_level("error")
 
