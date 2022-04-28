@@ -9,10 +9,12 @@ require("incline").setup({
 		local win_width = vim.api.nvim_win_get_width(props.win)
 		local max_len = win_width / 2
 
+		local icon, _ = require("nvim-web-devicons").get_icon(bufname, nil, { default = true })
+
 		if #bufname > max_len then
-			return "…" .. string.sub(bufname, #bufname - max_len, -1)
+			return icon .. " …" .. string.sub(bufname, #bufname - max_len, -1)
 		else
-			return bufname
+			return icon .. " " .. bufname
 		end
 	end,
 	-- debounce_threshold = { rising = 10, falling = 50 },
