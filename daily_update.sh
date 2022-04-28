@@ -79,7 +79,6 @@ mackup backup
 fish -c "fisher update"
 ./clean_fish.sh 
 
-./update_lua_language_server.sh 
 ./update_vim.sh
 
 # update tmux plugins
