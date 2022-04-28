@@ -23,7 +23,7 @@ function __list_pypi_packages
 end
 
 function __list_installed_packages 
-    ~/bin/runcached --ignore-pwd --ignore-env --ttl 300 -- \
+    ~/bin/runcached --ttl 300 -- \
         pip list --format json | __get_only_name_from_json
 end
 
