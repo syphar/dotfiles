@@ -28,6 +28,20 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_create_augroup("lsp_document_highlight", {})
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+			group = "lsp_document_highlight",
+			buffer = 0,
+			callback = vim.lsp.buf.document_highlight,
+		})
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			group = "lsp_document_highlight",
+			buffer = 0,
+			callback = vim.lsp.buf.clear_references,
+		})
+	end
+
 	require("lsp_signature").on_attach({
 		doc_lines = 0,
 		handler_opts = {
@@ -91,18 +105,16 @@ function cfg.lsp_setup()
 	})
 
 	vim.diagnostic.config({
-		virtual_text = true,
 		signs = true,
 		underline = true,
 		update_in_insert = false,
 		severity_sort = true,
-	})
-
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = {
-			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-source-in-diagnostics-neovim-06-only
 			source = "if_many",
 			prefix = "●",
+		},
+		float = {
+			source = "always",
 		},
 	})
 end
