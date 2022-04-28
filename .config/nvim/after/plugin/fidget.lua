@@ -5,6 +5,9 @@ require("fidget").setup({
 		commenced = "Started", -- message shown when task starts
 		completed = "Completed", -- message shown when task completes
 	},
+	window = {
+		blend = 0,
+	},
 	align = {
 		bottom = true, -- align fidgets along bottom edge of buffer
 		right = true, -- align fidgets along right edge of buffer
