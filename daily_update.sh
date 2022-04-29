@@ -51,9 +51,6 @@ cargo install-update -a
 ## global Yarn packages
 ./yarn-upgrade.sh
 
-## binaries from github releases
-./update_zeta_note.sh
-
 ## cleanup dmypy processes
 ./kill_mypyd.sh
 
