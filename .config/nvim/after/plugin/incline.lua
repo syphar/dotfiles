@@ -5,7 +5,7 @@ require("incline").setup({
 			return "[No name]"
 		else
 			-- ":." is the filename relative to the PWD (=project)
-			bufname = vim.fn.fnamemodify(bufname, ":.") 
+			bufname = vim.fn.fnamemodify(bufname, ":.")
 		end
 
 		-- cut the content if it takes more than half of the screen
@@ -29,8 +29,8 @@ require("incline").setup({
 		},
 		padding = { left = 1, right = 1 },
 		padding_char = " ",
-		options = {
-			winhighlight = "Normal:TreesitterContext",
+		winhighlight = {
+			Normal = "TreesitterContext",
 		},
 	},
 	ignore = {
