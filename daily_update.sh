@@ -52,7 +52,6 @@ cargo install-update -a
 ./yarn-upgrade.sh
 
 ## binaries from github releases
-./update_rust_analyzer.sh
 ./update_zeta_note.sh
 
 ## cleanup dmypy processes
