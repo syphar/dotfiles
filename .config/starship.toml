@@ -56,7 +56,7 @@ read_only = " "
 
 [docker_context]
 format = "[$symbol]($style)"
-symbol = "  "
+symbol = " "
 style = "blue"
 
 
