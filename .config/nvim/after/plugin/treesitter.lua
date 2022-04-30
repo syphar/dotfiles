@@ -5,8 +5,11 @@ require("nvim-treesitter.configs").setup({
 	ignore_install = {},
 	highlight = {
 		enable = true,
-		disable = {},
 		additional_vim_regex_highlighting = false,
+		disable = function(_, bufnr)
+			-- Disable in large buffers
+			return vim.api.nvim_buf_line_count(bufnr) > 50000
+		end,
 	},
 	indent = {
 		enable = true,
