@@ -44,6 +44,10 @@ return require("packer").startup({
 		use("lewis6991/nvim-treesitter-context")
 		use("RRethy/nvim-treesitter-textsubjects")
 		use("monaqa/dial.nvim")
+		use({
+			"mrjones2014/dash.nvim",
+			run = "make install",
+		})
 
 		use({
 			"hrsh7th/nvim-cmp",
