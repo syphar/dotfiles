@@ -28,7 +28,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_create_augroup("lsp_document_highlight", {})
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 			group = "lsp_document_highlight",
