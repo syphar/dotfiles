@@ -33,8 +33,8 @@ abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-alias l="exa --long --all --header --icons --group-directories-first"
-alias ls="exa --group-directories-first"
+alias ll="exa --long --all --header --icons --group-directories-first --color-scale"
+alias l="exa --icons --group-directories-first"
 alias less="bat"
 alias cat="bat"
 alias du="dust"
