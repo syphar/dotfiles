@@ -32,7 +32,10 @@ return require("packer").startup({
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
 		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
-		use("b0o/incline.nvim") -- small filename-status when using global statusline
+		use({ -- small filename-status when using global statusline
+			"~/src/incline.nvim/",
+			-- "b0o/incline.nvim"
+		})
 		use("stevearc/dressing.nvim") -- nvim 0.6 interface improvement
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
 		use("nvim-treesitter/nvim-treesitter")
