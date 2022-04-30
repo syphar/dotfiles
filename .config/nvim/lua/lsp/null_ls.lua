@@ -33,7 +33,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.diagnostics.gitlint,
 		null_ls.builtins.diagnostics.hadolint,
-		null_ls.builtins.diagnostics.luacheck,
 		null_ls.builtins.diagnostics.markdownlint,
 		null_ls.builtins.diagnostics.proselint,
 		null_ls.builtins.diagnostics.pydocstyle.with({
