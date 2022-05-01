@@ -6,6 +6,9 @@ require("incline").setup({
 		else
 			-- ":." is the filename relative to the PWD (=project)
 			bufname = vim.fn.fnamemodify(bufname, ":.")
+
+			-- shorten bufname when it's in the crates.io registry
+			bufname = string.gsub(bufname, "/Users/syphar/%.cargo/registry/src/github.com%-1ecc6299db9ec823", " ")
 		end
 
 		-- cut the content if it takes more than half of the screen
