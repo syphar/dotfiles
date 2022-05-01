@@ -33,8 +33,8 @@ return require("packer").startup({
 
 		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
 		use({ -- small filename-status when using global statusline
-			"~/src/incline.nvim/",
-			-- "b0o/incline.nvim"
+			-- "~/src/incline.nvim/",
+			"b0o/incline.nvim"
 		})
 		use("stevearc/dressing.nvim") -- nvim 0.6 interface improvement
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
