@@ -1,4 +1,5 @@
 local cfg = require("lsp")
+local utils = require("rust-tools.utils.utils")
 
 require("rust-tools").setup({
 	tools = {
@@ -17,21 +18,11 @@ require("rust-tools").setup({
 			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 			vim.keymap.set("n", "<leader>x", function()
-				local response = vim.lsp.buf_request_sync(
-					bufnr,
-					"experimental/externalDocs",
-					vim.lsp.util.make_position_params()
-				)
-
-				if response then
-					for _, v in pairs(response) do
-						if v == nil or v["result"] == nil then
-							-- no response
-							return
-						end
-						vim.fn["netrw#BrowseX"](v["result"], 0)
+				utils.request(bufnr, "experimental/externalDocs", vim.lsp.util.make_position_params(), function(_, url)
+					if url then
+						vim.fn["netrw#BrowseX"](url, 0)
 					end
-				end
+				end)
 			end, { buffer = bufnr })
 		end,
 		settings = {
