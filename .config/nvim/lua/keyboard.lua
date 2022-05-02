@@ -75,3 +75,13 @@ vim.cmd("nnoremap Q <nop>")
 
 -- ; as <C-w> to quickly reach window/split control
 vim.keymap.set("n", ";", "<C-w>", { replace_keycodes = true })
+
+-- new mapping, new file next to the currently open one
+vim.keymap.set("n", "<leader>n", function()
+	vim.ui.input({ prompt = "filename" }, function(input)
+		if not input then
+			return
+		end
+		vim.cmd("e %:h/" .. input)
+	end)
+end)
