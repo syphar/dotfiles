@@ -34,7 +34,7 @@ return require("packer").startup({
 		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
 		use({ -- small filename-status when using global statusline
 			-- "~/src/incline.nvim/",
-			"b0o/incline.nvim"
+			"b0o/incline.nvim",
 		})
 		use("stevearc/dressing.nvim") -- nvim 0.6 interface improvement
 		use("beauwilliams/focus.nvim") --auto focus / resize for splits
@@ -115,7 +115,10 @@ return require("packer").startup({
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("ray-x/lsp_signature.nvim")
-		use({ "simrat39/rust-tools.nvim" })
+		use({
+			-- "~/src/rust-tools.nvim/",
+			"simrat39/rust-tools.nvim",
+		})
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
 		use({
