@@ -6,4 +6,4 @@ require("dash").setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>d", ":DashWord<CR>")
+vim.keymap.set("n", "<leader>k", ":DashWord<CR>")
