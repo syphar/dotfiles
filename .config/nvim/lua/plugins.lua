@@ -85,6 +85,7 @@ return require("packer").startup({
 		use("tpope/vim-fugitive") --git commands
 		use("tpope/vim-rhubarb") --fugitive and github integration
 		use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+		use("akinsho/git-conflict.nvim")
 
 		-- specific file types
 		use({ "pest-parser/pest.vim", filetype = { "pest" } })
