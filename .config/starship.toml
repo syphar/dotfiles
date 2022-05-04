@@ -55,7 +55,7 @@ repo_root_style = "bright-blue bold"
 read_only = " "
 
 [docker_context]
-format = "[$symbol]($style)"
+format = "[$symbol ]($style)"
 symbol = " "
 style = "blue"
 
