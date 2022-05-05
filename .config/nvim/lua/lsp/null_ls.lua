@@ -65,7 +65,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.fish_indent,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.isort,
-		null_ls.builtins.formatting.json_tool, -- keep this or not?
+		null_ls.builtins.formatting.jq,
 		null_ls.builtins.formatting.markdownlint,
 		null_ls.builtins.formatting.prettierd.with({
 			condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
