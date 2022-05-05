@@ -1,5 +1,11 @@
 require("incline").setup({
 	render = function(props)
+		-- if cursor is on first line, hide incline
+		-- FIXME: replace with autocommand ?
+		if vim.fn.line(".", props.win) == 1 then
+			return nil
+		end
+		-- generate name
 		local bufname = vim.api.nvim_buf_get_name(props.buf)
 		if bufname == "" then
 			return "[No name]"
