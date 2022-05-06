@@ -103,12 +103,8 @@ local update = function()
 end
 
 local group = vim.api.nvim_create_augroup("Pypi", {})
-vim.api.nvim_create_autocmd({ "BufRead", "TextChanged" }, {
+vim.api.nvim_create_autocmd("FileType", {
 	group = group,
-	pattern = "*",
-	callback = function()
-		if vim.bo.filetype == "requirements" then
-			update()
-		end
-	end,
+	pattern = "requirements",
+	callback = update
 })
