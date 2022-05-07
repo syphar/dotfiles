@@ -1,4 +1,4 @@
-local cfg = require("lsp")
+local cfg = require("dc.lsp")
 
 -- TOML language server with schemas
 require("lspconfig").taplo.setup({

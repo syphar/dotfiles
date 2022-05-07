@@ -1,4 +1,4 @@
-local cfg = require("lsp")
+local cfg = require("dc.lsp")
 
 require("lspconfig").tsserver.setup({
 	flags = cfg.global_flags(),

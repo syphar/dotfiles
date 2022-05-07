@@ -1,4 +1,4 @@
-local cfg = require("lsp")
+local cfg = require("dc.lsp")
 local utils = require("rust-tools.utils.utils")
 
 require("rust-tools").setup({

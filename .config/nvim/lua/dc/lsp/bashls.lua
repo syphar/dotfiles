@@ -1,4 +1,4 @@
-local cfg = require("lsp")
+local cfg = require("dc.lsp")
 
 require("lspconfig").bashls.setup({
 	flags = cfg.global_flags(),

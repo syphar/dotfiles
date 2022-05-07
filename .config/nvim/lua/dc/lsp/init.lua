@@ -16,7 +16,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 	local opts = { buffer = bufnr, silent = true }
 
-	vim.keymap.set("n", "<leader>d", require("lsp").open_diagnostics_float, opts)
+	vim.keymap.set("n", "<leader>d", require("dc.lsp").open_diagnostics_float, opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -93,7 +93,7 @@ function cfg.lsp_setup()
 	}
 
 	for _, name in ipairs(servers) do
-		require("lsp." .. name)
+		require("dc.lsp." .. name)
 	end
 
 	-- update loclist with diagnostics for the current file

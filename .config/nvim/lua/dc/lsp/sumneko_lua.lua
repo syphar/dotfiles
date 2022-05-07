@@ -1,4 +1,4 @@
-local cfg = require("lsp")
+local cfg = require("dc.lsp")
 local util = require("lspconfig.util")
 
 local runtime_path = vim.split(package.path, ";")

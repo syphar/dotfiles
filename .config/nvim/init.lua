@@ -1,6 +1,6 @@
 require("impatient")
-require("vim_options")
-require("plugins")
+require("dc.vim_options")
+require("dc.plugins")
 
-require("lsp").lsp_setup()
-require("keyboard")
+require("dc.lsp").lsp_setup()
+require("dc.keyboard")
