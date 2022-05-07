@@ -17,10 +17,11 @@ require("incline").setup({
 			bufname = string.gsub(bufname, "/Users/syphar/%.cargo/registry/src/github.com%-1ecc6299db9ec823", " ")
 		end
 
+		-- find devicon for the bufname
+		local icon = require("nvim-web-devicons").get_icon(bufname, nil, { default = true })
+
 		-- cut the content if it takes more than half of the screen
 		local max_len = vim.api.nvim_win_get_width(props.win) / 2
-
-		local icon = require("nvim-web-devicons").get_icon(bufname, nil, { default = true })
 
 		if #bufname > max_len then
 			return icon .. " …" .. string.sub(bufname, #bufname - max_len, -1)
