@@ -20,3 +20,5 @@ let g:test#python#pytest#options = {
 setlocal textwidth=88
 
 set suffixesadd+=.py,__init__.py
+
+DashKeywords python3 django
