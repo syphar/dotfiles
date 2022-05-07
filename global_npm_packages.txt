@@ -1,5 +1,6 @@
 @fsouza/prettierd
 @salesforce/cli
+bash-language-server
 cspell
 eslint_d
 npm

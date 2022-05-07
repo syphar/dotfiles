@@ -80,6 +80,7 @@ function cfg.lsp_setup()
 	end
 
 	local servers = {
+		"bashls",
 		"gopls",
 		"null_ls",
 		"pylsp",
