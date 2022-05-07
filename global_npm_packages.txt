@@ -8,5 +8,6 @@ npm-check-updates
 pyright
 typescript
 typescript-language-server
+vim-language-server
 write-good
 yarn

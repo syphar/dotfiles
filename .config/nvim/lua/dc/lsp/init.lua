@@ -88,6 +88,7 @@ function cfg.lsp_setup()
 		"sumneko_lua",
 		"taplo",
 		"tsserver",
+		"vimls",
 		"yamlls",
 		"zeta_note",
 	}
