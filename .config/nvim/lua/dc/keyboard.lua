@@ -27,13 +27,13 @@ vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 -- https://vim.fandom.com/wiki/Search_for_current_word_in_multiple_files
-vim.keymap.set("n", "gw", ":silent grep <cword> | botright copen <CR>")
-vim.keymap.set("n", "gW", ":silent grep '\\b<cword>\\b' | botright copen <CR>")
+vim.keymap.set("n", "gw", ":silent grep <cword> <CR>")
+vim.keymap.set("n", "gW", ":silent grep '\\b<cword>\\b' <CR>")
 -- grep selection
 vim.keymap.set(
 	"v",
 	"gw",
-	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' | botright copen <CR>]],
+	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' <CR>]],
 	{ replace_keycodes = true }
 )
 
@@ -65,6 +65,16 @@ local command_abbrev = {
 for old, new in pairs(command_abbrev) do
 	vim.cmd("cnoreabbrev " .. old .. " " .. new)
 end
+
+-- grep should always be silent
+vim.cmd("cnoreabbrev grep silent grep")
+
+-- open quickfix after grep
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+	pattern = "grep",
+	group = vim.api.nvim_create_augroup("quickfix", {}),
+	command = "botright copen", -- cwindow
+})
 
 -- disable ex mode mappings, I always end up
 -- in ex-mode and never need it. Then I have
