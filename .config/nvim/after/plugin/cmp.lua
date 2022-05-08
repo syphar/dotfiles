@@ -78,7 +78,7 @@ cmp.setup({
 				crates = " [ Crates]",
 				jira_issues = "[ JIRA]",
 				gh_issues = "[ GH]",
-				pypi_package = "[ PyPI]"
+				pypi_package = "[ PyPI]",
 			},
 		}),
 	},
