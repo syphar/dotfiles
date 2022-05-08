@@ -22,6 +22,7 @@ require("treesitter-context").setup({
 			"loop",
 			"closure",
 			"async_block",
+			"block",
 		},
 		python = {
 			"elif",
