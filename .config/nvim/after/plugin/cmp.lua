@@ -61,7 +61,7 @@ cmp.setup({
 		{ name = "crates" },
 		{ name = "jira_issues" },
 		{ name = "pypi_package" },
-		{ name = "gh_issues" },
+		{ name = "git" },
 		{ name = "emoji" },
 		{ name = "treesitter" },
 	}),

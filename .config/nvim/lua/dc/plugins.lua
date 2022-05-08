@@ -55,6 +55,7 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-emoji",
+				"petertriho/cmp-git",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
 				"hrsh7th/cmp-nvim-lsp-signature-help",
