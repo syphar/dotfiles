@@ -15,6 +15,16 @@ require("incline").setup({
 
 			-- shorten bufname when it's in the crates.io registry
 			bufname = string.gsub(bufname, "/Users/syphar/%.cargo/registry/src/github.com%-1ecc6299db9ec823", " ")
+
+			-- shorten bufname if its from the rust toolchain
+			local toolchain, path = string.match(
+				bufname,
+				"/Users/syphar/.rustup/toolchains/([^/]*)/lib/rustlib/src/rust/library/(.*)"
+			)
+
+			if toolchain then
+				bufname = toolchain:gsub("%-x86%_64%-apple%-darwin", "") .. "/" .. path
+			end
 		end
 
 		-- find devicon for the bufname
