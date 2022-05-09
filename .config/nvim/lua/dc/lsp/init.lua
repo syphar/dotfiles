@@ -45,7 +45,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	require("lsp_signature").on_attach({
 		doc_lines = 0,
 		handler_opts = {
-			border = "none",
+			border = "rounded",
 		},
 	})
 end
