@@ -41,7 +41,7 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use("romgrk/nvim-treesitter-context")
+		use("nvim-treesitter/nvim-treesitter-context")
 		use("mfussenegger/nvim-treehopper")
 		use("RRethy/nvim-treesitter-textsubjects")
 		use("monaqa/dial.nvim")
