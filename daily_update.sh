@@ -37,6 +37,8 @@ pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
 
+./update_generated_autocompletes.sh
+
 ## update cached pypi package list
 # regex /ggrep via https://unix.stackexchange.com/a/13472/388999
 curl -s "https://pypi.org/simple/" | ggrep -oP '(?<=/simple/)[^/]+(?=/)' > ~/.cache/pypi_packages.txt
