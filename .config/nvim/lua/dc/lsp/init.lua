@@ -44,10 +44,19 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 	require("lsp_signature").on_attach({
 		doc_lines = 0,
+		-- always show siganture on top, if possible
+		max_height = vim.opt.scrolloff:get() - 3,
+		floating_window_above_cur_line = true,
+		-- window borders
 		handler_opts = {
 			border = "rounded",
 		},
 	})
+end
+
+local format = function(client, bufnr)
+	local params = util.make_formatting_params({})
+	client.request("textDocument/formatting", params, nil, bufnr)
 end
 
 function cfg.lsp_on_attach(client, bufnr)
@@ -55,8 +64,7 @@ function cfg.lsp_on_attach(client, bufnr)
 
 	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 	vim.keymap.set("n", "<leader>gq", function()
-		local params = util.make_formatting_params({})
-		client.request("textDocument/formatting", params, nil, bufnr)
+		format(client, bufnr)
 	end, { buffer = bufnr })
 end
 
