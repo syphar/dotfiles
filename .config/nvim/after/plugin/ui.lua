@@ -1,8 +1,8 @@
 require("focus").setup({ cursorline = false, signcolumn = false, autoresize = false })
 
--- default focus.nvim autocmd,
--- calling WinScrolled afterwards so _incline_ floats
--- are updated correctly.
+-- the default focus.nvim autocmd is disabled via autoresize=false.
+-- This autocmd below is a copy of it that is calling WinScrolled
+-- afterwards so _incline_ floats are updated correctly.
 -- upstream fix: https://github.com/beauwilliams/focus.nvim/pull/83
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	pattern = "*",
