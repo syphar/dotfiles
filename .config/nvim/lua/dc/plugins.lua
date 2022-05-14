@@ -24,7 +24,7 @@ return require("packer").startup({
 
 		use("rebelot/kanagawa.nvim")
 
-		use("chentau/marks.nvim")
+		use("chentoast/marks.nvim")
 
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
