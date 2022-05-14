@@ -17,7 +17,7 @@ require("rust-tools").setup({
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-			vim.keymap.set("n", "<leader>x", function()
+			vim.keymap.set("n", "gh", function()
 				utils.request(bufnr, "experimental/externalDocs", vim.lsp.util.make_position_params(), function(_, url)
 					if url then
 						vim.fn["netrw#BrowseX"](url, 0)
