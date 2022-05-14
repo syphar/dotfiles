@@ -1,10 +1,5 @@
 require("incline").setup({
 	render = function(props)
-		-- if cursor is on first line, hide incline
-		-- FIXME: replace with autocommand ?
-		if vim.fn.line(".", props.win) == 1 then
-			return nil
-		end
 		-- generate name
 		local bufname = vim.api.nvim_buf_get_name(props.buf)
 		if bufname == "" then
@@ -63,4 +58,17 @@ require("incline").setup({
 	hide = {
 		focused_win = false,
 	},
+})
+
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+	group = vim.api.nvim_create_augroup("hide_incline_on_first_line", {}),
+	buffer = 0,
+	callback = function()
+		local incline = require("incline")
+		if vim.fn.line(".", vim.api.nvim_get_current_win()) == 1 then
+			incline.disable()
+		else
+			incline.enable()
+		end
+	end,
 })
