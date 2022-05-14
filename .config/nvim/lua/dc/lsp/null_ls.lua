@@ -53,7 +53,9 @@ null_ls.setup({
 		null_ls.builtins.formatting.black.with({
 			extra_args = { "--fast" },
 		}),
-		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.clang_format.with({
+			filetypes = { "c", "cpp" },
+		}),
 		null_ls.builtins.formatting.djhtml.with({
 			extra_args = function(params)
 				return {
@@ -65,6 +67,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.eslint_d.with({ condition = has_eslint_rc }),
 		null_ls.builtins.formatting.fish_indent,
 		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.google_java_format,
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.jq,
 		null_ls.builtins.formatting.markdownlint,

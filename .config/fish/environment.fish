@@ -36,6 +36,8 @@ set --global -x PYENV_ROOT "$HOME/.pyenv"
 
 set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
 
+set --global -x JDTLS_HOME /usr/local/opt/jdtls/libexec/
+
 # zoxide fzf options 
 # Just the default from src/fzf.rs, 
 # just an updated preview.
@@ -58,3 +60,4 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
 fish_add_path /usr/local/opt/curl/bin
 fish_add_path /usr/local/sbin
+fish_add_path /usr/local/opt/openjdk/bin

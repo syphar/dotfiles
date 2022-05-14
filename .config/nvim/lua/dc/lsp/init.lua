@@ -91,6 +91,7 @@ function cfg.lsp_setup()
 		"bashls",
 		"clangd",
 		"gopls",
+		"jdtls",
 		"null_ls",
 		"pylsp",
 		"rust_analyzer",
