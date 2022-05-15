@@ -1,5 +1,3 @@
-local curl = require("plenary.curl")
-
 local custom_ns = vim.api.nvim_create_namespace("pypi.nvim")
 
 local endpoint = "https://pypi.org/pypi/%s/json"
@@ -68,6 +66,7 @@ local update_package = function(buf, releases, version, i)
 end
 
 local fetch_package = function(buf, package, version, i)
+	local curl = require("plenary.curl")
 	curl.get(string.format(endpoint, package), {
 		callback = function(out)
 			local success, result = pcall(vim.json.decode, out.body, json_decode_opts)
