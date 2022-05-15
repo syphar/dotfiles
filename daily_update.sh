@@ -30,6 +30,9 @@ brew cleanup -s
 ## luarocks packages
 xargs -n 1 luarocks install < luarocks_list.txt || echo "fail but OK"
 
+## luarocks packages for lua 5.1, for neovim
+xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt || echo "fail but OK"
+
 ## install/update pipx packages
 xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all

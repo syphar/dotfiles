@@ -2,6 +2,7 @@ argparse
 luacheck
 luafilesystem
 luaformatter
+net-url
 selene
 semver
 stringy
