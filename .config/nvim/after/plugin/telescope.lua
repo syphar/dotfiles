@@ -1,6 +1,4 @@
 require("todo-comments").setup({})
-local actions = require("telescope.actions")
-
 local config_with_preview = {
 	layout_config = {
 		preview_cutoff = 40,

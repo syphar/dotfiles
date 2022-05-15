@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 return require("packer").startup({
-	function(use)
+	function(use, use_rocks)
 		use_rocks("net-url")
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
