@@ -78,7 +78,6 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
-		use({ "nvim-telescope/telescope-smart-history.nvim", requires = { "tami5/sqlite.lua" } })
 
 		-- GIT integration
 		use("tpope/vim-fugitive") --git commands
