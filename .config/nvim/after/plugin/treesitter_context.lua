@@ -17,6 +17,7 @@ require("treesitter-context").setup({
 		rust = {
 			"impl_item",
 			"mod_item",
+			"enum_item",
 			"match",
 			"struct",
 			"loop",
