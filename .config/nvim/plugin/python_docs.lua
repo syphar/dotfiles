@@ -1,11 +1,12 @@
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local finders = require("telescope.finders")
-local pickers = require("telescope.pickers")
-local entry_display = require("telescope.pickers.entry_display")
-local conf = require("telescope.config").values
+_G.python_package_documentation = function(selected_text)
+	local url = require("net.url")
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+	local finders = require("telescope.finders")
+	local pickers = require("telescope.pickers")
+	local entry_display = require("telescope.pickers.entry_display")
+	local conf = require("telescope.config").values
 
-local python_package_documentation = function()
 	local displayer = entry_display.create({
 		separator = "▏",
 		items = {
@@ -24,7 +25,7 @@ local python_package_documentation = function()
 			entry_maker = function(entry)
 				local parts = vim.fn.split(entry, ";")
 				return {
-					value = parts[3],
+					url = parts[3],
 					display = function()
 						return displayer(parts)
 					end,
@@ -42,7 +43,16 @@ local python_package_documentation = function()
 				end
 				actions.close(prompt_bufnr)
 
-				vim.fn["netrw#BrowseX"](selection.value, 0)
+				-- TODO: find existing RTD page when it's not in metadata? example: geopy
+				-- TODO: special case for github repos, use gh search instead of google
+
+				if selected_text then
+					local u = url.parse("http://www.google.com/search")
+					u.query.q = selected_text .. " site: " .. selection.url
+					vim.fn["netrw#BrowseX"](tostring(u), 0)
+				else
+					vim.fn["netrw#BrowseX"](selection.url, 0)
+				end
 			end)
 			return true
 		end,
@@ -53,6 +63,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	group = vim.api.nvim_create_augroup("python_docs", {}),
 	callback = function()
-		vim.keymap.set("n", "gh", python_package_documentation)
+		vim.keymap.set("n", "gh", python_package_documentation, { silent = true })
+		vim.keymap.set(
+			"v",
+			"gh",
+			[["zy:lua python_package_documentation("<C-r>z")<cr>]],
+			{ silent = true, replace_keycodes = true }
+		)
 	end,
 })
