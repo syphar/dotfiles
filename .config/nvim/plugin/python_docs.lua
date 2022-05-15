@@ -44,12 +44,19 @@ _G.python_package_documentation = function(selected_text)
 				actions.close(prompt_bufnr)
 
 				-- TODO: find existing RTD page when it's not in metadata? example: geopy
-				-- TODO: special case for github repos, use gh search instead of google
 
 				if selected_text then
-					local u = url.parse("http://www.google.com/search")
-					u.query.q = selected_text .. " site: " .. selection.url
-					vim.fn["netrw#BrowseX"](tostring(u), 0)
+					if string.find(selection.url, "https://github.com") then
+						-- use github search for github repos
+						local u = url.parse(selection.url .. "/search")
+						u.query.q = selected_text
+						vim.fn["netrw#BrowseX"](tostring(u), 0)
+					else
+						-- google site search for the rest
+						local u = url.parse("http://www.google.com/search")
+						u.query.q = selected_text .. " site: " .. selection.url
+						vim.fn["netrw#BrowseX"](tostring(u), 0)
+					end
 				else
 					vim.fn["netrw#BrowseX"](selection.url, 0)
 				end
