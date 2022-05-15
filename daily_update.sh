@@ -36,7 +36,7 @@ pipx reinstall-all
 pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
-pipx inject ipython rich
+pipx inject ipython rich requests
 
 ./update_generated_autocompletes.sh
 
