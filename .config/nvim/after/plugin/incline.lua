@@ -56,19 +56,7 @@ require("incline").setup({
 		wintypes = "special",
 	},
 	hide = {
+		cursorline = "focused_win",
 		focused_win = false,
 	},
-})
-
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-	group = vim.api.nvim_create_augroup("hide_incline_on_first_line", {}),
-	buffer = 0,
-	callback = function()
-		local incline = require("incline")
-		if vim.fn.line(".", vim.api.nvim_get_current_win()) == 1 then
-			incline.disable()
-		else
-			incline.enable()
-		end
-	end,
 })
