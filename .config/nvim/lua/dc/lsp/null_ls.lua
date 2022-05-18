@@ -108,7 +108,7 @@ null_ls.setup({
 		}),
 		null_ls.builtins.hover.dictionary,
 		require("dc.lsp.null_ls_custom.bandit"),
-		require("dc.lsp.null_ls_custom.perflint"),
+		-- require("dc.lsp.null_ls_custom.perflint"),
 	},
 	debounce = vim.opt.updatetime:get(),
 	fallback_severity = vim.diagnostic.severity.INFO,
