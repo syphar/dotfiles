@@ -35,7 +35,7 @@ require("incline").setup({
 		end
 	end,
 	window = {
-		zindex = 100,
+		zindex = 60,
 		width = "fit",
 		placement = { horizontal = "right", vertical = "top" },
 		margin = {
