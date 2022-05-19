@@ -8,7 +8,8 @@ alias tiga='tig --all'
 alias tigs='tig status'
 alias gb='git branch -vv'
 alias gp='git push'
-alias gdm='gd master...'
+alias gdmaster='gd master...'
+alias gdmain='gd main...'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 
 abbr -ag dcu docker compose up
