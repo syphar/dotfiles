@@ -17,13 +17,7 @@ require("rust-tools").setup({
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-			vim.keymap.set("n", "gh", function()
-				utils.request(bufnr, "experimental/externalDocs", vim.lsp.util.make_position_params(), function(_, url)
-					if url then
-						vim.fn["netrw#BrowseX"](url, 0)
-					end
-				end)
-			end, { buffer = bufnr })
+			vim.keymap.set("n", "gh", require("rust-tools.external_docs").open_external_docs, { buffer = bufnr })
 		end,
 		settings = {
 			["rust-analyzer"] = {
