@@ -22,3 +22,6 @@ setlocal textwidth=88
 set suffixesadd+=.py,__init__.py
 
 DashKeywords python3 django
+
+nnoremap <silent> gh <cmd>Telescope python_docs<CR>
+vnoremap <silent> gh "zy:Telescope python_docs search=<C-r>z<CR>

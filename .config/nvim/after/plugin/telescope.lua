@@ -37,6 +37,7 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("python_docs")
 
 local entry_display = require("telescope.pickers.entry_display")
 local finders = require("telescope.finders")

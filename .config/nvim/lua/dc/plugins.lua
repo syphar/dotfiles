@@ -8,7 +8,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 return require("packer").startup({
 	function(use, use_rocks)
-		use_rocks("net-url")
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
@@ -77,6 +76,12 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+		use({
+			-- "~/src/python-docs.nvim",
+			"syphar/python-docs.nvim",
+			rocks = { "net-url" },
+			requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		})
 
 		-- GIT integration
 		use("tpope/vim-fugitive") --git commands
