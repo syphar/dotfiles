@@ -25,8 +25,6 @@ return require("packer").startup({
 
 		use("rebelot/kanagawa.nvim")
 
-		use("chentoast/marks.nvim")
-
 		-- general plugins
 		use("farmergreg/vim-lastplace") --jump to last edited line in files
 		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
@@ -46,6 +44,7 @@ return require("packer").startup({
 		use("mfussenegger/nvim-treehopper")
 		use("RRethy/nvim-treesitter-textsubjects")
 		use("monaqa/dial.nvim")
+		use("gbprod/cutlass.nvim")
 		use("rizzatti/dash.vim")
 
 		use({
