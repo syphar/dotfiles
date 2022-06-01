@@ -40,17 +40,18 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("python_docs")
 
 local entry_display = require("telescope.pickers.entry_display")
-local finders = require("telescope.finders")
-local action_state = require("telescope.actions.state")
-local action_set = require("telescope.actions.set")
-local pickers = require("telescope.pickers")
-local conf = require("telescope.config").values
-local previewers = require("telescope.previewers")
-local Path = require("plenary.path")
 
 -- ctags also showing class etc
 -- also only load filtered lines
 local telescope_project_tags = function()
+	local finders = require("telescope.finders")
+	local action_state = require("telescope.actions.state")
+	local action_set = require("telescope.actions.set")
+	local conf = require("telescope.config").values
+	local pickers = require("telescope.pickers")
+	local previewers = require("telescope.previewers")
+	local Path = require("plenary.path")
+
 	local displayer = entry_display.create({
 		separator = " │ ",
 		items = {
