@@ -19,6 +19,9 @@ vim.keymap.set("n", "<space>", "za")
 -- show current file on master
 vim.keymap.set("n", "<leader>em", ":Gedit master:%<CR>")
 
+-- delete current file
+vim.keymap.set("n", "<leader>rm", ":!rm %<CR>")
+
 -- git blame for the current file
 vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
 
