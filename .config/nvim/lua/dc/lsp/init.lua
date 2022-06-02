@@ -55,17 +55,32 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 end
 
 local format = function(client, bufnr)
+	-- adapted vim.lsp.buf.formatting_sync,
+	-- only used the given client
 	local params = util.make_formatting_params({})
-	client.request("textDocument/formatting", params, nil, bufnr)
+	local result, err = client.request_sync("textDocument/formatting", params, 2000, bufnr)
+	if result and result.result then
+		util.apply_text_edits(result.result, bufnr, client.offset_encoding)
+	elseif err then
+		vim.notify("vim.lsp.buf.formatting_sync: " .. err, vim.log.levels.WARN)
+	end
 end
 
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-	vim.keymap.set("n", "<leader>gq", function()
+	local format_this_buffer = function()
 		format(client, bufnr)
-	end, { buffer = bufnr })
+	end
+
+	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+	vim.keymap.set("n", "<leader>gq", format_this_buffer, { buffer = bufnr })
+
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
+		buffer = bufnr,
+		callback = format_this_buffer,
+	})
 end
 
 function cfg.capabilities()
