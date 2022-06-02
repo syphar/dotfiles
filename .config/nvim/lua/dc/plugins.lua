@@ -7,12 +7,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 return require("packer").startup({
-	function(use)
+	function(use, use_rocks)
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
 		use("antoinemadec/FixCursorHold.nvim")
 		use("tpope/vim-projectionist")
+
+		use_rocks("toml")
 
 		use({
 			"nvim-lualine/lualine.nvim",

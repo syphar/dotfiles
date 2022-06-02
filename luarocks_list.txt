@@ -6,4 +6,5 @@ net-url
 selene
 semver
 stringy
+toml
 version
