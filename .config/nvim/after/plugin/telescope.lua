@@ -319,6 +319,3 @@ vim.keymap.set("n", "<leader>p", function()
 		},
 	})
 end)
-
-vim.keymap.set("n", "<leader>gl", require("telescope.builtin").git_bcommits)
-vim.keymap.set("n", "<leader>gr", require("telescope.builtin").git_branches)

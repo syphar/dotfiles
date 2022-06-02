@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 return require("packer").startup({
-	function(use, use_rocks)
+	function(use)
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
 		use("tweekmonster/startuptime.vim")
@@ -42,8 +42,6 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter-context")
 		use("mfussenegger/nvim-treehopper")
 		use("RRethy/nvim-treesitter-textsubjects")
-		use("monaqa/dial.nvim")
-		use("gbprod/cutlass.nvim")
 		use("rizzatti/dash.vim")
 
 		use({
@@ -53,9 +51,7 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-emoji",
 				"hrsh7th/cmp-copilot",
-				"petertriho/cmp-git",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
 				"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -66,7 +62,7 @@ return require("packer").startup({
 			run = "./install.sh",
 			requires = "hrsh7th/nvim-cmp",
 		})
-		use({"github/copilot.vim", commit="ad102c7a58356414f18680f60c2298246e41ccea"})
+		use({ "github/copilot.vim", commit = "ad102c7a58356414f18680f60c2298246e41ccea" })
 
 		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
