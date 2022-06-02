@@ -60,7 +60,6 @@ cmp.setup({
 		{ name = "cmp_nvim_lsp_signature_help" },
 		{ name = "path" },
 		{ name = "crates" },
-		{ name = "jira_issues" },
 		{ name = "pypi_package" },
 		{ name = "git" },
 		{ name = "emoji" },
