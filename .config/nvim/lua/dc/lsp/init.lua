@@ -115,7 +115,7 @@ function cfg.lsp_setup()
 		"tsserver",
 		"vimls",
 		"yamlls",
-		"zeta_note",
+		-- "zeta_note",
 	}
 
 	for _, name in ipairs(servers) do
