@@ -57,6 +57,9 @@ cargo install-update -a
 ## global Yarn packages
 ./yarn-upgrade.sh
 
+## github packages downloads
+ ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
+
 ## cleanup dmypy processes
 ./kill_mypyd.sh
 

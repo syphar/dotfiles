@@ -107,6 +107,7 @@ function cfg.lsp_setup()
 		"clangd",
 		"gopls",
 		"jdtls",
+		"marksman",
 		"null_ls",
 		"pylsp",
 		"rust_analyzer",
@@ -115,7 +116,6 @@ function cfg.lsp_setup()
 		"tsserver",
 		"vimls",
 		"yamlls",
-		-- "zeta_note",
 	}
 
 	for _, name in ipairs(servers) do
