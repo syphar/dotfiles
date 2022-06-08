@@ -62,7 +62,7 @@ local format = function(client, bufnr)
 	if result and result.result then
 		util.apply_text_edits(result.result, bufnr, client.offset_encoding)
 	elseif err then
-		print("vim.lsp.buf.formatting_sync: " .. err, vim.log.levels.WARN)
+		vim.notify("vim.lsp.buf.formatting_sync: " .. err, vim.log.levels.WARN, {})
 	end
 end
 
