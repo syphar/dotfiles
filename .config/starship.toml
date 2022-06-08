@@ -13,8 +13,7 @@ $character"""
 right_format = """$all"""
 add_newline = false
 
-# shorter command timeout. Default: 500
-command_timeout = 100
+command_timeout = 500
 
 [git_branch]
 format = "[$symbol $branch ]($style)"
