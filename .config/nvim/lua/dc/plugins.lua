@@ -64,8 +64,7 @@ return require("packer").startup({
 			run = "./install.sh",
 			requires = "hrsh7th/nvim-cmp",
 		})
-		use({ "github/copilot.vim", commit = "ad102c7a58356414f18680f60c2298246e41ccea" })
-
+		use({ "github/copilot.vim" })
 		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- file management / search
