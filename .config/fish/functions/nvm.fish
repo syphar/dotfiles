@@ -1,5 +1,5 @@
 function nvm --description "Node version manager"
-    for silent in -s --silent
+    for silent in --silent -s
         if set --local index (contains --index -- $silent $argv)
             set --erase argv[$index] && break
         end
@@ -184,8 +184,8 @@ end
 
 function _nvm_find_up --argument-names path file
     test -e "$path/$file" && echo $path/$file || begin
-        test "$path" != / || return
-        _nvm_find_up (command dirname $path) $file
+        test ! -z "$path" || return
+        _nvm_find_up (string replace --regex -- '/[^/]*$' "" $path) $file
     end
 end
 
