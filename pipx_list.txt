@@ -18,6 +18,7 @@ perflint
 pgcli
 pip-tools
 pipenv
+poethepoet
 poetry
 pre-commit
 proselint
