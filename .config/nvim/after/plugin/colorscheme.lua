@@ -1,15 +1,17 @@
 local default_colors = require("kanagawa.colors").setup()
 require("kanagawa").setup({
 	undercurl = true, -- enable undercurls
-	commentStyle = "italic",
-	functionStyle = "NONE",
-	keywordStyle = "bold",
-	statementStyle = "bold",
-	typeStyle = "NONE",
-	variablebuiltinStyle = "italic",
+	commentStyle = { italic = true },
+	functionStyle = {},
+	keywordStyle = { bold = true },
+	statementStyle = { bold = true },
+	typeStyle = {},
+	variablebuiltinStyle = { italic = true },
 	specialReturn = true,
 	specialException = true,
 	transparent = false,
+	dimInactive = false,
+	globalStatus = true,
 	colors = {
 		-- inactive statusline was too dark, should be brighter
 		bg_status = default_colors.bg_light0,
