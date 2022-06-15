@@ -59,6 +59,7 @@ cargo install-update -a
 
 ## github packages downloads
  ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
+ ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
 
 ## cleanup dmypy processes
 ./kill_mypyd.sh
