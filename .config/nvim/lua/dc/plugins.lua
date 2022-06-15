@@ -53,7 +53,6 @@ return require("packer").startup({
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-copilot",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
 				"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -64,7 +63,6 @@ return require("packer").startup({
 			run = "./install.sh",
 			requires = "hrsh7th/nvim-cmp",
 		})
-		use({ "github/copilot.vim" })
 		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 		-- file management / search
