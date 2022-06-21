@@ -93,6 +93,7 @@ return require("packer").startup({
 		use({ "raimon49/requirements.txt.vim", ft = { "requirements" } })
 		use({ "rust-lang/rust.vim", ft = { "rust" } })
 		use({ "dag/vim-fish", ft = { "fish" } })
+		use({ "fgsch/vim-varnish", ft = { "vcl" } })
 
 		-- generic software dev stuff
 		use("rhysd/committia.vim")
