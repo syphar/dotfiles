@@ -43,6 +43,7 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use("nvim-treesitter/nvim-treesitter-context")
 		use("mfussenegger/nvim-treehopper")
+		use("tpope/vim-repeat")
 		use("RRethy/nvim-treesitter-textsubjects")
 		use("rizzatti/dash.vim")
 
