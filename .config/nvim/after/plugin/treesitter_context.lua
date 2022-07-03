@@ -47,5 +47,8 @@ require("treesitter-context").setup({
 			"table",
 			"pair",
 		},
+		markdown = {
+			"section",
+		},
 	},
 })
