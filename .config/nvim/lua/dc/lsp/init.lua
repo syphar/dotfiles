@@ -76,11 +76,11 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 	vim.keymap.set("n", "<leader>gq", format_this_buffer, { buffer = bufnr })
 
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
-		buffer = bufnr,
-		callback = format_this_buffer,
-	})
+	-- vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 	group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
+	-- 	buffer = bufnr,
+	-- 	callback = format_this_buffer,
+	-- })
 end
 
 function cfg.capabilities()
