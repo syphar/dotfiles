@@ -1,6 +1,7 @@
 local cfg = require("dc.lsp")
 local Path = require("plenary.path")
 local null_ls = require("null-ls")
+local null_ls_utils = require("null-ls.utils")
 
 local function has_any_config(filenames)
 	local function checker(utils)
@@ -117,3 +118,8 @@ null_ls.setup({
 	on_attach = cfg.lsp_on_attach,
 	capabilities = cfg.capabilities(),
 })
+
+vim.api.nvim_create_user_command("ToggleFormatters", function()
+	null_ls.toggle({ methods = null_ls.methods.FORMATTING })
+	print("did toggle null-ls formatting")
+end, {})
