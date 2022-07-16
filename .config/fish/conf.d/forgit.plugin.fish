@@ -12,6 +12,15 @@ function forgit::inside_work_tree
     git rev-parse --is-inside-work-tree >/dev/null;
 end
 
+function forgit::reverse_lines
+    # tac is not available on OSX, tail -r is not available on Linux, so we use either of them
+    if command -v tac &> /dev/null
+        tac
+    else
+        tail -r
+    end
+end
+
 set -g forgit_pager        "$FORGIT_PAGER"
 set -g forgit_show_pager   "$FORGIT_SHOW_PAGER"
 set -g forgit_diff_pager   "$FORGIT_DIFF_PAGER"
@@ -67,6 +76,16 @@ function forgit::log -d "git commit viewer"
         env FZF_DEFAULT_OPTS="$opts" fzf 
 end
 
+function forgit::extract_file --argument-names 'path'
+    set no_leading_whitespace (echo $path | sed 's/^[[:space:]]*//')
+    set no_m_or_double_question (echo $no_leading_whitespace | cut -d ' ' -f 2-)
+    set if_renamed (echo $no_m_or_double_question | sed 's/.* -> //')
+    set no_quotes (echo $if_renamed | tr -d "\"")
+    set no_leading_whitespace_again (echo $no_quotes | sed 's/^[[:space:]]*//')
+    set no_spaces (echo $no_leading_whitespace_again | string escape --no-quoted)
+    echo $no_spaces
+end
+
 ## git diff viewer
 function forgit::diff -d "git diff viewer" --argument-names arg1 arg2
     forgit::inside_work_tree || return 1
@@ -83,8 +102,7 @@ function forgit::diff -d "git diff viewer" --argument-names arg1 arg2
         end
     end
 
-    set repo (git rev-parse --show-toplevel)
-    set preview "cd '$repo' && echo {} | sed 's/.*] *//' | sed 's/  ->  / /' | xargs git diff --color=always $commits -- | $forgit_diff_pager"
+    set preview "forgit::extract_file {} | xargs git diff --color=always $commits -- | $forgit_diff_pager"
     
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
@@ -111,14 +129,8 @@ function forgit::add -d "git add selector"
     set unmerged (git config --get-color color.status.unmerged red)
     set untracked (git config --get-color color.status.untracked red)
 
-    set extract_file "
-        sed 's/^[[:space:]]*//' |           # remove leading whitespace
-        cut -d ' ' -f 2- |                  # cut the line after the M or ??, this leaves just the filename
-        sed 's/.* -> //'                    # for rename case
-    "
-
     set preview "
-        set file (echo {} | $extract_file)
+        set file (forgit::extract_file {})
         # exit
         if test (git status -s -- \$file | grep '^??') # diff with /dev/null for untracked files
             git diff --color=always --no-index -- /dev/null \$file | $forgit_diff_pager | sed '2 s/added:/untracked:/'
@@ -135,12 +147,13 @@ function forgit::add -d "git add selector"
     set files (git -c color.status=always -c status.relativePaths=true status -su |
         grep -F -e "$changed" -e "$unmerged" -e "$untracked" |
         sed -E 's/^(..[^[:space:]]*)[[:space:]]+(.*)\$/[\1]  \2/' |   # deal with white spaces internal to fname
-        env FZF_DEFAULT_OPTS="$opts" fzf |
-        sh -c "$extract_file") # for rename case
+        env FZF_DEFAULT_OPTS="$opts" fzf 
+        )
 
     if test -n "$files"
         for file in $files
-            echo $file | tr '\n' '\0' | xargs -I{} -0 git add {}
+            set stripped_file (forgit::extract_file $file)
+            echo $stripped_file | tr '\n' '\0' | xargs -I{} -0 git add {}
         end
         git status --short
         return
@@ -335,16 +348,15 @@ function forgit::cherry::pick -d "git cherry-picking" --argument-names 'target'
         echo "Please specify target branch"
         return 1
     end
-    set preview "echo {1} | xargs -I% git show --color=always % | $forgit_show_pager"
+    set preview "echo {2} | xargs -I% git show --color=always % | $forgit_show_pager"
     set opts "
         --preview=\"$preview\"
         $FORGIT_FZF_DEFAULT_OPTS
-        -m -0
+        -m -0 --tiebreak=index
+        $FORGIT_CHERRY_PICK_FZF_OPTS
     "
-    echo $base
-    echo $target
-    git cherry "$base" "$target" --abbrev -v | cut -d ' ' -f2- |
-        env FZF_DEFAULT_OPTS="$opts" fzf | cut -d' ' -f1 |
+    git cherry "$base" "$target" --abbrev -v | forgit::reverse_lines |
+        env FZF_DEFAULT_OPTS="$opts" fzf | cut -d' ' -f2 | forgit::reverse_lines |
         xargs -I% git cherry-pick %
 end
 
