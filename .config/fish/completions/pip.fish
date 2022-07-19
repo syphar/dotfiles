@@ -10,7 +10,7 @@ function __list_pypi_packages
     if string match -q "*==*" $partial_name
         set -l package (string match -g --regex "([^=]+)==.*" $partial_name)
         ~/bin/runcached --ignore-pwd --ignore-env -- \
-            curl -Lfs https://pypi.org/pypi/$package/json | \
+            curl --compressed -Lfs https://pypi.org/pypi/$package/json | \
             # fetch only keys from array under `releases`
             jq -r '.releases|keys[]' | \
             # prefix with package name again so the match can complete
@@ -24,7 +24,7 @@ end
 
 function __list_installed_packages 
     ~/bin/runcached --ttl 300 -- \
-        pip list --format json | __get_only_name_from_json
+        pip list --format json 2>/dev/null | __get_only_name_from_json
 end
 
 complete -c pip -n "__fish_seen_subcommand_from install && not __fish_seen_argument -s r -l requirement" -fka '(__list_pypi_packages)'
