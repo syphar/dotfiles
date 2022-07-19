@@ -28,3 +28,20 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 })
+
+-- automatically install available treesitter parser for files that I open.
+-- source: https://github.com/nvim-treesitter/nvim-treesitter/issues/2108
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("auto_install_treesitter_parsers", {}),
+	callback = function()
+		local parsers = require("nvim-treesitter.parsers")
+
+		local lang = parsers.get_buf_lang()
+		if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+			vim.schedule_wrap(function()
+				vim.cmd("TSInstallSync " .. lang)
+			end)()
+		end
+	end,
+})
