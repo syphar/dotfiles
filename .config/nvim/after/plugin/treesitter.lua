@@ -31,6 +31,8 @@ require("nvim-treesitter.configs").setup({
 
 -- automatically install available treesitter parser for files that I open.
 -- source: https://github.com/nvim-treesitter/nvim-treesitter/issues/2108
+-- builtin auto-install breaks hilight directly after install
+-- https://github.com/nvim-treesitter/nvim-treesitter/pull/3130
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	group = vim.api.nvim_create_augroup("auto_install_treesitter_parsers", {}),
