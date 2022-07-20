@@ -3,6 +3,7 @@ require("nvim-treesitter.configs").setup({
 	-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
 	-- ensure_installed = "maintained",
 	ignore_install = {},
+	-- auto_install = true, -- FIXME: this is broken for me, hilight is not updated after installation
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
@@ -31,7 +32,7 @@ require("nvim-treesitter.configs").setup({
 
 -- automatically install available treesitter parser for files that I open.
 -- source: https://github.com/nvim-treesitter/nvim-treesitter/issues/2108
--- builtin auto-install breaks hilight directly after install
+-- builtin auto-install breaks hilight directly after install.
 -- https://github.com/nvim-treesitter/nvim-treesitter/pull/3130
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
