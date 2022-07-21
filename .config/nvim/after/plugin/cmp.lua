@@ -9,6 +9,7 @@ local lspkind = require("lspkind")
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local compare = require("cmp.config.compare")
 
 cmp.setup({
 	snippet = {
@@ -71,7 +72,7 @@ cmp.setup({
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[ Lua]",
-				cmp_tabnine = "[T9]",
+				cmp_tabnine = "[ T9]",
 				path = "[/ Path]",
 				crates = " [ Crates]",
 				jira_issues = "[ JIRA]",
@@ -87,6 +88,20 @@ cmp.setup({
 	experimental = {
 		ghost_text = true,
 	},
+	sorting = {
+		priority_weight = 2,
+		comparators = {
+			require("cmp_tabnine.compare"),
+			compare.offset,
+			compare.exact,
+			compare.score,
+			compare.recently_used,
+			compare.kind,
+			compare.sort_text,
+			compare.length,
+			compare.order,
+		},
+	},
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
@@ -96,7 +111,8 @@ tabnine:setup({
 	max_lines = 1000,
 	max_num_results = 20,
 	sort = true,
-	run_on_every_keystroke = false,
+	run_on_every_keystroke = true,
 	snippet_placeholder = "..",
 	ignored_file_types = {},
+	show_prediction_strength = true,
 })
