@@ -7,10 +7,18 @@ local config_with_preview = {
 }
 require("telescope").setup({
 	defaults = {
-		scroll_stratecy = "cycle",
+		scroll_strategy = "cycle",
 		layout_strategy = "center",
 		layout_config = {
-			width = 0.6,
+			width = function(_, max_columns, _)
+				return math.min(
+					math.max(
+						math.floor(max_columns * 0.6), -- 60% width
+						80 -- minimum 80 chars
+					),
+					max_columns - 10 -- padding of 5
+				)
+			end,
 			height = 0.5,
 			preview_cutoff = 120,
 			prompt_position = "bottom",
@@ -150,38 +158,40 @@ local telescope_project_tags = function()
 	local opts = {
 		debounce = 200,
 	}
-	pickers.new(opts, {
-		prompt_title = "Tags",
-		finder = finders.new_dynamic({
-			entry_maker = entry_maker,
-			fn = generate_tag_lines,
-		}),
-		previewer = previewers.ctags.new(opts),
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function()
-			action_set.select:enhance({
-				post = function()
-					local selection = action_state.get_selected_entry()
+	pickers
+		.new(opts, {
+			prompt_title = "Tags",
+			finder = finders.new_dynamic({
+				entry_maker = entry_maker,
+				fn = generate_tag_lines,
+			}),
+			previewer = previewers.ctags.new(opts),
+			sorter = conf.generic_sorter(opts),
+			attach_mappings = function()
+				action_set.select:enhance({
+					post = function()
+						local selection = action_state.get_selected_entry()
 
-					if selection.scode then
-						-- un-escape / then escape required
-						-- special chars for vim.fn.search()
-						-- ] ~ *
-						local scode = selection.scode:gsub([[\/]], "/"):gsub("[%]~*]", function(x)
-							return "\\" .. x
-						end)
+						if selection.scode then
+							-- un-escape / then escape required
+							-- special chars for vim.fn.search()
+							-- ] ~ *
+							local scode = selection.scode:gsub([[\/]], "/"):gsub("[%]~*]", function(x)
+								return "\\" .. x
+							end)
 
-						vim.cmd("norm! gg")
-						vim.fn.search(scode)
-						vim.cmd("norm! zz")
-					else
-						vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
-					end
-				end,
-			})
-			return true
-		end,
-	}):find()
+							vim.cmd("norm! gg")
+							vim.fn.search(scode)
+							vim.cmd("norm! zz")
+						else
+							vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
+						end
+					end,
+				})
+				return true
+			end,
+		})
+		:find()
 end
 
 local telescope_treesitter_tags = function()
