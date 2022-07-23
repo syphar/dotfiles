@@ -100,6 +100,7 @@ null_ls.setup({
 			extra_args = { "--dialect", "postgres" },
 		}),
 		null_ls.builtins.formatting.taplo,
+		null_ls.builtins.formatting.terraform_fmt,
 		null_ls.builtins.formatting.trim_newlines,
 		null_ls.builtins.formatting.trim_whitespace.with({
 			-- I don't want this for all filetypes since it
