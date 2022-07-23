@@ -88,20 +88,6 @@ cmp.setup({
 	experimental = {
 		ghost_text = true,
 	},
-	sorting = {
-		priority_weight = 2,
-		comparators = {
-			require("cmp_tabnine.compare"),
-			compare.offset,
-			compare.exact,
-			compare.score,
-			compare.recently_used,
-			compare.kind,
-			compare.sort_text,
-			compare.length,
-			compare.order,
-		},
-	},
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
