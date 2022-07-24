@@ -39,6 +39,10 @@ require("treesitter-context").setup({
 			"object",
 			"pair",
 		},
+		terraform = {
+			"block",
+			"attribute",
+		},
 		yaml = {
 			"block_mapping_pair",
 			"block_sequence_item",
