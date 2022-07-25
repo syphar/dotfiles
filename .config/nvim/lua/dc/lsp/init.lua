@@ -76,11 +76,16 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 	vim.keymap.set("n", "<leader>gq", format_this_buffer, { buffer = bufnr })
 
-	-- vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 	group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
-	-- 	buffer = bufnr,
-	-- 	callback = format_this_buffer,
-	-- })
+	-- autoformat for certain file-types
+	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+
+	if ft == "terraform" or ft == "rust" then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
+			buffer = bufnr,
+			callback = format_this_buffer,
+		})
+	end
 end
 
 function cfg.capabilities()
