@@ -135,3 +135,7 @@ vicmd_symbol = "[](bold green)"
 
 [vagrant]
 disabled = true
+
+[terraform]
+symbol = " "
+format = "[$symbol$version $workspace]($style) "
