@@ -3,6 +3,7 @@
 bash-language-server
 cspell
 eslint_d
+jsonlint
 npm
 npm-check-updates
 pyright
