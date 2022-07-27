@@ -1,7 +1,7 @@
 local cfg = require("dc.lsp")
 
 require("lspconfig").pylsp.setup({
-	cmd = { "/Users/syphar/src/python-lsp-server/.direnv/python-3.10.4/bin/pylsp" },
+	-- cmd = { "/Users/syphar/src/python-lsp-server/.direnv/python-3.10.4/bin/pylsp" },
 	flags = cfg.global_flags(),
 	capabilities = cfg.capabilities(),
 	on_attach = cfg.lsp_on_attach_without_formatting,
