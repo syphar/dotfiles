@@ -118,6 +118,7 @@ function cfg.lsp_setup()
 		"rust_analyzer",
 		"sumneko_lua",
 		"taplo",
+		"tailwindcss",
 		"terraformls",
 		"tsserver",
 		"vimls",

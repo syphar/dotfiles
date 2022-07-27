@@ -1,4 +1,5 @@
 @fsouza/prettierd
+@tailwindcss/language-server
 @salesforce/cli
 bash-language-server
 cspell
