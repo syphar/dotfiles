@@ -81,7 +81,7 @@ function cfg.lsp_on_attach(client, bufnr)
 
 	if ft == "terraform" or ft == "rust" then
 		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name, {}),
+			group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name .. "_" .. bufnr, {}),
 			buffer = bufnr,
 			callback = format_this_buffer,
 		})
