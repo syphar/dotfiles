@@ -21,6 +21,18 @@ function forgit::reverse_lines
     end
 end
 
+function forgit::previous_commit
+    # "SHA~" is invalid when the commit is the first commit, but we can use "--root" instead
+    if test (git rev-parse $argv) = (git rev-list --max-parents=0 HEAD)
+        echo "--root"
+    else
+        echo "$argv~"
+    end
+end
+
+# extract the first git sha occuring in the input and strip trailing newline
+set -g forgit_extract_sha  "grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]'"
+
 set -g forgit_pager        "$FORGIT_PAGER"
 set -g forgit_show_pager   "$FORGIT_SHOW_PAGER"
 set -g forgit_diff_pager   "$FORGIT_DIFF_PAGER"
@@ -45,8 +57,8 @@ function forgit::log -d "git commit viewer"
     forgit::inside_work_tree || return 1
 
     set files (echo $argv | sed -nE 's/.* -- (.*)/\1/p')
-    set preview_cmd "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always -U$forgit_preview_context % -- $files | $forgit_show_pager"
-    set enter_cmd "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always -U$forgit_fullscreen_context % -- $files | $forgit_show_pager"
+    set preview_cmd "echo {} | $forgit_extract_sha | xargs -I% git show --color=always -U$forgit_preview_context % -- $files | $forgit_show_pager"
+    set enter_cmd "echo {} | $forgit_extract_sha | xargs -I% git show --color=always -U$forgit_fullscreen_context % -- $files | $forgit_show_pager"
 
     if test -n "$FORGIT_COPY_CMD"
         set copy_cmd $FORGIT_COPY_CMD
@@ -58,7 +70,7 @@ function forgit::log -d "git commit viewer"
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m --tiebreak=index
         --bind=\"enter:execute($enter_cmd |env LESS='-r' less)\"
-        --bind=\"ctrl-y:execute-silent(echo {} |grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]' |$copy_cmd)\"
+        --bind=\"ctrl-y:execute-silent(echo {} | $forgit_extract_sha | $copy_cmd)\"
         --preview=\"$preview_cmd\"
         $FORGIT_LOG_FZF_OPTS
     "
@@ -236,11 +248,11 @@ function forgit::checkout::commit -d "git checkout commit selector" --argument-n
     end
 
 
-    set preview "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always % | $forgit_show_pager"
+    set preview "echo {} | $forgit_extract_sha | xargs -I% git show --color=always % | $forgit_show_pager"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m --tiebreak=index
-        --bind=\"ctrl-y:execute-silent(echo {} |grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]' | $copy_cmd)\"
+        --bind=\"ctrl-y:execute-silent(echo {} | $forgit_extract_sha | $copy_cmd)\"
         --preview=\"$preview\"
         $FORGIT_COMMIT_FZF_OPTS
     "
@@ -252,7 +264,7 @@ function forgit::checkout::commit -d "git checkout commit selector" --argument-n
     end
 
     eval "git log $graph --color=always --format='$forgit_log_format' $forgit_emojify" |
-        FZF_DEFAULT_OPTS="$opts" fzf  | grep -Eo '[a-f0-9]+' | head -1 | xargs -I% git checkout % --
+        FZF_DEFAULT_OPTS="$opts" fzf | eval "$forgit_extract_sha" | xargs -I% git checkout % --
 end
 
 function forgit::branch::delete -d "git checkout branch deleter"
@@ -353,7 +365,7 @@ function forgit::cherry::pick -d "git cherry-picking" --argument-names 'target'
         echo "Please specify target branch"
         return 1
     end
-    set preview "echo {2} | xargs -I% git show --color=always % | $forgit_show_pager"
+    set preview "echo {} | $forgit_extract_sha | xargs -I% git show --color=always % | $forgit_show_pager"
     set opts "
         --preview=\"$preview\"
         $FORGIT_FZF_DEFAULT_OPTS
@@ -376,7 +388,7 @@ function forgit::fixup -d "git fixup"
     end
 
     set files (echo $argv | sed -nE 's/.* -- (.*)/\1/p')
-    set preview "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always % -- $files | $forgit_show_pager"
+    set preview "echo {} | $forgit_extract_sha | xargs -I% git show --color=always % -- $files | $forgit_show_pager"
 
     if test -n "$FORGIT_COPY_CMD"
         set copy_cmd $FORGIT_COPY_CMD
@@ -387,20 +399,16 @@ function forgit::fixup -d "git fixup"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m --tiebreak=index
-        --bind=\"ctrl-y:execute-silent(echo {} |grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]' |$copy_cmd)\"
+        --bind=\"ctrl-y:execute-silent(echo {} | $forgit_extract_sha | $copy_cmd)\"
         --preview=\"$preview\"
         $FORGIT_FIXUP_FZF_OPTS
     "
 
     set cmd "git log $graph --color=always --format='$forgit_log_format' $argv $forgit_emojify"
-    set target_commit (eval "$cmd" | FZF_DEFAULT_OPTS="$opts" fzf | grep -Eo '[a-f0-9]+' | head -1)
+    set target_commit (eval "$cmd" | FZF_DEFAULT_OPTS="$opts" fzf | eval "$forgit_extract_sha")
 
     if test -n "$target_commit" && git commit --fixup "$target_commit"
-        # "$target_commit~" is invalid when the commit is the first commit, but we can use "--root" instead
-        set prev_commit "$target_commit~"
-        if test "(git rev-parse '$target_commit')" = "(git rev-list --max-parents=0 HEAD)"
-            set prev_commit "--root"
-        end
+        set prev_commit (forgit::previous_commit $target_commit)
 
         GIT_SEQUENCE_EDITOR=: git rebase --autostash -i --autosquash "$prev_commit"
     end
@@ -419,7 +427,7 @@ function forgit::rebase -d "git rebase"
     set cmd "git log $graph --color=always --format='$forgit_log_format' $argv $forgit_emojify"
 
     set files (echo $argv | sed -nE 's/.* -- (.*)/\1/p')
-    set preview "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always % -- $files | $forgit_show_pager"
+    set preview "echo {} | $forgit_extract_sha | xargs -I% git show --color=always % -- $files | $forgit_show_pager"
 
     if test -n "$FORGIT_COPY_CMD"
         set copy_cmd $FORGIT_COPY_CMD
@@ -430,15 +438,16 @@ function forgit::rebase -d "git rebase"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
         +s +m --tiebreak=index
-        --bind=\"ctrl-y:execute-silent(echo {} |grep -Eo '[a-f0-9]+' | head -1 | tr -d '[:space:]' |$copy_cmd)\"
+        --bind=\"ctrl-y:execute-silent(echo {} | $forgit_extract_sha | $copy_cmd)\"
         --preview=\"$preview\"
         $FORGIT_REBASE_FZF_OPTS
     "
-    set commit (eval "$cmd" | FZF_DEFAULT_OPTS="$opts" fzf |
-        grep -Eo '[a-f0-9]+' | head -1)
+    set target_commit (eval "$cmd" | FZF_DEFAULT_OPTS="$opts" fzf | eval "$forgit_extract_sha")
 
-    if test $commit
-        git rebase -i "$commit"
+    if test $target_commit
+        set prev_commit (forgit::previous_commit $target_commit)
+
+        git rebase -i "$prev_commit"
     end
 end
 
@@ -494,7 +503,7 @@ function forgit::revert::commit --argument-names 'commit_hash'
         return $revert_status
     end
 
-    set preview "echo {} |grep -Eo '[a-f0-9]+' |head -1 |xargs -I% git show --color=always % -- $files | $forgit_show_pager"
+    set preview "echo {} | $forgit_extract_sha | xargs -I% git show --color=always % -- $files | $forgit_show_pager"
     set opts "
         $FORGIT_FZF_DEFAULT_OPTS
         +s --tiebreak=index
