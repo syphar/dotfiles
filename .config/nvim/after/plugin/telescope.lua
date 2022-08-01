@@ -313,19 +313,3 @@ vim.keymap.set("n", "<C-P>", function()
 		require("telescope.builtin").find_files(opts)
 	end
 end)
-
-vim.keymap.set("n", "<leader>p", function()
-	-- choose from files inside current virtualenv
-	require("telescope.builtin").find_files({
-		path_display = { "smart" },
-		find_command = {
-			"fd",
-			"--type",
-			"f",
-			"--hidden",
-			"--no-ignore",
-			[[.*\.pyi?$]],
-			vim.env.VIRTUAL_ENV,
-		},
-	})
-end)
