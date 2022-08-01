@@ -39,6 +39,13 @@ require("rust-tools").setup({
 				procMacro = {
 					enable = true,
 				},
+				workspace = {
+					symbol = {
+						search = {
+							scope = "workspace_and_dependencies", --  (default: "workspace")
+						},
+					},
+				},
 			},
 		},
 	},
