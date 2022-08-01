@@ -9,6 +9,9 @@ source $XDG_CONFIG_HOME/fish/colors.fish
 # only delayed right prompt, left prompt should be immediate
 set -U async_prompt_functions fish_right_prompt
 
+# more exit codes to leave in the history
+set sponge_successful_exit_codes 0 127 130
+
 # show loading indicator
 function fish_right_prompt_loading_indicator
     echo (set_color '#aaa')' … '(set_color normal)
