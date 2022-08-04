@@ -92,7 +92,7 @@ vim.cmd("set nowrap")
 vim.opt.formatoptions = {
 	-- default: jtqlnr
 	j = true, -- remove comment leader when joining lines
-	t = true, -- autoformat text using textwidth
+	t = false, -- autoformat text using textwidth
 	q = true, -- format comments with gq
 	l = true, -- keep long lines when they were long before insert-mode
 	n = true, -- autoformat numbered list
