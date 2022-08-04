@@ -1,6 +1,7 @@
 vim.filetype.add({
 	extension = {
 		crs = "rust",
+		soql = "soql",
 	},
 	filename = {
 		["poetry.lock"] = "toml",
