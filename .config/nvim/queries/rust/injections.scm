@@ -14,17 +14,19 @@
         name: (identifier) @_macro_name
     ) 
     (token_tree
-        (string_literal) @sql
+        ((string_literal) @sql (#offset! @sql 0 1 0 -1) )
     )
 
     (#any-of? @_macro_name "query")
 )
 
-(macro_invocation
-    macro: (scoped_identifier
-        name: (identifier) @_macro_name
-    ) 
-    (token_tree) @toml
 
-    (#any-of? @_macro_name "toml")
-)
+; FIXME: doesnt work yet
+; (macro_invocation
+;     macro: (scoped_identifier
+;         name: (identifier) @_macro_name
+;     ) 
+;     ((token_tree) @toml (#offset! @toml 1 0 -1 0) )
+
+;     (#any-of? @_macro_name "toml")
+; )
