@@ -71,6 +71,7 @@ return require("packer").startup({
 		use("tamago324/lir-git-status.nvim")
 		use("airblade/vim-rooter") --automatically set root directory to project directory
 		use("ur4ltz/surround.nvim") -- fork of use("blackCauldron7/surround.nvim")
+		use("Matt-A-Bennett/vim-surround-funk")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
