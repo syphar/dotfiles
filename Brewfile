@@ -358,7 +358,6 @@ brew "squashfs"
 brew "starship"
 brew "stylua"
 brew "swig"
-brew "szip", link: false
 brew "task"
 brew "telnet"
 brew "terminal-notifier"
