@@ -4,7 +4,7 @@ source $XDG_CONFIG_HOME/fish/environment.fish
 source $XDG_CONFIG_HOME/fish/colors.fish
 
 # has to be here, otherwise async-prompt doesn't work
-/usr/local/bin/starship init fish | source
+starship init fish | source
 
 # only delayed right prompt, left prompt should be immediate
 set -U async_prompt_functions fish_right_prompt
@@ -24,10 +24,10 @@ set -U __done_exclude 'nvim|vim'
 if status --is-interactive
     fzf_configure_bindings --directory=\cf
 
-    /usr/local/bin/direnv hook fish | source
+    direnv hook fish | source
 
 
-    /usr/local/bin/zoxide init fish --cmd cd | source
+    zoxide init fish --cmd cd | source
 
     # upgrade open-file limit for vim & docs.rs
     ulimit -n 10000
