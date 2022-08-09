@@ -83,8 +83,8 @@ use_pyenv_from_runtime_txt() {
 
 use_nvm() {
   local node_version=$1
+  nvm_sh=$(brew --prefix)/opt/nvm/nvm.sh
 
-  nvm_sh=/usr/local/opt/nvm/nvm.sh
   which nvm || source $nvm_sh
   # if [[ -e $nvm_sh ]]; then
   #   source $nvm_sh
