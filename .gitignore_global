@@ -1,0 +1,60 @@
+.syntastic_classpath
+
+# https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+
+# https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
+# Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+tags.lock 
+tags.temp
+tags.files
+tags.temp.tmp
+!tags/
+
+
+# https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+.*.sw[a-z]
+*.un~
+Session.vim
+
+
+.idea
+*.iml
+
+# virtualenvs
+venv
+venv3
+
+# autoenv
+.env
+.env2
+
+# rope-project
+.ropeproject
+.mypy_cache
+
+# mypy-daemon 
+.dmypy.json
+
+
+# direnv
+.direnv
+.envrc
+
+# vim-projectionist
+.projections.json
+
+# only using it myself currently
+.sqlfluff

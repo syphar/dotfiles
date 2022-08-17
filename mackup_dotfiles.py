@@ -11,6 +11,7 @@ app_list = (
     "direnv",
     "fd",
     "git",
+    "gitignore-global",
     "kitty",
     "mackup",
     "mybin",
