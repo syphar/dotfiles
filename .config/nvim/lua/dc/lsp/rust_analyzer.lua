@@ -2,11 +2,11 @@ local cfg = require("dc.lsp")
 
 require("rust-tools").setup({
 	tools = {
-		autoSetHints = true,
 		inlay_hints = {
 			show_parameter_hints = false,
 			other_hints_prefix = " » ",
 			highlight = "LineNr",
+			auto = true,
 		},
 	},
 	server = {
