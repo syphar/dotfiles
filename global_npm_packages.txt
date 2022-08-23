@@ -1,6 +1,6 @@
 @fsouza/prettierd
-@tailwindcss/language-server
 @salesforce/cli
+@tailwindcss/language-server
 bash-language-server
 cspell
 eslint_d
@@ -12,4 +12,5 @@ typescript
 typescript-language-server
 vim-language-server
 write-good
+yaml-language-server
 yarn

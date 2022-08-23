@@ -54,9 +54,6 @@ cargo install-update -a
 ## global NPM packages
 ./npm-upgrade.sh
 
-## global Yarn packages
-./yarn-upgrade.sh
-
 ## github packages downloads
  ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
  ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
