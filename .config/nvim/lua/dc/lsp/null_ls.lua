@@ -57,6 +57,9 @@ null_ls.setup({
 		null_ls.builtins.formatting.clang_format.with({
 			filetypes = { "c", "cpp" },
 		}),
+		null_ls.builtins.formatting.deno_fmt.with({
+			filetypes = { "markdown" },
+		}),
 		null_ls.builtins.formatting.djhtml.with({
 			extra_args = function(params)
 				return {
@@ -71,7 +74,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.google_java_format,
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.jq,
-		null_ls.builtins.formatting.markdownlint,
 		null_ls.builtins.formatting.prettierd.with({
 			condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 		}),
