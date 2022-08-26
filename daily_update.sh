@@ -50,6 +50,7 @@ curl --compressed -s "https://pypi.org/simple/" | ggrep -oP '(?<=/simple/)[^/]+(
 ## rust environment
 rustup update
 cargo install-update -a
+xargs -n 1 cargo install < cargo_install.txt || echo "fail but OK"
 
 ## global NPM packages
 ./npm-upgrade.sh
