@@ -55,5 +55,9 @@ require("treesitter-context").setup({
 		markdown = {
 			"section",
 		},
+		scss = {
+			"rule_set",
+			"at_rule",
+		},
 	},
 })
