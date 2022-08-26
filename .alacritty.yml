@@ -1,13 +1,6 @@
 env:
   TERM: alacritty-direct
 
-shell:
-  program: /usr/local/bin/fish
-  args:
-    - -l
-    - -c
-    - tmux attach || tmux new
-
 window:
   dynamic_title: false
 

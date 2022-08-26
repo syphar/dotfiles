@@ -34,6 +34,12 @@ if status --is-interactive
 
     # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
     complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+
+    # autostart or autoattach tmux when not inside tmux
+    if not set -q TMUX
+        tmux attach -t base || tmux new -s base
+        # FIXME: the command should replace the shell, like this the shell remains when tmux was quit
+    end
 end
 
-# vim: et ts=2 sts=2 sw=2
+# vim: et ts=4 sts=4 sw=4
