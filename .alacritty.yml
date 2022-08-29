@@ -9,24 +9,20 @@ scrolling:
 
 font:
   normal:
-    family: 'BlexMono NF'
+    family: BlexMono Nerd Font
     style: ExtraLight
 
   bold:
-    family: 'BlexMono NF'
+    family: BlexMono Nerd Font
     style: Light
 
   italic:
     family: IBM Plex Mono
     style: ExtraLight Italic
-    # family: 'BlexMono NF'
-    # style: Light Italic
 
   bold_italic:
     family: IBM Plex Mono
     style: Light Italic
-    # family: 'BlexMono NF'
-    # style: 'Medium Italic'
 
   # Point size
   size: 15.0
