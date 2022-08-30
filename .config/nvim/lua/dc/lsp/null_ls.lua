@@ -74,6 +74,12 @@ null_ls.setup({
 		null_ls.builtins.formatting.google_java_format,
 		null_ls.builtins.formatting.isort,
 		null_ls.builtins.formatting.jq,
+		null_ls.builtins.formatting.ktlint.with({
+			-- when we don't add this, ktlint prints the following line to stdout:
+			--   09:20:23.742 [main] INFO com.pinterest.ktlint.internal.KtlintCommandLine - Enable default patterns [**/*.kt, **/*.kts]
+			-- Which then ends up in the format result / the file.
+			extra_args = { "**/*.kt", "**/*.kts" },
+		}),
 		null_ls.builtins.formatting.prettierd.with({
 			condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 		}),
