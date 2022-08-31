@@ -40,6 +40,12 @@ require("treesitter-context").setup({
 			"object",
 			"pair",
 		},
+		typescriptreact = {
+			"jsx_element",
+			"jsx_self_closing_element",
+			"jsx_fragment",
+			"declaration",
+		},
 		terraform = {
 			"block",
 			"attribute",
