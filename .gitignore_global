@@ -58,3 +58,6 @@ venv3
 
 # only using it myself currently
 .sqlfluff
+
+# java / kotlin projects 
+.settings
