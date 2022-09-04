@@ -73,7 +73,7 @@ return require("packer").startup({
 		use("ur4ltz/surround.nvim") -- fork of use("blackCauldron7/surround.nvim")
 		use("Matt-A-Bennett/vim-surround-funk")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
+		use({ "B4mbus/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 		use({
 			-- "~/src/python-docs.nvim",
