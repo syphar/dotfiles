@@ -40,6 +40,7 @@ pipx inject python-lsp-server pylsp-mypy
 pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
 pipx inject ipython rich requests
+pipx inject dslr psycopg2-binary
 
 ./update_generated_autocompletes.sh
 

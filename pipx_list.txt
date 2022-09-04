@@ -5,6 +5,7 @@ black
 curlylint
 dephell
 djhtml
+dslr
 flake8
 gcalcli
 gcloud
