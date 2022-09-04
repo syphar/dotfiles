@@ -115,6 +115,7 @@ null_ls.setup({
 			-- also removes whitespace inside string literals.
 			filetypes = { "markdown", "yaml", "gitcommit" },
 		}),
+		null_ls.builtins.formatting.xmllint,
 		null_ls.builtins.hover.dictionary,
 		require("dc.lsp.null_ls_custom.bandit"),
 		-- require("dc.lsp.null_ls_custom.perflint"),
