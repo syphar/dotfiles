@@ -11,6 +11,7 @@ alias gp='git push'
 alias gdmaster='gd master...'
 alias gdmain='gd main...'
 alias clippy='cargo clippy -Zunstable-options --verbose'
+alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
 abbr -ag dcu docker compose up
 abbr -ag dcd docker compose down
