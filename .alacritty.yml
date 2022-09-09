@@ -3,6 +3,7 @@ env:
 
 window:
   dynamic_title: false
+  decorations: none
 
 scrolling:
   history: 0  # disable history, since it's in tmux
