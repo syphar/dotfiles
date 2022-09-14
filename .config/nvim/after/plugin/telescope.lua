@@ -59,6 +59,7 @@ local telescope_project_tags = function()
 	local pickers = require("telescope.pickers")
 	local previewers = require("telescope.previewers")
 	local Path = require("plenary.path")
+	local fzf = require("fzf_lib")
 
 	local displayer = entry_display.create({
 		separator = " │ ",
@@ -144,14 +145,20 @@ local telescope_project_tags = function()
 			return results
 		end
 
+		local slab = fzf.allocate_slab()
+		local pattern_obj = fzf.parse_pattern(prompt, 0, true)
+
 		for _, ctags_file in ipairs(vim.fn.tagfiles()) do
-			local lower_prompt = string.lower(prompt)
 			for line in Path:new(vim.fn.expand(ctags_file, true)):iter() do
-				if string.lower(line):find(lower_prompt) then
+				if fzf.get_pos(line, pattern_obj, slab) then
 					table.insert(results, line)
 				end
 			end
 		end
+
+		fzf.free_pattern(pattern_obj)
+		fzf.free_slab(slab)
+
 		return results
 	end
 
