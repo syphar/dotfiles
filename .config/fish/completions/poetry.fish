@@ -65,7 +65,7 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 
 # add
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l allow-prereleases -d 'Accept prereleases.'
-complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dev -d 'Add as a development dependency.'
+complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dev -d 'Add as a development dependency. (Deprecated)'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l editable -d 'Add vcs/path dependencies as editable.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l extras -d 'Extras to activate for the dependency.'
@@ -170,7 +170,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l skip-existing 
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l username -d 'The username to access the repository.'
 
 # remove
-complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dev -d 'Remove a package from the development dependencies.'
+complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dev -d 'Remove a package from the development dependencies. (Deprecated)'
 complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l group -d 'The group to remove the dependency from.'
 
