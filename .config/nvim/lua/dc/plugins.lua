@@ -75,6 +75,7 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+		use({ "ThePrimeagen/git-worktree.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 		use({
 			-- "~/src/python-docs.nvim",
 			"syphar/python-docs.nvim",

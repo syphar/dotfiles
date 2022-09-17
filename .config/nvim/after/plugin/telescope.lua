@@ -44,8 +44,10 @@ require("telescope").setup({
 		},
 	},
 })
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("python_docs")
+
+for _, ext in ipairs({ "fzf", "python_docs", "git_worktree" }) do
+	require("telescope").load_extension(ext)
+end
 
 local entry_display = require("telescope.pickers.entry_display")
 
@@ -303,6 +305,7 @@ vim.keymap.set("n", "<leader>f", telescope_treesitter_tags)
 vim.keymap.set("n", "<leader>F", telescope_project_tags)
 vim.keymap.set("n", "<leader>m", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>ht", require("telescope.builtin").help_tags)
+vim.keymap.set("n", "<leader>wt", require("telescope").extensions.git_worktree.git_worktrees)
 
 vim.keymap.set("n", "<leader>rg", function()
 	require("telescope.builtin").live_grep({ debounce = 100 })

@@ -1,0 +1,1 @@
+require("git-worktree").setup({})
