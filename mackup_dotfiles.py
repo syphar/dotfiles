@@ -13,6 +13,7 @@ app_list = (
     "git",
     "gitignore-global",
     "kitty",
+    "lsd",
     "mackup",
     "mybin",
     "myfish",

@@ -284,6 +284,7 @@ brew "lighttpd", restart_service: true
 brew "little-cms"
 brew "llvm"
 brew "lolcat"
+brew "lsd"
 brew "lua-language-server"
 brew "luajit"
 brew "luarocks"
