@@ -6,7 +6,7 @@
         (string_literal) @sql
     )
 
-    (#any-of? @_field_ident "query" "query_one" "query_opt")
+    (#any-of? @_field_ident "query" "query_one" "query_opt" "execute")
 )
 
 (macro_invocation
