@@ -82,6 +82,23 @@ null_ls.setup({
 		}),
 		null_ls.builtins.formatting.prettierd.with({
 			condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
+			filetypes = {
+				-- "jsonc",
+				"handlebars",
+				"javascriptreact",
+				"vue",
+				"less",
+				"graphql",
+				-- "json",
+				-- "html",
+				"css",
+				-- "markdown.mdx",
+				"typescriptreact",
+				-- "markdown",
+				-- "yaml",
+				"typescript",
+				"scss",
+			},
 		}),
 		null_ls.builtins.formatting.rustfmt.with({
 			-- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Source-specific-Configuration#rustfmt
