@@ -80,7 +80,12 @@ function cfg.lsp_on_attach(client, bufnr)
 	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
 	local conditional_utils = require("null-ls.utils").make_conditional_utils()
 
-	if ft == "terraform" or ft == "rust" or (ft == "lua" and conditional_utils.root_has_file("stylua.toml")) then
+	if
+		ft == "python"
+		or ft == "terraform"
+		or ft == "rust"
+		or (ft == "lua" and conditional_utils.root_has_file("stylua.toml"))
+	then
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name .. "_" .. bufnr, {}),
 			buffer = bufnr,
