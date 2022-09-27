@@ -1,4 +1,9 @@
-require("focus").setup({ cursorline = false, signcolumn = false, autoresize = false })
+require("focus").setup({
+	cursorline = false,
+	signcolumn = false,
+	autoresize = false,
+	excluded_filetypes = { "fugitiveblame" },
+})
 
 -- the default focus.nvim autocmd is disabled via autoresize=false.
 -- This autocmd below is a copy of it that is calling WinScrolled
