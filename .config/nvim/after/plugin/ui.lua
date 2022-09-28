@@ -2,7 +2,7 @@ require("focus").setup({
 	cursorline = false,
 	signcolumn = false,
 	autoresize = false,
-	excluded_filetypes = { "fugitiveblame" },
+	excluded_filetypes = { "fugitiveblame", "packer" },
 })
 
 -- the default focus.nvim autocmd is disabled via autoresize=false.
