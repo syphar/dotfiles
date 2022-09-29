@@ -64,6 +64,8 @@ abbr -ag c cargo
 abbr -ag cab cargo build
 abbr -ag cac cargo check
 abbr -ag sqlbat bat -l sql
+abbr -ag hh http --headers 
+abbr -ag hb http --print=hb
 
 alias prcreate="gh pr create --fill --draft --assignee syphar"
 alias propen="gh pr view --web"
