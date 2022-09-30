@@ -91,3 +91,6 @@ fish -c "fisher update"
 
 # update all source repos
 ./find_repos.sh "$SRC_DIR" | xargs -n 1 sh -c './update_git_repo.sh $0 || exit 255'
+
+# update git worktrees
+./find_worktrees.sh "$SRC_DIR" | xargs -n 1 sh -c './update_git_worktree.sh $0 || exit 255'
