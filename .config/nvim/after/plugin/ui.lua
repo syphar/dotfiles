@@ -41,6 +41,9 @@ vim.opt.showtabline = 0
 -- no cursor line
 vim.opt.cursorline = false
 
+-- no command line
+vim.opt.cmdheight = 0
+
 -- Redraw only when essential
 vim.opt.lazyredraw = true
 vim.opt.redrawtime = 10000
