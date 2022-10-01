@@ -316,10 +316,12 @@ vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<cr>")
 
 vim.keymap.set("n", "<C-P>", function()
 	-- pick from git-files if inside git repository,
-	-- if that breaks, use find_files from CWD
-	local opts = {}
-	local ok = pcall(require("telescope.builtin").git_files, opts)
-	if not ok then
-		require("telescope.builtin").find_files(opts)
+	-- otherwise use find_files from CWD
+	local is_inside_working_tree = (vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true")
+
+	if is_inside_working_tree then
+		require("telescope.builtin").git_files({})
+	else
+		require("telescope.builtin").find_files({})
 	end
 end)
