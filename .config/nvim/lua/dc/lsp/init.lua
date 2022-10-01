@@ -54,23 +54,15 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	})
 end
 
-local format = function(client, bufnr)
-	-- adapted vim.lsp.buf.formatting_sync,
-	-- only used the given client
-	local params = util.make_formatting_params({})
-	local result, err = client.request_sync("textDocument/formatting", params, 2000, bufnr)
-	if result and result.result then
-		util.apply_text_edits(result.result, bufnr, client.offset_encoding)
-	elseif err then
-		vim.notify("vim.lsp.buf.formatting_sync: " .. err, vim.log.levels.WARN, {})
-	end
-end
-
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
 
 	local format_this_buffer = function()
-		format(client, bufnr)
+		vim.lsp.buf.format({
+			async = false,
+			bufnr = bufnr,
+			-- id = client,
+		})
 	end
 
 	vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
