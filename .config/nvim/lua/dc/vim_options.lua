@@ -1,8 +1,3 @@
--- enable new lua filetypes
-vim.g.do_filetype_lua = 1
--- disable old filetype.vim
-vim.g.did_load_filetypes = 0
-
 -- disable some default plugins
 vim.g.loaded_gzip = 1
 vim.g.loaded_tar = 1

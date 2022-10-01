@@ -2,7 +2,7 @@ vim.g.mapleader = ","
 
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
-local opts = { silent = true, replace_keycodes = true }
+local opts = { silent = true, replace_keycodes = true, expr = true }
 vim.keymap.set("n", "}", [[:<C-u>execute "keepjumps norm! " . v:count1 . "}"<CR>]], opts)
 vim.keymap.set("n", "{", [[:<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>]], opts)
 
@@ -37,7 +37,7 @@ vim.keymap.set(
 	"v",
 	"gw",
 	[[y:execute 'silent grep "' . escape('<C-r>"', '\^$.|?*+"()[]{}-') . '"' <CR>]],
-	{ replace_keycodes = true }
+	{ replace_keycodes = true, expr = true }
 )
 
 vim.keymap.set("n", "<F3>", "<cmd>lwindow<cr>") -- only open with content, close when empty
@@ -87,7 +87,7 @@ vim.cmd("map q: <Nop>")
 vim.cmd("nnoremap Q <nop>")
 
 -- ; as <C-w> to quickly reach window/split control
-vim.keymap.set("n", ";", "<C-w>", { replace_keycodes = true })
+vim.keymap.set("n", ";", "<C-w>", { replace_keycodes = true, expr = true })
 
 -- new mapping, new file next to the currently open one
 vim.keymap.set("n", "<leader>n", function()
