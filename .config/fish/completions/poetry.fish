@@ -115,7 +115,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from env remove' -l all -d 'Rem
 # export
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l dev -d 'Include development dependencies. (Deprecated)'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l extras -d 'Extra sets of dependencies to include.'
-complete -c poetry -A -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to. Currently, only requirements.txt is supported.'
+complete -c poetry -A -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to. Currently, only constraints.txt and requirements.txt are supported.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l only -d 'The only dependency groups to include.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l output -d 'The name of the output file.'
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l with -d 'The optional dependency groups to include.'
