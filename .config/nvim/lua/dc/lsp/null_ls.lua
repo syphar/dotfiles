@@ -28,6 +28,7 @@ null_ls.setup({
 			filetypes = { "markdown", "gitcommit" },
 		}),
 		null_ls.builtins.diagnostics.curlylint,
+		null_ls.builtins.diagnostics.credo,
 		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 		null_ls.builtins.diagnostics.fish,
 		null_ls.builtins.diagnostics.flake8,
@@ -80,6 +81,7 @@ null_ls.setup({
 			-- Which then ends up in the format result / the file.
 			extra_args = { "**/*.kt", "**/*.kts" },
 		}),
+		null_ls.builtins.formatting.mix,
 		null_ls.builtins.formatting.prettierd.with({
 			condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
 			filetypes = {
@@ -120,6 +122,7 @@ null_ls.setup({
 				return { "--edition=2021" }
 			end,
 		}),
+		null_ls.builtins.formatting.surface,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
