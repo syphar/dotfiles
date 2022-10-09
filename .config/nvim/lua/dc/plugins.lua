@@ -10,7 +10,6 @@ return require("packer").startup({
 	function(use, use_rocks)
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
-		use("tweekmonster/startuptime.vim")
 		use("antoinemadec/FixCursorHold.nvim")
 		use("tpope/vim-projectionist")
 
