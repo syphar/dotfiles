@@ -53,6 +53,18 @@ rustup update
 cargo install-update -a
 xargs -n 1 cargo install < cargo_install.txt || echo "fail but OK"
 
+# sweep rust target directory
+# we switch to any rust repo for cargo-sweep, 
+# but since we use a global target directory 
+# it clean up everything
+cd ~/src/rust-lang/docs.rs/
+
+cargo sweep --time 30
+cargo sweep --installed
+
+cd -
+
+
 ## global NPM packages
 ./npm-upgrade.sh
 
