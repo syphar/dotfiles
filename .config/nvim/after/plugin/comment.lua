@@ -10,6 +10,6 @@ require("Comment").setup({
 		extra = true,
 		---extended mapping
 		---Includes `g>`, `g<`, `g>[count]{motion}` and `g<[count]{motion}`
-		extended = true,
+		-- extended = true,
 	},
 })
