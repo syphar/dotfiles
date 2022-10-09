@@ -126,3 +126,5 @@
 	ff = only
 [fetch]
 	prune = true
+[rebase]
+	updateRefs = true
