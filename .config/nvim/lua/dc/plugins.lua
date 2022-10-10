@@ -111,13 +111,6 @@ return require("packer").startup({
 		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
-		use({
-			"ThePrimeagen/refactoring.nvim",
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-				{ "nvim-treesitter/nvim-treesitter" },
-			},
-		})
 
 		use({ "udalov/kotlin-vim", ft = { "kotlin" } })
 		use({ "teal-language/vim-teal", ft = { "teal" } })
