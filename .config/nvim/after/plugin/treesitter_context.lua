@@ -31,6 +31,7 @@ require("treesitter-context").setup({
 			"with",
 			"try",
 			"except",
+			"expression",
 		},
 		json = {
 			"object",
