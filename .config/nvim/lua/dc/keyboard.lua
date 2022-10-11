@@ -11,9 +11,9 @@ vim.keymap.set("n", "{", [[:<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 vim.keymap.set({ "n", "v", "o" }, "Y", "y$")
 
 -- OS Clipboard
-vim.keymap.set("v", "<Leader>y", '"+y')
-vim.keymap.set("v", "<Leader>Y", '"+Y')
-vim.keymap.set("n", "<Leader>p", '"+p')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>Y", '"+Y')
+vim.keymap.set("n", "<leader>p", '"+p')
 
 -- <leader>v|<leader>s act as <cmd-v>|<cmd-s>
 -- <leader>p|P paste from yank register (0)

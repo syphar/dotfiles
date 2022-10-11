@@ -10,5 +10,5 @@ let g:rust_fold=0
 
 
 lua << EOF
-vim.keymap.set("n", "<leader>p", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+vim.keymap.set("n", "<leader>w", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 EOF

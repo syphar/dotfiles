@@ -28,7 +28,7 @@ vnoremap <silent> gh "zy:Telescope python_docs search=<C-r>z<CR>
 
 
 lua << EOF
-vim.keymap.set("n", "<leader>p", function()
+vim.keymap.set("n", "<leader>w", function()
 	-- choose from files inside current virtualenv
 	require("telescope.builtin").find_files({
 		path_display = { "smart" },
