@@ -25,6 +25,10 @@
     (string_literal) @sql
     (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE.*$")
 )
+(
+    (raw_string_literal) @sql
+    (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE.*$")
+)
 
 ; FIXME: doesnt work yet
 ; (macro_invocation
