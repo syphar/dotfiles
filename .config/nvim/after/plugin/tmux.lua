@@ -1,5 +1,5 @@
 local navigator = require("Navigator")
-navigator.setup()
+navigator.setup({})
 
 vim.keymap.set("n", "<C-h>", navigator.left)
 vim.keymap.set("n", "<C-k>", navigator.up)
