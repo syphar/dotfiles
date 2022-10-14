@@ -14,9 +14,9 @@ require("telescope").setup({
 				return math.min(
 					math.max(
 						math.floor(max_columns * 0.6), -- 60% width
-						80 -- minimum 80 chars
+						80-- minimum 80 chars
 					),
-					max_columns - 10 -- padding of 5
+					max_columns - 10-- padding of 5
 				)
 			end,
 			height = 0.5,
@@ -258,8 +258,7 @@ local telescope_treesitter_tags = function()
 			while parent ~= nil do
 				local node_type = parent:type()
 				-- TODO: use treesitter-context logic for this? or nvim-gps?
-				if
-					node_type:find("class")
+				if node_type:find("class")
 					-- rust
 					or node_type:find("mod_item")
 					or node_type:find("struct_item")
