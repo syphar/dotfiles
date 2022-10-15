@@ -82,7 +82,7 @@ function cfg.lsp_on_attach(client, bufnr)
 end
 
 function cfg.capabilities()
-	return require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	return require("cmp_nvim_lsp").default_capabilities()
 end
 
 function cfg.global_flags()
