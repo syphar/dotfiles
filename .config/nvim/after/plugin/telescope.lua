@@ -310,7 +310,6 @@ vim.keymap.set("n", "<leader>rg", function()
 	require("telescope.builtin").live_grep({ debounce = 100 })
 end)
 
-vim.keymap.set("n", "<leader>ag", require("telescope.builtin").grep_string)
 vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<cr>")
 
 vim.keymap.set("n", "<C-P>", function()
