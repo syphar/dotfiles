@@ -1,3 +1,5 @@
+;; extends 
+
 (call_expression 
     function: (field_expression
         field: (field_identifier) @_field_ident
