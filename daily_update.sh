@@ -57,12 +57,12 @@ xargs -n 1 cargo install < cargo_install.txt || echo "fail but OK"
 # we switch to any rust repo for cargo-sweep, 
 # but since we use a global target directory 
 # it clean up everything
-cd ~/src/rust-lang/docs.rs/
+# cd ~/src/rust-lang/docs.rs/
 
-cargo sweep --time 30
-cargo sweep --installed
+# cargo sweep --time 30
+# cargo sweep --installed
 
-cd -
+# cd -
 
 
 ## global NPM packages
