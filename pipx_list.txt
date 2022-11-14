@@ -26,6 +26,7 @@ proselint
 pydocstyle
 pyflyby
 python-lsp-server
+ruff
 sqlfluff
 watchdog
 yamllint
