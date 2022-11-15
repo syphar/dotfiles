@@ -67,6 +67,9 @@ abbr -ag sqlbat bat -l sql
 abbr -ag hh http --headers 
 abbr -ag hb http --print=hb
 
+# common typos
+abbr -ag dlsr dslr
+
 alias prcreate="gh pr create --fill --draft --assignee syphar"
 alias propen="gh pr view --web"
 alias prcropen="gh pr create --fill --draft --assignee syphar && gh pr view --web"
