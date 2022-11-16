@@ -47,10 +47,7 @@ return require("packer").startup({
 		use("mfussenegger/nvim-treehopper")
 		use("tpope/vim-repeat")
 		use("RRethy/nvim-treesitter-textsubjects")
-		use({
-			"mrjones2014/dash.nvim",
-			run = "make install",
-		})
+		use("rizzatti/dash.vim")
 
 		use({
 			"hrsh7th/nvim-cmp",
