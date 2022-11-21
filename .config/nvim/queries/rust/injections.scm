@@ -25,12 +25,12 @@
 ; try this: any string literal which contain upper-case SQL keywords is SQL
 (
     (string_literal) @sql
-    (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE.*$")
+    (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
 )
 
 (
     (raw_string_literal) @sql
-    (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE.*$")
+    (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
 )
 
 ; FIXME: doesnt work yet
