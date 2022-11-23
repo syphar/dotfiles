@@ -66,6 +66,7 @@ abbr -ag cac cargo check
 abbr -ag sqlbat bat -l sql
 abbr -ag hh http --headers 
 abbr -ag hb http --print=hb
+alias glo 'forgit::log -50'
 
 # common typos
 abbr -ag dlsr dslr
