@@ -124,6 +124,8 @@ return require("packer").startup({
 			-- "~/src/rust-tools.nvim/",
 			"simrat39/rust-tools.nvim",
 		})
+		use("yioneko/nvim-type-fmt")
+		use("lvimuser/lsp-inlayhints.nvim")
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
 		use({

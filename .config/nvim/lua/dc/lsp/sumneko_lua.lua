@@ -31,6 +31,9 @@ require("lspconfig").sumneko_lua.setup({
 			telemetry = {
 				enable = false,
 			},
+			hint = {
+				enable = true,
+			},
 		},
 	},
 })

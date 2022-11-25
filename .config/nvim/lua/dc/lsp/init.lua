@@ -52,6 +52,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 			border = "rounded",
 		},
 	})
+	require("lsp-inlayhints").on_attach(client, bufnr, true)
 end
 
 function cfg.lsp_on_attach(client, bufnr)
