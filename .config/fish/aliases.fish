@@ -30,6 +30,8 @@ abbr -ag pg pgrep -f
 abbr -ag pk pkill -f 
 abbr -ag gsh git show HEAD
 abbr -ag gt git tag -n
+abbr -ag gri git rebase -i
+abbr -ag gr git rebase
 
 abbr -ag h heroku
 abbr -ag hl heroku login
