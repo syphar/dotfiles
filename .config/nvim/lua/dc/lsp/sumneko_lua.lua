@@ -33,6 +33,8 @@ require("lspconfig").sumneko_lua.setup({
 			},
 			hint = {
 				enable = true,
+				arrayIndex = "Disable",
+				setType = true,
 			},
 		},
 	},
