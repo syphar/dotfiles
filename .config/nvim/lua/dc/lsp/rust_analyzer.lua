@@ -38,9 +38,54 @@ require("rust-tools").setup({
 					importGranularity = "crate",
 					importPrefix = "by_self",
 				},
-				-- cache = {
-				-- 	warmup = false,
-				-- },
+				inlayHints = {
+					--     Whether to show inlay type hints for binding modes.
+					bindingModeHints = { enable = false }, -- default: false
+					--     Whether to show inlay type hints for method chains.
+					chainingHints = { enable = true }, -- default: true
+
+					closingBraceHints = {
+						-- Whether to show inlay hints after a closing } to indicate what item it belongs to.
+						enable = true, --default: true
+						-- Minimum number of lines required before the } until the hint is shown (set to 0 or 1 to always show them).
+						minLines = 25, -- default: 25
+					},
+
+					-- Whether to show inlay type hints for return types of closures.
+					closureReturnTypeHints = { enable = "never" }, --default: "never", options: "always", "never", "with_block"
+
+					-- Whether to show inlay hints for type adjustments.
+					expressionAdjustmentHints = { enable = "never" }, --default: "never", options "always", "never", "reborrow"
+
+					lifetimeElisionHints = {
+						-- Whether to show inlay type hints for elided lifetimes in function signatures.
+						enable = "never", -- default: "never", options: "always", "never", "skip_trivial"
+						-- Whether to prefer using parameter names as the name for elided lifetime hints if possible.
+						useParameterNames = true, -- default: false
+					},
+
+					--     Maximum length for inlay hints. Set to null to have an unlimited length.
+					maxLength = 25, -- default: 25
+
+					-- Whether to show function parameter name inlay hints at the call site.
+					parameterHints = { enable = true }, --  default: true
+
+					-- Whether to show inlay hints for compiler inserted reborrows. This setting is deprecated in favor of expressionAdjustmentHints.enable.
+					reborrowHints = { enable = "never" }, --default: "never", options "always", "never", "mutable"
+
+					-- Whether to render leading colons for type hints, and trailing colons for parameter hints.
+					renderColons = true, -- default: true
+
+					typeHints = {
+						-- Whether to show inlay type hints for variables.
+						enable = true, -- default: true
+						-- Whether to hide inlay type hints for let statements that initialize to a closure.
+						-- Only applies to closures with blocks, same as closureReturnTypeHints.enable.
+						hideClosureInitialization = false, -- default: false
+						-- Whether to hide inlay type hints for constructors.
+						hideNamedConstructor = false, -- default: false
+					},
+				},
 				checkOnSave = {
 					enable = true,
 					command = "clippy",
