@@ -22,7 +22,6 @@
     (#any-of? @_macro_name "query")
 )
 
-; try this: any string literal which contain upper-case SQL keywords is SQL
 (
     (string_literal) @sql
     (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
@@ -34,6 +33,6 @@
 )
 (
     (string_literal) @graphql
-    (#match? @graphql ".*query\(.*\).*$")
+    (#match? @graphql ".*query\\(.+\\).*$")
     (#offset! @graphql 0 1 0 -1)
 )
