@@ -10,6 +10,16 @@ parser_config.soql = {
 	used_by = { "python" }, -- additional filetypes that use this parser
 }
 
+parser_config.graphql = {
+	install_info = {
+		url = "https://github.com/bkegley/tree-sitter-graphql",
+		branch = "master",
+		files = { "src/parser.c" },
+	},
+	filetype = "graphql",
+	used_by = { "rust" },
+}
+
 require("nvim-treesitter.configs").setup({
 	-- this costs 20ms startup time.
 	-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
