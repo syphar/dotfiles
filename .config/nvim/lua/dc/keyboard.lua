@@ -10,20 +10,6 @@ vim.keymap.set("n", "{", [[:<C-u>execute "keepjumps norm! " . v:count1 . "{"<CR>
 -- see :help Y
 vim.keymap.set({ "n", "v", "o" }, "Y", "y$")
 
--- OS Clipboard
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>Y", '"+Y')
-vim.keymap.set("n", "<leader>p", '"+p')
-
--- <leader>v|<leader>s act as <cmd-v>|<cmd-s>
--- <leader>p|P paste from yank register (0)
--- map({'n', 'v'}, '<leader>v', '"+p',   { desc = "paste AFTER from clipboard" })
--- map({'n', 'v'}, '<leader>V', '"+P',   { desc = "paste BEFORE from clipboard" })
--- map({'n', 'v'}, '<leader>s', '"*p',   { desc = "paste AFTER from primary" })
--- map({'n', 'v'}, '<leader>S', '"*P',   { desc = "paste BEFORE from primary" })
--- map({'n', 'v'}, '<leader>p', '"0p',   { desc = "paste AFTER  from yank (reg:0)" })
--- map({'n', 'v'}, '<leader>P', '"0P',   { desc = "paste BEFORE from yank (reg:0)" })
-
 -- turn off search highlight
 vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>")
 
@@ -64,6 +50,11 @@ vim.keymap.set("n", "<F12>", "<cmd>cnext<cr>")
 -- Visual shifting (does not exit Visual mode)
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- Substitute in line
+-- from https://www.reddit.com/r/vim/comments/umo2kt/tiny_keymap_that_can_replace_a_lot/
+vim.cmd([[vnoremap sw "zy:s/<C-r>z//g<Left><Left>]])
+vim.cmd([[nnoremap sw "zyiw:s/<C-r>z//g<Left><Left>]])
 
 -- common command typos .. (W, Wq WQ)
 local command_abbrev = {
