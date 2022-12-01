@@ -53,8 +53,8 @@ vim.keymap.set("v", ">", ">gv")
 
 -- Substitute in line
 -- from https://www.reddit.com/r/vim/comments/umo2kt/tiny_keymap_that_can_replace_a_lot/
-vim.cmd([[vnoremap sw "zy:s/<C-r>z//g<Left><Left>]])
-vim.cmd([[nnoremap sw "zyiw:s/<C-r>z//g<Left><Left>]])
+vim.cmd([[vnoremap sw "zy:%s/<C-r>z//g<Left><Left>]])
+vim.cmd([[nnoremap sw "zyiw:%s/<C-r>z//g<Left><Left>]])
 
 -- common command typos .. (W, Wq WQ)
 local command_abbrev = {
