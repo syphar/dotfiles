@@ -25,11 +25,13 @@
 (
     (string_literal) @sql
     (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
+    (#offset! @sql 0 1 0 -1)
 )
 
 (
     (raw_string_literal) @sql
     (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
+    (#offset! @sql 0 1 0 -1)
 )
 (
     (string_literal) @graphql
