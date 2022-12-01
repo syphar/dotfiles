@@ -3,7 +3,7 @@ env:
 
 window:
   dynamic_title: false
-  decorations: none
+  decorations: full
 
 scrolling:
   history: 0  # disable history, since it's in tmux
@@ -139,13 +139,14 @@ key_bindings:
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
 # simulate old iterm tab/split commands with tmux (the ones I used)
-  - { key: W,      mods: Command,         chars: "\x01\x26"      } # close window
-  - { key: T,      mods: Command,         chars: "\x01\x63"      } # new window
-  - { key: N,      mods: Command,         chars: "\x01\x6e"      } # next window
-  - { key: P,      mods: Command,         chars: "\x01\x70"      } # previous window
-  - { key: D,      mods: Command,         chars: "\x01\x7c"      } # split window horizontal
-  - { key: D,      mods: Command|Shift,   chars: "\x01\x2d"      } # split window vertical
-  - { key: Return, mods: Command|Shift,   chars: "\x01\x7a"      } # zoom window
+  - { key: W,      mods: Command,         chars: "\x01\x26"      } # close tab
+  - { key: T,      mods: Command,         chars: "\x01\x63"      } # new tab
+  - { key: N,      mods: Command,         action: "CreateNewWindow" } # new window
+  # - { key: N,      mods: Command,         chars: "\x01\x6e"      } # next window
+  # - { key: P,      mods: Command,         chars: "\x01\x70"      } # previous window
+  - { key: D,      mods: Command,         chars: "\x01\x7c"      } # split tab horizontal
+  - { key: D,      mods: Command|Shift,   chars: "\x01\x2d"      } # split tab vertical
+  - { key: Return, mods: Command|Shift,   chars: "\x01\x7a"      } # zoom into pane
 
 # switch windows with cmd+number
   - { key: Key1,   mods: Command,         chars: "\x01\x30" }
