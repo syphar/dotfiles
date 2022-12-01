@@ -26,6 +26,8 @@ brew bundle cleanup -f
 
 ## cleanup
 brew cleanup -s
+## not sure if this is duplicated..
+rm -rf "$(brew --cache)"
 
 ## luarocks packages
 xargs -n 1 luarocks install < luarocks_list.txt || echo "fail but OK"
