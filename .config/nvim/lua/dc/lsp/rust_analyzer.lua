@@ -46,7 +46,7 @@ require("rust-tools").setup({
 
 					closingBraceHints = {
 						-- Whether to show inlay hints after a closing } to indicate what item it belongs to.
-						enable = true, --default: true
+						enable = false, --default: true
 						-- Minimum number of lines required before the } until the hint is shown (set to 0 or 1 to always show them).
 						minLines = 25, -- default: 25
 					},
