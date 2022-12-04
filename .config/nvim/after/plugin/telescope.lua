@@ -318,7 +318,7 @@ vim.keymap.set("n", "<C-P>", function()
 	local is_inside_working_tree = (vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true")
 
 	if is_inside_working_tree then
-		require("telescope.builtin").git_files({})
+		require("telescope.builtin").git_files({ show_untracked = true })
 	else
 		require("telescope.builtin").find_files({})
 	end
