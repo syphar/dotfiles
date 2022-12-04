@@ -5,6 +5,7 @@ local repeat_ = require("luasnip.extras").rep
 local text = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 local insert = ls.insert_node
+local indent = ls.indent_snippet_node
 
 ls.config.set_config({
 	history = true,
@@ -20,6 +21,13 @@ ls.add_snippets("rust", {
 		insert(0),
 		text({ "", "}" }),
 	}),
+	snippet("test", {
+		text({ "#[test]", "fn test_" }),
+		insert(1),
+		text({ "() {", "    " }),
+		insert(2),
+		text({ "", "}" }),
+	}),
 	snippet("debugprint", {
 		text('println!("{:?}", '),
 		insert(0),
@@ -27,7 +35,6 @@ ls.add_snippets("rust", {
 	}),
 	snippet("default", { text("..Default::default()") }),
 	snippet("clcl", fmt("let {1} = {2}.clone();", { insert(1), repeat_(1) })),
-	snippet("dbl", fmt('log::debug!("{{:?}}", {});', { insert(1) })),
 }, {
 	key = "my_rust_snippets",
 })
