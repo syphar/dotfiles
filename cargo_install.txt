@@ -3,6 +3,7 @@ cargo-aoc
 cargo-audit 
 cargo-bloat 
 cargo-cache 
+cargo-chef
 cargo-docset 
 cargo-edit 
 cargo-expand 
