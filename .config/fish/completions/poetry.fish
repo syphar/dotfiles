@@ -1,6 +1,6 @@
 function __fish_poetry_171a10917ec1adad_complete_no_subcommand
     for i in (commandline -opc)
-        if contains -- $i about add build cache clear cache list check config debug info debug resolve dynamic-versioning env info env list env remove env use export help init install list lock new publish remove run search self add self install self lock self remove self show self show plugins self update shell show source add source remove source show update version
+        if contains -- $i about add build 'cache clear' 'cache list' check config 'debug info' 'debug resolve' dynamic-versioning 'env info' 'env list' 'env remove' 'env use' export help init install list lock new publish remove run search 'self add' 'self install' 'self lock' 'self remove' 'self show' 'self show plugins' 'self update' shell show 'source add' 'source remove' 'source show' update version
             return 1
         end
     end
@@ -9,6 +9,7 @@ end
 
 # global options
 complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l ansi -d 'Force ANSI output.'
+complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l directory -d 'The working directory for the Poetry command (defaults to the current working directory).'
 complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l help -d 'Display help for the given command. When no command is given display help for the list command.'
 complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l no-ansi -d 'Disable ANSI output.'
 complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l no-cache -d 'Disables Poetry source caches.'
@@ -22,17 +23,17 @@ complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a about -d 'Shows information about Poetry.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a add -d 'Adds a new dependency to pyproject.toml.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a build -d 'Builds a package, as a tarball and a wheel by default.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a cache clear -d 'Clears Poetry\'s cache.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a cache list -d 'List Poetry\'s caches.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'cache clear' -d 'Clears a Poetry cache by name.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'cache list' -d 'List Poetry\'s caches.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a check -d 'Checks the validity of the pyproject.toml file.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a config -d 'Manages configuration settings.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a debug info -d 'Shows debug information.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a debug resolve -d 'Debugs dependency resolution.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug info' -d 'Shows debug information.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug resolve' -d 'Debugs dependency resolution.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a dynamic-versioning -d 'Apply the dynamic version to all relevant files and leave the changes in-place. This allows you to activate the plugin behavior on demand and inspect the result.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a env info -d 'Displays information about the current environment.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a env list -d 'Lists all virtualenvs associated with the current project.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a env remove -d 'Remove virtual environments associated with the project.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a env use -d 'Activates or creates a new virtualenv for the current project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env info' -d 'Displays information about the current environment.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env list' -d 'Lists all virtualenvs associated with the current project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env remove' -d 'Remove virtual environments associated with the project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env use' -d 'Activates or creates a new virtualenv for the current project.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a export -d 'Exports the lock file to alternative formats.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a help -d 'Displays help for a command.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a init -d 'Creates a basic pyproject.toml file in the current directory.'
@@ -44,18 +45,18 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a remove -d 'Removes a package from the project dependencies.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a run -d 'Runs a command in the appropriate environment.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a search -d 'Searches for packages on remote repositories.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self add -d 'Add additional packages to Poetry\'s runtime environment.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self install -d 'Install locked packages (incl. addons) required by this Poetry installation.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self lock -d 'Lock the Poetry installation\'s system requirements.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self remove -d 'Remove additional packages from Poetry\'s runtime environment.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self show -d 'Show packages from Poetry\'s runtime environment.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self show plugins -d 'Shows information about the currently installed plugins.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a self update -d 'Updates Poetry to the latest version.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self add' -d 'Add additional packages to Poetry\'s runtime environment.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self install' -d 'Install locked packages (incl. addons) required by this Poetry installation.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self lock' -d 'Lock the Poetry installation\'s system requirements.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self remove' -d 'Remove additional packages from Poetry\'s runtime environment.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self show' -d 'Show packages from Poetry\'s runtime environment.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self show plugins' -d 'Shows information about the currently installed plugins.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'self update' -d 'Updates Poetry to the latest version.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a shell -d 'Spawns a shell within the virtual environment.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a show -d 'Shows information about packages.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a source add -d 'Add source configuration for project.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a source remove -d 'Remove source configured for the project.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a source show -d 'Show information about sources configured for the project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'source add' -d 'Add source configuration for project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'source remove' -d 'Remove source configured for the project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'source show' -d 'Show information about sources configured for the project.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a update -d 'Update the dependencies as according to the pyproject.toml file.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a version -d 'Shows the version of the project or bumps it when a valid bump rule is provided.'
 
@@ -79,10 +80,10 @@ complete -c poetry -A -n '__fish_seen_subcommand_from add' -l source -d 'Name of
 # build
 complete -c poetry -A -n '__fish_seen_subcommand_from build' -l format -d 'Limit the format to either sdist or wheel.'
 
-# cache clear
-complete -c poetry -A -n '__fish_seen_subcommand_from cache clear' -l all -d 'Clear all entries in the cache.'
+# 'cache clear'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'cache clear'' -l all -d 'Clear all entries in the cache.'
 
-# cache list
+# 'cache list'
 
 # check
 
@@ -91,26 +92,26 @@ complete -c poetry -A -n '__fish_seen_subcommand_from config' -l list -d 'List c
 complete -c poetry -A -n '__fish_seen_subcommand_from config' -l local -d 'Set/Get from the project\'s local configuration.'
 complete -c poetry -A -n '__fish_seen_subcommand_from config' -l unset -d 'Unset configuration setting.'
 
-# debug info
+# 'debug info'
 
-# debug resolve
-complete -c poetry -A -n '__fish_seen_subcommand_from debug resolve' -l extras -d 'Extras to activate for the dependency.'
-complete -c poetry -A -n '__fish_seen_subcommand_from debug resolve' -l install -d 'Show what would be installed for the current system.'
-complete -c poetry -A -n '__fish_seen_subcommand_from debug resolve' -l python -d 'Python version(s) to use for resolution.'
-complete -c poetry -A -n '__fish_seen_subcommand_from debug resolve' -l tree -d 'Display the dependency tree.'
+# 'debug resolve'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l extras -d 'Extras to activate for the dependency.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l install -d 'Show what would be installed for the current system.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l python -d 'Python version(s) to use for resolution.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l tree -d 'Display the dependency tree.'
 
 # dynamic-versioning
 
-# env info
-complete -c poetry -A -n '__fish_seen_subcommand_from env info' -l path -d 'Only display the environment\'s path.'
+# 'env info'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'env info'' -l path -d 'Only display the environment\'s path.'
 
-# env list
-complete -c poetry -A -n '__fish_seen_subcommand_from env list' -l full-path -d 'Output the full paths of the virtualenvs.'
+# 'env list'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'env list'' -l full-path -d 'Output the full paths of the virtualenvs.'
 
-# env remove
-complete -c poetry -A -n '__fish_seen_subcommand_from env remove' -l all -d 'Remove all managed virtual environments associated with the project.'
+# 'env remove'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'env remove'' -l all -d 'Remove all managed virtual environments associated with the project.'
 
-# env use
+# 'env use'
 
 # export
 complete -c poetry -A -n '__fish_seen_subcommand_from export' -l dev -d 'Include development dependencies. (Deprecated)'
@@ -178,35 +179,35 @@ complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l group -d 'The g
 
 # search
 
-# self add
-complete -c poetry -A -n '__fish_seen_subcommand_from self add' -l allow-prereleases -d 'Accept prereleases.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self add' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
-complete -c poetry -A -n '__fish_seen_subcommand_from self add' -l editable -d 'Add vcs/path dependencies as editable.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self add' -l extras -d 'Extras to activate for the dependency.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self add' -l source -d 'Name of the source to use to install the package.'
+# 'self add'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self add'' -l allow-prereleases -d 'Accept prereleases.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self add'' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self add'' -l editable -d 'Add vcs/path dependencies as editable.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self add'' -l extras -d 'Extras to activate for the dependency.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self add'' -l source -d 'Name of the source to use to install the package.'
 
-# self install
-complete -c poetry -A -n '__fish_seen_subcommand_from self install' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
-complete -c poetry -A -n '__fish_seen_subcommand_from self install' -l sync -d 'Synchronize the environment with the locked packages and the specified groups.'
+# 'self install'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self install'' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self install'' -l sync -d 'Synchronize the environment with the locked packages and the specified groups.'
 
-# self lock
-complete -c poetry -A -n '__fish_seen_subcommand_from self lock' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self lock' -l no-update -d 'Do not update locked versions, only refresh lock file.'
+# 'self lock'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self lock'' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self lock'' -l no-update -d 'Do not update locked versions, only refresh lock file.'
 
-# self remove
-complete -c poetry -A -n '__fish_seen_subcommand_from self remove' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
+# 'self remove'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self remove'' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 
-# self show
-complete -c poetry -A -n '__fish_seen_subcommand_from self show' -l addons -d 'List only add-on packages installed.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self show' -l latest -d 'Show the latest version.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self show' -l outdated -d 'Show the latest version but only for packages that are outdated.'
-complete -c poetry -A -n '__fish_seen_subcommand_from self show' -l tree -d 'List the dependencies as a tree.'
+# 'self show'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self show'' -l addons -d 'List only add-on packages installed.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self show'' -l latest -d 'Show the latest version.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self show'' -l outdated -d 'Show the latest version but only for packages that are outdated.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self show'' -l tree -d 'List the dependencies as a tree.'
 
-# self show plugins
+# 'self show plugins'
 
-# self update
-complete -c poetry -A -n '__fish_seen_subcommand_from self update' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
-complete -c poetry -A -n '__fish_seen_subcommand_from self update' -l preview -d 'Allow the installation of pre-release versions.'
+# 'self update'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self update'' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self update'' -l preview -d 'Allow the installation of pre-release versions.'
 
 # shell
 
@@ -221,13 +222,13 @@ complete -c poetry -A -n '__fish_seen_subcommand_from show' -l why -d 'When show
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l with -d 'The optional dependency groups to include.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l without -d 'The dependency groups to ignore.'
 
-# source add
-complete -c poetry -A -n '__fish_seen_subcommand_from source add' -l default -d 'Set this source as the default (disable PyPI). A default source will also be the fallback source if you add other sources.'
-complete -c poetry -A -n '__fish_seen_subcommand_from source add' -l secondary -d 'Set this source as secondary.'
+# 'source add'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l default -d 'Set this source as the default (disable PyPI). A default source will also be the fallback source if you add other sources.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l secondary -d 'Set this source as secondary.'
 
-# source remove
+# 'source remove'
 
-# source show
+# 'source show'
 
 # update
 complete -c poetry -A -n '__fish_seen_subcommand_from update' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
