@@ -111,6 +111,7 @@ return require("packer").startup({
 		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
+		use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
 
 		use({ "udalov/kotlin-vim", ft = { "kotlin" } })
 		use({ "teal-language/vim-teal", ft = { "teal" } })
