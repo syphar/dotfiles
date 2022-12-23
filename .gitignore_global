@@ -61,3 +61,6 @@ venv3
 
 # java / kotlin projects 
 .settings
+
+# nlsp-setting / vim plugin for project-local LSP settings
+.nlsp-settings
