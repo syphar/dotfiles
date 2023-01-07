@@ -21,6 +21,7 @@ end
 
 function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	vim.lsp.set_log_level("error")
+	-- vim.lsp.set_log_level("debug")
 
 	local opts = { buffer = bufnr, silent = true }
 
