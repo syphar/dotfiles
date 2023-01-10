@@ -12,9 +12,10 @@ require("lspconfig").pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
-				rope_autoimport = {
-					enabled = true,
-				},
+				-- broken currently with my setup
+				-- rope_autoimport = {
+				-- 	enabled = true,
+				-- },
 				pydocstyle = {
 					enabled = false,
 				},
