@@ -36,7 +36,7 @@ xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt || echo "fail 
 ## install/update pipx packages
 xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null || echo "fail but OK"
 pipx reinstall-all
-pipx inject python-lsp-server pylsp-mypy
+pipx inject python-lsp-server pylsp-mypy rope
 pipx inject httpie httpie-ntlm
 pipx inject poetry poetry-dynamic-versioning
 pipx inject ipython rich requests
