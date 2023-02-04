@@ -4,6 +4,7 @@ vim.filetype.add({
 		soql = "soql",
 	},
 	filename = {
+		["Justfile"] = "just",
 		["poetry.lock"] = "toml",
 		[".env.sample"] = function()
 			-- take from the `.env` definition in the vim runtime

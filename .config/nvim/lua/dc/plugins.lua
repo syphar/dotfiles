@@ -94,6 +94,7 @@ return require("packer").startup({
 		-- specific file types
 		use({ "pest-parser/pest.vim", filetype = { "pest" } })
 		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
+		use({ "NoahTheDuke/vim-just", filetype = "just" })
 		use("Glench/Vim-Jinja2-Syntax")
 		use({ "raimon49/requirements.txt.vim", ft = { "requirements" } })
 		use({ "rust-lang/rust.vim", ft = { "rust" } })
