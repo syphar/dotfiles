@@ -11,17 +11,21 @@ scrolling:
 font:
   normal:
     family: BlexMono Nerd Font
+    # family: SauceCodePro Nerd Font
     style: ExtraLight
 
   bold:
     family: BlexMono Nerd Font
+    # family: SauceCodePro Nerd Font
     style: Light
 
   italic:
     family: IBM Plex Mono
-    style: ExtraLight Italic
+    # family: SauceCodePro Nerd Font
+    style: Extra Light Italic
 
   bold_italic:
+    # family: SauceCodePro Nerd Font
     family: IBM Plex Mono
     style: Light Italic
 
