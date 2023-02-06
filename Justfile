@@ -1,9 +1,10 @@
 #!/usr/bin/env just --justfile
 
 default:
-  just --list
+    just --list
 
-daily-update: 
+daily-update:
+    git pull # to allow SSH key access in 1p, once, so later steps can use it
     just heroku-login 
     update_cached_heroku_apps
     just update-homebrew
@@ -27,16 +28,19 @@ daily-update:
     just update-venv ~/src/neovim_env/venv/
 
     # github packages downloads
-     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
-     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
+    ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
+    ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
 
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
-    # update all source repos
+    just update-git-repos
+    just update-git-worktrees
+
+update-git-repos:
     ./find_repos.sh ~/src/ | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
-    # update git worktrees
+update-git-worktrees:
     ./find_worktrees.sh ~/src/ | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
 
 update-generated-autocompletes:
@@ -75,7 +79,6 @@ update-homebrew:
     ## cleanup
     brew cleanup -s
 
-
 update-luarocks:
     ## luarocks packages
     xargs -n 1 luarocks install < luarocks_list.txt || echo "fail but OK"
@@ -93,7 +96,6 @@ update-pipx:
     pipx inject ipython rich requests
     pipx inject dslr psycopg2-binary
 
-
 update-vim:
     nvim --headless \
         -c 'autocmd User PackerComplete quitall' \
@@ -103,7 +105,7 @@ update-vim:
         -c "TSUpdateSync" \
         -c "quitall"
 
-npm-upgrade: 
+npm-upgrade:
     #!/usr/bin/env bash
     set -euxo pipefail
     for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2)
@@ -140,23 +142,23 @@ clean-fish:
     rm -f ~/.config/fish/fish_variables*conflicted*
 
 update-venv VENV:
-    {{VENV}}/bin/pip freeze | \
+    {{ VENV }}/bin/pip freeze | \
         grep = | \
         cut -d = -f 1 | \
-        xargs {{VENV}}/bin/pip install -U
+        xargs {{ VENV }}/bin/pip install -U
 
 update-git-repo REPO:
     #!/bin/bash
     set -euo pipefail
 
     echo "#################################"
-    echo "updating git repo: {{REPO}}"
-    cd "{{REPO}}"
+    echo "updating git repo: {{ REPO }}"
+    cd "{{ REPO }}"
 
     ~/bin/rebuild_tags.sh
 
-    if [ -f "{{REPO}}/.pre-commit-config.yaml" ]; then 
-        if [ ! -f "{{REPO}}/.git/hooks/pre-commit" ]; then
+    if [ -f "{{ REPO }}/.pre-commit-config.yaml" ]; then 
+        if [ ! -f "{{ REPO }}/.git/hooks/pre-commit" ]; then
             echo "pre-commit not found, installing..."
             pre-commit install
         else 
@@ -164,11 +166,11 @@ update-git-repo REPO:
         fi
     fi
 
-    if [ -f "{{REPO}}/.git-blame-ignore-revs" ]; then 
+    if [ -f "{{ REPO }}/.git-blame-ignore-revs" ]; then 
         git config blame.ignoreRevsFile .git-blame-ignore-revs
     fi
 
-    ln -s $HOME/src/dotfiles/git-hooks/* "{{REPO}}/.git/hooks" || echo "already exists"
+    ln -s $HOME/src/dotfiles/git-hooks/* "{{ REPO }}/.git/hooks" || echo "already exists"
 
     git gc
 
@@ -177,7 +179,7 @@ update-git-repo REPO:
         git fetch --all --recurse-submodules=yes --prune
         git fetch --all --prune --tags --force
         git merge --ff-only || echo "merge failed, but ok"
-        git branch -v | grep "\[gone\]" | awk '{print {{REPO}}}' | xargs git branch -D || echo "failed, but ok"
+        git branch -v | grep "\[gone\]" | awk '{print {{ REPO }}}' | xargs git branch -D || echo "failed, but ok"
     fi
 
 update-git-worktree REPO:
@@ -185,9 +187,9 @@ update-git-worktree REPO:
     set -euo pipefail
 
     echo "#################################"
-    echo "updating git worktree: {{REPO}}"
+    echo "updating git worktree: {{ REPO }}"
 
-    cd "{{REPO}}"
+    cd "{{ REPO }}"
 
     ~/bin/rebuild_tags.sh
 
