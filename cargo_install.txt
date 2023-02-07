@@ -15,7 +15,7 @@ cargo-sweep
 cargo-udeps 
 cargo-update 
 cargo-watch 
-diesel_cli 
+diesel_cli --no-default-features --features postgres
 heater 
 microserver
 mini-redis 
