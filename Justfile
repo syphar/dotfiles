@@ -179,7 +179,7 @@ update-git-repo REPO:
         git fetch --all --recurse-submodules=yes --prune
         git fetch --all --prune --tags --force
         git merge --ff-only || echo "merge failed, but ok"
-        git branch -v | grep "\[gone\]" | awk '{print {{ REPO }}}' | xargs git branch -D || echo "failed, but ok"
+        git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D || echo "failed, but ok"
     fi
 
 update-git-worktree REPO:
