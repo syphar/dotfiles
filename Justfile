@@ -83,14 +83,14 @@ update-homebrew:
 
 update-luarocks:
     ## luarocks packages
-    xargs -n 1 luarocks install < luarocks_list.txt || echo "fail but OK"
+    -xargs -n 1 luarocks install < luarocks_list.txt 
 
     ## luarocks packages for lua 5.1, for neovim
-    xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt || echo "fail but OK"
+    -xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt 
 
 update-pipx:
     ## install/update pipx packages
-    xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null || echo "fail but OK"
+    -xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null 
     pipx reinstall-all
     pipx inject python-lsp-server pylsp-mypy rope
     pipx inject httpie httpie-ntlm
@@ -133,7 +133,7 @@ update-cached-pypi-package-list:
 update-rust:
     rustup update
     cargo install-update -a
-    xargs -n 1 cargo install < cargo_install.txt || echo "fail but OK"
+    -xargs -n 1 cargo install < cargo_install.txt 
 
 update-fish: clean-fish
     # update fisher
@@ -153,8 +153,6 @@ update-git-repo REPO:
     #!/bin/bash
     set -euo pipefail
 
-    echo "#################################"
-    echo "updating git repo: {{ REPO }}"
     cd "{{ REPO }}"
 
     ~/bin/rebuild_tags.sh
@@ -187,9 +185,6 @@ update-git-repo REPO:
 update-git-worktree REPO:
     #!/bin/bash
     set -euo pipefail
-
-    echo "#################################"
-    echo "updating git worktree: {{ REPO }}"
 
     cd "{{ REPO }}"
 
