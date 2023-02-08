@@ -66,6 +66,8 @@ tldr-update:
 heroku-login:
     ## heroku login, so we can fetch from heroku remotes later 
     heroku whoami || heroku login
+    ## update the Heroku CLI
+    heroku update
 
 update-homebrew:
     brew update && brew upgrade && brew upgrade --cask
