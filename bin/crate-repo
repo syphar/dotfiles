@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+curl -s https://crates.io/api/v1/crates/$1 | jq -r '.crate.repository' 
