@@ -20,6 +20,18 @@ parser_config.graphql = {
 	used_by = { "rust" },
 }
 
+-- parser_config.just = {
+-- 	install_info = {
+-- 		url = "https://github.com/s1ck/tree-sitter-just",
+-- 		-- url = "https://github.com/IndianBoy42/tree-sitter-just",
+-- 		branch = "update-parser",
+-- 		-- branch = "main",
+-- 		use_makefile = true,
+-- 		files = { "src/parser.c", "src/scanner.cc" },
+-- 	},
+-- 	filetype = "just",
+-- }
+
 require("nvim-treesitter.configs").setup({
 	-- this costs 20ms startup time.
 	-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
