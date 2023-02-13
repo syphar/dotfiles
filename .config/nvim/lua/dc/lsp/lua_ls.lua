@@ -5,7 +5,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require("lspconfig").sumneko_lua.setup({
+require("lspconfig").lua_ls.setup({
 	root_dir = util.root_pattern(".git", ".null-ls-root"),
 	single_file_support = false, -- manually disable for now
 	capabilities = cfg.capabilities(),

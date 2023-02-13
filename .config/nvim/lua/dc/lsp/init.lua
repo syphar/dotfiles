@@ -125,7 +125,7 @@ function cfg.lsp_setup()
 		"null_ls",
 		"pylsp",
 		"rust_analyzer",
-		"sumneko_lua",
+		"lua_ls",
 		"tailwindcss",
 		"taplo",
 		"terraformls",
