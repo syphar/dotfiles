@@ -224,6 +224,7 @@ clear-cargo-cache:
 
 clear-rust-target-directories:
     fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+    rm -rf ~/.cargo/cache
 
 clear-caches:
     rm -rf ~/Library/Caches/*
