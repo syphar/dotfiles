@@ -1,5 +1,7 @@
 #!/usr/bin/env just --justfile
 
+export SRC_DIR := "/Users/syphar/src"
+
 default:
     just --list
 
@@ -25,7 +27,7 @@ daily-update:
     just update-fish
     just update-vim
 
-    just update-venv ~/src/neovim_env/venv/
+    just update-venv $SRC_DIR/neovim_env/venv/
 
     # github packages downloads
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
@@ -38,10 +40,10 @@ daily-update:
     just update-git-worktrees
 
 update-git-repos:
-    ./find_repos.sh ~/src/ | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
+    ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
 update-git-worktrees:
-    ./find_worktrees.sh ~/src/ | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
+    ./find_worktrees.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
 
 update-generated-autocompletes:
     poetry completions fish > ~/.config/fish/completions/poetry.fish
@@ -122,7 +124,7 @@ cargo-sweep:
     # we switch to any rust repo for cargo-sweep, 
     # but since we use a global target directory 
     # it clean up everything
-    cd ~/src/rust-lang/docs.rs/ && \
+    cd $SRC_DIR/rust-lang/docs.rs/ && \
         cargo sweep --time 30 && \
         cargo sweep --installed
 
@@ -194,3 +196,44 @@ update-git-worktree REPO:
     then
         git merge --ff-only || echo "merge failed, but ok"
     fi
+
+clear-disk-space:
+    just clear-thermondo-backups
+    just clear-logs
+    just clear-docker
+    just clear-cargo-cache
+    just clear-dev-environments
+    just clear-caches
+    jsut clear-rust-target-directories
+
+clear-thermondo-backups:
+    fd --type f --full-path --no-ignore ".*/sql/backup/.*\.sql" "$SRC_DIR/thermondo/" --exec rm -rf {}
+
+clear-logs:
+    rm -rf /usr/local/var/log/*
+
+clear-docker:
+    docker container prune -f
+    docker image prune -a -f
+    docker builder prune -a -f
+    docker volume prune -f
+    docker volume prune -f
+
+clear-cargo-cache:
+    cargo cache --autoclean
+
+clear-rust-target-directories:
+    fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+
+clear-caches:
+    rm -rf ~/Library/Caches/*
+    rm -rf ~/Library/Developer/CoreSimulator/Caches/*
+
+clear-dev-environments:
+    fd --type d --no-ignore --hidden --prune "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.tox$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --prune node_modules "$SRC_DIR" --exec rm -rf {}
+
+clear-docsrs-dev:
+    fd --type d --no-ignore --hidden --prune "\.rustwide-docker" "$SRC_DIR/rust-lang/" --exec rm -rf {}
+    fd --type d --no-ignore --prune --full-path "ignored/cratesfyi-prefix" "$SRC_DIR/rust-lang" --exec rm -rf {}
