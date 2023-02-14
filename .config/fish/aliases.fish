@@ -2,7 +2,7 @@ alias gur="git fetch --all --recurse-submodules=yes --prune"
 
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip install -U"
-alias pipirt="pip install -r requirements_test.txt"
+alias pipirt="pip install --upgrade pip wheel setuptools && pip install -r requirements_test.txt"
 
 alias tiga='tig --all'
 alias tigs='tig status'
@@ -38,8 +38,8 @@ abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-alias ll="lsd --long --almost-all"
-alias l="lsd"
+alias ll="exa --long --all --header --icons --group-directories-first --color-scale"
+alias l="exa --icons --group-directories-first"
 alias less="bat"
 alias cat="bat"
 alias du="dust"
