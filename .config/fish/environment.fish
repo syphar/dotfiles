@@ -22,8 +22,7 @@ set --global -x FZF_ALT_C_COMMAND "fd --type d $FD_OPTIONS"
 # configure memoize-script in ~/bin/runcached
 set --global -x RUNCACHED_MAX_AGE 86400 # 1 day
 
-# i do this myself in dotfiles/tasks.py
-set --global -x HOMEBREW_NO_AUTO_UPDATE 1
+# i do this myself in daily update
 set --global -x HOMEBREW_NO_INSTALL_CLEANUP 1
 
 set --global -x FORGIT_LOG_GRAPH_ENABLE 1
