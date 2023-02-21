@@ -48,6 +48,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
+			timeout = 30000,
 		}),
 		null_ls.builtins.diagnostics.teal,
 		null_ls.builtins.diagnostics.vint,
@@ -127,6 +128,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
+			timeout = 30000,
 		}),
 		null_ls.builtins.formatting.taplo,
 		null_ls.builtins.formatting.terraform_fmt,
