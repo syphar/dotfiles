@@ -4,6 +4,7 @@ vim.filetype.add({
 		soql = "soql",
 	},
 	filename = {
+		[".sqlfluff"] = "cfg",
 		["Justfile"] = "just",
 		["poetry.lock"] = "toml",
 		[".env.sample"] = function()
