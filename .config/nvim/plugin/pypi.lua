@@ -67,8 +67,13 @@ end
 
 local fetch_package = function(buf, package, version, i)
 	local curl = require("plenary.curl")
-	curl.get(string.format(endpoint, package), {
+	local url = string.format(endpoint, package)
+	curl.get(url, {
 		callback = function(out)
+			if out.status ~= 200 then
+				print("got error " .. out.status .. " from pypi while fetching " .. url .. "\n" .. out.body)
+				return
+			end
 			local success, result = pcall(vim.json.decode, out.body, json_decode_opts)
 			if not success then
 				return
@@ -105,5 +110,5 @@ local group = vim.api.nvim_create_augroup("Pypi", {})
 vim.api.nvim_create_autocmd("FileType", {
 	group = group,
 	pattern = "requirements",
-	callback = update
+	callback = update,
 })
