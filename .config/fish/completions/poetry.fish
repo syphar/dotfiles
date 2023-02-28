@@ -138,6 +138,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from init' -l python -d 'Compat
 
 # install
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l all-extras -d 'Install all extra dependencies.'
+complete -c poetry -A -n '__fish_seen_subcommand_from install' -l compile -d 'Compile Python source files to bytecode. (This option has no effect if modern-installation is disabled because the old installer always compiles.)'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l extras -d 'Extra sets of dependencies to install.'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-dev -d 'Do not install the development dependencies. (Deprecated)'
