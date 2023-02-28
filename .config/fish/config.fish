@@ -23,7 +23,6 @@ if status --is-interactive
 
     direnv hook fish | source
 
-
     zoxide init fish --cmd cd | source
 
     # upgrade open-file limit for vim & docs.rs
