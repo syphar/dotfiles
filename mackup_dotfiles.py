@@ -16,6 +16,7 @@ app_list = (
     "lsd",
     "mackup",
     "mybin",
+    "mycargo",
     "myfish",
     "myneovim",
     "mytmuxinator",
