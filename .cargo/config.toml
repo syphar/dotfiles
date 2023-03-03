@@ -1,2 +1,2 @@
 [registries.crates-io]
-protocol = "sparse"
+# protocol = "sparse"
