@@ -24,4 +24,5 @@ rusty-man
 sccache 
 taplo-cli 
 wasm-pack 
+wiki-tui
 zeta-note 
