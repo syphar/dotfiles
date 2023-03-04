@@ -84,8 +84,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	local conditional_utils = require("null-ls.utils").make_conditional_utils()
 
 	if
-		ft == "just"
-		or ft == "terraform"
+		ft == "terraform"
 		or ft == "rust"
 		or ft == "go"
 		or (ft == "lua" and conditional_utils.root_has_file("stylua.toml"))
