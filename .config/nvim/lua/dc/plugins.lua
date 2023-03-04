@@ -97,6 +97,10 @@ return require("packer").startup({
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 		use({ "ThePrimeagen/git-worktree.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 		use({
+			"nvim-telescope/telescope-live-grep-args.nvim",
+			requires = { { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
+		})
+		use({
 			-- "~/src/python-docs.nvim",
 			"syphar/python-docs.nvim",
 			rocks = { "net-url" },
