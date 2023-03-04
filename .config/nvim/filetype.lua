@@ -13,5 +13,4 @@ vim.filetype.add({
 		end,
 		[".luacheckrc"] = "lua",
 	},
-	pattern = {},
 })
