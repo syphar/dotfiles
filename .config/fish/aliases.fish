@@ -17,6 +17,7 @@ abbr -ag dcu docker compose up
 abbr -ag dcd docker compose down
 abbr -ag dcb docker compose build
 abbr -ag dcs docker compose
+alias dcs="docker stop (docker ps -q)"
 
 alias vim="nvim"
 alias vi="nvim"
