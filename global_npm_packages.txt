@@ -1,6 +1,7 @@
 @fsouza/prettierd
 @salesforce/cli
 @tailwindcss/language-server
+alex
 bash-language-server
 cspell
 eslint_d
