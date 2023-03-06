@@ -53,7 +53,7 @@ alias j="jobs"
 
 alias just="command $HOME/.cargo/cache/release/just $argv"
 
-abbr -ag lg lazygit
+abbr -ag lg gitui
 abbr -ag g git
 abbr -ag gco git checkout
 abbr -ag gst git status
