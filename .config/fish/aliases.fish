@@ -51,6 +51,8 @@ alias objdump="bingrep"
 alias hexdump="hx"
 alias j="jobs"
 
+alias just="command $HOME/.cargo/cache/release/just $argv"
+
 abbr -ag lg lazygit
 abbr -ag g git
 abbr -ag gco git checkout
