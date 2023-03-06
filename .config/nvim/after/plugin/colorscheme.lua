@@ -1,5 +1,5 @@
-local default_colors = require("kanagawa.colors").setup()
 require("kanagawa").setup({
+	compile = false,
 	undercurl = true, -- enable undercurls
 	commentStyle = { italic = true },
 	functionStyle = {},
@@ -13,16 +13,23 @@ require("kanagawa").setup({
 	dimInactive = false,
 	globalStatus = true,
 	colors = {
-		-- inactive statusline was too dark, should be brighter
-		bg_status = default_colors.bg_light0,
+		theme = {
+			all = {
+				ui = {
+					bg_gutter = "none",
+				},
+			},
+		},
 	},
-	overrides = {
-		-- brighter background for context and LspReference
-		TreesitterContext = { bg = default_colors.bg_light0 },
-		LspReferenceText = { bg = default_colors.bg_light0 },
-		-- default NormalFloat BG is too dark
-		NormalFloat = { bg = default_colors.bg_light1 },
-		WinSeparator = { bg = "NONE", fg = "#727169" },
-	},
+	overrides = function(colors)
+		return {
+			-- brighter background for context and LspReference
+			TreesitterContext = { bg = colors.palette.sumiInk4 },
+			LspReferenceText = { bg = colors.palette.sumiInk4 },
+			-- default NormalFloat BG is too dark
+			NormalFloat = { bg = colors.palette.sumiInk3 },
+			WinSeparator = { bg = "NONE", fg = "#727169" },
+		}
+	end,
 })
 vim.cmd("colorscheme kanagawa")
