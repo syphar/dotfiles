@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 vim.opt.equalalways = true
 
 -- line numbers and relative number
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 -- enable mouse support
 vim.opt.mouse = "a"
