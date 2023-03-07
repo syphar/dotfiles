@@ -136,7 +136,14 @@ update-cached-pypi-package-list:
 update-rust:
     rustup update
     cargo install-update -a
-    -xargs -n 1 cargo install < cargo_install.txt 
+    -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo install
+
+cargo-install:
+    #!/usr/bin/env fish
+    for line in (cat cargo_install.txt)
+        eval (cargo install $line)
+    end
+
 
 update-fish: clean-fish
     # update fisher
