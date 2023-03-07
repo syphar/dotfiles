@@ -3,6 +3,7 @@ cargo-aoc
 cargo-audit 
 cargo-bloat 
 cargo-cache 
+cargo-check
 cargo-chef
 cargo-docset 
 cargo-edit 
@@ -17,6 +18,8 @@ cargo-update
 cargo-watch 
 diesel_cli --no-default-features --features postgres
 heater 
+mdbook
+mdbook-linkcheck
 microserver
 mini-redis 
 runiq 
