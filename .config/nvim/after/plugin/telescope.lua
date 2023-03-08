@@ -247,11 +247,10 @@ local telescope_treesitter_tags = function()
 	require("telescope.builtin").treesitter({
 		debounce = 100,
 		entry_maker = function(entry)
-			local ts_utils = require("nvim-treesitter.ts_utils")
-			local start_row, start_col, end_row, _ = ts_utils.get_node_range(entry.node)
+			local start_row, start_col, end_row, _ = vim.treesitter.get_node_range(entry.node)
 			local node_text = _node_text_first_line(entry.node, bufnr)
 
-			local node_line = ts_utils.get_node_range(entry.node)
+			local node_line = vim.treesitter.get_node_range(entry.node)
 
 			local parent_name = ""
 			local parent = entry.node:parent()
@@ -266,7 +265,7 @@ local telescope_treesitter_tags = function()
 					or node_type:find("enum_item")
 				then
 					local parent_text = _node_text_first_line(parent, bufnr)
-					local parent_line = ts_utils.get_node_range(parent)
+					local parent_line = vim.treesitter.get_node_range(parent)
 					if parent_text ~= node_text and node_line ~= parent_line then
 						parent_name = parent_text
 						break
