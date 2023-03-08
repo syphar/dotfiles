@@ -39,7 +39,7 @@ abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-alias ll="exa --long --all --header --icons --group-directories-first --color-scale"
+alias ll="exa --long --all --header --icons --group-directories-first --color-scale --time-style=relative"
 alias l="exa --icons --group-directories-first"
 alias less="bat"
 alias cat="bat"
@@ -50,8 +50,6 @@ alias iftop="bandwhich"
 alias objdump="bingrep"
 alias hexdump="hx"
 alias j="jobs"
-
-alias just="command $HOME/.cargo/cache/release/just $argv"
 
 abbr -ag lg gitui
 abbr -ag g git
