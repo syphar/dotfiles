@@ -75,7 +75,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		local parsers = require("nvim-treesitter.parsers")
 
 		local lang = parsers.get_buf_lang()
-		if lang ~= "markdown" and parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+		-- if lang ~= "markdown" and parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
+		if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
 			vim.schedule_wrap(function()
 				vim.cmd("TSInstallSync " .. lang)
 			end)()
