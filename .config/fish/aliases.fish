@@ -16,7 +16,7 @@ alias ssh='TERM=xterm-256color /usr/bin/ssh'
 abbr -ag dcu docker compose up
 abbr -ag dcd docker compose down
 abbr -ag dcb docker compose build
-abbr -ag dcs docker compose
+abbr -ag dc docker compose
 alias dcs="docker stop (docker ps -q)"
 
 alias vim="nvim"
