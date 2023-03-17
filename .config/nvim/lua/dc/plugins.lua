@@ -10,7 +10,6 @@ return require("packer").startup({
 	function(use, use_rocks)
 		use("wbthomason/packer.nvim")
 		use("lewis6991/impatient.nvim")
-		use("antoinemadec/FixCursorHold.nvim")
 		use("tpope/vim-projectionist")
 
 		use_rocks("toml")
@@ -26,12 +25,12 @@ return require("packer").startup({
 		use("rebelot/kanagawa.nvim")
 
 		-- general plugins
-		use("farmergreg/vim-lastplace") --jump to last edited line in files
-		use("numToStr/Navigator.nvim") -- jump between vim and tmux splits with C+hjkl
+		use("farmergreg/vim-lastplace")      --jump to last edited line in files
+		use("numToStr/Navigator.nvim")       -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
-		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
-		use({ -- small filename-status when using global statusline
+		use("phaazon/hop.nvim")              -- hop to lines or words with shortcuts
+		use({                                -- small filename-status when using global statusline
 			-- "~/src/incline.nvim/",
 			"b0o/incline.nvim",
 		})
@@ -41,7 +40,7 @@ return require("packer").startup({
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
 		use(
-			-- "~/src/nvim-treesitter-context/"
+		-- "~/src/nvim-treesitter-context/"
 			"nvim-treesitter/nvim-treesitter-context"
 		)
 		use("mfussenegger/nvim-treehopper")
@@ -133,7 +132,7 @@ return require("packer").startup({
 		use("kyazdani42/nvim-web-devicons")
 		use("numToStr/Comment.nvim") --comment/uncomment on gcc
 		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
-		use("direnv/direnv.vim") -- read direnv for vim env
+		use("direnv/direnv.vim")    -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
 		use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
 
