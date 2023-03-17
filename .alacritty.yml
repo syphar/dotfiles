@@ -10,9 +10,10 @@ scrolling:
 
 font:
   normal:
-    family: BlexMono Nerd Font
     # family: SauceCodePro Nerd Font
+    family: BlexMono Nerd Font
     style: ExtraLight
+
 
   bold:
     family: BlexMono Nerd Font
