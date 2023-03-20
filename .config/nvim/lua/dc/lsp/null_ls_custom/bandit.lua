@@ -20,6 +20,9 @@ return {
 		ignore_stderr = true,
 		format = "json",
 		check_exit_code = { 0, 1 },
+		condition = function(utils)
+			return utils.root_has_file({ ".bandit" })
+		end,
 		runtime_condition = function(params)
 			-- HACK: mimic bandit excludes so I can use it with null-ls for now
 			local bandit_ini = Path:new(utils.get_root() .. "/" .. ".bandit")

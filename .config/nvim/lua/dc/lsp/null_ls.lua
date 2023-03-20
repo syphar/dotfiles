@@ -28,7 +28,9 @@ local function pyproject_toml()
 		local data = toml.decode(filename:read())
 		return data
 	end
-	return {}
+	return {
+		tool = {},
+	}
 end
 
 local function setup_cfg_sections()
