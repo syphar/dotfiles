@@ -33,6 +33,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
 	vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
