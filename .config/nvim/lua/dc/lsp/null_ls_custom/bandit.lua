@@ -43,8 +43,10 @@ return {
 						end
 					end
 				end
+				return true
+			else
+				return false
 			end
-			return true
 		end,
 		on_output = function(params)
 			local parse = helpers.diagnostics.from_json({
