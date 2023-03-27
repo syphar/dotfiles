@@ -7,11 +7,12 @@
 	quotepath = false
 	trustExitCode = true
 	autocrlf = input
-[feature]
+; [feature]
   # Support repos with large number of files, improving git status and git
   # commit performance. See `man git-config` for details
   # https://github.com/starship/starship/issues/1617#issuecomment-885959971
-  manyFiles = true
+  ; manyFiles = true
+  ; FIXME: mayfiles breaks libgit2 -> gitui
 [pager]
     diff = delta
     log = delta
