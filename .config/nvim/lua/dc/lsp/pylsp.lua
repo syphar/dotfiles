@@ -3,8 +3,8 @@ local cfg = require("dc.lsp")
 require("lspconfig").pylsp.setup({
 	-- cmd = {
 	-- 	"/Users/syphar/src/python-lsp-server/.direnv/python-3.9.15/bin/pylsp",
-	-- 	-- "-vvv",
-	-- 	-- "--log-file=/Users/syphar/tmp/pylsp.log",
+	-- 	"-vvv",
+	-- 	"--log-file=/Users/syphar/tmp/pylsp.log",
 	-- },
 	flags = cfg.global_flags(),
 	capabilities = cfg.capabilities(),
