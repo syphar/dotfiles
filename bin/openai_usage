@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+
+set -l first_of_this_month (gdate +%Y-%m-01)
+set -l first_of_next_month (gdate -d "$first_of_this_month +1 month" +%Y-%m-%d)
+
+# source for the API endpoint: 
+# https://stackoverflow.com/a/75925022/1194456
+http GET \
+    "https://api.openai.com/dashboard/billing/usage?start_date=$first_of_this_month&end_date=$first_of_next_month" \
+    Authorization:"Bearer $OPENAI_API_KEY" \
+    | jq -r '.total_usage | round / 100'
