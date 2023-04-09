@@ -141,8 +141,7 @@ return require("packer").startup({
 		use("rafcamlet/nvim-luapad")
 		use("kyazdani42/nvim-web-devicons")
 		use("numToStr/Comment.nvim") --comment/uncomment on gcc
-		use("gpanders/editorconfig.nvim") -- read editorconfig and configure vim
-		use("direnv/direnv.vim")    -- read direnv for vim env
+		use("direnv/direnv.vim") -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
 		use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
 
