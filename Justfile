@@ -120,14 +120,11 @@ npm-upgrade:
 
     xargs -n 1 npm install -g < global_npm_packages.txt 
 
-cargo-sweep:
-    # sweep rust target directory
-    # we switch to any rust repo for cargo-sweep, 
-    # but since we use a global target directory 
-    # it clean up everything
-    cd $SRC_DIR/rust-lang/docs.rs/ && \
+cargo-sweep REPO:
+    cd {{ REPO }} && \
         cargo sweep --time 30 && \
         cargo sweep --installed
+     
 
 update-cached-pypi-package-list:
     # regex /ggrep via https://unix.stackexchange.com/a/13472/388999
@@ -162,6 +159,10 @@ update-venv VENV:
 update-git-repo REPO:
     #!/bin/bash
     set -euo pipefail
+
+    if [ -e "{{ REPO }}/Cargo.toml" ] && [ -d "{{ REPO }}/target" ]; then
+        just cargo-sweep "{{ REPO }}"
+    fi
 
     cd "{{ REPO }}"
 
