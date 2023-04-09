@@ -73,6 +73,8 @@ abbr -ag hh http --headers
 abbr -ag hb http --print=hb
 alias glo 'forgit::log -50'
 
+abbr -ag cb chatblade
+
 # common typos
 abbr -ag dlsr dslr
 

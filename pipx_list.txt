@@ -2,6 +2,7 @@ argcomplete
 awscli
 bandit
 black
+chatblade
 curlylint
 dephell
 djhtml
