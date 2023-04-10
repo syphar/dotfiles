@@ -15,7 +15,6 @@ daily-update:
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
-    just cargo-sweep
     just npm-upgrade
     just kill-mypyd
     just tldr-update
