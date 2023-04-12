@@ -14,7 +14,7 @@ require("telescope").setup({
 				return math.min(
 					math.max(
 						math.floor(max_columns * 0.6), -- 60% width
-						80 -- minimum 80 chars
+						80           -- minimum 80 chars
 					),
 					max_columns - 10 -- padding of 5
 				)
@@ -37,7 +37,7 @@ require("telescope").setup({
 	},
 	extensions = {
 		fzf = {
-			fuzzy = true, -- false will only do exact matching
+			fuzzy = true,          -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
@@ -241,7 +241,7 @@ local telescope_treesitter_tags = function()
 	local bufnr = 0 -- find?
 
 	local _node_text_first_line = function(node, buf)
-		return vim.split(vim.treesitter.query.get_node_text(node, buf), "\n")[1]
+		return vim.split(vim.treesitter.get_node_text(node, buf), "\n")[1]
 	end
 
 	require("telescope.builtin").treesitter({
@@ -280,15 +280,12 @@ local telescope_treesitter_tags = function()
 
 			return {
 				valid = true,
-
 				value = entry.node,
 				kind = entry.kind,
 				parent = parent_name,
 				ordinal = node_text .. " " .. (entry.kind or "unknown"),
 				display = make_display,
-
 				node_text = node_text,
-
 				filename = vim.api.nvim_buf_get_name(bufnr),
 				lnum = start_row + 1,
 				col = start_col,
