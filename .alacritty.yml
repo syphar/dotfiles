@@ -254,3 +254,10 @@ key_bindings:
   - { key: Key6,      mods: Alt|Shift, chars: "\x1b^"                       } # Alt + ^
   - { key: Backslash, mods: Alt,       chars: "\x1b\\"                      } # Alt + \
   - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                       } # Alt + |
+
+
+  # https://stackoverflow.com/a/42461580
+  - { key: Return, mods: Shift,   chars: "\x1b[13;2u" }
+  - { key: Return, mods: Control, chars: "\x1b[13;5u" }
+  - { key: Space,  mods: Shift,   chars: "\x1b[32;2u" }
+  - { key: Space,  mods: Control, chars: "\x1b[32;5u" } # NOTE: This is an edge case and might not work.
