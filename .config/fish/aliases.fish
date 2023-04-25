@@ -80,6 +80,8 @@ abbr -ag dlsr dslr
 
 alias prcreate="gh pr create --fill --draft --assignee syphar"
 alias propen="gh pr view --web"
+abbr -ag po propen
 alias prcropen="gh pr create --fill --draft --assignee syphar && gh pr view --web"
+abbr -ag pc prcropen
 
 alias unset 'set --erase'
