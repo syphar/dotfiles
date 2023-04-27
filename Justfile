@@ -31,6 +31,7 @@ daily-update:
     # github packages downloads
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
+    ./download_github_release.sh rust-analyzer rust-lang/rust-analyzer rust-analyzer-aarch64-apple-darwin.gz
 
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
