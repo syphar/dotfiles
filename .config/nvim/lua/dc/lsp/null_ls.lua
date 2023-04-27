@@ -89,6 +89,7 @@ null_ls.setup({
 				return utils.root_has_file({ "selene.toml" })
 			end,
 		}),
+		null_ls.builtins.diagnostics.semgrep,
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
