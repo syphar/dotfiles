@@ -102,6 +102,8 @@ update-pipx:
     pipx inject dslr psycopg2-binary
 
 update-vim:
+    rm -f ~/.local/state/nvim/*.log
+
     nvim --headless \
         -c 'autocmd User PackerComplete quitall' \
         -c 'PackerSync'
