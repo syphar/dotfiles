@@ -28,9 +28,13 @@ return require("packer").startup({
 		use("farmergreg/vim-lastplace")      --jump to last edited line in files
 		use("numToStr/Navigator.nvim")       -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
+		use({
+			"sQVe/bufignore.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+		})
 
-		use("phaazon/hop.nvim")              -- hop to lines or words with shortcuts
-		use({                                -- small filename-status when using global statusline
+		use("phaazon/hop.nvim") -- hop to lines or words with shortcuts
+		use({             -- small filename-status when using global statusline
 			-- "~/src/incline.nvim/",
 			"b0o/incline.nvim",
 		})
