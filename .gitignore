@@ -8,3 +8,10 @@ venv
 .config/nvim/.netrwhist
 .config/fish/fish_variables*
 .config/fish/*.tmp.*
+# orbstack binary symlinks
+bin/docker
+bin/docker-buildx
+bin/docker-compose
+bin/docker-credential-osxkeychain
+bin/orb
+bin/orbctl
