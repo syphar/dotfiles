@@ -89,16 +89,6 @@ return require("packer").startup({
 		})
 		use({ "Saecki/crates.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
-		use("james1236/backseat.nvim")
-		use({
-			"jackMort/ChatGPT.nvim",
-			requires = {
-				"MunifTanjim/nui.nvim",
-				"nvim-lua/plenary.nvim",
-				"nvim-telescope/telescope.nvim",
-			},
-		})
-
 		-- file management / search
 		use("tamago324/lir.nvim") -- file manager
 		use("tamago324/lir-git-status.nvim")
