@@ -98,6 +98,13 @@ symbol = ""
 style = "bold bright-green"
 truncation_length = 20
 
+[gcloud]
+# format = '[$symbol$account(@$domain)(\($project\))]($style) '
+format = '[$symbol$active ($project)]($style) '
+
+[gcloud.project_aliases]
+philip-crockett-test-382714 = '⭘ backup-test'
+
 [custom.heroku]
 shell = ["luajit", "-"]
 description = "currently active Heroku app and logged in user"
@@ -128,7 +135,7 @@ truncation_length = 5
 truncation_symbol = "…/"
 style = "bright-blue"
 repo_root_style = "bright-blue bold"
-read_only = " "
+read_only = " 󰌾"
 
 [docker_context]
 format = "[$symbol ]($style)"
@@ -140,7 +147,7 @@ style = "blue"
 disabled = true
 format = "[$symbol$version]($style) "
 style = "208"
-symbol = " "
+symbol = "󰏗 "
 
 [rust]
 format = "[$symbol($version )]($style)"
@@ -176,10 +183,10 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
