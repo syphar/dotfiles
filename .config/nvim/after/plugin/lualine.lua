@@ -37,7 +37,16 @@ require("lualine").setup({
 		},
 		lualine_x = {},
 		lualine_y = {
-			{ "diagnostics", sources = { "nvim_diagnostic" } },
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = {
+					error = "󰅚 ", -- xf659
+					warn = "󰀪 ", -- xf529
+					info = "󰋽 ", -- xf7fc
+					hint = "󰌶 ", -- xf835
+				},
+			},
 			{ "filetype", icon_only = false },
 		},
 		lualine_z = { "LineNoIndicator", "location" },
