@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+
+set docker_icon ""
+set CONTAINERS (docker ps -q | wc -l | string trim)
+printf "$docker_icon $CONTAINERS"
