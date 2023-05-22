@@ -66,7 +66,7 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 
 # add
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l allow-prereleases -d 'Accept prereleases.'
-complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dev -d 'Add as a development dependency. (Deprecated)'
+complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dev -d 'Add as a development dependency. (Deprecated) Use --group=dev instead.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l editable -d 'Add vcs/path dependencies as editable.'
 complete -c poetry -A -n '__fish_seen_subcommand_from add' -l extras -d 'Extras to activate for the dependency.'
@@ -103,6 +103,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l tree -
 # dynamic-versioning
 
 # 'env info'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'env info'' -l executable -d 'Only display the environment\'s python executable path.'
 complete -c poetry -A -n '__fish_seen_subcommand_from 'env info'' -l path -d 'Only display the environment\'s path.'
 
 # 'env list'
@@ -142,6 +143,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from install' -l compile -d 'Co
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l extras -d 'Extra sets of dependencies to install.'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-dev -d 'Do not install the development dependencies. (Deprecated)'
+complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-directory -d 'Do not install any directory path dependencies; useful to install dependencies without source code, e.g. for caching of Docker layers)'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l no-root -d 'Do not install the root package (the current project).'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l only -d 'The only dependency groups to include.'
 complete -c poetry -A -n '__fish_seen_subcommand_from install' -l only-root -d 'Exclude all dependencies.'
@@ -172,9 +174,10 @@ complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l skip-existing 
 complete -c poetry -A -n '__fish_seen_subcommand_from publish' -l username -d 'The username to access the repository.'
 
 # remove
-complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dev -d 'Remove a package from the development dependencies. (Deprecated)'
+complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dev -d 'Remove a package from the development dependencies. (Deprecated) Use --group=dev instead.'
 complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l dry-run -d 'Output the operations but do not execute anything (implicitly enables --verbose).'
 complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l group -d 'The group to remove the dependency from.'
+complete -c poetry -A -n '__fish_seen_subcommand_from remove' -l lock -d 'Do not perform operations (only update the lockfile).'
 
 # run
 
@@ -218,14 +221,16 @@ complete -c poetry -A -n '__fish_seen_subcommand_from show' -l latest -d 'Show t
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l no-dev -d 'Do not list the development dependencies. (Deprecated)'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l only -d 'The only dependency groups to include.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l outdated -d 'Show the latest version but only for packages that are outdated.'
+complete -c poetry -A -n '__fish_seen_subcommand_from show' -l top-level -d 'Show only top-level dependencies.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l tree -d 'List the dependencies as a tree.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l why -d 'When showing the full list, or a --tree for a single package, also display why it\'s included.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l with -d 'The optional dependency groups to include.'
 complete -c poetry -A -n '__fish_seen_subcommand_from show' -l without -d 'The dependency groups to ignore.'
 
 # 'source add'
-complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l default -d 'Set this source as the default (disable PyPI). A default source will also be the fallback source if you add other sources.'
-complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l secondary -d 'Set this source as secondary.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l default -d 'Set this source as the default (disable PyPI). A default source will also be the fallback source if you add other sources. (Deprecated, use --priority)'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l priority -d 'Set the priority of this source. One of: default, primary, secondary, supplemental, explicit. Defaults to primary.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'source add'' -l secondary -d 'Set this source as secondary. (Deprecated, use --priority)'
 
 # 'source remove'
 
