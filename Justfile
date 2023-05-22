@@ -19,6 +19,8 @@ daily-update:
     just kill-mypyd
     just tldr-update
 
+    gh extension upgrade --all
+
     ## bat cache
     bat cache --build
 
