@@ -394,7 +394,6 @@ brew "zlib"
 brew "zoxide"
 brew "zsh"
 brew "zsh-completions", link: false
-brew "afnanenayet/tap/diffsitter"
 brew "ankitpokhrel/jira-cli/jira-cli"
 brew "cjbassi/ytop/ytop"
 brew "fastly/tap/fastly"
