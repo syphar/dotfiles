@@ -14,6 +14,8 @@ alias gdmain='gd main...'
 alias clippy='cargo clippy -Zunstable-options --verbose'
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
+alias ranger='TERM=xterm-256color command ranger'
+
 abbr -ag dcu docker compose up
 abbr -ag dcd docker compose down
 abbr -ag dcb docker compose build
