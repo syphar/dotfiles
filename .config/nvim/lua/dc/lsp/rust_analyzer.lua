@@ -54,6 +54,9 @@ require("rust-tools").setup({
 					-- Whether to show inlay type hints for return types of closures.
 					closureReturnTypeHints = { enable = "never" }, --default: "never", options: "always", "never", "with_block"
 
+					-- Whether to show inlay hints for closure captures.
+					closureCaptureHints = { enable = true }, -- default : false
+
 					-- Whether to show inlay hints for type adjustments.
 					expressionAdjustmentHints = { enable = "never" }, --default: "never", options "always", "never", "reborrow"
 
