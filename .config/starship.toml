@@ -11,6 +11,7 @@ $character"""
 
 # move the rest of the prompt to the right
 # right_format = """$all"""
+
 # FIXME: this $all seems to be broken, and also includes components that are already in `format` above
 right_format = """
 $username\
@@ -88,6 +89,7 @@ $status\
 $os\
 $container\
 $shell"""
+
 add_newline = false
 
 command_timeout = 500
