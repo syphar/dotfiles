@@ -45,6 +45,7 @@ ls.add_snippets("python", {
 	}),
 	snippet("pdb", { text("__import__('pdb').set_trace()") }),
 	snippet("ipdb", { text("__import__('ipdb').set_trace()") }),
+	snippet("djconf", { text("from django.conf import settings") }),
 }, {
 	key = "my_python_snippets",
 })
