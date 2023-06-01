@@ -1,0 +1,16 @@
+#!/usr/bin/env nu
+
+let dest = $env.HOME + "/Library/Application Support/zoxide/db.zo"
+
+
+ls $"($dest | path dirname)/db *.zo" | get name | each {|fn| 
+    echo $fn
+    ~/src/zoxide/target/release/zoxide import --merge --from zoxide $fn
+    rm -f "$fn"
+}
+
+# for $f in (ls ($dest + "/*.zo")) {
+#     echo $f
+# }
+
+# echo $dest
