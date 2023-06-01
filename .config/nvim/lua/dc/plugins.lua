@@ -140,12 +140,13 @@ return require("packer").startup({
 		use({ "udalov/kotlin-vim", ft = { "kotlin" } })
 		use({ "teal-language/vim-teal", ft = { "teal" } })
 		use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
+		use("LhKipp/nvim-nu")
 		use("5long/pytest-vim-compiler")
 
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("tamago324/nlsp-settings.nvim")
-		use("ray-x/lsp_signature.nvim")
+		use({ "ray-x/lsp_signature.nvim", commit = "7a26ebaa7e36aa2aefa6c1994b2b866c96de32e6" })
 		use({
 			-- "~/src/rust-tools.nvim/",
 			"simrat39/rust-tools.nvim",
