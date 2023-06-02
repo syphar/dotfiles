@@ -1,16 +1,18 @@
 #!/usr/bin/env nu
 
-let dest = $env.HOME + "/Library/Application Support/zoxide/db.zo"
+mut files = []
 
-
-ls $"($dest | path dirname)/db *.zo" | get name | each {|fn| 
-    echo $fn
-    ~/src/zoxide/target/release/zoxide import --merge --from zoxide $fn
-    rm -f "$fn"
+try {
+    $files = (ls '~/Library/Application Support/zoxide/db *.zo')
+} catch {
+    echo "No files found in the directory"
+    exit 0
 }
 
-# for $f in (ls ($dest + "/*.zo")) {
-#     echo $f
-# }
-
-# echo $dest
+$files 
+    | get name 
+    | each { |fn| 
+        echo $fn
+        do {^~/src/zoxide/target/release/zoxide import --merge --from zoxide $fn} | complete
+        rm $fn
+    }
