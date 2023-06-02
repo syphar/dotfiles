@@ -24,6 +24,8 @@ daily-update:
     ## bat cache
     bat cache --build
 
+    ./merge_zoxide
+
     just mackup
     just update-fish
     just update-vim
