@@ -37,6 +37,10 @@ daily-update:
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
     ./download_github_release.sh rust-analyzer rust-lang/rust-analyzer rust-analyzer-aarch64-apple-darwin.gz
 
+    # install my custom binaries 
+    just install-custom-rust-binary ~/src/just/ just
+    just install-custom-rust-binary ~/src/zoxide/ zoxide
+
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
@@ -162,6 +166,12 @@ update-venv VENV:
         grep = | \
         cut -d = -f 1 | \
         xargs {{ VENV }}/bin/pip install -U
+
+install-custom-rust-binary REPO BINARY_NAME:
+    cd {{ REPO }} && cargo build --release
+
+    rm -f $HOME/bin/{{ BINARY_NAME }}
+    mv {{ REPO }}/target/release/{{ BINARY_NAME }} $HOME/bin/{{ BINARY_NAME }}
 
 update-git-repo REPO:
     #!/bin/bash
