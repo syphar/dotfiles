@@ -16,3 +16,5 @@ bin/docker-compose
 bin/docker-credential-osxkeychain
 bin/orb
 bin/orbctl
+bin/just 
+bin/zoxide
