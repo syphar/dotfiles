@@ -58,7 +58,6 @@ return require("packer").startup({
 				"hrsh7th/cmp-path",
 				"saadparwaiz1/cmp_luasnip",
 				"ray-x/cmp-treesitter",
-				"hrsh7th/cmp-nvim-lsp-signature-help",
 			},
 		})
 		use({
@@ -146,7 +145,8 @@ return require("packer").startup({
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("tamago324/nlsp-settings.nvim")
-		use({ "ray-x/lsp_signature.nvim", commit = "7a26ebaa7e36aa2aefa6c1994b2b866c96de32e6" })
+		-- use({ "ray-x/lsp_signature.nvim", commit = "7a26ebaa7e36aa2aefa6c1994b2b866c96de32e6" })
+		use("ray-x/lsp_signature.nvim")
 		use({
 			-- "~/src/rust-tools.nvim/",
 			"simrat39/rust-tools.nvim",
