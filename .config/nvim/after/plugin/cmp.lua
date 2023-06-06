@@ -58,10 +58,8 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "cmp_tabnine" },
 		{ name = "copilot" },
-		-- { name = "nvim_lsp_signature_help" },
 		{ name = "path" },
 		{ name = "crates" },
-		-- { name = "pypi_package" },
 		{ name = "treesitter" },
 	}),
 	formatting = {
@@ -82,18 +80,9 @@ cmp.setup({
 			},
 		}),
 	},
-	-- view = {
-	-- 	entries = "native",
-	-- },
 	experimental = {
 		ghost_text = { hl_group = "NonText" },
 	},
-	-- performance = {
-	-- 	-- mostly arbitrary numbers
-	-- 	debounce = 300,
-	-- 	throttle = 60,
-	-- 	fetching_timeout = 200,
-	-- },
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
