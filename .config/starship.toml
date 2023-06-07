@@ -103,6 +103,11 @@ truncation_length = 20
 [gcloud]
 # format = '[$symbol$account(@$domain)(\($project\))]($style) '
 format = '[$symbol$active ($project)]($style) '
+detect_env_vars = [
+  "CLOUDSDK_ACTIVE_CONFIG_NAME",
+  "GCLOUD_PROJECT",
+  "CLOUDSDK_CORE_PROJECT",
+]
 
 [gcloud.project_aliases]
 philip-crockett-test-382714 = '⭘ backup-test'
