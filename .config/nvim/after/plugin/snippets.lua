@@ -9,6 +9,7 @@ local indent = ls.indent_snippet_node
 
 ls.config.set_config({
 	history = true,
+	enable_autosnippets = true,
 	updateevents = "TextChanged,TextChangedI",
 })
 
@@ -46,6 +47,8 @@ ls.add_snippets("python", {
 	snippet("pdb", { text("__import__('pdb').set_trace()") }),
 	snippet("ipdb", { text("__import__('ipdb').set_trace()") }),
 	snippet("djconf", { text("from django.conf import settings") }),
+	snippet({ trig = "improt", snippetType = "autosnippet" }, { text("import") }),
+	snippet({ trig = "NOne", snippetType = "autosnippet" }, { text("None") }),
 }, {
 	key = "my_python_snippets",
 })
