@@ -52,7 +52,6 @@ end
 null_ls.setup({
 	-- debug = true,
 	sources = {
-		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.code_actions.proselint,
 		null_ls.builtins.code_actions.shellcheck,
 		null_ls.builtins.completion.spell.with({
@@ -89,7 +88,11 @@ null_ls.setup({
 				return utils.root_has_file({ "selene.toml" })
 			end,
 		}),
-		null_ls.builtins.diagnostics.semgrep,
+		null_ls.builtins.diagnostics.semgrep.with({
+			condition = function(utils)
+				return utils.root_has_file({ ".semgrep.yml" })
+			end,
+		}),
 		null_ls.builtins.diagnostics.shellcheck,
 		null_ls.builtins.diagnostics.sqlfluff.with({
 			extra_args = { "--dialect", "postgres" },
