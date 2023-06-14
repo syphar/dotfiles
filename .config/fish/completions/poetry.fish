@@ -1,6 +1,6 @@
 function __fish_poetry_171a10917ec1adad_complete_no_subcommand
     for i in (commandline -opc)
-        if contains -- $i about add build 'cache clear' 'cache list' check config 'debug info' 'debug resolve' dynamic-versioning 'env info' 'env list' 'env remove' 'env use' export help init install list lock new publish remove run search 'self add' 'self install' 'self lock' 'self remove' 'self show' 'self show plugins' 'self update' shell show 'source add' 'source remove' 'source show' update version
+        if contains -- $i about add build 'cache clear' 'cache list' check config 'debug info' 'debug resolve' dynamic-versioning 'dynamic-versioning enable' 'env info' 'env list' 'env remove' 'env use' export help init install list lock new publish remove run search 'self add' 'self install' 'self lock' 'self remove' 'self show' 'self show plugins' 'self update' shell show 'source add' 'source remove' 'source show' update version
             return 1
         end
     end
@@ -29,7 +29,8 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a config -d 'Manages configuration settings.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug info' -d 'Shows debug information.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug resolve' -d 'Debugs dependency resolution.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a dynamic-versioning -d 'Apply the dynamic version to all relevant files and leave the changes in-place. This allows you to activate the plugin behavior on demand and inspect the result.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a dynamic-versioning -d 'Apply the dynamic version to all relevant files and leave the changes in-place. This allows you to activate the plugin behavior on demand and inspect the result. Your configuration will be detected from pyproject.toml as normal.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'dynamic-versioning enable' -d 'Update pyproject.toml to enable the plugin using a typical configuration. The output may not be suitable for more complex use cases.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env info' -d 'Displays information about the current environment.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env list' -d 'Lists all virtualenvs associated with the current project.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'env remove' -d 'Remove virtual environments associated with the project.'
@@ -101,6 +102,8 @@ complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l python
 complete -c poetry -A -n '__fish_seen_subcommand_from 'debug resolve'' -l tree -d 'Display the dependency tree.'
 
 # dynamic-versioning
+
+# 'dynamic-versioning enable'
 
 # 'env info'
 complete -c poetry -A -n '__fish_seen_subcommand_from 'env info'' -l executable -d 'Only display the environment\'s python executable path.'
