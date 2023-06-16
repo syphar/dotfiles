@@ -52,7 +52,6 @@ end
 null_ls.setup({
 	-- debug = true,
 	sources = {
-		null_ls.builtins.code_actions.proselint,
 		null_ls.builtins.code_actions.shellcheck,
 		null_ls.builtins.completion.spell.with({
 			filetypes = { "markdown", "gitcommit" },
@@ -71,7 +70,6 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.hadolint,
 		null_ls.builtins.diagnostics.jsonlint,
 		null_ls.builtins.diagnostics.markdownlint,
-		null_ls.builtins.diagnostics.proselint,
 		null_ls.builtins.diagnostics.pydocstyle.with({
 			extra_args = { "--config=$ROOT/setup.cfg" },
 			condition = function(utils)
