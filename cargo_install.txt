@@ -1,4 +1,3 @@
---git https://github.com/syphar/exa.git --branch relative-datetime
 bacon
 cargo-aoc
 cargo-audit
@@ -30,3 +29,4 @@ taplo-cli
 wasm-pack
 wiki-tui
 zeta-note
+zetta
