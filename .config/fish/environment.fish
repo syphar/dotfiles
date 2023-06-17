@@ -47,7 +47,7 @@ set --global -x _ZO_FZF_OPTS "
     --no-sort 
     --reverse 
     --select-1
-    --preview='exa -1 {2..}'"
+    --preview='zetta -1 {2..}'"
 
 # for tmux-spotify
 export MUSIC_APP="Music"
