@@ -65,7 +65,6 @@ return require("packer").startup({
 			run = "./install.sh",
 			requires = "hrsh7th/nvim-cmp",
 		})
-		use({ "Bryley/neoai.nvim", requires = { "MunifTanjim/nui.nvim" } })
 		use({
 			"zbirenbaum/copilot.lua",
 			cmd = "Copilot",
