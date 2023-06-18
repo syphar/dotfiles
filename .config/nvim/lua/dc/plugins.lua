@@ -115,7 +115,6 @@ return require("packer").startup({
 
 		-- specific file types
 		use({ "pest-parser/pest.vim", filetype = { "pest" } })
-		use({ "ellisonleao/glow.nvim", filetype = { "markdown" } })
 		use({ "NoahTheDuke/vim-just", filetype = "just" })
 		-- use({ "IndianBoy42/tree-sitter-just", filetype = "just" })
 		use("Glench/Vim-Jinja2-Syntax")
@@ -134,7 +133,6 @@ return require("packer").startup({
 		use("numToStr/Comment.nvim") --comment/uncomment on gcc
 		use("direnv/direnv.vim") -- read direnv for vim env
 		use("chaoren/vim-wordmotion")
-		use({ "Wansmer/treesj", requires = { "nvim-treesitter" } })
 
 		use({ "udalov/kotlin-vim", ft = { "kotlin" } })
 		use({ "teal-language/vim-teal", ft = { "teal" } })
@@ -145,7 +143,6 @@ return require("packer").startup({
 		use("j-hui/fidget.nvim")
 		use("neovim/nvim-lspconfig")
 		use("tamago324/nlsp-settings.nvim")
-		-- use({ "ray-x/lsp_signature.nvim", commit = "7a26ebaa7e36aa2aefa6c1994b2b866c96de32e6" })
 		use("ray-x/lsp_signature.nvim")
 		use({
 			-- "~/src/rust-tools.nvim/",
