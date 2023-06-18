@@ -8,7 +8,7 @@ source.new = function()
 end
 
 function source:is_available()
-	return vim.bo.filetype == "requirements"
+	return vim.bo.filetype == "requirements" or (vim.bo.filetype == "toml" and vim.fn.expand("%:t") == "pyproject.toml")
 end
 
 function source:complete(request, callback)
