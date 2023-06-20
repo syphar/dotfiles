@@ -23,7 +23,6 @@ return require("packer").startup({
 		use("drzel/vim-line-no-indicator")
 
 		use("rebelot/kanagawa.nvim")
-		use("wakatime/vim-wakatime")
 
 		-- general plugins
 		use("farmergreg/vim-lastplace")      --jump to last edited line in files
