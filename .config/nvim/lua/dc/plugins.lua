@@ -138,7 +138,7 @@ return require("packer").startup({
 		use("LhKipp/nvim-nu")
 		use("5long/pytest-vim-compiler")
 
-		use("j-hui/fidget.nvim")
+		use({ "j-hui/fidget.nvim", tag = "legacy" })
 		use("neovim/nvim-lspconfig")
 		use("tamago324/nlsp-settings.nvim")
 		use("ray-x/lsp_signature.nvim")
