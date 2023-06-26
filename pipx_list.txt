@@ -16,6 +16,7 @@ httpie
 ipython
 isort
 lookatme
+maturin
 openai
 perflint
 pgcli
