@@ -230,7 +230,7 @@ clear-disk-space:
     just clear-cargo-cache
     just clear-dev-environments
     just clear-caches
-    jsut clear-rust-target-directories
+    just clear-rust-target-directories
 
 clear-thermondo-backups:
     fd --type f --full-path --no-ignore ".*/sql/backup/.*\.sql" "$SRC_DIR/thermondo/" --exec rm -rf {}
