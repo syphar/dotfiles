@@ -34,7 +34,9 @@ set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
 
 set --global -x JDTLS_HOME /usr/local/opt/jdtls/libexec/
 
-set --global -x LIBRARY_PATH $(brew --prefix)/lib/
+if type -q brew
+    set --global -x LIBRARY_PATH $(brew --prefix)/lib/
+end
 
 # zoxide fzf options 
 # Just the default from src/fzf.rs, 
