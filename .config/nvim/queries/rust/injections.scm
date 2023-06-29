@@ -5,7 +5,7 @@
         field: (field_identifier) @_field_ident
     ) 
     arguments: (arguments
-        (string_literal) @sql
+        (string_literal) @sql (#offset! @sql 0 1 0 -1)
     )
 
     (#any-of? @_field_ident "query" "query_one" "query_opt" "execute")
