@@ -8,3 +8,6 @@ let g:dispatch_compilers = {
     \ 'poetry' : 'pytest',
     \ 'python' : 'pytest'
 \ }
+
+" no default keymaps please
+let g:dispatch_no_maps = 1

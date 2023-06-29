@@ -29,7 +29,7 @@ return require("packer").startup({
 		use("numToStr/Navigator.nvim")       -- jump between vim and tmux splits with C+hjkl
 		use("RyanMillerC/better-vim-tmux-resizer") --easily resize vim and tmux panes through meta+hjkl
 
-		use("phaazon/hop.nvim")              -- hop to lines or words with shortcuts
+		use("folke/flash.nvim")              -- hop to lines or words with shortcuts
 		use({                                -- small filename-status when using global statusline
 			-- "~/src/incline.nvim/",
 			"b0o/incline.nvim",
@@ -43,9 +43,7 @@ return require("packer").startup({
 		-- "~/src/nvim-treesitter-context/"
 			"nvim-treesitter/nvim-treesitter-context"
 		)
-		use("mfussenegger/nvim-treehopper")
 		use("tpope/vim-repeat")
-		use("RRethy/nvim-treesitter-textsubjects")
 		use("rizzatti/dash.vim")
 
 		use({
@@ -99,9 +97,7 @@ return require("packer").startup({
 			requires = { { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
 		})
 		use({
-			-- "~/src/python-docs.nvim",
 			"syphar/python-docs.nvim",
-			rocks = { "net-url" },
 			requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 		})
 
@@ -114,7 +110,6 @@ return require("packer").startup({
 		-- specific file types
 		use({ "pest-parser/pest.vim", filetype = { "pest" } })
 		use({ "NoahTheDuke/vim-just", filetype = "just" })
-		-- use({ "IndianBoy42/tree-sitter-just", filetype = "just" })
 		use("Glench/Vim-Jinja2-Syntax")
 		use({ "raimon49/requirements.txt.vim", ft = { "requirements" } })
 		use({ "rust-lang/rust.vim", ft = { "rust" } })
