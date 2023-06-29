@@ -64,3 +64,6 @@ venv3
 
 # nlsp-setting / vim plugin for project-local LSP settings
 .nlsp-settings
+
+# lua-language-server
+.luarc.json
