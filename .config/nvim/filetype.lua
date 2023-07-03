@@ -7,6 +7,7 @@ vim.filetype.add({
 		[".sqlfluff"] = "cfg",
 		["Justfile"] = "just",
 		["poetry.lock"] = "toml",
+		["nginx.conf.erb"] = "nginx",
 		[".env.sample"] = function()
 			-- take from the `.env` definition in the vim runtime
 			vim.fn["dist#ft#SetFileTypeSH"](vim.fn.getline(1))
