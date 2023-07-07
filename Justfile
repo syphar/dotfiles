@@ -7,7 +7,7 @@ default:
 
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
-    just heroku-login 
+    just heroku-cli
     update_cached_heroku_apps
     just update-homebrew
     just update-luarocks
@@ -74,11 +74,13 @@ tldr-update:
     ## tldr update
     tldr --update || echo "failed, but ignore for now"
 
-heroku-login:
+heroku-cli:
     ## heroku login, so we can fetch from heroku remotes later 
     heroku whoami || heroku login
     ## update the Heroku CLI
     heroku update
+    ## try to update the autocomplete cache
+    heroku autocomplete zsh
 
 update-homebrew:
     brew update && brew upgrade && brew upgrade --cask
