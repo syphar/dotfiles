@@ -85,17 +85,44 @@ cmp.setup({
 		ghost_text = { hl_group = "NonText" },
 	},
 	sorting = {
-		priority_weight = 2,
+		-- this would be the config example from tabnine
+		-- priority_weight = 2,
+		-- comparators = {
+		-- 	require("cmp_tabnine.compare"),
+		-- 	compare.offset,
+		-- 	compare.exact,
+		-- 	compare.score,
+		-- 	compare.recently_used,
+		-- 	compare.kind,
+		-- 	compare.sort_text,
+		-- 	compare.length,
+		-- 	compare.order,
+		-- },
 		comparators = {
-			require("cmp_tabnine.compare"),
-			compare.offset,
-			compare.exact,
-			compare.score,
-			compare.recently_used,
-			compare.kind,
-			compare.sort_text,
-			compare.length,
-			compare.order,
+			-- based on TJ config
+			-- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua#L129
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+
+			-- copied from cmp-under, but I don't think I need the plugin for this.
+			-- I might add some more of my own.
+			function(entry1, entry2)
+				local _, entry1_under = entry1.completion_item.label:find("^_+")
+				local _, entry2_under = entry2.completion_item.label:find("^_+")
+				entry1_under = entry1_under or 0
+				entry2_under = entry2_under or 0
+				if entry1_under > entry2_under then
+					return false
+				elseif entry1_under < entry2_under then
+					return true
+				end
+			end,
+
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
 		},
 	},
 })
