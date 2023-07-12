@@ -16,7 +16,7 @@ daily-update:
     just update-cached-pypi-package-list
     just update-rust
     just npm-upgrade
-    just kill-mypyd
+    just kill-leftover-background-processes
     just tldr-update
 
     gh extension upgrade --all
@@ -66,9 +66,11 @@ mackup:
     # copy mackup files to dotfiles
     ./mackup_dotfiles.py
 
-kill-mypyd:
+kill-leftover-background-processes:
     ## cleanup dmypy processes
     pkill -f dmypy || echo "nothing to kill"
+    ## cleanup pylsp processes
+    pkill -f pylsp || echo "nothing to kill"
 
 tldr-update:
     ## tldr update
