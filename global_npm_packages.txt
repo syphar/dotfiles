@@ -1,6 +1,5 @@
 @fsouza/prettierd
 @githubnext/github-copilot-cli
-@salesforce/cli
 @tailwindcss/language-server
 alex
 bash-language-server
