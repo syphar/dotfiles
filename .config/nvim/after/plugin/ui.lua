@@ -1,7 +1,9 @@
 require("focus").setup({
 	cursorline = false,
 	signcolumn = false,
-	autoresize = false,
+	autoresize = {
+		enable = false,
+	},
 	excluded_filetypes = { "fugitiveblame", "packer" },
 })
 
