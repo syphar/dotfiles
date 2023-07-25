@@ -129,8 +129,8 @@ cmp.setup({
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup({
+local cmp_tabnine = require("cmp_tabnine.config")
+cmp_tabnine:setup({
 	max_lines = 1000,
 	max_num_results = 20,
 	sort = true,
