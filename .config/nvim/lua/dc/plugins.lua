@@ -57,7 +57,7 @@ return require("packer").startup({
 				"ray-x/cmp-treesitter",
 			},
 		})
-		use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
+		-- use({ "codota/tabnine-nvim", run = "./dl_binaries.sh" })
 		use({
 			"tzachar/cmp-tabnine",
 			run = "./install.sh",
