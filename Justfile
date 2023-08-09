@@ -37,7 +37,6 @@ daily-update:
 
     # install my custom binaries 
     just install-custom-rust-binary ~/src/just/ just
-    just install-custom-rust-binary ~/src/zoxide/ zoxide
 
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
