@@ -136,7 +136,6 @@ return require("packer").startup({
 
 		use({ "j-hui/fidget.nvim", tag = "legacy" })
 		use("neovim/nvim-lspconfig")
-		use("tamago324/nlsp-settings.nvim")
 		use("ray-x/lsp_signature.nvim")
 		use({
 			-- "~/src/rust-tools.nvim/",
