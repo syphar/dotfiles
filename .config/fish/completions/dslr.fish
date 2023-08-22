@@ -1,18 +1,18 @@
-function _dslr_completion
-    set -l response (env _DSLR_COMPLETE=fish_complete COMP_WORDS=(commandline -cp) COMP_CWORD=(commandline -t) dslr)
+function _dslr_completion;
+    set -l response (env _DSLR_COMPLETE=fish_complete COMP_WORDS=(commandline -cp) COMP_CWORD=(commandline -t) dslr);
 
-    for completion in $response
-        set -l metadata (string split "," $completion)
+    for completion in $response;
+        set -l metadata (string split "," $completion);
 
-        if test $metadata[1] = "dir"
-            __fish_complete_directories $metadata[2]
-        else if test $metadata[1] = "file"
-            __fish_complete_path $metadata[2]
-        else if test $metadata[1] = "plain"
-            echo $metadata[2]
-        end
-    end
-end
+        if test $metadata[1] = "dir";
+            __fish_complete_directories $metadata[2];
+        else if test $metadata[1] = "file";
+            __fish_complete_path $metadata[2];
+        else if test $metadata[1] = "plain";
+            echo $metadata[2];
+        end;
+    end;
+end;
 
-complete --no-files --command dslr --arguments "(_dslr_completion)"
+complete --no-files --command dslr --arguments "(_dslr_completion)";
 

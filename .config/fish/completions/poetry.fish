@@ -25,7 +25,7 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a build -d 'Builds a package, as a tarball and a wheel by default.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'cache clear' -d 'Clears a Poetry cache by name.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'cache list' -d 'List Poetry\'s caches.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a check -d 'Checks the validity of the pyproject.toml file.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a check -d 'Validates the content of the pyproject.toml file and its consistency with the poetry.lock file.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a config -d 'Manages configuration settings.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug info' -d 'Shows debug information.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a 'debug resolve' -d 'Debugs dependency resolution.'
@@ -87,6 +87,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from 'cache clear'' -l all -d '
 # 'cache list'
 
 # check
+complete -c poetry -A -n '__fish_seen_subcommand_from check' -l lock -d 'Checks that poetry.lock exists for the current version of pyproject.toml.'
 
 # config
 complete -c poetry -A -n '__fish_seen_subcommand_from config' -l list -d 'List configuration settings.'
@@ -158,7 +159,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from install' -l without -d 'Th
 # list
 
 # lock
-complete -c poetry -A -n '__fish_seen_subcommand_from lock' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml.'
+complete -c poetry -A -n '__fish_seen_subcommand_from lock' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml. (Deprecated) Use poetry check --lock instead.'
 complete -c poetry -A -n '__fish_seen_subcommand_from lock' -l no-update -d 'Do not update locked versions, only refresh lock file.'
 
 # new
@@ -198,7 +199,7 @@ complete -c poetry -A -n '__fish_seen_subcommand_from 'self install'' -l dry-run
 complete -c poetry -A -n '__fish_seen_subcommand_from 'self install'' -l sync -d 'Synchronize the environment with the locked packages and the specified groups.'
 
 # 'self lock'
-complete -c poetry -A -n '__fish_seen_subcommand_from 'self lock'' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml.'
+complete -c poetry -A -n '__fish_seen_subcommand_from 'self lock'' -l check -d 'Check that the poetry.lock file corresponds to the current version of pyproject.toml. (Deprecated) Use poetry check --lock instead.'
 complete -c poetry -A -n '__fish_seen_subcommand_from 'self lock'' -l no-update -d 'Do not update locked versions, only refresh lock file.'
 
 # 'self remove'
