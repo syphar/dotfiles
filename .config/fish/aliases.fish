@@ -53,6 +53,7 @@ alias top="ytop"
 alias iftop="bandwhich"
 alias objdump="bingrep"
 alias hexdump="hx"
+alias hex="hexyl"
 alias j="jobs"
 
 abbr -ag lg gitui
