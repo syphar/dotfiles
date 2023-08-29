@@ -39,10 +39,10 @@ return require("packer").startup({
 		use("nvim-treesitter/nvim-treesitter")
 		use("nvim-treesitter/playground")
 		use("nvim-treesitter/nvim-treesitter-textobjects")
-		use(
-		-- "~/src/nvim-treesitter-context/"
-			"nvim-treesitter/nvim-treesitter-context"
-		)
+		use({
+			-- "~/src/nvim-treesitter-context/"
+			"nvim-treesitter/nvim-treesitter-context",
+		})
 		use("tpope/vim-repeat")
 		use("rizzatti/dash.vim")
 
