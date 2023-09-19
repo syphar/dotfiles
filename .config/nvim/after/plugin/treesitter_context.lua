@@ -3,6 +3,7 @@ require("treesitter-context").setup({
 	throttle = true,
 	line_numbers = false,
 	max_lines = 10,
+	multiline_threshold = 10,
 	mode = "topline", -- choices: 'cursor', 'topline'
 	patterns = {
 		default = {
