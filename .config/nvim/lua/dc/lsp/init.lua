@@ -80,6 +80,7 @@ function cfg.lsp_on_attach(client, bufnr)
 		or ft == "rust"
 		or ft == "go"
 		or ft == "python"
+		or ft == "caddyfile"
 		or (ft == "lua" and conditional_utils.root_has_file("stylua.toml"))
 	then
 		vim.api.nvim_create_autocmd("BufWritePre", {

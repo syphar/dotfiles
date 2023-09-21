@@ -6,6 +6,7 @@ vim.filetype.add({
 	filename = {
 		[".sqlfluff"] = "cfg",
 		["Justfile"] = "just",
+		["Caddyfile"] = "caddyfile",
 		["poetry.lock"] = "toml",
 		["nginx.conf.erb"] = "nginx",
 		[".env.sample"] = function()

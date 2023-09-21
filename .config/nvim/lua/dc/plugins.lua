@@ -109,6 +109,7 @@ return require("packer").startup({
 		use({ "akinsho/git-conflict.nvim", tag = "*" })
 
 		-- specific file types
+		use({ "isobit/vim-caddyfile", filetype = "caddyfile" })
 		use({ "pest-parser/pest.vim", filetype = { "pest" } })
 		use({ "NoahTheDuke/vim-just", filetype = "just" })
 		use("Glench/Vim-Jinja2-Syntax")
