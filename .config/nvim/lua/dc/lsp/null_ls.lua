@@ -56,7 +56,6 @@ null_ls.setup({
 		null_ls.builtins.completion.spell.with({
 			filetypes = { "markdown", "gitcommit" },
 		}),
-		null_ls.builtins.diagnostics.alex,
 		null_ls.builtins.diagnostics.curlylint,
 		null_ls.builtins.diagnostics.credo,
 		null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
