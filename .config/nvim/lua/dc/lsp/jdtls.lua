@@ -1,7 +1,11 @@
-local cfg = require("dc.lsp")
+local M = {}
 
-require("lspconfig").jdtls.setup({
-	flags = cfg.global_flags(),
-	capabilities = cfg.capabilities(),
-	on_attach = cfg.lsp_on_attach_without_formatting,
-})
+function M.setup(cfg, lspconfig)
+	lspconfig.jdtls.setup({
+		flags = cfg.global_flags(),
+		capabilities = cfg.capabilities(),
+		on_attach = cfg.lsp_on_attach_without_formatting,
+	})
+end
+
+return M

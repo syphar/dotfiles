@@ -1,6 +1,8 @@
 local cfg = {}
 vim.lsp.set_log_level("error")
 
+local lspconfig = require("lspconfig")
+
 function cfg.open_diagnostics_float()
 	-- open diagnostics float, to be used by CursorHold & CursorHoldI
 	-- separate method because I don't want diagnostics when the auto
@@ -130,7 +132,7 @@ function cfg.lsp_setup()
 	}
 
 	for _, name in ipairs(servers) do
-		require("dc.lsp." .. name)
+		require("dc.lsp." .. name).setup(cfg, lspconfig)
 	end
 
 	-- update loclist with diagnostics for the current file

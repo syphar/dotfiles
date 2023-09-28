@@ -1,13 +1,17 @@
-local cfg = require("dc.lsp")
+local M = {}
 
-require("lspconfig").terraformls.setup({
-	flags = cfg.global_flags(),
-	capabilities = cfg.capabilities(),
-	on_attach = cfg.lsp_on_attach_without_formatting,
-	init_options = {
-		experimentalFeatures = {
-			validateOnSave = true,
-			prefillRequiredFields = true,
+function M.setup(cfg, lspconfig)
+	lspconfig.terraformls.setup({
+		flags = cfg.global_flags(),
+		capabilities = cfg.capabilities(),
+		on_attach = cfg.lsp_on_attach_without_formatting,
+		init_options = {
+			experimentalFeatures = {
+				validateOnSave = true,
+				prefillRequiredFields = true,
+			},
 		},
-	},
-})
+	})
+end
+
+return M
