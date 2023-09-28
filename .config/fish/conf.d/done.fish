@@ -199,7 +199,7 @@ if set -q __done_enabled
         set __done_initial_window_id (__done_get_focused_window_id)
     end
 
-    function __done_ended --on-event fish_prompt
+    function __done_ended --on-event fish_postexec
         set -l exit_status $status
 
         # backwards compatibility for fish < v3.0
@@ -208,14 +208,14 @@ if set -q __done_enabled
         if test $cmd_duration
             and test $cmd_duration -gt $__done_min_cmd_duration # longer than notify_duration
             and not __done_is_process_window_focused # process pane or window not focused
-            and not string match -qr $__done_exclude $history[1] # don't notify on git commands which might wait external editor
+            and not string match -qr $__done_exclude $argv[1] # don't notify on git commands which might wait external editor
 
             # Store duration of last command
             set -l humanized_duration (__done_humanize_duration "$cmd_duration")
 
             set -l title "Done in $humanized_duration"
             set -l wd (string replace --regex "^$HOME" "~" (pwd))
-            set -l message "$wd/ $history[1]"
+            set -l message "$wd/ $argv[1]"
             set -l sender $__done_initial_window_id
 
             if test $exit_status -ne 0
@@ -227,6 +227,9 @@ if set -q __done_enabled
                 if test "$__done_notify_sound" -eq 1
                     echo -e "\a" # bell sound
                 end
+            else if set -q KITTY_WINDOW_ID
+                printf "\x1b]99;i=done:d=0;$title\x1b\\"
+                printf "\x1b]99;i=done:d=1:p=body;$message\x1b\\"
             else if type -q terminal-notifier # https://github.com/julienXX/terminal-notifier
                 if test "$__done_notify_sound" -eq 1
                     terminal-notifier -message "$message" -title "$title" -sender "$__done_initial_window_id" -sound default
