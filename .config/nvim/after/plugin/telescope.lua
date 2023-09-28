@@ -14,7 +14,7 @@ require("telescope").setup({
 				return math.min(
 					math.max(
 						math.floor(max_columns * 0.6), -- 60% width
-						80           -- minimum 80 chars
+						80 -- minimum 80 chars
 					),
 					max_columns - 10 -- padding of 5
 				)
@@ -37,7 +37,7 @@ require("telescope").setup({
 	},
 	extensions = {
 		fzf = {
-			fuzzy = true,          -- false will only do exact matching
+			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = true, -- override the generic sorter
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
@@ -45,7 +45,7 @@ require("telescope").setup({
 	},
 })
 
-for _, ext in ipairs({ "fzf", "python_docs", "git_worktree" }) do
+for _, ext in ipairs({ "fzf", "python_docs" }) do
 	require("telescope").load_extension(ext)
 end
 
@@ -301,7 +301,6 @@ vim.keymap.set("n", "<leader>f", telescope_treesitter_tags)
 vim.keymap.set("n", "<leader>F", telescope_project_tags)
 vim.keymap.set("n", "<leader>m", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<leader>ht", require("telescope.builtin").help_tags)
-vim.keymap.set("n", "<leader>wt", require("telescope").extensions.git_worktree.git_worktrees)
 
 vim.keymap.set("n", "<leader>rg", function()
 	-- require("telescope.builtin").live_grep({ debounce = 100 })

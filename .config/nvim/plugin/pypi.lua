@@ -106,9 +106,9 @@ local update = function()
 	end
 end
 
-local group = vim.api.nvim_create_augroup("Pypi", {})
-vim.api.nvim_create_autocmd("FileType", {
-	group = group,
-	pattern = "requirements",
-	callback = update,
-})
+-- local group = vim.api.nvim_create_augroup("Pypi", {})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	group = group,
+-- 	pattern = "requirements",
+-- 	callback = update,
+-- })

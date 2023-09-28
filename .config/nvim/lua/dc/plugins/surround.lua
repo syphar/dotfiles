@@ -1,4 +1,10 @@
-require("surround").setup({ mappings_style = "sandwich" })
+-- fork of "blackCauldron7/surround.nvim"
+return {
+	"ur4ltz/surround.nvim",
+	opts = {
+		mappings_style = "sandwich",
+	},
+}
 
 -- There are two keymap modes for normal mode mappings.
 
