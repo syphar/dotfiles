@@ -25,9 +25,11 @@ local function pyproject_toml()
 	local filename = Path:new(root .. "/" .. "pyproject.toml")
 
 	if filename:exists() and filename:is_file() then
-		local toml = require("toml")
-		local data = toml.decode(filename:read())
-		return data
+		-- local toml = require("toml")
+		-- local data = toml.parse(filename:read(), { strict = false })
+		-- return data
+		-- FIXME: alternate toml parser?
+		return { tool = {} }
 	end
 	return {
 		tool = {},

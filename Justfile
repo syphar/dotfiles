@@ -26,7 +26,8 @@ daily-update:
 
     just mackup
     just update-fish
-    just update-vim
+    # FIXME: update for lazy.nvim
+    # just update-vim
 
     just update-venv $SRC_DIR/neovim_env/venv/
 

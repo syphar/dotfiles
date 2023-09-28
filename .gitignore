@@ -7,6 +7,7 @@ venv
 .direnv
 .config/nvim/.netrwhist
 .config/nvim/.luarc.json
+.config/nvim/lazy-lock.json
 .config/fish/fish_variables*
 .config/fish/*.tmp.*
 # orbstack binary symlinks
