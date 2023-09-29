@@ -1,4 +1,3 @@
-require("todo-comments").setup({})
 local config_with_preview = {
 	layout_config = {
 		preview_cutoff = 40,
@@ -306,8 +305,6 @@ vim.keymap.set("n", "<leader>rg", function()
 	-- require("telescope.builtin").live_grep({ debounce = 100 })
 	require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
 end)
-
-vim.keymap.set("n", "<leader>td", "<cmd>TodoTelescope<cr>")
 
 vim.keymap.set("n", "<C-P>", function()
 	-- pick from git-files if inside git repository,

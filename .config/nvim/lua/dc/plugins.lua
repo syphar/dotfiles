@@ -1,5 +1,4 @@
 return {
-	"wbthomason/packer.nvim",
 	"lewis6991/impatient.nvim",
 	"tpope/vim-projectionist",
 	"drzel/vim-line-no-indicator",
@@ -21,13 +20,26 @@ return {
 			})
 		end,
 	},
-	{ "Saecki/crates.nvim",                       dependencies = { "nvim-lua/plenary.nvim" },    config = true },
+	{
+		"Saecki/crates.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		ft = { "toml" },
+		config = true,
+	},
 
 	-- file management / search
 	"airblade/vim-rooter", --automatically set root directory to project directory
 	"Matt-A-Bennett/vim-surround-funk",
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "folke/todo-comments.nvim",                 dependencies = "nvim-lua/plenary.nvim" },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = true,
+		cmd = { "TodoTelescope" },
+		keys = {
+			{ "<leader>td", "<cmd>TodoTelescope<cr>", "n" },
+		},
+	},
 	{ "nvim-telescope/telescope.nvim",            dependencies = { { "nvim-lua/plenary.nvim" } } },
 	{
 		"nvim-telescope/telescope-live-grep-args.nvim",
