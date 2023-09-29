@@ -9,23 +9,11 @@ return {
 	"RyanMillerC/better-vim-tmux-resizer", --easily resize vim and tmux panes through meta+hjkl
 
 	"tpope/vim-repeat",
-	"rizzatti/dash.vim",
 
 	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			"onsails/lspkind-nvim",
-			"hrsh7th/cmp-nvim-lua",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-			"ray-x/cmp-treesitter",
-		},
-	},
-	{
 		"zbirenbaum/copilot.lua",
-		-- cmd = "Copilot",
-		-- event = "InsertEnter",
+		cmd = "Copilot",
+		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
@@ -33,7 +21,7 @@ return {
 			})
 		end,
 	},
-	{ "Saecki/crates.nvim",                       dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "Saecki/crates.nvim",                       dependencies = { "nvim-lua/plenary.nvim" },    config = true },
 
 	-- file management / search
 	"airblade/vim-rooter", --automatically set root directory to project directory
@@ -53,7 +41,7 @@ return {
 	-- GIT integration
 	"tpope/vim-fugitive", --git commands
 	"tpope/vim-rhubarb", --fugitive and github integration
-	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
 	-- specific file types
 	{ "isobit/vim-caddyfile",    filetype = "caddyfile" },
@@ -86,7 +74,7 @@ return {
 	{ "udalov/kotlin-vim",             ft = { "kotlin" } },
 	{ "teal-language/vim-teal",        ft = { "teal" } },
 	{ "Vimjas/vim-python-pep8-indent", ft = { "python" } },
-	{ "LhKipp/nvim-nu",                ft = { "nu" } },
+	{ "LhKipp/nvim-nu",                ft = { "nu" },    config = true },
 	"5long/pytest-vim-compiler",
 
 	{ "j-hui/fidget.nvim", tag = "legacy" },

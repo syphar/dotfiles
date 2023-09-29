@@ -1,6 +1,7 @@
 -- jump between vim and tmux splits with C+hjkl
 return {
 	"numToStr/Navigator.nvim",
+	config = true,
 	keys = {
 		{
 			"<C-h>",
