@@ -4,7 +4,7 @@ return {
 	"drzel/vim-line-no-indicator",
 
 	-- general plugins
-	"farmergreg/vim-lastplace",         --jump to last edited line in files
+	"farmergreg/vim-lastplace", --jump to last edited line in files
 	"RyanMillerC/better-vim-tmux-resizer", --easily resize vim and tmux panes through meta+hjkl
 
 	"tpope/vim-repeat",
@@ -30,25 +30,6 @@ return {
 	-- file management / search
 	"airblade/vim-rooter", --automatically set root directory to project directory
 	"Matt-A-Bennett/vim-surround-funk",
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{
-		"folke/todo-comments.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = true,
-		cmd = { "TodoTelescope" },
-		keys = {
-			{ "<leader>td", "<cmd>TodoTelescope<cr>", "n" },
-		},
-	},
-	{ "nvim-telescope/telescope.nvim",            dependencies = { { "nvim-lua/plenary.nvim" } } },
-	{
-		"nvim-telescope/telescope-live-grep-args.nvim",
-		dependencies = { { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" } },
-	},
-	{
-		"syphar/python-docs.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-	},
 
 	-- GIT integration
 	"tpope/vim-fugitive", --git commands
@@ -56,14 +37,14 @@ return {
 	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
 	-- specific file types
-	{ "isobit/vim-caddyfile",    filetype = "caddyfile" },
-	{ "pest-parser/pest.vim",    filetype = { "pest" } },
-	{ "NoahTheDuke/vim-just",    filetype = "just" },
+	{ "isobit/vim-caddyfile", filetype = "caddyfile" },
+	{ "pest-parser/pest.vim", filetype = { "pest" } },
+	{ "NoahTheDuke/vim-just", filetype = "just" },
 	"Glench/Vim-Jinja2-Syntax",
 	-- FIXME: re-add with better filetype detection
 	-- { "raimon49/requirements.txt.vim",    ft = { "requirements" } },
-	{ "rust-lang/rust.vim",               ft = { "rust" } },
-	{ "dag/vim-fish",                     ft = { "fish" } },
+	{ "rust-lang/rust.vim", ft = { "rust" } },
+	{ "dag/vim-fish", ft = { "fish" } },
 	{ "varnishcache-friends/vim-varnish", ft = { "vcl" } },
 
 	-- generic software dev stuff
@@ -83,10 +64,10 @@ return {
 	"direnv/direnv.vim", -- read direnv for vim env
 	"chaoren/vim-wordmotion",
 
-	{ "udalov/kotlin-vim",             ft = { "kotlin" } },
-	{ "teal-language/vim-teal",        ft = { "teal" } },
+	{ "udalov/kotlin-vim", ft = { "kotlin" } },
+	{ "teal-language/vim-teal", ft = { "teal" } },
 	{ "Vimjas/vim-python-pep8-indent", ft = { "python" } },
-	{ "LhKipp/nvim-nu",                ft = { "nu" },    config = true },
+	{ "LhKipp/nvim-nu", ft = { "nu" }, config = true },
 	"5long/pytest-vim-compiler",
 
 	{ "j-hui/fidget.nvim", tag = "legacy" },
