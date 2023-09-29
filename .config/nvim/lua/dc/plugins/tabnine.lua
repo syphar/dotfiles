@@ -2,6 +2,7 @@ return {
 	"tzachar/cmp-tabnine",
 	build = "./install.sh",
 	dependencies = { "hrsh7th/nvim-cmp" },
+	event = "InsertEnter",
 	config = function()
 		local cmp_tabnine = require("cmp_tabnine.config")
 		cmp_tabnine:setup({

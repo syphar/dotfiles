@@ -326,7 +326,6 @@ return {
 			},
 
 			{
-				"n",
 				"<leader>rg",
 				function()
 					-- require("telescope.builtin").live_grep({ debounce = 100 })
