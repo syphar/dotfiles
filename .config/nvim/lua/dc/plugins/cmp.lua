@@ -9,6 +9,7 @@ return {
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
 		"ray-x/cmp-treesitter",
+		"L3MON4D3/LuaSnip",
 	},
 	config = function()
 		local has_words_before = function()
