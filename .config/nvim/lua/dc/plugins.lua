@@ -8,17 +8,6 @@ return {
 	"tpope/vim-repeat",
 
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
-	{
 		"Saecki/crates.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		ft = { "toml" },
@@ -47,7 +36,6 @@ return {
 
 	-- generic software dev stuff
 	"rhysd/committia.vim",
-	"L3MON4D3/LuaSnip",
 	{
 		"windwp/nvim-autopairs",
 		opts = {
@@ -67,9 +55,9 @@ return {
 	{ "LhKipp/nvim-nu",                ft = { "nu" },    config = true },
 	"5long/pytest-vim-compiler",
 
-	{ "j-hui/fidget.nvim", tag = "legacy" },
+	{ "j-hui/fidget.nvim",        tag = "legacy" },
 	"neovim/nvim-lspconfig",
-	"ray-x/lsp_signature.nvim",
+	{ "ray-x/lsp_signature.nvim", lazy = true },
 	{
 		-- "~/src/rust-tools.nvim/",
 		"simrat39/rust-tools.nvim",

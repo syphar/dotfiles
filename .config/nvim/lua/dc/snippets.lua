@@ -67,6 +67,3 @@ ls.add_snippets("lua", {
 }, {
 	key = "my_lua_snippets",
 })
-
-vim.keymap.set({ "i", "s" }, "<C-E>", "<Plug>luasnip-next-choice")
-vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")

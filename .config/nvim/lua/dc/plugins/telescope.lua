@@ -354,6 +354,8 @@ return {
 		},
 	},
 	{
+		--FIXME: hilighting FIXME / TODO comments doesn't work any more,
+		--can I somehow re-add this without adding the dependencies?
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 		config = true,

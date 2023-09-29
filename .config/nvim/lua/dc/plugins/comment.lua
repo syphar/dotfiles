@@ -1,5 +1,5 @@
 --comment/uncomment on gcc
---
+--TODO: add keys={} with the needed mappings?
 return {
 	"numToStr/Comment.nvim",
 	opts = {

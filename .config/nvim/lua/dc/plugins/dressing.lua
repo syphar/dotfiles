@@ -1,6 +1,7 @@
 -- nvim 0.6 interface improvement
 return {
 	"stevearc/dressing.nvim",
+	event = "VeryLazy",
 	opts = {
 		input = {
 			-- Set to false to disable the vim.ui.input implementation

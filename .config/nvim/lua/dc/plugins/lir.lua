@@ -1,13 +1,23 @@
 -- file manager
 
-local actions = require("lir.actions")
 return {
-	{
-		"tamago324/lir.nvim",
-		keys = {
-			{ "-", require("lir.float").toggle, "n" },
+	"tamago324/lir.nvim",
+	keys = {
+		{ "-", require("lir.float").toggle, "n" },
+	},
+	dependencies = {
+		{
+			"tamago324/lir-git-status.nvim",
+			config = function()
+				require("lir.git_status").setup({
+					{ show_ignored = false },
+				})
+			end,
 		},
-		opts = {
+	},
+	config = function()
+		local actions = require("lir.actions")
+		require("lir").setup({
 			show_hidden_files = false,
 			devicons = {
 				enable = true,
@@ -48,14 +58,6 @@ return {
 				},
 			},
 			hide_cursor = true,
-		},
-	},
-	{
-		"tamago324/lir-git-status.nvim",
-		config = function()
-			require("lir.git_status").setup({
-				{ show_ignored = false },
-			})
-		end,
-	},
+		})
+	end,
 }
