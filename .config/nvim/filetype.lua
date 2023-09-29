@@ -2,6 +2,7 @@ vim.filetype.add({
 	extension = {
 		crs = "rust",
 		soql = "soql",
+		tl = "teal",
 	},
 	filename = {
 		[".sqlfluff"] = "cfg",
