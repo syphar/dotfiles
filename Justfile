@@ -26,8 +26,7 @@ daily-update:
 
     just mackup
     just update-fish
-    # FIXME: update for lazy.nvim
-    # just update-vim
+    just update-vim
 
     just update-venv $SRC_DIR/neovim_env/venv/
 
@@ -115,13 +114,7 @@ update-pipx:
 update-vim:
     rm -f ~/.local/state/nvim/*.log
 
-    nvim --headless \
-        -c 'autocmd User PackerComplete quitall' \
-        -c 'PackerSync'
-
-    nvim --headless \
-        -c "TSUpdateSync" \
-        -c "quitall"
+    nvim --headless '+Lazy! sync' +qa
 
 npm-upgrade:
     #!/usr/bin/env bash
