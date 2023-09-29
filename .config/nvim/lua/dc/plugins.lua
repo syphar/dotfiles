@@ -21,21 +21,19 @@ return {
 	-- GIT integration
 	"tpope/vim-fugitive", --git commands
 	"tpope/vim-rhubarb", --fugitive and github integration
-	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+	{ "lewis6991/gitsigns.nvim",          dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
 	-- specific file types
-	{ "isobit/vim-caddyfile",    filetype = "caddyfile" },
-	{ "pest-parser/pest.vim",    filetype = { "pest" } },
-	{ "NoahTheDuke/vim-just",    filetype = "just" },
-	"Glench/Vim-Jinja2-Syntax",
-	-- FIXME: re-add with better filetype detection
-	-- { "raimon49/requirements.txt.vim",    ft = { "requirements" } },
-	{ "rust-lang/rust.vim",               ft = { "rust" } },
-	{ "dag/vim-fish",                     ft = { "fish" } },
-	{ "varnishcache-friends/vim-varnish", ft = { "vcl" } },
+	{ "isobit/vim-caddyfile",             ft = "caddyfile" },
+	{ "pest-parser/pest.vim",             ft = "pest" },
+	{ "NoahTheDuke/vim-just",             ft = "just" },
+	{ "Glench/Vim-Jinja2-Syntax",         ft = { "html", "htmldjango", "text" } },
+	{ "rust-lang/rust.vim",               ft = "rust" },
+	{ "dag/vim-fish",                     ft = "fish" },
+	{ "varnishcache-friends/vim-varnish", ft = "vcl" },
 
 	-- generic software dev stuff
-	"rhysd/committia.vim",
+	{ "rhysd/committia.vim",              ft = "gitcommit" },
 	{
 		"windwp/nvim-autopairs",
 		opts = {
