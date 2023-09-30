@@ -110,9 +110,6 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.diagnostics.teal,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.clang_format.with({
-				filetypes = { "c", "cpp" },
-			}),
 			null_ls.builtins.formatting.deno_fmt.with({
 				filetypes = { "markdown" },
 			}),
@@ -125,10 +122,8 @@ function M.setup(cfg, lspconfig)
 					}
 				end,
 			}),
-			null_ls.builtins.formatting.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.gofmt,
-			null_ls.builtins.formatting.google_java_format,
 			null_ls.builtins.formatting.isort.with({
 				condition = function(utils)
 					return pyproject_toml()["tool.isort"] or setup_cfg_sections().isort
@@ -136,33 +131,6 @@ function M.setup(cfg, lspconfig)
 			}),
 			null_ls.builtins.formatting.jq,
 			null_ls.builtins.formatting.just,
-			null_ls.builtins.formatting.ktlint.with({
-				-- when we don't add this, ktlint prints the following line to stdout:
-				--   09:20:23.742 [main] INFO com.pinterest.ktlint.internal.KtlintCommandLine - Enable default patterns [**/*.kt, **/*.kts]
-				-- Which then ends up in the format result / the file.
-				extra_args = { "**/*.kt", "**/*.kts" },
-			}),
-			null_ls.builtins.formatting.mix,
-			null_ls.builtins.formatting.prettierd.with({
-				condition = has_any_config({ ".prettierrc.js", ".prettierrc.json", ".prettierrc" }),
-				filetypes = {
-					-- "jsonc",
-					"handlebars",
-					"javascriptreact",
-					"vue",
-					"less",
-					"graphql",
-					-- "json",
-					-- "html",
-					"css",
-					-- "markdown.mdx",
-					"typescriptreact",
-					-- "markdown",
-					-- "yaml",
-					"typescript",
-					"scss",
-				},
-			}),
 			null_ls.builtins.formatting.ruff.with({
 				condition = function(utils)
 					return pyproject_toml()["tool.ruff"]
@@ -188,7 +156,6 @@ function M.setup(cfg, lspconfig)
 					return { "--edition=2021" }
 				end,
 			}),
-			null_ls.builtins.formatting.surface,
 			null_ls.builtins.formatting.sqlfluff.with({
 				extra_args = { "--dialect", "postgres" },
 				timeout = 30000,
