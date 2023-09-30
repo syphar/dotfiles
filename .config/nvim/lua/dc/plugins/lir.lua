@@ -3,7 +3,13 @@
 return {
 	"tamago324/lir.nvim",
 	keys = {
-		{ "-", require("lir.float").toggle, "n" },
+		{
+			"-",
+			function()
+				require("lir.float").toggle()
+			end,
+			"n",
+		},
 	},
 	dependencies = {
 		{
