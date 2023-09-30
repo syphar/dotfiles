@@ -110,12 +110,6 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.diagnostics.teal,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.black.with({
-				extra_args = { "--fast" },
-				condition = function(utils)
-					return pyproject_toml()["tool.black"]
-				end,
-			}),
 			null_ls.builtins.formatting.clang_format.with({
 				filetypes = { "c", "cpp" },
 			}),
@@ -195,7 +189,6 @@ function M.setup(cfg, lspconfig)
 				end,
 			}),
 			null_ls.builtins.formatting.surface,
-			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.formatting.sqlfluff.with({
 				extra_args = { "--dialect", "postgres" },
 				timeout = 30000,
