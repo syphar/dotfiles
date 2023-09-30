@@ -20,20 +20,25 @@ local function has_eslint_rc(utils)
 	return has_any_config({ ".eslintrc.js", ".eslintrc.json", ".eslintrc" })(utils)
 end
 
+local function get_toml_sections(content)
+	local t = {}
+	for line in content:gmatch("[^\r\n]+") do
+		local section = line:match("^%[([^%]]+)%]$")
+		if section then
+			t[section] = true
+		end
+	end
+	return t
+end
+
 local function pyproject_toml()
 	local root = utils.get_root()
 	local filename = Path:new(root .. "/" .. "pyproject.toml")
 
 	if filename:exists() and filename:is_file() then
-		-- local toml = require("toml")
-		-- local data = toml.parse(filename:read(), { strict = false })
-		-- return data
-		-- FIXME: alternate toml parser?
-		return { tool = {} }
+		return get_toml_sections(filename:read())
 	end
-	return {
-		tool = {},
-	}
+	return {}
 end
 
 local function setup_cfg_sections()
@@ -76,12 +81,12 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.diagnostics.pydocstyle.with({
 				extra_args = { "--config=$ROOT/setup.cfg" },
 				condition = function(utils)
-					return pyproject_toml().tool.pydocstyle or setup_cfg_sections().pydocstyle
+					return pyproject_toml()["tool.pydocstyle"] or setup_cfg_sections().pydocstyle
 				end,
 			}),
 			null_ls.builtins.diagnostics.ruff.with({
 				condition = function(utils)
-					return pyproject_toml().tool.ruff
+					return pyproject_toml()["tool.ruff"]
 				end,
 			}),
 			null_ls.builtins.diagnostics.selene.with({
@@ -99,7 +104,7 @@ function M.setup(cfg, lspconfig)
 				extra_args = { "--dialect", "postgres" },
 				timeout = 30000,
 				condition = function(utils)
-					return pyproject_toml().tool.sqlfluff or setup_cfg_sections().sqlfluff
+					return pyproject_toml()["tool.sqlfluff"] or setup_cfg_sections().sqlfluff
 				end,
 			}),
 			null_ls.builtins.diagnostics.teal,
@@ -108,7 +113,7 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.formatting.black.with({
 				extra_args = { "--fast" },
 				condition = function(utils)
-					return pyproject_toml().tool.black
+					return pyproject_toml()["tool.black"]
 				end,
 			}),
 			null_ls.builtins.formatting.clang_format.with({
@@ -132,7 +137,7 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.formatting.google_java_format,
 			null_ls.builtins.formatting.isort.with({
 				condition = function(utils)
-					return pyproject_toml().tool.isort or setup_cfg_sections().isort
+					return pyproject_toml()["tool.isort"] or setup_cfg_sections().isort
 				end,
 			}),
 			null_ls.builtins.formatting.jq,
@@ -166,7 +171,7 @@ function M.setup(cfg, lspconfig)
 			}),
 			null_ls.builtins.formatting.ruff.with({
 				condition = function(utils)
-					return pyproject_toml().tool.ruff
+					return pyproject_toml()["tool.ruff"]
 				end,
 			}),
 			null_ls.builtins.formatting.rustfmt.with({
