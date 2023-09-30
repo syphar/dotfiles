@@ -1,5 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	priority = 900,
 	config = function()
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
@@ -40,7 +42,7 @@ return {
 			-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
 			-- ensure_installed = "maintained",
 			ignore_install = {},
-			-- auto_install = true, -- FIXME: this is broken for me, hilight is not updated after installation
+			auto_install = true,
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
@@ -66,28 +68,5 @@ return {
 				},
 			},
 		})
-
-		-- automatically install available treesitter parser for files that I open.
-		-- source: https://github.com/nvim-treesitter/nvim-treesitter/issues/2108
-		-- builtin auto-install breaks hilight directly after install.
-		-- https://github.com/nvim-treesitter/nvim-treesitter/pull/3130
-
-		-- FIXME: re-add this, broke after lazy.nvim
-
-		-- vim.api.nvim_create_autocmd("FileType", {
-		-- 	pattern = "*",
-		-- 	group = vim.api.nvim_create_augroup("auto_install_treesitter_parsers", {}),
-		-- 	callback = function()
-		-- 		local parsers = require("nvim-treesitter.parsers")
-
-		-- 		local lang = parsers.get_buf_lang()
-		-- 		-- if lang ~= "markdown" and parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
-		-- 		if parsers.get_parser_configs()[lang] and not parsers.has_parser(lang) then
-		-- 			vim.schedule_wrap(function()
-		-- 				vim.cmd("TSInstall " .. lang)
-		-- 			end)()
-		-- 		end
-		-- 	end,
-		-- })
 	end,
 }
