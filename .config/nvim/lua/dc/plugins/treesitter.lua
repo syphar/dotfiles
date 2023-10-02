@@ -1,7 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	lazy = false,
-	priority = 900,
 	config = function()
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
