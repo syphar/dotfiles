@@ -110,9 +110,6 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.diagnostics.teal,
 			null_ls.builtins.diagnostics.vint,
 			null_ls.builtins.diagnostics.yamllint,
-			null_ls.builtins.formatting.deno_fmt.with({
-				filetypes = { "markdown" },
-			}),
 			null_ls.builtins.formatting.djhtml.with({
 				extra_args = function(params)
 					return {
@@ -124,11 +121,6 @@ function M.setup(cfg, lspconfig)
 			}),
 			null_ls.builtins.formatting.fish_indent,
 			null_ls.builtins.formatting.gofmt,
-			null_ls.builtins.formatting.isort.with({
-				condition = function(utils)
-					return pyproject_toml()["tool.isort"] or setup_cfg_sections().isort
-				end,
-			}),
 			null_ls.builtins.formatting.jq,
 			null_ls.builtins.formatting.just,
 			null_ls.builtins.formatting.ruff.with({

@@ -251,7 +251,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "syphar/python-docs.nvim" },
 		},
@@ -271,7 +271,7 @@ return {
 							return math.min(
 								math.max(
 									math.floor(max_columns * 0.6), -- 60% width
-									80  -- minimum 80 chars
+									80 -- minimum 80 chars
 								),
 								max_columns - 10 -- padding of 5
 							)
@@ -309,7 +309,7 @@ return {
 		cmd = { "Telescope" },
 		keys = {
 			{ "<leader>f", telescope_treesitter_tags, "n" },
-			{ "<leader>F", telescope_project_tags,    "n" },
+			{ "<leader>F", telescope_project_tags, "n" },
 			{
 				"<leader>m",
 				function()
@@ -354,10 +354,9 @@ return {
 		},
 	},
 	{
-		--FIXME: hilighting FIXME / TODO comments doesn't work any more,
-		--can I somehow re-add this without adding the dependencies?
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+		lazy = false, -- highlighting doesn't work without loading this plugin
 		config = true,
 		cmd = { "TodoTelescope" },
 		keys = {
