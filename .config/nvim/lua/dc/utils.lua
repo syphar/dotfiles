@@ -23,4 +23,20 @@ M.pyproject_toml = function()
 	return {}
 end
 
+M.setup_cfg_sections = function()
+	local root = vim.fn.getcwd()
+	local filename = Path:new(root .. "/" .. "setup.cfg")
+
+	local sections = {}
+	if filename:exists() and filename:is_file() then
+		for _, line in ipairs(vim.split(filename:read(), "\n")) do
+			local _, _, name = line:find("%[(.*)%]")
+			if name then
+				sections[name] = true
+			end
+		end
+	end
+	return sections
+end
+
 return M

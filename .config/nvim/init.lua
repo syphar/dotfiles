@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ","
-require("lazy").setup("dc.plugins")
+require("lazy").setup("dc.plugins", { change_detection = { notify = false, enabled = false } })
 
 require("impatient")
 require("dc.vim_options")
