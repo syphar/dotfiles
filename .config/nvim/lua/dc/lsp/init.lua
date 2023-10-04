@@ -61,36 +61,6 @@ end
 
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
-
-	-- local format_this_buffer = function()
-	-- 	vim.lsp.buf.format({
-	-- 		async = false,
-	-- 		bufnr = bufnr,
-	-- 		-- id = client,
-	-- 	})
-	-- end
-
-	-- vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-	-- vim.keymap.set("n", "<leader>gq", format_this_buffer, { buffer = bufnr })
-
-	-- autoformat for certain file-types
-	-- local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
-	-- local conditional_utils = require("null-ls.utils").make_conditional_utils()
-
-	-- if
-	-- 	ft == "terraform"
-	-- 	or ft == "rust"
-	-- 	or ft == "go"
-	-- 	or ft == "python"
-	-- 	or ft == "caddyfile"
-	-- 	or (ft == "lua" and conditional_utils.root_has_file("stylua.toml"))
-	-- then
-	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 		group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. client.name .. "_" .. bufnr, {}),
-	-- 		buffer = bufnr,
-	-- 		callback = format_this_buffer,
-	-- 	})
-	-- end
 end
 
 function cfg.capabilities()
