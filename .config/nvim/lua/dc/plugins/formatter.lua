@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("format_on_save", { clear = true }),
 	callback = function(args)
 		-- autoformat for certain file-types
