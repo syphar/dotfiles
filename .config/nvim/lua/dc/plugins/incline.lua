@@ -59,7 +59,7 @@ return {
 			wintypes = "special",
 		},
 		hide = {
-			cursorline = "focused_win",
+			cursorline = false,
 			focused_win = false,
 		},
 	},

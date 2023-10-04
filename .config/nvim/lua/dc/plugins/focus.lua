@@ -23,6 +23,12 @@ return {
 				vim.schedule(function()
 					require("focus").resize()
 					vim.api.nvim_exec_autocmds("WinScrolled", {})
+					-- HACK:
+					-- even when disabled globally, the cursorline
+					-- is still activated by a plugin, probably
+					-- this one.
+					-- So I disable it here again
+					vim.opt.cursorline = false
 				end)
 			end,
 		})
