@@ -26,7 +26,7 @@ return {
 	{ "isobit/vim-caddyfile", ft = "caddyfile" },
 	{ "pest-parser/pest.vim", ft = "pest" },
 	{ "NoahTheDuke/vim-just", ft = "just" },
-	{ "Glench/Vim-Jinja2-Syntax", ft = { "html", "htmldjango", "text" } },
+	{ "Glench/Vim-Jinja2-Syntax", ft = { "html", "htmldjango", "text", "jinja.html" } },
 	{ "rust-lang/rust.vim", ft = "rust" },
 	{ "dag/vim-fish", ft = "fish" },
 	{ "varnishcache-friends/vim-varnish", ft = "vcl" },
@@ -51,7 +51,6 @@ return {
 	{ "LhKipp/nvim-nu", ft = { "nu" }, config = true },
 	"5long/pytest-vim-compiler",
 
-	{ "j-hui/fidget.nvim", tag = "legacy" },
 	"neovim/nvim-lspconfig",
 	{ "ray-x/lsp_signature.nvim", lazy = true },
 	{
