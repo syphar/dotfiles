@@ -2,6 +2,7 @@
 
 return {
 	"tamago324/lir.nvim",
+	lazy = false,
 	keys = {
 		{
 			"-",
@@ -12,14 +13,7 @@ return {
 		},
 	},
 	dependencies = {
-		{
-			"tamago324/lir-git-status.nvim",
-			config = function()
-				require("lir.git_status").setup({
-					{ show_ignored = false },
-				})
-			end,
-		},
+		"tamago324/lir-git-status.nvim",
 	},
 	config = function()
 		local actions = require("lir.actions")
@@ -64,6 +58,9 @@ return {
 				},
 			},
 			hide_cursor = true,
+		})
+		require("lir.git_status").setup({
+			{ show_ignored = false },
 		})
 	end,
 }
