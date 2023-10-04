@@ -21,7 +21,7 @@ local function djhtml()
 	-- 	end,
 
 	return {
-		exe = "djtml",
+		exe = "djhtml",
 		args = { "--tabwidth", "2", "-" },
 		stdin = true,
 	}
@@ -50,7 +50,7 @@ return {
 				htmldjango = {
 					djhtml,
 				},
-				djano = { djhtml },
+				django = { djhtml },
 				["jinja.html"] = {
 					djhtml,
 				},
