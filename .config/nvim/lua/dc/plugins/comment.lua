@@ -2,6 +2,7 @@
 --TODO: add keys={} with the needed mappings?
 return {
 	"numToStr/Comment.nvim",
+	event = "VeryLazy",
 	opts = {
 		padding = true,
 		ignore = "^$", -- ignore empty lines
