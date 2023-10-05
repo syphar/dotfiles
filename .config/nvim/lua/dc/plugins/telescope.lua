@@ -253,7 +253,6 @@ return {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
-			{ "syphar/python-docs.nvim" },
 		},
 		config = function()
 			local config_with_preview = {
@@ -302,9 +301,7 @@ return {
 				},
 			})
 
-			for _, ext in ipairs({ "fzf", "python_docs" }) do
-				require("telescope").load_extension(ext)
-			end
+			require("telescope").load_extension("fzf")
 		end,
 		cmd = { "Telescope" },
 		keys = {
@@ -362,5 +359,13 @@ return {
 		keys = {
 			{ "<leader>td", "<cmd>TodoTelescope<cr>", "n" },
 		},
+	},
+	{
+		"syphar/python-docs.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		ft = { "python" },
+		config = function()
+			require("telescope").load_extension("python_docs")
+		end,
 	},
 }
