@@ -38,16 +38,16 @@ if type -q brew
     set --global -x LIBRARY_PATH $(brew --prefix)/lib/
 end
 
-# zoxide fzf options 
-# Just the default from src/fzf.rs, 
+# zoxide fzf options
+# Just the default from src/fzf.rs,
 # just an updated preview.
 set --global -x _ZO_FZF_OPTS "
-    --bind=ctrl-z:ignore 
-    --exit-0 
-    --height=40% 
-    --inline-info 
-    --no-sort 
-    --reverse 
+    --bind=ctrl-z:ignore
+    --exit-0
+    --height=40%
+    --inline-info
+    --no-sort
+    --reverse
     --select-1
     --preview='eza -1 {2..}'"
 
