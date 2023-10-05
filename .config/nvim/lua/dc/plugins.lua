@@ -17,11 +17,6 @@ return {
 	-- file management / search
 	"Matt-A-Bennett/vim-surround-funk",
 
-	-- GIT integration
-	"tpope/vim-fugitive", --git commands
-	"tpope/vim-rhubarb", --fugitive and github integration
-	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
-
 	-- specific file types
 	{ "isobit/vim-caddyfile", ft = "caddyfile" },
 	{ "pest-parser/pest.vim", ft = "pest" },
