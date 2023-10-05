@@ -2,6 +2,7 @@
 return {
 	-- "~/src/incline.nvim/",
 	"b0o/incline.nvim",
+	event = "VeryLazy",
 	opts = {
 		render = function(props)
 			-- generate name
