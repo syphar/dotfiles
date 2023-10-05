@@ -60,7 +60,7 @@ return {
 			hide_cursor = true,
 		})
 		require("lir.git_status").setup({
-			{ show_ignored = false },
+			show_ignored = false,
 		})
 	end,
 }
