@@ -22,7 +22,7 @@ return {
 			},
 			lualine_b = {
 				{
-					"b:gitsigns_head",
+					"branch",
 					icon = "",
 					fmt = function(str)
 						if string.len(str) > 20 then
@@ -68,7 +68,6 @@ return {
 		},
 		tabline = {},
 		extensions = {
-			"fugitive",
 			"quickfix",
 		},
 	},
