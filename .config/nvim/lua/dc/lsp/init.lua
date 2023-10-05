@@ -83,26 +83,35 @@ function cfg.lsp_setup()
 	end
 
 	local servers = {
-		"bashls",
-		"clangd",
-		"gopls",
-		"jdtls",
-		"kotlin_language_server",
-		"marksman",
-		"null_ls",
-		"pylsp",
-		"rust_analyzer",
-		"lua_ls",
-		"tailwindcss",
-		"taplo",
-		"terraformls",
-		"tsserver",
-		"vimls",
-		"yamlls",
+		bashls = { "*.sh" }, -- FIXME: non-sh bash scripts?
+		clangd = { "*.c", "*.cpp", "*.h", "*.hpp" },
+		gopls = "*.go",
+		jdtls = "*.java",
+		kotlin_language_server = "*.kt",
+		marksman = "*.md",
+		null_ls = "*",
+		pylsp = "*.py",
+		rust_analyzer = "*.rs",
+		lua_ls = "*.lua",
+		tailwindcss = "*.css",
+		taplo = "*.toml",
+		terraformls = "*.tf",
+		tsserver = { "*.js", "*.ts", "*.jsx", "*.tsx" },
+		vimls = "*.vim",
+		yamlls = "*.yaml",
 	}
 
-	for _, name in ipairs(servers) do
-		require("dc.lsp." .. name).setup(cfg, lspconfig)
+	for name, filetypes in pairs(servers) do
+		local group = vim.api.nvim_create_augroup("load_lsp_config_" .. name, { clear = true })
+		-- event for lazy loading LSP
+		-- https://github.com/folke/lazy.nvim/issues/1049#issuecomment-1735543671
+		vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+			group = group,
+			pattern = filetypes,
+			callback = function()
+				require("dc.lsp." .. name).setup(cfg, lspconfig)
+			end,
+		})
 	end
 
 	-- update loclist with diagnostics for the current file
