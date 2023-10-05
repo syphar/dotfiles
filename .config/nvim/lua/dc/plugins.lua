@@ -30,6 +30,7 @@ return {
 	{ "rhysd/committia.vim", ft = "gitcommit" },
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		opts = {
 			map_cr = false,
 			map_bs = true,
