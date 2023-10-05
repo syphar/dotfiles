@@ -1,10 +1,12 @@
 return {
 	"lewis6991/impatient.nvim",
-	"tpope/vim-projectionist",
-	"drzel/vim-line-no-indicator",
+	{ "tpope/vim-projectionist", event = "VeryLazy" },
 
 	-- general plugins
-	"farmergreg/vim-lastplace", --jump to last edited line in files
+	{ --jump to last edited line in files
+		"farmergreg/vim-lastplace",
+		event = { "BufRead", "BufWinEnter" },
+	},
 	{ "tpope/vim-repeat", event = "VeryLazy" },
 
 	{
@@ -13,9 +15,6 @@ return {
 		ft = { "toml" },
 		config = true,
 	},
-
-	-- file management / search
-	"Matt-A-Bennett/vim-surround-funk",
 
 	-- specific file types
 	{ "isobit/vim-caddyfile", ft = "caddyfile" },
@@ -39,13 +38,28 @@ return {
 		},
 	},
 	{ "kyazdani42/nvim-web-devicons", lazy = true },
-	"direnv/direnv.vim", -- read direnv for vim env
+	{ -- read direnv for vim env
+		"direnv/direnv.vim",
+		event = "VeryLazy",
+	},
 
 	{ "udalov/kotlin-vim", ft = { "kotlin" } },
 	{ "teal-language/vim-teal", ft = { "teal" } },
 	{ "Vimjas/vim-python-pep8-indent", ft = { "python" } },
 	{ "LhKipp/nvim-nu", ft = { "nu" }, config = true },
-	"5long/pytest-vim-compiler",
+	{
+		"5long/pytest-vim-compiler",
+		ft = { "python" },
+		config = function()
+			vim.cmd([[
+			if executable('pytest')
+				compiler pytest
+				" nmap <leader>ts :make<CR>
+				" nmap <leader>tf :make %<CR>
+			endif
+		]])
+		end,
+	},
 
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{ "ray-x/lsp_signature.nvim", lazy = true },

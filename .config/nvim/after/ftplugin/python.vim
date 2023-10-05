@@ -1,9 +1,3 @@
-if executable('pytest')
-    compiler pytest
-    " nmap <leader>ts :make<CR>
-    " nmap <leader>tf :make %<CR>
-endif
-
 " vim-test
 nmap <leader>tn :TestNearest<CR>
 nmap <leader>tf :TestFile<CR>

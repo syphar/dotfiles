@@ -2,6 +2,7 @@
 
 return {
 	"nvim-focus/focus.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("focus").setup({
 			cursorline = false,

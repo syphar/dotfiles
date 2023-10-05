@@ -8,5 +8,10 @@ return {
 		dependencies = { "tpope/vim-fugitive" },
 		cmd = { "GBrowse", "Gbrowse" },
 	},
-	{ "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+	{
+		"lewis6991/gitsigns.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+		event = "VeryLazy",
+	},
 }

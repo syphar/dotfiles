@@ -1,5 +1,11 @@
 return { --simple test running
 	"janko/vim-test",
+	cmd = {
+		"TestFile",
+		"TestSuite",
+		"TestLast",
+		"TestNearest",
+	},
 	config = function()
 		vim.cmd([[
 				let g:test#python#runner = 'pytest'
@@ -17,7 +23,7 @@ return { --simple test running
 					" skip the matched string and try again with the rest of
 					" the command.
 					" FIXME : prefix removal ( with poetry run) doesn't work?
-					let g:dispatch_compilers = { 
+					let g:dispatch_compilers = {
 						\ 'poetry' : 'pytest',
 						\ 'python' : 'pytest'
 					\ }
@@ -30,5 +36,4 @@ return { --simple test running
 		},
 		"radenling/vim-dispatch-neovim",
 	},
-	ft = { "rust", "python" },
 }

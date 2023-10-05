@@ -1,5 +1,6 @@
 return { --automatically set root directory to project directory
 	"airblade/vim-rooter",
+	event = { "VimEnter", "BufReadPost", "BufEnter", "BufWritePost" },
 	config = function()
 		vim.cmd([[
 			let g:rooter_targets = '/,*'
