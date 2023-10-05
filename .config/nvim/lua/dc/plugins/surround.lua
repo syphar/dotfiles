@@ -1,6 +1,7 @@
 -- fork of "blackCauldron7/surround.nvim"
 return {
 	"ur4ltz/surround.nvim",
+	event = "VeryLazy",
 	opts = {
 		mappings_style = "sandwich",
 	},

@@ -1,5 +1,6 @@
 return {
 	"chaoren/vim-wordmotion",
+	event = "VeryLazy",
 	config = function()
 		vim.cmd([[
 			let g:wordmotion_spaces = [ '\\"' ]

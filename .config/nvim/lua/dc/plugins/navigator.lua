@@ -30,6 +30,8 @@ return {
 			},
 		},
 	},
-	--easily resize vim and tmux panes through meta+hjkl
-	"RyanMillerC/better-vim-tmux-resizer",
+	{ --easily resize vim and tmux panes through meta+hjkl
+		"RyanMillerC/better-vim-tmux-resizer",
+		event = "VeryLazy",
+	},
 }
