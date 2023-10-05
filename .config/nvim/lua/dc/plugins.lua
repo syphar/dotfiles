@@ -5,7 +5,7 @@ return {
 
 	-- general plugins
 	"farmergreg/vim-lastplace", --jump to last edited line in files
-	"tpope/vim-repeat",
+	{ "tpope/vim-repeat", event = "VeryLazy" },
 
 	{
 		"Saecki/crates.nvim",
