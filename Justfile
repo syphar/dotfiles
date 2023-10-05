@@ -8,6 +8,7 @@ default:
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
     just heroku-cli
+    just gcloud-cli
     update_cached_heroku_apps
     just update-homebrew
     just update-luarocks
@@ -72,6 +73,9 @@ kill-leftover-background-processes:
 tldr-update:
     ## tldr update
     tldr --update || echo "failed, but ignore for now"
+
+gcloud-cli:
+    gcloud components update --quiet
 
 heroku-cli:
     ## heroku login, so we can fetch from heroku remotes later 
