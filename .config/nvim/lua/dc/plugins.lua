@@ -51,17 +51,19 @@ return {
 	{ "LhKipp/nvim-nu", ft = { "nu" }, config = true },
 	"5long/pytest-vim-compiler",
 
-	"neovim/nvim-lspconfig",
+	{ "neovim/nvim-lspconfig", lazy = true },
 	{ "ray-x/lsp_signature.nvim", lazy = true },
 	{
 		-- "~/src/rust-tools.nvim/",
 		"simrat39/rust-tools.nvim",
+		lazy = true,
 	},
-	"yioneko/nvim-type-fmt",
+	{ "yioneko/nvim-type-fmt", lazy = true },
 
 	{
 		-- "~/src/null-ls.nvim/",
 		"jose-elias-alvarez/null-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		lazy = true,
 	},
 }
