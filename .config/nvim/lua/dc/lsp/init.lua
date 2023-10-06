@@ -1,4 +1,6 @@
-local cfg = {}
+local cfg = {
+	lsp_loaded = {},
+}
 vim.lsp.set_log_level("error")
 
 local lspconfig = require("lspconfig")
@@ -109,7 +111,10 @@ function cfg.lsp_setup()
 			group = group,
 			pattern = filetypes,
 			callback = function()
-				require("dc.lsp." .. name).setup(cfg, lspconfig)
+				if cfg.lsp_loaded[name] == nil then
+					require("dc.lsp." .. name).setup(cfg, lspconfig)
+					cfg.lsp_loaded[name] = true
+				end
 			end,
 		})
 	end
