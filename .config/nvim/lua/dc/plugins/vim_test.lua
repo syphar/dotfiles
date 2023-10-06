@@ -8,9 +8,9 @@ return { --simple test running
 	},
 	config = function()
 		vim.cmd([[
-				let g:test#python#runner = 'pytest'
-				let g:test#strategy = 'dispatch'
-			]])
+			let g:test#python#runner = 'pytest'
+			let g:test#strategy = 'dispatch'
+		]])
 	end,
 	dependencies = {
 		{
