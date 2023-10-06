@@ -52,12 +52,12 @@ return {
 		ft = { "python" },
 		config = function()
 			vim.cmd([[
-			if executable('pytest')
-				compiler pytest
-				" nmap <leader>ts :make<CR>
-				" nmap <leader>tf :make %<CR>
-			endif
-		]])
+				if executable('pytest')
+					compiler pytest
+					" nmap <leader>ts :make<CR>
+					" nmap <leader>tf :make %<CR>
+				endif
+			]])
 		end,
 	},
 
