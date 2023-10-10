@@ -1,6 +1,7 @@
 return {
 	"lewis6991/impatient.nvim",
-	{ "tpope/vim-projectionist", event = "VeryLazy" },
+	"tpope/vim-projectionist",
+	"tpope/vim-unimpaired",
 
 	-- general plugins
 	{ --jump to last edited line in files

@@ -45,7 +45,9 @@ vim.keymap.set("n", "<F4>", "<cmd>cwindow<cr>") --  same
 vim.keymap.set("n", "<F9>", "<cmd>lprevious<cr>")
 vim.keymap.set("n", "<F10>", "<cmd>lnext<cr>")
 vim.keymap.set("n", "<F11>", "<cmd>cprevious<cr>")
+vim.keymap.set("n", "<S-F11>", "<cmd>cpfile<cr>")
 vim.keymap.set("n", "<F12>", "<cmd>cnext<cr>")
+vim.keymap.set("n", "<S-F12>", "<cmd>cnfile<cr>")
 
 -- Visual shifting (does not exit Visual mode)
 vim.keymap.set("v", "<", "<gv")
