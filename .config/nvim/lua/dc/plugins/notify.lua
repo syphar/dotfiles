@@ -6,7 +6,7 @@ return {
 	"rcarriga/nvim-notify",
 	lazy = true,
 	opts = {
-		render = "compact",
+		render = "wrapped-compact",
 		stages = "static",
 		timeout = 1000,
 	},
