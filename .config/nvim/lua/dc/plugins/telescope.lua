@@ -301,7 +301,9 @@ return {
 				},
 			})
 
-			require("telescope").load_extension("fzf")
+			for _, ext in ipairs({ "fzf", "notify" }) do
+				require("telescope").load_extension(ext)
+			end
 		end,
 		cmd = { "Telescope" },
 		keys = {
