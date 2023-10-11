@@ -35,8 +35,8 @@ return {
 		local dc_utils = require("dc.utils")
 
 		require("formatter").setup({
-			logging = false,
-			-- log_level = vim.log.levels.WARN,
+			logging = true,
+			log_level = vim.log.levels.WARN,
 			filetype = {
 				caddyfile = {
 					function()
@@ -57,6 +57,9 @@ return {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 				},
+				go = {
+					require("formatter.filetypes.go").gofmt,
+				},
 				python = {
 					function()
 						if not dc_utils.pyproject_toml()["tool.black"] then
@@ -71,6 +74,55 @@ return {
 							return nil
 						end
 						return require("formatter.filetypes.python").isort()
+					end,
+					function()
+						if not dc_utils.pyproject_toml()["tool.ruff"] then
+							return nil
+						end
+						return {
+							exe = "ruff",
+							args = {
+								"--fix",
+								"-e",
+								"-n",
+								"--stdin-filename",
+								util.escape_path(util.get_current_buffer_file_path()),
+								"-",
+							},
+							stdin = true,
+						}
+					end,
+				},
+				sql = {
+					function()
+						return {
+							exe = "sqlfluff",
+							args = {
+								"fix",
+								"--disable-progress-bar",
+								"-f",
+								"-n",
+								"-",
+								"--dialect",
+								"postgres",
+							},
+							stdin = true,
+						}
+					end,
+				},
+				toml = {
+					require("formatter.filetypes.toml").taplo,
+				},
+				terraform = {
+					require("formatter.filetypes.terraform").terraformfmt,
+				},
+				xml = {
+					function()
+						return {
+							exe = "xmllint",
+							args = { "--format", "-" },
+							stdin = true,
+						}
 					end,
 				},
 				just = {
@@ -97,6 +149,9 @@ return {
 						return denofmt
 					end,
 					require("formatter.filetypes.any").remove_trailing_whitespace,
+				},
+				json = {
+					require("formatter.filetypes.json").jq,
 				},
 				yaml = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
@@ -127,19 +182,3 @@ return {
 	},
 	cmd = { "Format", "FormatWrite", "FormatLock", "FormatWriteLock" },
 }
-
--- TODO
--- null_ls.builtins.formatting.gofmt,
--- null_ls.builtins.formatting.jq,
--- null_ls.builtins.formatting.ruff.with({
--- 	condition = function(utils)
--- 		return pyproject_toml()["tool.ruff"]
--- 	end,
--- }),
--- null_ls.builtins.formatting.sqlfluff.with({
--- 	extra_args = { "--dialect", "postgres" },
--- 	timeout = 30000,
--- }),
--- null_ls.builtins.formatting.taplo,
--- null_ls.builtins.formatting.terraform_fmt,
--- null_ls.builtins.formatting.xmllint,
