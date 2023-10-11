@@ -65,11 +65,11 @@ function M.setup(cfg, lspconfig)
 			null_ls.builtins.diagnostics.credo,
 			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.diagnostics.fish,
-			null_ls.builtins.diagnostics.flake8.with({
-				condition = function(utils)
-					return setup_cfg_sections().flake8
-				end,
-			}),
+			-- null_ls.builtins.diagnostics.flake8.with({
+			-- 	condition = function(utils)
+			-- 		return setup_cfg_sections().flake8
+			-- 	end,
+			-- }),
 			null_ls.builtins.diagnostics.gitlint,
 			null_ls.builtins.diagnostics.hadolint,
 			null_ls.builtins.diagnostics.jsonlint,
