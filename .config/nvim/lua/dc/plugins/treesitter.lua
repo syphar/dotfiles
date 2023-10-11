@@ -36,9 +36,6 @@ return {
 		}
 
 		require("nvim-treesitter.configs").setup({
-			-- this costs 20ms startup time.
-			-- As a replacement I'm doing `TSInstallSync maintained` in my daily update.
-			-- ensure_installed = "maintained",
 			ignore_install = {},
 			auto_install = true,
 			highlight = {
