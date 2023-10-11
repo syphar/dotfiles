@@ -1,6 +1,6 @@
 return {
 	"j-hui/fidget.nvim",
-	tag = "legacy",
+	version = "legacy",
 	event = "LspAttach",
 	opts = {
 		text = {
