@@ -11,18 +11,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 local function djhtml()
-	-- FIXME: re-add
-	-- 	extra_args = function(params)
-	-- 		return {
-	-- 			"--tabwidth",
-	-- 			vim.api.nvim_buf_get_option(params.bufnr, "shiftwidth"),
-	-- 			"-",
-	-- 		}
-	-- 	end,
-
 	return {
 		exe = "djhtml",
-		args = { "--tabwidth", "2", "-" },
+		args = { "--tabwidth", vim.api.nvim_buf_get_option(0, "shiftwidth"), "-" },
 		stdin = true,
 	}
 end
