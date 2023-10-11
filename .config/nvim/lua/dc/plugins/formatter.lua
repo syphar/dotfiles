@@ -62,8 +62,9 @@ return {
 						if not dc_utils.pyproject_toml()["tool.black"] then
 							return nil
 						end
-						-- FIXME: re-add `--fast`
-						return require("formatter.filetypes.python").black()
+						local black = require("formatter.filetypes.python").black()
+						table.insert(black.args, "--fast")
+						return black
 					end,
 					function()
 						if not (dc_utils.pyproject_toml()["tool.isort"] or dc_utils.setup_cfg_sections().isort) then
