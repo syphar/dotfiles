@@ -61,33 +61,12 @@ function M.setup(cfg, lspconfig)
 	null_ls.setup({
 		-- debug = true,
 		sources = {
-			null_ls.builtins.diagnostics.curlylint,
-			null_ls.builtins.diagnostics.credo,
 			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
-			null_ls.builtins.diagnostics.fish,
-			-- null_ls.builtins.diagnostics.flake8.with({
-			-- 	condition = function(utils)
-			-- 		return setup_cfg_sections().flake8
-			-- 	end,
-			-- }),
 			null_ls.builtins.diagnostics.gitlint,
-			null_ls.builtins.diagnostics.hadolint,
-			null_ls.builtins.diagnostics.jsonlint,
-			null_ls.builtins.diagnostics.markdownlint,
 			null_ls.builtins.diagnostics.pydocstyle.with({
 				extra_args = { "--config=$ROOT/setup.cfg" },
 				condition = function(utils)
 					return pyproject_toml()["tool.pydocstyle"] or setup_cfg_sections().pydocstyle
-				end,
-			}),
-			null_ls.builtins.diagnostics.ruff.with({
-				condition = function(utils)
-					return pyproject_toml()["tool.ruff"]
-				end,
-			}),
-			null_ls.builtins.diagnostics.selene.with({
-				condition = function(utils)
-					return utils.root_has_file({ "selene.toml" })
 				end,
 			}),
 			null_ls.builtins.diagnostics.semgrep.with({
@@ -95,17 +74,7 @@ function M.setup(cfg, lspconfig)
 					return utils.root_has_file({ ".semgrep.yml" })
 				end,
 			}),
-			null_ls.builtins.diagnostics.shellcheck,
-			null_ls.builtins.diagnostics.sqlfluff.with({
-				extra_args = { "--dialect", "postgres" },
-				timeout = 30000,
-				condition = function(utils)
-					return pyproject_toml()["tool.sqlfluff"] or setup_cfg_sections().sqlfluff
-				end,
-			}),
 			null_ls.builtins.diagnostics.teal,
-			null_ls.builtins.diagnostics.vint,
-			null_ls.builtins.diagnostics.yamllint,
 			require("dc.lsp.null_ls_custom.bandit"),
 		},
 		debounce = vim.opt.updatetime:get(),
