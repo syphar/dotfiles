@@ -91,7 +91,7 @@ function cfg.lsp_setup()
 		jdtls = "*.java",
 		kotlin_language_server = "*.kt",
 		marksman = "*.md",
-		null_ls = "*",
+		-- null_ls = "*",
 		pylsp = "*.py",
 		rust_analyzer = "*.rs",
 		lua_ls = "*.lua",
