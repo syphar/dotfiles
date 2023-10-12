@@ -24,6 +24,13 @@ return {
 			return dc_utils.pyproject_toml()["tool.sqlfluff"] or dc_utils.setup_cfg_sections().sqlfluff
 		end
 
+		lint.linters.eslint_d.condition = function(ctx)
+			return vim.fs.find(
+				{ ".eslintrc.js", ".eslintrc.json", ".eslintrc" },
+				{ path = ctx.filename, upward = true }
+			)[1]
+		end
+
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
 			"BufReadPost",

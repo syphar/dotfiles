@@ -16,10 +16,6 @@ local function has_any_config(filenames)
 	return checker
 end
 
-local function has_eslint_rc(utils)
-	return has_any_config({ ".eslintrc.js", ".eslintrc.json", ".eslintrc" })(utils)
-end
-
 local function get_toml_sections(content)
 	local t = {}
 	for line in content:gmatch("[^\r\n]+") do
@@ -61,7 +57,6 @@ function M.setup(cfg, lspconfig)
 	null_ls.setup({
 		-- debug = true,
 		sources = {
-			null_ls.builtins.diagnostics.eslint_d.with({ condition = has_eslint_rc }),
 			null_ls.builtins.diagnostics.gitlint,
 			null_ls.builtins.diagnostics.pydocstyle.with({
 				extra_args = { "--config=$ROOT/setup.cfg" },
