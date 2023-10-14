@@ -60,7 +60,7 @@ return {
 			wintypes = "special",
 		},
 		hide = {
-			cursorline = false,
+			cursorline = true,
 			focused_win = false,
 		},
 	},
