@@ -57,7 +57,6 @@ function M.setup(cfg, lspconfig)
 	null_ls.setup({
 		-- debug = true,
 		sources = {
-			null_ls.builtins.diagnostics.gitlint,
 			null_ls.builtins.diagnostics.pydocstyle.with({
 				extra_args = { "--config=$ROOT/setup.cfg" },
 				condition = function(utils)

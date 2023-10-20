@@ -31,6 +31,19 @@ return {
 			)[1]
 		end
 
+		lint.linters.gitlint = {
+			cmd = "gitlint",
+			stdin = false,
+			args = { "--msg-filename" },
+			append_fname = true,
+			stream = "stderr",
+			ignore_exitcode = true,
+			parser = require("lint.parser").from_pattern("(%d+): ([%w%d]+) (.*)", { "lnum", "code", "message" }, nil, {
+				["source"] = "gitlint",
+				["severity"] = vim.diagnostic.severity.ERROR,
+			}),
+		}
+
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
 			"BufReadPost",
@@ -58,6 +71,7 @@ return {
 			dockerfile = { "hadolint" },
 			elixir = { "credo" },
 			fish = { "fish" },
+			gitcommit = { "gitlint" },
 			htmldjango = { "curlylint" },
 			["jinja.html"] = { "curlylint" },
 			json = { "jsonlint" },
