@@ -70,11 +70,4 @@ return {
 		lazy = true,
 	},
 	{ "yioneko/nvim-type-fmt", lazy = true },
-
-	{
-		-- "~/src/null-ls.nvim/",
-		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		lazy = true,
-	},
 }
