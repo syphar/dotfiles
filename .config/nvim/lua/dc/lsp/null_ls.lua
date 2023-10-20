@@ -68,7 +68,6 @@ function M.setup(cfg, lspconfig)
 					return utils.root_has_file({ ".semgrep.yml" })
 				end,
 			}),
-			require("dc.lsp.null_ls_custom.bandit"),
 		},
 		debounce = vim.opt.updatetime:get(),
 		fallback_severity = vim.diagnostic.severity.INFO,
