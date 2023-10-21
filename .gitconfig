@@ -15,6 +15,7 @@
   ; FIXME: mayfiles breaks libgit2 -> gitui
 [pager]
     diff = delta
+    difftool = true
     log = delta
     reflog = delta
     show = delta
@@ -95,12 +96,6 @@
 
     conflicts = diff --name-only --diff-filter=U
 
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [push]
 	default = current
 [merge]
@@ -110,19 +105,16 @@
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = false
 [diff]
-	guitool = kdiff3
-	tool = vimdiff
-	tool = nvim
-[difftool "kdiff3"]
-	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-	trustExitCode = false
+    tool = difftastic
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 [difftool]
-	prompt = true
+    prompt = false
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
 [pull]
 	ff = only
 [fetch]
