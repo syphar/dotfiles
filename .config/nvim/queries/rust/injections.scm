@@ -31,7 +31,7 @@
 (
     (raw_string_literal) @sql
     (#match? @sql "^.*SELECT|FROM|INNER JOIN|WHERE|CREATE|DROP|ALTER.*$")
-    (#offset! @sql 0 1 0 -1)
+    (#offset! @sql 0 3 0 -3)
 )
 (
     (string_literal) @graphql
