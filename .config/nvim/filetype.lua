@@ -15,5 +15,6 @@ vim.filetype.add({
 			vim.fn["dist#ft#SetFileTypeSH"](vim.fn.getline(1))
 		end,
 		[".luacheckrc"] = "lua",
+		[".envrc"] = "direnv",
 	},
 })
