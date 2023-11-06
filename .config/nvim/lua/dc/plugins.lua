@@ -47,7 +47,7 @@ return {
 	{ "udalov/kotlin-vim", ft = { "kotlin" } },
 	{ "teal-language/vim-teal", ft = { "teal" } },
 	{ "Vimjas/vim-python-pep8-indent", ft = { "python" } },
-	{ "LhKipp/nvim-nu", ft = { "nu" }, config = true },
+	{ "LhKipp/nvim-nu", ft = { "nu" }, build = ":TSInstall nu", opts = { use_lsp_features = false } },
 	{
 		"5long/pytest-vim-compiler",
 		ft = { "python" },
