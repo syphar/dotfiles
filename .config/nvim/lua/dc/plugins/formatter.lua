@@ -67,6 +67,16 @@ return {
 						return require("formatter.filetypes.python").isort()
 					end,
 					function()
+						if not dc_utils.pyproject_toml()["tool.ruff.format"] then
+							return nil
+						end
+						return {
+							exe = "ruff format",
+							args = { "-q", "-" },
+							stdin = true,
+						}
+					end,
+					function()
 						if not dc_utils.pyproject_toml()["tool.ruff"] then
 							return nil
 						end
