@@ -36,7 +36,7 @@ return {
 		}
 
 		require("nvim-treesitter.configs").setup({
-			ignore_install = {},
+			ignore_install = { "markdown" },
 			auto_install = true,
 			highlight = {
 				enable = true,
