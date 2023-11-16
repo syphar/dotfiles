@@ -70,11 +70,7 @@ return {
 						if not dc_utils.pyproject_toml()["tool.ruff.format"] then
 							return nil
 						end
-						return {
-							exe = "ruff format",
-							args = { "-q", "-" },
-							stdin = true,
-						}
+						return require("formatter.filetypes.python").ruff()
 					end,
 					function()
 						if not dc_utils.pyproject_toml()["tool.ruff"] then
