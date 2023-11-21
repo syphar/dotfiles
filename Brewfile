@@ -404,6 +404,7 @@ brew "fastly/tap/fastly"
 brew "hashicorp/tap/terraform-ls"
 brew "heroku/brew/heroku"
 brew "heroku/brew/heroku-node"
+brew "pulumi/tap/esc"
 brew "pulumi/tap/pulumi"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "wfxr/csview/csview"
