@@ -151,3 +151,6 @@ disabled = true
 [terraform]
 symbol = " "
 format = "[$symbol$version $workspace]($style) "
+
+[pulumi]
+format = '[$symbol($username@)$stack]($style) '
