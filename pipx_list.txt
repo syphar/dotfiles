@@ -8,6 +8,7 @@ dephell
 djhtml
 dslr
 flake8
+fleet-context
 frogmouth
 gcalcli
 gitlint
