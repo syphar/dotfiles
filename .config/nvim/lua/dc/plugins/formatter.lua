@@ -73,7 +73,8 @@ return {
 						return require("formatter.filetypes.python").ruff()
 					end,
 					function()
-						if not dc_utils.pyproject_toml()["tool.ruff"] then
+						local proj = dc_utils.pyproject_toml()
+						if not (proj["tool.ruff"] or proj["tool.ruff.lint"]) then
 							return nil
 						end
 						return {
