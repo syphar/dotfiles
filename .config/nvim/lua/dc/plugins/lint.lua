@@ -13,7 +13,8 @@ return {
 		end
 
 		lint.linters.ruff.condition = function(ctx)
-			return dc_utils.pyproject_toml()["tool.ruff"]
+			local proj = dc_utils.pyproject_toml()
+			return (proj["tool.ruff"] or proj["tool.ruff.lint"])
 		end
 
 		lint.linters.selene.condition = function(ctx)
@@ -31,18 +32,18 @@ return {
 			)[1]
 		end
 
-		lint.linters.gitlint = {
-			cmd = "gitlint",
-			stdin = false,
-			args = { "--msg-filename" },
-			append_fname = true,
-			stream = "stderr",
-			ignore_exitcode = true,
-			parser = require("lint.parser").from_pattern("(%d+): ([%w%d]+) (.*)", { "lnum", "code", "message" }, nil, {
-				["source"] = "gitlint",
-				["severity"] = vim.diagnostic.severity.ERROR,
-			}),
-		}
+		-- lint.linters.gitlint = {
+		-- 	cmd = "gitlint",
+		-- 	stdin = false,
+		-- 	args = { "--msg-filename" },
+		-- 	append_fname = true,
+		-- 	stream = "stderr",
+		-- 	ignore_exitcode = true,
+		-- 	parser = require("lint.parser").from_pattern("(%d+): ([%w%d]+) (.*)", { "lnum", "code", "message" }, nil, {
+		-- 		["source"] = "gitlint",
+		-- 		["severity"] = vim.diagnostic.severity.ERROR,
+		-- 	}),
+		-- }
 
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
