@@ -5,6 +5,7 @@ return {
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		{ "nvim-neotest/neotest-python", lazy = true },
+		{ "nvim-neotest/neotest-go", lazy = true },
 		{ "rouge8/neotest-rust", lazy = true },
 	},
 	config = function()
@@ -27,6 +28,12 @@ return {
 				}),
 				require("neotest-rust")({
 					-- args = { "--no-capture" },
+				}),
+				require("neotest-go")({
+					experimental = {
+						test_table = true,
+					},
+					-- args = { "-count=1", "-timeout=60s" },
 				}),
 			},
 		})
