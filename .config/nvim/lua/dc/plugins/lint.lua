@@ -21,6 +21,10 @@ return {
 			return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
 		end
 
+		lint.linters.pydocstyle.condition = function(ctx)
+			return dc_utils.pyproject_toml()["tool.pydocstyle"] or dc_utils.setup_cfg_sections().pydocstyle
+		end
+
 		lint.linters.sqlfluff.condition = function(ctx)
 			return dc_utils.pyproject_toml()["tool.sqlfluff"] or dc_utils.setup_cfg_sections().sqlfluff
 		end
@@ -31,6 +35,19 @@ return {
 				{ path = ctx.filename, upward = true }
 			)[1]
 		end
+
+		-- lint.linters.semgrep = {
+		-- 	cmd = "semgrep",
+		-- 	stdin = false,
+		-- 	args = { "--disable-version-check", "-q", "--json" },
+		-- 	-- append_fname = true,
+		-- 	-- stream = "stderr",
+		-- 	-- ignore_exitcode = true,
+		-- 	-- parser = require("lint.parser").from_pattern("(%d+): ([%w%d]+) (.*)", { "lnum", "code", "message" }, nil, {
+		-- 	-- 	["source"] = "gitlint",
+		-- 	-- 	["severity"] = vim.diagnostic.severity.ERROR,
+		-- 	-- }),
+		-- }
 
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
@@ -65,7 +82,7 @@ return {
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "markdownlint" },
-			python = { "flake8", "ruff" },
+			python = { "flake8", "ruff", "pydocstyle" },
 			sh = { "shellcheck" },
 			sql = { "sqlfluff" },
 			vim = { "vint" },
