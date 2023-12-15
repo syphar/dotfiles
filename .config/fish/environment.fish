@@ -26,6 +26,7 @@ set --global -x RUNCACHED_MAX_AGE 86400 # 1 day
 set --global -x HOMEBREW_NO_INSTALL_CLEANUP 1
 
 set --global -x FORGIT_LOG_GRAPH_ENABLE 1
+set --global -x FORGIT_LOG_GIT_OPTS "--ext-diff"
 
 set --global -x NVM_DIR "$HOME/.nvm"
 set --global -x PYENV_ROOT "$HOME/.pyenv"
