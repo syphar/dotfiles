@@ -70,3 +70,5 @@ venv3
 
 # custom null-ls root file
 .null-ls-root
+
+.bacon-locations
