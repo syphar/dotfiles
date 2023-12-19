@@ -255,6 +255,7 @@ clear-rust-target-directories:
 clear-caches:
     rm -rf ~/Library/Caches/*
     rm -rf ~/Library/Developer/CoreSimulator/Caches/*
+    rm -rf ~/.npm/_cacache
 
 clear-dev-environments:
     fd --type d --no-ignore --hidden --prune "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
@@ -263,4 +264,4 @@ clear-dev-environments:
 
 clear-docsrs-dev:
     fd --type d --no-ignore --hidden --prune "\.rustwide-docker" "$SRC_DIR/rust-lang/" --exec rm -rf {}
-    fd --type d --no-ignore --prune --full-path "ignored/cratesfyi-prefix" "$SRC_DIR/rust-lang" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "ignored" "$SRC_DIR/rust-lang/" --exec rm -rf {}
