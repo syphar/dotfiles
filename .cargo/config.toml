@@ -2,4 +2,4 @@
 protocol = "sparse"
 
 [build]
-rustc-wrapper = ".cargo/bin/sccache"
+rustc-wrapper = "/Users/syphar/.cargo/bin/sccache"
