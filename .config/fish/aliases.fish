@@ -73,6 +73,7 @@ abbr -ag gsc git stash clear
 abbr -ag grc git rebase --continue
 abbr -ag grv git remote -v
 abbr -ag c cargo
+abbr -ag ct cargo nextest run
 abbr -ag cab cargo build
 abbr -ag cac cargo check
 abbr -ag sqlbat bat -l sql
