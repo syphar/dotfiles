@@ -1,5 +1,5 @@
 return {
-	-- 	"~/src/nvim-treesitter-context/"
+	-- dir = "~/src/nvim-treesitter-context/",
 	"nvim-treesitter/nvim-treesitter-context",
 	event = "VeryLazy",
 	opts = {
