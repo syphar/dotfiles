@@ -3,6 +3,7 @@ vim.filetype.add({
 		crs = "rust",
 		soql = "soql",
 		tl = "teal",
+		kdl = "kdl",
 	},
 	filename = {
 		[".sqlfluff"] = "cfg",
