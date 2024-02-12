@@ -292,6 +292,7 @@ brew "libyaml"
 brew "libzip"
 brew "lighttpd", restart_service: true
 brew "little-cms"
+brew "lnav"
 brew "lolcat"
 brew "lsd"
 brew "lua-language-server"
