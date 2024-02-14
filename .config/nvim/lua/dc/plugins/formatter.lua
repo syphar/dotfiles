@@ -4,7 +4,19 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		-- autoformat for certain file-types
 		local ft = vim.api.nvim_buf_get_option(args.buf, "ft")
 
-		if ft == "terraform" or ft == "rust" or ft == "go" or ft == "python" or ft == "caddyfile" or ft == "lua" then
+		local dc_utils = require("dc.utils")
+
+		if
+			(
+				ft == "python"
+				and (dc_utils.pyproject_toml()["tool.ruff.format"] or dc_utils.pyproject_toml()["tool.black"])
+			)
+			or ft == "terraform"
+			or ft == "rust"
+			or ft == "go"
+			or ft == "caddyfile"
+			or ft == "lua"
+		then
 			vim.cmd([[FormatWrite]])
 		end
 	end,
@@ -67,14 +79,15 @@ return {
 						return require("formatter.filetypes.python").isort()
 					end,
 					function()
-						if not dc_utils.pyproject_toml()["tool.ruff.format"] then
+						-- always configure ruff when black is not configured
+						if dc_utils.pyproject_toml()["tool.black"] then
 							return nil
 						end
 						return require("formatter.filetypes.python").ruff()
 					end,
 					function()
-						local proj = dc_utils.pyproject_toml()
-						if not (proj["tool.ruff"] or proj["tool.ruff.lint"]) then
+						-- always configure ruff when black is not configured
+						if dc_utils.pyproject_toml()["tool.black"] then
 							return nil
 						end
 						return {

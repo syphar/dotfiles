@@ -13,8 +13,11 @@ return {
 		end
 
 		lint.linters.ruff.condition = function(ctx)
-			local proj = dc_utils.pyproject_toml()
-			return (proj["tool.ruff"] or proj["tool.ruff.lint"])
+			-- always use ruff when flake8 is _not_ configured
+			return not dc_utils.setup_cfg_sections().flake8
+
+			-- local proj = dc_utils.pyproject_toml()
+			-- return (proj["tool.ruff"] or proj["tool.ruff.lint"])
 		end
 
 		lint.linters.selene.condition = function(ctx)
