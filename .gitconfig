@@ -1,18 +1,17 @@
 [user]
 	name = Denis Cornehl
 	email = denis@cornehl.org
+
+[init]
+    defaultBranch = main
+
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
 	quotepath = false
 	trustExitCode = true
 	autocrlf = input
-; [feature]
-  # Support repos with large number of files, improving git status and git
-  # commit performance. See `man git-config` for details
-  # https://github.com/starship/starship/issues/1617#issuecomment-885959971
-  ; manyFiles = true
-  ; FIXME: mayfiles breaks libgit2 -> gitui
+
 [pager]
     external = difft
     ; diff = delta
@@ -20,14 +19,6 @@
     ; log = delta
     ; reflog = delta
     ; show = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    line-numbers = true
-    dark = true
-    syntax-theme = GitHub Dark
 
 [blame]
     date = short
@@ -38,6 +29,7 @@
 	interactive = auto
 	status = auto
 	ui = auto
+
 [alias]
 	d = difftool
     st = status -sb
@@ -99,26 +91,52 @@
 
 [push]
 	default = current
+	followtags = true
+
 [merge]
-	tool = vimdiff
 	tool = nvim
-[mergetool "kdiff3"]
-	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-	trustExitCode = false
+    conflictstyle = diff3
+
 [diff]
     tool = difftastic
+	algorithm = histogram
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [difftool]
     prompt = false
+
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
+
 [pull]
 	ff = only
+
 [fetch]
 	prune = true
+	fsckobjects = true
+	prunetags = true
+
 [rebase]
 	updateRefs = true
+	missingCommitsCheck = error
+[rerere]
+	enabled = true
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
+	insteadOf = "gh:"
+[transfer]
+	fsckobjects = true
+[receive]
+	fsckObjects = true
+[branch]
+	sort = -committerdate
+[tag]
+	sort = taggerdate
+[log]
+	date = iso
