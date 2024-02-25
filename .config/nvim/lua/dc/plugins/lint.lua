@@ -15,9 +15,6 @@ return {
 		lint.linters.ruff.condition = function(ctx)
 			-- always use ruff when flake8 is _not_ configured
 			return not dc_utils.setup_cfg_sections().flake8
-
-			-- local proj = dc_utils.pyproject_toml()
-			-- return (proj["tool.ruff"] or proj["tool.ruff.lint"])
 		end
 
 		lint.linters.selene.condition = function(ctx)
@@ -38,19 +35,6 @@ return {
 				{ path = ctx.filename, upward = true }
 			)[1]
 		end
-
-		-- lint.linters.semgrep = {
-		-- 	cmd = "semgrep",
-		-- 	stdin = false,
-		-- 	args = { "--disable-version-check", "-q", "--json" },
-		-- 	-- append_fname = true,
-		-- 	-- stream = "stderr",
-		-- 	-- ignore_exitcode = true,
-		-- 	-- parser = require("lint.parser").from_pattern("(%d+): ([%w%d]+) (.*)", { "lnum", "code", "message" }, nil, {
-		-- 	-- 	["source"] = "gitlint",
-		-- 	-- 	["severity"] = vim.diagnostic.severity.ERROR,
-		-- 	-- }),
-		-- }
 
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
