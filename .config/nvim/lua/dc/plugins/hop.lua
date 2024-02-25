@@ -37,5 +37,17 @@ return {
 				hop_before(require("hop").hint_lines_skip_whitespace)
 			end,
 		},
+		{
+			"<leader>hn",
+			function()
+				hop_after(require("hop-treesitter").hint_nodes)
+			end,
+		},
+		{
+			"<leader>hN",
+			function()
+				hop_before(require("hop-treesitter").hint_nodes)
+			end,
+		},
 	},
 }
