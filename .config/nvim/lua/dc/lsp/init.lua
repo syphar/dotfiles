@@ -92,7 +92,6 @@ function cfg.lsp_setup()
 		kotlin_language_server = "*.kt",
 		marksman = "*.md",
 		pylsp = "*.py",
-		rust_analyzer = "*.rs",
 		lua_ls = "*.lua",
 		tailwindcss = "*.css",
 		taplo = "*.toml",

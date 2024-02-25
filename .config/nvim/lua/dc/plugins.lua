@@ -64,11 +64,6 @@ return {
 
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{ "ray-x/lsp_signature.nvim", lazy = true },
-	{
-		-- "~/src/rust-tools.nvim/",
-		"simrat39/rust-tools.nvim",
-		lazy = true,
-	},
 	{ "yioneko/nvim-type-fmt", lazy = true },
 	{
 		"Canop/nvim-bacon",
