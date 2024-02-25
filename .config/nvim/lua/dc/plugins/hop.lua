@@ -9,9 +9,12 @@ local function hop_before(method)
 end
 
 return {
+	-- dir = "~/src/hop.nvim/",
 	"smoka7/hop.nvim",
 	version = "*",
-	opts = {},
+	opts = {
+		extensions = { "dc.hop-treesitter-objects" },
+	},
 	keys = {
 		{
 			"<leader>hw",
@@ -40,13 +43,13 @@ return {
 		{
 			"<leader>hn",
 			function()
-				hop_after(require("hop-treesitter").hint_nodes)
+				hop_after(require("dc.hop-treesitter-objects").hint_objects)
 			end,
 		},
 		{
 			"<leader>hN",
 			function()
-				hop_before(require("hop-treesitter").hint_nodes)
+				hop_before(require("dc.hop-treesitter-objects").hint_objects)
 			end,
 		},
 	},
