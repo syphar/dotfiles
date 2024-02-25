@@ -2,6 +2,18 @@ local M = {}
 
 local Path = require("plenary.path")
 
+M.treesitter_context_move_targets = {
+	"@class.outer",
+	"@function.outer",
+}
+
+M.treesitter_context_jump_targets = {
+	"@class.outer",
+	"@function.outer",
+	"@block.outer",
+	"@statement.outer",
+}
+
 M.lazy_file_events = { "BufReadPost", "BufNewFile", "BufWritePre" }
 
 M.get_toml_sections = function(content)

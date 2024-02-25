@@ -2,6 +2,7 @@ return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
 	event = "VeryLazy",
 	config = function()
+		local dc_utils = require("dc.utils")
 		require("nvim-treesitter.configs").setup({
 			textobjects = {
 				select = {
@@ -29,6 +30,7 @@ return {
 						["]m"] = "@function.outer",
 						["]b"] = "@block.outer",
 						["]]"] = "@class.outer",
+						["|"] = { query = dc_utils.treesitter_context_move_targets },
 					},
 					goto_next_end = {
 						["]M"] = "@function.outer",
@@ -39,6 +41,7 @@ return {
 						["[m"] = "@function.outer",
 						["[b"] = "@block.outer",
 						["[["] = "@class.outer",
+						['"'] = { query = dc_utils.treesitter_context_move_targets },
 					},
 					goto_previous_end = {
 						["[M"] = "@function.outer",

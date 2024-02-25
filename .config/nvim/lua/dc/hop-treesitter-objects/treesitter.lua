@@ -61,16 +61,8 @@ T.parse = function(direction)
 	end
 
 	local queries = require("nvim-treesitter.query")
-	for _, group in ipairs({
-		"@class.outer",
-		"@function.outer",
-		"@block.outer",
-		"@conditional.outer",
-		"@loop.outer",
-		"@return.outer",
-		"@call.outer",
-		"@assignment.outer",
-	}) do
+	local dc_utils = require("dc.utils")
+	for _, group in ipairs(dc_utils.treesitter_context_jump_targets) do
 		local matches = queries.get_capture_matches_recursively(0, group, "textobjects")
 
 		for _, match in ipairs(matches) do
