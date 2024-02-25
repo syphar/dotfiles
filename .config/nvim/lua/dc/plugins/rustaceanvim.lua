@@ -119,7 +119,8 @@ return {
 						workspace = {
 							symbol = {
 								search = {
-									scope = "workspace_and_dependencies", --  (default: "workspace")
+									-- scope = "workspace_and_dependencies", --  (default: "workspace")
+									scope = "workspace",
 								},
 							},
 						},
