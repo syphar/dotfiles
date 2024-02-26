@@ -85,6 +85,7 @@ complete -c poetry -n '__fish_seen_subcommand_from add' -l source -d 'Name of th
 
 # build
 complete -c poetry -n '__fish_seen_subcommand_from build' -l format -d 'Limit the format to either sdist or wheel.'
+complete -c poetry -n '__fish_seen_subcommand_from build' -l output -d 'Set output directory for build artifacts. Default is `dist`.'
 
 # cache clear
 complete -c poetry -n '__fish_seen_subcommand_from cache; and __fish_seen_subcommand_from clear' -l all -d 'Clear all entries in the cache.'
@@ -177,6 +178,7 @@ complete -c poetry -n '__fish_seen_subcommand_from new' -l src -d 'Use the src l
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l build -d 'Build the package before publishing.'
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l cert -d 'Certificate authority to access the repository.'
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l client-cert -d 'Client certificate to access the repository.'
+complete -c poetry -n '__fish_seen_subcommand_from publish' -l dist-dir -d 'Dist directory where built artifact are stored. Default is `dist`.'
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l dry-run -d 'Perform all actions except upload the package.'
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l password -d 'The password to access the repository.'
 complete -c poetry -n '__fish_seen_subcommand_from publish' -l repository -d 'The repository to publish the package to.'
@@ -233,7 +235,7 @@ complete -c poetry -n '__fish_seen_subcommand_from show' -l only -d 'The only de
 complete -c poetry -n '__fish_seen_subcommand_from show' -l outdated -d 'Show the latest version but only for packages that are outdated.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l top-level -d 'Show only top-level dependencies.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l tree -d 'List the dependencies as a tree.'
-complete -c poetry -n '__fish_seen_subcommand_from show' -l why -d 'When showing the full list, or a --tree for a single package, also display why it\'s included.'
+complete -c poetry -n '__fish_seen_subcommand_from show' -l why -d 'When showing the full list, or a --tree for a single package, display whether they are a direct dependency or required by other packages'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l with -d 'The optional dependency groups to include.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l without -d 'The dependency groups to ignore.'
 
@@ -251,6 +253,7 @@ complete -c poetry -n '__fish_seen_subcommand_from update' -l dry-run -d 'Output
 complete -c poetry -n '__fish_seen_subcommand_from update' -l lock -d 'Do not perform operations (only update the lockfile).'
 complete -c poetry -n '__fish_seen_subcommand_from update' -l no-dev -d 'Do not update the development dependencies. (Deprecated)'
 complete -c poetry -n '__fish_seen_subcommand_from update' -l only -d 'The only dependency groups to include.'
+complete -c poetry -n '__fish_seen_subcommand_from update' -l sync -d 'Synchronize the environment with the locked packages and the specified groups.'
 complete -c poetry -n '__fish_seen_subcommand_from update' -l with -d 'The optional dependency groups to include.'
 complete -c poetry -n '__fish_seen_subcommand_from update' -l without -d 'The dependency groups to ignore.'
 
