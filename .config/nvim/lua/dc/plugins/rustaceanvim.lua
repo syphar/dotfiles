@@ -107,8 +107,8 @@ return {
 						checkOnSave = {
 							enable = true,
 							command = "clippy",
-							allTargets = true,
-							allFeatures = true,
+							-- allTargets = true,
+							-- allFeatures = true,
 						},
 						cargo = {
 							loadOutDirsFromCheck = true,
