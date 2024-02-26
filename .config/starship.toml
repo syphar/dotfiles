@@ -99,6 +99,7 @@ symbol = " "
 symbol = " "
 
 [golang]
+format = "[$symbol($version )]($style)"
 symbol = " "
 
 [hg_branch]
