@@ -37,16 +37,7 @@ return {
 			server = {
 				flags = cfg.global_flags(),
 				capabilities = cfg.capabilities(),
-				on_attach = function(client, bufnr)
-					cfg.lsp_on_attach_without_formatting(client, bufnr)
-
-					vim.keymap.set(
-						"n",
-						"gh",
-						require("rust-tools.external_docs").open_external_docs,
-						{ buffer = bufnr }
-					)
-				end,
+				on_attach = cfg.lsp_on_attach_without_formatting,
 				settings = {
 					["rust-analyzer"] = {
 						assist = {
