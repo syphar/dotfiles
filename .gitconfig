@@ -119,7 +119,7 @@
 [fetch]
 	prune = true
 	fsckobjects = true
-	prunetags = true
+	; prunetags = true
 
 [rebase]
 	updateRefs = true
