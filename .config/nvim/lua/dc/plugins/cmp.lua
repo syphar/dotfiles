@@ -1,6 +1,44 @@
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 return {
+	-- {
+	-- 	"codota/tabnine-nvim",
+	-- 	build = "./dl_binaries.sh && cd chat && cargo build --release",
+	-- 	config = function()
+	-- 		require("tabnine").setup({
+	-- 			disable_auto_comment = true,
+	-- 			accept_keymap = "<Tab>",
+	-- 			dismiss_keymap = "<C-]>",
+	-- 			debounce_ms = 800,
+	-- 			suggestion_color = { gui = "#808080", cterm = 244 },
+	-- 			exclude_filetypes = { "TelescopePrompt" },
+	-- 			log_file_path = nil, -- absolute path to Tabnine log file
+	-- 		})
+	-- 	end,
+	-- 	cmd = {
+	-- 		"TabnineHub",
+	-- 		"TabnineHubUrl",
+	-- 		"TabnineStatus",
+	-- 		"TabnineDisable",
+	-- 		"TabnineEnable",
+	-- 		"TabnineToggle",
+	-- 		"TabnineChat",
+	-- 		"TabnineLoginWithAuthToken",
+	-- 		"TabnineChat",
+	-- 		"TabnineFix",
+	-- 		"TabnineTest",
+	-- 		"TabnineExplain",
+	-- 	},
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>q",
+	-- 			function()
+	-- 				require("tabnine.chat").open()
+	-- 			end,
+	-- 			{ "x", "i", "n" },
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -33,18 +71,6 @@ return {
 						ignored_file_types = {},
 						show_prediction_strength = true,
 					})
-
-					-- require("tabnine").setup({
-					-- 	disable_auto_comment = true,
-					-- 	accept_keymap = "<Tab>",
-					-- 	dismiss_keymap = "<C-]>",
-					-- 	debounce_ms = 800,
-					-- 	suggestion_color = { gui = "#808080", cterm = 244 },
-					-- 	exclude_filetypes = { "TelescopePrompt" },
-					-- 	log_file_path = nil, -- absolute path to Tabnine log file
-					-- })
-
-					-- vim.keymap.set({ "x", "i", "n" }, "<leader>q", require("tabnine.chat").open)
 				end,
 			},
 			{
