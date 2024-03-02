@@ -40,6 +40,9 @@ return {
 				on_attach = cfg.lsp_on_attach_without_formatting,
 				settings = {
 					["rust-analyzer"] = {
+						files = {
+							excludeDirs = { ".rustwide-docker", ".rustwide", ".rustwide-docker" },
+						},
 						assist = {
 							importGranularity = "crate",
 							importPrefix = "by_self",
