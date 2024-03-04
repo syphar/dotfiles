@@ -25,6 +25,7 @@ abbr -ag dcb docker compose build
 abbr -ag dc docker compose
 alias dcs="docker stop (docker ps -q)"
 
+alias bf="butterfish"
 alias vim="nvim"
 alias vi="nvim"
 abbr -ag da direnv allow
