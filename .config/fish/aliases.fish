@@ -36,7 +36,7 @@ alias n='vim -c "NV"'
 alias k9="kill -9"
 abbr -ag pg pgrep -f 
 abbr -ag pk pkill -f 
-abbr -ag gsh git show HEAD --ext-diff
+abbr -ag gsh git show HEAD
 abbr -ag gt git tag -n
 abbr -ag gri git rebase -i
 abbr -ag gra git rebase --abort

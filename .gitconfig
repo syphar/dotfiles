@@ -13,12 +13,11 @@
 	autocrlf = input
 
 [pager]
-    external = difft
-    ; diff = delta
-    ; difftool = true
-    ; log = delta
-    ; reflog = delta
-    ; show = delta
+    diff = delta
+    difftool = true
+    log = delta
+    reflog = delta
+    show = delta
 
 [blame]
     date = short
