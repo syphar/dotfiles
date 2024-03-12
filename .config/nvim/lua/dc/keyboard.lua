@@ -18,6 +18,7 @@ vim.keymap.set("n", "<space>", "za")
 
 -- show current file on master
 vim.keymap.set("n", "<leader>em", ":Gedit master:%<CR>")
+vim.keymap.set("n", "<leader>eM", ":Gedit main:%<CR>")
 
 -- delete current file
 vim.keymap.set("n", "<leader>rm", ":!rm %<CR>")
