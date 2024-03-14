@@ -9,29 +9,41 @@ return {
 			signcolumn = false,
 			autoresize = {
 				enable = true,
+				minwidth = 60,
+				minheight = 10,
 			},
-			excluded_filetypes = { "fugitiveblame", "packer" },
 		})
 
-		-- the default focus.nvim autocmd is disabled via autoresize=false.
-		-- This autocmd below is a copy of it that is calling WinScrolled
-		-- afterwards so _incline_ floats are updated correctly.
-		-- upstream fix: https://github.com/beauwilliams/focus.nvim/pull/83
-		-- vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-		-- 	pattern = "*",
-		-- 	group = vim.api.nvim_create_augroup("focus_nvim", {}),
-		-- 	callback = function()
-		-- 		vim.schedule(function()
-		-- 			require("focus").resize()
-		-- 			vim.api.nvim_exec_autocmds("WinScrolled", {})
-		-- 			-- HACK:
-		-- 			-- even when disabled globally, the cursorline
-		-- 			-- is still activated by a plugin, probably
-		-- 			-- this one.
-		-- 			-- So I disable it here again
-		-- 			vim.opt.cursorline = false
-		-- 		end)
+		-- disabling focus for certain filetypes:
+		-- https://github.com/nvim-focus/focus.nvim?tab=readme-ov-file#disabling-focus
+
+		local ignore_filetypes = { "fugitiveblame", "packer", "Trouble" }
+		-- local ignore_buftypes = { "nofile", "prompt", "popup" }
+
+		local augroup = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
+
+		-- vim.api.nvim_create_autocmd("WinEnter", {
+		-- 	group = augroup,
+		-- 	callback = function(_)
+		-- 		if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+		-- 			vim.w.focus_disable = true
+		-- 		else
+		-- 			vim.w.focus_disable = false
+		-- 		end
 		-- 	end,
+		-- 	desc = "Disable focus autoresize for BufType",
 		-- })
+
+		vim.api.nvim_create_autocmd("FileType", {
+			group = augroup,
+			callback = function(_)
+				if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+					vim.b.focus_disable = true
+				else
+					vim.b.focus_disable = false
+				end
+			end,
+			desc = "Disable focus autoresize for FileType",
+		})
 	end,
 }
