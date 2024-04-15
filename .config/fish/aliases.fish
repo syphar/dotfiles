@@ -6,6 +6,7 @@ alias pipirt="pip install --upgrade pip wheel setuptools && pip install -r requi
 abbr -ag pl poetry lock --no-update
 abbr -ag pi poetry install --sync --no-root
 
+alias ta='tmux attach -t base || tmux new -s base'
 alias tiga='tig --all'
 alias tigs='tig status'
 alias gb='git branch -vv'
