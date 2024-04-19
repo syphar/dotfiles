@@ -31,6 +31,7 @@ pydocstyle
 pyflyby
 python-lsp-server
 ruff
+ruff-lsp
 sqlfluff
 tidal-dl
 watchdog
