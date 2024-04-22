@@ -4,7 +4,7 @@ alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipirt="pip install --upgrade pip wheel setuptools && pip install -r requirements_test.txt"
 abbr -ag pl poetry lock --no-update
-abbr -ag pi poetry install --sync --no-root
+abbr -ag pi poetry install --sync
 
 alias ta='tmux attach -t base || tmux new -s base'
 alias tiga='tig --all'
