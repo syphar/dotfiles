@@ -1,5 +1,6 @@
 .syntastic_classpath
 pyrightconfig.json
+.zed
 
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store
