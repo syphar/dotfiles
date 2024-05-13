@@ -106,30 +106,28 @@ return {
 						table.insert(denofmt.args, "md")
 						return denofmt
 					end,
-					require("formatter.filetypes.any").remove_trailing_whitespace,
 				},
 				json = {
 					require("formatter.filetypes.json").jq,
 				},
-				yaml = {
-					require("formatter.filetypes.any").remove_trailing_whitespace,
-				},
-				gitcommit = {
-					require("formatter.filetypes.any").remove_trailing_whitespace,
-				},
+				yaml = {},
+				gitcommit = {},
 				fish = {
 					require("formatter.filetypes.fish").fishindent,
 				},
 				["*"] = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
 					function()
-						-- TODO: contribute back to formatter.nvim?
-						-- taken from null-ls builtin `trim_newlines`
-						return {
-							command = "awk",
-							args = { 'NF{print s $0; s=""; next} {s=s ORS}' },
-							to_stdin = true,
-						}
+						return function()
+							vim.cmd([[silent! :keeppatterns :%s/\(\n\)\+\%$//e]])
+							-- 	-- TODO: contribute back to formatter.nvim?
+							-- 	-- taken from null-ls builtin `trim_newlines`
+							-- 	return {
+							-- 		command = "awk",
+							-- 		args = { 'NF{print s $0; s=""; next} {s=s ORS}' },
+							-- 		to_stdin = true,
+							-- 	}
+						end
 					end,
 				},
 			},
