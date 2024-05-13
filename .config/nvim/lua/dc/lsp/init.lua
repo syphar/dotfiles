@@ -64,13 +64,13 @@ end
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		buffer = bufnr,
-		callback = function()
-			vim.lsp.buf.format({ async = false, bufnr = bufnr })
-		end,
-		group = vim.api.nvim_create_augroup("format_on_save_lsp_" .. bufnr, { clear = true }),
-	})
+	-- vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 	buffer = bufnr,
+	-- 	callback = function()
+	-- 		vim.lsp.buf.format({ async = false, bufnr = bufnr })
+	-- 	end,
+	-- 	group = vim.api.nvim_create_augroup("format_on_save_lsp_" .. bufnr, { clear = true }),
+	-- })
 end
 
 function cfg.capabilities()
