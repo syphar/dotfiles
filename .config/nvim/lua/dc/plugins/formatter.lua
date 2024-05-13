@@ -4,19 +4,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		-- autoformat for certain file-types
 		local ft = vim.api.nvim_buf_get_option(args.buf, "ft")
 
-		local dc_utils = require("dc.utils")
-
-		if
-			(
-				ft == "python"
-				and (dc_utils.pyproject_toml()["tool.ruff.format"] or dc_utils.pyproject_toml()["tool.black"])
-			)
-			or ft == "terraform"
-			or ft == "rust"
-			or ft == "go"
-			or ft == "caddyfile"
-			or ft == "lua"
-		then
+		if ft == "terraform" or ft == "go" or ft == "caddyfile" or ft == "lua" then
 			vim.cmd([[FormatWrite]])
 		end
 	end,
@@ -63,47 +51,6 @@ return {
 				go = {
 					require("formatter.filetypes.go").gofmt,
 				},
-				python = {
-					function()
-						if not dc_utils.pyproject_toml()["tool.black"] then
-							return nil
-						end
-						local black = require("formatter.filetypes.python").black()
-						table.insert(black.args, "--fast")
-						return black
-					end,
-					function()
-						if not (dc_utils.pyproject_toml()["tool.isort"] or dc_utils.setup_cfg_sections().isort) then
-							return nil
-						end
-						return require("formatter.filetypes.python").isort()
-					end,
-					function()
-						-- always configure ruff when black is not configured
-						if dc_utils.pyproject_toml()["tool.black"] then
-							return nil
-						end
-						return require("formatter.filetypes.python").ruff()
-					end,
-					function()
-						-- always configure ruff when black is not configured
-						if dc_utils.pyproject_toml()["tool.black"] then
-							return nil
-						end
-						return {
-							exe = "ruff",
-							args = {
-								"--fix",
-								"-e",
-								"-n",
-								"--stdin-filename",
-								util.escape_path(util.get_current_buffer_file_path()),
-								"-",
-							},
-							stdin = true,
-						}
-					end,
-				},
 				sql = {
 					function()
 						return {
@@ -149,9 +96,9 @@ return {
 						}
 					end,
 				},
-				rust = {
-					require("formatter.filetypes.rust").rustfmt,
-				},
+				-- rust = {
+				-- 	require("formatter.filetypes.rust").rustfmt,
+				-- },
 				markdown = {
 					function()
 						local denofmt = util.copyf(defaults.denofmt)()
@@ -188,8 +135,5 @@ return {
 			},
 		})
 	end,
-	keys = {
-		{ "<leader>gq", "<cmd>FormatWrite<cr>" },
-	},
 	cmd = { "Format", "FormatWrite", "FormatLock", "FormatWriteLock" },
 }

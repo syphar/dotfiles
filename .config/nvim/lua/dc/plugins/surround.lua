@@ -1,10 +1,13 @@
 -- fork of "blackCauldron7/surround.nvim"
 return {
-	"ur4ltz/surround.nvim",
-	event = "VeryLazy",
-	opts = {
-		mappings_style = "sandwich",
+	{
+		"ur4ltz/surround.nvim",
+		event = "VeryLazy",
+		opts = {
+			mappings_style = "sandwich",
+		},
 	},
+	{ "Matt-A-Bennett/vim-surround-funk", event = "VeryLazy" },
 }
 
 -- There are two keymap modes for normal mode mappings.

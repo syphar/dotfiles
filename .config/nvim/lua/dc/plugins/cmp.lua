@@ -1,44 +1,6 @@
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 return {
-	-- {
-	-- 	"codota/tabnine-nvim",
-	-- 	build = "./dl_binaries.sh && cd chat && cargo build --release",
-	-- 	config = function()
-	-- 		require("tabnine").setup({
-	-- 			disable_auto_comment = true,
-	-- 			accept_keymap = "<Tab>",
-	-- 			dismiss_keymap = "<C-]>",
-	-- 			debounce_ms = 800,
-	-- 			suggestion_color = { gui = "#808080", cterm = 244 },
-	-- 			exclude_filetypes = { "TelescopePrompt" },
-	-- 			log_file_path = nil, -- absolute path to Tabnine log file
-	-- 		})
-	-- 	end,
-	-- 	cmd = {
-	-- 		"TabnineHub",
-	-- 		"TabnineHubUrl",
-	-- 		"TabnineStatus",
-	-- 		"TabnineDisable",
-	-- 		"TabnineEnable",
-	-- 		"TabnineToggle",
-	-- 		"TabnineChat",
-	-- 		"TabnineLoginWithAuthToken",
-	-- 		"TabnineChat",
-	-- 		"TabnineFix",
-	-- 		"TabnineTest",
-	-- 		"TabnineExplain",
-	-- 	},
-	-- 	keys = {
-	-- 		{
-	-- 			"<leader>q",
-	-- 			function()
-	-- 				require("tabnine.chat").open()
-	-- 			end,
-	-- 			{ "x", "i", "n" },
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -55,28 +17,6 @@ return {
 					require("dc.snippets")
 					vim.keymap.set({ "i", "s" }, "<C-E>", "<Plug>luasnip-next-choice")
 					vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
-				end,
-			},
-			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-				config = function()
-					local cmp_tabnine = require("cmp_tabnine.config")
-					cmp_tabnine:setup({
-						max_lines = 1000,
-						max_num_results = 20,
-						sort = true,
-						run_on_every_keystroke = true,
-						snippet_placeholder = "..",
-						ignored_file_types = {},
-						show_prediction_strength = true,
-					})
-				end,
-			},
-			{
-				"zbirenbaum/copilot-cmp",
-				config = function()
-					require("copilot_cmp").setup()
 				end,
 			},
 		},
@@ -138,8 +78,6 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "cmp_tabnine" },
-					{ name = "copilot" },
 					{ name = "path" },
 					{ name = "treesitter" },
 				}),
@@ -151,12 +89,10 @@ return {
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[ Lua]",
-							cmp_tabnine = "[ T9]",
 							path = "[/ Path]",
 							crates = " [ Crates]",
 							jira_issues = "[ JIRA]",
 							gh_issues = "[ GH]",
-							copilot = "[ ]",
 						},
 					}),
 				},
@@ -164,19 +100,6 @@ return {
 					ghost_text = { hl_group = "NonText" },
 				},
 				sorting = {
-					-- this would be the config example from tabnine
-					-- priority_weight = 2,
-					-- comparators = {
-					-- 	require("cmp_tabnine.compare"),
-					-- 	compare.offset,
-					-- 	compare.exact,
-					-- 	compare.score,
-					-- 	compare.recently_used,
-					-- 	compare.kind,
-					-- 	compare.sort_text,
-					-- 	compare.length,
-					-- 	compare.order,
-					-- },
 					comparators = {
 						-- based on TJ config
 						-- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua#L129
@@ -208,15 +131,5 @@ return {
 
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 		end,
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		opts = {
-			suggestion = { enabled = false },
-			panel = { enabled = false },
-			copilot_node_command = "/opt/homebrew/bin/node",
-		},
 	},
 }

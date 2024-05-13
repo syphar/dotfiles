@@ -338,9 +338,7 @@ return {
 				function()
 					-- pick from git-files if inside git repository,
 					-- otherwise use find_files from CWD
-					local is_inside_working_tree = (
-						vim.fn.trim(vim.fn.system("git rev-parse --is-inside-work-tree")) == "true"
-					)
+					local is_inside_working_tree = vim.fs.find({ ".git" }, { path = vim.fn.getcwd(), upward = true })[1]
 
 					if is_inside_working_tree then
 						require("telescope.builtin").git_files({ show_untracked = true })
@@ -365,7 +363,7 @@ return {
 	{
 		"syphar/python-docs.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
-		ft = { "python" },
+		cmd = { "Telescope" },
 		config = function()
 			require("telescope").load_extension("python_docs")
 		end,

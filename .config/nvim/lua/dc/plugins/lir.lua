@@ -1,5 +1,4 @@
 -- file manager
-
 return {
 	"tamago324/lir.nvim",
 	lazy = false,
@@ -12,6 +11,7 @@ return {
 			"n",
 		},
 	},
+
 	dependencies = {
 		"tamago324/lir-git-status.nvim",
 	},

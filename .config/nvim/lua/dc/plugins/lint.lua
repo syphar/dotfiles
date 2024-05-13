@@ -8,22 +8,22 @@ return {
 	config = function()
 		local lint = require("lint")
 
-		lint.linters.flake8.condition = function(ctx)
-			return dc_utils.setup_cfg_sections().flake8
-		end
+		-- lint.linters.flake8.condition = function(ctx)
+		-- 	return dc_utils.setup_cfg_sections().flake8
+		-- end
 
-		lint.linters.ruff.condition = function(ctx)
-			-- always use ruff when flake8 is _not_ configured
-			return not dc_utils.setup_cfg_sections().flake8
-		end
+		-- lint.linters.ruff.condition = function(ctx)
+		-- 	-- always use ruff when flake8 is _not_ configured
+		-- 	return not dc_utils.setup_cfg_sections().flake8
+		-- end
 
 		lint.linters.selene.condition = function(ctx)
 			return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
 		end
 
-		lint.linters.pydocstyle.condition = function(ctx)
-			return dc_utils.pyproject_toml()["tool.pydocstyle"] or dc_utils.setup_cfg_sections().pydocstyle
-		end
+		-- lint.linters.pydocstyle.condition = function(ctx)
+		-- 	return dc_utils.pyproject_toml()["tool.pydocstyle"] or dc_utils.setup_cfg_sections().pydocstyle
+		-- end
 
 		lint.linters.sqlfluff.condition = function(ctx)
 			return dc_utils.pyproject_toml()["tool.sqlfluff"] or dc_utils.setup_cfg_sections().sqlfluff
@@ -69,7 +69,6 @@ return {
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "markdownlint" },
-			python = { "flake8", "ruff", "pydocstyle" },
 			sh = { "shellcheck" },
 			sql = { "sqlfluff" },
 			vim = { "vint" },

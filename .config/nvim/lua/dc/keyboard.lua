@@ -106,3 +106,8 @@ vim.keymap.set("n", "<leader>n", function()
 		vim.cmd("e %:h/" .. input)
 	end)
 end)
+
+vim.keymap.set("n", "<leader>gq", function()
+	vim.lsp.buf.format({ async = false })
+	vim.cmd("FormatWrite<cr>")
+end)

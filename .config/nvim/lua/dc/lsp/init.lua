@@ -63,6 +63,23 @@ end
 
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
+
+	-- local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+
+	-- local dc_utils = require("dc.utils")
+
+	-- if
+	-- 	(ft == "python" and (dc_utils.pyproject_toml()["tool.ruff.format"] or dc_utils.pyproject_toml()["tool.black"]))
+	-- 	or ft == "rust"
+	-- then
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		buffer = bufnr,
+		callback = function()
+			vim.lsp.buf.format({ async = false })
+		end,
+		group = vim.api.nvim_create_augroup("format_on_save_lsp", { clear = true }),
+	})
+	-- end
 end
 
 function cfg.capabilities()
@@ -90,9 +107,12 @@ function cfg.lsp_setup()
 		gopls = "*.go",
 		jdtls = "*.java",
 		kotlin_language_server = "*.kt",
-		marksman = "*.md",
-		pylsp = "*.py",
 		lua_ls = "*.lua",
+		marksman = "*.md",
+		-- pylsp = "*.py",
+		pyright = "*.py",
+		-- pylyzer = "*.py",
+		ruff_lsp = "*.py",
 		tailwindcss = "*.css",
 		taplo = "*.toml",
 		terraformls = "*.tf",
