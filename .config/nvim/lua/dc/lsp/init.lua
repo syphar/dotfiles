@@ -64,22 +64,13 @@ end
 function cfg.lsp_on_attach(client, bufnr)
 	cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-	-- local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
-
-	-- local dc_utils = require("dc.utils")
-
-	-- if
-	-- 	(ft == "python" and (dc_utils.pyproject_toml()["tool.ruff.format"] or dc_utils.pyproject_toml()["tool.black"]))
-	-- 	or ft == "rust"
-	-- then
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		buffer = bufnr,
 		callback = function()
-			vim.lsp.buf.format({ async = false })
+			vim.lsp.buf.format({ async = false, bufnr = bufnr })
 		end,
-		group = vim.api.nvim_create_augroup("format_on_save_lsp", { clear = true }),
+		group = vim.api.nvim_create_augroup("format_on_save_lsp_" .. bufnr, { clear = true }),
 	})
-	-- end
 end
 
 function cfg.capabilities()
