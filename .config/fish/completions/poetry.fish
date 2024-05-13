@@ -21,7 +21,7 @@ complete -c poetry -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -l
 
 # commands
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a about -d 'Shows information about Poetry.'
-complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a add -d 'Adds a new dependency to pyproject.toml.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a add -d 'Adds a new dependency to pyproject.toml and installs it.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a build -d 'Builds a package, as a tarball and a wheel by default.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a cache
 complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a clear -d 'Clears a Poetry cache by name.'
@@ -171,7 +171,7 @@ complete -c poetry -n '__fish_seen_subcommand_from lock' -l no-update -d 'Do not
 
 # new
 complete -c poetry -n '__fish_seen_subcommand_from new' -l name -d 'Set the resulting package name.'
-complete -c poetry -n '__fish_seen_subcommand_from new' -l readme -d 'Specify the readme file format. One of md (default) or rst'
+complete -c poetry -n '__fish_seen_subcommand_from new' -l readme -d 'Specify the readme file format. Default is md.'
 complete -c poetry -n '__fish_seen_subcommand_from new' -l src -d 'Use the src layout for the project.'
 
 # publish
