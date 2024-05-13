@@ -29,6 +29,7 @@ pre-commit
 proselint
 pydocstyle
 pyflyby
+pylyzer
 python-lsp-server
 ruff
 ruff-lsp
