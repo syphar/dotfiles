@@ -1,10 +1,3 @@
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*",
---   callback = function(args)
---     require("conform").format({ bufnr = args.buf })
---   end,
--- })
-
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
@@ -16,7 +9,6 @@ return {
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
 			mode = "",
-			desc = "Format buffer",
 		},
 	},
 	opts = {
@@ -24,6 +16,7 @@ return {
 			caddyfile = { "caddy" },
 			htmldjango = { "djhtml" },
 			django = { "djhtml" },
+			lua = { "stylua" },
 			["jinja.html"] = { "djhtml" },
 			sql = { "sqlfluff" },
 			just = { "just" },
@@ -32,7 +25,20 @@ return {
 			fish = { "fish_indent" },
 			["*"] = { "trim_newlines", "trim_whitespace" },
 		},
-		format_on_save = { timeout_ms = 500, lsp_fallback = true },
+		format_on_save = function(bufnr)
+			local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+
+			if
+				ft == "rust"
+				or ft == "python"
+				or ft == "terraform"
+				or ft == "go"
+				or ft == "caddyfile"
+				or ft == "lua"
+			then
+				return { timeout_ms = 500, lsp_fallback = true }
+			end
+		end,
 		formatters = {
 			caddy = {
 				command = "caddy",
@@ -46,7 +52,7 @@ return {
 			end,
 			sqlfluff = {
 				args = { "fix", "--dialect=postgres", "-" },
-			}
+			},
 		},
 	},
 	init = function()
