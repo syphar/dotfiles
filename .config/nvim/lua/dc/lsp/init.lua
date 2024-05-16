@@ -103,6 +103,7 @@ function cfg.lsp_setup()
 		-- pylsp = "*.py",
 		pyright = "*.py",
 		-- pylyzer = "*.py",
+		-- jedi = "*.py",
 		ruff_lsp = "*.py",
 		tailwindcss = "*.css",
 		taplo = "*.toml",

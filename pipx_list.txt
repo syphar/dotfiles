@@ -16,6 +16,7 @@ gsutil
 httpie
 ipython
 isort
+jedi-language-server
 lookatme
 maturin
 openai
