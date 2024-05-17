@@ -1,6 +1,7 @@
 argcomplete
 awscli
 bandit
+basedpyright
 black
 chatblade
 curlylint
