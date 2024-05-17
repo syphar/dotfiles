@@ -12,9 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ","
+
 require("lazy").setup("dc.plugins", { change_detection = { notify = false, enabled = false } })
 
-require("impatient")
+vim.loader.enable()
 require("dc.vim_options")
 
 require("dc.lsp").lsp_setup()

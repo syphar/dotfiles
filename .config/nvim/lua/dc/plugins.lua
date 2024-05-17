@@ -1,5 +1,4 @@
 return {
-	"lewis6991/impatient.nvim",
 	"tpope/vim-projectionist",
 	"tpope/vim-unimpaired",
 

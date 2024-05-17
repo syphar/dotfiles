@@ -69,6 +69,7 @@ return {
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "markdownlint" },
+			proto = { "protolint" },
 			sh = { "shellcheck" },
 			sql = { "sqlfluff" },
 			vim = { "vint" },
