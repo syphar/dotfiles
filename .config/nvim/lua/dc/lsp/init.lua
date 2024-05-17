@@ -58,7 +58,7 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 			border = "rounded",
 		},
 	})
-	require("lsp-inlayhints").on_attach(client, bufnr, true)
+	vim.lsp.inlay_hint.enable()
 end
 
 function cfg.lsp_on_attach(client, bufnr)

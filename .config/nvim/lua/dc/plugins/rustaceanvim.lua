@@ -1,13 +1,6 @@
 return {
 	"mrcjkb/rustaceanvim",
 	version = "^4",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{
-			"lvimuser/lsp-inlayhints.nvim",
-			opts = {},
-		},
-	},
 	ft = { "rust" },
 	config = function()
 		local cfg = require("dc.lsp")
