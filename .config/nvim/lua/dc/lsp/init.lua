@@ -34,6 +34,8 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
 
+	-- vim.print(client.server_capabilities)
+
 	if client.server_capabilities.documentHighlightProvider and ft ~= "lua" then
 		local augroup = vim.api.nvim_create_augroup("lsp_document_highlight" .. client.name .. "_" .. bufnr, {})
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {

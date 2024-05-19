@@ -30,7 +30,12 @@ return {
 			server = {
 				flags = cfg.global_flags(),
 				capabilities = cfg.capabilities(),
-				on_attach = cfg.lsp_on_attach,
+				on_attach = function(client, bufnr)
+					cfg.lsp_on_attach(client, bufnr)
+
+					-- disable LSP server hilighting, I prefer treesitter for now
+					client.server_capabilities.semanticTokensProvider = nil
+				end,
 				settings = {
 					["rust-analyzer"] = {
 						files = {

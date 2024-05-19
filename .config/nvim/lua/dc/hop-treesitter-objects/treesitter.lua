@@ -4,7 +4,7 @@ local T = {}
 
 T.nodes = function()
 	return function(opts)
-		vim.print(opts)
+		-- vim.print(opts)
 		local Locations = T.parse(opts.direction)
 		jump_target.sort_indirect_jump_targets(Locations.indirect_jump_targets, opts)
 		return Locations
