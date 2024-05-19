@@ -102,7 +102,7 @@ function cfg.lsp_setup()
 		marksman = "*.md",
 		-- pylsp = "*.py",
 		pyright = "*.py",
-		-- basedpyright = "*.py",
+		basedpyright = "*.py",
 		-- pylyzer = "*.py",
 		-- jedi = "*.py",
 		ruff_lsp = "*.py",
