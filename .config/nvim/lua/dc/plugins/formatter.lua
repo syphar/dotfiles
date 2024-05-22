@@ -23,6 +23,7 @@ return {
 			markdown = { "deno_fmt" },
 			json = { "jq" },
 			fish = { "fish_indent" },
+			proto = { "buf" },
 			["*"] = { "trim_newlines", "trim_whitespace" },
 		},
 		format_on_save = function(bufnr)
