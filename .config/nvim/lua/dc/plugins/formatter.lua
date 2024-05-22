@@ -36,6 +36,7 @@ return {
 				or ft == "go"
 				or ft == "caddyfile"
 				or ft == "lua"
+				or ft == "proto"
 			then
 				return { timeout_ms = 500, lsp_fallback = true }
 			end
