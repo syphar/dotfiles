@@ -36,6 +36,34 @@ return {
 			)[1]
 		end
 
+		lint.linters.buf = {
+			cmd = "buf",
+			stdin = true,
+			append_fname = false,
+			args = { "lint", "--error-format=json" },
+			ignore_exitcode = true,
+			parser = function(output, bufnr, linter_cwd)
+				if not vim.api.nvim_buf_is_valid(bufnr) then
+					return {}
+				end
+				local result = {}
+				for _, line in ipairs(vim.fn.split(output, "\n")) do
+					local data = vim.json.decode(line)
+					table.insert(result, {
+						lnum = data.start_line - 1,
+						end_lnum = data.end_line - 1,
+						col = data.start_column,
+						end_col = data.end_column,
+						severity = vim.diagnostic.severity.ERROR,
+						message = data.message,
+						code = data.type,
+						source = "buf",
+					})
+				end
+				return result
+			end,
+		}
+
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
 			"BufReadPost",
@@ -69,7 +97,7 @@ return {
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "markdownlint" },
-			proto = { "protolint" },
+			proto = { "buf" },
 			sh = { "shellcheck" },
 			sql = { "sqlfluff" },
 			vim = { "vint" },
