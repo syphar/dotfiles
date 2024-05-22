@@ -98,7 +98,7 @@ return {
 						},
 						checkOnSave = {
 							enable = true,
-							command = "clippy",
+							-- command = "clippy",
 							-- allTargets = true,
 							-- allFeatures = true,
 						},
