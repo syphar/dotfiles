@@ -52,8 +52,8 @@ return {
 					table.insert(result, {
 						lnum = data.start_line - 1,
 						end_lnum = data.end_line - 1,
-						col = data.start_column,
-						end_col = data.end_column,
+						col = data.start_column - 1,
+						end_col = data.end_column - 1,
 						severity = vim.diagnostic.severity.ERROR,
 						message = data.message,
 						code = data.type,
