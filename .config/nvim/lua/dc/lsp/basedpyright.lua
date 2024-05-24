@@ -4,18 +4,16 @@ function M.setup(cfg, lspconfig)
 	lspconfig.basedpyright.setup({
 		flags = cfg.global_flags(),
 		on_attach = function(client, bufnr)
-			-- disable all LSP capabilities except inlay hints for this server
-			local sc = client.server_capabilities
-			for key, _ in pairs(sc) do
-				sc[key] = nil
-			end
-			sc.inlayHintProvider = true
+			cfg.lsp_on_attach_without_formatting(client, bufnr)
 
-			-- we also don't need to call our own lsp_on_attach method
-			-- this the "default" pyright server will handle the rest of the features
+			-- disable LSP server hilighting, I prefer treesitter for now
+			client.server_capabilities.semanticTokensProvider = nil
 		end,
-		handlers = {
-			["textDocument/publishDiagnostics"] = function() end,
+		settings = {
+			basedpyright = {
+				-- this is the pyright default, we don't want it stricter for now
+				typeCheckingMode = "basic", -- strict?
+			},
 		},
 	})
 end
