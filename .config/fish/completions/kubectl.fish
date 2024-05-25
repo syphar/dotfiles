@@ -69,6 +69,60 @@ function __kubectl_perform_completion
     printf "%s\n" "$directiveLine"
 end
 
+# this function limits calls to __kubectl_perform_completion, by caching the result behind $__kubectl_perform_completion_once_result
+function __kubectl_perform_completion_once
+    __kubectl_debug "Starting __kubectl_perform_completion_once"
+
+    if test -n "$__kubectl_perform_completion_once_result"
+        __kubectl_debug "Seems like a valid result already exists, skipping __kubectl_perform_completion"
+        return 0
+    end
+
+    set --global __kubectl_perform_completion_once_result (__kubectl_perform_completion)
+    if test -z "$__kubectl_perform_completion_once_result"
+        __kubectl_debug "No completions, probably due to a failure"
+        return 1
+    end
+
+    __kubectl_debug "Performed completions and set __kubectl_perform_completion_once_result"
+    return 0
+end
+
+# this function is used to clear the $__kubectl_perform_completion_once_result variable after completions are run
+function __kubectl_clear_perform_completion_once_result
+    __kubectl_debug ""
+    __kubectl_debug "========= clearing previously set __kubectl_perform_completion_once_result variable =========="
+    set --erase __kubectl_perform_completion_once_result
+    __kubectl_debug "Succesfully erased the variable __kubectl_perform_completion_once_result"
+end
+
+function __kubectl_requires_order_preservation
+    __kubectl_debug ""
+    __kubectl_debug "========= checking if order preservation is required =========="
+
+    __kubectl_perform_completion_once
+    if test -z "$__kubectl_perform_completion_once_result"
+        __kubectl_debug "Error determining if order preservation is required"
+        return 1
+    end
+
+    set -l directive (string sub --start 2 $__kubectl_perform_completion_once_result[-1])
+    __kubectl_debug "Directive is: $directive"
+
+    set -l shellCompDirectiveKeepOrder 32
+    set -l keeporder (math (math --scale 0 $directive / $shellCompDirectiveKeepOrder) % 2)
+    __kubectl_debug "Keeporder is: $keeporder"
+
+    if test $keeporder -ne 0
+        __kubectl_debug "This does require order preservation"
+        return 0
+    end
+
+    __kubectl_debug "This doesn't require order preservation"
+    return 1
+end
+
+
 # This function does two things:
 # - Obtain the completions and store them in the global __kubectl_comp_results
 # - Return false if file completion should be performed
@@ -79,17 +133,17 @@ function __kubectl_prepare_completions
     # Start fresh
     set --erase __kubectl_comp_results
 
-    set -l results (__kubectl_perform_completion)
-    __kubectl_debug "Completion results: $results"
+    __kubectl_perform_completion_once
+    __kubectl_debug "Completion results: $__kubectl_perform_completion_once_result"
 
-    if test -z "$results"
+    if test -z "$__kubectl_perform_completion_once_result"
         __kubectl_debug "No completion, probably due to a failure"
         # Might as well do file completion, in case it helps
         return 1
     end
 
-    set -l directive (string sub --start 2 $results[-1])
-    set --global __kubectl_comp_results $results[1..-2]
+    set -l directive (string sub --start 2 $__kubectl_perform_completion_once_result[-1])
+    set --global __kubectl_comp_results $__kubectl_perform_completion_once_result[1..-2]
 
     __kubectl_debug "Completions are: $__kubectl_comp_results"
     __kubectl_debug "Directive is: $directive"
@@ -185,7 +239,11 @@ end
 # Remove any pre-existing completions for the program since we will be handling all of them.
 complete -c kubectl -e
 
+# this will get called after the two calls below and clear the $__kubectl_perform_completion_once_result global
+complete -c kubectl -n '__kubectl_clear_perform_completion_once_result'
 # The call to __kubectl_prepare_completions will setup __kubectl_comp_results
 # which provides the program's completion choices.
-complete -c kubectl -n '__kubectl_prepare_completions' -f -a '$__kubectl_comp_results'
-
+# If this doesn't require order preservation, we don't use the -k flag
+complete -c kubectl -n 'not __kubectl_requires_order_preservation && __kubectl_prepare_completions' -f -a '$__kubectl_comp_results'
+# otherwise we use the -k flag
+complete -k -c kubectl -n '__kubectl_requires_order_preservation && __kubectl_prepare_completions' -f -a '$__kubectl_comp_results'
