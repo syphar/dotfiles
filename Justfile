@@ -242,8 +242,8 @@ clear-docker:
     docker container prune -f
     docker image prune -a -f
     docker builder prune -a -f
-    docker volume prune -f
-    docker volume prune -f
+    docker volume prune -f --all
+    docker volume prune -f --all
 
 clear-cargo-cache:
     cargo cache --autoclean
