@@ -6,7 +6,7 @@ function M.setup(cfg, lspconfig)
 		cmd = { "taplo", "lsp", "stdio" },
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
-		on_attach = cfg.lsp_on_attach_without_formatting,
+		on_attach = cfg.lsp_on_attach,
 		init_options = {
 			cachePath = vim.fn.expand("$HOME/.cache/taplo/"),
 		},

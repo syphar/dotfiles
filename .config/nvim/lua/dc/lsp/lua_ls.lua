@@ -12,7 +12,7 @@ function M.setup(cfg, lspconfig)
 		single_file_support = false, -- manually disable for now
 		capabilities = cfg.capabilities(),
 		flags = cfg.global_flags(),
-		on_attach = cfg.lsp_on_attach_without_formatting,
+		on_attach = cfg.lsp_on_attach,
 		settings = {
 			Lua = {
 				runtime = {

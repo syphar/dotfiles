@@ -14,7 +14,7 @@ function cfg.open_diagnostics_float()
 	end
 end
 
-function cfg.lsp_on_attach_without_formatting(client, bufnr)
+function cfg.lsp_on_attach(client, bufnr)
 	vim.lsp.set_log_level("error")
 	-- vim.lsp.set_log_level("debug")
 
@@ -61,18 +61,6 @@ function cfg.lsp_on_attach_without_formatting(client, bufnr)
 		},
 	})
 	vim.lsp.inlay_hint.enable()
-end
-
-function cfg.lsp_on_attach(client, bufnr)
-	cfg.lsp_on_attach_without_formatting(client, bufnr)
-
-	-- vim.api.nvim_create_autocmd("BufWritePre", {
-	-- 	buffer = bufnr,
-	-- 	callback = function()
-	-- 		vim.lsp.buf.format({ async = false, bufnr = bufnr })
-	-- 	end,
-	-- 	group = vim.api.nvim_create_augroup("format_on_save_lsp_" .. bufnr, { clear = true }),
-	-- })
 end
 
 function cfg.capabilities()

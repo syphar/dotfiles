@@ -4,7 +4,7 @@ function M.setup(cfg, lspconfig)
 	lspconfig.jedi_language_server.setup({
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
-		on_attach = cfg.lsp_on_attach_without_formatting,
+		on_attach = cfg.lsp_on_attach,
 		init_options = {
 			diagnostics = {
 				enable = false,
