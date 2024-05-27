@@ -1,7 +1,6 @@
 return {
 	"akinsho/git-conflict.nvim",
 	version = "*",
-	after = "kanagawa.nvim",
 	opts = {
 		default_mappings = true,
 		disable_diagnostics = true,

@@ -1,4 +1,4 @@
 return {
 	"imsnif/kdl.vim",
-	filetypes = { "kdl" },
+	ft = { "kdl" },
 }

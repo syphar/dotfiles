@@ -37,7 +37,10 @@ return {
 			check_ts = true, -- treesitter support
 		},
 	},
-	{ "kyazdani42/nvim-web-devicons", lazy = true },
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+	},
 	{ -- read direnv for vim env
 		"direnv/direnv.vim",
 		event = "VeryLazy",
