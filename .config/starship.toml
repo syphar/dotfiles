@@ -102,6 +102,10 @@ symbol = " "
 format = "[$symbol($version )]($style)"
 symbol = " "
 
+[buf] 
+format = "[$symbol($version )]($style)"
+symbol = " "
+
 [hg_branch]
 symbol = " "
 
