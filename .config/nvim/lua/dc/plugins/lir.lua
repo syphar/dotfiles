@@ -34,13 +34,13 @@ return {
 				["q"] = actions.quit,
 				["<ESC>"] = actions.quit,
 
-				-- ["K"] = actions.mkdir,
-				-- ["N"] = actions.newfile,
-				-- ["R"] = actions.rename,
+				["K"] = actions.mkdir,
+				["N"] = actions.newfile,
+				["R"] = actions.rename,
 				-- ["@"] = actions.cd,
 				-- ["Y"] = actions.yank_path,
 				-- ["."] = actions.toggle_show_hidden,
-				-- ["D"] = actions.delete,
+				["D"] = actions.delete,
 
 				-- ["J"] = function()
 				-- 	mark_actions.toggle_mark()
