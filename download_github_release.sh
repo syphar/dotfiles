@@ -2,6 +2,7 @@
 set -euo pipefail
 
 dest="$HOME/.local/bin/$1"
+# url="https://github.com/$2/releases/download/2024-06-03/$3"
 url="https://github.com/$2/releases/latest/download/$3"
 rm -rf "$dest"
 
