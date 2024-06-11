@@ -1,3 +1,4 @@
+local TIMEOUT = 2000
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
@@ -6,7 +7,7 @@ return {
 		{
 			"<leader>gq",
 			function()
-				require("conform").format({ async = true, lsp_fallback = true })
+				require("conform").format({ async = true, lsp_fallback = true, timeout_ms = TIMEOUT })
 			end,
 			mode = "",
 		},
@@ -38,7 +39,7 @@ return {
 				or ft == "lua"
 				or ft == "proto"
 			then
-				return { timeout_ms = 500, lsp_fallback = true }
+				return { timeout_ms = TIMEOUT, lsp_fallback = true }
 			end
 		end,
 		formatters = {
