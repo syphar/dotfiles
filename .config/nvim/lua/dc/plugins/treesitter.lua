@@ -61,7 +61,6 @@ return {
 				enable = true,
 				disable = {
 					"python", -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1573
-					"rust", -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1336
 				},
 			},
 			incremental_selection = {
