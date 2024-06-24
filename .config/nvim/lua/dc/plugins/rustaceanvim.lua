@@ -102,6 +102,9 @@ return {
 							-- allTargets = true,
 							-- allFeatures = true,
 						},
+						-- cachePriming = {
+						-- 	enable = false,
+						-- },
 						cargo = {
 							loadOutDirsFromCheck = true,
 						},
