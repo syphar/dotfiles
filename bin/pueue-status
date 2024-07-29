@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+set pueue_icon "✦"
+set RUNNING (pueue status --json |jq '[.tasks[] | select(.status == "Running")] | length')
+set QUEUED (pueue status --json |jq '[.tasks[] | select(.status == "Queued")] | length')
+printf "$pueue_icon $RUNNING/$QUEUED"
