@@ -34,11 +34,7 @@ use_pyenv() {
           $pyenv_python -m venv "$VIRTUAL_ENV"
         fi
 
-        if [[ ! -f "pyrightconfig.json" ]]; then
-          echo "{}" >pyrightconfig.json
-        fi
-
-        jq ".venvPath = \".\" | .venv = \"$VIRTUAL_ENV\"" pyrightconfig.json | sponge pyrightconfig.json
+        rm -f pyrightconfig.json
 
         PATH_add "$VIRTUAL_ENV"/bin
         ;;
