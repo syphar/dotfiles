@@ -1,6 +1,6 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^4",
+	version = "^5",
 	ft = { "rust" },
 	config = function()
 		local cfg = require("dc.lsp")
@@ -102,9 +102,9 @@ return {
 							-- allTargets = true,
 							-- allFeatures = true,
 						},
-						-- cachePriming = {
-						-- 	enable = false,
-						-- },
+						cachePriming = {
+							enable = false,
+						},
 						cargo = {
 							loadOutDirsFromCheck = true,
 						},
