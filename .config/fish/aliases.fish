@@ -45,6 +45,10 @@ abbr -ag gri git rebase -i
 abbr -ag gra git rebase --abort
 abbr -ag gr git rebase
 
+abbr -ag tp terraform plan
+abbr -ag ta terraform apply
+abbr -ag tf terraform
+
 abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
