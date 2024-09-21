@@ -19,7 +19,7 @@ return {
 			django = { "djhtml" },
 			lua = { "stylua" },
 			["jinja.html"] = { "djhtml" },
-			sql = { "sqlfluff" },
+			sql = { "sqruff" },
 			just = { "just" },
 			markdown = { "deno_fmt" },
 			json = { "jq" },
@@ -53,8 +53,10 @@ return {
 					args = { "--tabwidth", vim.api.nvim_buf_get_option(0, "shiftwidth"), "-" },
 				}
 			end,
-			sqlfluff = {
-				args = { "fix", "--dialect=postgres", "-" },
+			sqruff = {
+				command = "sqruff",
+				args = { "fix", "--config", "/Users/syphar/.sqruff", "--force", "$FILENAME" },
+				stdin = false,
 			},
 		},
 	},
