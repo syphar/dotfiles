@@ -36,6 +36,21 @@ return {
 			)[1]
 		end
 
+		lint.linters.clippy.args = {
+			"clippy",
+			"--message-format=json",
+			"--all-features",
+			"--all-targets",
+			"--workspace",
+			"--locked",
+			"--fix",
+			"--allow-dirty",
+			"--allow-staged",
+			"--",
+			"-D",
+			"warnings",
+		}
+
 		lint.linters.buf = {
 			cmd = "buf",
 			stdin = true,
