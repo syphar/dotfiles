@@ -59,10 +59,10 @@ return {
 							},
 
 							-- Whether to show inlay type hints for return types of closures.
-							closureReturnTypeHints = { enable = "never" }, --default: "never", options: "always", "never", "with_block"
+							closureReturnTypeHints = { enable = "with_block" }, --default: "never", options: "always", "never", "with_block"
 
 							-- Whether to show inlay hints for closure captures.
-							closureCaptureHints = { enable = true }, -- default : false
+							closureCaptureHints = { enable = false }, -- default : false
 
 							-- Whether to show inlay hints for type adjustments.
 							expressionAdjustmentHints = { enable = "never" }, --default: "never", options "always", "never", "reborrow"
@@ -102,9 +102,9 @@ return {
 							-- allTargets = true,
 							-- allFeatures = true,
 						},
-						cachePriming = {
-							enable = false,
-						},
+						-- cachePriming = {
+						-- 	enable = false,
+						-- },
 						cargo = {
 							loadOutDirsFromCheck = true,
 						},
