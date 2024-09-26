@@ -34,7 +34,6 @@ daily-update:
     # github packages downloads
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
-    ./download_github_release.sh rust-analyzer rust-lang/rust-analyzer rust-analyzer-aarch64-apple-darwin.gz
 
     # install my custom binaries 
     just install-custom-rust-binary ~/src/just/ just
