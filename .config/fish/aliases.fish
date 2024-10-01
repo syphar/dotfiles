@@ -69,7 +69,6 @@ alias j="jobs"
 abbr -ag lg gitui
 abbr -ag g git
 abbr -ag gco git checkout
-abbr -ag gcm git checkout master
 abbr -ag gst git status
 abbr -ag gc git commit
 abbr -ag gcn git commit --no-verify
