@@ -50,41 +50,8 @@ return {
 	{ "teal-language/vim-teal", ft = { "teal" } },
 	{ "Vimjas/vim-python-pep8-indent", ft = { "python" } },
 	{ "LhKipp/nvim-nu", ft = { "nu" }, build = ":TSInstall nu", opts = { use_lsp_features = false } },
-	{
-		"5long/pytest-vim-compiler",
-		ft = { "python" },
-		config = function()
-			vim.cmd([[
-				if executable('pytest')
-					compiler pytest
-					" nmap <leader>ts :make<CR>
-					" nmap <leader>tf :make %<CR>
-				endif
-			]])
-		end,
-	},
 
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{ "ray-x/lsp_signature.nvim", lazy = true },
 	{ "yioneko/nvim-type-fmt", lazy = true },
-	{
-		"Canop/nvim-bacon",
-		opts = {
-			quickfix = {
-				enabled = true,
-				event_trigger = true,
-			},
-		},
-		cmd = { "BaconLoad", "BaconShow", "BaconList", "BaconPrevious", "BaconNext" },
-		keys = {
-			{
-				"<leader>bl",
-				function()
-					vim.cmd("BaconLoad")
-					vim.cmd("botright copen")
-				end,
-				"n",
-			},
-		},
-	},
 }
