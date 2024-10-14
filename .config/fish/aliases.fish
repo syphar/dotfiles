@@ -45,8 +45,9 @@ abbr -ag gri git rebase -i
 abbr -ag gra git rebase --abort
 abbr -ag gr git rebase
 
-abbr -ag tp terraform plan
-abbr -ag ta terraform apply
+abbr -ag tfp terraform plan
+abbr -ag tfa terraform apply
+abbr -ag tfi terraform init
 abbr -ag tf terraform
 
 abbr -ag h heroku
@@ -55,10 +56,6 @@ alias heroku-shell "heroku run \"./manage.py shell\""
 
 alias ll="eza --long --all --header --icons --group-directories-first --color-scale=size --time-style=relative --git"
 alias l="eza --icons --group-directories-first"
-alias less="bat"
-alias cat="bat"
-alias du="dust"
-alias ps="procs"
 alias top="ytop"
 alias iftop="bandwhich"
 alias objdump="bingrep"
