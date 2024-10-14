@@ -19,6 +19,28 @@ return {
 					vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
 				end,
 			},
+			{
+				"tzachar/cmp-tabnine",
+				build = "./install.sh",
+				config = function()
+					local cmp_tabnine = require("cmp_tabnine.config")
+					cmp_tabnine:setup({
+						max_lines = 1000,
+						max_num_results = 20,
+						sort = true,
+						run_on_every_keystroke = true,
+						snippet_placeholder = "..",
+						ignored_file_types = {},
+						show_prediction_strength = true,
+					})
+				end,
+			},
+			{
+				"zbirenbaum/copilot-cmp",
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
 		},
 		config = function()
 			local has_words_before = function()
@@ -78,6 +100,8 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "cmp_tabnine" },
+					{ name = "copilot" },
 					{ name = "path" },
 					{ name = "treesitter" },
 				}),
@@ -89,10 +113,12 @@ return {
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[ Lua]",
+							cmp_tabnine = "[ T9]",
 							path = "[/ Path]",
 							crates = " [ Crates]",
 							jira_issues = "[ JIRA]",
 							gh_issues = "[ GH]",
+							copilot = "[ ]",
 						},
 					}),
 				},
@@ -101,8 +127,7 @@ return {
 				},
 				sorting = {
 					comparators = {
-						-- based on TJ config
-						-- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua#L129
+						cmp.config.compare.kind, -- prefers snippets over everything else
 						cmp.config.compare.offset,
 						cmp.config.compare.exact,
 						cmp.config.compare.score,
@@ -121,7 +146,6 @@ return {
 							end
 						end,
 
-						cmp.config.compare.kind,
 						cmp.config.compare.sort_text,
 						cmp.config.compare.length,
 						cmp.config.compare.order,
@@ -131,5 +155,15 @@ return {
 
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			copilot_node_command = "/opt/homebrew/bin/node",
+		},
 	},
 }
