@@ -11,8 +11,8 @@ return {
 			},
 			autoresize = {
 				enable = true,
-				minwidth = 60,
-				minheight = 10,
+				-- minwidth = 60,
+				-- minheight = 10,
 			},
 		})
 
