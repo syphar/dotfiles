@@ -54,4 +54,24 @@ return {
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{ "ray-x/lsp_signature.nvim", lazy = true },
 	{ "yioneko/nvim-type-fmt", lazy = true },
+	{
+		"Canop/nvim-bacon",
+		opts = {
+			quickfix = {
+				enabled = true,
+				event_trigger = true,
+			},
+		},
+		cmd = { "BaconLoad", "BaconShow", "BaconList", "BaconPrevious", "BaconNext" },
+		keys = {
+			{
+				"<leader>bl",
+				function()
+					vim.cmd("BaconLoad")
+					vim.cmd("botright copen")
+				end,
+				"n",
+			},
+		},
+	},
 }
