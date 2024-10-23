@@ -94,7 +94,7 @@
 
 [merge]
 	tool = nvim
-    conflictstyle = diff3
+    ; conflictstyle = diff3
 
 [diff]
     tool = difftastic
