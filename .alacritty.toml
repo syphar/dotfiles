@@ -1,4 +1,3 @@
-live_config_reload = true
 
 [colors]
 draw_bold_text_with_bright_colors = false
@@ -675,3 +674,6 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 decorations = "full"
 dynamic_title = false
 option_as_alt = "Both"
+
+[general]
+live_config_reload = true
