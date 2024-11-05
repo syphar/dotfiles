@@ -35,9 +35,6 @@ daily-update:
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
 
-    # install my custom binaries 
-    just install-custom-rust-binary ~/src/just/ just
-
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
