@@ -84,6 +84,16 @@ use_pyenv_from_runtime_txt() {
   use_pyenv "$version"
 }
 
+use_pyenv_from_python_version_file() {
+  if [[ ! -f .python-version ]]; then
+    log_error 'No .python-version found'
+    exit 2
+  fi
+
+  local version=$(cat .python-version)
+  use_pyenv "$version"
+}
+
 use_nvm() {
   local node_version=$1
   nvm_sh=$(brew --prefix)/opt/nvm/nvm.sh
