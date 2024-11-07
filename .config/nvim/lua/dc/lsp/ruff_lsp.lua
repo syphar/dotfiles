@@ -34,7 +34,7 @@ function M.setup(cfg, lspconfig)
 		end
 	end
 
-	lspconfig.ruff_lsp.setup({
+	lspconfig.ruff.setup({
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
 		on_attach = on_attach,
