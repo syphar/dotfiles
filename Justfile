@@ -245,13 +245,18 @@ clear-cargo-cache:
     cargo cache --autoclean
 
 clear-rust-target-directories:
+    # clear target directories
     fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+    # remove cargo cache
     rm -rf ~/.cargo/cache
+    # remove custom toolchains
+    rustup toolchain list | grep -v nightly-aarch64-apple-darwin | grep -v stable-aarch64-apple-darwin | xargs -n 1 rustup toolchain remove
 
 clear-caches:
     rm -rf ~/Library/Caches/*
     rm -rf ~/Library/Developer/CoreSimulator/Caches/*
     rm -rf ~/.npm/_cacache
+    rm -rf ~/.cache/
 
 clear-dev-environments:
     fd --type d --no-ignore --hidden --prune "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
