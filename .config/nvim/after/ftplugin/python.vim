@@ -1,5 +1,6 @@
 " 88 is black format default
 setlocal textwidth=88
+setlocal colorcolumn=89
 
 set suffixesadd+=.py,__init__.py
 

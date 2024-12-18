@@ -1,3 +1,7 @@
+" 100 is rustfmt default
+setlocal textwidth=100
+setlocal colorcolumn=101
+
 nmap <leader>b :make build<CR>
 nmap <leader>c :make check<CR>
 
