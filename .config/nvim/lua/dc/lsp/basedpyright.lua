@@ -6,13 +6,24 @@ function M.setup(cfg, lspconfig)
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach(client, bufnr)
 
-			-- disable LSP server hilighting, I prefer treesitter for now
+			-- disable LSP server highlighting, I prefer treesitter for now
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
 		settings = {
 			basedpyright = {
-				-- this is the pyright default, we don't want it stricter for now
-				typeCheckingMode = "basic", -- strict?
+				disableOrganizeImports = true, -- covered by ruff
+				-- this is the pyright default, we don't want it stricter for now,
+				-- too many false positives with django
+				typeCheckingMode = "basic",
+				analysis = {
+					diagnosticSeverityOverrides = {
+						reportUnreachable = "none", -- lint has annoying false positives
+
+						-- lints covered by ruff
+						reportUnusedImport = "none",
+						reportUndefinedVariable = "none", -- covered by ruff
+					},
+				},
 			},
 		},
 	})
