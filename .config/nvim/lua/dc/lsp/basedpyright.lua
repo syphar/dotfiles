@@ -17,11 +17,16 @@ function M.setup(cfg, lspconfig)
 				typeCheckingMode = "basic",
 				analysis = {
 					diagnosticSeverityOverrides = {
+						-- rule names:
+						-- https://docs.basedpyright.com/latest/configuration/config-files/
+						-- -> section: "Type Check Rule Overrides"
 						reportUnreachable = "none", -- lint has annoying false positives
 
-						-- lints covered by ruff
+						-- lints covered by ruff, would appear twice.
+						-- also when using `noqa` comments, these would be respected by
+						-- black, but not by pyright.
 						reportUnusedImport = "none",
-						reportUndefinedVariable = "none", -- covered by ruff
+						reportUndefinedVariable = "none",
 					},
 				},
 			},
