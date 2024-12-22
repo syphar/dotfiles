@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>eM", ":Gedit main:%<CR>")
 
 -- set workspace diagnostics into quickfix
 vim.keymap.set("n", "<leader>qf", function()
-	vim.diagnostic.setqflist({ open = false })
+	vim.diagnostic.setqflist({ open = true })
 end)
 
 -- delete current file
