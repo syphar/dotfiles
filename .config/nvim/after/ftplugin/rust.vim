@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>ts", function()
     vim.cmd([[Ctest]])
 end )
 vim.keymap.set("n", "<leader>l", function() 
-	print("running clippy fix...")
+	vim.notify("running clippy fix...")
 	require("lint").try_lint("clippy")
 end)
 EOF

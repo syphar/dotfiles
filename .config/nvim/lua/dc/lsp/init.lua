@@ -117,10 +117,19 @@ function cfg.lsp_setup()
 	end
 
 	-- update loclist with diagnostics for the current file
+	-- also run checktime for the current file if the linters
+	-- also do fixes.
 	vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
 		pattern = "*",
 		callback = function()
 			vim.diagnostic.setloclist({ open = false })
+
+			-- Trigger `checktime` for the current buffer,
+			-- so `autoread` is triggered, and the buffer is reloaded
+			-- if it's unchanged.
+			local ok, err = pcall(function()
+				vim.api.nvim_command("checktime")
+			end)
 		end,
 		group = vim.api.nvim_create_augroup("update_diagnostic_loclist", {}),
 	})
