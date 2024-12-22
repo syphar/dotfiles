@@ -25,17 +25,6 @@ return {
 			used_by = { "rust" },
 		}
 
-		-- temporarily override downgrade the rust parser
-		parser_config.rust = {
-			install_info = {
-				url = "https://github.com/tree-sitter/tree-sitter-rust",
-				files = { "src/parser.c", "src/scanner.c" },
-				tag = "v0.20.4",
-			},
-			maintainers = { "@amaanq" },
-			filetype = { "rust" },
-		}
-
 		parser_config.just = {
 			install_info = {
 				url = "https://github.com/IndianBoy42/tree-sitter-just",
