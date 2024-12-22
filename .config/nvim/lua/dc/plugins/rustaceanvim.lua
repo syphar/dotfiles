@@ -98,9 +98,9 @@ return {
 						},
 						checkOnSave = {
 							enable = true,
-							-- command = "clippy",
-							-- allTargets = true,
-							-- allFeatures = true,
+							command = "clippy",
+							allTargets = true,
+							allFeatures = true,
 						},
 						cachePriming = {
 							enable = false,
