@@ -20,6 +20,11 @@ vim.keymap.set("n", "<space>", "za")
 vim.keymap.set("n", "<leader>em", ":Gedit master:%<CR>")
 vim.keymap.set("n", "<leader>eM", ":Gedit main:%<CR>")
 
+-- set workspace diagnostics into quickfix
+vim.keymap.set("n", "<leader>qf", function()
+	vim.diagnostic.setqflist({ open = false })
+end)
+
 -- delete current file
 vim.keymap.set("n", "<leader>rm", ":!rm %<CR>")
 
