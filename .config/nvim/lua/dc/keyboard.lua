@@ -17,8 +17,17 @@ vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>")
 vim.keymap.set("n", "<space>", "za")
 
 -- show current file on master
-vim.keymap.set("n", "<leader>em", ":Gedit master:%<CR>")
-vim.keymap.set("n", "<leader>eM", ":Gedit main:%<CR>")
+vim.keymap.set("n", "<leader>em", function()
+	-- Check if 'master' exists
+	local branches = vim.fn.systemlist("git branch -a")
+	if vim.tbl_contains(branches, "  remotes/origin/master") then
+		vim.cmd(":Gedit master:%")
+	elseif vim.tbl_contains(branches, "  remotes/origin/main") then
+		vim.cmd(":Gedit main:%")
+	else
+		vim.notify("Neither 'master' nor 'main' branch found", vim.log.levels.ERROR)
+	end
+end, { desc = "Edit current file on main branch" })
 
 -- set workspace diagnostics into quickfix
 vim.keymap.set("n", "<leader>qf", function()
