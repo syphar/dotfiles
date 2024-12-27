@@ -29,11 +29,6 @@ ls.add_snippets("rust", {
 		insert(2),
 		text({ "", "}" }),
 	}),
-	snippet("debugprint", {
-		text('println!("{:?}", '),
-		insert(0),
-		text(");"),
-	}),
 	snippet("default", { text("..Default::default()") }),
 	snippet("clcl", fmt("let {1} = {2}.clone();", { insert(1), repeat_(1) })),
 }, {
