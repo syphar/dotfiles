@@ -23,8 +23,6 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 vim.o.termguicolors = true
 
-vim.g.python3_host_prog = vim.fn.expand("$HOME/src/neovim_env/venv/bin/python")
-
 -- search files into subfolders
 -- provides tab-complete for all files
 -- by default we had `/usr/include` in here, which we don't need

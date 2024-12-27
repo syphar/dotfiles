@@ -29,8 +29,6 @@ daily-update:
     just update-fish
     just update-vim
 
-    just update-venv $SRC_DIR/neovim_env/venv/
-
     # github packages downloads
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
@@ -155,12 +153,6 @@ update-fish: clean-fish
 clean-fish:
     rm -f ~/.config/fish/fishd.tmp.*
     rm -f ~/.config/fish/fish_variables*conflicted*
-
-update-venv VENV:
-    {{ VENV }}/bin/pip freeze | \
-        grep = | \
-        cut -d = -f 1 | \
-        xargs {{ VENV }}/bin/pip install -U
 
 install-custom-rust-binary REPO BINARY_NAME:
     cd {{ REPO }} && cargo build --release
