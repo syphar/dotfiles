@@ -11,11 +11,10 @@ vim.filetype.add({
 		["Caddyfile"] = "caddyfile",
 		["poetry.lock"] = "toml",
 		["nginx.conf.erb"] = "nginx",
-		[".env.sample"] = function()
-			-- take from the `.env` definition in the vim runtime
-			vim.fn["dist#ft#SetFileTypeSH"](vim.fn.getline(1))
-		end,
 		[".luacheckrc"] = "lua",
 		[".envrc"] = "direnv",
+	},
+	pattern = {
+		["%.env%.%w+"] = "sh",
 	},
 })
