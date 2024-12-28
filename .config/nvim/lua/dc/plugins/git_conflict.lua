@@ -1,14 +1,26 @@
 return {
 	"akinsho/git-conflict.nvim",
 	version = "*",
-	opts = {
-		default_mappings = true,
-		disable_diagnostics = true,
-		highlights = { -- They must have background color, otherwise the default color will be used
-			incoming = "DiffText",
-			current = "DiffAdd",
-		},
-	},
+	config = function()
+		require("git-conflict").setup({
+			default_mappings = true,
+			disable_diagnostics = true,
+			highlights = { -- They must have background color, otherwise the default color will be used
+				incoming = "DiffText",
+				current = "DiffAdd",
+			},
+		})
+
+		-- from https://github.com/akinsho/git-conflict.nvim?tab=readme-ov-file#autocommands
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "GitConflictDetected",
+			callback = function()
+				vim.notify("Conflict detected in " .. vim.fn.expand("<afile>"))
+				vim.cmd([[GitConflictListQf]])
+				vim.cmd([[copen]])
+			end,
+		})
+	end,
 }
 
 -- default mappings
