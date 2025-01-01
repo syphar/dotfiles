@@ -10,6 +10,7 @@ app_list = (
     "ctags_dir",
     "direnv",
     "fd",
+    "ghostty",
     "git",
     "gitignore-global",
     "kitty",

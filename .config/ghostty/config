@@ -1,0 +1,48 @@
+# font-family = BlexMono Nerd Font Mono Light
+# font-family-bold = BlexMono Nerd Font Mono Medium
+# font-family-italic = BlexMono Nerd Font Mono Light Italic
+# font-family-bold-italic = BlexMono Nerd Font Mono Medium Italic
+font-family = BlexMono Nerd Font Mono ExtraLight
+font-family-bold = BlexMono Nerd Font Mono Light
+font-family-italic = BlexMono Nerd Font Mono ExtraLight Italic
+font-family-bold-italic = BlexMono Nerd Font Mono Light Italic
+font-size = 14
+font-thicken = true
+bold-is-bright = true
+theme = Kanagawa Wave
+
+
+macos-auto-secure-input = true
+macos-option-as-alt = true
+
+# MAP WINDOW / PANE / TAB KEYMAPS TO TMUX KEYBINDS
+
+# switch tabs via CMD+{num}
+keybind = cmd+one=text:\x010
+keybind = cmd+two=text:\x011
+keybind = cmd+three=text:\x012
+keybind = cmd+four=text:\x013
+keybind = cmd+five=text:\x014
+keybind = cmd+six=text:\x015
+keybind = cmd+seven=text:\x016
+keybind = cmd+eight=text:\x017
+keybind = cmd+nine=text:\x018
+
+
+# TABS
+
+# close tab
+keybind = cmd+w=text:\x01& 
+# new tab
+keybind = cmd+t=text:\x01c 
+
+# PANES
+
+# split horizontally
+keybind = cmd+d=text:\x01| 
+
+# split vertically
+keybind = cmd+shift+d=text:\x01- 
+
+# zoom pane
+keybind = cmd+shift+z=text:\x01z 
