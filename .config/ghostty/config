@@ -11,6 +11,7 @@ font-thicken = true
 bold-is-bright = true
 theme = Kanagawa Wave
 
+link-url = true
 
 macos-auto-secure-input = true
 macos-option-as-alt = true
@@ -45,4 +46,4 @@ keybind = cmd+d=text:\x01|
 keybind = cmd+shift+d=text:\x01- 
 
 # zoom pane
-keybind = cmd+shift+z=text:\x01z 
+keybind = cmd+shift+enter=text:\x01z 
