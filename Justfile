@@ -42,6 +42,9 @@ daily-update:
 update-git-repos:
     ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
+garbage-collect-git-repos:
+    ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'echo $0 && cd $0 && git gc --aggressive || exit 255'
+
 update-git-worktrees:
     ./find_worktrees.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
 
@@ -219,6 +222,8 @@ clear-disk-space:
     just clear-caches
     just clear-rust-target-directories
     just clear-docsrs-dev
+    just garbage-collect-git-repos
+
 
 clear-thermondo-backups:
     fd --type f --full-path --no-ignore ".*/sql/backup/.*\.sql" "$SRC_DIR/thermondo/" --exec rm -rf {}
@@ -252,9 +257,15 @@ clear-caches:
 
 clear-dev-environments:
     fd --type d --no-ignore --hidden --prune "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.venv$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.ruff_cache$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.mypy_cache$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.terraform$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "^\.tox$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --prune node_modules "$SRC_DIR" --exec rm -rf {}
 
 clear-docsrs-dev:
     fd --type d --no-ignore --hidden --prune "\.rustwide-docker" "$SRC_DIR/rust-lang/" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "\.workspaces" "$SRC_DIR/rust-lang/" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "\.workspace" "$SRC_DIR/rust-lang/" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "ignored" "$SRC_DIR/rust-lang/" --exec rm -rf {}
