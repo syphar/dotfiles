@@ -22,7 +22,6 @@ daily-update:
 
     gh extension upgrade --all
 
-    ## bat cache
     bat cache --build
 
     just mackup
@@ -54,7 +53,7 @@ update-generated-autocompletes:
     _DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish
 
 mackup:
-    pip install --upgrade -r requirements.txt
+    uv pip install --upgrade -r requirements.txt
     ## mackup
     mackup restore --force
     mackup backup
