@@ -70,7 +70,7 @@ use_pyenv_from_poetry_lock() {
   fi
 
   local version=$(tomlq '.metadata|.["python-versions"]' poetry.lock | sed 's/\"//g')
-  use_pyenv "$version"
+  layout_uv "$version"
 }
 
 
