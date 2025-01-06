@@ -3,7 +3,7 @@ alias gur="git fetch --all --recurse-submodules=yes --prune"
 alias pipupgrade="pip freeze | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipupgrade2="cat requirements.txt | grep = | cut -d = -f 1 | xargs pip install -U"
 alias pipirt="pip install --upgrade pip wheel setuptools && pip install -r requirements_test.txt"
-abbr -ag pl poetry lock --no-update
+abbr -ag pl poetry lock
 abbr -ag pi poetry install --sync
 abbr -ag pia poetry install --sync --all-extras
 
