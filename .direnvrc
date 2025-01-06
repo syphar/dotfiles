@@ -81,7 +81,7 @@ use_pyenv_from_runtime_txt() {
   fi
 
   local version=$(cat runtime.txt | sed 's/python-//')
-  use_pyenv "$version"
+  layout_uv "$version"
 }
 
 use_pyenv_from_python_version_file() {
@@ -91,7 +91,7 @@ use_pyenv_from_python_version_file() {
   fi
 
   local version=$(cat .python-version)
-  use_pyenv "$version"
+  layout_uv "$version"
 }
 
 use_nvm() {
@@ -103,6 +103,42 @@ use_nvm() {
   #   source $nvm_sh
   nvm use $node_version
   # fi
+}
+
+# taken from https://github.com/direnv/direnv/pull/1329/files#diff-65f096acc5cb8701ae62be810fce97e6b2820be683839581f0042a2e3761cfc8
+layout_uv() {
+  local python_version=${1:-}
+  # If they have specified a python version, check to see if there is already a
+  # .python-version file. If there is, and the specified version is different,
+  # then recreate the virtual environment with the new version.
+  # Otherwise, just use the existing virtual environment, if there is already a
+  # .venv directory.
+
+  VIRTUAL_ENV="${PWD}/.venv"
+  # Get the current python version from the .python-version file
+  local python_version_file=".python-version"
+  local current_python_version=""
+  if [[ -f "$python_version_file" ]]; then
+    current_python_version=$(<"$python_version_file")
+  fi
+
+  # Check to see if there is already an existing virtual environment,
+  # OR if the current python version is different from the one specified in .python-version
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV || (-n $python_version && $current_python_version != "$python_version") ]]; then
+    log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+    if [[ -n $python_version ]]; then
+      uv venv --python "$python_version"
+      # Write the python version to the .python-version file
+      echo "$python_version" > .python-version
+    else
+      uv venv
+    fi
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
+  export UV_ACTIVE=1
+  export VIRTUAL_ENV
+  export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
 }
 
 # vim: et ts=2 sts=2 sw=2
