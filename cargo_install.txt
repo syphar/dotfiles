@@ -17,7 +17,6 @@ cargo-udeps
 cargo-update
 cargo-watch
 diesel_cli --no-default-features --features postgres
-eza
 heater
 mdbook
 mdbook-linkcheck
