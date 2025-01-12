@@ -33,7 +33,8 @@ complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand'
 complete -c poetry -f -n '__fish_seen_subcommand_from debug; and not __fish_seen_subcommand_from info resolve' -a info -d 'Shows debug information.'
 complete -c poetry -f -n '__fish_seen_subcommand_from debug; and not __fish_seen_subcommand_from info resolve' -a resolve -d 'Debugs dependency resolution.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a dynamic-versioning -d 'Apply the dynamic version to all relevant files and leave the changes in-place. This allows you to activate the plugin behavior on demand and inspect the result. Your configuration will be detected from pyproject.toml as normal.'
-complete -c poetry -f -n '__fish_seen_subcommand_from dynamic-versioning; and not __fish_seen_subcommand_from enable' -a enable -d 'Update pyproject.toml to enable the plugin using a typical configuration. The output may not be suitable for more complex use cases.'
+complete -c poetry -f -n '__fish_seen_subcommand_from dynamic-versioning; and not __fish_seen_subcommand_from enable show' -a enable -d 'Update pyproject.toml to enable the plugin using a typical configuration. The output may not be suitable for more complex use cases.'
+complete -c poetry -f -n '__fish_seen_subcommand_from dynamic-versioning; and not __fish_seen_subcommand_from enable show' -a show -d 'Print the version without changing any files.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a env
 complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_subcommand_from activate info list remove use' -a activate -d 'Print the command to activate a virtual environment.'
 complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_subcommand_from activate info list remove use' -a info -d 'Displays information about the current environment.'
@@ -87,7 +88,7 @@ complete -c poetry -n '__fish_seen_subcommand_from add' -l python -d 'Python ver
 complete -c poetry -n '__fish_seen_subcommand_from add' -l source -d 'Name of the source to use to install the package.'
 
 # build
-complete -c poetry -n '__fish_seen_subcommand_from build' -l clean -d ''
+complete -c poetry -n '__fish_seen_subcommand_from build' -l clean -d 'Clean output directory before building.'
 complete -c poetry -n '__fish_seen_subcommand_from build' -l format -d 'Limit the format to either sdist or wheel.'
 complete -c poetry -n '__fish_seen_subcommand_from build' -l local-version -d 'Add or replace a local version label to the build.'
 complete -c poetry -n '__fish_seen_subcommand_from build' -l output -d 'Set output directory for build artifacts. Default is `dist`.'
@@ -99,6 +100,7 @@ complete -c poetry -n '__fish_seen_subcommand_from cache; and __fish_seen_subcom
 
 # check
 complete -c poetry -n '__fish_seen_subcommand_from check' -l lock -d 'Checks that poetry.lock exists for the current version of pyproject.toml.'
+complete -c poetry -n '__fish_seen_subcommand_from check' -l strict -d 'Fail if check reports warnings.'
 
 # config
 complete -c poetry -n '__fish_seen_subcommand_from config' -l list -d 'List configuration settings.'
@@ -117,6 +119,8 @@ complete -c poetry -n '__fish_seen_subcommand_from debug; and __fish_seen_subcom
 # dynamic-versioning
 
 # dynamic-versioning enable
+
+# dynamic-versioning show
 
 # env activate
 
