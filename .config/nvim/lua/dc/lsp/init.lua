@@ -139,10 +139,7 @@ function cfg.lsp_setup()
 		underline = true,
 		update_in_insert = false,
 		severity_sort = true,
-		virtual_text = {
-			source = "if_many",
-			prefix = "●",
-		},
+		virtual_text = false,
 		float = {
 			source = "always",
 		},
