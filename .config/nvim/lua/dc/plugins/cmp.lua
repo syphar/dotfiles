@@ -104,6 +104,7 @@ return {
 					{ name = "copilot" },
 					{ name = "path" },
 					{ name = "treesitter" },
+					{ name = "render-markdown" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
