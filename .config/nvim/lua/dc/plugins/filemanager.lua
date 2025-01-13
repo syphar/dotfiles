@@ -3,6 +3,7 @@ return {
 	opts = {
 		keymaps = {
 			["q"] = { "actions.close", mode = "n" },
+			["<ESC>"] = { "actions.close", mode = "n" },
 		},
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
