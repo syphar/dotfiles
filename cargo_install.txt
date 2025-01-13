@@ -12,6 +12,7 @@ cargo-generate
 cargo-make
 cargo-outdated
 cargo-script
+cargo-sort
 cargo-sweep
 cargo-udeps
 cargo-update
