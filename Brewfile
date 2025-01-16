@@ -137,7 +137,7 @@ brew "libidn2"
 brew "libtasn1"
 brew "nettle"
 brew "p11-kit"
-brew "unbound", restart_service: true
+brew "unbound", restart_service: :changed
 brew "gnutls"
 brew "lame"
 brew "openjpeg"
@@ -294,7 +294,7 @@ brew "libvterm"
 brew "libxmlsec1"
 brew "libyaml"
 brew "libzip"
-brew "lighttpd", restart_service: true
+brew "lighttpd", restart_service: :changed
 brew "little-cms"
 brew "lnav"
 brew "logdy"
@@ -312,7 +312,7 @@ brew "markdownlint-cli"
 brew "maven"
 brew "mhash"
 brew "mcrypt"
-brew "memcached", restart_service: true
+brew "memcached", restart_service: :changed
 brew "mercurial"
 brew "s-lang"
 brew "midnight-commander"
@@ -329,13 +329,13 @@ brew "tree-sitter"
 brew "neovim"
 brew "newt"
 brew "nghttp2"
-brew "nginx", restart_service: true
+brew "nginx", restart_service: :changed
 brew "ngrep"
 brew "ninja"
 brew "nmap"
 brew "nushell"
 brew "nvm"
-brew "offlineimap", restart_service: true
+brew "offlineimap", restart_service: :changed
 brew "opentofu"
 brew "ossp-uuid"
 brew "pandoc"
@@ -348,21 +348,21 @@ brew "sfcgal"
 brew "postgis"
 brew "postgresql@16"
 brew "procs"
-brew "prometheus", restart_service: true
+brew "prometheus", restart_service: :changed
 brew "protolint"
 brew "pstree"
-brew "pueue", restart_service: true
+brew "pueue", restart_service: :changed
 brew "py3cairo"
 brew "pybind11"
 brew "pygobject3"
 brew "python@3.9"
 brew "qt@5"
-brew "rabbitmq", restart_service: true
+brew "rabbitmq", restart_service: :changed
 brew "ranger"
 brew "rclone"
 brew "re2c"
 brew "reattach-to-user-namespace"
-brew "redis", restart_service: true
+brew "redis", restart_service: :changed
 brew "rhino"
 brew "ripgrep"
 brew "rsnapshot"
@@ -399,7 +399,7 @@ brew "tmate"
 brew "tmux"
 brew "tmuxinator-completion"
 brew "tokei"
-brew "tor", restart_service: true
+brew "tor", restart_service: :changed
 brew "travis"
 brew "universal-ctags"
 brew "uv"
@@ -432,7 +432,6 @@ brew "pulumi/tap/pulumi"
 brew "quarylabs/quary/sqruff"
 brew "wfxr/csview/csview"
 cask "adoptopenjdk8"
-cask "alacritty"
 cask "db-browser-for-sqlite"
 cask "eul"
 cask "font-blex-mono-nerd-font"

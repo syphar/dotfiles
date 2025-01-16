@@ -4,7 +4,6 @@ from pathlib import Path
 from mackup import appsdb, utils
 
 app_list = (
-    "alacritty",
     "bat",
     "ctags",
     "ctags_dir",
