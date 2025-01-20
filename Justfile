@@ -107,7 +107,7 @@ update-pipx:
     pipx inject python-lsp-server pylsp-mypy rope
     pipx inject httpie httpie-ntlm
     pipx inject httpie 'urllib3<2' # https://github.com/httpie/httpie/issues/1499
-    pipx inject poetry poetry-dynamic-versioning
+    pipx inject poetry poetry-dynamic-versioning poetry-plugin-export
     pipx inject ipython rich requests
     pipx inject dslr psycopg2-binary
 
