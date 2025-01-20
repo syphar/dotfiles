@@ -1,5 +1,6 @@
 .syntastic_classpath
 pyrightconfig.json
+.python-version
 .zed
 
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
