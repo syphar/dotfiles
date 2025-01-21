@@ -5,6 +5,11 @@
 -- status 2024-11-15: 85609
 -- status 2024-11-17: 77512
 -- status 2024-11-18: 73939
+-- status 2025-01-14: 64809
+-- status 2025-01-15: 63344
+-- status 2025-01-16: 61372
+-- status 2025-01-17: 58684
+-- status 2025-01-20: 47482
 SELECT count(*) FROM (
      SELECT
          c.name,
