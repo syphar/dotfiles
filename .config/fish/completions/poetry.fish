@@ -1,6 +1,6 @@
 function __fish_poetry_171a10917ec1adad_complete_no_subcommand
     for i in (commandline -opc)
-        if contains -- $i about add build cache check config debug dynamic-versioning env help init install list lock new publish remove run search self show source sync update version
+        if contains -- $i about add build cache check config debug dynamic-versioning env export help init install list lock new publish remove run search self show source sync update version
             return 1
         end
     end
@@ -41,6 +41,7 @@ complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_s
 complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_subcommand_from activate info list remove use' -a list -d 'Lists all virtualenvs associated with the current project.'
 complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_subcommand_from activate info list remove use' -a remove -d 'Remove virtual environments associated with the project.'
 complete -c poetry -f -n '__fish_seen_subcommand_from env; and not __fish_seen_subcommand_from activate info list remove use' -a use -d 'Activates or creates a new virtualenv for the current project.'
+complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a export -d 'Exports the lock file to alternative formats.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a help -d 'Displays help for a command.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a init -d 'Creates a basic pyproject.toml file in the current directory.'
 complete -c poetry -f -n '__fish_poetry_171a10917ec1adad_complete_no_subcommand' -a install -d 'Installs the project dependencies.'
@@ -135,6 +136,20 @@ complete -c poetry -n '__fish_seen_subcommand_from env; and __fish_seen_subcomma
 complete -c poetry -n '__fish_seen_subcommand_from env; and __fish_seen_subcommand_from remove' -l all -d 'Remove all managed virtual environments associated with the project.'
 
 # env use
+
+# export
+complete -c poetry -n '__fish_seen_subcommand_from export' -l all-extras -d 'Include all sets of extra dependencies.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l all-groups -d 'Include all dependency groups'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l dev -d 'Include development dependencies. (Deprecated)'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l extras -d 'Extra sets of dependencies to include.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to. Currently, only constraints.txt and requirements.txt are supported.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l only -d 'The only dependency groups to include.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l output -d 'The name of the output file.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l with -d 'The optional and non-optional dependency groups to include. By default, only the main dependencies are included.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l with-credentials -d 'Include credentials for extra indices.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l without -d 'The dependency groups to ignore. (Deprecated)'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l without-hashes -d 'Exclude hashes from the exported file.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l without-urls -d 'Exclude source repository urls from the exported file.'
 
 # help
 
