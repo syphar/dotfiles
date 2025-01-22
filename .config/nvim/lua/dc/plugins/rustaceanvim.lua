@@ -102,6 +102,7 @@ return {
 							-- allTargets = true,
 							-- allFeatures = true,
 						},
+						editor = { formatOnType = true },
 						cachePriming = {
 							enable = false,
 						},
