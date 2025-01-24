@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(cfg, lspconfig)
-	lspconfig.tsserver.setup({
+	lspconfig.ts_ls.setup({
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
 		on_attach = cfg.lsp_on_attach,
