@@ -68,8 +68,9 @@ vim.opt.tags:append({ "./tags;/" })
 
 vim.opt.showmatch = true
 
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 vim.opt.foldlevelstart = 10 -- open most folds by default
 vim.opt.foldnestmax = 10 -- 10 nested fold max
 
