@@ -26,6 +26,5 @@ mini-redis
 runiq
 rusty-man
 sccache
-taplo-cli
 wasm-pack
 zeta-note
