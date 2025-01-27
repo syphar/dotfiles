@@ -6,7 +6,8 @@ function M.setup(cfg, lspconfig)
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach(client, bufnr)
 
-			-- disable LSP server highlighting, I prefer treesitter for now
+			-- disable LSP server highlighting, I prefer treesitter for now,
+			-- mostly because it has injections
 			client.server_capabilities.semanticTokensProvider = nil
 		end,
 		settings = {
@@ -20,11 +21,12 @@ function M.setup(cfg, lspconfig)
 						-- rule names:
 						-- https://docs.basedpyright.com/latest/configuration/config-files/
 						-- -> section: "Type Check Rule Overrides"
+
 						reportUnreachable = "none", -- lint has annoying false positives
 
 						-- lints covered by ruff, would appear twice.
 						-- also when using `noqa` comments, these would be respected by
-						-- black, but not by pyright.
+						-- ruff, but not by pyright.
 						reportUnusedImport = "none",
 						reportUndefinedVariable = "none",
 					},
