@@ -12,7 +12,7 @@ return {
 	{
 		"Saecki/crates.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		ft = { "toml" },
+		event = { "BufRead Cargo.toml" },
 		config = true,
 	},
 
