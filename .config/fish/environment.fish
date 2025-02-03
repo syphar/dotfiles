@@ -62,4 +62,5 @@ fish_add_path /usr/local/opt/curl/bin
 fish_add_path /usr/local/sbin
 fish_add_path /usr/local/opt/openjdk/bin
 fish_add_path /opt/homebrew/opt/postgresql@16/bin
+fish_add_path /opt/homebrew/opt/llvm/bin
 
