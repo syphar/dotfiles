@@ -26,5 +26,6 @@ mini-redis
 runiq
 rusty-man
 sccache
+viceroy
 wasm-pack
 zeta-note
