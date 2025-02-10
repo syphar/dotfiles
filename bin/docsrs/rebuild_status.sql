@@ -24,6 +24,7 @@
 -- status 2025-02-04: 6199
 -- status 2025-02-05: 5522
 -- status 2025-02-06: 3961
+-- status 2025-02-07: 1526
 SELECT count(*) FROM (
      SELECT
          c.name,
