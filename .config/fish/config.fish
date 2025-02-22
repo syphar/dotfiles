@@ -36,3 +36,7 @@ if status --is-interactive
 end
 
 # vim: et ts=4 sts=4 sw=4
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.fish 2>/dev/null || :
