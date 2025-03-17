@@ -3,6 +3,8 @@ pyrightconfig.json
 .python-version
 .zed
 
+.aider.*
+
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store
 
