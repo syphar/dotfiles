@@ -28,6 +28,7 @@ function M.setup(cfg, lspconfig)
 						-- also when using `noqa` comments, these would be respected by
 						-- ruff, but not by pyright.
 						reportUnusedImport = "none",
+						reportUnusedVariable = "none",
 						reportUndefinedVariable = "none",
 					},
 				},
