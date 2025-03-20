@@ -31,7 +31,7 @@ if status --is-interactive
     # autostart or autoattach tmux when not inside tmux
     if not set -q TMUX
         tmux attach -t base || tmux new -s base
-    #     # FIXME: the command should replace the shell, like this the shell remains when tmux was quit
+        # FIXME: the command should replace the shell, like this the shell remains when tmux was quit
     end
 end
 
