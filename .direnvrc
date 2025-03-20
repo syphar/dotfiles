@@ -122,6 +122,8 @@ layout_uv() {
     current_python_version=$(<"$python_version_file")
   fi
 
+  rm -f pyrightconfig.json
+
   # Check to see if there is already an existing virtual environment,
   # OR if the current python version is different from the one specified in .python-version
   if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV || (-n $python_version && $current_python_version != "$python_version") ]]; then
