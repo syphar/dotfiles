@@ -50,7 +50,8 @@ abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
-abbr -ag bc bacon clippy
+abbr -ag bc bacon clippy-all
+abbr -ag bt bacon test
 
 alias ll="eza --long --all --header --icons --group-directories-first --color-scale=size --time-style=relative --git"
 alias l="eza --icons --group-directories-first"
