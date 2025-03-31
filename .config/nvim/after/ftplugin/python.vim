@@ -2,8 +2,8 @@
 setlocal textwidth=88
 setlocal colorcolumn=89
 
-setlocal foldlevelstart=0
-setlocal foldlevel=0
+" setlocal foldlevelstart=0
+" setlocal foldlevel=0
 
 set suffixesadd+=.py,__init__.py
 
