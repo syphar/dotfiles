@@ -74,14 +74,6 @@ function cfg.global_flags()
 end
 
 function cfg.lsp_setup()
-	-- nice diagnostic icons in sign-column
-	-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#neovim-060-1
-	local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-	for type, icon in pairs(signs) do
-		local hl = "DiagnosticSign" .. type
-		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-	end
-
 	local servers = {
 		bashls = { "*.sh" }, -- FIXME: non-sh bash scripts?
 		clangd = { "*.c", "*.cpp", "*.h", "*.hpp" },
@@ -135,7 +127,15 @@ function cfg.lsp_setup()
 	})
 
 	vim.diagnostic.config({
-		signs = true,
+		-- signs = true,
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "",
+				[vim.diagnostic.severity.WARN] = "",
+				[vim.diagnostic.severity.HINT] = "",
+				[vim.diagnostic.severity.INFO] = "",
+			},
+		},
 		underline = true,
 		update_in_insert = false,
 		severity_sort = true,
