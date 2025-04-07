@@ -15,12 +15,14 @@ return {
 	opts = {
 		formatters_by_ft = {
 			caddyfile = { "caddy" },
+			css = { "biome", "biome-check" },
 			htmldjango = { "djhtml" },
 			django = { "djhtml" },
 			lua = { "stylua" },
 			["jinja.html"] = { "djhtml" },
 			sql = { "sqruff" },
 			just = { "just" },
+			javascript = { "biome", "biome-check", "biome-organize-imports" },
 			markdown = { "deno_fmt" },
 			json = { "jq" },
 			fish = { "fish_indent" },
@@ -49,6 +51,8 @@ return {
 				or ft == "caddyfile"
 				or ft == "lua"
 				or ft == "proto"
+				or ft == "javascript"
+				or ft == "css"
 			then
 				return { timeout_ms = TIMEOUT, lsp_format = "last" }
 			end
