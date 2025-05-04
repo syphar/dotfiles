@@ -86,7 +86,7 @@ function cfg.lsp_setup()
 		ruff_lsp = "*.py",
 		tailwindcss = "*.css",
 		taplo = "*.toml",
-		terraformls = "*.tf",
+		terraformls = { "*.tf", "*.tfvars" },
 		tsserver = { "*.js", "*.ts", "*.jsx", "*.tsx" },
 		vimls = "*.vim",
 		yamlls = "*.yaml",

@@ -47,6 +47,7 @@ return {
 				ft == "rust"
 				or ft == "python"
 				or ft == "terraform"
+				or ft == "terraform-vars"
 				or ft == "go"
 				or ft == "caddyfile"
 				or ft == "lua"
