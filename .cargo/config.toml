@@ -2,4 +2,5 @@
 protocol = "sparse"
 
 [build]
-rustc-wrapper = "/Users/syphar/.cargo/bin/sccache"
+rustc-wrapper = "/opt/homebrew/bin/sccache"
+
