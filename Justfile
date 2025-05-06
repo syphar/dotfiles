@@ -257,6 +257,7 @@ clear-caches:
 clear-dev-environments:
     fd --type d --no-ignore --hidden --prune "^\.direnv$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "^\.venv$" "$SRC_DIR" --exec rm -rf {}
+    fd --type d --no-ignore --hidden --prune "^\.zed$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "^\.ruff_cache$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "^\.mypy_cache$" "$SRC_DIR" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "^\.terraform$" "$SRC_DIR" --exec rm -rf {}
