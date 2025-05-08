@@ -97,7 +97,6 @@ function cfg.lsp_setup()
 		taplo = "*.toml",
 		terraformls = { "*.tf", "*.tfvars" },
 		tsserver = { "*.js", "*.ts", "*.jsx", "*.tsx" },
-		ty = "*.py",
 		vimls = "*.vim",
 		yamlls = "*.yaml",
 	}
