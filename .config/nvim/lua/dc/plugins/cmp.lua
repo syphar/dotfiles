@@ -19,28 +19,6 @@ return {
 					vim.keymap.set("n", "<leader><leader>s", "<CMD>source ~/.config/nvim/after/plugin/snippets.lua<CR>")
 				end,
 			},
-			-- {
-			-- 	"tzachar/cmp-tabnine",
-			-- 	build = "./install.sh",
-			-- 	config = function()
-			-- 		local cmp_tabnine = require("cmp_tabnine.config")
-			-- 		cmp_tabnine:setup({
-			-- 			max_lines = 1000,
-			-- 			max_num_results = 20,
-			-- 			sort = true,
-			-- 			run_on_every_keystroke = true,
-			-- 			snippet_placeholder = "..",
-			-- 			ignored_file_types = {},
-			-- 			show_prediction_strength = true,
-			-- 		})
-			-- 	end,
-			-- },
-			-- {
-			-- 	"zbirenbaum/copilot-cmp",
-			-- 	config = function()
-			-- 		require("copilot_cmp").setup()
-			-- 	end,
-			-- },
 		},
 		config = function()
 			local has_words_before = function()
@@ -100,8 +78,6 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					-- { name = "cmp_tabnine" },
-					-- { name = "copilot" },
 					{ name = "path" },
 					{ name = "treesitter" },
 					{ name = "render-markdown" },
@@ -114,12 +90,8 @@ return {
 							nvim_lsp = "[LSP]",
 							luasnip = "[LuaSnip]",
 							nvim_lua = "[ Lua]",
-							-- cmp_tabnine = "[ T9]",
 							path = "[/ Path]",
-							crates = " [ Crates]",
-							jira_issues = "[ JIRA]",
-							gh_issues = "[ GH]",
-							-- copilot = "[ ]",
+							crates = "[ Crates]",
 						},
 					}),
 				},
@@ -157,15 +129,4 @@ return {
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 		end,
 	},
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	opts = {
-	-- 		copilot_model = "gpt-4o-copilot",
-	-- 		suggestion = { enabled = false },
-	-- 		panel = { enabled = false },
-	-- 		copilot_node_command = "/opt/homebrew/bin/node",
-	-- 	},
-	-- },
 }
