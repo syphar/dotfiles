@@ -86,13 +86,15 @@ local command_abbrev = {
 	Qa = "qa",
 	Vsp = "vsp",
 	On = "on",
+	-- grep should always be silent
+	grep = "silent grep",
+	-- real abbreviations
+	CC = "CodeCompanion",
+	CCC = "CodeCompanionChat",
 }
 for old, new in pairs(command_abbrev) do
 	vim.cmd("cnoreabbrev " .. old .. " " .. new)
 end
-
--- grep should always be silent
-vim.cmd("cnoreabbrev grep silent grep")
 
 -- open quickfix after grep
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
