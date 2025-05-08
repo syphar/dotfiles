@@ -37,6 +37,7 @@ ruff
 ruff-lsp
 sqlfluff
 tidal-dl
+ty
 watchdog
 yamllint
 yq
