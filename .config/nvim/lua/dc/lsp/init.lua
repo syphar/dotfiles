@@ -5,6 +5,15 @@ vim.lsp.set_log_level("error")
 
 local lspconfig = require("lspconfig")
 
+require("lspconfig.configs").ty = {
+	default_config = {
+		cmd = { "ty", "server" },
+		filetypes = { "python" },
+		root_markers = { "pyproject.toml", ".git" },
+		settings = {},
+	},
+}
+
 function cfg.open_diagnostics_float()
 	-- open diagnostics float, to be used by CursorHold & CursorHoldI
 	-- separate method because I don't want diagnostics when the auto
@@ -75,6 +84,7 @@ end
 
 function cfg.lsp_setup()
 	local servers = {
+		basedpyright = "*.py",
 		bashls = { "*.sh" }, -- FIXME: non-sh bash scripts?
 		clangd = { "*.c", "*.cpp", "*.h", "*.hpp" },
 		gopls = "*.go",
@@ -82,12 +92,12 @@ function cfg.lsp_setup()
 		kotlin_language_server = "*.kt",
 		lua_ls = "*.lua",
 		marksman = "*.md",
-		basedpyright = "*.py",
 		ruff_lsp = "*.py",
 		tailwindcss = "*.css",
 		taplo = "*.toml",
 		terraformls = { "*.tf", "*.tfvars" },
 		tsserver = { "*.js", "*.ts", "*.jsx", "*.tsx" },
+		ty = "*.py",
 		vimls = "*.vim",
 		yamlls = "*.yaml",
 	}
