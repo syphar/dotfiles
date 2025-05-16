@@ -9,6 +9,7 @@ cargo-docset
 cargo-edit
 cargo-expand
 cargo-generate
+cargo-insta
 cargo-make
 cargo-outdated
 cargo-script
