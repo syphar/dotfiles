@@ -346,6 +346,7 @@ brew "nvm"
 brew "offlineimap", restart_service: :changed
 brew "opentofu"
 brew "ossp-uuid"
+brew "p7zip"
 brew "pandoc"
 brew "pidof"
 brew "pipx"
