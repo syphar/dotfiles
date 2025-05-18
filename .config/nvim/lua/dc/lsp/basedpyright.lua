@@ -1,7 +1,7 @@
 local M = {}
 
-function M.setup(cfg, lspconfig)
-	lspconfig.basedpyright.setup({
+function M.config(cfg)
+	return {
 		flags = cfg.global_flags(),
 		on_attach = function(client, bufnr)
 			cfg.lsp_on_attach(client, bufnr)
@@ -34,7 +34,7 @@ function M.setup(cfg, lspconfig)
 				},
 			},
 		},
-	})
+	}
 end
 
 return M

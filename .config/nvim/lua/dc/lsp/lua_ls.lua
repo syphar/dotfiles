@@ -1,14 +1,24 @@
 local M = {}
 
-function M.setup(cfg, lspconfig)
+function M.config(cfg)
 	local util = require("lspconfig.util")
 
 	local runtime_path = vim.split(package.path, ";")
 	table.insert(runtime_path, "lua/?.lua")
 	table.insert(runtime_path, "lua/?/init.lua")
 
-	lspconfig.lua_ls.setup({
-		root_dir = util.root_pattern(".git", ".null-ls-root"),
+	return {
+		root_markers = {
+			".luarc.json",
+			".luarc.jsonc",
+			".luacheckrc",
+			".stylua.toml",
+			"stylua.toml",
+			"selene.toml",
+			"selene.yml",
+			".git",
+			".null-ls-root",
+		},
 		single_file_support = false, -- manually disable for now
 		capabilities = cfg.capabilities(),
 		flags = cfg.global_flags(),
@@ -40,7 +50,7 @@ function M.setup(cfg, lspconfig)
 				},
 			},
 		},
-	})
+	}
 end
 
 return M

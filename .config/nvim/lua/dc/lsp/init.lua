@@ -1,18 +1,7 @@
-local cfg = {
-	lsp_loaded = {},
-}
+local cfg = {}
 vim.lsp.set_log_level("error")
 
 local lspconfig = require("lspconfig")
-
-require("lspconfig.configs").ty = {
-	default_config = {
-		cmd = { "ty", "server" },
-		filetypes = { "python" },
-		root_markers = { "pyproject.toml", ".git" },
-		settings = {},
-	},
-}
 
 function cfg.open_diagnostics_float()
 	-- open diagnostics float, to be used by CursorHold & CursorHoldI
@@ -83,38 +72,15 @@ function cfg.global_flags()
 end
 
 function cfg.lsp_setup()
-	local servers = {
-		basedpyright = "*.py",
-		bashls = { "*.sh" }, -- FIXME: non-sh bash scripts?
-		clangd = { "*.c", "*.cpp", "*.h", "*.hpp" },
-		gopls = "*.go",
-		jdtls = "*.java",
-		kotlin_language_server = "*.kt",
-		lua_ls = "*.lua",
-		marksman = "*.md",
-		ruff_lsp = "*.py",
-		tailwindcss = "*.css",
-		taplo = "*.toml",
-		terraformls = { "*.tf", "*.tfvars" },
-		tsserver = { "*.js", "*.ts", "*.jsx", "*.tsx" },
-		vimls = "*.vim",
-		yamlls = "*.yaml",
-	}
+	local lsp_dir = vim.fn.stdpath("config") .. "/lua/dc/lsp"
+	local lsp_files = vim.fn.globpath(lsp_dir, "*.lua", false, true)
 
-	for name, filetypes in pairs(servers) do
-		local group = vim.api.nvim_create_augroup("load_lsp_config_" .. name, { clear = true })
-		-- event for lazy loading LSP
-		-- https://github.com/folke/lazy.nvim/issues/1049#issuecomment-1735543671
-		vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-			group = group,
-			pattern = filetypes,
-			callback = function()
-				if cfg.lsp_loaded[name] == nil then
-					require("dc.lsp." .. name).setup(cfg, lspconfig)
-					cfg.lsp_loaded[name] = true
-				end
-			end,
-		})
+	for _, file in ipairs(lsp_files) do
+		local name = file:match("([^/]+)%.lua$")
+		if name and name ~= "init" then
+			vim.lsp.enable(name)
+			vim.lsp.config(name, require("dc.lsp." .. name).config(cfg))
+		end
 	end
 
 	-- update loclist with diagnostics for the current file

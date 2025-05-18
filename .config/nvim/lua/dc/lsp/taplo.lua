@@ -1,8 +1,8 @@
 local M = {}
 
-function M.setup(cfg, lspconfig)
+function M.config(cfg)
 	-- TOML language server with schemas
-	lspconfig.taplo.setup({
+	return {
 		cmd = { "taplo", "lsp", "stdio" },
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
@@ -20,7 +20,7 @@ function M.setup(cfg, lspconfig)
 				},
 			},
 		},
-	})
+	}
 end
 
 return M

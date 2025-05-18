@@ -1,7 +1,7 @@
 local M = {}
 
-function M.setup(cfg, lspconfig)
-	lspconfig.gopls.setup({
+function M.config(cfg)
+	return {
 		flags = cfg.global_flags(),
 		capabilities = cfg.capabilities(),
 		on_attach = cfg.lsp_on_attach,
@@ -17,7 +17,7 @@ function M.setup(cfg, lspconfig)
 				},
 			},
 		},
-	})
+	}
 end
 
 return M
