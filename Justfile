@@ -139,12 +139,12 @@ update-cached-pypi-package-list:
 update-rust:
     rustup update
     cargo install-update -a
-    -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo install
+    -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
 
 cargo-install:
     #!/usr/bin/env fish
     for line in (cat cargo_install.txt)
-        eval (cargo install $line)
+        eval (cargo binstall $line)
     end
 
 
