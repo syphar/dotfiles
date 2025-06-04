@@ -105,7 +105,7 @@
 
 [merge]
 	tool = nvim
-    conflictstyle = zdiff3  
+    ; conflictstyle = zdiff3  
     ; conflictstyle = diff3
 
 [diff]
