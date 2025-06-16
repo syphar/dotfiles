@@ -8,14 +8,15 @@ function M.config(cfg)
 
 			-- disable LSP server highlighting, I prefer treesitter for now,
 			-- mostly because it has injections
-			client.server_capabilities.semanticTokensProvider = nil
+			-- client.server_capabilities.semanticTokensProvider = nil
 		end,
 		settings = {
 			basedpyright = {
 				disableOrganizeImports = true, -- covered by ruff
 				-- this is the pyright default, we don't want it stricter for now,
 				-- too many false positives with django
-				typeCheckingMode = "basic",
+				typeCheckingMode = "off",
+				-- typeCheckingMode = "basic",
 				analysis = {
 					diagnosticSeverityOverrides = {
 						-- rule names:
