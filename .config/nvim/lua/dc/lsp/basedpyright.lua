@@ -18,6 +18,13 @@ function M.config(cfg)
 				typeCheckingMode = "off",
 				-- typeCheckingMode = "basic",
 				analysis = {
+					inlayHints = {
+						-- https://github.com/astral-sh/ty/issues/472
+						variableTypes = false, -- conflicts with ty
+						callArgumentNames = false, -- conflicts with ty
+						functionReturnTypes = false, -- conflicts with ty
+						genericTypes = false, -- conflicts with ty
+					},
 					diagnosticSeverityOverrides = {
 						-- rule names:
 						-- https://docs.basedpyright.com/latest/configuration/config-files/
