@@ -50,6 +50,7 @@ abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
 
+abbr -ag bcon bacon
 abbr -ag bc bacon clippy-all
 abbr -ag bt bacon test
 
