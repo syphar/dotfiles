@@ -9,6 +9,9 @@ function M.config(cfg)
 			-- disable LSP server highlighting, I prefer treesitter for now,
 			-- mostly because it has injections
 			-- client.server_capabilities.semanticTokensProvider = nil
+
+			-- is handled by `ty`
+			client.server_capabilities.definitionProvider = false
 		end,
 		settings = {
 			basedpyright = {
