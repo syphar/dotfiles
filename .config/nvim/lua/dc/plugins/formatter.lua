@@ -22,7 +22,11 @@ return {
 			["jinja.html"] = { "djhtml" },
 			sql = { "sqruff" },
 			just = { "just" },
-			javascript = { "biome", "biome-check", "biome-organize-imports" },
+			javascript = {
+				-- "biome-organize-imports",
+				"biome",
+				-- "biome-check",
+			},
 			markdown = { "deno_fmt" },
 			json = { "jq" },
 			fish = { "fish_indent" },
