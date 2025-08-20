@@ -16,10 +16,7 @@ function M.config(cfg)
 		settings = {
 			basedpyright = {
 				disableOrganizeImports = true, -- covered by ruff
-				-- this is the pyright default, we don't want it stricter for now,
-				-- too many false positives with django
 				typeCheckingMode = "off",
-				-- typeCheckingMode = "basic",
 				analysis = {
 					inlayHints = {
 						-- https://github.com/astral-sh/ty/issues/472
