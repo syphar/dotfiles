@@ -93,7 +93,7 @@ function __kubectl_clear_perform_completion_once_result
     __kubectl_debug ""
     __kubectl_debug "========= clearing previously set __kubectl_perform_completion_once_result variable =========="
     set --erase __kubectl_perform_completion_once_result
-    __kubectl_debug "Succesfully erased the variable __kubectl_perform_completion_once_result"
+    __kubectl_debug "Successfully erased the variable __kubectl_perform_completion_once_result"
 end
 
 function __kubectl_requires_order_preservation
