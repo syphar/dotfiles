@@ -35,7 +35,6 @@ pylyzer
 python-lsp-server
 ruff
 ruff-lsp
-sqlfluff
 tidal-dl
 ty
 watchdog
