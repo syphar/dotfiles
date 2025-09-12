@@ -25,10 +25,6 @@ return {
 		-- 	return dc_utils.pyproject_toml()["tool.pydocstyle"] or dc_utils.setup_cfg_sections().pydocstyle
 		-- end
 
-		lint.linters.sqlfluff.condition = function(ctx)
-			return dc_utils.pyproject_toml()["tool.sqlfluff"] or dc_utils.setup_cfg_sections().sqlfluff
-		end
-
 		lint.linters.eslint_d.condition = function(ctx)
 			return vim.fs.find(
 				{ ".eslintrc.js", ".eslintrc.json", ".eslintrc" },
@@ -49,34 +45,6 @@ return {
 			"--",
 			"-D",
 			"warnings",
-		}
-
-		lint.linters.buf = {
-			cmd = "buf",
-			stdin = true,
-			append_fname = false,
-			args = { "lint", "--error-format=json" },
-			ignore_exitcode = true,
-			parser = function(output, bufnr, linter_cwd)
-				if not vim.api.nvim_buf_is_valid(bufnr) then
-					return {}
-				end
-				local result = {}
-				for _, line in ipairs(vim.fn.split(output, "\n")) do
-					local data = vim.json.decode(line)
-					table.insert(result, {
-						lnum = data.start_line - 1,
-						end_lnum = data.end_line - 1,
-						col = data.start_column - 1,
-						end_col = data.end_column - 1,
-						severity = vim.diagnostic.severity.ERROR,
-						message = data.message,
-						code = data.type,
-						source = "buf",
-					})
-				end
-				return result
-			end,
 		}
 
 		vim.api.nvim_create_autocmd({
@@ -112,9 +80,9 @@ return {
 			json = { "jsonlint" },
 			lua = { "selene" },
 			markdown = { "markdownlint" },
-			proto = { "buf" },
+			proto = { "buf_lint" },
 			sh = { "shellcheck" },
-			sql = { "sqlfluff" },
+			sql = { "sqruff" },
 			vim = { "vint" },
 			yaml = { "yamllint" },
 		}
