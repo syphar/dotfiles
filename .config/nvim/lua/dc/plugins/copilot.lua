@@ -14,6 +14,9 @@ return {
 		"olimorris/codecompanion.nvim",
 		lazy = true,
 		opts = {
+			extensions = {
+				spinner = {},
+			},
 			strategies = {
 				chat = {
 					adapter = "openai",
@@ -26,15 +29,17 @@ return {
 				},
 			},
 			adapters = {
-				openai = function()
-					return require("codecompanion.adapters").extend("openai", {
-						schema = {
-							model = {
-								default = "gpt-5",
+				http = {
+					openai = function()
+						return require("codecompanion.adapters").extend("openai", {
+							schema = {
+								model = {
+									default = "gpt-5",
+								},
 							},
-						},
-					})
-				end,
+						})
+					end,
+				},
 			},
 		},
 		cmd = {
@@ -44,6 +49,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			"franco-ruggeri/codecompanion-spinner.nvim",
 		},
 	},
 }
