@@ -50,6 +50,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			"franco-ruggeri/codecompanion-spinner.nvim",
+			"franco-ruggeri/codecompanion-lualine.nvim",
 		},
 	},
 }
