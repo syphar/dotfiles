@@ -271,6 +271,7 @@ complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcomm
 
 # show
 complete -c poetry -n '__fish_seen_subcommand_from show' -l all -d 'Show all packages (even those not compatible with current system).'
+complete -c poetry -n '__fish_seen_subcommand_from show' -l format -d 'Specify the output format (`json` or `text`). Default is `text`. `json` cannot be combined with the --tree option.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l latest -d 'Show the latest version.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l no-truncate -d 'Do not truncate the output based on the terminal width.'
 complete -c poetry -n '__fish_seen_subcommand_from show' -l only -d 'The only dependency groups to include.'
