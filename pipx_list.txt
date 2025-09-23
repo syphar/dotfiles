@@ -4,6 +4,7 @@ bandit
 basedpyright
 black
 chatblade
+copier
 curlylint
 dephell
 djhtml
