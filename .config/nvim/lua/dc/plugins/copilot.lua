@@ -19,28 +19,37 @@ return {
 			},
 			strategies = {
 				chat = {
-					adapter = "openai",
+					adapter = "gemini",
 				},
 				inline = {
-					adapter = "openai",
+					adapter = "gemini",
 				},
 				cmd = {
-					adapter = "openai",
+					adapter = "gemini",
 				},
 			},
-			adapters = {
-				http = {
-					openai = function()
-						return require("codecompanion.adapters").extend("openai", {
-							schema = {
-								model = {
-									default = "gpt-5",
-								},
-							},
-						})
-					end,
-				},
-			},
+			-- strategies = {
+			-- 	chat = {
+			-- 		adapter = "gemini_cli",
+			-- 	},
+			-- 	inline = {
+			-- 		adapter = "gemini_cli",
+			-- 	},
+			-- 	cmd = {
+			-- 		adapter = "gemini_cli",
+			-- 	},
+			-- },
+			-- adapters = {
+			-- 	acp = {
+			-- 		gemini_cli = function()
+			-- 			return require("codecompanion.adapters").extend("gemini_cli", {
+			-- 				defaults = {
+			-- 					auth_method = "gemini-api-key", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+			-- 				},
+			-- 			})
+			-- 		end,
+			-- 	},
+			-- },
 		},
 		cmd = {
 			"CodeCompanionChat",

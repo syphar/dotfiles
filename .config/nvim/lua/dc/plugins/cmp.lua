@@ -81,6 +81,7 @@ return {
 					{ name = "path" },
 					{ name = "treesitter" },
 					{ name = "render-markdown" },
+					{ name = "codecompanion" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
