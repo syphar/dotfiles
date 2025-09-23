@@ -22,6 +22,7 @@ abbr -ag dcd docker compose down
 abbr -ag dcb docker compose build
 abbr -ag dc docker compose
 alias dcs="docker stop (docker ps -q)"
+alias gemini="GOOGLE_APPLICATION_CREDENTIALS= command gemini"
 
 alias rc='ruff check --watch'
 alias bf="butterfish"
