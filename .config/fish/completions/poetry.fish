@@ -256,6 +256,7 @@ complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcomm
 
 # self show
 complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcommand_from show' -l addons -d 'List only add-on packages installed.'
+complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcommand_from show' -l format -d 'Specify the output format (`json` or `text`). Default is `text`. `json` cannot be combined with the --tree option.'
 complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcommand_from show' -l latest -d 'Show the latest version.'
 complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcommand_from show' -l outdated -d 'Show the latest version but only for packages that are outdated.'
 complete -c poetry -n '__fish_seen_subcommand_from self; and __fish_seen_subcommand_from show' -l tree -d 'List the dependencies as a tree.'
