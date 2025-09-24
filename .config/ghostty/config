@@ -19,16 +19,15 @@ macos-option-as-alt = true
 # MAP WINDOW / PANE / TAB KEYMAPS TO TMUX KEYBINDS
 
 # switch tabs via CMD+{num}
-keybind = cmd+one=text:\x010
-keybind = cmd+two=text:\x011
-keybind = cmd+three=text:\x012
-keybind = cmd+four=text:\x013
-keybind = cmd+five=text:\x014
-keybind = cmd+six=text:\x015
-keybind = cmd+seven=text:\x016
-keybind = cmd+eight=text:\x017
-keybind = cmd+nine=text:\x018
-
+keybind = cmd+Digit1=text:\x010
+keybind = cmd+Digit2=text:\x011
+keybind = cmd+Digit3=text:\x012
+keybind = cmd+Digit4=text:\x013
+keybind = cmd+Digit5=text:\x014
+keybind = cmd+Digit6=text:\x015
+keybind = cmd+Digit7=text:\x016
+keybind = cmd+Digit8=text:\x017
+keybind = cmd+Digit9=text:\x018
 
 # TABS
 
