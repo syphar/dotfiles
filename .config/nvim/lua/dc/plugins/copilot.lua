@@ -1,3 +1,6 @@
+local _adapter = "gemini"
+local _model = "gemini-2.5-pro"
+
 return {
 	{
 		"zbirenbaum/copilot.lua",
@@ -19,40 +22,18 @@ return {
 			},
 			strategies = {
 				chat = {
-					adapter = "gemini",
-					model = "gemini-2.5-pro",
+					adapter = _adapter,
+					model = _model,
 				},
 				inline = {
-					adapter = "gemini",
-					model = "gemini-2.5-pro",
+					adapter = _adapter,
+					model = _model,
 				},
 				cmd = {
-					adapter = "gemini",
-					model = "gemini-2.5-pro",
+					adapter = _adapter,
+					model = _model,
 				},
 			},
-			-- strategies = {
-			-- 	chat = {
-			-- 		adapter = "gemini_cli",
-			-- 	},
-			-- 	inline = {
-			-- 		adapter = "gemini_cli",
-			-- 	},
-			-- 	cmd = {
-			-- 		adapter = "gemini_cli",
-			-- 	},
-			-- },
-			-- adapters = {
-			-- 	acp = {
-			-- 		gemini_cli = function()
-			-- 			return require("codecompanion.adapters").extend("gemini_cli", {
-			-- 				defaults = {
-			-- 					auth_method = "gemini-api-key", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
-			-- 				},
-			-- 			})
-			-- 		end,
-			-- 	},
-			-- },
 		},
 		cmd = {
 			"CodeCompanionChat",
