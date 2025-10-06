@@ -1,5 +1,4 @@
-local _adapter = "gemini"
-local _model = "gemini-2.5-pro"
+local default_adapter = "gemini"
 
 return {
 	{
@@ -21,18 +20,37 @@ return {
 				spinner = {},
 			},
 			strategies = {
+				-- set default adapters for strategies
 				chat = {
-					adapter = _adapter,
-					model = _model,
+					adapter = default_adapter,
 				},
 				inline = {
-					adapter = _adapter,
-					model = _model,
+					adapter = default_adapter,
 				},
 				cmd = {
-					adapter = _adapter,
-					model = _model,
+					adapter = default_adapter,
 				},
+			},
+			-- set default models for some adapters
+			adapters = {
+				gemini = function()
+					return require("codecompanion.adapters").extend("gemini", {
+						schema = {
+							model = {
+								default = "gemini-2.5-pro",
+							},
+						},
+					})
+				end,
+				openai = function()
+					return require("codecompanion.adapters").extend("openai", {
+						schema = {
+							model = {
+								default = "gpt-5",
+							},
+						},
+					})
+				end,
 			},
 		},
 		cmd = {
