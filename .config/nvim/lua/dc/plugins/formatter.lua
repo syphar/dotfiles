@@ -78,6 +78,14 @@ return {
 				args = { "fix", "--config", "/Users/syphar/.sqruff", "--force", "$FILENAME" },
 				stdin = false,
 			},
+			ruff_fix = {
+				-- ignore these two rules for autofixing.
+				-- This is needed for devs that have ruffs autoformat & autofix in their
+				-- editor post-save config.
+				-- Without making these unfixable a dev could never add imports without
+				-- directly using them before the safe.
+				append_args = { "--extend-unfixable=F401,F841" },
+			},
 		},
 	},
 	init = function()
