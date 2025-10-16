@@ -77,3 +77,5 @@ venv3
 .null-ls-root
 
 .bacon-locations
+
+.python-version
