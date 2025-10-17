@@ -140,6 +140,7 @@ update-rust:
     rustup update
     cargo install-update -a
     -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
+    ensure_rustup_components_for_installed_toolchains.sh
 
 cargo-install:
     #!/usr/bin/env fish
