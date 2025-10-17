@@ -33,24 +33,26 @@ return {
 			},
 			-- set default models for some adapters
 			adapters = {
-				gemini = function()
-					return require("codecompanion.adapters").extend("gemini", {
-						schema = {
-							model = {
-								default = "gemini-2.5-pro",
+				http = {
+					gemini = function()
+						return require("codecompanion.adapters").extend("gemini", {
+							schema = {
+								model = {
+									default = "gemini-2.5-pro",
+								},
 							},
-						},
-					})
-				end,
-				openai = function()
-					return require("codecompanion.adapters").extend("openai", {
-						schema = {
-							model = {
-								default = "gpt-5",
+						})
+					end,
+					openai = function()
+						return require("codecompanion.adapters").extend("openai", {
+							schema = {
+								model = {
+									default = "gpt-5",
+								},
 							},
-						},
-					})
-				end,
+						})
+					end,
+				},
 			},
 		},
 		cmd = {
