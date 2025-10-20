@@ -56,7 +56,7 @@ mackup:
     uv pip install --upgrade -r requirements.txt
     ## mackup
     mackup restore --force
-    mackup backup
+    mackup backup --force
     # copy mackup files to dotfiles
     ./mackup_dotfiles.py
 
