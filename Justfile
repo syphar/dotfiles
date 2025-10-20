@@ -167,6 +167,8 @@ update-git-repo REPO:
     #!/bin/bash
     set -euo pipefail
 
+    echo "updating {{ REPO }}"
+
     if [ -e "{{ REPO }}/Cargo.toml" ] && [ -d "{{ REPO }}/target" ]; then
         just cargo-sweep "{{ REPO }}"
     fi
