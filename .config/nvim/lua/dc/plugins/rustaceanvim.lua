@@ -41,9 +41,18 @@ return {
 						files = {
 							excludeDirs = { ".rustwide-docker", ".rustwide", ".rustwide-docker" },
 						},
-						assist = {
-							importGranularity = "crate",
-							importPrefix = "by_self",
+						imports = {
+							granularity = {
+								group = "crate",
+							},
+							group = {
+								enable = true,
+							},
+							merge = {
+								glob = false,
+							},
+							prefix = "crate",
+							preferPrelude = false,
 						},
 						inlayHints = {
 							--     Whether to show inlay type hints for binding modes.
