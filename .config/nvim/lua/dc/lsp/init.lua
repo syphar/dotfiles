@@ -91,6 +91,11 @@ function cfg.lsp_setup()
 		callback = function()
 			vim.diagnostic.setloclist({ open = false })
 
+			local qf_info = vim.fn.getqflist({ title = 1, winid = 0 })
+			if qf_info.winid > 0 and qf_info.title:find("Diagnostics") then
+				vim.diagnostic.setqflist({ open = false })
+			end
+
 			-- Trigger `checktime` for the current buffer,
 			-- so `autoread` is triggered, and the buffer is reloaded
 			-- if it's unchanged.
