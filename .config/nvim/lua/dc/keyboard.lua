@@ -100,7 +100,7 @@ end
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 	pattern = "grep",
 	group = vim.api.nvim_create_augroup("quickfix", {}),
-	command = "botright copen", -- cwindow
+	command = "copen",
 })
 
 -- disable ex mode mappings, I always end up
