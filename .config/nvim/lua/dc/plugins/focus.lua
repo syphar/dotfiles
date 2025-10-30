@@ -18,7 +18,7 @@ return {
 
 		-- disabling focus for certain filetypes:
 		-- https://github.com/nvim-focus/focus.nvim?tab=readme-ov-file#disabling-focus
-		local ignore_filetypes = { "fugitiveblame", "packer", "Trouble" }
+		local ignore_filetypes = { "fugitiveblame", "packer", "Trouble", "qf" }
 		vim.api.nvim_create_autocmd("FileType", {
 			group = vim.api.nvim_create_augroup("FocusDisable", { clear = true }),
 			callback = function(_)
