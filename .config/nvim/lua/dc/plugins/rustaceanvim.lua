@@ -34,7 +34,7 @@ return {
 					cfg.lsp_on_attach(client, bufnr)
 
 					-- disable LSP server hilighting, I prefer treesitter for now
-					-- client.server_capabilities.semanticTokensProvider = nil
+					client.server_capabilities.semanticTokensProvider = nil
 				end,
 				settings = {
 					["rust-analyzer"] = {
