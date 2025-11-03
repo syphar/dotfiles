@@ -1,4 +1,6 @@
-local default_adapter = "gemini"
+local default_adapter = "openai"        -- "gemini"
+local gemini_model = "gemini-2.5-flash" -- "gemini-2.5-pro"
+local openai_model = "gpt-5-mini"       -- gpt-4o" "gpt-5"
 
 return {
 	{
@@ -38,7 +40,7 @@ return {
 						return require("codecompanion.adapters").extend("gemini", {
 							schema = {
 								model = {
-									default = "gemini-2.5-pro",
+									default = gemini_model,
 								},
 							},
 						})
@@ -47,7 +49,7 @@ return {
 						return require("codecompanion.adapters").extend("openai", {
 							schema = {
 								model = {
-									default = "gpt-5",
+									default = openai_model,
 								},
 							},
 						})
