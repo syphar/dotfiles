@@ -55,6 +55,27 @@ return {
 						})
 					end,
 				},
+				acp = {
+					gemini_cli = function()
+						-- based on:
+						-- https://github.com/olimorris/codecompanion.nvim/pull/2057#issuecomment-3418147957
+						-- I don't want to use a separate gemini API token for vim, but just the oauth session
+						-- from the gemini CLI tool.
+						return require("codecompanion.adapters").extend("gemini_cli", {
+							defaults = {
+								---@type string
+								oauth_credentials_path = vim.fs.abspath("~/.gemini/oauth_creds.json"),
+							},
+							handlers = {
+								auth = function(self)
+									---@type string|nil
+									local oauth_credentials_path = self.defaults.oauth_credentials_path
+									return (oauth_credentials_path and vim.fn.filereadable(oauth_credentials_path)) == 1
+								end,
+							},
+						})
+					end,
+				},
 			},
 		},
 		cmd = {
