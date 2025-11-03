@@ -72,6 +72,7 @@ return {
 
 		lint.linters_by_ft = {
 			dockerfile = { "hadolint" },
+			editorconfig = { "editorconfig-checker" },
 			elixir = { "credo" },
 			fish = { "fish" },
 			gitcommit = { "gitlint" },
