@@ -12,7 +12,7 @@ daily-update:
     update_cached_heroku_apps
     just update-homebrew
     just update-luarocks
-    just update-pipx
+    just update-python-tools
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
@@ -100,16 +100,21 @@ update-luarocks:
     ## luarocks packages for lua 5.1, for neovim
     -xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt 
 
-update-pipx:
-    ## install/update pipx packages
-    -xargs -n 1 pipx install --include-deps < pipx_list.txt 1>/dev/null 
-    pipx reinstall-all
-    pipx inject python-lsp-server pylsp-mypy rope
-    pipx inject httpie httpie-ntlm
-    pipx inject httpie 'urllib3<2' # https://github.com/httpie/httpie/issues/1499
-    pipx inject poetry poetry-dynamic-versioning poetry-plugin-export
-    pipx inject ipython rich requests psycopg
-    pipx inject dslr psycopg2-binary
+update-python-tools:
+    #!/bin/bash
+    set -euo pipefail
+
+    while IFS= read -r pkg; do
+
+      [ -z "$pkg" ] && continue   # skip empty lines
+      [[ "$pkg" =~ ^[[:space:]]*# ]] && continue # skip comments
+
+      echo "========================"
+      echo "installing/updating: $pkg"
+      uv tool install --upgrade $pkg
+
+    done < ./uv_tool_list.txt
+
 
 update-vim:
     rm -f ~/.local/state/nvim/*.log

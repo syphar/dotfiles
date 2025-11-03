@@ -1,0 +1,43 @@
+argcomplete
+awscli
+bandit
+basedpyright
+black
+chatblade
+copier
+curlylint
+dephell
+djhtml
+dslr --with psycopg2-binary
+flake8
+fleet-context
+frogmouth
+gcalcli
+gitlint-core --with gitlint
+gsutil
+httpie --with httpie-ntlm
+ipython --with rich --with requests --with psycopg
+isort
+jedi-language-server
+# https://github.com/d0c-s4vage/lookatme/issues/221
+lookatme --with pyyaml==5.3.1
+maturin
+openai
+perflint
+pgcli
+pip-tools
+pipenv
+poethepoet
+poetry --with poetry-dynamic-versioning --with poetry-plugin-export
+pre-commit
+proselint
+pydocstyle
+pylyzer
+python-lsp-server --with pylsp-mypy --with rope
+ruff
+ruff-lsp
+tidal-dl
+ty
+watchdog
+yamllint
+yq
