@@ -16,5 +16,7 @@ vim.filetype.add({
 	},
 	pattern = {
 		["%.env%.%w+"] = "sh",
+		["Dockerfile%-%w+"] = "dockerfile",
+		["Dockerfile%.%w+"] = "dockerfile",
 	},
 })
