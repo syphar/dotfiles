@@ -19,7 +19,6 @@ return {
 	-- specific file types
 	{ "isobit/vim-caddyfile",             ft = "caddyfile" },
 	{ "pest-parser/pest.vim",             ft = "pest" },
-	{ "NoahTheDuke/vim-just",             ft = "just" },
 	{ "rust-lang/rust.vim",               ft = "rust" },
 	{ "dag/vim-fish",                     ft = "fish" },
 	{ "varnishcache-friends/vim-varnish", ft = "vcl" },
