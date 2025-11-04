@@ -21,6 +21,7 @@ isort
 jedi-language-server
 # https://github.com/d0c-s4vage/lookatme/issues/221
 lookatme --with pyyaml==5.3.1
+mackup==0.8.43 --with defusedxml --with requests
 maturin
 openai
 perflint

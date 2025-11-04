@@ -1,3 +1,0 @@
-mackup==0.8.43
-defusedxml
-requests

@@ -1,4 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10,<3.11"
+# dependencies = [
+#     "mackup==0.8.43",
+#     "defusedxml",
+#     "requests"
+# ]
+# ///
+
 from pathlib import Path
 
 from mackup import appsdb, utils

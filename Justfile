@@ -1,5 +1,7 @@
 #!/usr/bin/env just --justfile
 
+set unstable
+
 export SRC_DIR := "/Users/syphar/src"
 
 default:
@@ -53,7 +55,6 @@ update-generated-autocompletes:
     _DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish
 
 mackup:
-    uv pip install --upgrade -r requirements.txt
     ## mackup
     mackup restore --force
     mackup backup --force
