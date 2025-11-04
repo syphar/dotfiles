@@ -1,58 +1,3 @@
-layout_poetry() {
-  if [[ ! -f pyproject.toml ]]; then
-    log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one first.'
-    exit 2
-  fi
-
-  # create venv if it doesn't exist
-  poetry run true
-
-  export VIRTUAL_ENV=$(poetry env info --path)
-  export POETRY_ACTIVE=1
-  PATH_add "$VIRTUAL_ENV/bin"
-}
-
-use_pyenv() {
-  unset PYENV_VERSION
-  # Because each python version is prepended to the PATH, add them in reverse order
-  for ((j = $#; j >= 1; j--)); do
-    local python_version=${!j}
-    local pyenv_python=$(pyenv root)/versions/${python_version}/bin/python
-    if [[ ! -x "$pyenv_python" ]]; then
-      log_error "Error: $pyenv_python can't be executed."
-      return 1
-    fi
-
-    unset PYTHONHOME
-    local ve=$($pyenv_python -c "import pkgutil; print('venv' if pkgutil.find_loader('venv') else ('virtualenv' if pkgutil.find_loader('virtualenv') else ''))")
-
-    case $ve in
-      "venv")
-        VIRTUAL_ENV=$(direnv_layout_dir)/python-$python_version
-        export VIRTUAL_ENV
-        if [[ ! -d $VIRTUAL_ENV ]]; then
-          $pyenv_python -m venv "$VIRTUAL_ENV"
-        fi
-
-        rm -f pyrightconfig.json
-
-        PATH_add "$VIRTUAL_ENV"/bin
-        ;;
-      "virtualenv")
-        layout_python "$pyenv_python"
-        ;;
-      *)
-        log_error "Error: neither venv nor virtualenv are available to ${pyenv_python}."
-        return 1
-        ;;
-    esac
-
-    [[ -z "${PYENV_VERSION-}" ]] && PYENV_VERSION=$python_version || PYENV_VERSION="${python_version}:$PYENV_VERSION"
-  done
-
-  export PYENV_VERSION
-}
-
 use_nvm_from_nvm_rc() {
   if [[ ! -f .nvmrc ]]; then
     log_error 'No .nvmrc found'
@@ -61,37 +6,6 @@ use_nvm_from_nvm_rc() {
 
   local version=$(cat .nvmrc)
   use_nvm "$version"
-}
-
-use_pyenv_from_poetry_lock() {
-  if [[ ! -f poetry.lock ]]; then
-    log_error 'No poetry.lock found'
-    exit 2
-  fi
-
-  local version=$(tomlq '.metadata|.["python-versions"]' poetry.lock | sed 's/\"//g')
-  layout_uv "$version"
-}
-
-
-use_pyenv_from_runtime_txt() {
-  if [[ ! -f runtime.txt ]]; then
-    log_error 'No runtime.txt found'
-    exit 2
-  fi
-
-  local version=$(cat runtime.txt | sed 's/python-//')
-  layout_uv "$version"
-}
-
-use_pyenv_from_python_version_file() {
-  if [[ ! -f .python-version ]]; then
-    log_error 'No .python-version found'
-    exit 2
-  fi
-
-  local version=$(cat .python-version)
-  layout_uv "$version"
 }
 
 use_nvm() {
@@ -105,41 +19,40 @@ use_nvm() {
   # fi
 }
 
-# taken from https://github.com/direnv/direnv/pull/1329/files#diff-65f096acc5cb8701ae62be810fce97e6b2820be683839581f0042a2e3761cfc8
 layout_uv() {
-  local python_version=${1:-}
-  # If they have specified a python version, check to see if there is already a
-  # .python-version file. If there is, and the specified version is different,
-  # then recreate the virtual environment with the new version.
-  # Otherwise, just use the existing virtual environment, if there is already a
-  # .venv directory.
+  local venv_dir=".venv"
+  local python_bin="$venv_dir/bin/python"
 
-  VIRTUAL_ENV="${PWD}/.venv"
-  # Get the current python version from the .python-version file
-  local python_version_file=".python-version"
-  local current_python_version=""
-  if [[ -f "$python_version_file" ]]; then
-    current_python_version=$(<"$python_version_file")
+  # already activated?
+  if [[ "${VIRTUAL_ENV:-""}" == "$PWD/$venv_dir" ]]; then
+    return 0
   fi
 
-  rm -f pyrightconfig.json
+  export VIRTUAL_ENV="$PWD/$venv_dir"
 
-  # Check to see if there is already an existing virtual environment,
-  # OR if the current python version is different from the one specified in .python-version
-  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV || (-n $python_version && $current_python_version != "$python_version") ]]; then
-    log_status "No virtual environment exists. Executing \`uv venv\` to create one."
-    if [[ -n $python_version ]]; then
-      uv venv --python "$python_version"
-      # Write the python version to the .python-version file
-      echo "$python_version" > .python-version
-    else
-      uv venv
-    fi
+  if [[ -x "$python_bin" ]]; then
+    layout python "$python_bin"
+    return 0
   fi
 
-  PATH_add "$VIRTUAL_ENV/bin"
+  if [[ ! -f pyproject.toml && \
+      ! -f .python-version ]]; then
+    return 0
+  fi
+
+  echo "direnv: creating virtualenv via uv in $venv_dir"
+  mkdir -p "$venv_dir"
+
+  # NOTE: uv can natively read the required python version from 
+  # `.python-version` or `pyproject.toml`.
+  # it also supports version ranges.
+  uv venv --clear "$venv_dir"
+
+  if [[ -x "$python_bin" ]]; then
+    layout python "$python_bin"
+  fi
+
   export UV_ACTIVE=1
-  export VIRTUAL_ENV
   export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
 }
 
