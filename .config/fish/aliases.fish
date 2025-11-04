@@ -82,8 +82,8 @@ abbr -ag co cargo outdated --root-deps-only
 abbr -ag cab cargo build
 abbr -ag cac cargo check
 abbr -ag sqlbat bat -l sql
-abbr -ag hh http --verify=no --headers 
-abbr -ag hb http --verify=no --print=hb
+abbr -ag hh http --headers 
+abbr -ag hb http 
 alias glo 'forgit::log -50'
 
 alias cb='chatblade'
