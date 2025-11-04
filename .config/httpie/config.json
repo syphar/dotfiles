@@ -1,0 +1,8 @@
+{
+  "default_options": [
+    "--style=auto",
+    "--pretty=all",
+    "--verify=no",
+    "--print=hb"
+  ]
+}
