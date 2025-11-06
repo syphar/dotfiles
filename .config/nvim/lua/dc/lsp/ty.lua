@@ -7,6 +7,23 @@ function M.config(cfg)
 		capabilities = cfg.capabilities(),
 		on_attach = cfg.lsp_on_attach,
 		init_options = {},
+		settings = {
+			ty = {
+				-- https://docs.astral.sh/ty/reference/editor-settings/#diagnosticmode
+				diagnosticMode = "workspace",
+				-- https://docs.astral.sh/ty/reference/editor-settings/#inlayhints
+				inlayHints = {
+					variableTypes = true,
+					callArgumentNames = true,
+				},
+				experimental = {
+					-- https://docs.astral.sh/ty/reference/editor-settings/#rename
+					rename = true,
+					-- https://docs.astral.sh/ty/reference/editor-settings/#autoimport
+					autoImport = true,
+				},
+			},
+		},
 	}
 end
 
