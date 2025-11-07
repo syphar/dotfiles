@@ -3,14 +3,7 @@ vim.lsp.set_log_level("error")
 
 local lspconfig = require("lspconfig")
 
-function cfg.open_diagnostics_float()
-	-- open diagnostics float, to be used by CursorHold & CursorHoldI
-	-- separate method because I don't want diagnostics when the auto
-	-- complete popup is opened.
-	if vim.fn.pumvisible() ~= 1 then
-		vim.diagnostic.open_float(0, { focusable = false, scope = "line" })
-	end
-end
+function cfg.open_diagnostics_float() end
 
 function cfg.lsp_on_attach(client, bufnr)
 	vim.lsp.set_log_level("error")
@@ -18,7 +11,6 @@ function cfg.lsp_on_attach(client, bufnr)
 
 	local opts = { buffer = bufnr, silent = true }
 
-	vim.keymap.set("n", "<leader>d", require("dc.lsp").open_diagnostics_float, opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -26,11 +18,31 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
 	vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set({ "n", "v" }, "<leader>a", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
 	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+
+	vim.keymap.set({ "n", "v" }, "<leader>a", function()
+		if ft == "rust" then
+			vim.cmd.RustLsp("codeAction")
+		else
+			vim.lsp.buf.code_action()
+		end
+	end, opts)
+
+	vim.keymap.set("n", "<leader>d", function()
+		-- open diagnostics float, to be used by CursorHold & CursorHoldI
+		-- separate method because I don't want diagnostics when the auto
+		-- complete popup is opened.
+		if vim.fn.pumvisible() ~= 1 then
+			if ft == "rust" then
+				vim.cmd.RustLsp({ "renderDiagnostic", "current" })
+			else
+				vim.diagnostic.open_float(0, { focusable = false, scope = "line" })
+			end
+		end
+	end, opts)
 
 	-- vim.print(client.server_capabilities)
 
