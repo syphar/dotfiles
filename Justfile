@@ -148,13 +148,6 @@ update-rust:
     -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
 
-cargo-install:
-    #!/usr/bin/env fish
-    for line in (cat cargo_install.txt)
-        eval (cargo binstall $line)
-    end
-
-
 update-fish: clean-fish
     # update fisher
     fish -c "fisher update"
@@ -238,6 +231,7 @@ clear-thermondo-backups:
 
 clear-logs:
     rm -rf /usr/local/var/log/*
+    rm -rf ~/.local/state/nvim/lsp.log
 
 clear-docker:
     docker container prune -f
