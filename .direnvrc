@@ -20,11 +20,12 @@ use_nvm() {
 }
 
 layout_uv() {
+  local python_version=${1:-}
   local venv_dir=".venv"
   local python_bin="$venv_dir/bin/python"
 
   # already activated?
-  if [[ "${VIRTUAL_ENV:-""}" == "$PWD/$venv_dir" ]]; then
+  if [[ "${VIRTUAL_ENV:-""}" == "$PWD/$venv_dir" && -x "$python_bin" ]]; then
     return 0
   fi
 
@@ -36,17 +37,24 @@ layout_uv() {
   fi
 
   if [[ ! -f pyproject.toml && \
-      ! -f .python-version ]]; then
+      ! -f .python-version && \
+      -z "$python_version" ]]; then
     return 0
   fi
 
   echo "direnv: creating virtualenv via uv in $venv_dir"
   mkdir -p "$venv_dir"
 
+  echo $1
+  local python_version_arg=""
+  if [[ -n "${python_version}" ]]; then
+    local python_version_arg="--python $python_version"
+  fi
+
   # NOTE: uv can natively read the required python version from 
   # `.python-version` or `pyproject.toml`.
   # it also supports version ranges.
-  uv venv --clear "$venv_dir"
+  uv venv --clear "$venv_dir" $python_version_arg
 
   if [[ -x "$python_bin" ]]; then
     layout python "$python_bin"
