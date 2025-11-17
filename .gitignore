@@ -20,3 +20,6 @@ bin/orbctl
 bin/just 
 bin/zoxide
 bin/kubectl
+bin/latexmk
+bin/xelatex
+
