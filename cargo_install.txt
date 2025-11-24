@@ -5,6 +5,7 @@ cargo-bloat
 cargo-cache
 cargo-check
 cargo-chef
+cargo-deny
 cargo-docset
 cargo-edit
 cargo-expand
