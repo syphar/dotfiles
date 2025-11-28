@@ -246,6 +246,7 @@ clear-cargo-cache:
 clear-rust-target-directories:
     # clear target directories
     fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+    fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target.noindex
     # remove cargo cache
     rm -rf ~/.cargo/cache
     # remove custom toolchains
