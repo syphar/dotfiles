@@ -9,13 +9,17 @@ cargo-deny
 cargo-docset
 cargo-edit
 cargo-expand
+cargo-features-manager
 cargo-generate
 cargo-insta
+cargo-machete
 cargo-make
 cargo-outdated
 cargo-script
+cargo-shear
 cargo-sort
 cargo-sweep
+cargo-udeps
 cargo-udeps
 cargo-update
 cargo-watch
