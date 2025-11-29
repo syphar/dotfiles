@@ -79,3 +79,6 @@ venv3
 .bacon-locations
 
 .python-version
+
+# my special rust target
+target.noindex

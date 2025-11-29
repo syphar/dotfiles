@@ -1,6 +1,9 @@
 [registries.crates-io]
 protocol = "sparse"
 
-# [build]
-# rustc-wrapper = "/opt/homebrew/bin/sccache"
+[build]
+target-dir = "{workspace-root}/target.noindex"
+build-dir = "{workspace-root}/target.noindex"
 
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
