@@ -11,6 +11,8 @@ font-thicken = true
 bold-is-bright = true
 theme = Kanagawa Wave
 
+clipboard-paste-protection = false
+
 link-url = true
 
 macos-auto-secure-input = true
