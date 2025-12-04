@@ -13,7 +13,7 @@ function M.config(cfg)
 				diagnosticMode = "workspace",
 				-- https://docs.astral.sh/ty/reference/editor-settings/#inlayhints
 				inlayHints = {
-					variableTypes = true,
+					variableTypes = false, -- too much noise?
 					callArgumentNames = true,
 				},
 				experimental = {
