@@ -1,9 +1,5 @@
 [registries.crates-io]
 protocol = "sparse"
 
-[build]
-target-dir = "target.noindex"
-build-dir = "{workspace-root}/target.noindex"
-
 [target.aarch64-apple-darwin]
 rustflags = ["-C", "link-arg=-fuse-ld=lld"]
