@@ -5,7 +5,7 @@ local default_adapter = "openai"
 -- local gemini_model = "gemini-2.5-flash"
 -- local gemini_model = "gemini-2.5-pro"
 local gemini_model = "gemini-3-pro-preview"
-local openai_model = "gpt-5-mini" -- gpt-4o" "gpt-5"
+local openai_model = "gpt-5-nano" -- gpt-5-mini gpt-4o gpt-5
 
 return {
 	{
