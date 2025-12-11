@@ -152,6 +152,7 @@ update-rust:
     rm -f ~/.cargo/bin/rust-analyzer 
     -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
+    rustup override unset --nonexistent
 
 update-fish: clean-fish
     # update fisher
