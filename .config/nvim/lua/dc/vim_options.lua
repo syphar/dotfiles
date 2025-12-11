@@ -131,6 +131,14 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 	command = "wincmd =",
 })
 
+-- re-read files when vim is resumed after suspend
+vim.api.nvim_create_autocmd({ "VimResume" }, {
+	pattern = "*",
+	-- Trigger `checktime` for the current buffer,
+	-- so `autoread` is triggered, and the buffer is reloaded
+	command = "checktime",
+})
+
 vim.opt.equalalways = true
 
 -- line numbers and relative number
