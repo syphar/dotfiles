@@ -2,7 +2,9 @@
 
 set unstable
 
-export SRC_DIR := "/Users/syphar/src"
+export HOME := "/Users/syphar"
+export SRC_DIR := HOME / "src"
+export TMP_DIR := HOME / "tmp"
 
 default:
     just --list
@@ -21,6 +23,8 @@ daily-update:
     just npm-upgrade
     just kill-leftover-background-processes
     just tldr-update
+
+    just cleanup-tmp
 
     gh extension upgrade --all
 
@@ -220,6 +224,9 @@ update-git-worktree REPO:
         git merge --ff-only || echo "merge failed, but ok"
     fi
 
+cleanup-tmp:
+    just clear-rust-target-directories {{ TMP_DIR }}
+
 clear-disk-space:
     just clear-thermondo-backups
     just clear-logs
@@ -227,7 +234,9 @@ clear-disk-space:
     just clear-cargo-cache
     just clear-dev-environments
     just clear-caches
-    just clear-rust-target-directories
+    just clear-rust-target-directories {{ SRC_DIR }}
+    just clear-rust-target-directories {{ TMP_DIR }}
+    just clear-rust-disk-space
     just clear-docsrs-dev
     just garbage-collect-git-repos
 
@@ -249,13 +258,15 @@ clear-docker:
 clear-cargo-cache:
     cargo cache --autoclean
 
-clear-rust-target-directories:
-    # clear target directories
-    fd Cargo.toml "$SRC_DIR" --exec rm -rf \{//\}/target
+clear-rust-disk-space:
     # remove cargo cache
     rm -rf ~/.cargo/cache
     # remove custom toolchains
     rustup toolchain list | grep -v nightly-aarch64-apple-darwin | grep -v stable-aarch64-apple-darwin | xargs -n 1 rustup toolchain remove
+
+clear-rust-target-directories dir=SRC_DIR:
+    # clear target directories
+    fd Cargo.toml "{{ dir }}" --exec rm -rf \{//\}/target
 
 clear-caches:
     rm -rf ~/Library/Caches/*
