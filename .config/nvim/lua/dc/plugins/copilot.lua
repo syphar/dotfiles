@@ -26,7 +26,7 @@ return {
 			extensions = {
 				spinner = {},
 			},
-			strategies = {
+			interactions = {
 				-- set default adapters for strategies
 				chat = {
 					adapter = default_adapter,
