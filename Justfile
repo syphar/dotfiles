@@ -77,6 +77,7 @@ tldr-update:
 
 gcloud-cli:
     gcloud components update --quiet
+    gcloud auth login --update-adc
 
 heroku-cli:
     ## heroku login, so we can fetch from heroku remotes later 
