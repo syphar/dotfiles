@@ -24,7 +24,7 @@ daily-update:
     just kill-leftover-background-processes
     just tldr-update
 
-    just cleanup-tmp
+    just clear-disk-space-daily
 
     gh extension upgrade --all
 
@@ -225,8 +225,11 @@ update-git-worktree REPO:
         git merge --ff-only || echo "merge failed, but ok"
     fi
 
-cleanup-tmp:
+clear-disk-space-daily:
+    just clear-docker-daily
+    just clear-rust-target-directories {{ SRC_DIR }}
     just clear-rust-target-directories {{ TMP_DIR }}
+
 
 clear-disk-space:
     just clear-thermondo-backups
@@ -248,6 +251,12 @@ clear-thermondo-backups:
 clear-logs:
     rm -rf /usr/local/var/log/*
     rm -rf ~/.local/state/nvim/lsp.log
+
+clear-docker-daily:
+    # only dangling things
+    docker image prune -f 
+    docker builder prune -f 
+    docker volume prune -f
 
 clear-docker:
     docker container prune -f
