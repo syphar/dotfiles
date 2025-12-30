@@ -3,7 +3,7 @@
 # to its new default scope (global).  We recommend you delete this file
 # and configure key bindings in ~/.config/fish/config.fish if needed.
 
-# set --global fish_key_bindings fish_default_key_bindings
+set --global fish_key_bindings fish_vi_key_bindings
 
 # Prior to version 4.3, fish shipped an event handler that runs
 # `set --universal fish_key_bindings fish_default_key_bindings`
