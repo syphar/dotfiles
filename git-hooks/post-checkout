@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Start from the repository root.
-cd ./$(git rev-parse --show-cdup)
+cd "$(git rev-parse --show-toplevel 2>/dev/null)" || exit 1
 
 # Delete .pyc files and empty directories.
 # find . -name "*.py?" -delete
