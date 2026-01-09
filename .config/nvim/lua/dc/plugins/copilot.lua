@@ -1,6 +1,7 @@
-local default_adapter = "openai"
+-- local default_adapter = "openai"
 -- local default_adapter = "gemini"
 -- local default_adapter = "gemini_cli"
+local default_adapter = "codex"
 
 -- local gemini_model = "gemini-2.5-flash"
 -- local gemini_model = "gemini-2.5-pro"
@@ -78,6 +79,17 @@ return {
 									return (oauth_credentials_path and vim.fn.filereadable(oauth_credentials_path)) == 1
 								end,
 							},
+						})
+					end,
+					codex = function()
+						return require("codecompanion.adapters").extend("codex", {
+							defaults = {
+								-- auth_method = "openai-api-key", -- "openai-api-key"|"codex-api-key"|"chatgpt"
+								auth_method = "chatgpt",
+							},
+							-- env = {
+							-- 	OPENAI_API_KEY = "my-api-key",
+							-- },
 						})
 					end,
 				},
