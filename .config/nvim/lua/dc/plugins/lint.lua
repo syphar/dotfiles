@@ -32,6 +32,16 @@ return {
 			)[1]
 		end
 
+		-- we run shellcheck via pre-commit in the repo root,
+		-- so I want to do the same for nvim-lint
+		lint.linters.shellcheck.cwd = function(ctx)
+			local root = vim.fs.find(".git", { path = ctx.filename, upward = true })[1]
+			if root then
+				return vim.fs.dirname(root)
+			end
+			return vim.fn.fnamemodify(ctx.filename, ":h")
+		end
+
 		lint.linters.clippy.args = {
 			"clippy",
 			"--message-format=json",
