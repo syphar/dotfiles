@@ -42,3 +42,4 @@ ty
 watchdog
 yamllint
 yq
+pyprojectsort
