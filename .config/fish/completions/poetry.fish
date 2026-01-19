@@ -25,7 +25,7 @@ complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand'
 complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand' -a add -d 'Adds a new dependency to pyproject.toml and installs it.'
 complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand' -a build -d 'Builds a package, as a tarball and a wheel by default.'
 complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand' -a cache
-complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a clear -d 'Clears a Poetry cache by name.'
+complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a clear -d 'Clear Poetry\'s caches.'
 complete -c poetry -f -n '__fish_seen_subcommand_from cache; and not __fish_seen_subcommand_from clear list' -a list -d 'List Poetry\'s caches.'
 complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand' -a check -d 'Validates the content of the pyproject.toml file and its consistency with the poetry.lock file.'
 complete -c poetry -f -n '__fish_poetry_8847115845420c69_complete_no_subcommand' -a config -d 'Manages configuration settings.'
@@ -150,7 +150,7 @@ complete -c poetry -n '__fish_seen_subcommand_from export' -l all-extras -d 'Inc
 complete -c poetry -n '__fish_seen_subcommand_from export' -l all-groups -d 'Include all dependency groups'
 complete -c poetry -n '__fish_seen_subcommand_from export' -l dev -d 'Include development dependencies. (Deprecated)'
 complete -c poetry -n '__fish_seen_subcommand_from export' -l extras -d 'Extra sets of dependencies to include.'
-complete -c poetry -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to. Currently, only constraints.txt and requirements.txt are supported.'
+complete -c poetry -n '__fish_seen_subcommand_from export' -l format -d 'Format to export to: constraints.txt, requirements.txt, pylock.toml'
 complete -c poetry -n '__fish_seen_subcommand_from export' -l only -d 'The only dependency groups to include.'
 complete -c poetry -n '__fish_seen_subcommand_from export' -l output -d 'The name of the output file.'
 complete -c poetry -n '__fish_seen_subcommand_from export' -l with -d 'The optional and non-optional dependency groups to include. By default, only the main dependencies are included.'
@@ -221,10 +221,12 @@ complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subco
 
 # python list
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l all -d 'List all versions, including those available for download.'
+complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l free-threaded -d 'List only free-threaded Python versions.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l implementation -d 'Python implementation to search for.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from list' -l managed -d 'List only Poetry managed Python versions.'
 
 # python remove
+complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from remove' -l free-threaded -d 'Use free-threaded version if available.'
 complete -c poetry -n '__fish_seen_subcommand_from python; and __fish_seen_subcommand_from remove' -l implementation -d 'Python implementation to use. (cpython, pypy)'
 
 # remove
