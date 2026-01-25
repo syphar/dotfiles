@@ -3,7 +3,7 @@ set --global -x PSQL_EDITOR nvim
 set --global -x VISUAL nvim
 set --global -x PAGER less
 set --global -x LANG en_US.UTF-8
-set --global -x LESS "-F -g -i -M -R -S -w -X -z-4"
+set --global -x LESS "-F -g -i -M -R -S -w -X -z 4"
 set --global -x TMPDIR /private/tmp
 
 set --global -x VIRTUAL_ENV_DISABLE_PROMPT true
