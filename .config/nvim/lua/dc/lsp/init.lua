@@ -73,6 +73,13 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.lsp.inlay_hint.enable()
 end
 
+function cfg.lsp_on_attach_without_semantic_highlighting(client, bufnr)
+	cfg.lsp_on_attach(client, bufnr)
+
+	-- disable LSP server highlighting, I prefer treesitter for now
+	client.server_capabilities.semanticTokensProvider = nil
+end
+
 function cfg.capabilities()
 	return require("cmp_nvim_lsp").default_capabilities()
 end
