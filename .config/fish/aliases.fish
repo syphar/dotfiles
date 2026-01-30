@@ -82,6 +82,7 @@ abbr -ag ct cargo nextest run
 abbr -ag ctw cargo nextest run --workspace
 abbr -ag ctn cargo nextest run --no-fail-fast
 abbr -ag ctnw cargo nextest run --no-fail-fast --workspace
+abbr -ag ctr cargo nextest run -R latest
 abbr -ag co cargo outdated --root-deps-only
 abbr -ag cab cargo build
 abbr -ag cac cargo check
