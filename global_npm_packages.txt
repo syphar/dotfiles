@@ -1,6 +1,7 @@
 @fsouza/prettierd
 @githubnext/github-copilot-cli
 @tailwindcss/language-server
+@zed-industries/claude-code-acp
 alex
 bash-language-server
 cspell
