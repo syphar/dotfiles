@@ -228,9 +228,9 @@ update-git-worktree REPO:
 clear-disk-space-daily:
     just clear-docker-daily
     just clear-thermondo-backups:
-    just clear-rust-target-directories {{ SRC_DIR }}
-    just clear-rust-target-directories {{ TMP_DIR }}
-    rm -rf ~/.cache/cargo-target/
+    # just clear-rust-target-directories {{ SRC_DIR }}
+    # just clear-rust-target-directories {{ TMP_DIR }}
+    # rm -rf ~/.cache/cargo-target/
 
 
 clear-disk-space:
