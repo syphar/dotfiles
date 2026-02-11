@@ -137,6 +137,18 @@ npm-upgrade:
 
     xargs -n 1 npm install -g < global_npm_packages.txt 
 
+cargo-sweep-global:
+  #!/bin/bash
+  set -euo pipefail
+
+  tmpdir="$(mktemp -d)"
+  trap 'rm -rf "$tmpdir"' EXIT
+  cd "$tmpdir"
+
+  cargo init --name "some"
+  just --justfile "{{ justfile() }}" cargo-sweep "$tmpdir"
+
+
 cargo-sweep REPO:
     cd {{ REPO }} && \
         cargo sweep --time 30 && \
@@ -179,9 +191,9 @@ update-git-repo REPO:
 
     echo "updating {{ REPO }}"
 
-    if [ -e "{{ REPO }}/Cargo.toml" ] && [ -d "{{ REPO }}/target" ]; then
-        just cargo-sweep "{{ REPO }}"
-    fi
+    # if [ -e "{{ REPO }}/Cargo.toml" ]; then
+    #     just cargo-sweep "{{ REPO }}"
+    # fi
 
     cd "{{ REPO }}"
 
@@ -227,7 +239,8 @@ update-git-worktree REPO:
 
 clear-disk-space-daily:
     just clear-docker-daily
-    just clear-thermondo-backups:
+    just clear-thermondo-backups
+    just cargo-sweep-global
     # just clear-rust-target-directories {{ SRC_DIR }}
     # just clear-rust-target-directories {{ TMP_DIR }}
     # rm -rf ~/.cache/cargo-target/
@@ -271,6 +284,8 @@ clear-cargo-cache:
     cargo cache --autoclean
 
 clear-rust-disk-space:
+    # remove shared cargo target dir
+    rm -rf ~/.cache/cargo-target/
     # remove cargo cache
     rm -rf ~/.cargo/cache
     # remove custom toolchains
