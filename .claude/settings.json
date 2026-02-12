@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "astral@astral-sh": true
+  },
+  "DISABLE_AUTOUPDATER": 1
+}

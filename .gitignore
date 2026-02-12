@@ -22,4 +22,4 @@ bin/zoxide
 bin/kubectl
 bin/latexmk
 bin/xelatex
-
+.claude/plugins
