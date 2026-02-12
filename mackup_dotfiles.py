@@ -1,5 +1,6 @@
-#!/usr/bin/env -S uv run --script
+#!/usr/bin/env -S uv run --upgrade --script
 # /// script
+# requires-python = ">=3.13"
 # dependencies = [
 #     "mackup",
 #     "defusedxml",
@@ -13,6 +14,7 @@ from mackup import appsdb, utils
 
 app_list = (
     "bat",
+    "claude-code",
     "ctags",
     "ctags_dir",
     "direnv",
