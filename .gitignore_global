@@ -83,4 +83,4 @@ venv3
 # my special rust target
 target.noindex
 
-.claude
+.claude/settings.local.json
