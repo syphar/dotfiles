@@ -46,6 +46,8 @@ abbr -ag tfa terraform apply
 abbr -ag tfi terraform init
 abbr -ag tf terraform
 
+abbr -ag cr claude --resume
+
 abbr -ag h heroku
 abbr -ag hl heroku login
 alias heroku-shell "heroku run \"./manage.py shell\""
