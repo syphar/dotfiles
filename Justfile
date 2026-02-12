@@ -65,10 +65,14 @@ update-generated-autocompletes:
     _DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish
 
 mackup:
-    ## mackup
-    mackup restore --force
-    mackup backup --force
-    # copy mackup files to dotfiles
+    # convert into new config files to links, 
+    # or any newly supported files after the mackup upgrade
+    mackup link install --force-no
+
+    # add local links based on new remote files
+    mackup link
+
+    # copy some configs to dotfiles, to share
     ./mackup_dotfiles.py
 
 kill-leftover-background-processes:
