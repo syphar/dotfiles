@@ -15,6 +15,7 @@ daily-update:
     just gcloud-cli
     update_cached_heroku_apps
     just update-homebrew
+    just update-claude
     just update-luarocks
     just update-python-tools
     just update-generated-autocompletes
@@ -43,6 +44,11 @@ daily-update:
 
     just update-git-repos
     just update-git-worktrees
+
+update-claude:
+  claude update
+  claude plugin marketplace update
+  claude plugin list --json | jq -r '.[].id' | sort -u | xargs -n1 claude plugin update
 
 update-git-repos:
     ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
