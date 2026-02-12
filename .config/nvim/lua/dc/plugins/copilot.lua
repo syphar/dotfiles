@@ -92,6 +92,14 @@ return {
 							-- },
 						})
 					end,
+					claude_code = function()
+						return require("codecompanion.adapters").extend("claude_code", {
+							env = {
+								-- reads from env
+								CLAUDE_CODE_OAUTH_TOKEN = "CLAUDE_CODE_AUTH_TOKEN",
+							},
+						})
+					end,
 				},
 			},
 		},
