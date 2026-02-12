@@ -4,9 +4,9 @@
   },
   "permissions": {
     "allow": [
-      "Bash(pre-commit:*)",
-      "Bash(chmod:*)",
-      "Bash(git add:*)"
+      "Bash(pre-commit *)",
+      "Bash(chmod *)",
+      "Bash(git add *)"
     ]
   },
   "DISABLE_AUTOUPDATER": 1
