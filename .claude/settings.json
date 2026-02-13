@@ -6,7 +6,10 @@
     "allow": [
       "Bash(pre-commit *)",
       "Bash(chmod *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(cargo fmt *)",
+      "Bash(cargo check *)",
+      "Bash(cargo clippy *)"
     ]
   },
   "DISABLE_AUTOUPDATER": 1

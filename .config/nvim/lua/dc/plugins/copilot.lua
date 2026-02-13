@@ -1,7 +1,8 @@
 -- local default_adapter = "openai"
 -- local default_adapter = "gemini"
 -- local default_adapter = "gemini_cli"
-local default_adapter = "codex"
+-- local default_adapter = "codex"
+local default_adapter = "claude_code"
 
 -- local gemini_model = "gemini-2.5-flash"
 -- local gemini_model = "gemini-2.5-pro"
