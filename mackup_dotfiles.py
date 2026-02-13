@@ -28,6 +28,7 @@ app_list = (
     "mackup",
     "mybin",
     "mycargo",
+    "mycodexdotfiles",
     "myfish",
     "myhttpie",
     "myneovim",
