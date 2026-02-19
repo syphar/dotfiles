@@ -1,8 +1,8 @@
 -- local default_adapter = "openai"
 -- local default_adapter = "gemini"
 -- local default_adapter = "gemini_cli"
--- local default_adapter = "codex"
-local default_adapter = "claude_code"
+local default_adapter = "codex"
+-- local default_adapter = "claude_code"
 
 -- local gemini_model = "gemini-2.5-flash"
 -- local gemini_model = "gemini-2.5-pro"
@@ -27,6 +27,34 @@ return {
 		opts = {
 			extensions = {
 				spinner = {},
+				history = {
+					enabled = true,
+					opts = {
+						keymap = "gh",
+						auto_save = true,
+						auto_generate_title = true,
+						title_generation_opts = {
+							adapter = "copilot",
+							model = "gpt-4o",
+							refresh_every_n_prompts = 3,
+							max_refreshes = 3,
+						},
+						dir_to_save = (vim.fn.getcwd() or ".") .. "/.codecompanion-history",
+					},
+				},
+			},
+			rules = {
+				codex = {
+					description = "global codex agents.md",
+					files = {
+						"~/.codex/AGENTS.md",
+					},
+				},
+				opts = {
+					chat = {
+						autoload = { "default", "codex" },
+					},
+				},
 			},
 			interactions = {
 				-- set default adapters for strategies
@@ -113,6 +141,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"franco-ruggeri/codecompanion-spinner.nvim",
 			"franco-ruggeri/codecompanion-lualine.nvim",
+			"ravitemer/codecompanion-history.nvim",
 		},
 	},
 }
