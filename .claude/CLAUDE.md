@@ -1,1 +1,1 @@
-../.codex/CLAUDE.md
+@../.codex/CLAUDE.md
