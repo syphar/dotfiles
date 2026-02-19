@@ -84,3 +84,6 @@ venv3
 target.noindex
 
 .claude/settings.local.json
+
+# codecompanion / history in project
+.codecompanion-history
