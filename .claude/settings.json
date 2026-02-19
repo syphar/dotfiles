@@ -1,7 +1,4 @@
 {
-  "enabledPlugins": {
-    "astral@astral-sh": true
-  },
   "permissions": {
     "allow": [
       "Bash(pre-commit *)",
@@ -11,6 +8,9 @@
       "Bash(cargo check *)",
       "Bash(cargo clippy *)"
     ]
+  },
+  "enabledPlugins": {
+    "astral@astral-sh": true
   },
   "DISABLE_AUTOUPDATER": 1
 }
