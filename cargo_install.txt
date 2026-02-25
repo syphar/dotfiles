@@ -11,6 +11,7 @@ cargo-edit
 cargo-expand
 cargo-features-manager
 cargo-generate
+cargo-hack
 cargo-insta
 cargo-machete
 cargo-make
