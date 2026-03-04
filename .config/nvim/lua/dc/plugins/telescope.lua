@@ -328,7 +328,12 @@ return {
 				"<leader>rg",
 				function()
 					-- require("telescope.builtin").live_grep({ debounce = 100 })
-					require("telescope").extensions.live_grep_args.live_grep_args({ debounce = 100 })
+					require("telescope").extensions.live_grep_args.live_grep_args({
+						debounce = 100,
+						additional_args = function()
+							return { "--hidden" }
+						end,
+					})
 				end,
 				"n",
 			},
