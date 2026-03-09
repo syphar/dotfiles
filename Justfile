@@ -80,6 +80,8 @@ kill-leftover-background-processes:
     pkill -f dmypy || echo "nothing to kill"
     ## cleanup pylsp processes
     pkill -f pylsp || echo "nothing to kill"
+    ## cleanup node processes
+    pkill -f node || echo "nothing to kill"
 
 tldr-update:
     ## tldr update
