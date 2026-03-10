@@ -13,6 +13,9 @@ cargo check
 cargo clippy
 ```
 
+Add imports for things you need. I prefer `use tokio::fs` and `fs::write` over
+`tokio::fs::write`.
+
 ## pre-commit
 
 If there is a `.pre-commit-config.yaml` file, you can run pre-commit after every

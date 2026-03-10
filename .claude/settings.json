@@ -10,7 +10,8 @@
     ]
   },
   "enabledPlugins": {
-    "astral@astral-sh": true
+    "astral@astral-sh": true,
+    "lua-lsp@claude-plugins-official": true
   },
   "DISABLE_AUTOUPDATER": 1
 }
