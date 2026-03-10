@@ -1,0 +1,35 @@
+#!/usr/bin/env fish
+# clean-remotes.fish
+#
+# Usage:
+#   fish clean-remotes.fish [whitelist...]
+#
+# If no whitelist is passed, defaults to: origin upstream
+
+set -l whitelist $argv
+if test (count $whitelist) -eq 0
+    set whitelist origin upstream
+end
+
+# Remotes used by local branches + push-related config
+set -l used_remotes \
+    (begin
+      git for-each-ref --format='%(upstream:short)' refs/heads | awk -F/ 'NF>0 {print $1}'
+      git config --get remote.pushDefault 2>/dev/null
+      git config --get-regexp '^branch\..*\.pushRemote$' 2>/dev/null | awk '{print $2}'
+  end | string trim | string match -rv '^$' | sort -u)
+
+echo "Whitelist: "(string join ' ' $whitelist)
+echo "Used by local branches/config: "(string join ' ' $used_remotes)
+echo
+
+for remote in (git remote)
+    if contains -- $remote $whitelist
+        echo "KEEP  $remote (whitelist)"
+    else if contains -- $remote $used_remotes
+        echo "KEEP  $remote (used)"
+    else
+        echo "DROP  $remote"
+        git remote remove $remote
+    end
+end

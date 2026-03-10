@@ -1,0 +1,64 @@
+#!/usr/bin/env fish
+
+if test (count $argv) -ne 1
+    echo "Usage: add-fork-remote <name>" >&2
+    exit 1
+end
+
+set -l fork_owner $argv[1]
+
+if not git rev-parse --is-inside-work-tree >/dev/null 2>&1
+    echo "Error: not inside a git repository." >&2
+    exit 1
+end
+
+if test -z "$fork_owner"
+    echo "Error: name must not be empty." >&2
+    exit 1
+end
+
+if git remote get-url "$fork_owner" >/dev/null 2>&1
+    echo "Error: remote '$fork_owner' already exists." >&2
+    exit 1
+end
+
+set -l source_remote upstream
+set -l source_url (git remote get-url "$source_remote" 2>/dev/null)
+if test $status -ne 0
+    echo "Error: remote '$source_remote' does not exist." >&2
+    exit 1
+end
+
+if not string match -rq '^git@github\.com:[^/]+/[^/]+/?$' -- "$source_url"
+    echo "Error: remote '$source_remote' must use git@github.com:<owner>/<repo>[.git] format." >&2
+    echo "Found: $source_url" >&2
+    exit 1
+end
+
+set -l repo_with_suffix ""
+
+set -l parts (string replace -r '^git@github\.com:' '' -- "$source_url" | string split '/')
+set repo_with_suffix "$parts[2]"
+
+set -l repo (string replace -r '\.git/?$' '' -- "$repo_with_suffix")
+if test -z "$repo"
+    echo "Error: failed to parse repo name from: $source_url" >&2
+    exit 1
+end
+
+set -l fork_url "https://github.com/$fork_owner/$repo"
+
+git remote add "$fork_owner" "$fork_url"
+
+if test $status -ne 0
+    echo "Error: failed to add remote '$fork_owner'." >&2
+    exit 1
+end
+
+git fetch "$fork_owner" --tags
+if test $status -ne 0
+    echo "Error: added remote '$fork_owner' but fetch failed." >&2
+    exit 1
+end
+
+echo "Added remote '$fork_owner' -> $fork_url (source: $source_remote)"

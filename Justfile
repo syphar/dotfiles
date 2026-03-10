@@ -42,6 +42,8 @@ daily-update:
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
+    (cd "$SRC_DIR/rust-lang/docs.rs" && clean-git-remotes "origin upstream guillaumegomez")
+
     just update-git-repos
     just update-git-worktrees
 
