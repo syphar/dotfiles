@@ -56,6 +56,8 @@ abbr -ag bcon bacon
 abbr -ag bc bacon clippy-all
 abbr -ag bt bacon nextest
 
+abbr -ag oc opencode
+
 alias ll="eza --long --all --header --icons --group-directories-first --color-scale=size --time-style=relative --git"
 alias l="eza --icons --group-directories-first"
 alias top="ytop"
