@@ -11,6 +11,14 @@ if test (count $whitelist) -eq 0
     set whitelist origin upstream
 end
 
+for remote in $whitelist
+    if string match -rq '\s' -- $remote
+        echo "Error: invalid remote name '$remote' (contains whitespace)." >&2
+        echo "Pass remotes as separate arguments, e.g.: clean-git-remotes origin upstream" >&2
+        exit 2
+    end
+end
+
 # Remotes used by local branches + push-related config
 set -l used_remotes \
     (begin
