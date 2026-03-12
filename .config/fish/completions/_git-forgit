@@ -18,6 +18,15 @@ _git-stash-show() {
     _alternative "files:filename:($(git stash list | sed -n -e 's/:.*//p'))"
 }
 
+_git-worktrees() {
+    local -a wt_list
+    local field
+    while IFS= read -r -d '' field; do
+        [[ "$field" == worktree\ * ]] && wt_list+=("${field#worktree }")
+    done < <(git worktree list --porcelain -z 2>/dev/null)
+    _alternative "worktrees:worktree:(${(@q)wt_list})"
+}
+
 # The completions for git already define a _git-diff completion function, but
 # it provides the wrong results when called from _git-forgit because it heavily
 # depends on the context it's been called from (usage of $curcontext and
@@ -79,6 +88,8 @@ _git-forgit() {
             'squash:git squash'
             'stash_show:git stash viewer'
             'stash_push:git stash push selector'
+            'worktree:git worktree browser'
+            'worktree_delete:git worktree remove selector'
         )
         _describe -t commands 'git forgit' subcommands
         ;;
@@ -102,6 +113,8 @@ _git-forgit() {
     squash) _git-log ;;
     stash_show) _git-stash-show ;;
     show) _git-show ;;
+    worktree) _git-worktree ;;
+    worktree_delete) _git-worktrees ;;
     esac
 }
 
@@ -131,6 +144,8 @@ compdef _git-log forgit::reword
 compdef _git-log forgit::squash
 compdef _git-stash-show forgit::stash::show
 compdef _git-show forgit::show
+compdef _git-worktree forgit::worktree
+compdef _git-worktrees forgit::worktree::delete
 
 # this is the case of calling the command and pressing tab
 # the very first time of a shell session, we have to manually
