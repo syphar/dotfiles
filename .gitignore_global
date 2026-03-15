@@ -87,3 +87,6 @@ target.noindex
 
 # codecompanion / history in project
 .codecompanion-history
+
+# repo-local AGENTS.md files I don't want to commit
+AGENTS.md
