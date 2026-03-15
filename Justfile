@@ -251,6 +251,25 @@ update-git-worktree REPO:
         git merge --ff-only || echo "merge failed, but ok"
     fi
 
+link-docsrs-agents:
+    #!/usr/bin/env nu
+
+    let root = ($env.HOME | path join "src" "rust-lang" "docs.rs")
+    let source = ($env.HOME | path join "Dropbox" "rust-lang" "docs-rs" "AGENTS.md")
+
+    ^git -C $root worktree list --porcelain
+    | lines
+    | where ($it | str starts-with "worktree ")
+    | each { |line|
+        let wt = ($line | str replace "worktree " "")
+        let dest = ($wt | path join "AGENTS.md")
+
+        ^rm -f $dest
+        ^ln -s $source $dest
+        print $"Linked: ($dest) -> ($source)"
+    }
+    | ignore
+
 clear-disk-space-daily:
     just clear-docker-daily
     just clear-thermondo-backups
