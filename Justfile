@@ -270,16 +270,21 @@ link-docsrs-agents:
     }
     | ignore
 
+clear-dropbox-cache:
+  rm -rf ~/Dropbox/.dropbox.cache/*
+
 clear-disk-space-daily:
     just clear-docker-daily
     just clear-thermondo-backups
     just cargo-sweep-global
+    just clear-dropbox-cache
     # just clear-rust-target-directories {{ SRC_DIR }}
     # just clear-rust-target-directories {{ TMP_DIR }}
     # rm -rf ~/.cache/cargo-target/
 
 
 clear-disk-space:
+    just clear-dropbox-cache
     just clear-thermondo-backups
     just clear-logs
     just clear-docker
