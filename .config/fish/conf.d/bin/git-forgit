@@ -213,6 +213,23 @@ _forgit_list_files() {
     git ls-files -z "$@" "$rootdir" | tr '\0' '\n' | uniq
 }
 
+# Print changed files in the worktree
+#
+# Always includes modified and unmerged files. Includes untracked files when
+# status.showUntrackedFiles is true or unset. Never includes staged files.
+_forgit_worktree_changes() {
+    local changed unmerged untracked show_untracked
+    changed=$(git config --get-color color.status.changed red)
+    unmerged=$(git config --get-color color.status.unmerged red)
+    untracked=$(git config --get-color color.status.untracked red)
+    show_untracked=$(git config status.showUntrackedFiles)
+
+    git -c color.status=always -c status.relativePaths=true status --porcelain -zs --untracked="${show_untracked:-all}" |
+        tr '\0' '\n' |
+        grep -F -e "$changed" -e "$unmerged" -e "$untracked" |
+        sed -E 's/^(..[^[:space:]]*)[[:space:]]+(.*)$/[\1]  \2/'
+}
+
 _forgit_is_submodule() {
     git submodule --quiet status "$1"
 }
@@ -231,10 +248,22 @@ _forgit_log_enter() {
     "${FORGIT}" show "${sha}" "$@"
 }
 
+_forgit_git_log() {
+    local graph log_format
+    log_format=$1
+    shift
+    graph=()
+    [[ $_forgit_log_graph_enable == true ]] && graph=(--graph)
+    _forgit_log_git_opts=()
+    _forgit_parse_array _forgit_log_git_opts "$FORGIT_LOG_GIT_OPTS"
+    git log "${graph[@]}" --color=always --format="$log_format" "${_forgit_log_git_opts[@]}" "$@" |
+        _forgit_emojify
+}
+
 # git commit viewer
 _forgit_log() {
     _forgit_inside_work_tree || return 1
-    local opts graph quoted_files log_format
+    local opts quoted_files log_format
     quoted_files=$(_forgit_quote_files "$@")
     opts="
         $FORGIT_FZF_DEFAULT_OPTS
@@ -244,14 +273,8 @@ _forgit_log() {
         --preview=\"$FORGIT preview log_preview {} $quoted_files\"
         $FORGIT_LOG_FZF_OPTS
     "
-    graph=()
-    [[ $_forgit_log_graph_enable == true ]] && graph=(--graph)
     log_format=${FORGIT_GLO_FORMAT:-$_forgit_log_format}
-    _forgit_log_git_opts=()
-    _forgit_parse_array _forgit_log_git_opts "$FORGIT_LOG_GIT_OPTS"
-    git log "${graph[@]}" --color=always --format="$log_format" "${_forgit_log_git_opts[@]}" "$@" |
-        _forgit_emojify |
-        FZF_DEFAULT_OPTS="$opts" fzf
+    _forgit_git_log "$log_format" "$@" | FZF_DEFAULT_OPTS="$opts" fzf
     fzf_exit_code=$?
     # exit successfully on 130 (ctrl-c/esc)
     [[ $fzf_exit_code == 130 ]] && return 0
@@ -424,6 +447,19 @@ _forgit_show_enter() {
     _forgit_show_view "$file" "$_forgit_fullscreen_context" "${commit}"
 }
 
+_forgit_git_show() {
+    local commit=$1
+    shift
+
+    _forgit_show_git_opts=()
+    _forgit_parse_array _forgit_show_git_opts "$FORGIT_SHOW_GIT_OPTS"
+    # Add "^{commit}" suffix after the actual commit. This suppresses the tag information in case it is a tag.
+    # See: https://git-scm.com/docs/git-show#Documentation/git-show.txt-codegitshow-s--formatsv100commitcode
+    git show --pretty="" --name-status --diff-merges=first-parent "${_forgit_show_git_opts[@]}" "${commit}^{commit}" -- "$@" |
+        sed -E 's/^([[:alnum:]]+)[[:space:]]+(.*)$/[\1]	\2/' |
+        sed 's/	/  ->  /2' | expand -t 8
+}
+
 # git show viewer
 _forgit_show() {
     _forgit_inside_work_tree || return 1
@@ -452,15 +488,7 @@ _forgit_show() {
         $FORGIT_SHOW_FZF_OPTS
         --prompt=\"${commit} > \"
     "
-    _forgit_show_git_opts=()
-    _forgit_parse_array _forgit_show_git_opts "$FORGIT_SHOW_GIT_OPTS"
-    # Add "^{commit}" suffix after the actual commit. This suppresses the tag information in case it is a tag.
-    # See: https://git-scm.com/docs/git-show#Documentation/git-show.txt-codegitshow-s--formatsv100commitcode
-    git show --pretty="" --name-status --diff-merges=first-parent "${_forgit_show_git_opts[@]}" "${commit}^{commit}" \
-        -- "${files[@]}" |
-        sed -E 's/^([[:alnum:]]+)[[:space:]]+(.*)$/[\1]	\2/' |
-        sed 's/	/  ->  /2' | expand -t 8 |
-        FZF_DEFAULT_OPTS="$opts" fzf
+    _forgit_git_show "$commit" "${files[@]}" | FZF_DEFAULT_OPTS="$opts" fzf
     fzf_exit_code=$?
     # exit successfully on 130 (ctrl-c/esc)
     [[ $fzf_exit_code == 130 ]] && return 0
@@ -505,13 +533,10 @@ _forgit_edit_add_file() {
 # git add selector
 _forgit_add() {
     _forgit_inside_work_tree || return 1
-    local changed unmerged untracked files opts show_untracked
+    local files opts
     # Add files if passed as arguments
     _forgit_contains_non_flags "$@" && { _forgit_git_add "$@" && git status -s; return $?; }
 
-    changed=$(git config --get-color color.status.changed red)
-    unmerged=$(git config --get-color color.status.unmerged red)
-    untracked=$(git config --get-color color.status.untracked red)
     opts="
         $FORGIT_FZF_DEFAULT_OPTS
         -0 -m --nth 2..,..
@@ -520,14 +545,9 @@ _forgit_add() {
         $FORGIT_ADD_FZF_OPTS
     "
     files=()
-    show_untracked=$(git config status.showUntrackedFiles)
     while IFS='' read -r file; do
         files+=("$file")
-    done < <(git -c color.status=always -c status.relativePaths=true -c core.quotePath=false status -s --untracked="${show_untracked:-all}" |
-        grep -F -e "$changed" -e "$unmerged" -e "$untracked" |
-        sed -E 's/^(..[^[:space:]]*)[[:space:]]+(.*)$/[\1]  \2/' |
-        FZF_DEFAULT_OPTS="$opts" fzf |
-        _forgit_get_single_file_from_add_line)
+    done < <(_forgit_worktree_changes | FZF_DEFAULT_OPTS="$opts" fzf | _forgit_get_single_file_from_add_line)
     [[ "${#files[@]}" -gt 0 ]] && _forgit_git_add "$@" "${files[@]}" && git status -s && return
     echo 'Nothing to add.'
 }
@@ -907,6 +927,54 @@ _forgit_checkout_file() {
     done < <(_forgit_list_files --modified |
         FZF_DEFAULT_OPTS="$opts" fzf)
     [[ "${#files[@]}" -gt 0 ]] && _forgit_git_checkout_file "$@" "${files[@]}"
+}
+
+# git checkout-file from commit selector
+_forgit_checkout_file_from_commit() {
+    _forgit_inside_work_tree || return 1
+    local opts commit file branch
+
+    if [[ $# -gt 0 ]]; then
+        branch=$1
+        shift
+    else
+        # default to the current branch if none was passed
+        branch=$(git rev-parse --abbrev-ref HEAD)
+    fi
+
+    # select the commit interactively
+    opts="
+        $FORGIT_FZF_DEFAULT_OPTS
+        +s +m --tiebreak=index
+        --preview=\"$FORGIT log_preview {}\"
+        $FORGIT_CHECKOUT_FILE_FROM_COMMIT_LOG_FZF_OPTS
+    "
+    commit=$(_forgit_git_log "$_forgit_log_format" "$branch" "$@" |
+        FZF_DEFAULT_OPTS="$opts" fzf |
+        _forgit_extract_sha)
+    [[ -n "$commit" ]] || return 0
+
+    # select the file interactively
+    opts="
+        $FORGIT_FZF_DEFAULT_OPTS
+        +m -0
+        --preview=\"$FORGIT preview show_preview {} '$_forgit_preview_context' $commit\"
+        --preview-label=\" Diff \"
+        --bind=\"alt-t:transform:[[ ! \\\"\$FZF_PREVIEW_LABEL\\\" =~ 'Diff' ]] &&
+                echo 'change-preview-label( Diff )+refresh-preview' ||
+                echo 'change-preview-label( Commit Message )+refresh-preview'\"
+        $FORGIT_CHECKOUT_FILE_FROM_COMMIT_SHOW_FZF_OPTS
+        --prompt=\"${commit} > \"
+    "
+    file=$(_forgit_git_show "$commit" | FZF_DEFAULT_OPTS="$opts" fzf)
+    [[ -n "$file" ]] || return 0
+
+    # special case: when the file was deleted in the commit
+    # check out the file from the previous commit.
+    [[ "$file" =~ ^\[D\] ]] && commit="$commit~"
+    file=$(echo "$file" | _forgit_get_single_file_from_diff_line)
+
+    _forgit_git_checkout_file "$commit" -- "$file"
 }
 
 _forgit_git_checkout_branch() {
@@ -1532,6 +1600,7 @@ PUBLIC_COMMANDS=(
     "switch_branch"
     "checkout_commit"
     "checkout_file"
+    "checkout_file_from_commit"
     "checkout_tag"
     "cherry_pick"
     "cherry_pick_from_branch"
