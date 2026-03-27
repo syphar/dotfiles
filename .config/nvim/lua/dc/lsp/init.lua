@@ -1,8 +1,6 @@
 local cfg = {}
 vim.lsp.set_log_level("error")
 
-local lspconfig = require("lspconfig")
-
 function cfg.open_diagnostics_float() end
 
 function cfg.lsp_on_attach(client, bufnr)
@@ -11,30 +9,27 @@ function cfg.lsp_on_attach(client, bufnr)
 
 	local opts = { buffer = bufnr, silent = true }
 
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 	vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
 	vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
 
-	vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
 	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
 
-	vim.keymap.set({ "n", "v" }, "<leader>a", function()
-		if ft == "rust" then
-			vim.cmd.RustLsp("codeAction")
-		else
-			vim.lsp.buf.code_action()
-		end
-	end, opts)
+	if client:supports_method("textDocument/codeAction") then
+		vim.keymap.set({ "n", "v" }, "<leader>a", function()
+			if ft == "rust" then
+				vim.cmd.RustLsp("codeAction")
+			else
+				vim.lsp.buf.code_action()
+			end
+		end, opts)
+	end
 
 	vim.keymap.set("n", "<leader>d", function()
-		-- open diagnostics float, to be used by CursorHold & CursorHoldI
-		-- separate method because I don't want diagnostics when the auto
-		-- complete popup is opened.
+		-- Keep diagnostics floats out of the way when completion is visible.
 		if vim.fn.pumvisible() ~= 1 then
 			if ft == "rust" then
 				vim.cmd.RustLsp({ "renderDiagnostic", "current" })
@@ -44,9 +39,7 @@ function cfg.lsp_on_attach(client, bufnr)
 		end
 	end, opts)
 
-	-- vim.print(client.server_capabilities)
-
-	if client.server_capabilities.documentHighlightProvider and ft ~= "lua" then
+	if client:supports_method("textDocument/documentHighlight") and ft ~= "lua" then
 		local augroup = vim.api.nvim_create_augroup("lsp_document_highlight" .. client.name .. "_" .. bufnr, {})
 		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 			group = augroup,
@@ -60,17 +53,21 @@ function cfg.lsp_on_attach(client, bufnr)
 		})
 	end
 
-	require("lsp_signature").on_attach({
-		doc_lines = 0,
-		-- always show siganture on top, if possible
-		max_height = vim.opt.scrolloff:get() - 3,
-		floating_window_above_cur_line = true,
-		-- window borders
-		handler_opts = {
-			border = "rounded",
-		},
-	})
-	vim.lsp.inlay_hint.enable()
+	if client:supports_method("textDocument/signatureHelp") then
+		require("lsp_signature").on_attach({
+			doc_lines = 0,
+			-- Always show the signature popup above the cursor when possible.
+			max_height = vim.opt.scrolloff:get() - 3,
+			floating_window_above_cur_line = true,
+			handler_opts = {
+				border = "rounded",
+			},
+		})
+	end
+
+	if client:supports_method("textDocument/inlayHint") then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	end
 end
 
 function cfg.lsp_on_attach_without_semantic_highlighting(client, bufnr)
@@ -81,13 +78,25 @@ function cfg.lsp_on_attach_without_semantic_highlighting(client, bufnr)
 end
 
 function cfg.capabilities()
-	return require("cmp_nvim_lsp").default_capabilities()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	if capabilities.workspace then
+		capabilities.workspace.didChangeWatchedFiles = nil
+	end
+	return require("cmp_nvim_lsp").default_capabilities(capabilities)
 end
 
 function cfg.global_flags()
 	return {
 		debounce_text_changes = vim.opt.updatetime:get(),
 	}
+end
+
+function cfg.base(opts)
+	return vim.tbl_deep_extend("force", {
+		flags = cfg.global_flags(),
+		capabilities = cfg.capabilities(),
+		on_attach = cfg.lsp_on_attach,
+	}, opts or {})
 end
 
 function cfg.lsp_setup()
@@ -97,32 +106,19 @@ function cfg.lsp_setup()
 	for _, file in ipairs(lsp_files) do
 		local name = file:match("([^/]+)%.lua$")
 		if name and name ~= "init" then
-			vim.lsp.enable(name)
 			vim.lsp.config(name, require("dc.lsp." .. name).config(cfg))
+			vim.lsp.enable(name)
 		end
 	end
 
-	-- update loclist with diagnostics for the current file
-	-- also run checktime for the current file if the linters
-	-- also do fixes.
 	vim.api.nvim_create_autocmd({ "DiagnosticChanged" }, {
-		pattern = "*",
-		callback = function()
-			vim.diagnostic.setloclist({ open = false })
-
-			local qf_info = vim.fn.getqflist({ title = 1, winid = 0 })
-			if qf_info.winid > 0 and qf_info.title:find("Diagnostics") then
-				vim.diagnostic.setqflist({ open = false })
-			end
-
-			-- Trigger `checktime` for the current buffer,
-			-- so `autoread` is triggered, and the buffer is reloaded
-			-- if it's unchanged.
-			local ok, err = pcall(function()
-				vim.api.nvim_command("checktime")
-			end)
-		end,
 		group = vim.api.nvim_create_augroup("update_diagnostic_loclist", {}),
+		callback = function(ev)
+			if ev.buf ~= vim.api.nvim_get_current_buf() then
+				return
+			end
+			vim.diagnostic.setloclist({ open = false })
+		end,
 	})
 
 	vim.diagnostic.config({

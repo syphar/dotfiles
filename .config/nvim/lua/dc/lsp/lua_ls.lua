@@ -1,13 +1,11 @@
 local M = {}
 
 function M.config(cfg)
-	local util = require("lspconfig.util")
-
 	local runtime_path = vim.split(package.path, ";")
 	table.insert(runtime_path, "lua/?.lua")
 	table.insert(runtime_path, "lua/?/init.lua")
 
-	return {
+	return cfg.base({
 		root_markers = {
 			".luarc.json",
 			".luarc.jsonc",
@@ -20,9 +18,6 @@ function M.config(cfg)
 			".null-ls-root",
 		},
 		single_file_support = false, -- manually disable for now
-		capabilities = cfg.capabilities(),
-		flags = cfg.global_flags(),
-		on_attach = cfg.lsp_on_attach,
 		settings = {
 			Lua = {
 				runtime = {
@@ -50,7 +45,7 @@ function M.config(cfg)
 				},
 			},
 		},
-	}
+	})
 end
 
 return M

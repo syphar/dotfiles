@@ -104,7 +104,7 @@ return {
 							enable = true,
 							command = "check",
 							allTargets = false,
-							-- allFeatures = true,
+							allFeatures = true,
 						},
 						loadOutDirsFromCheck = false,
 						editor = { formatOnType = true },

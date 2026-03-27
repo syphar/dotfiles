@@ -2,11 +2,8 @@ local M = {}
 
 function M.config(cfg)
 	-- TOML language server with schemas
-	return {
+	return cfg.base({
 		cmd = { "taplo", "lsp", "stdio" },
-		flags = cfg.global_flags(),
-		capabilities = cfg.capabilities(),
-		on_attach = cfg.lsp_on_attach,
 		init_options = {
 			cachePath = vim.fn.expand("$HOME/.cache/taplo/"),
 		},
@@ -20,7 +17,7 @@ function M.config(cfg)
 				},
 			},
 		},
-	}
+	})
 end
 
 return M

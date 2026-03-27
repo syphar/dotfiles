@@ -2,9 +2,7 @@ local M = {}
 
 function M.config(cfg)
 	-- https://github.com/astral-sh/ty/blob/main/docs/README.md#neovim
-	return {
-		flags = cfg.global_flags(),
-		capabilities = cfg.capabilities(),
+	return cfg.base({
 		on_attach = cfg.lsp_on_attach_without_semantic_highlighting,
 		init_options = {},
 		settings = {
@@ -24,7 +22,7 @@ function M.config(cfg)
 				},
 			},
 		},
-	}
+	})
 end
 
 return M

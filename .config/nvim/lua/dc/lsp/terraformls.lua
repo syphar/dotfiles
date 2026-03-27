@@ -1,9 +1,7 @@
 local M = {}
 
 function M.config(cfg)
-	return {
-		flags = cfg.global_flags(),
-		capabilities = cfg.capabilities(),
+	return cfg.base({
 		on_attach = cfg.lsp_on_attach_without_semantic_highlighting,
 		init_options = {
 			experimentalFeatures = {
@@ -11,7 +9,7 @@ function M.config(cfg)
 				prefillRequiredFields = true,
 			},
 		},
-	}
+	})
 end
 
 return M
