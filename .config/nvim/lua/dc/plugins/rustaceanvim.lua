@@ -102,19 +102,21 @@ return {
 						},
 						checkOnSave = {
 							enable = true,
-							-- command = "clippy",
-							-- allTargets = true,
+							command = "check",
+							allTargets = false,
 							-- allFeatures = true,
 						},
+						loadOutDirsFromCheck = false,
 						editor = { formatOnType = true },
 						cachePriming = {
 							enable = false,
 						},
 						cargo = {
-							loadOutDirsFromCheck = true,
+							loadOutDirsFromCheck = false,
+							enable = false,
 						},
 						procMacro = {
-							enable = true,
+							enable = false,
 						},
 						workspace = {
 							symbol = {
@@ -123,6 +125,9 @@ return {
 									scope = "workspace",
 								},
 							},
+						},
+						diagnostics = {
+							disabled = { "unresolved-proc-macro" },
 						},
 					},
 				},
