@@ -1,6 +1,6 @@
 return {
-	"tpope/vim-projectionist",
-	"tpope/vim-unimpaired",
+	{ "tpope/vim-projectionist", event = "VeryLazy" },
+	{ "tpope/vim-unimpaired", event = "VeryLazy" },
 
 	-- general plugins
 	{ --jump to last edited line in files

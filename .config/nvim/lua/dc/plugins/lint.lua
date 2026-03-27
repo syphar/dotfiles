@@ -59,12 +59,11 @@ return {
 
 		vim.api.nvim_create_autocmd({
 			"BufWritePost",
-			"BufReadPost",
 			-- "InsertLeave",
 			-- "TextChanged"
 		}, {
 			group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-			callback = dc_utils.debounce(100, function()
+			callback = dc_utils.debounce(300, function()
 				local names = lint.linters_by_ft[vim.bo.filetype] or {}
 
 				local ctx = { filename = vim.api.nvim_buf_get_name(0) }

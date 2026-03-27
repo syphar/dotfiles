@@ -16,7 +16,7 @@ return {
 		event = "InsertEnter",
 		opts = {
 			copilot_model = "gpt-41-copilot",
-			suggestion = { enabled = true, auto_trigger = true, debounce = 500 },
+			suggestion = { enabled = true, auto_trigger = false, debounce = 800 },
 			panel = { enabled = false },
 			copilot_node_command = "/opt/homebrew/bin/node",
 		},

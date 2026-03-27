@@ -18,5 +18,10 @@ require("lazy").setup("dc.plugins", { change_detection = { notify = false, enabl
 vim.loader.enable()
 require("dc.vim_options")
 
-require("dc.lsp").lsp_setup()
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		require("dc.lsp").lsp_setup()
+	end,
+})
 require("dc.keyboard")

@@ -79,9 +79,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
-					{ name = "treesitter" },
-					{ name = "render-markdown" },
-					{ name = "codecompanion" },
+					{ name = "treesitter", keyword_length = 4 },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({

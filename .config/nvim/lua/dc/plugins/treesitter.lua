@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	-- event = "VeryLazy",
+	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
@@ -27,7 +27,7 @@ return {
 
 		require("nvim-treesitter.configs").setup({
 			ignore_install = {},
-			auto_install = true,
+			auto_install = false,
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
