@@ -4,7 +4,7 @@ return {
 	priority = 1000,
 	config = function()
 		require("kanagawa").setup({
-			compile = false,
+			compile = true, -- make sure to run :KanagawaCompile command
 			undercurl = true, -- enable undercurls
 			commentStyle = { italic = true },
 			functionStyle = {},
