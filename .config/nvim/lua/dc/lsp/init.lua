@@ -1,5 +1,6 @@
 local cfg = {}
 vim.lsp.set_log_level("error")
+require("lspconfig")
 
 function cfg.open_diagnostics_float() end
 
