@@ -48,3 +48,4 @@ keybind = cmd+shift+d=text:\x01-
 
 # zoom pane
 keybind = cmd+shift+enter=text:\x01z 
+
