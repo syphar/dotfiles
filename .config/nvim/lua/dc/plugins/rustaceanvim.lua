@@ -105,6 +105,7 @@ return {
 							command = "check",
 							allTargets = false,
 							allFeatures = true,
+							-- workspace = false,
 						},
 						loadOutDirsFromCheck = false,
 						editor = { formatOnType = true },
@@ -112,11 +113,13 @@ return {
 							enable = false,
 						},
 						cargo = {
-							loadOutDirsFromCheck = false,
-							enable = false,
+							buildScripts = {
+								enable = true, -- proc macro
+							},
+							loadOutDirsFromCheck = true, -- proc macro
 						},
 						procMacro = {
-							enable = false,
+							enable = true, -- proc macro
 						},
 						workspace = {
 							symbol = {
@@ -127,7 +130,11 @@ return {
 							},
 						},
 						diagnostics = {
-							disabled = { "unresolved-proc-macro" },
+							disabled = {
+								-- "unresolved-proc-macro",
+								-- "proc-macro-disabled",
+								-- "attribute-expansion-disabled",
+							},
 						},
 					},
 				},
