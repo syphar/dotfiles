@@ -331,7 +331,11 @@ return {
 					require("telescope").extensions.live_grep_args.live_grep_args({
 						debounce = 100,
 						additional_args = function()
-							return { "--hidden" }
+							return {
+								"--hidden",
+								"--glob=!.git/*",
+								"--glob=!**/.git/*",
+							}
 						end,
 					})
 				end,
