@@ -1,5 +1,5 @@
-[build]
-target-dir = "/Users/syphar/.cache/cargo-target"
+# [build]
+# target-dir = "/Users/syphar/.cache/cargo-target"
 
 [registries.crates-io]
 protocol = "sparse"
