@@ -11,9 +11,9 @@ default:
 
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
-    just heroku-cli
-    just gcloud-cli
-    update_cached_heroku_apps
+    # just heroku-cli
+    # just gcloud-cli
+    # update_cached_heroku_apps
     just update-homebrew
     just update-claude
     just update-luarocks
@@ -138,6 +138,7 @@ update-python-tools:
 
 update-vim:
     rm -f ~/.local/state/nvim/*.log
+    rm -f ~/.config/nvim/.nvimlog
 
     nvim --headless '+Lazy! sync' +qa
 
