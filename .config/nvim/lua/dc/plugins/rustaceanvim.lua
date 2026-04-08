@@ -103,7 +103,7 @@ return {
 						checkOnSave = {
 							enable = true,
 							command = "check",
-							allTargets = false,
+							allTargets = true,
 							allFeatures = true,
 							-- workspace = false,
 						},
