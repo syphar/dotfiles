@@ -139,6 +139,7 @@ update-python-tools:
 update-vim:
     rm -f ~/.local/state/nvim/*.log
     rm -f ~/.config/nvim/.nvimlog
+    rm -f ~/.config/nvim/*.log
 
     nvim --headless '+Lazy! sync' +qa
 
