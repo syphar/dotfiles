@@ -207,9 +207,9 @@ update-git-repo REPO:
 
     echo "updating {{ REPO }}"
 
-    # if [ -e "{{ REPO }}/Cargo.toml" ]; then
-    #     just cargo-sweep "{{ REPO }}"
-    # fi
+    if [ -e "{{ REPO }}/Cargo.toml" ]; then
+        just cargo-sweep "{{ REPO }}"
+    fi
 
     cd "{{ REPO }}"
 
