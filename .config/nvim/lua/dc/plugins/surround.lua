@@ -7,7 +7,7 @@ return {
 			mappings_style = "sandwich",
 		},
 	},
-	{ "Matt-A-Bennett/vim-surround-funk", event = "VeryLazy" },
+	-- { "Matt-A-Bennett/vim-surround-funk", lazy = false },
 }
 
 -- There are two keymap modes for normal mode mappings.
