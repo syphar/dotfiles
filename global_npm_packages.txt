@@ -9,6 +9,7 @@ eslint_d
 jsonlint
 npm
 npm-check-updates
+opencode-anthropic-oauth
 pyright
 typescript
 typescript-language-server
