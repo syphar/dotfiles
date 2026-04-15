@@ -23,3 +23,4 @@ bin/kubectl
 bin/latexmk
 bin/xelatex
 .claude/plugins
+.local/share/opencode/auth.json

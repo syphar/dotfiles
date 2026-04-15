@@ -33,6 +33,7 @@ app_list = (
     "myhttpie",
     "myneovim",
     "mytmuxinator",
+    "opencode",
     "pgsql",
     "ranger",
     "starship",

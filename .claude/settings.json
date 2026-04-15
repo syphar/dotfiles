@@ -11,7 +11,40 @@
   },
   "enabledPlugins": {
     "astral@astral-sh": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "thmd@thermondo-skills": true,
+    "bash-language-server@claude-code-lsps": true,
+    "yaml-language-server@claude-code-lsps": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "terraform@claude-plugins-official": true
   },
-  "DISABLE_AUTOUPDATER": 1
+  "extraKnownMarketplaces": {
+    "thermondo-skills": {
+      "source": {
+        "source": "github",
+        "repo": "thermondo/skills"
+      }
+    },
+    "claude-code-lsps": {
+      "source": {
+        "source": "github",
+        "repo": "boostvolt/claude-code-lsps"
+      }
+    }
+  },
+  "DISABLE_AUTOUPDATER": 1,
+  "mcpServers": {
+    "terraform": {
+      "command": "terraform-mcp-server",
+      "args": []
+    },
+    "context7": {
+      "type": "url",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "grep": {
+      "type": "url",
+      "url": "https://mcp.grep.app"
+    }
+  }
 }
