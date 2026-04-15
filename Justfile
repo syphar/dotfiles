@@ -121,19 +121,18 @@ update-luarocks:
     -xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt 
 
 update-python-tools:
-    #!/bin/bash
-    set -euo pipefail
+    #!/usr/bin/env nu
 
-    while IFS= read -r pkg; do
-
-      [ -z "$pkg" ] && continue   # skip empty lines
-      [[ "$pkg" =~ ^[[:space:]]*# ]] && continue # skip comments
-
-      echo "========================"
-      echo "installing/updating: $pkg"
-      uv tool install --upgrade $pkg
-
-    done < ./uv_tool_list.txt
+    open ./uv_tool_list.txt
+    | lines
+    | each { |line| $line | str trim }
+    | where ($it | is-not-empty) and (not ($it | str starts-with "#"))
+    | each { |pkg|
+        print "========================"
+        print $"installing/updating: ($pkg)"
+        uv tool install --upgrade ...($pkg | split row " ")
+    }
+    | ignore
 
 
 update-vim:
