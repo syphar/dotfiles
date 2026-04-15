@@ -39,6 +39,9 @@ daily-update:
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
 
+    # custom rust binaries 
+    just install-custom-rust-binary "$SRC_DIR/OpenCodeRust/" "opencode" "-p opencode-cli"
+
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
@@ -194,8 +197,8 @@ clean-fish:
     rm -f ~/.config/fish/fishd.tmp.*
     rm -f ~/.config/fish/fish_variables*conflicted*
 
-install-custom-rust-binary REPO BINARY_NAME:
-    cd {{ REPO }} && cargo build --release
+install-custom-rust-binary REPO BINARY_NAME BUILD_ARGS="":
+    cd {{ REPO }} && cargo build --release {{ BUILD_ARGS }}
 
     rm -f $HOME/bin/{{ BINARY_NAME }}
     mv {{ REPO }}/target/release/{{ BINARY_NAME }} $HOME/bin/{{ BINARY_NAME }}

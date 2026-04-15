@@ -12,6 +12,7 @@ venv
 .config/fish/*.tmp.*
 # orbstack binary symlinks
 bin/docker
+bin/opencode
 bin/docker-buildx
 bin/docker-compose
 bin/docker-credential-osxkeychain
