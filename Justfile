@@ -282,9 +282,9 @@ clear-disk-space-daily:
     just clear-thermondo-backups
     just cargo-sweep-global
     just clear-dropbox-cache
-    # just clear-rust-target-directories {{ SRC_DIR }}
-    # just clear-rust-target-directories {{ TMP_DIR }}
-    # rm -rf ~/.cache/cargo-target/
+    just clear-rust-target-directories {{ SRC_DIR }}
+    just clear-rust-target-directories {{ TMP_DIR }}
+    rm -rf ~/.cache/cargo-target/
 
 
 clear-disk-space:
