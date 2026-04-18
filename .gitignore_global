@@ -90,3 +90,6 @@ target.noindex
 
 # repo-local AGENTS.md files I don't want to commit
 AGENTS.md
+
+# opencode tmp reviews for my agents
+.opencode/reviews
