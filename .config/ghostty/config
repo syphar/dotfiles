@@ -38,6 +38,10 @@ keybind = cmd+w=text:\x01&
 # new tab
 keybind = cmd+t=text:\x01c 
 
+# sesh: 
+keybind = cmd+k=text:\x01T # open session
+keybind = cmd+l=text:\x01L # last session
+
 # PANES
 
 # split horizontally
