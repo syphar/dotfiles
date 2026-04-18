@@ -1,7 +1,79 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "~/.config/opencode/dotfiles.md"
+  ],
+  "permission": {
+    "bash": {
+      "pytest*": "allow",
+      "npm test*": "allow",
+      "cargo test*": "allow",
+      "jest*": "allow",
+      "vitest*": "allow",
+      "go test*": "allow",
+      "npm run build*": "allow",
+      "npm run*": "allow",
+      "cargo build*": "allow",
+      "make*": "allow",
+      "cmake*": "allow",
+      "go build*": "allow",
+      "git add*": "allow",
+      "git commit*": "allow",
+      "git push*": "allow",
+      "git pull*": "allow",
+      "git checkout*": "allow",
+      "git branch*": "allow",
+      "git merge*": "allow",
+      "git rebase*": "allow",
+      "git stash*": "allow",
+      "git fetch*": "allow",
+      "git clone*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "git status*": "allow",
+      "git show*": "allow",
+      "git rev-parse*": "allow",
+      "ruff*": "allow",
+      "black*": "allow",
+      "isort*": "allow",
+      "mypy*": "allow",
+      "flake8*": "allow",
+      "pylint*": "allow",
+      "prettier*": "allow",
+      "eslint*": "allow",
+      "rustfmt*": "allow",
+      "cargo fmt*": "allow",
+      "cargo clippy*": "allow",
+      "gofmt*": "allow",
+      "npm install*": "allow",
+      "npm uninstall*": "allow",
+      "yarn add*": "allow",
+      "yarn remove*": "allow",
+      "pnpm add*": "allow",
+      "pnpm remove*": "allow",
+      "pip install*": "allow",
+      "pip uninstall*": "allow",
+      "cargo add*": "allow",
+      "cargo remove*": "allow",
+      "go get*": "allow",
+      "go mod*": "allow",
+      "ask": "allow"
+    },
+    "read": "allow",
+    "edit": "allow",
+    "write": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "task": "allow",
+    "webfetch": "allow",
+    "question": "allow",
+    "todowrite": "allow",
+    "external_directory": "ask"
+  },
   "plugin": [
-    "opencode-anthropic-oauth"
+    "opencode-anthropic-oauth",
+    "@franlol/opencode-md-table-formatter@0.0.6",
+    "@mohak34/opencode-notifier@0.2.2"
   ],
   "mcp": {
     "github": {
@@ -21,7 +93,8 @@
     },
     "grep": {
       "type": "remote",
-      "url": "https://mcp.grep.app"
+      "url": "https://mcp.grep.app",
+      "enabled": false
     }
   },
   "lsp": {
@@ -49,6 +122,7 @@
       ]
     },
     "typescript": {
+      "disabled": true,
       "command": [
         "tsgo",
         "--lsp",
