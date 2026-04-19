@@ -346,8 +346,12 @@ return {
 				"<C-P>",
 				function()
 					-- pick from git-files if inside git repository,
-					-- otherwise use find_files from CWD
-					local is_inside_working_tree = vim.fs.find({ ".git" }, { path = vim.fn.getcwd(), upward = true })[1]
+					-- otherwise use find_files from the current project root
+					local path = vim.api.nvim_buf_get_name(0)
+					if path == "" then
+						path = vim.uv.cwd()
+					end
+					local is_inside_working_tree = vim.fs.find({ ".git" }, { path = path, upward = true })[1]
 
 					if is_inside_working_tree then
 						require("telescope.builtin").git_files({ show_untracked = true })
