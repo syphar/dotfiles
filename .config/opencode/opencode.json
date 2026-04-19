@@ -57,6 +57,7 @@
       "cargo remove*": "allow",
       "go get*": "allow",
       "go mod*": "allow",
+      "gh *": "allow",
       "ask": "allow"
     },
     "read": "allow",
@@ -76,10 +77,6 @@
     "@mohak34/opencode-notifier@0.2.2"
   ],
   "mcp": {
-    "github": {
-      "type": "remote",
-      "url": "https://api.githubcopilot.com/mcp/"
-    },
     "terraform": {
       "type": "local",
       "command": [
@@ -93,8 +90,7 @@
     },
     "grep": {
       "type": "remote",
-      "url": "https://mcp.grep.app",
-      "enabled": false
+      "url": "https://mcp.grep.app"
     }
   },
   "lsp": {
