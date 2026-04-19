@@ -1,12 +1,12 @@
 local cfg = {}
-vim.lsp.set_log_level("error")
+vim.lsp.log.set_level("error")
 require("lspconfig")
 
 function cfg.open_diagnostics_float() end
 
 function cfg.lsp_on_attach(client, bufnr)
-	vim.lsp.set_log_level("error")
-	-- vim.lsp.set_log_level("debug")
+	vim.lsp.log.set_level("error")
+	-- vim.lsp.log.set_level("debug")
 
 	local opts = { buffer = bufnr, silent = true }
 
