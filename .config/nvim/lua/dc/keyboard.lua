@@ -1,5 +1,3 @@
-vim.g.mapleader = ","
-
 -- don't count {} as jumps for the jumplist
 -- see https://superuser.com/a/836924/1124707
 local opts = { silent = true }
@@ -33,9 +31,6 @@ end, { desc = "Edit current file on main branch" })
 vim.keymap.set("n", "<leader>qf", function()
 	vim.diagnostic.setqflist({ open = true })
 end)
-
--- delete current file
-vim.keymap.set("n", "<leader>rm", ":!rm %<CR>")
 
 -- git blame for the current file
 vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
