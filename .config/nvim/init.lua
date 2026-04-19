@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -12,11 +12,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ","
+vim.loader.enable()
 
 require("lazy").setup("dc.plugins", { change_detection = { notify = false, enabled = false } })
 
-vim.loader.enable()
 require("dc.vim_options")
+require("dc.root")
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
