@@ -1,6 +1,6 @@
 ---
 description: Addresses review findings from .opencode/reviews/*.md. Applies code changes, keeps tests passing, and summarizes what was done.
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5.4
 tools:
   write: true
   edit: true

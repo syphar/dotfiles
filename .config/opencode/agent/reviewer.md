@@ -1,6 +1,5 @@
 ---
 description: Strict, read-only code reviewer. Use after a change is ready for review; it writes findings to .opencode/reviews/<timestamp>.md and never edits source files.
-# model: anthropic/claude-opus-4-7
 model: openai/gpt-5.4
 reasoningEffort: high
 tools:
