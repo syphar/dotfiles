@@ -26,7 +26,6 @@ return {
 				})
 			end,
 		},
-		"franco-ruggeri/codecompanion-lualine.nvim",
 	},
 	config = function()
 		require("lualine").setup({
@@ -73,7 +72,6 @@ return {
 							return require("lsp-progress").progress()
 						end,
 					},
-					"codecompanion",
 					{
 						function()
 							local linters = require("lint").get_running()

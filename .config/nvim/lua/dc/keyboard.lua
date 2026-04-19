@@ -88,9 +88,6 @@ local command_abbrev = {
 	On = "on",
 	-- grep should always be silent
 	grep = "silent grep",
-	-- real abbreviations
-	CC = "CodeCompanion",
-	CCC = "CodeCompanionChat",
 }
 for old, new in pairs(command_abbrev) do
 	vim.cmd("cnoreabbrev " .. old .. " " .. new)
