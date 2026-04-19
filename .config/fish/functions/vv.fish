@@ -5,7 +5,7 @@ function vv
     | fzf
   )
     if test $status -eq 0
-        eval $EDITOR \"$filename\"
+        $EDITOR $filename
     end
 
     commandline -f repaint

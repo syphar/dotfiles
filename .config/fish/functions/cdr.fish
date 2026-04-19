@@ -4,6 +4,3 @@ function cdr
         cd "$root"
     end
 end
-
-
-

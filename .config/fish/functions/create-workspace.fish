@@ -4,24 +4,9 @@ function create-workspace --argument-names branch_name
         return 1
     end
 
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or begin
-        echo "create-workspace: not inside a git repository" >&2
-        return 1
-    end
+    set -l main_repo (_git_main_repo); or return 1
 
-    set -l git_common_dir (command git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
-    test -n "$git_common_dir"; or begin
-        echo "create-workspace: failed to resolve git common dir" >&2
-        return 1
-    end
-
-    set -l main_repo (path dirname "$git_common_dir")
-    set -l base_branch
-    if command git -C "$main_repo" show-ref --verify --quiet refs/heads/main
-        set base_branch main
-    else if command git -C "$main_repo" show-ref --verify --quiet refs/heads/master
-        set base_branch master
-    else
+    set -l base_branch (_git_default_branch); or begin
         echo "create-workspace: could not find local main or master branch" >&2
         return 1
     end

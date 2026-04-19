@@ -4,18 +4,8 @@ function create-worktree --argument-names branch_name
         return 1
     end
 
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or begin
-        echo "create-worktree: not inside a git repository" >&2
-        return 1
-    end
+    set -l main_repo (_git_main_repo); or return 1
 
-    set -l git_common_dir (command git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
-    test -n "$git_common_dir"; or begin
-        echo "create-worktree: failed to resolve git common dir" >&2
-        return 1
-    end
-
-    set -l main_repo (path dirname "$git_common_dir")
     set -l main_name (path basename "$main_repo")
     set -l repo_parent (path dirname "$main_repo")
     set -l worktree_suffix (string replace -a / - -- "$branch_name")

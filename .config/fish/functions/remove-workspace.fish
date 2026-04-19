@@ -16,18 +16,8 @@ function remove-workspace
         end
     end
 
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1; or begin
-        echo "remove-workspace: not inside a git repository" >&2
-        return 1
-    end
+    set -l main_repo (_git_main_repo); or return 1
 
-    set -l git_common_dir (command git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
-    test -n "$git_common_dir"; or begin
-        echo "remove-workspace: failed to resolve git common dir" >&2
-        return 1
-    end
-
-    set -l main_repo (path dirname "$git_common_dir")
     set -l current_worktree (command git rev-parse --show-toplevel 2>/dev/null)
     test -n "$current_worktree"; or begin
         echo "remove-workspace: failed to resolve current worktree" >&2
