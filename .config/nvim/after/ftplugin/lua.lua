@@ -1,8 +1,8 @@
-vim.opt.expandtab = false
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt_local.expandtab = false
+vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
 
-vim.opt.suffixesadd:append({ ".lua", "init.lua" })
+vim.opt_local.suffixesadd:append({ ".lua", "init.lua" })
 
 -- local ts_utils = require("nvim-treesitter.ts_utils")
 

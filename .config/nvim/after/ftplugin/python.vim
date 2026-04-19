@@ -5,12 +5,12 @@ setlocal colorcolumn=89
 " setlocal foldlevelstart=0
 " setlocal foldlevel=0
 
-set suffixesadd+=.py,__init__.py
+setlocal suffixesadd+=.py,__init__.py
 
 DashKeywords python3 django
 
-nnoremap <silent> gh <cmd>Telescope python_docs<CR>
-vnoremap <silent> gh "zy:Telescope python_docs search=<C-r>z<CR>
+nnoremap <buffer> <silent> gh <cmd>Telescope python_docs<CR>
+vnoremap <buffer> <silent> gh "zy:Telescope python_docs search=<C-r>z<CR>
 
 
 lua << EOF
@@ -28,5 +28,5 @@ vim.keymap.set("n", "<leader>w", function()
 			vim.env.VIRTUAL_ENV,
 		},
 	})
-end)
+end, { buffer = true, silent = true })
 EOF

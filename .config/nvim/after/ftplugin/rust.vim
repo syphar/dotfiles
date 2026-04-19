@@ -2,30 +2,27 @@
 setlocal textwidth=100
 setlocal colorcolumn=101
 
-nmap <leader>b :make build<CR>
-nmap <leader>c :make check<CR>
+nnoremap <buffer> <leader>b :make build<CR>
+nnoremap <buffer> <leader>c :make check<CR>
 
 let g:rust_fold=0
 
 
 lua << EOF
-vim.keymap.set("n", "<leader>w", function() 
+vim.keymap.set("n", "<leader>w", function()
     require("telescope.builtin").lsp_dynamic_workspace_symbols()
-end)
+end, { buffer = true, silent = true })
 vim.keymap.set("n", "gh", function()
     require("rustaceanvim.commands.external_docs")()
-end)
+end, { buffer = true, silent = true })
 vim.keymap.set("n", "<leader>tr", function()
     vim.cmd([[!cargo run]])
-end)
-vim.keymap.set("n", "<leader>tn", function() 
+end, { buffer = true, silent = true })
+vim.keymap.set("n", "<leader>tn", function()
     vim.cmd([[RustTest]])
-end )
-vim.keymap.set("n", "<leader>ts", function() 
-    vim.cmd([[Ctest]])
-end )
-vim.keymap.set("n", "<leader>l", function() 
+end, { buffer = true, silent = true })
+vim.keymap.set("n", "<leader>l", function()
 	vim.notify("running clippy fix...")
 	require("lint").try_lint("clippy")
-end)
+end, { buffer = true, silent = true })
 EOF

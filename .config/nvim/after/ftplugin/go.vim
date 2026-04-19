@@ -1,1 +1,1 @@
-nmap <leader>r :!go run %<CR>
+nnoremap <buffer> <leader>r :!go run %<CR>
