@@ -1,5 +1,6 @@
 ---
 description: Addresses review findings from .opencode/reviews/*.md. Applies code changes, keeps tests passing, and summarizes what was done.
+mode: subagent
 model: openai/gpt-5.4
 tools:
   write: true
