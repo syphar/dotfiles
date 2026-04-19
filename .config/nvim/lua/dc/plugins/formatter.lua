@@ -45,7 +45,7 @@ return {
 			["*"] = { "trim_newlines", "trim_whitespace" },
 		},
 		format_on_save = function(bufnr)
-			local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+			local ft = vim.bo[bufnr].filetype
 
 			if
 				ft == "rust"
@@ -70,7 +70,7 @@ return {
 			djhtml = function()
 				return {
 					command = "djhtml",
-					args = { "--tabwidth", vim.api.nvim_buf_get_option(0, "shiftwidth"), "-" },
+					args = { "--tabwidth", vim.bo.shiftwidth, "-" },
 				}
 			end,
 			sqruff = {

@@ -17,7 +17,7 @@ function cfg.lsp_on_attach(client, bufnr)
 	vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
-	local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
+	local ft = vim.bo[bufnr].filetype
 
 	if client:supports_method("textDocument/codeAction") then
 		vim.keymap.set({ "n", "v" }, "<leader>a", function()
