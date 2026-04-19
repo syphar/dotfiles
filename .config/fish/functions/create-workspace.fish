@@ -16,12 +16,6 @@ function create-workspace --argument-names branch_name
     end
 
     set -l main_repo (path dirname "$git_common_dir")
-    set -l main_name (path basename "$main_repo")
-    set -l repo_parent (path dirname "$main_repo")
-    set -l worktree_suffix (string replace -a / - -- "$branch_name")
-    set -l worktree_name "$main_name-$worktree_suffix"
-    set -l worktree_path "$repo_parent/$worktree_name"
-
     set -l base_branch
     if command git -C "$main_repo" show-ref --verify --quiet refs/heads/main
         set base_branch main
@@ -37,33 +31,18 @@ function create-workspace --argument-names branch_name
         return 1
     end
 
-    if command git -C "$main_repo" for-each-ref --format='%(refname:strip=3)' refs/remotes | string match -q -- "$branch_name"
-        echo "create-workspace: remote branch '$branch_name' already exists" >&2
+    if command git -C "$main_repo" show-ref --verify --quiet "refs/remotes/origin/$branch_name"
+        echo "create-workspace: origin branch '$branch_name' already exists" >&2
         return 1
     end
 
-    if test -e "$worktree_path"
-        echo "create-workspace: worktree path '$worktree_path' already exists" >&2
+    command git -C "$main_repo" branch "$branch_name" "$base_branch"; or begin
+        echo "create-workspace: failed to create branch '$branch_name' from '$base_branch'" >&2
         return 1
     end
 
-    command git -C "$main_repo" worktree add -b "$branch_name" "$worktree_path" "$base_branch"; or begin
-        echo "create-workspace: failed to create worktree" >&2
+    create-worktree "$branch_name"; or begin
+        echo "create-workspace: failed to create worktree for '$branch_name'" >&2
         return 1
     end
-
-    set -l env_files (command find "$main_repo" -maxdepth 1 -type f -name '.env*' -print)
-    if test (count $env_files) -gt 0
-        command cp $env_files "$worktree_path/"; or begin
-            echo "create-workspace: failed to copy .env files" >&2
-            return 1
-        end
-    end
-
-    cd "$worktree_path"; or begin
-        echo "create-workspace: failed to cd into '$worktree_path'" >&2
-        return 1
-    end
-
-    echo "create-workspace: created '$branch_name' from '$base_branch' at '$worktree_path'"
 end

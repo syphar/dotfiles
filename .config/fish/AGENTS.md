@@ -35,11 +35,15 @@
 
 ## Custom Worktree Helpers
 
-- `create-workspace` and `remove-workspace` are custom git worktree helpers in
-  `functions/`.
-- `create-workspace` must work from either the main repo or a linked worktree,
-  creates sibling worktrees next to the main repo, and copies root `.env*` files
-  into the new worktree.
+- `create-worktree`, `create-workspace`, and `remove-workspace` are custom git
+  worktree helpers in `functions/`.
+- `create-worktree` must work from either the main repo or a linked worktree,
+  creates sibling worktrees next to the main repo, copies root `.env*` files
+  into the new worktree, and only auto-creates a local branch from
+  `origin/<name>` when the local branch is missing.
+- `create-workspace` creates a new local branch from local `main` or `master`,
+  refuses to reuse existing local or `origin/<name>` branches, then delegates to
+  `create-worktree`.
 - `remove-workspace` is intended to run from inside a linked worktree, `cd`s
   back to the main repo before removal, and supports `--force` only for dirty
   worktree removal; it does not delete the branch.
