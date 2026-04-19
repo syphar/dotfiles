@@ -13,15 +13,15 @@ local telescope_treesitter_tags = function()
 	})
 
 	local type_highlight = {
-		["associated"] = "TSConstant",
-		["constant"] = "TSConstant",
-		["field"] = "TSField",
-		["function"] = "TSFunction",
-		["method"] = "TSMethod",
-		["parameter"] = "TSParameter",
-		["property"] = "TSProperty",
+		["associated"] = "@constant",
+		["constant"] = "@constant",
+		["field"] = "@property",
+		["function"] = "@function",
+		["method"] = "@function.method",
+		["parameter"] = "@variable.parameter",
+		["property"] = "@property",
 		["struct"] = "Struct",
-		["var"] = "TSVariableBuiltin",
+		["var"] = "@variable.builtin",
 	}
 
 	local make_display = function(entry)
