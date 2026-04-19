@@ -33,10 +33,12 @@ return {
 			proto = { "buf" },
 			python = function(bufnr)
 				local dc_utils = require("dc.utils")
+				local pyproject = dc_utils.pyproject_toml(bufnr)
+				local setup_cfg = dc_utils.setup_cfg_sections(bufnr)
 
-				if dc_utils.pyproject_toml()["tool.ruff"] then
+				if pyproject["tool.ruff"] then
 					return { "ruff_fix", lsp_format = "last" }
-				elseif dc_utils.pyproject_toml()["tool.isort"] or dc_utils.setup_cfg_sections().isort then
+				elseif pyproject["tool.isort"] or setup_cfg.isort then
 					return { "ruff_organize_imports", lsp_format = "last" }
 				else
 					return { lsp_format = "last" }
