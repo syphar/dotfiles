@@ -11,7 +11,7 @@ function ftags
     ); \
     and set -l filename (string split -f3 \t $line); \
     and set -l tag (string split -f2 \t $line); \
-    and nvim $filename -c "set nocst" -c "silent tag $tag";
+    and nvim $filename -c "silent tag $tag";
 
     commandline -f repaint
 end
