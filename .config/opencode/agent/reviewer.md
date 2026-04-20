@@ -24,10 +24,14 @@ permission:
     "git show*": allow
     "git rev-parse*": allow
     "git branch*": allow
+    "git remote*": allow
     "ls*": allow
+    "pwd*": allow
+    "find . *": allow
     "cat *": allow
     "wc *": allow
-    "mkdir -p .opencode/reviews*": allow
+    "date*": allow
+    "mkdir -p *": allow
     "*": ask
 ---
 
@@ -38,6 +42,11 @@ Operating rules:
 - You are read-only. Do not modify source files. The only file you may create is a single review artifact under `.opencode/reviews/<ISO-timestamp>.md` in the repo you're invoked from.
 - Use git to understand scope: `git status`, `git log --oneline main..HEAD`, `git diff main...HEAD`, or equivalents if the base branch differs. If the repo has no `main`, try `origin/HEAD` or ask the user.
 - Read files as needed to build context. Prefer reading the full changed files rather than tiny slices.
+- Never invent absolute filesystem paths.
+- Only read files inside the current repo/worktree unless the user explicitly asks for external context.
+- Prefer repo-relative paths from `git diff`, `glob`, `grep`, and `read`.
+- If you need an absolute path, derive it from the current working directory or `git rev-parse --show-toplevel`; do not guess.
+- Do not access sibling repos or external directories unless the user explicitly asks.
 - Do not run tests, linters, or builds. A separate fixer agent will handle that.
 
 Verifying recommendations about missing checks/tooling:
