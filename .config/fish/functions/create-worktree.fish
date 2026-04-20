@@ -44,10 +44,7 @@ function create-worktree --argument-names branch_name
         end
     end
 
-    cd "$worktree_path"; or begin
-        echo "create-worktree: failed to cd into '$worktree_path'" >&2
-        return 1
-    end
-
     echo "create-worktree: created worktree for '$branch_name' at '$worktree_path' from '$branch_source'"
+
+    command sesh connect "$worktree_path"
 end
