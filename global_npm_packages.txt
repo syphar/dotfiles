@@ -10,6 +10,7 @@ jsonlint
 npm
 npm-check-updates
 opencode-anthropic-oauth
+openrtk
 pyright
 typescript
 typescript-language-server
