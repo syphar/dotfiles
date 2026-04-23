@@ -98,9 +98,10 @@
     "external_directory": "ask"
   },
   "plugin": [
-    "opencode-anthropic-oauth",
     "@franlol/opencode-md-table-formatter@0.0.6",
-    "@mohak34/opencode-notifier@0.2.2"
+    "@mohak34/opencode-notifier@0.2.2",
+    "opencode-anthropic-oauth",
+    "openrtk"
   ],
   "mcp": {
     "terraform": {
