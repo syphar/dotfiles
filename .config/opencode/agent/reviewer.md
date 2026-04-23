@@ -1,7 +1,7 @@
 ---
 description: Strict, read-only code reviewer. Use after a change is ready for review; it writes findings to .opencode/reviews/<timestamp>.md and never edits source files.
 mode: subagent
-model: anthropic/claude-opus-4-7
+model: anthropic/claude-sonnet-4-6
 tools:
   write: false
   edit: false
