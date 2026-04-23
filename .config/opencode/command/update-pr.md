@@ -1,6 +1,6 @@
 ---
 description: Refresh the current PR title and body from the branch diff.
-model: openai/gpt-5.4
+agent: build
 ---
 
 Update the existing pull request metadata for the current branch.
