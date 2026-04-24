@@ -93,3 +93,7 @@ AGENTS.md
 
 # opencode tmp reviews for my agents
 .opencode/reviews
+
+# MemPalace per-project files (issue #185)
+mempalace.yaml
+entities.json
