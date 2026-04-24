@@ -3,30 +3,30 @@
   "instructions": [
     "~/.config/opencode/dotfiles.md"
   ],
-  "model": "openai/gpt-5.4",
-  "small_model": "openai/gpt-5.4-mini",
+  "model": "openai/gpt-5.5",
+  "small_model": "openai/gpt-5.5-fast",
   "default_agent": "build",
   "agent": {
     "build": {
-      "model": "openai/gpt-5.4"
+      "model": "openai/gpt-5.5"
     },
     "plan": {
       "model": "anthropic/claude-opus-4-5"
     },
     "general": {
-      "model": "openai/gpt-5.4"
+      "model": "openai/gpt-5.5"
     },
     "explore": {
-      "model": "openai/gpt-5.4"
+      "model": "openai/gpt-5.5"
     },
     "title": {
-      "model": "openai/gpt-5.4-mini"
+      "model": "openai/gpt-5.5-fast"
     },
     "summary": {
-      "model": "openai/gpt-5.4-mini"
+      "model": "openai/gpt-5.5-fast"
     },
     "compaction": {
-      "model": "openai/gpt-5.4-mini"
+      "model": "openai/gpt-5.5-fast"
     }
   },
   "permission": {
@@ -104,6 +104,7 @@
   "plugin": [
     "@franlol/opencode-md-table-formatter@0.0.6",
     "@mohak34/opencode-notifier@0.2.2",
+    "opencode-plugin-mempalace",
     "opencode-anthropic-oauth"
   ],
   "mcp": {
@@ -122,6 +123,18 @@
       "environment": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "op://Personal/github pat token mcp/password"
       }
+    },
+    "mempalace": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "mempalace",
+        "python",
+        "-m",
+        "mempalace.mcp_server"
+      ],
+      "enabled": true
     },
     "terraform": {
       "type": "local",
