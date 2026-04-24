@@ -24,6 +24,7 @@ jedi-language-server
 lookatme --with pyyaml==5.3.1
 mackup --with defusedxml --with requests
 maturin
+mempalace
 openai
 perflint
 pgcli
