@@ -45,6 +45,7 @@ abbr -ag tfp terraform plan
 abbr -ag tfa terraform apply
 abbr -ag tfi terraform init
 abbr -ag tf terraform
+alias gca 'git commit -e -F (generate-commit-message | psub)'
 
 abbr -ag cr claude --resume
 
