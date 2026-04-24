@@ -4,6 +4,7 @@
 @zed-industries/claude-code-acp
 alex
 bash-language-server
+codeburn
 cspell
 eslint_d
 jsonlint
