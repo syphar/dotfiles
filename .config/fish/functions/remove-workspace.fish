@@ -1,19 +1,18 @@
 function remove-workspace
     set -l force_worktree_flag
+    set -l skip_docker 0
 
-    if test (count $argv) -gt 1
-        echo "remove-workspace: usage: remove-workspace [--force]" >&2
+    argparse f/force no-docker -- $argv; or begin
+        echo "remove-workspace: usage: remove-workspace [--force] [--no-docker]" >&2
         return 1
     end
 
-    if test (count $argv) -eq 1
-        switch $argv[1]
-            case --force -f
-                set force_worktree_flag --force
-            case '*'
-                echo "remove-workspace: usage: remove-workspace [--force]" >&2
-                return 1
-        end
+    if set -q _flag_force
+        set force_worktree_flag --force
+    end
+
+    if set -q _flag_no_docker
+        set skip_docker 1
     end
 
     set -l main_repo (_git_main_repo); or return 1
@@ -44,6 +43,30 @@ function remove-workspace
     if test -n "$worktree_status"; and test -z "$force_worktree_flag"
         echo "remove-workspace: worktree has uncommitted changes; rerun with --force" >&2
         return 1
+    end
+
+    # Clean up docker compose resources if present
+    if test $skip_docker -eq 0
+        set -l project_name (path basename "$current_worktree" | string lower | string replace -ra '[^a-z0-9]' '')
+        
+        # Check if any docker resources exist for this project
+        set -l containers (docker ps -aq --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        if test (count $containers) -gt 0
+            echo "remove-workspace: stopping and removing docker containers for project '$project_name'"
+            docker rm -f $containers 2>/dev/null
+        end
+
+        set -l volumes (docker volume ls -q --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        if test (count $volumes) -gt 0
+            echo "remove-workspace: removing docker volumes for project '$project_name'"
+            docker volume rm $volumes 2>/dev/null
+        end
+
+        set -l networks (docker network ls -q --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        if test (count $networks) -gt 0
+            echo "remove-workspace: removing docker networks for project '$project_name'"
+            docker network rm $networks 2>/dev/null
+        end
     end
 
     cd "$main_repo"; or begin
