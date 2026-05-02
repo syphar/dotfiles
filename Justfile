@@ -189,6 +189,27 @@ update-rust:
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
+prune-zoxide:
+    #!/usr/bin/env nu
+
+    let missing_paths = (
+        ^zoxide query --list --all
+        | lines
+        | where { |path| not ($path | path exists) }
+    )
+
+    if ($missing_paths | is-empty) {
+        print "No missing zoxide entries found."
+        return
+    }
+
+    $missing_paths
+    | each { |path|
+        ^zoxide remove $path
+        print $"Removed missing zoxide entry: ($path)"
+    }
+    | ignore
+
 update-fish: clean-fish
     # update fisher
     fish -c "fisher update"
