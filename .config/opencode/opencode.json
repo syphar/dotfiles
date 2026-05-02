@@ -104,7 +104,6 @@
   "plugin": [
     "@franlol/opencode-md-table-formatter@0.0.6",
     "@mohak34/opencode-notifier@0.2.2",
-    "opencode-plugin-mempalace",
     "opencode-anthropic-oauth"
   ],
   "mcp": {
