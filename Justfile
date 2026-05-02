@@ -24,6 +24,7 @@ daily-update:
     just npm-upgrade
     just kill-leftover-background-processes
     just tldr-update
+    just prune-zoxide
 
     just clear-disk-space-daily
 
