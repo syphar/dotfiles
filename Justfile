@@ -11,8 +11,8 @@ default:
 
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
-    # just heroku-cli
-    # just gcloud-cli
+    just heroku-cli
+    just gcloud-cli
     # update_cached_heroku_apps
     just update-homebrew
     just update-claude
@@ -95,11 +95,11 @@ tldr-update:
 
 gcloud-cli:
     gcloud components update --quiet
-    gcloud auth login --update-adc
+    # gcloud auth login --update-adc
 
 heroku-cli:
     ## heroku login, so we can fetch from heroku remotes later 
-    heroku whoami || heroku login
+    # heroku whoami || heroku login
     ## update the Heroku CLI
     heroku update
     ## try to update the autocomplete cache
