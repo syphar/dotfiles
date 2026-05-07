@@ -32,11 +32,21 @@
       }
     }
   },
+  "effortLevel": "medium",
+  "voice": {
+    "enabled": false,
+    "mode": "hold"
+  },
+  "voiceEnabled": false,
   "DISABLE_AUTOUPDATER": 1,
   "mcpServers": {
     "terraform": {
       "command": "terraform-mcp-server",
       "args": []
+    },
+    "google_workspace": {
+      "type": "url",
+      "url": "https://google-workspace-mcp.run.thermondo.de/mcp"
     },
     "context7": {
       "type": "url",
