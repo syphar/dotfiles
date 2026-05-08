@@ -541,7 +541,6 @@ uv "jedi-language-server"
 uv "lookatme", with: ["pyyaml==5.3.1"]
 uv "mackup", with: ["defusedxml", "requests"]
 uv "maturin"
-uv "openai"
 uv "perflint"
 uv "pgcli"
 uv "pip-tools"
