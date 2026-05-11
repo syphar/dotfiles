@@ -43,4 +43,3 @@ tidal-dl
 ty
 watchdog
 yamllint
-yq
