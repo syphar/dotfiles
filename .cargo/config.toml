@@ -5,4 +5,4 @@
 protocol = "sparse"
 
 [target.aarch64-apple-darwin]
-rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+rustflags = ["-C", "link-arg=-fuse-ld=lld", "--cfg", "tokio_unstable"]
