@@ -15,6 +15,7 @@ cargo-hack
 cargo-insta
 cargo-machete
 cargo-make
+cargo-msrv
 cargo-outdated
 cargo-script
 cargo-shear
