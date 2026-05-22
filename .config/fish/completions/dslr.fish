@@ -20,4 +20,3 @@ function _dslr_completion;
 end;
 
 complete --no-files --command dslr --arguments "(_dslr_completion)";
-
