@@ -40,9 +40,6 @@ daily-update:
     ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
     ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
 
-    # custom rust binaries 
-    just install-custom-rust-binary "$SRC_DIR/OpenCodeRust/" "opencode" "-p opencode-cli"
-
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
