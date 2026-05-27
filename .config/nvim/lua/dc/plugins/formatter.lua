@@ -24,7 +24,7 @@ return {
 			just = { "just" },
 			javascript = {
 				-- "biome-organize-imports",
-				"biome",
+				-- "biome",
 				-- "biome-check",
 			},
 			markdown = { "deno_fmt" },
