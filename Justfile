@@ -292,7 +292,7 @@ clear-disk-space-daily:
     just cargo-sweep-global
     just clear-dropbox-cache
     just clear-rust-target-directories {{ SRC_DIR }}
-    just clear-rust-target-directories {{ TMP_DIR }}
+    # just clear-rust-target-directories {{ TMP_DIR }}
     rm -rf ~/.cache/cargo-target/
 
 
