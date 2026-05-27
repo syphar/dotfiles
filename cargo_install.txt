@@ -26,6 +26,7 @@ cargo-udeps
 cargo-update
 cargo-watch
 diesel_cli --no-default-features --features postgres
+get-all-crates
 heater
 mdbook
 mdbook-linkcheck
