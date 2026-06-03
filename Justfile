@@ -178,13 +178,13 @@ update-cached-pypi-package-list:
 
 update-rust:
     rustup update
-    cargo install-update -a
+    # cargo install-update -a
     # hack, need to figure this out. 
     # I want to use rust-analyzer from homebrew, since it's newer. 
     # So I never install the `rust-analyzer` component of the rust toolchain. 
     # But: `rustup self-update` (and `update`) always recreate the wrapper symlink.
     rm -f ~/.cargo/bin/rust-analyzer 
-    -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
+    # -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
