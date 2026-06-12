@@ -17,6 +17,7 @@ cargo-machete
 cargo-make
 cargo-msrv
 cargo-outdated
+cargo-public-api
 cargo-script
 cargo-shear
 cargo-sort
