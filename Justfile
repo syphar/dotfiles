@@ -176,7 +176,7 @@ update-cached-pypi-package-list:
     # regex /ggrep via https://unix.stackexchange.com/a/13472/388999
     curl --compressed -s "https://pypi.org/simple/" | ggrep -oP '(?<=/simple/)[^/]+(?=/)' > ~/.cache/pypi_packages.txt
 
-update-rust:
+update-rust: && build-docs-rs-mcp
     rustup update
     # cargo install-update -a
     # hack, need to figure this out. 
@@ -187,6 +187,10 @@ update-rust:
     # -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
+
+[working-directory: '/Volumes/X10/src/rust-lang/docs-rs-mcp']
+build-docs-rs-mcp:
+  cargo build --release
 
 prune-zoxide:
     #!/usr/bin/env nu
