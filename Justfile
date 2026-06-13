@@ -190,6 +190,15 @@ update-rust: && build-docs-rs-mcp
 
 [working-directory: '/Volumes/X10/src/rust-lang/docs-rs-mcp']
 build-docs-rs-mcp:
+  #!/usr/bin/env bash 
+
+  if [ -n "$(git status --porcelain)" ]; then
+    echo "unclean worktree"
+    exit 1
+  fi
+
+  git checkout main
+  git ff
   cargo build --release
 
 prune-zoxide:
