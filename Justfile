@@ -7,6 +7,8 @@ export HOME := "/Users/syphar"
 export SRC_DIR := HOME / "src"
 export TMP_DIR := HOME / "tmp"
 
+JAEGER_VERSION := "2.19.0"
+
 default:
     just --list
 
@@ -200,6 +202,100 @@ build-docs-rs-mcp:
   git checkout main
   git ff
   cargo build --release
+
+# install/update Jaeger v2 as a local always-on trace backend (OTLP in, UI on :16686)
+install-jaeger:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    case "$(uname -m)" in
+        arm64)  goarch="arm64" ;;
+        x86_64) goarch="amd64" ;;
+        *)      echo "unsupported arch: $(uname -m)" >&2; exit 1 ;;
+    esac
+
+    name="jaeger-{{ JAEGER_VERSION }}-darwin-${goarch}"
+    url="https://github.com/jaegertracing/jaeger/releases/download/v{{ JAEGER_VERSION }}/${name}.tar.gz"
+
+    tmpdir="$(mktemp -d)"
+    trap 'rm -rf "$tmpdir"' EXIT
+
+    # binary -> ~/bin/jaeger
+    curl -fsSL "$url" | tar xz -C "$tmpdir"
+    mkdir -p "$HOME/bin"
+    rm -f "$HOME/bin/jaeger"
+    mv "$tmpdir/${name}/jaeger" "$HOME/bin/jaeger"
+    xattr -d com.apple.quarantine "$HOME/bin/jaeger" 2>/dev/null || true
+
+    # config (Badger persistent storage, OTLP receiver, query UI)
+    mkdir -p "$HOME/.jaeger/badger/keys" "$HOME/.jaeger/badger/values"
+    cat > "$HOME/.jaeger/config.yaml" <<EOF
+    service:
+      extensions: [jaeger_storage, jaeger_query, healthcheckv2]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [jaeger_storage_exporter]
+
+    extensions:
+      healthcheckv2:
+        http:
+
+      jaeger_query:
+        storage:
+          traces: main_store
+
+      jaeger_storage:
+        backends:
+          main_store:
+            badger:
+              directories:
+                keys: $HOME/.jaeger/badger/keys
+                values: $HOME/.jaeger/badger/values
+              ephemeral: false
+              ttl:
+                spans: 720h
+
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+
+    processors:
+      batch:
+
+    exporters:
+      jaeger_storage_exporter:
+        trace_storage: main_store
+    EOF
+
+    # autostart via launchd
+    plist="$HOME/Library/LaunchAgents/io.jaegertracing.jaeger.plist"
+    launchctl unload "$plist" 2>/dev/null || true
+    cat > "$plist" <<EOF
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0"><dict>
+      <key>Label</key><string>io.jaegertracing.jaeger</string>
+      <key>ProgramArguments</key>
+      <array>
+        <string>$HOME/bin/jaeger</string>
+        <string>--config</string>
+        <string>$HOME/.jaeger/config.yaml</string>
+      </array>
+      <key>RunAtLoad</key><true/>
+      <key>KeepAlive</key><true/>
+      <key>StandardOutPath</key><string>$HOME/.jaeger/jaeger.log</string>
+      <key>StandardErrorPath</key><string>$HOME/.jaeger/jaeger.err</string>
+    </dict></plist>
+    EOF
+    launchctl load "$plist"
+
+    echo "jaeger $($HOME/bin/jaeger version 2>/dev/null | head -1 || true) running — UI at http://localhost:16686"
 
 prune-zoxide:
     #!/usr/bin/env nu
