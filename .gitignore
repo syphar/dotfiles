@@ -23,5 +23,6 @@ bin/zoxide
 bin/kubectl
 bin/latexmk
 bin/xelatex
+bin/jaeger
 .claude/plugins
 .local/share/opencode/auth.json
