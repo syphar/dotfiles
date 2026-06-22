@@ -1,7 +1,7 @@
 #!/usr/bin/env just --justfile
 
 set unstable
-set working-directory := '/Volumes/X10/src/dotfiles'
+set working-directory := '/Volumes/DATA/src/dotfiles'
 
 export HOME := "/Users/syphar"
 export SRC_DIR := HOME / "src"
