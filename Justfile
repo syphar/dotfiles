@@ -190,7 +190,7 @@ update-rust: && build-docs-rs-mcp
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
-[working-directory: '/Volumes/X10/src/rust-lang/docs-rs-mcp']
+[working-directory: '/Volumes/DATA/src/rust-lang/docs-rs-mcp']
 build-docs-rs-mcp:
   #!/usr/bin/env bash 
 
