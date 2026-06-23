@@ -7,6 +7,8 @@ export HOME := "/Users/syphar"
 export SRC_DIR := HOME / "src"
 export TMP_DIR := HOME / "tmp"
 
+export HOMEBREW_NO_REQUIRE_TAP_TRUST := "1"
+
 JAEGER_VERSION := "2.19.0"
 
 default:
@@ -108,10 +110,13 @@ heroku-cli:
 update-homebrew:
     brew update && brew upgrade && brew upgrade --cask
 
-    ## install missing packages
+    # trust all taps
+    brew trust --tap $(brew tap)
+
+    # install missing packages
     brew bundle --no-upgrade --quiet 1>/dev/null
 
-    ## delete packages not in dump
+    # delete packages not in dump
     brew bundle cleanup -f
 
     ## cleanup
