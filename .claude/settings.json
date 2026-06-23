@@ -38,6 +38,7 @@
     "enabled": false,
     "mode": "hold"
   },
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": false,
   "DISABLE_AUTOUPDATER": 1,
   "mcpServers": {
@@ -57,6 +58,5 @@
       "type": "url",
       "url": "https://mcp.grep.app"
     }
-  },
-  "skipAutoPermissionPrompt": true
+  }
 }
