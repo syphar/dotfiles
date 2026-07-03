@@ -58,5 +58,6 @@
       "type": "url",
       "url": "https://mcp.grep.app"
     }
-  }
+  },
+  "tui": "fullscreen"
 }
