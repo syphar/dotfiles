@@ -1,13 +1,11 @@
 #!/usr/bin/env just --justfile
 
 set unstable
-set working-directory := '/Volumes/DATA/src/dotfiles'
+set working-directory := '/home/syphar/src/dotfiles'
 
-export HOME := "/Users/syphar"
+export HOME := "/home/syphar"
 export SRC_DIR := HOME / "src"
 export TMP_DIR := HOME / "tmp"
-
-export HOMEBREW_NO_REQUIRE_TAP_TRUST := "1"
 
 JAEGER_VERSION := "2.19.0"
 
@@ -17,18 +15,14 @@ default:
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
     # just heroku-cli
-    just gcloud-cli
-    # update_cached_heroku_apps
-    just update-homebrew
-    just update-claude
+    # # update_cached_heroku_apps
+    just update-system
     just update-luarocks
     just update-python-tools
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
     just npm-upgrade
-    just kill-leftover-background-processes
-    just tldr-update
     just prune-zoxide
 
     just clear-disk-space-daily
@@ -42,8 +36,8 @@ daily-update:
     just update-vim
 
     # github packages downloads
-    ./download_github_release.sh marksman artempyanykh/marksman marksman-macos
-    ./download_github_release.sh tuc riquito/tuc tuc-macos-amd64 
+    ./download_github_release.sh marksman artempyanykh/marksman marksman-linux-x64
+    ./download_github_release.sh tuc riquito/tuc tuc-ubuntu-amd64
 
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
@@ -52,11 +46,6 @@ daily-update:
 
     just update-git-repos
     just update-git-worktrees
-
-update-claude:
-  claude update
-  claude plugin marketplace update
-  claude plugin list --json | jq -r '.[].id' | sort -u | xargs -n1 claude plugin update
 
 update-git-repos:
     ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
@@ -73,7 +62,7 @@ update-generated-autocompletes:
     _DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish
 
 mackup:
-    # convert into new config files to links, 
+    # convert into new config files to links,
     # or any newly supported files after the mackup upgrade
     mackup link install --force-no
 
@@ -83,51 +72,23 @@ mackup:
     # copy some configs to dotfiles, to share
     ./mackup_dotfiles.py
 
-kill-leftover-background-processes:
-    ## cleanup dmypy processes
-    pkill -f dmypy || echo "nothing to kill"
-    ## cleanup pylsp processes
-    pkill -f pylsp || echo "nothing to kill"
-    ## cleanup node processes
-    pkill -f node || echo "nothing to kill"
-
-tldr-update:
-    ## tldr update
-    tldr --update || echo "failed, but ignore for now"
-
-gcloud-cli:
-    gcloud components update --quiet
-    # gcloud auth login --update-adc
-
 heroku-cli:
-    ## heroku login, so we can fetch from heroku remotes later 
+    ## heroku login, so we can fetch from heroku remotes later
     heroku whoami || heroku login
     ## update the Heroku CLI
     heroku update
     ## try to update the autocomplete cache
     heroku autocomplete zsh
 
-update-homebrew:
-    brew update && brew upgrade && brew upgrade --cask
-
-    # trust all taps
-    brew trust --tap $(brew tap)
-
-    # install missing packages
-    brew bundle --no-upgrade --quiet 1>/dev/null
-
-    # delete packages not in dump
-    brew bundle cleanup -f
-
-    ## cleanup
-    brew cleanup -s
+update-system:
+    sudo dnf upgrade -y
 
 update-luarocks:
     ## luarocks packages
-    -xargs -n 1 luarocks install < luarocks_list.txt 
+    -xargs -n 1 luarocks install --local < luarocks_list.txt
 
     ## luarocks packages for lua 5.1, for neovim
-    -xargs -n 1 luarocks install --lua-version 5.1 < luarocks_list.txt 
+    -xargs -n 1 luarocks install --local --lua-version 5.1 < luarocks_list.txt
 
 update-python-tools:
     #!/usr/bin/env nu
@@ -142,7 +103,6 @@ update-python-tools:
         uv tool install --upgrade ...($pkg | split row " ")
     }
     | ignore
-
 
 update-vim:
     rm -f ~/.local/state/nvim/*.log
@@ -159,54 +119,47 @@ npm-upgrade:
         npm -g install "$package"
     done
 
-    xargs -n 1 npm install -g < global_npm_packages.txt 
+    xargs -n 1 npm install -g < global_npm_packages.txt
 
 cargo-sweep-global:
-  #!/bin/bash
-  set -euo pipefail
+    #!/bin/bash
+    set -euo pipefail
 
-  tmpdir="$(mktemp -d)"
-  trap 'rm -rf "$tmpdir"' EXIT
-  cd "$tmpdir"
+    tmpdir="$(mktemp -d)"
+    trap 'rm -rf "$tmpdir"' EXIT
+    cd "$tmpdir"
 
-  cargo init --name "some"
-  just --justfile "{{ justfile() }}" cargo-sweep "$tmpdir"
-
+    cargo init --name "some"
+    just --justfile "{{ justfile() }}" cargo-sweep "$tmpdir"
 
 cargo-sweep REPO:
     cd {{ REPO }} && \
         cargo sweep --time 30 && \
         cargo sweep --installed
-     
 
 update-cached-pypi-package-list:
-    # regex /ggrep via https://unix.stackexchange.com/a/13472/388999
-    curl --compressed -s "https://pypi.org/simple/" | ggrep -oP '(?<=/simple/)[^/]+(?=/)' > ~/.cache/pypi_packages.txt
+    # regex /grep via https://unix.stackexchange.com/a/13472/388999
+    curl --compressed -s "https://pypi.org/simple/" | grep -oP '(?<=/simple/)[^/]+(?=/)' > ~/.cache/pypi_packages.txt
 
 update-rust: && build-docs-rs-mcp
     rustup update
     cargo install-update -a
-    # hack, need to figure this out. 
-    # I want to use rust-analyzer from homebrew, since it's newer. 
-    # So I never install the `rust-analyzer` component of the rust toolchain. 
-    # But: `rustup self-update` (and `update`) always recreate the wrapper symlink.
-    rm -f ~/.cargo/bin/rust-analyzer 
     -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
-[working-directory: '/Volumes/DATA/src/rust-lang/docs-rs-mcp']
+[working-directory('/home/syphar/src/rust-lang/docs-rs-mcp')]
 build-docs-rs-mcp:
-  #!/usr/bin/env bash 
+    #!/usr/bin/env bash
 
-  if [ -n "$(git status --porcelain)" ]; then
-    echo "unclean worktree"
-    exit 1
-  fi
+    if [ -n "$(git status --porcelain)" ]; then
+      echo "unclean worktree"
+      exit 1
+    fi
 
-  git checkout main
-  git ff
-  cargo build --release
+    git checkout main
+    git ff
+    cargo build --release
 
 # install/update Jaeger v2 as a local always-on trace backend (OTLP in, UI on :16686)
 install-jaeger:
@@ -341,16 +294,16 @@ update-git-repo REPO:
 
     ~/bin/rebuild_tags.sh
 
-    if [ -f "{{ REPO }}/.pre-commit-config.yaml" ]; then 
+    if [ -f "{{ REPO }}/.pre-commit-config.yaml" ]; then
         if [ ! -f "{{ REPO }}/.git/hooks/pre-commit" ]; then
             echo "pre-commit not found, installing..."
             pre-commit install
-        else 
+        else
             echo "pre-commit found"
         fi
     fi
 
-    if [ -f "{{ REPO }}/.git-blame-ignore-revs" ]; then 
+    if [ -f "{{ REPO }}/.git-blame-ignore-revs" ]; then
         git config blame.ignoreRevsFile .git-blame-ignore-revs
     fi
 
@@ -399,15 +352,13 @@ link-docsrs-agents:
     | ignore
 
 clear-dropbox-cache:
-  rm -rf ~/Dropbox/.dropbox.cache/*
+    rm -rf ~/Dropbox/.dropbox.cache/*
 
 clear-disk-space-daily:
     just clear-docker-daily
 
-
 clear-disk-space:
     just clear-dropbox-cache
-    just clear-thermondo-backups
     just clear-logs
     just clear-docker
     just clear-cargo-cache
@@ -419,18 +370,14 @@ clear-disk-space:
     just clear-docsrs-dev
     just garbage-collect-git-repos
 
-
-clear-thermondo-backups:
-    fd --type f --full-path --no-ignore ".*/sql/backup/.*\.sql" "$SRC_DIR/thermondo/" --exec rm -rf {}
-
 clear-logs:
     rm -rf /usr/local/var/log/*
     rm -rf ~/.local/state/nvim/lsp.log
 
 clear-docker-daily:
     # only dangling things
-    docker image prune -f 
-    docker builder prune -f 
+    docker image prune -f
+    docker builder prune -f
     docker volume prune -f
 
 clear-docker:

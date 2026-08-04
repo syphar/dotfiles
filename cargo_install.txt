@@ -35,6 +35,7 @@ microserver
 mini-redis
 runiq
 rusty-man
+sqlx-cli
 viceroy
 wasm-pack
 zeta-note

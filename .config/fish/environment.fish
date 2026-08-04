@@ -4,7 +4,7 @@ set --global -x VISUAL nvim
 set --global -x PAGER less
 set --global -x LANG en_US.UTF-8
 set --global -x LESS "-F -g -i -M -R -S -w -X -z 4"
-set --global -x TMPDIR /private/tmp
+set --global -x TMPDIR /tmp
 
 set --global -x VIRTUAL_ENV_DISABLE_PROMPT true
 set --global -x PIP_REQUIRE_VIRTUALENV true
@@ -33,12 +33,6 @@ set --global -x PYENV_ROOT "$HOME/.pyenv"
 
 set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
 
-set --global -x JDTLS_HOME /usr/local/opt/jdtls/libexec/
-
-if type -q brew
-    set --global -x LIBRARY_PATH $(brew --prefix)/lib/
-end
-
 # zoxide fzf options
 # Just the default from src/fzf.rs,
 # just an updated preview.
@@ -52,16 +46,12 @@ set --global -x _ZO_FZF_OPTS "
     --select-1
     --preview='eza -1 {2..}'"
 
-# for tmux-spotify
-export MUSIC_APP="Music"
-
-fish_add_path $PYENV_ROOT/bin
+# fish_add_path $PYENV_ROOT/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/bin
-fish_add_path /usr/local/opt/curl/bin
-fish_add_path /usr/local/sbin
-fish_add_path /usr/local/opt/openjdk/bin
-fish_add_path /opt/homebrew/opt/postgresql@16/bin
-fish_add_path /opt/homebrew/opt/llvm/bin
+fish_add_path $HOME/go/bin
+# fish_add_path /usr/local/opt/curl/bin
+# fish_add_path /usr/local/sbin
+
 

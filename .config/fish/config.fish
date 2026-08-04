@@ -1,3 +1,5 @@
+set --global -x XDG_CONFIG_HOME $HOME/.config/
+
 source $XDG_CONFIG_HOME/fish/aliases.fish
 source $XDG_CONFIG_HOME/fish/key_bindings.fish
 source $XDG_CONFIG_HOME/fish/environment.fish
@@ -7,12 +9,15 @@ source $XDG_CONFIG_HOME/fish/colors.fish
 starship init fish | source
 
 # only delayed right prompt, left prompt should be immediate
-set -U async_prompt_functions fish_right_prompt
+# set -U async_prompt_functions fish_right_prompt
 
 # show loading indicator
-function fish_right_prompt_loading_indicator
-    echo (set_color '#aaa')' … '(set_color normal)
-end
+# function fish_right_prompt_loading_indicator
+#     echo (set_color '#aaa')' … '(set_color normal)
+# end
+
+# hide greeting
+set -U fish_greeting
 
 # configure franciscolourenco/done
 set -U __done_allow_nongraphical 1
@@ -36,7 +41,3 @@ if status --is-interactive
 end
 
 # vim: et ts=4 sts=4 sw=4
-
-# Added by OrbStack: command-line tools and integration
-# This won't be added again if you remove it.
-source ~/.orbstack/shell/init.fish 2>/dev/null || :

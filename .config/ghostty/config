@@ -2,11 +2,11 @@
 # font-family-bold = BlexMono Nerd Font Mono Medium
 # font-family-italic = BlexMono Nerd Font Mono Light Italic
 # font-family-bold-italic = BlexMono Nerd Font Mono Medium Italic
-font-family = BlexMono Nerd Font Mono ExtraLight
-font-family-bold = BlexMono Nerd Font Mono Light
-font-family-italic = BlexMono Nerd Font Mono ExtraLight Italic
-font-family-bold-italic = BlexMono Nerd Font Mono Light Italic
-font-size = 14
+font-family = BlexMono Nerd Font Mono Light
+font-family-bold = BlexMono Nerd Font Mono Medium
+font-family-italic = BlexMono Nerd Font Mono Light Italic
+font-family-bold-italic = BlexMono Nerd Font Mono Medium Italic
+font-size = 13
 font-thicken = true
 bold-is-bright = true
 theme = Kanagawa Wave
@@ -15,43 +15,49 @@ clipboard-paste-protection = false
 
 link-url = true
 
-macos-auto-secure-input = true
-macos-option-as-alt = true
+# macos-auto-secure-input = true
+# macos-option-as-alt = true
 
 # MAP WINDOW / PANE / TAB KEYMAPS TO TMUX KEYBINDS
 
 # switch tabs via CMD+{num}
-keybind = cmd+Digit1=text:\x010
-keybind = cmd+Digit2=text:\x011
-keybind = cmd+Digit3=text:\x012
-keybind = cmd+Digit4=text:\x013
-keybind = cmd+Digit5=text:\x014
-keybind = cmd+Digit6=text:\x015
-keybind = cmd+Digit7=text:\x016
-keybind = cmd+Digit8=text:\x017
-keybind = cmd+Digit9=text:\x018
+keybind = alt+Digit1=text:\x010
+keybind = alt+Digit2=text:\x011
+keybind = alt+Digit3=text:\x012
+keybind = alt+Digit4=text:\x013
+keybind = alt+Digit5=text:\x014
+keybind = alt+Digit6=text:\x015
+keybind = alt+Digit7=text:\x016
+keybind = alt+Digit8=text:\x017
+keybind = alt+Digit9=text:\x018
+
+# pane resize with super
+keybind = super+h=text:\x1bh
+keybind = super+j=text:\x1bj
+keybind = super+k=text:\x1bk
+keybind = super+l=text:\x1bl
 
 # TABS
 
 # close tab
-keybind = cmd+w=text:\x01& 
+keybind = alt+w=text:\x01& 
 # new tab
-keybind = cmd+t=text:\x01c 
+keybind = alt+t=text:\x01c 
 
 # sesh: 
 # new/open session
-keybind = cmd+k=text:\x01T 
+keybind = alt+k=text:\x01T 
 # last session
-keybind = cmd+l=text:\x01L 
+keybind = alt+l=text:\x01L 
 
 # PANES
 
 # split horizontally
-keybind = cmd+d=text:\x01| 
+keybind = alt+d=text:\x01| 
 
 # split vertically
-keybind = cmd+shift+d=text:\x01- 
+keybind = alt+shift+d=text:\x01- 
 
 # zoom pane
-keybind = cmd+shift+enter=text:\x01z 
+keybind = alt+shift+enter=text:\x01z 
 

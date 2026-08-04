@@ -47,17 +47,9 @@ abbr -ag tfi terraform init
 abbr -ag tf terraform
 alias gca 'git commit -e -F (generate-commit-message | psub)'
 
-abbr -ag cr claude --resume
-
-abbr -ag h heroku
-abbr -ag hl heroku login
-alias heroku-shell "heroku run \"./manage.py shell\""
-
 abbr -ag bcon bacon
 abbr -ag bc bacon clippy-all
 abbr -ag bt bacon nextest
-
-alias oc="/opt/homebrew/bin/opencode"
 
 alias ll="eza --long --all --header --icons --group-directories-first --color-scale=size --time-style=relative --git"
 alias l="eza --icons --group-directories-first"
