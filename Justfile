@@ -36,6 +36,7 @@ daily-update:
     just update-vim
 
     # github packages downloads
+    ./download_github_release.sh rust-analyzer rust-lang/rust-analyzer rust-analyzer-x86_64-unknown-linux-gnu.gz
     ./download_github_release.sh marksman artempyanykh/marksman marksman-linux-x64
     ./download_github_release.sh tuc riquito/tuc tuc-ubuntu-amd64
 
@@ -144,6 +145,7 @@ update-cached-pypi-package-list:
 update-rust: && build-docs-rs-mcp
     rustup update
     cargo install-update -a
+    rm -f ~/.cargo/bin/rust-analyzer
     -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
