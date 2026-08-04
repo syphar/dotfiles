@@ -16,6 +16,7 @@ cargo-insta
 cargo-machete
 cargo-make
 cargo-msrv
+cargo-nextest --secure
 cargo-outdated
 cargo-public-api
 cargo-script
