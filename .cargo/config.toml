@@ -1,8 +1,12 @@
-# [build]
+[build]
 # target-dir = "/Users/syphar/.cache/cargo-target"
+jobs = 6 # temporary for the mac mini
+
+[target.'cfg(target_os = "linux")']
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 
 [registries.crates-io]
 protocol = "sparse"
-
-[target.aarch64-apple-darwin]
-rustflags = ["-C", "link-arg=-fuse-ld=lld", "--cfg", "tokio_unstable"]
