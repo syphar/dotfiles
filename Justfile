@@ -22,6 +22,7 @@ daily-update:
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
+    just update-go
     just npm-upgrade
     just prune-zoxide
 
@@ -83,6 +84,17 @@ heroku-cli:
 
 update-system:
     sudo dnf upgrade -y
+    flatpak update -y
+
+update-go:
+    #!/usr/bin/env bash
+
+    # update binaries installed with `go install`
+    for bin in "$(go env GOPATH)"/bin/*; do
+        pkg=$(go version -m "$bin" | awk '$1 == "path" { print $2 }')
+        echo "updating go $pkg to latest version"
+        go install "$pkg@latest"
+    done
 
 update-luarocks:
     ## luarocks packages
@@ -364,6 +376,7 @@ clear-disk-space:
     just clear-logs
     just clear-docker
     just clear-cargo-cache
+    just clear-go-caches
     just clear-dev-environments
     just clear-caches
     just clear-rust-target-directories {{ SRC_DIR }}
@@ -371,6 +384,12 @@ clear-disk-space:
     just clear-rust-disk-space
     just clear-docsrs-dev
     just garbage-collect-git-repos
+
+clear-go-caches:
+    go clean -cache     
+    go clean -testcache  
+    go clean -modcache   
+    go clean -fuzzcache  
 
 clear-logs:
     rm -rf /usr/local/var/log/*
