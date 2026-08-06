@@ -31,6 +31,8 @@ set --global -x FORGIT_DIFF_GIT_OPTS "--ignore-all-space"
 set --global -x NVM_DIR "$HOME/.nvm"
 set --global -x PYENV_ROOT "$HOME/.pyenv"
 
+set --global -x NEXTEST_EXPERIMENTAL_RECORD 1
+
 set --global -x _ZO_EXCLUDE_DIRS "$HOME:$HOME/.local/share/nvim"
 
 # zoxide fzf options
