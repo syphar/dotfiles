@@ -103,23 +103,31 @@ return {
 						checkOnSave = {
 							enable = true,
 							command = "check",
-							allTargets = true,
+							allTargets = false, -- TODO: re-enable with more memory?
 							allFeatures = true,
 							-- workspace = false,
 						},
 						loadOutDirsFromCheck = false,
 						editor = { formatOnType = true },
 						cachePriming = {
+							-- TODO: re-enable cache priming when we have more memory
 							enable = false,
+						},
+						lru = {
+							-- TODO: remove when we have more memory
+							capacity = 64, -- default: 128
 						},
 						cargo = {
 							buildScripts = {
 								enable = true, -- proc macro
 							},
 							loadOutDirsFromCheck = true, -- proc macro
+							allTargets = false, -- TODO: re-enable with more memory?
+
 						},
 						procMacro = {
 							enable = true, -- proc macro
+							processes = 1, -- TODO: remove with more memory
 						},
 						workspace = {
 							symbol = {
