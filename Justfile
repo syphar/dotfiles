@@ -85,6 +85,7 @@ heroku-cli:
 update-system:
     sudo dnf upgrade -y
     flatpak update -y
+    mise upgrade
 
 update-go:
     #!/usr/bin/env bash
