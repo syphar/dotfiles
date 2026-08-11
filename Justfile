@@ -370,6 +370,12 @@ clear-dropbox-cache:
 
 clear-disk-space-daily:
     just clear-docker-daily
+    just clean-tmp
+
+clean-tmp:
+    # Delete only top-level entries that have not been modified in seven days.
+    fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$TMP_DIR" --exec-batch rm -rf --
+    fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$HOME/Downloads/" --exec-batch rm -rf --
 
 clear-disk-space:
     just clear-dropbox-cache
