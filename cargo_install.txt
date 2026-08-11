@@ -6,6 +6,7 @@ cargo-cache
 cargo-check
 cargo-chef
 cargo-deny
+cargo-docs-rs
 cargo-docset
 cargo-edit
 cargo-expand
