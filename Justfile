@@ -393,10 +393,10 @@ clear-disk-space:
     just garbage-collect-git-repos
 
 clear-go-caches:
-    go clean -cache     
-    go clean -testcache  
-    go clean -modcache   
-    go clean -fuzzcache  
+    go clean -cache
+    go clean -testcache
+    go clean -modcache
+    go clean -fuzzcache
 
 clear-logs:
     rm -rf /usr/local/var/log/*
@@ -452,7 +452,25 @@ clear-docsrs-dev:
     fd --type d --no-ignore --hidden --prune "\.workspace" "$SRC_DIR/rust-lang/" --exec rm -rf {}
     fd --type d --no-ignore --hidden --prune "ignored" "$SRC_DIR/rust-lang/" --exec rm -rf {}
 
-
 get-all-crates:
     git -C /data/crates.io-index/ pull
     get-all-crates --index /data/crates.io-index/ --out /data/crates/ --latest -j 8
+
+gvisor-install:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+
+    ARCH=$(uname -m)
+    URL=https://storage.googleapis.com/gvisor/releases/release/latest/${ARCH}
+    wget ${URL}/gvisor.tar.bz2 ${URL}/gvisor.tar.bz2.sha512
+    sha512sum -c gvisor.tar.bz2.sha512
+    sudo tar -xjf gvisor.tar.bz2 -C /usr/local/bin
+    rm -f gvisor.tar.bz2 gvisor.tar.bz2.sha512
+
+gvisor-register:
+  sudo /usr/local/bin/runsc install
+  sudo systemctl reload docker
+  docker run --rm --runtime=runsc hello-world
+
+gvisor-test:
+  docker run --rm --runtime=runsc hello-world
