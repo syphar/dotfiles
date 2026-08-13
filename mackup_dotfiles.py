@@ -26,6 +26,7 @@ app_list = (
     "kitty",
     "lsd",
     "mackup",
+    "mise",
     "mybin",
     "mycargo",
     "mycodexdotfiles",
