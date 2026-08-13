@@ -30,6 +30,8 @@ if status --is-interactive
 
     zoxide init fish --cmd cd | source
 
+    mise activate fish | source
+
     # upgrade open-file limit for vim & docs.rs
     ulimit -n 10000
 
