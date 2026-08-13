@@ -164,14 +164,32 @@ vim.cmd("syntax sync minlines=256")
 -- When scrolling, keep cursor 10 lines away from screen border
 vim.opt.scrolloff = 10
 
+local function position_quickfix(win)
+	vim.api.nvim_win_call(win, function()
+		if vim.o.columns > 120 then
+			vim.cmd("wincmd L") -- move quickfix window to the right
+			vim.cmd("vertical resize " .. math.floor(vim.o.columns * 0.40))
+		else
+			vim.cmd("wincmd J") -- move quickfix window below
+			vim.cmd("resize " .. math.floor(vim.o.lines * 0.40))
+		end
+	end)
+end
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "qf",
 	callback = function()
-		-- Only move and resize the quickfix window if the total width is large enough
-		if vim.o.columns > 100 then
-			vim.cmd("wincmd L") -- move quickfix window to the right
-			local width = math.floor(vim.o.columns * 0.40)
-			vim.cmd("vertical resize " .. width)
+		position_quickfix(vim.api.nvim_get_current_win())
+	end,
+})
+
+vim.api.nvim_create_autocmd("VimResized", {
+	callback = function()
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			local buf = vim.api.nvim_win_get_buf(win)
+			if vim.bo[buf].filetype == "qf" then
+				position_quickfix(win)
+			end
 		end
 	end,
 })
