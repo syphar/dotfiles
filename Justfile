@@ -37,8 +37,6 @@ daily-update:
     just update-vim
 
     # github packages downloads
-    ./download_github_release.sh rust-analyzer rust-lang/rust-analyzer rust-analyzer-x86_64-unknown-linux-gnu.gz
-    ./download_github_release.sh marksman artempyanykh/marksman marksman-linux-x64
     ./download_github_release.sh tuc riquito/tuc tuc-ubuntu-amd64
 
     # update tmux plugins
