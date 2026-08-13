@@ -57,6 +57,16 @@ return {
 			"warnings",
 		}
 
+		-- temporary until we have more memory again:
+		-- run `cargo check` as normal linter, since we don't have RA
+		lint.linters.cargo_check = {
+			cmd = "cargo",
+			args = { "check", "--all-targets", "--message-format=json" },
+			stdin = false,
+			append_fname = false,
+			parser = lint.linters.clippy.parser
+		}
+
 		vim.api.nvim_create_autocmd({
 			"BufReadPost",
 			"BufWritePost",
@@ -94,6 +104,8 @@ return {
 			sql = { "sqruff" },
 			vim = { "vint" },
 			yaml = { "yamllint" },
+			-- temporary until we have more memory again:
+			rust = { "cargo_check" }
 		}
 	end,
 }

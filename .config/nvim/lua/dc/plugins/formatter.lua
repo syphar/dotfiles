@@ -31,6 +31,9 @@ return {
 			json = { "jq" },
 			fish = { "fish_indent" },
 			proto = { "buf" },
+			-- temporary until we have more memory again:
+			-- run `rustfmt` as normal formatter, since we don't have RA
+			rust = { "rustfmt"},
 			python = function(bufnr)
 				local dc_utils = require("dc.utils")
 				local pyproject = dc_utils.pyproject_toml(bufnr)
