@@ -34,6 +34,7 @@ get-all-crates
 heater
 mdbook
 mdbook-linkcheck
+mdbook-linkcheck2
 microserver
 mini-redis
 runiq
