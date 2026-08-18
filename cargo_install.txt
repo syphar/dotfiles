@@ -32,6 +32,7 @@ cratesio-mcp
 diesel_cli --no-default-features --features postgres
 get-all-crates
 heater
+just-lsp
 mdbook
 mdbook-linkcheck
 mdbook-linkcheck2

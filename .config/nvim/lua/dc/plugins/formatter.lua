@@ -21,7 +21,6 @@ return {
 			lua = { "stylua" },
 			["jinja.html"] = { "djhtml" },
 			sql = { "sqruff" },
-			just = { "just" },
 			javascript = {
 				-- "biome-organize-imports",
 				-- "biome",
@@ -33,7 +32,7 @@ return {
 			proto = { "buf" },
 			-- temporary until we have more memory again:
 			-- run `rustfmt` as normal formatter, since we don't have RA
-			rust = { "rustfmt"},
+			rust = { "rustfmt" },
 			python = function(bufnr)
 				local dc_utils = require("dc.utils")
 				local pyproject = dc_utils.pyproject_toml(bufnr)
