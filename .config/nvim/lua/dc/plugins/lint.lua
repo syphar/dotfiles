@@ -98,7 +98,7 @@ return {
 			["jinja.html"] = { "curlylint" },
 			json = { "jsonlint" },
 			lua = { "selene" },
-			markdown = { "markdownlint" },
+			markdown = { "markdownlint-cli2" },
 			proto = { "buf_lint" },
 			sh = { "shellcheck" },
 			sql = { "sqruff" },

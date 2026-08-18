@@ -2,3 +2,5 @@
 "aqua:LuaLS/lua-language-server" = "latest"
 "aqua:artempyanykh/marksman" = "latest"
 "aqua:rust-lang/rust-analyzer" = "latest"
+deno = "latest"
+"npm:markdownlint-cli2" = "latest"
