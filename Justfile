@@ -85,6 +85,11 @@ update-system:
     flatpak update -y
     mise upgrade
 
+backup-package-list: 
+    dnf repoquery --userinstalled --qf '%{name}\n' | sort -u > /data/backup/packages/packages-rpm.txt
+    flatpak list --app --columns=application > /data/backup/packages/packages-flatpak.txt
+    dnf repolist --enabled > /data/backup/packages/repos.txt
+
 update-go:
     #!/usr/bin/env bash
 
