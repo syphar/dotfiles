@@ -2,7 +2,7 @@ font-family = BlexMono Nerd Font Mono Light
 font-family-bold = BlexMono Nerd Font Mono Medium
 font-family-italic = BlexMono Nerd Font Mono Light Italic
 font-family-bold-italic = BlexMono Nerd Font Mono Medium Italic
-font-size = 13
+font-size = 12
 bold-is-bright = true
 theme = Kanagawa Wave
 
