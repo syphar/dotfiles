@@ -81,7 +81,7 @@ heroku-cli:
     heroku autocomplete zsh
 
 update-system:
-    sudo dnf upgrade -y
+    sudo dnf upgrade --refresh -y
     flatpak update -y
     mise upgrade
 
