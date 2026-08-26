@@ -64,8 +64,25 @@ return {
 			args = { "check", "--all-targets", "--message-format=json" },
 			stdin = false,
 			append_fname = false,
-			parser = lint.linters.clippy.parser
+			parser = lint.linters.clippy.parser,
 		}
+
+		-- nvim-lint cancels previous runs per buffer. cargo check operates on the
+		-- whole workspace, though, so a run started from another Rust buffer can
+		-- still overlap. Keep only one cargo_check process alive globally.
+		local lint_process = lint.lint
+		local cargo_check_process
+		lint.lint = function(linter, opts)
+			if linter.name == "cargo_check" and cargo_check_process then
+				cargo_check_process:cancel()
+			end
+
+			local process = lint_process(linter, opts)
+			if linter.name == "cargo_check" then
+				cargo_check_process = process
+			end
+			return process
+		end
 
 		vim.api.nvim_create_autocmd({
 			"BufReadPost",
@@ -105,7 +122,7 @@ return {
 			vim = { "vint" },
 			yaml = { "yamllint" },
 			-- temporary until we have more memory again:
-			rust = { "cargo_check" }
+			rust = { "cargo_check" },
 		}
 	end,
 }
