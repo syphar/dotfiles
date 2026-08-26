@@ -41,6 +41,7 @@ mini-redis
 runiq
 rusty-man
 sqlx-cli
+sqruff
 viceroy
 wasm-pack
 zeta-note
