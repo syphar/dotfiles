@@ -1,7 +1,7 @@
 [build]
 # target-dir = "/Users/syphar/.cache/cargo-target"
 jobs = 6 # temporary for the mac mini
-rustc-wrapper = "/usr/bin/sccache"
+# rustc-wrapper = "/usr/bin/sccache"
 
 [target.'cfg(target_os = "linux")']
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
