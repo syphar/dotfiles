@@ -90,15 +90,19 @@ backup-package-list:
     flatpak list --app --columns=application > /data/backup/packages/packages-flatpak.txt
     dnf repolist --enabled > /data/backup/packages/repos.txt
 
+# Install missing binaries and update existing ones managed through `go install`.
 update-go:
-    #!/usr/bin/env bash
+    #!/usr/bin/env nu
 
-    # update binaries installed with `go install`
-    for bin in "$(go env GOPATH)"/bin/*; do
-        pkg=$(go version -m "$bin" | awk '$1 == "path" { print $2 }')
-        echo "updating go $pkg to latest version"
-        go install "$pkg@latest"
-    done
+    open go_install.txt
+    | lines
+    | each { |line| $line | split row --number 2 "#" | first | str trim }
+    | where { |pkg| $pkg | is-not-empty }
+    | each { |pkg|
+        print $"installing/updating go ($pkg)"
+        go install $pkg
+    }
+    | ignore
 
 update-luarocks:
     ## luarocks packages

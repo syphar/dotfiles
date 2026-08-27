@@ -1,0 +1,3 @@
+github.com/docker/docker-language-server/cmd/docker-language-server@latest
+github.com/joshmedeski/sesh/v2@latest
+github.com/rhysd/actionlint/cmd/actionlint@latest
