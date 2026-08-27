@@ -70,6 +70,7 @@ return {
 		-- nvim-lint cancels previous runs per buffer. cargo check operates on the
 		-- whole workspace, though, so a run started from another Rust buffer can
 		-- still overlap. Keep only one cargo_check process alive globally.
+		local cargo_check_timeout_ms = 60 * 1000
 		local lint_process = lint.lint
 		local cargo_check_process
 		lint.lint = function(linter, opts)
@@ -78,11 +79,23 @@ return {
 			end
 
 			local process = lint_process(linter, opts)
-			if linter.name == "cargo_check" then
+			if linter.name == "cargo_check" and process then
 				cargo_check_process = process
+				vim.defer_fn(function()
+					process:cancel()
+				end, cargo_check_timeout_ms)
 			end
 			return process
 		end
+
+		vim.api.nvim_create_autocmd("VimLeavePre", {
+			group = vim.api.nvim_create_augroup("nvim-lint-shutdown", { clear = true }),
+			callback = function()
+				if cargo_check_process then
+					cargo_check_process:cancel()
+				end
+			end,
+		})
 
 		vim.api.nvim_create_autocmd({
 			"BufReadPost",
