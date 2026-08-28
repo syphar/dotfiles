@@ -7,7 +7,7 @@ setlocal colorcolumn=89
 
 setlocal suffixesadd+=.py,__init__.py
 
-DashKeywords python3 django
+" DashKeywords python3 django
 
 nnoremap <buffer> <silent> gh <cmd>Telescope python_docs<CR>
 vnoremap <buffer> <silent> gh "zy:Telescope python_docs search=<C-r>z<CR>
