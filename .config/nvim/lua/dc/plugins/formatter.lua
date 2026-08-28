@@ -79,7 +79,13 @@ return {
 			end,
 			sqruff = {
 				command = "sqruff",
-				args = { "fix", "--config", "/Users/syphar/.sqruff", "--force", "$FILENAME" },
+				args = {
+					"fix",
+					-- "--config",
+					-- "/Users/syphar/.sqruff",
+					"--force",
+					"$FILENAME"
+				},
 				stdin = false,
 			},
 			ruff_fix = {
