@@ -59,13 +59,22 @@ return {
 
 		-- temporary until we have more memory again:
 		-- run `cargo check` as normal linter, since we don't have RA
-		lint.linters.cargo_check = {
-			cmd = "cargo",
-			args = { "check", "--all-targets", "--message-format=json" },
-			stdin = false,
-			append_fname = false,
-			parser = lint.linters.clippy.parser,
-		}
+		lint.linters.cargo_check = function()
+			local filename = vim.api.nvim_buf_get_name(0)
+			local manifest = vim.fs.find("Cargo.toml", { path = filename, upward = true })[1]
+
+			return {
+				cmd = "cargo",
+				args = { "check", "--all-targets", "--message-format=json" },
+				stdin = false,
+				append_fname = false,
+				cwd = manifest and vim.fs.dirname(manifest) or vim.fs.dirname(filename),
+				-- Cargo returns 101 when checking finds compilation errors. Those errors
+				-- are already reported as diagnostics by the parser below.
+				ignore_exitcode = true,
+				parser = lint.linters.clippy.parser,
+			}
+		end
 
 		-- nvim-lint cancels previous runs per buffer. cargo check operates on the
 		-- whole workspace, though, so a run started from another Rust buffer can
