@@ -1,0 +1,20 @@
+repo id                                            repo name
+1password                                          1Password Stable Channel
+brave-browser                                      Brave Browser
+copr:copr.fedorainfracloud.org:atim:starship       Copr repo for starship owned by atim
+copr:copr.fedorainfracloud.org:group_zealdocs:zeal Copr repo for zeal owned by @zealdocs
+copr:copr.fedorainfracloud.org:jdxcode:mise        Copr repo for mise owned by jdxcode
+copr:copr.fedorainfracloud.org:phracek:PyCharm     Copr repo for PyCharm owned by phracek
+copr:copr.fedorainfracloud.org:scottames:ghostty   Copr repo for ghostty owned by scottames
+copr-sharpenedblade-t2linux                        Copr repo for t2linux owned by sharpenedblade
+docker-ce-stable                                   Docker CE Stable - x86_64
+Dropbox                                            Dropbox Repository
+fedora                                             Fedora 44 - x86_64
+fedora-cisco-openh264                              Fedora 44 openh264 (From Cisco) - x86_64
+google-chrome                                      google-chrome
+google-cloud-cli                                   Google Cloud CLI
+hashicorp                                          Hashicorp Stable - x86_64
+openai-chatgpt                                     ChatGPT
+rpmfusion-nonfree-nvidia-driver                    RPM Fusion for Fedora 44 - Nonfree - NVIDIA Driver
+rpmfusion-nonfree-steam                            RPM Fusion for Fedora 44 - Nonfree - Steam
+updates                                            Fedora 44 - x86_64 - Updates

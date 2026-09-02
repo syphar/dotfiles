@@ -17,6 +17,7 @@ daily-update:
     # just heroku-cli
     # # update_cached_heroku_apps
     just update-system
+    just backup-package-list
     just update-luarocks
     just update-python-tools
     just update-generated-autocompletes
@@ -86,9 +87,20 @@ update-system:
     mise upgrade
 
 backup-package-list: 
-    dnf repoquery --userinstalled --qf '%{name}\n' | sort -u > /data/backup/packages/packages-rpm.txt
-    flatpak list --app --columns=application > /data/backup/packages/packages-flatpak.txt
-    dnf repolist --enabled > /data/backup/packages/repos.txt
+    # Flatpak entries retain their origin for restoration; the DNF source
+    # list records repositories that must be configured before restoration.
+    dnf repoquery --userinstalled --qf '%{name}\n' | sort -u > dnf_package_list.txt
+    flatpak list --app --columns=origin,application | sort -u > flatpak_package_list.txt
+    dnf repolist --enabled > dnf_repository_list.txt
+
+install-system-packages:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    xargs -r sudo dnf install -y < dnf_package_list.txt
+    while IFS=$'\t' read -r remote app; do
+        flatpak install -y "$remote" "$app"
+    done < flatpak_package_list.txt
 
 # Install missing binaries and update existing ones managed through `go install`.
 update-go:

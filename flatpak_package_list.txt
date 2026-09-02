@@ -1,0 +1,6 @@
+fedora	org.gnome.DejaDup
+flathub	app.zen_browser.zen
+flathub	com.mattjakeman.ExtensionManager
+flathub	io.github.lullabyX.sone
+flathub	md.obsidian.Obsidian
+flathub	org.zulip.Zulip
