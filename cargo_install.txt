@@ -38,6 +38,7 @@ mdbook-linkcheck
 mdbook-linkcheck2
 microserver
 mini-redis
+presenterm
 runiq
 rusty-man
 sqlx-cli
