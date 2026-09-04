@@ -4,4 +4,13 @@
 "aqua:openai/codex" = "latest"
 "aqua:rust-lang/rust-analyzer" = "latest"
 deno = "latest"
+go = "latest"
+"go:github.com/docker/docker-language-server/cmd/docker-language-server" = "latest"
+"go:github.com/joshmedeski/sesh/v2" = "latest"
+"go:github.com/rhysd/actionlint/cmd/actionlint" = "latest"
 "npm:markdownlint-cli2" = "latest"
+
+[settings.cargo]
+binstall = true
+binstall_native = true
+binstall_quickinstall = true
