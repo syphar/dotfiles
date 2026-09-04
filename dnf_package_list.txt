@@ -37,6 +37,7 @@ chatgpt
 chrony
 cifs-utils
 cirrus-audio-firmware
+clang
 colord
 compsize
 containerd.io
