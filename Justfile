@@ -37,9 +37,6 @@ daily-update:
     just update-fish
     just update-vim
 
-    # github packages downloads
-    ./download_github_release.sh tuc riquito/tuc tuc-ubuntu-amd64
-
     # update tmux plugins
     ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
