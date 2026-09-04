@@ -13,29 +13,29 @@ default:
     just --list
 
 daily-update:
-    # git pull # to allow SSH key access in 1p, once, so later steps can use it
+    git pull # to allow SSH key access in 1p, once, so later steps can use it
     # just heroku-cli
     # # update_cached_heroku_apps
-    # just update-system
-    # just backup-package-list
-    # just update-luarocks
-    # just update-python-tools
-    # just update-generated-autocompletes
-    # just update-cached-pypi-package-list
-    # just update-rust
-    # just update-go
-    # just npm-upgrade
-    # just prune-zoxide
+    just update-system
+    just backup-package-list
+    just update-luarocks
+    just update-python-tools
+    just update-generated-autocompletes
+    just update-cached-pypi-package-list
+    just update-rust
+    just update-go
+    just npm-upgrade
+    just prune-zoxide
 
-    # just clear-disk-space-daily
+    just clear-disk-space-daily
 
-    # gh extension upgrade --all
+    gh extension upgrade --all
 
-    # bat cache --build
+    bat cache --build
 
-    # just mackup
-    # just update-fish
-    # just update-vim
+    just mackup
+    just update-fish
+    just update-vim
 
     # github packages downloads
     ./download_github_release.sh tuc riquito/tuc tuc-ubuntu-amd64
