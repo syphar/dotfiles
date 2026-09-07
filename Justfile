@@ -12,16 +12,12 @@ default:
 
 daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
-    # just heroku-cli
-    # # update_cached_heroku_apps
     just update-system
     just backup-package-list
     just update-luarocks
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
-    just update-go
-    just npm-upgrade
     just prune-zoxide
 
     just clear-disk-space-daily
@@ -67,14 +63,6 @@ mackup:
     # copy some configs to dotfiles, to share
     ./mackup_dotfiles.py
 
-heroku-cli:
-    ## heroku login, so we can fetch from heroku remotes later
-    heroku whoami || heroku login
-    ## update the Heroku CLI
-    heroku update
-    ## try to update the autocomplete cache
-    heroku autocomplete zsh
-
 update-system:
     sudo dnf upgrade --refresh -y
     flatpak update -y
@@ -109,16 +97,6 @@ update-vim:
     rm -f ~/.config/nvim/*.log
 
     nvim --headless '+Lazy! sync' +qa
-
-npm-upgrade:
-    #!/usr/bin/env bash
-    set -euxo pipefail
-    for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2)
-    do
-        npm -g install "$package"
-    done
-
-    xargs -n 1 npm install -g < global_npm_packages.txt
 
 cargo-sweep-global:
     #!/bin/bash
