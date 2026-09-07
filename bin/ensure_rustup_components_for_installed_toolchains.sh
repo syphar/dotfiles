@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MANDATORY_COMPONENTS=(clippy)
+MANDATORY_COMPONENTS=(clippy rustfmt)
 
 for toolchain in $(rustup toolchain list | awk '{print $1}'); do
   echo "==> Installing mandatory components for $toolchain"

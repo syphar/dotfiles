@@ -7,8 +7,6 @@ export HOME := "/home/syphar"
 export SRC_DIR := HOME / "src"
 export TMP_DIR := HOME / "tmp"
 
-JAEGER_VERSION := "2.19.0"
-
 default:
     just --list
 
@@ -19,7 +17,6 @@ daily-update:
     just update-system
     just backup-package-list
     just update-luarocks
-    just update-python-tools
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
@@ -106,20 +103,6 @@ update-luarocks:
     ## luarocks packages for lua 5.1, for neovim
     -xargs -n 1 luarocks install --local --lua-version 5.1 < luarocks_list.txt
 
-update-python-tools:
-    #!/usr/bin/env nu
-
-    open ./uv_tool_list.txt
-    | lines
-    | each { |line| $line | str trim }
-    | where ($it | is-not-empty) and (not ($it | str starts-with "#"))
-    | each { |pkg|
-        print "========================"
-        print $"installing/updating: ($pkg)"
-        uv tool install --upgrade ...($pkg | split row " ")
-    }
-    | ignore
-
 update-vim:
     rm -f ~/.local/state/nvim/*.log
     rm -f ~/.config/nvim/.nvimlog
@@ -159,9 +142,6 @@ update-cached-pypi-package-list:
 
 update-rust: && build-docs-rs-mcp
     rustup update
-    cargo install-update -a
-    rm -f ~/.cargo/bin/rust-analyzer
-    -/bin/cat cargo_install.txt | tr '\n' '\0' | xargs -0 -n1 cargo binstall
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
