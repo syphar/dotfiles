@@ -28,6 +28,7 @@ return {
 			},
 			overrides = function(colors)
 				return {
+					LspInlayHint = { link = "NonText" },
 					-- brighter background for context and LspReference
 					TreesitterContext = { bg = colors.palette.sumiInk4 },
 					LspReferenceText = { bg = colors.palette.sumiInk4 },

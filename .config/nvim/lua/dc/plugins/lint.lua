@@ -144,7 +144,7 @@ return {
 			vim = { "vint" },
 			yaml = { "yamllint" },
 			-- temporary until we have more memory again:
-			rust = { "cargo_check" },
+			-- rust = { "cargo_check" },
 		}
 	end,
 }

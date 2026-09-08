@@ -1,6 +1,6 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^6",
+	version = "^9",
 	ft = { "rust" },
 	config = function()
 		local cfg = require("dc.lsp")
@@ -19,11 +19,8 @@ return {
 		})
 
 		vim.g.rustaceanvim = {
-			inlay_hints = {
-				highlight = "NonText",
-			},
 			tools = {
-				hover_actions = {
+				float_win_config = {
 					auto_focus = true,
 				},
 			},
@@ -123,7 +120,6 @@ return {
 							},
 							loadOutDirsFromCheck = true, -- proc macro
 							allTargets = false, -- TODO: re-enable with more memory?
-
 						},
 						procMacro = {
 							enable = true, -- proc macro
