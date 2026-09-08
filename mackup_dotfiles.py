@@ -31,6 +31,7 @@ app_list = (
     "mycodexdotfiles",
     "myfish",
     "myhttpie",
+    "myhyprland",
     "myneovim",
     "mytmuxinator",
     "opencode",
