@@ -77,6 +77,7 @@ docker-buildx-plugin
 docker-ce
 docker-ce-cli
 docker-compose-plugin
+dolphin
 dos2unix
 dosfstools
 doublecmd-qt
@@ -302,6 +303,7 @@ papers-nautilus
 paps
 parted
 passwdqc
+pavucontrol
 pciutils
 perl-FindBin
 perl-IPC-Cmd
