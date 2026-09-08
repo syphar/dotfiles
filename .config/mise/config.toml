@@ -141,6 +141,8 @@ node = "latest"
 "npm:yarn" = "latest"
 heroku = "latest"
 sccache = "latest"
+stylua = "latest"
+"github:steipete/CodexBar" = "latest"
 
 [settings.cargo]
 binstall = true
