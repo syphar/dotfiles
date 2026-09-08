@@ -244,6 +244,7 @@ hl.config({
 		kb_variant = "",
 		kb_model = "",
 		kb_options = "caps:escape",
+		numlock_by_default = true,
 		kb_rules = "",
 
 		follow_mouse = 1,
