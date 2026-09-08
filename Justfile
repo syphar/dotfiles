@@ -14,7 +14,6 @@ daily-update:
     git pull # to allow SSH key access in 1p, once, so later steps can use it
     just update-system
     just backup-package-list
-    just update-luarocks
     just update-generated-autocompletes
     just update-cached-pypi-package-list
     just update-rust
@@ -82,13 +81,6 @@ install-system-packages:
     while IFS=$'\t' read -r remote app; do
         flatpak install -y "$remote" "$app"
     done < flatpak_package_list.txt
-
-update-luarocks:
-    ## luarocks packages
-    -xargs -n 1 luarocks install --local < luarocks_list.txt
-
-    ## luarocks packages for lua 5.1, for neovim
-    -xargs -n 1 luarocks install --local --lua-version 5.1 < luarocks_list.txt
 
 update-vim:
     rm -f ~/.local/state/nvim/*.log
