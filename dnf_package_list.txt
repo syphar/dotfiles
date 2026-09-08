@@ -53,6 +53,7 @@ curl
 cyrus-sasl-plain
 dbus
 dconf
+ddcutil
 decibels
 default-editor
 default-fonts-cjk-mono
@@ -89,7 +90,6 @@ efibootmgr
 ethtool
 exfatprogs
 eza
-fastly
 fd-find
 fedora-bookmarks
 fedora-chromium-config
@@ -189,6 +189,7 @@ hplip
 hplip-gui
 hunspell
 hyperv-daemons
+hyprland
 ibus-anthy
 ibus-chewing
 ibus-gtk3
@@ -217,7 +218,6 @@ kbd-legacy
 kernel
 kernel-core
 kernel-modules
-kernel-modules-core
 kernel-modules-extra
 kexec-tools
 langpacks-de
@@ -278,6 +278,7 @@ NetworkManager-wifi
 NetworkManager-wwan
 nfs-utils
 nmap-ncat
+noctalia-hyprland-meta
 nss-mdns
 ntfs-3g
 ntfsprogs
@@ -302,6 +303,8 @@ paps
 parted
 passwdqc
 pciutils
+perl-FindBin
+perl-IPC-Cmd
 pinentry-gnome3
 pinfo
 pipewire-alsa
@@ -339,7 +342,6 @@ rsyslog
 rygel
 samba-client
 sane-backends-drivers-scanners
-sccache
 selinux-policy-targeted
 setup
 shadow-utils

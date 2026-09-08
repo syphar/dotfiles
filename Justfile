@@ -50,7 +50,6 @@ update-git-worktrees:
 update-generated-autocompletes:
     poetry completions fish > ~/.config/fish/completions/poetry.fish
     poe _fish_completion > ~/.config/fish/completions/poe.fish
-    _DSLR_COMPLETE=fish_source dslr > ~/.config/fish/completions/dslr.fish
 
 mackup:
     # convert into new config files to links,
