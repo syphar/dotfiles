@@ -1,0 +1,10 @@
+[Unit]
+Description=Automatic power profile based on AC and battery level
+
+[Service]
+ExecStart=/usr/bin/python3 %h/.config/hypr/scripts/auto-power-profile.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
