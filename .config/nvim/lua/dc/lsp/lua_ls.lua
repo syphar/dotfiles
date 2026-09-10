@@ -24,10 +24,7 @@ function M.config(cfg)
 					-- Setup your lua path
 					path = runtime_path,
 				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global
-					globals = { "vim" },
-				},
+				diagnostics = {},
 				workspace = {
 					-- Make the server aware of Neovim runtime files
 					library = vim.api.nvim_get_runtime_file("", true),
