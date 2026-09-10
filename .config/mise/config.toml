@@ -143,6 +143,8 @@ heroku = "latest"
 sccache = "latest"
 stylua = "latest"
 "github:steipete/CodexBar" = "latest"
+hunk = "latest"
+"github:librepods-org/librepods" = { version = "latest", version_prefix = "linux-v", asset_pattern = "librepods", prerelease = "true" }
 
 [settings.cargo]
 binstall = true
