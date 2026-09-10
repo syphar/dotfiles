@@ -7,7 +7,7 @@ abbr -ag pl poetry lock
 abbr -ag pi poetry sync
 abbr -ag pia poetry sync --all-extras
 
-alias ta='tmux attach -t base || tmux new -s base'
+alias tma='tmux attach -t base || tmux new -s base'
 alias tiga='tig --all'
 alias tigs='tig status'
 alias gb='git branch -vv'
