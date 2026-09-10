@@ -12,6 +12,8 @@
 -- noctalia ipc
 local ipc = "noctalia msg "
 
+local term = "ghostty --gtk-single-instance=true"
+
 ------------------
 ---- MONITORS ----
 ------------------
@@ -41,9 +43,6 @@ hl.monitor({
 ---- MY PROGRAMS ----
 ---------------------
 
--- Set programs that you use
-local terminal = "ghostty"
--- local fileManager = "dolphin"
 local fileManager = "nautilus"
 
 -------------------
@@ -57,6 +56,7 @@ local fileManager = "nautilus"
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
+	hl.exec_cmd("/usr/bin/mise exec -- librepods --start-minimized")
 	hl.exec_cmd("dropbox start -i")
 	hl.exec_cmd("/opt/1Password/1password --silent")
 
@@ -114,29 +114,30 @@ hl.config({
 		-- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
 		allow_tearing = false,
 
-		layout = "dwindle",
+		layout = "master",
+		-- layout = "monocle",
+	},
+
+	master = {
+		mfact = 0.66,
+		new_status = "slave",
 	},
 
 	decoration = {
-		rounding = 20,
+		rounding = 10,
 		rounding_power = 2,
+		dim_special = 0.4,
 
 		-- Change transparency of focused and unfocused windows
 		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		inactive_opacity = 0.95,
 
 		shadow = {
-			enabled = true,
-			range = 4,
-			render_power = 3,
-			color = 0xee1a1a1a,
+			enabled = false,
 		},
 
 		blur = {
-			enabled = true,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
+			enabled = false,
 		},
 	},
 
@@ -144,34 +145,6 @@ hl.config({
 		enabled = false,
 	},
 })
-
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
-hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
-hl.curve("easeInOutCubic", { type = "bezier", points = { { 0.65, 0.05 }, { 0.36, 1 } } })
-hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
-hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
-hl.curve("quick", { type = "bezier", points = { { 0.15, 0 }, { 0.1, 1 } } })
-
--- Default springs
-hl.curve("easy", { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
-
-hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows", enabled = true, speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 4.1, spring = "easy", style = "popin 87%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.49, bezier = "linear", style = "popin 87%" })
-hl.animation({ leaf = "fadeIn", enabled = true, speed = 1.73, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeOut", enabled = true, speed = 1.46, bezier = "almostLinear" })
-hl.animation({ leaf = "fade", enabled = true, speed = 3.03, bezier = "quick" })
-hl.animation({ leaf = "layers", enabled = true, speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn", enabled = true, speed = 4, bezier = "easeOutQuint", style = "fade" })
-hl.animation({ leaf = "layersOut", enabled = true, speed = 1.5, bezier = "linear", style = "fade" })
-hl.animation({ leaf = "fadeLayersIn", enabled = true, speed = 1.79, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn", enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
@@ -190,20 +163,6 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 --     border_size = 0,
 --     rounding    = 0,
 -- })
-
--- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
-hl.config({
-	dwindle = {
-		preserve_split = true, -- You probably want this
-	},
-})
-
--- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
-hl.config({
-	master = {
-		new_status = "master",
-	},
-})
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
@@ -253,6 +212,7 @@ hl.config({
 
 		touchpad = {
 			natural_scroll = false,
+			disable_while_typing = true,
 		},
 	},
 })
@@ -290,7 +250,6 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -390,17 +349,18 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- new mappings denis
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("noctalia msg window-switcher"))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(ipc .. "session lock"))
 
 -- hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", function()
-	local windows = hl.get_windows()
-	for _, w in ipairs(windows) do
-		if w.class == "com.mitchellh.ghostty" then
-			hl.dispatch(hl.dsp.focus({ window = w }))
-			return
-		end
-	end
-	hl.exec_cmd("ghostty --gtk-single-instance=true")
+	-- local windows = hl.get_windows()
+	-- for _, w in ipairs(windows) do
+	-- 	if w.class == "com.mitchellh.ghostty" then
+	-- 		hl.dispatch(hl.dsp.focus({ window = w }))
+	-- 		return
+	-- 	end
+	-- end
+	hl.exec_cmd(term)
 end)
 
 --------------------------------
@@ -450,6 +410,19 @@ hl.window_rule({
 
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+-- Give the magic workspace an inset overlay appearance.
+hl.workspace_rule({
+	workspace = "special:magic",
+	gaps_out = 40,
+	gaps_in = 8,
+	border_size = 3,
+})
+hl.window_rule({
+	name = "magic-overlay-border",
+	match = { workspace = "special:magic" },
+	border_color = "rgb(c4a7e7) rgb(6e5889)",
 })
 
 hl.workspace_rule({ workspace = "1", persistent = true })
