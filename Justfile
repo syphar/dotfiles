@@ -229,9 +229,14 @@ clear-dropbox-cache:
 clear-disk-space-daily:
     just clear-docker-daily
     just clean-tmp
+    just clear-trash
+
+clear-trash:
+    # clear items from trash that are sitting in there since >30d
+    trash-empty -f 30
 
 clean-tmp:
-    # Trash only top-level entries that have not been modified in seven days.
+    # Trash only top-level entries that have not been modified in X days.
     fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$TMP_DIR" --exec-batch gio trash -f --
     fd --hidden --no-ignore --max-depth 1 --changed-before 1d . "$HOME/Downloads/" --exec-batch gio trash -f --
 

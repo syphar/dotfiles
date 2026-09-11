@@ -383,6 +383,7 @@ tiwilink-firmware
 tokei
 toolbox
 traceroute
+trash-cli
 tree
 udisks2-btrfs
 unoconv
