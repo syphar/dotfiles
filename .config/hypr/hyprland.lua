@@ -179,7 +179,7 @@ hl.config({
 	misc = {
 		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
-		focus_on_activate = false,
+		focus_on_activate = true,
 	},
 })
 
@@ -448,12 +448,12 @@ local startup_workspace_targets = {
 local startup_placement_timer
 
 hl.on("hyprland.start", function()
-	 hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1 silent" })
-	 hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "2 silent" })
-	 hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
-	 hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
-	 hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "special:chat silent" })
-	 hl.exec_cmd("/home/syphar/Applications/Beeper-4.3.104-x86_64.AppImage", { workspace = "special:chat silent" })
+	hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1 silent" })
+	hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "2 silent" })
+	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
+	hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
+	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "special:chat silent" })
+	hl.exec_cmd("/home/syphar/Applications/Beeper-4.3.104-x86_64.AppImage", { workspace = "special:chat silent" })
 
 	startup_placement_timer = hl.timer(function()
 		for _, window in ipairs(hl.get_windows()) do
