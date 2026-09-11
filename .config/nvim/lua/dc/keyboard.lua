@@ -27,10 +27,35 @@ vim.keymap.set("n", "<leader>em", function()
 	end
 end, { desc = "Edit current file on main branch" })
 
--- set workspace diagnostics into quickfix
+-- Keep the workspace diagnostics quickfix list live without replacing other
+-- quickfix uses (for example grep or compiler output).
+local diagnostics_qf_title = "Workspace diagnostics"
+
+local function update_diagnostics_qflist(open)
+	vim.diagnostic.setqflist({
+		open = open,
+		title = diagnostics_qf_title,
+	})
+end
+
+-- Set workspace diagnostics into quickfix and keep this list updated as LSP
+-- diagnostics are published (for example after a save or a rust-analyzer run).
 vim.keymap.set("n", "<leader>qf", function()
-	vim.diagnostic.setqflist({ open = true })
-end)
+	update_diagnostics_qflist(true)
+end, { desc = "Workspace diagnostics in quickfix" })
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+	group = vim.api.nvim_create_augroup("update_diagnostic_qflist", {}),
+	callback = function()
+		-- DiagnosticChanged fires before Neovim has finished updating its
+		-- diagnostic cache, so refresh on the next event-loop tick.
+		vim.schedule(function()
+			if vim.fn.getqflist({ title = 1 }).title == diagnostics_qf_title then
+				update_diagnostics_qflist(false)
+			end
+		end)
+	end,
+})
 
 -- git blame for the current file
 vim.keymap.set("n", "<leader>gb", ":Git blame <CR>")
