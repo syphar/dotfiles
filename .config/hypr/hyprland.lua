@@ -179,7 +179,7 @@ hl.config({
 	misc = {
 		force_default_wallpaper = -1, -- Set to 0 or 1 to disable the anime mascot wallpapers
 		disable_hyprland_logo = false, -- If true disables the random hyprland logo / anime girl background. :(
-		focus_on_activate = true,
+		focus_on_activate = false,
 	},
 })
 
@@ -237,15 +237,14 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
--- Kill the process owning the window with a SIGKILL
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.kill())
 -- Send a graceful request to close the window
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
+hl.bind(mainMod .. " + W", hl.dsp.window.close())
+
 hl.bind(
 	mainMod .. " + M",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
+
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
@@ -304,9 +303,13 @@ hl.bind("PRINT", hl.dsp.exec_cmd(ipc .. "screenshot-fullscreen pick"))
 -- Screenshot a region
 hl.bind(mainMod .. " +  PRINT", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
 
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- Special workspaces
+hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("notes"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:notes" }))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("chat"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:chat" }))
+hl.bind(mainMod .. " + A", hl.dsp.workspace.toggle_special("ai"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.move({ workspace = "special:ai" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -347,6 +350,8 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 -- new mappings denis
+hl.bind("SUPER + TAB", hl.dsp.layout("cyclenext"))
+hl.bind("SUPER + SHIFT + TAB", hl.dsp.layout("cycleprev"))
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("noctalia msg window-switcher"))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(ipc .. "session lock"))
@@ -413,25 +418,54 @@ hl.window_rule({
 })
 
 -- Give the magic workspace an inset overlay appearance.
-hl.workspace_rule({
-	workspace = "special:magic",
-	gaps_out = 40,
-	gaps_in = 8,
-	border_size = 3,
-})
-hl.window_rule({
-	name = "magic-overlay-border",
-	match = { workspace = "special:magic" },
-	border_color = "rgb(c4a7e7) rgb(6e5889)",
-})
+for _, workspace in ipairs({ "notes", "chat", "ai" }) do
+	hl.workspace_rule({
+		workspace = "special:" .. workspace,
+		gaps_out = 40,
+		gaps_in = 8,
+		border_size = 3,
+	})
+	hl.window_rule({
+		name = workspace .. "-overlay-border",
+		match = { workspace = "special:" .. workspace },
+		border_color = "rgb(c4a7e7) rgb(6e5889)",
+	})
+end
+
+-- Keep the chat overlay focused on one conversation app at a time.
+hl.workspace_rule({ workspace = "special:chat", layout = "monocle" })
 
 hl.workspace_rule({ workspace = "1", persistent = true })
 hl.workspace_rule({ workspace = "2", persistent = true })
 hl.workspace_rule({ workspace = "3", persistent = true })
-hl.workspace_rule({ workspace = "4", persistent = true })
+
+-- Flatpak apps can finish launching after Hyprland's startup workspace token has
+-- expired.  Retry their placement only during login, leaving later windows alone.
+local startup_workspace_targets = {
+	["md.obsidian.Obsidian"] = "special:notes",
+	["zulip"] = "special:chat",
+}
+local startup_placement_timer
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1 silent" })
-	hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "2 silent" })
-	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "3 silent" })
+	 hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1 silent" })
+	 hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "2 silent" })
+	 hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
+	 hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
+	 hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "special:chat silent" })
+	 hl.exec_cmd("/home/syphar/Applications/Beeper-4.3.104-x86_64.AppImage", { workspace = "special:chat silent" })
+
+	startup_placement_timer = hl.timer(function()
+		for _, window in ipairs(hl.get_windows()) do
+			local workspace = startup_workspace_targets[window.class]
+			if workspace then
+				hl.dispatch(hl.dsp.window.move({ window = window, workspace = workspace, follow = false }))
+				startup_workspace_targets[window.class] = nil
+			end
+		end
+
+		if next(startup_workspace_targets) == nil then
+			startup_placement_timer:set_enabled(false)
+		end
+	end, { timeout = 1000, type = "repeat" })
 end)
