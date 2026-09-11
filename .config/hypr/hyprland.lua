@@ -119,7 +119,7 @@ hl.config({
 	},
 
 	master = {
-		mfact = 0.66,
+		mfact = 0.60,
 		new_status = "slave",
 	},
 
@@ -202,7 +202,7 @@ hl.config({
 		kb_layout = "us",
 		kb_variant = "",
 		kb_model = "",
-		kb_options = "caps:escape",
+		kb_options = "caps:escape,compose:ralt",
 		numlock_by_default = true,
 		kb_rules = "",
 
