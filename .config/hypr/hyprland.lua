@@ -306,8 +306,8 @@ hl.bind(mainMod .. " +  PRINT", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
 -- Special workspaces
 hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("notes"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:notes" }))
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("chat"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:chat" }))
+hl.bind(mainMod .. " + S", hl.dsp.focus({ workspace = 9 }))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = 9 }))
 hl.bind(mainMod .. " + A", hl.dsp.workspace.toggle_special("ai"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.window.move({ workspace = "special:ai" }))
 
@@ -417,8 +417,8 @@ hl.window_rule({
 	float = true,
 })
 
--- Give the magic workspace an inset overlay appearance.
-for _, workspace in ipairs({ "notes", "chat", "ai" }) do
+-- Give special overlays an inset appearance.
+for _, workspace in ipairs({ "notes", "ai" }) do
 	hl.workspace_rule({
 		workspace = "special:" .. workspace,
 		gaps_out = 40,
@@ -432,18 +432,17 @@ for _, workspace in ipairs({ "notes", "chat", "ai" }) do
 	})
 end
 
--- Keep the chat overlay focused on one conversation app at a time.
-hl.workspace_rule({ workspace = "special:chat", layout = "monocle" })
-
 hl.workspace_rule({ workspace = "1", persistent = true })
 hl.workspace_rule({ workspace = "2", persistent = true })
 hl.workspace_rule({ workspace = "3", persistent = true })
+hl.workspace_rule({ workspace = "9", persistent = true, layout = "monocle" })
 
 -- Flatpak apps can finish launching after Hyprland's startup workspace token has
 -- expired.  Retry their placement only during login, leaving later windows alone.
 local startup_workspace_targets = {
 	["md.obsidian.Obsidian"] = "special:notes",
-	["zulip"] = "special:chat",
+	["zulip"] = 9,
+	["Beeper"] = 9,
 }
 local startup_placement_timer
 
@@ -452,8 +451,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("ghostty --gtk-single-instance=true", { workspace = "2 silent" })
 	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
 	hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
-	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "special:chat silent" })
-	hl.exec_cmd("/home/syphar/Applications/Beeper-4.3.104-x86_64.AppImage", { workspace = "special:chat silent" })
+	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "9 silent" })
+	hl.exec_cmd("/home/syphar/Applications/Beeper-4.3.104-x86_64.AppImage", { workspace = "9 silent" })
 
 	startup_placement_timer = hl.timer(function()
 		for _, window in ipairs(hl.get_windows()) do
