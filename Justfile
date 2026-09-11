@@ -231,9 +231,9 @@ clear-disk-space-daily:
     just clean-tmp
 
 clean-tmp:
-    # Delete only top-level entries that have not been modified in seven days.
-    fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$TMP_DIR" --exec-batch rm -rf --
-    fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$HOME/Downloads/" --exec-batch rm -rf --
+    # Trash only top-level entries that have not been modified in seven days.
+    fd --hidden --no-ignore --max-depth 1 --changed-before 7d . "$TMP_DIR" --exec-batch gio trash -f --
+    fd --hidden --no-ignore --max-depth 1 --changed-before 1d . "$HOME/Downloads/" --exec-batch gio trash -f --
 
 clear-disk-space:
     just clear-dropbox-cache
