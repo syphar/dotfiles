@@ -241,6 +241,7 @@ localsearch
 logrotate
 loupe
 lrzsz
+lshw
 lsof
 luarocks
 lvm2
@@ -385,6 +386,7 @@ toolbox
 traceroute
 trash-cli
 tree
+udiskie
 udisks2-btrfs
 unoconv
 unzip

@@ -2,6 +2,7 @@ fedora	org.gnome.DejaDup
 flathub	app.zen_browser.zen
 flathub	com.brave.Browser
 flathub	com.mattjakeman.ExtensionManager
+flathub	com.slack.Slack
 flathub	io.github.lullabyX.sone
 flathub	md.obsidian.Obsidian
 flathub	org.zulip.Zulip
