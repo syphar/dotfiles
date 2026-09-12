@@ -145,6 +145,8 @@ stylua = "latest"
 "github:steipete/CodexBar" = "latest"
 hunk = "latest"
 "github:librepods-org/librepods" = { version = "latest", version_prefix = "linux-v", asset_pattern = "librepods", prerelease = "true" }
+"cargo:cargo-dylint" = "latest"
+"cargo:dylint-link" = "latest"
 
 [settings.cargo]
 binstall = true
