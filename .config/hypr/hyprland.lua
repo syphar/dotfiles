@@ -435,7 +435,7 @@ end
 hl.workspace_rule({ workspace = "1", persistent = true })
 hl.workspace_rule({ workspace = "2", persistent = true })
 hl.workspace_rule({ workspace = "3", persistent = true })
-hl.workspace_rule({ workspace = "9", persistent = true, layout = "monocle" })
+hl.workspace_rule({ workspace = "9", monitor = "eDP-1", persistent = true, layout = "monocle" })
 
 -- Flatpak apps can finish launching after Hyprland's startup workspace token has
 -- expired.  Retry their placement only during login, leaving later windows alone.
