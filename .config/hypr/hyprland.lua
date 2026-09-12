@@ -452,7 +452,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
 	hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
 	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "9 silent" })
-	hl.exec_cmd("/home/syphar/.config/hypr/start-beeper.sh", { workspace = "9 silent" })
+	hl.exec_cmd("/home/syphar/.config/hypr/start-beeper", { workspace = "9 silent" })
 
 	startup_placement_timer = hl.timer(function()
 		for _, window in ipairs(hl.get_windows()) do

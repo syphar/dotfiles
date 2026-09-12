@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+set -l images (find "$HOME/Applications" -maxdepth 1 -type f -name 'Beeper-*.AppImage' -print)
+
+if test (count $images) -ne 1
+	printf 'Expected exactly one Beeper AppImage in ~/Applications; found %d.\n' (count $images) >&2
+	exit 1
+end
+
+exec $images[1]
