@@ -31,10 +31,44 @@ end, { desc = "Edit current file on main branch" })
 -- quickfix uses (for example grep or compiler output).
 local diagnostics_qf_title = "Workspace diagnostics"
 
+local function severity_sorted_diagnostics()
+	local diagnostics = vim.diagnostic.get()
+	local sorted = {}
+
+	-- Keep rust-analyzer's original order within a severity for now. Locality
+	-- ordering can be added independently later.
+	for severity = vim.diagnostic.severity.ERROR, vim.diagnostic.severity.HINT do
+		for _, diagnostic in ipairs(diagnostics) do
+			if diagnostic.severity == severity then
+				table.insert(sorted, diagnostic)
+			end
+		end
+	end
+
+	return sorted
+end
+
+local function diagnostics_to_qf_items(diagnostics)
+	local items = {}
+	for _, diagnostic in ipairs(diagnostics) do
+		-- toqflist sorts a whole list by buffer and position. Converting one
+		-- diagnostic at a time preserves the severity-first order above.
+		table.insert(items, vim.diagnostic.toqflist({ diagnostic })[1])
+	end
+	return items
+end
+
 local function update_diagnostics_qflist(open)
 	vim.diagnostic.setqflist({
 		open = open,
 		title = diagnostics_qf_title,
+	})
+
+	-- vim.diagnostic.setqflist does not sort its input. Replace the just-set
+	-- list with the same items grouped by severity.
+	vim.fn.setqflist({}, "r", {
+		title = diagnostics_qf_title,
+		items = diagnostics_to_qf_items(severity_sorted_diagnostics()),
 	})
 end
 
