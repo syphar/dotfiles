@@ -147,6 +147,9 @@ hunk = "latest"
 "github:librepods-org/librepods" = { version = "latest", version_prefix = "linux-v", asset_pattern = "librepods", prerelease = "true" }
 "cargo:cargo-dylint" = "latest"
 "cargo:dylint-link" = "latest"
+luau = "latest"
+flyctl = "latest"
+bottom = "latest"
 
 [settings.cargo]
 binstall = true

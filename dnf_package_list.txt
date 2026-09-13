@@ -3,6 +3,7 @@ aajohan-comfortaa-fonts
 abrt-cli
 acl
 adobe-source-code-pro-fonts
+alsa-lib-devel
 alsa-sof-firmware
 alsa-ucm
 alsa-utils
@@ -10,6 +11,7 @@ amd-gpu-firmware
 amd-ucode-firmware
 anaconda-install-env-deps
 anaconda-live
+apfs-fuse
 at
 atheros-firmware
 at-spi2-atk
@@ -27,6 +29,7 @@ bash-completion
 bc
 bind-utils
 bluez-cups
+borgbackup
 bottles
 brave-browser
 brcmfmac-firmware
@@ -115,6 +118,7 @@ ghostscript
 ghostty
 git
 git-delta
+git-lfs
 gitui
 glibc
 glibc-all-langpacks
@@ -226,6 +230,7 @@ less
 libappindicator-gtk3
 libertas-firmware
 libglvnd-gles
+libpq-devel
 libreoffice-calc
 libreoffice-emailmerge
 libreoffice-graphicfilter

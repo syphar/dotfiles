@@ -5,4 +5,5 @@ flathub	com.mattjakeman.ExtensionManager
 flathub	com.slack.Slack
 flathub	io.github.lullabyX.sone
 flathub	md.obsidian.Obsidian
+flathub	org.gnome.World.PikaBackup
 flathub	org.zulip.Zulip
