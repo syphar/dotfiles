@@ -53,7 +53,7 @@ abbr -ag bt bacon nextest
 
 alias ll="eza --long --all --header --icons --group-directories-first --color-scale=size --time-style=relative --git"
 alias l="eza --icons --group-directories-first"
-alias top="ytop"
+alias top="btm"
 alias iftop="bandwhich"
 alias objdump="bingrep"
 alias hexdump="hx"
