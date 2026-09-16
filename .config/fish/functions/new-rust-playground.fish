@@ -13,7 +13,7 @@ function new-rust-playground --description "Create a temporary Rust playground p
 
     cd "$project_dir"
 
-    cargo add url anyhow
+    cargo add url anyhow tempfile
     cargo check
     cargo fmt
 end
