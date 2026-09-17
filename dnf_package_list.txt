@@ -384,6 +384,7 @@ terraform
 terraform-ls
 thermald
 time
+timew
 tinysparql
 tiwilink-firmware
 tokei
