@@ -88,6 +88,7 @@ abbr -ag hb http
 alias glo 'forgit::log -50'
 
 alias cb='chatblade'
+abbr -ag tw timew
 
 # common typos
 abbr -ag dlsr dslr
