@@ -376,8 +376,6 @@ systemd
 systemd-oomd-defaults
 systemd-resolved
 systemd-udev
-t2linux-release
-t2linux-repos
 tar
 tcpdump
 teamd
