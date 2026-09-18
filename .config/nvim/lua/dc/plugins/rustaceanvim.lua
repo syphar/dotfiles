@@ -31,7 +31,13 @@ return {
 				settings = {
 					["rust-analyzer"] = {
 						files = {
-							excludeDirs = { ".rustwide-docker", ".rustwide", ".rustwide-docker" },
+							exclude = {
+								".rustwide-docker",
+								".rustwide",
+								".workspace",
+								".rustwide-docker",
+								"crates/lib/docs_rs_rustwide/.workspace",
+							},
 						},
 						imports = {
 							granularity = {
