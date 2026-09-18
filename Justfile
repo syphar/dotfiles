@@ -65,6 +65,8 @@ update-system:
     sudo dnf upgrade --refresh -y
     flatpak update -y
     mise upgrade
+    # restart systemd services etc after update
+    sudo needrestart -r a
 
 backup-package-list: 
     # Flatpak entries retain their origin for restoration; the DNF source

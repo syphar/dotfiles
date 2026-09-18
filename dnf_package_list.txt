@@ -270,6 +270,7 @@ mtr
 nautilus
 nautilus-dropbox
 ncurses
+needrestart
 neovim
 net-tools
 NetworkManager
