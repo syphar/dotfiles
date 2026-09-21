@@ -12,7 +12,7 @@ complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l directory -d 'The working directory for the Poetry command (defaults to the current working directory). All command-line arguments will be resolved relative to the given directory.'
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l help -d 'Display help for the given command. When no command is given display help for the list command.'
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l no-ansi -d 'Disable ANSI output.'
-complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l no-cache -d 'Disables Poetry source caches.'
+complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l no-cache -d 'Disables the use of Poetry\'s caches (cached package metadata and dist files from configured package sources) for the duration of the command, forcing Poetry to behave as if it had a cold cache. This does not delete the caches; use `poetry cache clear` to remove cached data.'
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l no-interaction -d 'Do not ask any interactive question.'
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l no-plugins -d 'Disables plugins.'
 complete -c poetry -n '__fish_poetry_827ecfafb995a2e3_complete_no_subcommand' -l project -d 'Specify another path as the project root. All command-line arguments will be resolved relative to the current working directory.'
