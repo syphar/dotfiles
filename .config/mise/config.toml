@@ -150,6 +150,7 @@ hunk = "latest"
 luau = "latest"
 flyctl = "latest"
 bottom = "latest"
+"cargo:cargo-docs-rs" = "latest"
 
 [settings.cargo]
 binstall = true
