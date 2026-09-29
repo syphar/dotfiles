@@ -152,6 +152,7 @@ flyctl = "latest"
 bottom = "latest"
 "cargo:cargo-docs-rs" = "latest"
 fx = "latest"
+"pipx:whatisit" = "latest"
 
 [settings.cargo]
 binstall = true
