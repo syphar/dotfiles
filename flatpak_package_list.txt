@@ -1,6 +1,6 @@
 fedora	org.gnome.DejaDup
+fedora	org.gnome.Geary
 flathub	app.zen_browser.zen
-flathub	com.brave.Browser
 flathub	com.mattjakeman.ExtensionManager
 flathub	com.slack.Slack
 flathub	io.github.lullabyX.sone
