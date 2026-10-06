@@ -347,6 +347,7 @@ realmd
 realtek-firmware
 rootfiles
 rpm
+rpmfusion-nonfree-release
 rsync
 rsyslog
 rygel
@@ -369,6 +370,7 @@ sssd-common
 sssd-kcm
 sssd-proxy
 starship
+steam
 sudo
 sushi
 symlinks
