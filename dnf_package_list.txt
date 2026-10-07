@@ -17,6 +17,7 @@ atheros-firmware
 at-spi2-atk
 at-spi2-core
 attr
+audacity
 audit
 authselect
 avahi
