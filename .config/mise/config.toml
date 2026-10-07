@@ -153,6 +153,7 @@ bottom = "latest"
 "cargo:cargo-docs-rs" = "latest"
 fx = "latest"
 "pipx:whatisit" = "latest"
+"github:DataDog/pup" = "latest"
 
 [settings.cargo]
 binstall = true
