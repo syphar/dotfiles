@@ -11,7 +11,7 @@ local programs = require("programs")
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd("noctalia")
-	hl.exec_cmd("/usr/bin/mise exec -- librepods --start-minimized")
+	-- hl.exec_cmd("/usr/bin/mise exec -- librepods --start-minimized")
 	hl.exec_cmd("dropbox start -i")
 	hl.exec_cmd("/opt/1Password/1password --silent")
 
@@ -29,7 +29,7 @@ local startup_workspace_targets = {
 local startup_placement_timer
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1 silent" })
+	hl.exec_cmd("/usr/bin/brave-browser-stable", { workspace = "1 silent" })
 	hl.exec_cmd(programs.terminal, { workspace = "2 silent" })
 	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
 	hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
