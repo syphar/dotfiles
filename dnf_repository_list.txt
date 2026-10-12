@@ -19,4 +19,5 @@ rpmfusion-nonfree                                  RPM Fusion for Fedora 44 - No
 rpmfusion-nonfree-nvidia-driver                    RPM Fusion for Fedora 44 - Nonfree - NVIDIA Driver
 rpmfusion-nonfree-steam                            RPM Fusion for Fedora 44 - Nonfree - Steam
 rpmfusion-nonfree-updates                          RPM Fusion for Fedora 44 - Nonfree - Updates
+terra                                              Terra 44
 updates                                            Fedora 44 - x86_64 - Updates

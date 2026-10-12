@@ -385,6 +385,7 @@ tcpdump
 teamd
 terraform
 terraform-ls
+terra-release
 thermald
 time
 timew
@@ -419,6 +420,7 @@ xdg-user-dirs-gtk
 xfsprogs
 yelp
 zeal
+zed
 zip
 zoxide
 zram-generator-defaults
