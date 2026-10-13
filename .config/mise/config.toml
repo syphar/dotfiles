@@ -56,7 +56,6 @@ go = "latest"
 "go:github.com/rhysd/actionlint/cmd/actionlint" = "latest"
 "npm:markdownlint-cli2" = "latest"
 "pipx:argcomplete" = "latest"
-"pipx:awscli" = "latest"
 "pipx:bandit" = "latest"
 "pipx:basedpyright" = "latest"
 "pipx:black" = "latest"
@@ -155,6 +154,7 @@ fx = "latest"
 "pipx:whatisit" = "latest"
 "github:DataDog/pup" = "latest"
 mold = "latest"
+aws-cli = { version = "latest", symlink_bins = "true" }
 
 [settings.cargo]
 binstall = true
