@@ -154,6 +154,7 @@ bottom = "latest"
 fx = "latest"
 "pipx:whatisit" = "latest"
 "github:DataDog/pup" = "latest"
+mold = "latest"
 
 [settings.cargo]
 binstall = true
