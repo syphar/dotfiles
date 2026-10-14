@@ -25,4 +25,5 @@ bin/latexmk
 bin/xelatex
 bin/jaeger
 .claude/plugins
+.claude/skills
 .local/share/opencode/auth.json

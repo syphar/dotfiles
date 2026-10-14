@@ -149,6 +149,16 @@
     "grep": {
       "type": "remote",
       "url": "https://mcp.grep.app"
+    },
+    "aws-mcp": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "INSTALL_SOURCE=aws-cli"
+      ]
     }
   },
   "lsp": {
