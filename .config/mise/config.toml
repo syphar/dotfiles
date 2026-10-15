@@ -156,6 +156,7 @@ fx = "latest"
 mold = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 terragrunt = "latest"
+just = "latest"
 
 [settings.cargo]
 binstall = true
