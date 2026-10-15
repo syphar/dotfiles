@@ -8,6 +8,7 @@ fd \
     --exclude ".direnv" \
     --exclude "venv" \
     --exclude "venv2" \
+    --exclude "ignored" \
     --prune \
     --no-ignore \
     --hidden \
