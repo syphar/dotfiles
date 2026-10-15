@@ -44,7 +44,7 @@ garbage-collect-git-repos:
     ./find_repos $SRC_DIR | xargs -n 1 sh -c 'echo $0 && cd $0 && git gc --aggressive || exit 255'
 
 update-git-worktrees:
-    ./find_worktrees.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
+    ./find_worktrees $SRC_DIR | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
 
 update-generated-autocompletes:
     poetry completions fish > ~/.config/fish/completions/poetry.fish
