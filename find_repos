@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+
+fd --type d --hidden --print0 . $argv[1] | while read --null directory
+    if test -d "$directory/.git"
+        printf '%s\n' "$directory"
+    end
+end

@@ -30,7 +30,7 @@ daily-update:
     just update-vim
 
     # update tmux plugins
-    ./find_repos.sh "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
+    ./find_repos "$HOME/.tmux/plugins" | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
     (cd "$SRC_DIR/rust-lang/docs.rs" && clean-git-remotes origin upstream guillaumegomez)
 
@@ -38,10 +38,10 @@ daily-update:
     just update-git-worktrees
 
 update-git-repos:
-    ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
+    ./find_repos $SRC_DIR | xargs -n 1 sh -c 'just update-git-repo $0 || exit 255'
 
 garbage-collect-git-repos:
-    ./find_repos.sh $SRC_DIR | xargs -n 1 sh -c 'echo $0 && cd $0 && git gc --aggressive || exit 255'
+    ./find_repos $SRC_DIR | xargs -n 1 sh -c 'echo $0 && cd $0 && git gc --aggressive || exit 255'
 
 update-git-worktrees:
     ./find_worktrees.sh $SRC_DIR | xargs -n 1 sh -c 'just update-git-worktree $0 || exit 255'
