@@ -14,11 +14,11 @@ hl.monitor({
 	scale = 2,
 })
 
--- explicit internal screen is secondary,
+-- explicit internal screen is below the external screen,
 -- or primary when no external is connected
 hl.monitor({
 	output = "eDP-1",
 	mode = "preferred",
-	position = "auto-center-right",
+	position = "auto-center-down",
 	scale = "auto",
 })
