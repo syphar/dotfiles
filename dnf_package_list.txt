@@ -354,6 +354,7 @@ rsyslog
 rygel
 samba-client
 sane-backends-drivers-scanners
+sccache
 selinux-policy-targeted
 setup
 shadow-utils
@@ -372,6 +373,7 @@ sssd-kcm
 sssd-proxy
 starship
 steam
+strace
 sudo
 sushi
 symlinks

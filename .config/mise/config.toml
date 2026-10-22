@@ -139,7 +139,6 @@ node = "latest"
 "npm:yaml-language-server" = "latest"
 "npm:yarn" = "latest"
 heroku = "latest"
-sccache = "latest"
 stylua = "latest"
 "github:steipete/CodexBar" = "latest"
 hunk = "latest"
@@ -153,10 +152,12 @@ bottom = "latest"
 fx = "latest"
 "pipx:whatisit" = "latest"
 "github:DataDog/pup" = "latest"
-mold = "latest"
 aws-cli = { version = "latest", symlink_bins = "true" }
 terragrunt = "latest"
 just = "latest"
+sccache = "latest"
+ansible = { version = "latest", expose = ["ansible-core"] }
+"npm:@ansible/ansible-language-server" = "latest"
 
 [settings.cargo]
 binstall = true
