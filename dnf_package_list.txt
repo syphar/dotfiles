@@ -413,6 +413,7 @@ wget2-wget
 which
 whois
 wireplumber
+wkhtmltopdf
 words
 wpa_supplicant
 xdg-desktop-portal
