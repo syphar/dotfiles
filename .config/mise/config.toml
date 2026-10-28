@@ -158,6 +158,7 @@ just = "latest"
 sccache = "latest"
 ansible = { version = "latest", expose = ["ansible-core"] }
 "npm:@ansible/ansible-language-server" = "latest"
+"pipx:tmuxp" = "latest"
 
 [settings.cargo]
 binstall = true
