@@ -62,7 +62,8 @@ mackup:
     ./mackup_dotfiles.py
 
 update-system:
-    sudo dnf upgrade --refresh -y
+    # COPR Ghostty bundles completions; Terra's separate packages conflict.
+    sudo dnf upgrade --refresh -y --best --exclude=ghostty-bash-completion,ghostty-fish-completion,ghostty-zsh-completion
     flatpak update -y
     mise upgrade
     # restart systemd services etc after update
