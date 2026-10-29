@@ -48,7 +48,7 @@ function remove-workspace
     # Clean up docker compose resources if present
     if test $skip_docker -eq 0
         set -l project_name (path basename "$current_worktree" | string lower | string replace -ra '[^a-z0-9]' '')
-        
+
         # Check if any docker resources exist for this project
         set -l containers (docker ps -aq --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
         if test (count $containers) -gt 0
@@ -80,4 +80,8 @@ function remove-workspace
     end
 
     echo "remove-workspace: removed '$current_worktree' for branch '$branch_name'"
+
+    if set -q TMUX
+        command tmux kill-session
+    end
 end
