@@ -312,6 +312,7 @@ papers-nautilus
 paps
 parted
 passwdqc
+patch
 pavucontrol
 pciutils
 perl-FindBin
