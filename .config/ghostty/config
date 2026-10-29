@@ -38,6 +38,8 @@ keybind = super+l=text:\x1bl
 keybind = alt+w=text:\x01& 
 # new tab
 keybind = alt+t=text:\x01c 
+# kill current tmux session, with confirmation
+keybind = alt+shift+w=text:\x01X
 
 # sesh: 
 # new/open session
