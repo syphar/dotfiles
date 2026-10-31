@@ -45,7 +45,8 @@ function create-worktree --argument-names branch_name
     end
 
     if test "$main_repo" = /home/syphar/src/rust-lang/docs.rs; and test -f "$worktree_path/.env"
-        _docsrs_worktree_ports "$worktree_path/.env"; or begin
+        command env-free-ports --file "$worktree_path/.env" \
+            DOCSRS_POSTGRES_PORT DOCSRS_S3_PORT DOCSRS_S3_CONSOLE_PORT DOCSRS_WEB_PORT; or begin
             echo "create-worktree: failed to assign docs.rs service ports in '$worktree_path/.env'" >&2
             return 1
         end
