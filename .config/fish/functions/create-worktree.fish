@@ -44,6 +44,13 @@ function create-worktree --argument-names branch_name
         end
     end
 
+    if test "$main_repo" = /home/syphar/src/rust-lang/docs.rs; and test -f "$worktree_path/.env"
+        _docsrs_worktree_ports "$worktree_path/.env"; or begin
+            echo "create-worktree: failed to assign docs.rs service ports in '$worktree_path/.env'" >&2
+            return 1
+        end
+    end
+
     echo "create-worktree: created worktree for '$branch_name' at '$worktree_path' from '$branch_source'"
 
     command sesh connect "$worktree_path"
