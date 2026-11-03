@@ -14,7 +14,7 @@ from mackup import appsdb, utils
 
 app_list = (
     "bat",
-    "claude-code",
+    # "claude-code",
     "ctags",
     "ctags_dir",
     "direnv",
