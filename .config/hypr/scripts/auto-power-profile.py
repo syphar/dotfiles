@@ -10,6 +10,7 @@ from gi.repository import GLib
 logger = logging.getLogger(__name__)
 
 POWER_SAVER_PERCENT = 30
+POWER_CHANGE_DELAY_MS = 2000
 UPOWER = "org.freedesktop.UPower"
 UPOWER_PATH = "/org/freedesktop/UPower"
 DISPLAY_PATH = UPOWER_PATH + "/devices/DisplayDevice"
@@ -29,15 +30,28 @@ def select_profile(on_battery, percentage):
 class PowerProfiles:
     def __init__(self, bus):
         self.bus = bus
-        self.pending = False
+        self.pending = None
 
     def properties(self, service, path):
         return dbus.Interface(self.bus.get_object(service, path), PROPERTIES)
 
+    def on_battery(self):
+        upower = dbus.Interface(self.bus.get_object(UPOWER, UPOWER_PATH), UPOWER)
+        adapters = []
+        for path in upower.EnumerateDevices():
+            device = self.properties(UPOWER, path).GetAll(UPOWER + ".Device")
+            if device["Type"] == 1:  # Line power, including USB-C power supplies.
+                adapters.append(bool(device["Online"]))
+
+        # A full battery may report discharging while an adapter still supplies power.
+        if adapters:
+            return not any(adapters)
+        return bool(self.properties(UPOWER, UPOWER_PATH).Get(UPOWER, "OnBattery"))
+
     def update(self):
-        self.pending = False
+        self.pending = None
         try:
-            on_battery = self.properties(UPOWER, UPOWER_PATH).Get(UPOWER, "OnBattery")
+            on_battery = self.on_battery()
             logger.debug("battery: %s", on_battery)
 
             percentage = 100
@@ -81,14 +95,15 @@ class PowerProfiles:
         return False
 
     def changed(self, *args):
-        # Coalesce related battery/profile events before querying current values.
-        if not self.pending:
-            self.pending = True
-            GLib.idle_add(self.update)
+        # Let transient USB-C power changes settle before changing profiles.
+        if self.pending is not None:
+            GLib.source_remove(self.pending)
+        self.pending = GLib.timeout_add(POWER_CHANGE_DELAY_MS, self.update)
 
     def retry(self):
         # Also recover after suspend or a power-management daemon restart.
-        self.changed()
+        if self.pending is None:
+            self.changed()
         return True
 
 
@@ -102,8 +117,7 @@ def main():
     logger.info("registering signal receivers...")
 
     for service, path in (
-        (UPOWER, UPOWER_PATH),
-        (UPOWER, DISPLAY_PATH),
+        (UPOWER, None),
         (PPD, PPD_PATH),
     ):
         bus.add_signal_receiver(
@@ -112,6 +126,15 @@ def main():
             dbus_interface=PROPERTIES,
             bus_name=service,
             path=path,
+        )
+
+    for signal in ("DeviceAdded", "DeviceRemoved"):
+        bus.add_signal_receiver(
+            controller.changed,
+            signal_name=signal,
+            dbus_interface=UPOWER,
+            bus_name=UPOWER,
+            path=UPOWER_PATH,
         )
 
     GLib.timeout_add_seconds(30, controller.retry)
