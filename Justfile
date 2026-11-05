@@ -167,6 +167,25 @@ update-git-repo REPO:
 
     cd "{{ REPO }}"
 
+    git gc
+
+    if [ -n "$(git remote)" ];
+    then
+        git fetch --all --recurse-submodules=yes --prune --force
+        git fetch --all --prune --tags --force
+        git merge --ff-only || echo "merge failed, but ok"
+        if branch=$(git symbolic-ref --quiet --short HEAD) && git show-ref --verify --quiet "refs/remotes/upstream/$branch"; then
+            if git merge --ff-only "refs/remotes/upstream/$branch"; then
+                if git remote get-url origin >/dev/null 2>&1; then
+                    git push origin "HEAD:refs/heads/$branch" || echo "origin push failed, but ok"
+                fi
+            else
+                echo "upstream merge failed, but ok"
+            fi
+        fi
+        git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D || echo "failed, but ok"
+    fi
+
     ~/bin/rebuild_tags.sh
 
     if [ -f "{{ REPO }}/.pre-commit-config.yaml" ]; then
@@ -184,28 +203,27 @@ update-git-repo REPO:
 
     ln -s $HOME/src/dotfiles/git-hooks/* "{{ REPO }}/.git/hooks" || echo "already exists"
 
-    git gc
-
-    if [ -n "$(git remote)" ];
-    then
-        git fetch --all --recurse-submodules=yes --prune --force
-        git fetch --all --prune --tags --force
-        git merge --ff-only || echo "merge failed, but ok"
-        git branch -v | grep "\[gone\]" | awk '{print $1}' | xargs git branch -D || echo "failed, but ok"
-    fi
-
 update-git-worktree REPO:
     #!/bin/bash
     set -euo pipefail
 
     cd "{{ REPO }}"
 
-    ~/bin/rebuild_tags.sh
-
     if [ -n "$(git remote)" ];
     then
         git merge --ff-only || echo "merge failed, but ok"
+        if branch=$(git symbolic-ref --quiet --short HEAD) && git show-ref --verify --quiet "refs/remotes/upstream/$branch"; then
+            if git merge --ff-only "refs/remotes/upstream/$branch"; then
+                if git remote get-url origin >/dev/null 2>&1; then
+                    git push origin "HEAD:refs/heads/$branch" || echo "origin push failed, but ok"
+                fi
+            else
+                echo "upstream merge failed, but ok"
+            fi
+        fi
     fi
+
+    ~/bin/rebuild_tags.sh
 
 link-docsrs-agents:
     #!/usr/bin/env nu
