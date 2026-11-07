@@ -37,6 +37,7 @@ brcmfmac-firmware
 brltty
 btrfs-progs
 bzip2
+chafa
 chatgpt
 chrony
 cifs-utils
