@@ -50,22 +50,40 @@ function remove-workspace
         set -l project_name (path basename "$current_worktree" | string lower | string replace -ra '[^a-z0-9]' '')
 
         # Check if any docker resources exist for this project
-        set -l containers (docker ps -aq --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        set -l containers (docker ps -aq --filter "label=com.docker.compose.project=$project_name"); or begin
+            echo "remove-workspace: failed to list docker containers; keeping worktree" >&2
+            return 1
+        end
         if test (count $containers) -gt 0
             echo "remove-workspace: stopping and removing docker containers for project '$project_name'"
-            docker rm -f $containers 2>/dev/null
+            docker rm -f $containers; or begin
+                echo "remove-workspace: failed to remove docker containers; keeping worktree" >&2
+                return 1
+            end
         end
 
-        set -l volumes (docker volume ls -q --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        set -l volumes (docker volume ls -q --filter "label=com.docker.compose.project=$project_name"); or begin
+            echo "remove-workspace: failed to list docker volumes; keeping worktree" >&2
+            return 1
+        end
         if test (count $volumes) -gt 0
             echo "remove-workspace: removing docker volumes for project '$project_name'"
-            docker volume rm $volumes 2>/dev/null
+            docker volume rm $volumes; or begin
+                echo "remove-workspace: failed to remove docker volumes; keeping worktree" >&2
+                return 1
+            end
         end
 
-        set -l networks (docker network ls -q --filter "label=com.docker.compose.project=$project_name" 2>/dev/null)
+        set -l networks (docker network ls -q --filter "label=com.docker.compose.project=$project_name"); or begin
+            echo "remove-workspace: failed to list docker networks; keeping worktree" >&2
+            return 1
+        end
         if test (count $networks) -gt 0
             echo "remove-workspace: removing docker networks for project '$project_name'"
-            docker network rm $networks 2>/dev/null
+            docker network rm $networks; or begin
+                echo "remove-workspace: failed to remove docker networks; keeping worktree" >&2
+                return 1
+            end
         end
     end
 
