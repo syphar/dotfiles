@@ -334,8 +334,8 @@ clear-docsrs-dev:
     fd --type d --no-ignore --hidden --prune "ignored" "$SRC_DIR/rust-lang/" --exec rm -rf {}
 
 get-all-crates:
-    git -C /data/crates.io-index/ pull
-    get-all-crates --index /data/crates.io-index/ --out /data/crates/ --latest -j 8
+    git -C ~/data/crates.io-index/ pull
+    get-all-crates --index ~/data/crates.io-index/ --out ~/data/crates/ --latest -j 8
 
 gvisor-install:
     #!/usr/bin/env bash
