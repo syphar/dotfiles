@@ -69,7 +69,7 @@ update-system:
     # restart systemd services etc after update
     sudo needrestart -r a
 
-backup-package-list: 
+backup-package-list:
     # Flatpak entries retain their origin for restoration; the DNF source
     # list records repositories that must be configured before restoration.
     dnf repoquery --userinstalled --qf '%{name}\n' | sort -u > dnf_package_list.txt
@@ -334,8 +334,9 @@ clear-docsrs-dev:
     fd --type d --no-ignore --hidden --prune "ignored" "$SRC_DIR/rust-lang/" --exec rm -rf {}
 
 get-all-crates:
-    git -C ~/data/crates.io-index/ pull
-    get-all-crates --index ~/data/crates.io-index/ --out ~/data/crates/ --latest -j 8
+    git -C ~/data/crates.io-index fetch
+    git -C ~/data/crates.io-index reset --hard origin/master
+    get-all-crates --index ~/data/crates.io-index/ --out ~/data/crates/ --latest
 
 gvisor-install:
     #!/usr/bin/env bash
@@ -349,9 +350,9 @@ gvisor-install:
     rm -f gvisor.tar.bz2 gvisor.tar.bz2.sha512
 
 gvisor-register:
-  sudo /usr/local/bin/runsc install
-  sudo systemctl reload docker
-  docker run --rm --runtime=runsc hello-world
+    sudo /usr/local/bin/runsc install
+    sudo systemctl reload docker
+    docker run --rm --runtime=runsc hello-world
 
 gvisor-test:
-  docker run --rm --runtime=runsc hello-world
+    docker run --rm --runtime=runsc hello-world
