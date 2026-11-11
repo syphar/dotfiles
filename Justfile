@@ -336,6 +336,7 @@ clear-docsrs-dev:
 get-all-crates:
     git -C ~/data/crates.io-index fetch
     git -C ~/data/crates.io-index reset --hard origin/master
+    fd --type file --extension crate --size 0b . ~/data/crates --exec-batch rm
     get-all-crates --index ~/data/crates.io-index/ --out ~/data/crates/ 
 
 gvisor-install:
