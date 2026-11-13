@@ -1,0 +1,8 @@
+#!/bin/sh
+# Kill every tmux window whose only remaining pane is the ccmux sidebar.
+# Called from tmux hooks (pane-exited / after-kill-pane) in ~/.tmux.conf.
+tmux list-panes -a -F '#{window_id} #{window_panes} #{pane_current_command} #{pane_title}' |
+  awk '$2 == 1 && $3 == "ccmux" && $4 == "ccmux-sidebar" { print $1 }' |
+  while read -r win; do
+    tmux kill-window -t "$win"
+  done
