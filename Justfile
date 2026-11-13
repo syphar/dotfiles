@@ -290,6 +290,7 @@ clear-docker-daily:
     docker image prune -f
     docker builder prune -f
     docker volume prune -f
+    docker network prune -f
 
 clear-docker:
     docker container prune -f
@@ -297,6 +298,7 @@ clear-docker:
     docker builder prune -a -f
     docker volume prune -f --all
     docker volume prune -f --all
+    docker network prune -f
 
 clear-cargo-cache:
     cargo cache --autoclean
