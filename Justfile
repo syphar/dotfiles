@@ -62,8 +62,8 @@ mackup:
     ./mackup_dotfiles.py
 
 update-system:
-    # COPR Ghostty bundles completions; Terra's separate packages conflict.
-    sudo dnf upgrade --refresh -y --best --exclude=ghostty-bash-completion,ghostty-fish-completion,ghostty-zsh-completion
+    # Terra excludes 1password*, mise*, ghostty* (see repos.override.d).
+    sudo dnf upgrade --refresh -y --best
     flatpak update -y
     mise upgrade
     # restart systemd services etc after update
