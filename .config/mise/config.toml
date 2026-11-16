@@ -161,6 +161,8 @@ ansible = { version = "latest", expose = ["ansible-core"] }
 "pipx:tmuxp" = "latest"
 claude = "latest"
 "github:epilande/ccmux" = "latest"
+oha = "latest"
+rtk = "latest"
 
 [settings.cargo]
 binstall = true
