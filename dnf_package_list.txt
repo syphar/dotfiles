@@ -43,6 +43,7 @@ chrony
 cifs-utils
 cirrus-audio-firmware
 clang
+cloudflared
 colord
 compsize
 containerd.io
