@@ -163,6 +163,7 @@ claude = "latest"
 "github:epilande/ccmux" = "latest"
 oha = "latest"
 rtk = "latest"
+golangci-lint = "latest"
 
 [settings.cargo]
 binstall = true
