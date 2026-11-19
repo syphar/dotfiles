@@ -33,7 +33,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("/usr/bin/brave-browser-stable", { workspace = "1 silent" })
 	hl.exec_cmd(programs.terminal, { workspace = "2 silent" })
 	hl.exec_cmd("flatpak run md.obsidian.Obsidian", { workspace = "special:notes silent" })
-	hl.exec_cmd("chatgpt", { workspace = "special:ai silent" })
+	hl.exec_cmd(
+		os.getenv("HOME") .. "/.local/bin/claude-desktop --password-store=gnome-libsecret",
+		{ workspace = "special:ai silent" }
+	)
 	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "9 silent" })
 	hl.exec_cmd("/home/syphar/.config/hypr/start-beeper", { workspace = "9 silent" })
 
