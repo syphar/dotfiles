@@ -1,6 +1,7 @@
 repo id                                            repo name
 1password                                          1Password Stable Channel
 brave-browser                                      Brave Browser
+copr:copr.fedorainfracloud.org:abn:amd-npu         Copr repo for amd-npu owned by abn
 copr:copr.fedorainfracloud.org:group_zealdocs:zeal Copr repo for zeal owned by @zealdocs
 copr:copr.fedorainfracloud.org:jdxcode:mise        Copr repo for mise owned by jdxcode
 copr:copr.fedorainfracloud.org:lionheartp:Hyprland Copr repo for Hyprland owned by lionheartp

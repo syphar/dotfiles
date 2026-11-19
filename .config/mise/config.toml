@@ -164,6 +164,8 @@ claude = "latest"
 oha = "latest"
 rtk = "latest"
 golangci-lint = "latest"
+python = "3.13"
+"pypi:tapeback" = { version = "latest", extras = "tray,diarize" }
 
 [settings.cargo]
 binstall = true

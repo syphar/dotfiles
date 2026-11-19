@@ -97,6 +97,7 @@ efibootmgr
 ethtool
 exfatprogs
 eza
+fastflowlm
 fd-find
 fedora-bookmarks
 fedora-chromium-config
@@ -426,6 +427,7 @@ xdg-desktop-portal-gnome
 xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
 xfsprogs
+xrt-plugin-amdxdna
 yelp
 zeal
 zed

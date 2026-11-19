@@ -14,6 +14,7 @@ hl.on("hyprland.start", function()
 	-- hl.exec_cmd("/usr/bin/mise exec -- librepods --start-minimized")
 	hl.exec_cmd("dropbox start -i")
 	hl.exec_cmd("/opt/1Password/1password --silent")
+	hl.exec_cmd(os.getenv("HOME") .. "/.local/share/mise/shims/tapeback tray")
 
 	--   hl.exec_cmd("nm-applet")
 	--   hl.exec_cmd("waybar & hyprpaper & firefox")
