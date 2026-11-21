@@ -165,6 +165,7 @@ starship = "latest"
 zoxide = "latest"
 eza = "latest"
 luajit = "latest"
+neovim = "latest"
 
 [settings.cargo]
 binstall = true
