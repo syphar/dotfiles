@@ -1,12 +1,5 @@
 [build]
-# target-dir = "/Users/syphar/.cache/cargo-target"
 rustc-wrapper = "sccache"
 
 [target.'cfg(target_os = "linux")']
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
-
-[target.x86_64-unknown-linux-gnu]
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
-
-[registries.crates-io]
-protocol = "sparse"
