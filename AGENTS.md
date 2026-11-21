@@ -3,12 +3,14 @@
 ## Project Structure & Module Organization
 
 This repository is a personal dotfiles/workstation setup, not a single
-application. Top-level files such as [Brewfile](/Users/syphar/src/dotfiles/Brewfile)
-and [Justfile](/Users/syphar/src/dotfiles/Justfile) drive package installs and
-maintenance tasks. Shell and tool configs live under `.config/` (`fish/`,
-`nvim/`, `kitty/`, `git/`, `ranger/`, `opencode/`). Reusable command-line
-helpers live in `bin/`, with topic-specific scripts in subfolders such as
-`bin/docsrs/` and `bin/thermondo/`. Mackup mapping files live in `.mackup/`.
+application. Dotfiles are managed with [chezmoi](https://chezmoi.io) in
+symlink mode; `.chezmoiroot` points it at `home/`, which mirrors `$HOME` using
+chezmoi naming (`dot_config/` is `~/.config/`, `executable_` sets +x, `empty_`
+keeps empty files, `private_` means mode 600). Shell and tool configs live under
+`home/dot_config/` (`fish/`, `nvim/`, `kitty/`, `git/`, `ranger/`, `opencode/`).
+Reusable command-line helpers live in `home/bin/`. Top-level files such as the
+Justfile and the package lists drive installs and maintenance tasks and are not
+deployed.
 
 ## Build, Test, and Development Commands
 
@@ -16,16 +18,15 @@ Use `just` as the main entrypoint:
 
 - `just --list`: show available maintenance tasks.
 - `just daily-update`: run the full local update workflow.
-- `just mackup`: sync managed config files into this repo.
+- `just dotfiles`: `chezmoi re-add` copied files, then `chezmoi apply`.
 - `just update-fish`: refresh Fisher plugins and clean Fish state.
 - `just update-vim`: run Neovim plugin sync headlessly.
 
 Run targeted checks before finishing changes:
 
-- `fish -n .config/fish/config.fish`: validate Fish startup config.
-- `fish_indent -w .config/fish/*.fish`: normalize Fish formatting.
-- `python -m py_compile mackup_dotfiles.py`: quick sanity check for Python
-  scripts.
+- `fish -n home/dot_config/fish/config.fish`: validate Fish startup config.
+- `fish_indent -w home/dot_config/fish/*.fish`: normalize Fish formatting.
+- `chezmoi diff`: preview what `chezmoi apply` would change in `$HOME`.
 
 ## Coding Style & Naming Conventions
 

@@ -25,7 +25,7 @@ daily-update:
 
     bat cache --build
 
-    just mackup
+    just dotfiles
     just update-fish
     just update-vim
 
@@ -50,16 +50,11 @@ update-generated-autocompletes:
     poetry completions fish > ~/.config/fish/completions/poetry.fish
     poe _fish_completion > ~/.config/fish/completions/poe.fish
 
-mackup:
-    # convert into new config files to links,
-    # or any newly supported files after the mackup upgrade
-    mackup link install --force-no
-
-    # add local links based on new remote files
-    mackup link
-
-    # copy some configs to dotfiles, to share
-    ./mackup_dotfiles.py
+dotfiles:
+    # pull back edits to copied (executable_/private_) files, symlinks need nothing
+    chezmoi re-add
+    # deploy new/changed files from the repo
+    chezmoi apply
 
 update-system:
     # Terra excludes 1password*, mise*, ghostty* (see repos.override.d).

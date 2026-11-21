@@ -88,10 +88,6 @@ go = "latest"
   uvx_args = "--with pylsp-mypy --with rope",
 }
 "pipx:ruff" = "latest"
-"pipx:mackup" = {
-    version = "latest",
-    uvx_args = "--with defusedxml --with requests"
-} 
 "pipx:gitlint-core" = {
     version = "latest",
     uvx_args = "--with gitlint"
