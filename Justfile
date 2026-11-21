@@ -1,11 +1,8 @@
 #!/usr/bin/env just --justfile
 
 set unstable
-set working-directory := '/home/syphar/src/dotfiles'
-
-export HOME := "/home/syphar"
-export SRC_DIR := HOME / "src"
-export TMP_DIR := HOME / "tmp"
+export SRC_DIR := home_directory() / "src"
+export TMP_DIR := home_directory() / "tmp"
 
 default:
     just --list
@@ -112,9 +109,10 @@ update-rust: && build-docs-rs-mcp
     ensure_rustup_components_for_installed_toolchains.sh
     rustup override unset --nonexistent
 
-[working-directory('/home/syphar/src/rust-lang/docs-rs-mcp')]
 build-docs-rs-mcp:
     #!/usr/bin/env bash
+    set -euo pipefail
+    cd "$SRC_DIR/rust-lang/docs-rs-mcp"
 
     if [ -n "$(git status --porcelain)" ]; then
       echo "unclean worktree"
@@ -143,12 +141,6 @@ update-fish: clean-fish
 clean-fish:
     rm -f ~/.config/fish/fishd.tmp.*
     rm -f ~/.config/fish/fish_variables*conflicted*
-
-install-custom-rust-binary REPO BINARY_NAME BUILD_ARGS="":
-    cd {{ REPO }} && cargo build --release {{ BUILD_ARGS }}
-
-    rm -f $HOME/bin/{{ BINARY_NAME }}
-    mv {{ REPO }}/target/release/{{ BINARY_NAME }} $HOME/bin/{{ BINARY_NAME }}
 
 update-git-repo REPO:
     #!/bin/bash
@@ -277,7 +269,6 @@ clear-go-caches:
     go clean -fuzzcache
 
 clear-logs:
-    rm -rf /usr/local/var/log/*
     rm -rf ~/.local/state/nvim/lsp.log
 
 clear-docker-daily:
@@ -292,7 +283,6 @@ clear-docker:
     docker image prune -a -f
     docker builder prune -a -f
     docker volume prune -f --all
-    docker volume prune -f --all
     docker network prune -f
 
 clear-cargo-cache:
@@ -304,7 +294,7 @@ clear-rust-disk-space:
     # remove cargo cache
     rm -rf ~/.cargo/cache
     # remove custom toolchains
-    rustup toolchain list | grep -v nightly-aarch64-apple-darwin | grep -v stable-aarch64-apple-darwin | xargs -n 1 rustup toolchain remove
+    rustup toolchain list | awk '{print $1}' | grep -vE '^(stable|nightly)-[^0-9]' | xargs -r -n 1 rustup toolchain remove
 
 clear-rust-target-directories dir=SRC_DIR:
     # clear target directories
