@@ -164,6 +164,7 @@ chezmoi = "latest"
 starship = "latest"
 zoxide = "latest"
 eza = "latest"
+luajit = "latest"
 
 [settings.cargo]
 binstall = true
