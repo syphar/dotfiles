@@ -7,7 +7,7 @@ application. Dotfiles are managed with [chezmoi](https://chezmoi.io) in
 symlink mode; `.chezmoiroot` points it at `home/`, which mirrors `$HOME` using
 chezmoi naming (`dot_config/` is `~/.config/`, `executable_` sets +x, `empty_`
 keeps empty files, `private_` means mode 600). Shell and tool configs live under
-`home/dot_config/` (`fish/`, `nvim/`, `kitty/`, `git/`, `ranger/`, `opencode/`).
+`home/dot_config/` (`fish/`, `nvim/`, `git/`, `hypr/`, `ghostty/`).
 Reusable command-line helpers live in `home/bin/`. Top-level files such as the
 Justfile and the package lists drive installs and maintenance tasks and are not
 deployed.

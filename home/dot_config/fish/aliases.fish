@@ -8,14 +8,11 @@ abbr -ag pi poetry sync
 abbr -ag pia poetry sync --all-extras
 
 alias tma='tmux attach -t base || tmux new -s base'
-alias tiga='tig --all'
-alias tigs='tig status'
 alias gb='git branch -vv'
 alias gp='git push'
 alias clippy='cargo clippy --all-features --all-targets --workspace --locked --fix --allow-dirty --allow-staged  -- -D warnings'
 alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
-alias ranger='TERM=xterm-256color command ranger'
 
 abbr -ag dcu docker compose up
 abbr -ag dcd docker compose down
