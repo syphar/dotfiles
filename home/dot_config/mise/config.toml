@@ -163,6 +163,7 @@ python = "3.13"
 chezmoi = "latest"
 starship = "latest"
 zoxide = "latest"
+eza = "latest"
 
 [settings.cargo]
 binstall = true
