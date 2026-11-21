@@ -166,6 +166,7 @@ zoxide = "latest"
 eza = "latest"
 luajit = "latest"
 neovim = "latest"
+tree-sitter = "latest"
 
 [settings.cargo]
 binstall = true
