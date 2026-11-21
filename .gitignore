@@ -27,3 +27,25 @@ bin/jaeger
 .claude/plugins
 .claude/skills
 .local/share/opencode/auth.json
+# same rules inside the chezmoi source
+home/dot_config/nvim/.netrwhist
+home/dot_config/nvim/.luarc.json
+home/dot_config/nvim/lazy-lock.json
+home/dot_config/fish/fish_variables*
+home/dot_config/fish/*.tmp.*
+home/bin/docker
+home/bin/opencode
+home/bin/docker-buildx
+home/bin/docker-compose
+home/bin/docker-credential-osxkeychain
+home/bin/orb
+home/bin/orbctl
+home/bin/just 
+home/bin/zoxide
+home/bin/kubectl
+home/bin/latexmk
+home/bin/xelatex
+home/bin/jaeger
+home/dot_claude/plugins
+home/dot_claude/skills
+home/dot_local/share/opencode/auth.json
