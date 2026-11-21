@@ -80,7 +80,6 @@ go = "latest"
 "pipx:pre-commit" = "latest"
 "pipx:proselint" = "latest"
 "pipx:pydocstyle" = "latest"
-"pipx:pylyzer" = "latest"
 "pipx:pyprojectsort" = "latest"
 "pipx:python-lsp-server" = {
   version = "latest",
