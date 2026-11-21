@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Reading stats starts a server if none is running, so skip idle periods.
+pgrep -x sccache >/dev/null || exit 0
+
+LC_ALL=C sccache --show-stats 2>/dev/null | awk '
+  $1 == "Cache" && $2 == "hits" && $3 == "rate" && $4 !~ /^\(/ { rate = $4 }
+  $1 == "Cache" && $2 == "size" { size = $(NF - 1) }
+  $1 == "Max" && $2 == "cache" && $3 == "size" { max = $(NF - 1) }
+  END {
+    if (max == "") exit
+    if (rate == "" || rate == "-") rate = "--"
+    else rate = sprintf("%.0f%%", rate)
+    if (size != "") printf "cc %s %s/%sG", rate, size, max
+    else printf "cc %s %sG max", rate, max
+  }
+'

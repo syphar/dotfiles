@@ -1,0 +1,19 @@
+
+[default_session]
+startup_command = "clear"
+windows = []
+
+[[session]] 
+name = "dotfiles" 
+path = "~/src/dotfiles"
+windows = [] 
+startup_command = "clear"
+
+[[wildcard]]
+pattern = "~/.config/**"
+startup_command = "~/bin/load-tmux-layout coding_small"
+
+[[wildcard]]
+pattern = "~/src/**"
+startup_command = "~/bin/load-tmux-layout coding"
+

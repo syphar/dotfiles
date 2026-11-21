@@ -1,0 +1,38 @@
+Host rust-lang-bastion
+  User syphar
+  Hostname bastion.infra.rust-lang.org
+  Compression yes
+
+Host docsrs 
+  User ubuntu 
+  Hostname docsrs.infra.rust-lang.org
+  ProxyJump rust-lang-bastion
+  Compression yes
+
+Host docsrs-staging-bastion
+  User syphar 
+  Hostname bastion.docs-rs-staging.rust-lang.net
+  Compression yes
+
+Host rustvm-us-2
+  # US / Iowa
+  User gh-syphar
+  HostName dev-desktop-us-2.infra.rust-lang.org 
+
+Host rustvm-us-1
+  # US / N. Virginia
+  User gh-syphar
+  HostName dev-desktop-us-1.infra.rust-lang.org 
+
+Host rustvm-eu-2
+  # netherlands / amd64
+  User gh-syphar
+  HostName dev-desktop-eu-2.infra.rust-lang.org 
+
+Host rustvm-eu-1
+  # germany / aarch64
+  User gh-syphar
+  HostName dev-desktop-eu-1.infra.rust-lang.org 
+
+Host *
+  IdentityAgent ~/.1password/agent.sock

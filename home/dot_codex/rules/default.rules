@@ -1,0 +1,86 @@
+# Rust development
+prefix_rule(pattern=["cargo", ["add", "check", "clippy", "fmt", "info", "test", "fetch"]], decision="allow")
+prefix_rule(pattern=["cargo", "nextest", "run"], decision="allow")
+
+# Datadog
+prefix_rule(pattern=["pup", ["logs", "metrics"]], decision="allow")
+prefix_rule(pattern=["pup", "auth", "status"], decision="allow")
+prefix_rule(pattern=["pup", "dashboards", ["get", "list"]], decision="allow")
+prefix_rule(pattern=["pup", "dbm", "samples", "search"], decision="allow")
+
+# Git inspection and staging
+prefix_rule(pattern=["git", ["add", "diff", "ls-remote", "status"]], decision="allow")
+prefix_rule(pattern=["gh", "pr", "status"], decision="allow")
+
+# Docker: global options before the subcommand do not match these prefixes.
+prefix_rule(pattern=["docker", "compose", ["config", "logs", "ps", "up", "stop"]], decision="allow")
+prefix_rule(pattern=["docker", "image", ["inspect", "ls"]], decision="allow")
+prefix_rule(pattern=["docker", ["info", "inspect", "ps"]], decision="allow")
+
+# Existing project recipes and named scripts
+prefix_rule(pattern=["just"], decision="allow")
+
+# Desktop inspection and previously approved Hyprland actions
+prefix_rule(pattern=["hyprctl", ["configerrors", "dispatch", "getoption", "monitors", "reload", "workspacerules"]], decision="allow")
+prefix_rule(pattern=["hyprctl", "-j", "clients"], decision="allow")
+prefix_rule(pattern=["bluetoothctl", "devices"], decision="allow")
+prefix_rule(pattern=["noctalia", "msg", "status"], decision="allow")
+prefix_rule(pattern=["mokutil", "--list-enrolled"], decision="allow")
+prefix_rule(pattern=["systemctl", "status"], decision="allow")
+prefix_rule(pattern=["systemctl", "--user", "status"], decision="allow")
+
+# Inspection utilities
+prefix_rule(pattern=[["rg", "ls", "pgrep", "dig", "ss", "tail", "sleep"]], decision="allow")
+prefix_rule(pattern=["command", "-v"], decision="allow")
+prefix_rule(pattern=["codex", "doctor"], decision="allow")
+
+# HTTP inspection and downloads
+prefix_rule(pattern=["curl", "-I"], decision="allow")
+prefix_rule(pattern=["curl", "-L", "--fail"], decision="allow")
+
+# Setup utilities
+prefix_rule(pattern=["mkdir", "-p"], decision="allow")
+prefix_rule(pattern=["mise", "install"], decision="allow")
+prefix_rule(pattern=["uv", "venv"], decision="allow")
+prefix_rule(pattern=["source", ".envrc"], decision="allow")
+prefix_rule(pattern=["terraform", ["test", "validate"]], decision="allow")
+
+# AWS inspection: put profile, region, and resource options after the operation.
+prefix_rule(pattern=["aws", "ec2", "describe-security-groups"], decision="allow")
+prefix_rule(pattern=["aws", "ecr", "describe-images"], decision="allow")
+prefix_rule(pattern=["aws", "ecs", ["describe-services", "describe-task-definition"]], decision="allow")
+prefix_rule(pattern=["aws", "elbv2", ["describe-target-groups", "describe-target-health"]], decision="allow")
+prefix_rule(pattern=["aws", "logs", "filter-log-events"], decision="allow")
+prefix_rule(pattern=["aws", "route53", ["list-hosted-zones", "list-resource-record-sets"]], decision="allow")
+prefix_rule(pattern=["aws", "s3api", ["get-bucket-policy", "get-bucket-replication", "list-objects-v2"]], decision="allow")
+prefix_rule(pattern=["aws", "sts", "get-caller-identity"], decision="allow")
+prefix_rule(pattern=["/usr/bin/bash", "-lc", "pup metrics query --query='sum:docsrs.registry_api.requests{env:prod} by {operation}.as_count().rollup(sum,60)' --from=1d --to=now > /home/syphar/tmp/registry-sample.json"], decision="allow")
+prefix_rule(pattern=["hyprctl", "-j", "monitors"], decision="allow")
+prefix_rule(pattern=["cargo", "run"], decision="allow")
+prefix_rule(pattern=["git", "show", "HEAD:ansible/envs/staging/group_vars/docs-rs-builder.yml"], decision="allow")
+prefix_rule(pattern=["cat", "/home/syphar/.config/sccache/config"], decision="allow")
+prefix_rule(pattern=["sccache", "--stop-server"], decision="allow")
+prefix_rule(pattern=["sccache", "--start-server"], decision="allow")
+prefix_rule(pattern=["sccache", "--show-stats"], decision="allow")
+prefix_rule(pattern=["tmux", "-V"], decision="allow")
+prefix_rule(pattern=["cat", "/home/syphar/src/dotfiles/AGENTS.md"], decision="allow")
+prefix_rule(pattern=["cat", "/home/syphar/bin/docker_status"], decision="allow")
+prefix_rule(pattern=["sed", "-n", "65,115p", "/home/syphar/.tmux.conf"], decision="allow")
+prefix_rule(pattern=["cmp", "/home/syphar/src/dotfiles/.tmux.conf", "/home/syphar/Dropbox/sync/mackup/.tmux.conf"], decision="allow")
+prefix_rule(pattern=["tmux", "list-sessions"], decision="allow")
+prefix_rule(pattern=["chmod", "+x", "/home/syphar/Dropbox/sync/mackup/bin/sccache_status"], decision="allow")
+prefix_rule(pattern=["systemd-analyze", "verify", "--root", "/tmp/docsrs-startup-render/systemd-root", "ecs.service", "prune-disk-space.service", "prune-disk-space.timer"], decision="allow")
+prefix_rule(pattern=["aws", "autoscaling", "describe-auto-scaling-groups", "--auto-scaling-group-names", "docs-rs-builders", "--profile", "docs-rs-staging", "--region", "us-east-1", "--output", "json"], decision="allow")
+prefix_rule(pattern=["aws", "ecs", "list-tasks", "--cluster", "docs-rs-staging", "--family", "docs-rs-registry-watcher", "--desired-status", "STOPPED", "--profile", "docs-rs-staging", "--region", "us-east-1", "--output", "json"], decision="allow")
+prefix_rule(pattern=["/usr/bin/bash", "-lc", "pup logs search --query 'service:docs-rs-registry-watcher' --from 1h --limit 40 --no-envelope > /tmp/docsrs-datadog-watcher-logs.json"], decision="allow")
+prefix_rule(pattern=["fly", "config", "show", "-a", "dcn-spotify-downloader"], decision="allow")
+prefix_rule(pattern=["fly", "version"], decision="allow")
+prefix_rule(pattern=["fly", "machine", "list", "-a", "dcn-spotify-downloader", "--json"], decision="allow")
+prefix_rule(pattern=["fly", "logs", "-a", "dcn-spotify-downloader", "--no-tail"], decision="allow")
+prefix_rule(pattern=["cat", "Justfile"], decision="allow")
+prefix_rule(pattern=["docker", "buildx", "imagetools", "inspect", "registry.fly.io/dcn-spotify-downloader@sha256:f6e07496dc5728ce645d336a6ab805052e4e9bc1d93153acf3e46b3fa39a81e7"], decision="allow")
+prefix_rule(pattern=["docker", "buildx", "imagetools", "inspect", "registry.fly.io/dcn-spotify-downloader:latest"], decision="allow")
+prefix_rule(pattern=["fly", "auth", "docker"], decision="allow")
+prefix_rule(pattern=["docker", "buildx", "imagetools", "inspect", "registry.fly.io/dcn-spotify-downloader@sha256:50afdb0c63a70119ff034ef162f88f6cbb91f741e7299df77ef80ab37c9ffe1b", "--raw"], decision="allow")
+prefix_rule(pattern=["cargo", "build"], decision="allow")
+prefix_rule(pattern=["cargo", "audit"], decision="allow")

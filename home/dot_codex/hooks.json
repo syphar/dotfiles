@@ -1,0 +1,38 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.codex/hooks/ccmux-session-start.sh",
+            "timeoutSec": 1
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.codex/hooks/ccmux-stop.sh",
+            "timeoutSec": 1
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.codex/hooks/ccmux-permission-request.sh",
+            "timeoutSec": 1
+          }
+        ]
+      }
+    ]
+  }
+}

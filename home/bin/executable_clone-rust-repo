@@ -1,0 +1,18 @@
+#!/usr/bin/env fish
+
+if not set -q argv[1]
+    echo "Usage: clone-rust-repo <repo-name>" >&2
+    exit 1
+end
+
+set name "$argv[1]"
+set target "/home/syphar/src/rust-lang/$name"
+
+git clone "git@github.com:syphar/$name.git" "$target"
+git -C "$target" remote add upstream "git@github.com:rust-lang/$name.git" 
+git -C "$target" fetch --all --recurse-submodules=yes --prune
+
+zoxide add "$target"
+
+cd "$target"; or exit 1
+gh repo set-default upstream

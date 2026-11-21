@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+if not set -q argv[1]
+    echo "Usage: clone-fork-repo <repo-name>" >&2
+    exit 1
+end
+
+set name "$argv[1]"
+set target "/home/syphar/src/$name"
+
+set upstream (gh api "repos/syphar/$name" --jq '.parent.ssh_url // empty')
+or exit 1
+
+git clone "git@github.com:syphar/$name.git" "$target"
+if test -n "$upstream"
+    git -C "$target" remote add upstream "$upstream"
+end
+git -C "$target" fetch --all --recurse-submodules=yes --prune
+
+zoxide add "$target"
+
+cd "$target"; or exit 1
+rebuild_tags.sh
+gh repo set-default upstream

@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+set profile "$argv[1]"
+set layout "$HOME/.config/tmuxp/$profile.yaml"
+
+set session (tmux display-message -p '#S')
+and set initial_window (tmux display-message -p '#{window_id}')
+and tmuxp load -a -s "$session" "$layout"
+and tmux kill-window -t "$initial_window"
+

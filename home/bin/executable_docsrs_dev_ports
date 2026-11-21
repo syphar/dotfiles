@@ -1,0 +1,5 @@
+#!/usr/bin/env fish 
+
+command env-free-ports \
+    DOCSRS_POSTGRES_PORT DOCSRS_S3_PORT DOCSRS_S3_CONSOLE_PORT DOCSRS_WEB_PORT; 
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+awk '
+/MemTotal/ {t=$2}
+/MemAvailable/ {a=$2}
+END {
+  used=t-a
+  printf "%.0f%% %.1f/%.1fG", used*100/t, used/1024/1024, t/1024/1024
+}
+' /proc/meminfo

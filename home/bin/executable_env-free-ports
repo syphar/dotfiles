@@ -1,0 +1,51 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["python-dotenv>=1.2.3,<2"]
+# ///
+"""Assign distinct, currently free TCP ports to variables in a .env file."""
+
+import argparse
+from contextlib import ExitStack
+from pathlib import Path
+import re
+import socket
+
+from dotenv import set_key
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "-f", "--file", type=Path, default=Path(".env"),
+        help="environment file to update (default: .env in the current directory)",
+    )
+    parser.add_argument("variables", nargs="+", metavar="VAR", help="variable names to set")
+    args = parser.parse_args()
+    for name in args.variables:
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name):
+            parser.error(f"invalid environment variable name: {name!r}")
+
+    ports = {}
+    try:
+        # Hold every socket until all writes finish, keeping the ports distinct.
+        # These ports are available at allocation time, not reserved for services.
+        with ExitStack() as sockets:
+            for name in dict.fromkeys(args.variables):
+                listener = sockets.enter_context(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+                listener.bind(("0.0.0.0", 0))
+                ports[name] = listener.getsockname()[1]
+
+            for name, port in ports.items():
+                set_key(args.file, name, str(port), quote_mode="never")
+    except (OSError, UnicodeError) as error:
+        parser.exit(1, f"{parser.prog}: {error}\n")
+
+    for name, port in ports.items():
+        print(f"{name}={port}")
+
+
+if __name__ == "__main__":
+    main()
+
+# vim: set filetype=python:

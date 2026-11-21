@@ -1,0 +1,14 @@
+session_name: coding
+windows:
+  - window_name: nvim
+    focus: true
+    panes:
+      - shell_command: nvim
+
+  - window_name: AI
+    panes:
+      - shell_command: claude
+
+  - window_name: terminal
+    panes:
+      - shell_command:

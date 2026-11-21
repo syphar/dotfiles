@@ -1,0 +1,11 @@
+session_name: coding_small
+windows:
+  - window_name: nvim / AI
+    focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: 55%
+    panes:
+      - nvim
+      - claude
+      -

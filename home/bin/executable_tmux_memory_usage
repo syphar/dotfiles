@@ -1,0 +1,19 @@
+#!/usr/bin/env nu
+
+let memory_icon = "󰍛"
+let memory = (
+    open --raw /proc/meminfo
+    | lines
+    | parse --regex '^(?<name>\w+):\s+(?<value>\d+)'
+    | where name in [MemTotal MemAvailable]
+    | update value { into int }
+)
+
+let total_kb = ($memory | where name == MemTotal | get value | first)
+let available_kb = ($memory | where name == MemAvailable | get value | first)
+let used_kb = $total_kb - $available_kb
+
+let used_percent = ($used_kb * 100 / $total_kb | into string --decimals 0)
+let available_gb = ($available_kb / 1024 / 1024 | into string --decimals 1)
+
+print --no-newline $"($memory_icon) \(($available_gb)G ($used_percent)%\)"

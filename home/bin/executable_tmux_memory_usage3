@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+set -l memory_icon "󰍛"
+set -l total_kb (string match --regex --groups-only '^MemTotal:\s+(\d+)' </proc/meminfo)
+set -l available_kb (string match --regex --groups-only '^MemAvailable:\s+(\d+)' </proc/meminfo)
+set -l used_kb (math "$total_kb - $available_kb")
+
+set -l used_percent (math --scale=0 "$used_kb * 100 / $total_kb")
+set -l used_gb (math --scale=1 "$used_kb / 1024 / 1024")
+set -l total_gb (math --scale=1 "$total_kb / 1024 / 1024")
+
+printf '%s %s%% %s/%sG' $memory_icon $used_percent $used_gb $total_gb

@@ -1,0 +1,256 @@
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+service_tier = "default"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = true
+writable_roots = ["/home/syphar/.cache/sccache"]
+
+
+[projects."/home/syphar"]
+trust_level = "trusted"
+
+[projects."/home/syphar/Dropbox/sync/mackup/bin"]
+trust_level = "trusted"
+
+[projects."/home/syphar/Documents/Codex/2026-09-07/fram"]
+trust_level = "trusted"
+
+[projects."/home/syphar/Documents/Codex/2026-09-07/i"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/docs.rs"]
+trust_level = "trusted"
+
+[projects."/home/syphar/Dropbox/sync/mackup/.config/nvim"]
+trust_level = "trusted"
+
+[projects."/home/syphar/.config/mise"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/alfred-github-workflow"]
+trust_level = "trusted"
+
+[projects."/home/syphar/.config/hypr"]
+trust_level = "trusted"
+
+[projects."/home/syphar/Dropbox/sync/mackup/.config/hypr"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/rustwide"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/community-plugins"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/noctalia-plugins/tmux-sesh"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/medicaljobs"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/crates.io"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/simpleinfra"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/spotify-downloader"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/noctalia-plugins"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/pika-backup"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/elefant-tools"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/auto-shazam"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp/tracks"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/test-feature-docs"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp/rust-playground.SytjG8/playground-2445"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/auto-power-profile"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/sysinfo"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/advisory-db"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/http-cache"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/std-replacement-data"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/cargo"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rustsec"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp/check-status-json"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/cargo-docs-rs"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/crates-index-diff-rs"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/askama"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp/rust-playground.u2qvul/playground-20758"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/crates-index-stats"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-search-extension"]
+trust_level = "trusted"
+
+[projects."/tmp"]
+trust_level = "trusted"
+
+[projects."/home/syphar/tmp/rust-playground.ZQ6Cfr/playground-4002"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/gitoxide"]
+trust_level = "trusted"
+
+[projects."/home/syphar/src/rust-lang/team"]
+trust_level = "trusted"
+
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+gpt-6-astra = 4
+"gpt-6.1-sol" = 4
+
+[desktop]
+followUpQueueMode = "steer"
+conversationDetailMode = "STEPS_PROSE"
+appearanceTheme = "dark"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/home/syphar/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = "/home/syphar/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[mcp_servers.node_repl]
+args = []
+command = "/usr/lib/chatgpt/resources/cua_node/bin/node_repl"
+env_vars = ["BROWSER_USE_ACCESS_EXECUTOR_ID", "BROWSER_USE_ACCESS_PIPE_PATH", "BROWSER_USE_ACCESS_VERIFYING_IDENTITY"]
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/usr/lib/chatgpt/resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/home/syphar/.codex:/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+CODEX_HOME = "/home/syphar/.codex"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.1111.71025"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/home/syphar/.codex/plugins/cache/openai-bundled/browser/26.1111.71025/scripts/browser-service.mjs"}'
+CODEX_CLI_PATH = "/usr/lib/chatgpt/resources/codex"
+
+[mcp_servers.docs-rs-mcp]
+command = "/home/syphar/src/rust-lang/docs-rs-mcp/target/release/docs-rs-mcp"
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+
+[mcp_servers.playwright.tools.browser_navigate]
+approval_mode = "approve"
+
+[mcp_servers.cratesio-mcp]
+command = "/home/syphar/.local/share/mise/installs/cargo-cratesio-mcp/latest/bin/cratesio-mcp"
+
+[mcp_servers.sentry]
+url = "https://mcp.sentry.dev/mcp"
+
+[mcp_servers.sentry.tools.execute_sentry_tool]
+approval_mode = "approve"
+
+[mcp_servers.aws-mcp]
+command = "uvx"
+args = ["mcp-proxy-for-aws@latest", "https://aws-mcp.us-east-1.api.aws/mcp", "--metadata", "INSTALL_SOURCE=aws-cli"]
+
+[mcp_servers.fastmail]
+url = "https://api.fastmail.com/mcp"
+
+[mcp_servers.obsidian]
+command = "npx"
+args = ["-y", "@bitbonsai/mcpvault@latest", "/home/syphar/Documents/DCN/"]
+
+[features]
+hooks = true
+memories = true
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[hooks.state."/home/syphar/.codex/hooks.json:permission_request:0:0"]
+trusted_hash = "sha256:59ab1a97768b2e0b9a1b98c5d32f681cd11537c33423aabe8d552415424c50c1"
+
+[hooks.state."/home/syphar/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:1dc84586cdb41ec02f78267aecb5eae7a5e13d362acc6389ce78fb21aec54878"
+
+[hooks.state."/home/syphar/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:864829d72f20b1e5ee5fb0f91c75de5f12eb23de88462d600de81b140f145d44"
