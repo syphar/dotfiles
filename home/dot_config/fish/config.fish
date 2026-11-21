@@ -27,7 +27,13 @@ set -U __done_allow_nongraphical 1
 set -U __done_exclude 'nvim|vim'
 
 if status --is-interactive
-    fzf_configure_bindings --directory=\cf
+    if test (string split -f1 . $version) -ge 4
+        fzf_configure_bindings --directory=\cf
+    else
+        # shortcut: fish 3 doesn't know fzf.fish's "ctrl-r" key names; drop once the server has fish 4
+        fzf_configure_bindings --directory=\cf --git_log=\e\cl --git_status=\e\cs \
+            --history=\cr --processes=\e\cp --variables=\cv
+    end
 
     direnv hook fish | source
 
