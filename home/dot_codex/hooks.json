@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.codex/hooks/ccmux-session-start.sh",
+            "command": "$HOME/.codex/hooks/ccmux-session-start.sh",
             "timeoutSec": 1
           }
         ]
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.codex/hooks/ccmux-stop.sh",
+            "command": "$HOME/.codex/hooks/ccmux-stop.sh",
             "timeoutSec": 1
           }
         ]
@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.codex/hooks/ccmux-permission-request.sh",
+            "command": "$HOME/.codex/hooks/ccmux-permission-request.sh",
             "timeoutSec": 1
           }
         ]
