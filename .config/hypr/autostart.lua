@@ -24,7 +24,7 @@ end)
 -- expired.  Retry their placement only during login, leaving later windows alone.
 local startup_workspace_targets = {
 	["md.obsidian.Obsidian"] = "special:notes",
-	["zulip"] = 9,
+	["org.zulip.Zulip"] = 9,
 	["Beeper"] = 9,
 }
 local startup_placement_timer
