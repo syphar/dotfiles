@@ -38,7 +38,7 @@ hl.on("hyprland.start", function()
 		{ workspace = "special:ai silent" }
 	)
 	hl.exec_cmd("flatpak run org.zulip.Zulip", { workspace = "9 silent" })
-	hl.exec_cmd("/home/syphar/.config/hypr/start-beeper", { workspace = "9 silent" })
+	hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/start-beeper", { workspace = "9 silent" })
 
 	startup_placement_timer = hl.timer(function()
 		for _, window in ipairs(hl.get_windows()) do

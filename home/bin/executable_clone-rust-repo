@@ -6,7 +6,7 @@ if not set -q argv[1]
 end
 
 set name "$argv[1]"
-set target "/home/syphar/src/rust-lang/$name"
+set target "$HOME/src/rust-lang/$name"
 
 git clone "git@github.com:syphar/$name.git" "$target"
 git -C "$target" remote add upstream "git@github.com:rust-lang/$name.git" 

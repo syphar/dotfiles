@@ -3,7 +3,7 @@
 # versions, so Stop is the authoritative "turn complete / back to idle"
 # signal. Safe no-op when the marker doesn't exist yet.
 # Contract: exit 0 on every path, never write to stdout.
-MARKERS_DIR="/home/syphar/.config/ccmux/session-pids"
+MARKERS_DIR="$HOME/.config/ccmux/session-pids"
 
 INPUT=$(cat)
 SESSION_ID=$(printf '%s' "$INPUT" | jq -r '.session_id // empty' 2>/dev/null)

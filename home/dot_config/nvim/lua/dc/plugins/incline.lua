@@ -15,13 +15,13 @@ return {
 
 				-- shorten bufname when it's in the crates.io registry
 				bufname =
-					string.gsub(bufname, "/Users/syphar/%.cargo/registry/src/github.com%-1ecc6299db9ec823", " ")
+					string.gsub(bufname, vim.pesc(vim.env.HOME) .. "/%.cargo/registry/src/github.com%-1ecc6299db9ec823", " ")
 				bufname =
-					string.gsub(bufname, "/Users/syphar/%.cargo/registry/src/index.crates.io%-6f17d22bba15001f", " ")
+					string.gsub(bufname, vim.pesc(vim.env.HOME) .. "/%.cargo/registry/src/index.crates.io%-6f17d22bba15001f", " ")
 
 				-- shorten bufname if its from the rust toolchain
 				local toolchain, path =
-					string.match(bufname, "/Users/syphar/.rustup/toolchains/([^/]*)/lib/rustlib/src/rust/library/(.*)")
+					string.match(bufname, vim.pesc(vim.env.HOME) .. "/%.rustup/toolchains/([^/]*)/lib/rustlib/src/rust/library/(.*)")
 
 				if toolchain then
 					bufname = toolchain:gsub("%-x86%_64%-apple%-darwin", "") .. "/" .. path

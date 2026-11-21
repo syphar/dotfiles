@@ -20,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.claude/hooks/ccmux-session-start.sh"
+            "command": "$HOME/.claude/hooks/ccmux-session-start.sh"
           }
         ]
       }
@@ -31,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.claude/hooks/ccmux-session-end.sh"
+            "command": "$HOME/.claude/hooks/ccmux-session-end.sh"
           }
         ]
       }
@@ -42,7 +42,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/syphar/.claude/hooks/ccmux-state-notify.sh"
+            "command": "$HOME/.claude/hooks/ccmux-state-notify.sh"
           }
         ]
       }

@@ -2,7 +2,7 @@
 # ccmux Codex SessionStart hook. Writes PID marker so the daemon can bind
 # this pane to the real Codex session id and transcript path.
 # Contract: exit 0 on every path, never write to stdout.
-MARKERS_DIR="/home/syphar/.config/ccmux/session-pids"
+MARKERS_DIR="$HOME/.config/ccmux/session-pids"
 mkdir -p "$MARKERS_DIR" 2>/dev/null || exit 0
 
 INPUT=$(cat)

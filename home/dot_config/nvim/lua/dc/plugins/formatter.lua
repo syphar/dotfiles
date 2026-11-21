@@ -79,7 +79,7 @@ return {
 			end,
 			sqruff = {
 				command = "sqruff",
-				args = { "fix", "--config", "/home/syphar/sqruff.toml", "$FILENAME" },
+				args = { "fix", "--config", vim.env.HOME .. "/sqruff.toml", "$FILENAME" },
 				stdin = false,
 			},
 			ruff_fix = {

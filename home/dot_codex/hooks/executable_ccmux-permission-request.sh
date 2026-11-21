@@ -3,7 +3,7 @@
 # user approval so the sidebar shows an attention indicator.
 # Contract: exit 0 on every path, never write to stdout/stderr. An
 # exit 2 with stderr is interpreted by Codex as Deny.
-MARKERS_DIR="/home/syphar/.config/ccmux/session-pids"
+MARKERS_DIR="$HOME/.config/ccmux/session-pids"
 
 INPUT=$(cat)
 # One jq spawn extracts every payload field, shell-quoted via @sh so eval

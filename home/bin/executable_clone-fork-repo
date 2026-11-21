@@ -6,7 +6,7 @@ if not set -q argv[1]
 end
 
 set name "$argv[1]"
-set target "/home/syphar/src/$name"
+set target "$HOME/src/$name"
 
 set upstream (gh api "repos/syphar/$name" --jq '.parent.ssh_url // empty')
 or exit 1
