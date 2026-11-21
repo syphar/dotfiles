@@ -17,10 +17,7 @@ function generate-commit-message --description 'Generate a commit message for st
 
     set -l diff (command git diff --cached --no-ext-diff | string collect)
 
-    set -l policy_file ~/.config/opencode/commit-message-policy.md
-    set -l policy (command cat "$policy_file" | string collect)
-
-    set -l prompt "$policy
+    set -l prompt "Write a git commit message for this staged diff. Output only the message.
 
 Staged diff:
 $diff"
