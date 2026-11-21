@@ -162,6 +162,7 @@ python = "3.13"
 "pypi:tapeback" = { version = "latest", extras = "tray,diarize" }
 chezmoi = "latest"
 starship = "latest"
+zoxide = "latest"
 
 [settings.cargo]
 binstall = true
