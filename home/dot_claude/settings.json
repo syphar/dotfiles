@@ -1,4 +1,7 @@
 {
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(pre-commit *)",
@@ -10,6 +13,52 @@
     ],
     "defaultMode": "auto"
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.claude/hooks/ccmux-session-start.sh"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.claude/hooks/ccmux-session-end.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt|permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/syphar/.claude/hooks/ccmux-state-notify.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
   "enabledPlugins": {
     "astral@astral-sh": true,
     "lua-lsp@claude-plugins-official": true,
@@ -17,7 +66,8 @@
     "bash-language-server@claude-code-lsps": true,
     "yaml-language-server@claude-code-lsps": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "terraform@claude-plugins-official": true
+    "terraform@claude-plugins-official": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "thermondo-skills": {
@@ -31,16 +81,32 @@
         "source": "github",
         "repo": "boostvolt/claude-code-lsps"
       }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
     }
   },
   "effortLevel": "medium",
+  "pluginConfigs": {
+    "ponytail@ponytail": {
+      "options": {
+        "ledger": true,
+        "sendNames": true
+      }
+    }
+  },
+  "tui": "fullscreen",
   "voice": {
-    "enabled": false,
+    "enabled": true,
     "mode": "hold"
   },
+  "theme": "auto",
+  "switchModelsOnFlag": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false,
-  "DISABLE_AUTOUPDATER": 1,
+  "voiceEnabled": true,
   "mcpServers": {
     "terraform": {
       "command": "terraform-mcp-server",
@@ -58,6 +124,5 @@
       "type": "url",
       "url": "https://mcp.grep.app"
     }
-  },
-  "tui": "fullscreen"
+  }
 }

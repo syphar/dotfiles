@@ -166,6 +166,7 @@ rtk = "latest"
 golangci-lint = "latest"
 python = "3.13"
 "pypi:tapeback" = { version = "latest", extras = "tray,diarize" }
+chezmoi = "latest"
 
 [settings.cargo]
 binstall = true

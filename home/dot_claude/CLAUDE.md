@@ -1,1 +1,3 @@
-@../.codex/CLAUDE.md
+@../.codex/AGENTS.md
+
+@RTK.md
