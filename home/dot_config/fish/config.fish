@@ -5,6 +5,9 @@ source $XDG_CONFIG_HOME/fish/key_bindings.fish
 source $XDG_CONFIG_HOME/fish/environment.fish
 source $XDG_CONFIG_HOME/fish/colors.fish
 
+# before starship/zoxide, which are installed via mise
+mise activate fish | source
+
 # has to be here, otherwise async-prompt doesn't work
 starship init fish | source
 
@@ -30,7 +33,6 @@ if status --is-interactive
 
     zoxide init fish --cmd cd | source
 
-    mise activate fish | source
 
     # upgrade open-file limit for vim & docs.rs
     ulimit -n 10000
