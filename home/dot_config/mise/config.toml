@@ -168,6 +168,7 @@ luajit = "latest"
 neovim = "latest"
 tree-sitter = "latest"
 "github:fastly/cli" = "latest"
+postgres = "latest"
 
 [settings.cargo]
 binstall = true
