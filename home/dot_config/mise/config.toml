@@ -167,6 +167,7 @@ eza = "latest"
 luajit = "latest"
 neovim = "latest"
 tree-sitter = "latest"
+"github:fastly/cli" = "latest"
 
 [settings.cargo]
 binstall = true
