@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+bluetoothctl connect BC:80:4E:DD:7E:0C

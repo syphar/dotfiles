@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+
+
+env AWS_PROFILE=docs-rs-prod AWS_DEFAULT_REGION=us-east-1 \
+    python3 ~/src/rust-lang/simpleinfra/aws-psql.py \
+      --ssm-key /docs-rs/database-url \
+      --bastion syphar@bastion.docs-rs-prod.rust-lang.net
