@@ -67,7 +67,8 @@
     "yaml-language-server@claude-code-lsps": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "terraform@claude-plugins-official": true,
-    "ponytail@ponytail": true
+    "ponytail@ponytail": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "thermondo-skills": {
