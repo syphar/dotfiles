@@ -2,6 +2,10 @@
   "env": {
     "DISABLE_AUTOUPDATER": "1"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(pre-commit *)",
